@@ -101,15 +101,33 @@
                 </router-link>
               </li>
               <li>
-                <router-link tag="a" to="/admin/courses" class="side-nav-link">
+                <router-link tag="a" to="/admin/categories" class="side-nav-link">
                   <i class="ti-video-clapper"></i>
-                  <span>All Courses</span>
+                  <span>Categories</span>
                 </router-link>
               </li>
               <li>
-                <router-link tag="a" to="/admin/tutors" class="side-nav-link">
+                <router-link tag="a" to="/admin/types" class="side-nav-link">
                   <i class="ti-crown"></i>
-                  <span>Tutors</span>
+                  <span>Competition Types</span>
+                </router-link>
+              </li>
+              <li>
+                <router-link tag="a" to="/admin/lycras" class="side-nav-link">
+                  <i class="ti-crown"></i>
+                  <span>Lycras</span>
+                </router-link>
+              </li>
+              <li>
+                <router-link tag="a" to="/admin/clubs" class="side-nav-link">
+                  <i class="ti-crown"></i>
+                  <span>Clubs</span>
+                </router-link>
+              </li>
+              <li>
+                <router-link tag="a" to="/admin/competitions" class="side-nav-link">
+                  <i class="ti-crown"></i>
+                  <span>Competitions</span>
                 </router-link>
               </li>
             </ul>

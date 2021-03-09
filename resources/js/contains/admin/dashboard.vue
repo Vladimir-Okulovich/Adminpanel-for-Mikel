@@ -28,7 +28,7 @@ export default {
       title: "Dashboard",
       items: [
         {
-          text: "AudioTriki",
+          text: "Administrator",
           href: "/"
         },
         {

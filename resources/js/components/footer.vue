@@ -1,7 +1,7 @@
 <template>
   <footer class="footer">
     <div class="container-fluid">
-      <div class="d-flex justify-content-between align-items-center">
+      <!-- <div class="d-flex justify-content-between align-items-center">
         <div class="d-flex align-items-center">
           <div class="mr-4">
             <a href="/">
@@ -67,14 +67,14 @@
             </li>
           </ul>
         </div>
-      </div>
+      </div> -->
       <!-- Copyright -->
       <div class="row">
         <div class="col-12">
           © {{new Date().getFullYear()}} 
           <span class="d-none d-sm-inline-block">
             - Copyright
-            <i class="mdi mdi-heart text-danger"></i> by AudioTri.
+            <i class="mdi mdi-heart text-danger"></i> by Mikel.
           </span>
         </div>
       </div>
@@ -83,10 +83,10 @@
   <!-- end footer -->
 </template>
 <style>
-  .currency li {
+  /* .currency li {
     cursor: pointer;
   }
   .currency .active {
     color: white;
-  }
+  } */
 </style>

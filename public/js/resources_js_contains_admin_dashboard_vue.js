@@ -198,7 +198,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       title: "Dashboard",
       items: [{
-        text: "AudioTriki",
+        text: "Administrator",
         href: "/"
       }, {
         text: "Dashboard",
@@ -2708,7 +2708,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.currency li {\n  cursor: pointer;\n}\n.currency .active {\n  color: white;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* .currency li {\n  cursor: pointer;\n}\n.currency .active {\n  color: white;\n} */\n", ""]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
@@ -2729,40 +2729,10 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.admin-layout .page-content {\n  padding: 0 24px 106px 24px !important;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.admin-layout .page-content {\n  padding: 0 24px 60px 24px !important;\n}\n", ""]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
-
-/***/ }),
-
-/***/ "./resources/js/assets/images/flags/britain_flag.jpg":
-/*!***********************************************************!*\
-  !*** ./resources/js/assets/images/flags/britain_flag.jpg ***!
-  \***********************************************************/
-/***/ (function(module) {
-
-module.exports = "/images/britain_flag.jpg?085c4ac98ec5b5d6db7959a80720a9ae";
-
-/***/ }),
-
-/***/ "./resources/js/assets/images/flags/europe_flag.jpg":
-/*!**********************************************************!*\
-  !*** ./resources/js/assets/images/flags/europe_flag.jpg ***!
-  \**********************************************************/
-/***/ (function(module) {
-
-module.exports = "/images/europe_flag.jpg?bddea772437f6b4c582222810f219bd9";
-
-/***/ }),
-
-/***/ "./resources/js/assets/images/flags/us_flag.jpg":
-/*!******************************************************!*\
-  !*** ./resources/js/assets/images/flags/us_flag.jpg ***!
-  \******************************************************/
-/***/ (function(module) {
-
-module.exports = "/images/us_flag.jpg?6dd96569bff0a5c5ada7d99222b9815d";
 
 /***/ }),
 
@@ -7560,145 +7530,12 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("footer", { staticClass: "footer" }, [
     _c("div", { staticClass: "container-fluid" }, [
-      _c(
-        "div",
-        { staticClass: "d-flex justify-content-between align-items-center" },
-        [
-          _c("div", { staticClass: "d-flex align-items-center" }, [
-            _vm._m(0),
-            _vm._v(" "),
-            _c("div", { staticClass: "navbar-expand-lg" }, [
-              _c("ul", { staticClass: "navbar-nav" }, [
-                _c(
-                  "li",
-                  { staticClass: "nav-item" },
-                  [
-                    _c(
-                      "router-link",
-                      {
-                        staticClass: "nav-link side-nav-link",
-                        attrs: { tag: "a", to: "/" }
-                      },
-                      [_vm._v("\n                About\n              ")]
-                    )
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "li",
-                  { staticClass: "nav-item" },
-                  [
-                    _c(
-                      "router-link",
-                      {
-                        staticClass: "nav-link side-nav-link",
-                        attrs: { tag: "a", to: "/" }
-                      },
-                      [
-                        _vm._v(
-                          "\n                Terms and Conditions\n              "
-                        )
-                      ]
-                    )
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "li",
-                  { staticClass: "nav-item" },
-                  [
-                    _c(
-                      "router-link",
-                      {
-                        staticClass: "nav-link side-nav-link",
-                        attrs: { tag: "a", to: "/" }
-                      },
-                      [
-                        _vm._v(
-                          "\n                Privacy and Policy\n              "
-                        )
-                      ]
-                    )
-                  ],
-                  1
-                )
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "navbar-expand-lg" }, [
-            _vm._m(1),
-            _vm._v(" "),
-            _c("ul", { staticClass: "navbar-nav currency" }, [
-              _c(
-                "li",
-                { staticClass: "nav-item active pr-3" },
-                [
-                  _c("b-img", {
-                    attrs: {
-                      src: __webpack_require__(/*! @/assets/images/flags/britain_flag.jpg */ "./resources/js/assets/images/flags/britain_flag.jpg"),
-                      rounded: "circle",
-                      width: "15",
-                      height: "15",
-                      alt: "flag"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("span", [_vm._v("£ GBP")])
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "li",
-                { staticClass: "nav-item pr-3" },
-                [
-                  _c("b-img", {
-                    attrs: {
-                      src: __webpack_require__(/*! @/assets/images/flags/europe_flag.jpg */ "./resources/js/assets/images/flags/europe_flag.jpg"),
-                      rounded: "circle",
-                      width: "15",
-                      height: "15",
-                      alt: "flag"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("span", [_vm._v("€ EUR")])
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "li",
-                { staticClass: "nav-item" },
-                [
-                  _c("b-img", {
-                    attrs: {
-                      src: __webpack_require__(/*! @/assets/images/flags/us_flag.jpg */ "./resources/js/assets/images/flags/us_flag.jpg"),
-                      rounded: "circle",
-                      width: "15",
-                      height: "15",
-                      alt: "flag"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("span", [_vm._v("$ USD")])
-                ],
-                1
-              )
-            ])
-          ])
-        ]
-      ),
-      _vm._v(" "),
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col-12" }, [
           _vm._v(
             "\n        © " + _vm._s(new Date().getFullYear()) + " \n        "
           ),
-          _vm._m(2)
+          _vm._m(0)
         ])
       ])
     ])
@@ -7709,37 +7546,10 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "mr-4" }, [
-      _c("a", { attrs: { href: "/" } }, [
-        _c("span", { staticClass: "logo-lg" }, [
-          _c("img", {
-            attrs: {
-              src: __webpack_require__(/*! @/assets/images/logo-sm.png */ "./resources/js/assets/images/logo-sm.png"),
-              alt: "",
-              height: "50",
-              width: "50"
-            }
-          })
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "text-right" }, [
-      _c("p", { staticClass: "mb-1" }, [_vm._v("Select Preferred Currency")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("span", { staticClass: "d-none d-sm-inline-block" }, [
       _vm._v("\n          - Copyright\n          "),
       _c("i", { staticClass: "mdi mdi-heart text-danger" }),
-      _vm._v(" by AudioTri.\n        ")
+      _vm._v(" by Mikel.\n        ")
     ])
   }
 ]
@@ -8671,12 +8481,12 @@ var render = function() {
                     "router-link",
                     {
                       staticClass: "side-nav-link",
-                      attrs: { tag: "a", to: "/admin/courses" }
+                      attrs: { tag: "a", to: "/admin/categories" }
                     },
                     [
                       _c("i", { staticClass: "ti-video-clapper" }),
                       _vm._v(" "),
-                      _c("span", [_vm._v("All Courses")])
+                      _c("span", [_vm._v("Categories")])
                     ]
                   )
                 ],
@@ -8690,12 +8500,69 @@ var render = function() {
                     "router-link",
                     {
                       staticClass: "side-nav-link",
-                      attrs: { tag: "a", to: "/admin/tutors" }
+                      attrs: { tag: "a", to: "/admin/types" }
                     },
                     [
                       _c("i", { staticClass: "ti-crown" }),
                       _vm._v(" "),
-                      _c("span", [_vm._v("Tutors")])
+                      _c("span", [_vm._v("Competition Types")])
+                    ]
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "li",
+                [
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "side-nav-link",
+                      attrs: { tag: "a", to: "/admin/lycras" }
+                    },
+                    [
+                      _c("i", { staticClass: "ti-crown" }),
+                      _vm._v(" "),
+                      _c("span", [_vm._v("Lycras")])
+                    ]
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "li",
+                [
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "side-nav-link",
+                      attrs: { tag: "a", to: "/admin/clubs" }
+                    },
+                    [
+                      _c("i", { staticClass: "ti-crown" }),
+                      _vm._v(" "),
+                      _c("span", [_vm._v("Clubs")])
+                    ]
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "li",
+                [
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "side-nav-link",
+                      attrs: { tag: "a", to: "/admin/competitions" }
+                    },
+                    [
+                      _c("i", { staticClass: "ti-crown" }),
+                      _vm._v(" "),
+                      _c("span", [_vm._v("Competitions")])
                     ]
                   )
                 ],
@@ -8865,17 +8732,6 @@ var render = function() {
                       "mdi mdi-account-circle font-size-17 align-middle mr-1"
                   }),
                   _vm._v(" Profile\n        ")
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "router-link",
-                { staticClass: "dropdown-item", attrs: { to: "#" } },
-                [
-                  _c("i", {
-                    staticClass: "mdi mdi-wallet font-size-17 align-middle mr-1"
-                  }),
-                  _vm._v(" My Wallet\n        ")
                 ]
               ),
               _vm._v(" "),

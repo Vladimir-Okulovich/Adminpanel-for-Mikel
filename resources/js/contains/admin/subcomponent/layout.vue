@@ -55,6 +55,6 @@ export default {
 
 <style type="text/css">
   .admin-layout .page-content {
-    padding: 0 24px 106px 24px !important;
+    padding: 0 24px 60px 24px !important;
   }
 </style>

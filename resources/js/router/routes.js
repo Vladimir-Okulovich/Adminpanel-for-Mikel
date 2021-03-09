@@ -87,7 +87,7 @@ export default [
     {
         path: '/admin/users',
         name: 'Users',
-        component: () => import('../contains/admin/users'),
+        component: () => import('../contains/admin/user/users'),
         meta: {
             authRequired: true,
         },
@@ -95,7 +95,7 @@ export default [
     {
         path: '/admin/user/create',
         name: 'UserCreate',
-        component: () => import('../contains/admin/user-create'),
+        component: () => import('../contains/admin/user/user-create'),
         meta: {
             authRequired: true,
         },
@@ -103,34 +103,34 @@ export default [
     {
         path: '/admin/user/edit/:userId',
         name: 'UserEdit',
-        component: () => import('../contains/admin/user-edit'),
+        component: () => import('../contains/admin/user/user-edit'),
         meta: {
             authRequired: true,
         },
     },
 
-    {
-        path: '/admin/courses',
-        name: 'Courses',
-        component: () => import('../contains/admin/courses'),
-        meta: {
-            authRequired: true,
-        },
-    },
-    {
-        path: '/admin/course/create',
-        name: 'CourseCreate',
-        component: () => import('../contains/admin/course-create'),
-        meta: {
-            authRequired: true,
-        },
-    },
-    {
-        path: '/admin/course/edit',
-        name: 'CourseEdit',
-        component: () => import('../contains/admin/course-edit'),
-        meta: {
-            authRequired: true,
-        },
-    },
+    // {
+    //     path: '/admin/competitions',
+    //     name: 'Competitions',
+    //     component: () => import('../contains/admin/competition/competitions'),
+    //     meta: {
+    //         authRequired: true,
+    //     },
+    // },
+    // {
+    //     path: '/admin/competition/create',
+    //     name: 'CompetitionCreate',
+    //     component: () => import('../contains/admin/competition/competition-create'),
+    //     meta: {
+    //         authRequired: true,
+    //     },
+    // },
+    // {
+    //     path: '/admin/competition/edit',
+    //     name: 'competitionEdit',
+    //     component: () => import('../contains/admin/competition/competition-edit'),
+    //     meta: {
+    //         authRequired: true,
+    //     },
+    // },
 ]

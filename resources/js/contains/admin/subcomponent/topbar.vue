@@ -98,9 +98,6 @@ export default {
           <router-link class="dropdown-item" to="#">
             <i class="mdi mdi-account-circle font-size-17 align-middle mr-1"></i> Profile
           </router-link>
-          <router-link class="dropdown-item" to="#">
-            <i class="mdi mdi-wallet font-size-17 align-middle mr-1"></i> My Wallet
-          </router-link>
           <div class="dropdown-divider"></div>
           <router-link class="dropdown-item text-danger" to="/logout">
             <i class="bx bx-power-off font-size-17 align-middle mr-1 text-danger"></i> Logout

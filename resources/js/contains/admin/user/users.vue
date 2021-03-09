@@ -1,5 +1,5 @@
 <script>
-	import Layout from "./subcomponent/layout";
+	import Layout from "../subcomponent/layout";
 	import appConfig from "@/app.config";
   import PageHeader from "@/components/page-header";
 
@@ -19,7 +19,7 @@
         title: "Users",
         items: [
           {
-            text: "AudioTriki",
+            text: "Administrator",
             href: "/"
           },
           {

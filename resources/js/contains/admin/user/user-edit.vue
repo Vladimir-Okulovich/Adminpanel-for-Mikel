@@ -1,5 +1,5 @@
 <script>
-import Layout from "./subcomponent/layout";
+import Layout from "../subcomponent/layout";
 import PageHeader from "@/components/page-header";
 import appConfig from "@/app.config";
 
@@ -20,16 +20,16 @@ import {
 
 export default {
   page: {
-    title: "ADD USER",
+    title: "EDIT USER",
     meta: [{ name: "description", content: appConfig.description }]
   },
   components: { Layout, PageHeader },
   data() {
     return {
-      title: "ADD USER",
+      title: "EDIT USER",
       items: [
         {
-          text: "AudioTriki",
+          text: "Administrator",
           href: "/"
         },
         {
@@ -37,7 +37,7 @@ export default {
           href: "/admin/users"
         },
         {
-          text: "Add",
+          text: "Edit",
           active: true
         }
       ],
@@ -45,9 +45,9 @@ export default {
       Error: null,
       typeform: {
         name: "",
+        email: "",
         password: "",
         confirmPassword: "",
-        email: "",
       },
       typesubmit: false,
     };
@@ -55,15 +55,24 @@ export default {
   validations: {
     typeform: {
       name: { required },
-      password: { required, minLength: minLength(6) },
-      confirmPassword: { required, sameAsPassword: sameAs("password") },
+      password: {},
+      confirmPassword: { sameAsPassword: sameAs("password") },
       email: { required, email },
     }
   },
+  mounted() {
+    this.getUserById(this.$route.params.userId);
+  },
+  computed: {
+    ...mapGetters([
+      'getUser'
+    ]),
+  },
   methods: {
     ...mapActions([
-        'createUser'
-      ]),
+      'getUserById',
+      'updateUser'
+    ]),
     /**
      * Validation type submit
      */
@@ -73,12 +82,13 @@ export default {
       this.isError = false;
       this.Error = null;
       // stop here if form is invalid
-      this.$v.$touch()
-      if (this.$v.typeform.name.$error || this.$v.typeform.email.$error || this.$v.typeform.password.$error || this.$v.typeform.confirmPassword.$error) {
+      this.$v.$touch();
+      if (this.$v.typeform.name.$error || this.$v.typeform.email.$error || this.$v.typeform.confirmPassword.$error) {
         return ;
       }
       return (
-        this.createUser({
+        this.updateUser({
+            id: this.getUser.id,
             name: this.typeform.name,
             email: this.typeform.email,
             password: this.typeform.password,
@@ -117,7 +127,7 @@ export default {
               <div class="form-group">
                 <label>Name</label>
                 <input
-                  v-model="typeform.name"
+                  v-model="typeform.name=getUser.name"
                   type="text"
                   class="form-control"
                   placeholder="Name"
@@ -133,7 +143,7 @@ export default {
                 <label>E-Mail</label>
                 <div>
                   <input
-                    v-model="typeform.email"
+                    v-model="typeform.email=getUser.email"
                     type="email"
                     name="email"
                     class="form-control"
@@ -191,9 +201,8 @@ export default {
               
               <div class="form-group mt-5 mb-0">
                 <div>
-                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="submit" class="btn btn-primary">Save</button>
                   <router-link to="/admin/users" class="btn btn-secondary m-l-5 ml-1">Cancel</router-link>
-                  <button type="reset" class="btn btn-warning m-l-5 ml-1">Reset</button>
                 </div>
               </div>
             </form>

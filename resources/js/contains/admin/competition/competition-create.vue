@@ -1,7 +1,7 @@
 <script>
 import vue2Dropzone from "vue2-dropzone";
 
-import Layout from "./subcomponent/layout";
+import Layout from "../subcomponent/layout";
 import PageHeader from "@/components/page-header";
 import appConfig from "@/app.config";
 

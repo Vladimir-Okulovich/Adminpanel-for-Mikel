@@ -1,10 +1,9 @@
 <script>
-  import Layout from "./subcomponent/layout";
+  import Layout from "../subcomponent/layout";
   import appConfig from "@/app.config";
   import PageHeader from "@/components/page-header";
 
   import { mapActions, mapGetters } from 'vuex';
-  import { courseData } from "./data";
 
   export default {
     page: {
