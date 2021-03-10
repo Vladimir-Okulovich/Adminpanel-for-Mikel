@@ -52,7 +52,7 @@ export default {
         <div class="navbar-brand-box">
           <router-link tag="a" to="/" class="logo logo-dark">
             <span class="logo-sm">
-              <img src="@/assets/images/logo-sm.png" alt height="30" />
+              <img src="@/assets/images/logo-sm.png" alt height="30" width="30" />
             </span>
             <span class="logo-lg">
               <img src="@/assets/images/logo-dark.png" alt height="60" width="130" />
@@ -61,10 +61,10 @@ export default {
 
           <router-link tag="a" to="/" class="logo logo-light">
             <span class="logo-sm">
-              <img src="@/assets/images/logo-sm.png" alt height="30" />
+              <img src="@/assets/images/logo-sm.png" alt height="30" width="30" />
             </span>
             <span class="logo-lg">
-              <img src="@/assets/images/logo-light.png" alt height="60" width="130" />
+              <img src="@/assets/images/logo-light.png" alt height="50" width="120" />
             </span>
           </router-link>
         </div>

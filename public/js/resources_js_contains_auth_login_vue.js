@@ -527,7 +527,7 @@ hiddenKeys[HIDDEN] = true;
   \************************************************/
 /***/ (function(module) {
 
-module.exports = "/images/logo-sm.png?bd59ead970a8d128d4676404d62601a2";
+module.exports = "/images/logo-sm.png?2c12af685035e4b0f0310c516ecac99c";
 
 /***/ }),
 

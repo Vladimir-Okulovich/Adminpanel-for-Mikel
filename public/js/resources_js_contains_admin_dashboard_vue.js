@@ -2742,7 +2742,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, "\n.admin-layout .page-content {\n  pad
   \**************************************************/
 /***/ (function(module) {
 
-module.exports = "/images/logo-dark.png?bd59ead970a8d128d4676404d62601a2";
+module.exports = "/images/logo-dark.png?2c12af685035e4b0f0310c516ecac99c";
 
 /***/ }),
 
@@ -2752,7 +2752,7 @@ module.exports = "/images/logo-dark.png?bd59ead970a8d128d4676404d62601a2";
   \***************************************************/
 /***/ (function(module) {
 
-module.exports = "/images/logo-light.png?bd59ead970a8d128d4676404d62601a2";
+module.exports = "/images/logo-light.png?2c12af685035e4b0f0310c516ecac99c";
 
 /***/ }),
 
@@ -2762,7 +2762,7 @@ module.exports = "/images/logo-light.png?bd59ead970a8d128d4676404d62601a2";
   \************************************************/
 /***/ (function(module) {
 
-module.exports = "/images/logo-sm.png?bd59ead970a8d128d4676404d62601a2";
+module.exports = "/images/logo-sm.png?2c12af685035e4b0f0310c516ecac99c";
 
 /***/ }),
 
@@ -8615,7 +8615,8 @@ var render = function() {
                     attrs: {
                       src: __webpack_require__(/*! @/assets/images/logo-sm.png */ "./resources/js/assets/images/logo-sm.png"),
                       alt: "",
-                      height: "30"
+                      height: "30",
+                      width: "30"
                     }
                   })
                 ]),
@@ -8642,7 +8643,8 @@ var render = function() {
                     attrs: {
                       src: __webpack_require__(/*! @/assets/images/logo-sm.png */ "./resources/js/assets/images/logo-sm.png"),
                       alt: "",
-                      height: "30"
+                      height: "30",
+                      width: "30"
                     }
                   })
                 ]),
@@ -8652,8 +8654,8 @@ var render = function() {
                     attrs: {
                       src: __webpack_require__(/*! @/assets/images/logo-light.png */ "./resources/js/assets/images/logo-light.png"),
                       alt: "",
-                      height: "60",
-                      width: "130"
+                      height: "50",
+                      width: "120"
                     }
                   })
                 ])
