@@ -1,6 +1,4 @@
 <script>
-import vue2Dropzone from "vue2-dropzone";
-
 import Layout from "../subcomponent/layout";
 import PageHeader from "@/components/page-header";
 import appConfig from "@/app.config";
@@ -20,60 +18,84 @@ import {
 
 export default {
   page: {
-    title: "ADD COURSE",
+    title: "ADD COMPETITION",
     meta: [{ name: "description", content: appConfig.description }]
   },
-  components: { vueDropzone: vue2Dropzone, Layout, PageHeader },
+  components: { Layout, PageHeader },
   data() {
     return {
-      title: "ADD COURSE",
+      title: "ADD COMPETITION",
       items: [
         {
-          text: "AudioTriki",
+          text: "Administrator",
           href: "/"
         },
         {
-          text: "Course",
-          href: "/admin/courses"
+          text: "Competition",
+          href: "/admin/competitions"
         },
         {
           text: "Add",
           active: true
         }
       ],
+      isError: false,
+      Error: null,
       typeform: {
         title: "",
-        tutor: "",
-        description: "",
-        category: "0",
-        genre: "0",
+        competition_type: "",
+        place: "",
+        start_time: "",
+        ranking_score: 0,
+        status: "",
       },
       typesubmit: false,
-      dropzoneOptions: {
-        url: "https://httpbin.org/post",
-        thumbnailWidth: 150,
-        maxFilesize: 100,
-        addRemoveLinks: true,
-        headers: { "My-Awesome-Header": "header value" }
-      }
     };
   },
   validations: {
     typeform: {
       title: { required },
-      tutor: { required },
-      description: { required, minLength: minLength(20) },
+      place: { required },
+      start_time: { required },
+      ranking_score: { required },
+      status: { required },
     }
   },
   methods: {
+    ...mapActions([
+      'createCompetition'
+    ]),
     /**
      * Validation type submit
      */
     // eslint-disable-next-line no-unused-vars
     typeForm(e) {
       this.typesubmit = true;
+      this.isError = false;
+      this.Error = null;
       // stop here if form is invalid
-      this.$v.$touch();
+      this.$v.$touch()
+      if (this.$v.typeform.title.$error || this.$v.typeform.place.$error || this.$v.typeform.start_time.$error || this.$v.typeform.ranking_score.$error || this.$v.typeform.status.$error) {
+        return ;
+      }
+      return (
+        this.createCompetition({
+            title: this.typeform.title,
+            place: this.typeform.place,
+            start_time: this.typeform.start_time,
+            ranking_score: this.typeform.ranking_score,
+            status: this.typeform.status,
+          })
+          .then((res) => {
+            this.$router.push({name: "Competitions"});
+            this.typesubmit = false;
+          })
+          .catch(error => {
+            this.typesubmit = false;
+            this.Error = error ? error : "";
+            this.isError = true;
+          })
+      );
     }
   }
 };
@@ -87,6 +109,12 @@ export default {
       <div class="col-12">
         <div class="card">
           <div class="card-body">
+            <b-alert
+              v-model="isError"
+              variant="danger"
+              class="mt-3"
+              dismissible
+            >{{ Error }}</b-alert>
             <form action="#" @submit.prevent="typeForm">
               <div class="form-group">
                 <label>Title</label>

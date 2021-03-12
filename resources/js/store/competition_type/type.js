@@ -1,0 +1,6 @@
+const type = {
+    SET_ALL_COMPETITION_TYPES: 'SET_ALL_COMPETITION_TYPES',
+    SET_COMPETITION_TYPE: 'SET_COMPETITION_TYPE',
+}
+
+export default type;

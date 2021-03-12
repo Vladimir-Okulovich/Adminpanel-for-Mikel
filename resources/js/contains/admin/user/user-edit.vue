@@ -33,6 +33,10 @@ export default {
           href: "/"
         },
         {
+          text: "Competition Data",
+          active: true
+        },
+        {
           text: "User",
           href: "/admin/users"
         },

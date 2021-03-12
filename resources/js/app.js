@@ -26,9 +26,14 @@ import store from './store'
 import vco from "v-click-outside"
 import "./design/index.scss";
 import Sparkline from 'vue-sparklines';
-import TruncateVue from 'truncate-vue'
-Vue.use(TruncateVue)
+import TruncateVue from 'truncate-vue';
+import VueToastr2 from 'vue-toastr-2'
+import 'vue-toastr-2/dist/vue-toastr-2.min.css'
 
+window.toastr = require('toastr')
+
+Vue.use(VueToastr2)
+Vue.use(TruncateVue)
 Vue.use(BootstrapVue);
 
 Vue.config.productionTip = false

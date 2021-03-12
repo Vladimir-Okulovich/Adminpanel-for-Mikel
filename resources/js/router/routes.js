@@ -76,14 +76,14 @@ export default [
         },
     },
 
-    {
-        path: '/admin',
-        name: 'Admin',
-        component: () => import('../contains/admin/dashboard'),
-        meta: {
-            authRequired: true,
-        },
-    },
+    // {
+    //     path: '/admin',
+    //     name: 'Admin',
+    //     component: () => import('../contains/admin/dashboard'),
+    //     meta: {
+    //         authRequired: true,
+    //     },
+    // },
     {
         path: '/admin/users',
         name: 'Users',
@@ -109,28 +109,53 @@ export default [
         },
     },
 
-    // {
-    //     path: '/admin/competitions',
-    //     name: 'Competitions',
-    //     component: () => import('../contains/admin/competition/competitions'),
-    //     meta: {
-    //         authRequired: true,
-    //     },
-    // },
-    // {
-    //     path: '/admin/competition/create',
-    //     name: 'CompetitionCreate',
-    //     component: () => import('../contains/admin/competition/competition-create'),
-    //     meta: {
-    //         authRequired: true,
-    //     },
-    // },
-    // {
-    //     path: '/admin/competition/edit',
-    //     name: 'competitionEdit',
-    //     component: () => import('../contains/admin/competition/competition-edit'),
-    //     meta: {
-    //         authRequired: true,
-    //     },
-    // },
+    {
+        path: '/admin/competition_types',
+        name: 'CompetitionTypes',
+        component: () => import('../contains/admin/competition_type/competition_types'),
+        meta: {
+            authRequired: true,
+        },
+    },
+    {
+        path: '/admin/competition_type/create',
+        name: 'CompetitionTypeCreate',
+        component: () => import('../contains/admin/competition_type/competition_type-create'),
+        meta: {
+            authRequired: true,
+        },
+    },
+    {
+        path: '/admin/competition_type/edit/:competition_typeId',
+        name: 'CompetitionTypeEdit',
+        component: () => import('../contains/admin/competition_type/competition_type-edit'),
+        meta: {
+            authRequired: true,
+        },
+    },
+
+    {
+        path: '/admin/competitions',
+        name: 'Competitions',
+        component: () => import('../contains/admin/competition/competitions'),
+        meta: {
+            authRequired: true,
+        },
+    },
+    {
+        path: '/admin/competition/create',
+        name: 'CompetitionCreate',
+        component: () => import('../contains/admin/competition/competition-create'),
+        meta: {
+            authRequired: true,
+        },
+    },
+    {
+        path: '/admin/competition/edit/:competitionId',
+        name: 'CompetitionEdit',
+        component: () => import('../contains/admin/competition/competition-edit'),
+        meta: {
+            authRequired: true,
+        },
+    },
 ]

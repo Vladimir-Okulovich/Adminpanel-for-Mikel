@@ -41,9 +41,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var core_js_modules_es_symbol_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_symbol_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es.symbol.description.js */ "./node_modules/core-js/modules/es.symbol.description.js");
 /* harmony import */ var core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _subcomponent_layout__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../subcomponent/layout */ "./resources/js/contains/admin/subcomponent/layout.vue");
-/* harmony import */ var _app_config__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/app.config */ "./resources/js/app.config.json");
-/* harmony import */ var _components_page_header__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/components/page-header */ "./resources/js/components/page-header.vue");
+/* harmony import */ var E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
+/* harmony import */ var _subcomponent_layout__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../subcomponent/layout */ "./resources/js/contains/admin/subcomponent/layout.vue");
+/* harmony import */ var _app_config__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/app.config */ "./resources/js/app.config.json");
+/* harmony import */ var _components_page_header__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/components/page-header */ "./resources/js/components/page-header.vue");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.mjs");
+
 
 
 
@@ -52,27 +55,26 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   page: {
-    title: "Courses",
+    title: "COMPETITIONS",
     meta: [{
       name: "description",
-      content: _app_config__WEBPACK_IMPORTED_MODULE_3__.description
+      content: _app_config__WEBPACK_IMPORTED_MODULE_4__.description
     }]
   },
   components: {
-    Layout: _subcomponent_layout__WEBPACK_IMPORTED_MODULE_2__.default,
-    PageHeader: _components_page_header__WEBPACK_IMPORTED_MODULE_4__.default
+    Layout: _subcomponent_layout__WEBPACK_IMPORTED_MODULE_3__.default,
+    PageHeader: _components_page_header__WEBPACK_IMPORTED_MODULE_5__.default
   },
   data: function data() {
     return {
-      title: "Courses",
+      title: "COMPETITIONS",
       items: [{
-        text: "AudioTriki",
+        text: "Administrator",
         href: "/"
       }, {
-        text: "Courses",
+        text: "Competitions",
         active: true
       }],
-      tableData: courseData,
       totalRows: 1,
       currentPage: 1,
       perPage: 10,
@@ -85,36 +87,37 @@ __webpack_require__.r(__webpack_exports__);
         key: "title",
         sortable: true
       }, {
-        key: "rate",
+        key: "competition_type",
+        sortable: true
+      }, {
+        key: "place",
         sortable: false
       }, {
-        key: "detail",
-        sortable: false
+        key: "start_time",
+        sortable: true
       }, {
-        key: "category",
-        sortable: false
+        key: "ranking_score",
+        sortable: true
       }, {
-        key: "genre",
-        sortable: false
-      }, {
-        key: "tutor",
-        sortable: false
+        key: "status",
+        sortable: true
       }, {
         key: "actions",
         sortable: false
       }]
     };
   },
-  computed: {
+  computed: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)((0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_6__.mapGetters)(['getCompetitions'])), {}, {
     rows: function rows() {
-      return this.tableData.length;
+      return this.getCompetitions.length;
     }
-  },
+  }),
   mounted: function mounted() {
     // Set the initial number of items
-    this.totalRows = this.tableData.length;
+    this.totalRows = this.getCompetitions.length;
+    this.initCompetitions();
   },
-  methods: {
+  methods: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)((0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_6__.mapActions)(['initCompetitions', 'deleteCompetition'])), {}, {
     /**
      * Search the table data with search input
      */
@@ -123,7 +126,7 @@ __webpack_require__.r(__webpack_exports__);
       this.totalRows = filteredItems.length;
       this.currentPage = 1;
     }
-  }
+  })
 });
 
 /***/ }),
@@ -2498,7 +2501,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, "\n.admin-layout .page-content {\n  pad
   \**************************************************/
 /***/ (function(module) {
 
-module.exports = "/images/logo-dark.png?bd59ead970a8d128d4676404d62601a2";
+module.exports = "/images/logo-dark.png?2c12af685035e4b0f0310c516ecac99c";
 
 /***/ }),
 
@@ -2508,7 +2511,7 @@ module.exports = "/images/logo-dark.png?bd59ead970a8d128d4676404d62601a2";
   \***************************************************/
 /***/ (function(module) {
 
-module.exports = "/images/logo-light.png?bd59ead970a8d128d4676404d62601a2";
+module.exports = "/images/logo-light.png?2c12af685035e4b0f0310c516ecac99c";
 
 /***/ }),
 
@@ -2518,7 +2521,7 @@ module.exports = "/images/logo-light.png?bd59ead970a8d128d4676404d62601a2";
   \************************************************/
 /***/ (function(module) {
 
-module.exports = "/images/logo-sm.png?bd59ead970a8d128d4676404d62601a2";
+module.exports = "/images/logo-sm.png?2c12af685035e4b0f0310c516ecac99c";
 
 /***/ }),
 
@@ -7044,11 +7047,11 @@ var render = function() {
               "router-link",
               {
                 staticClass: "btn btn-info btn-block d-inline-block",
-                attrs: { to: "/admin/course/create" }
+                attrs: { to: "/admin/competition/create" }
               },
               [
                 _c("i", { staticClass: "fas fa-plus mr-1" }),
-                _vm._v(" ADD COURSE\n      ")
+                _vm._v(" ADD COMPETITION\n      ")
               ]
             )
           ],
@@ -7060,7 +7063,9 @@ var render = function() {
         _c("div", { staticClass: "col-12" }, [
           _c("div", { staticClass: "card" }, [
             _c("div", { staticClass: "card-body" }, [
-              _c("h4", { staticClass: "card-title" }, [_vm._v("Course Table")]),
+              _c("h4", { staticClass: "card-title" }, [
+                _vm._v("Competition Table")
+              ]),
               _vm._v(" "),
               _c("p", { staticClass: "card-title-desc" }),
               _vm._v(" "),
@@ -7138,7 +7143,7 @@ var render = function() {
                 [
                   _c("b-table", {
                     attrs: {
-                      items: _vm.tableData,
+                      items: _vm.getCompetitions,
                       fields: _vm.fields,
                       responsive: "sm",
                       "per-page": _vm.perPage,
@@ -7165,16 +7170,6 @@ var render = function() {
                     },
                     scopedSlots: _vm._u([
                       {
-                        key: "cell(detail)",
-                        fn: function(row) {
-                          return [
-                            _c("div", [
-                              _vm._v(_vm._s(_vm._f("truncate")(row.value, 50)))
-                            ])
-                          ]
-                        }
-                      },
-                      {
                         key: "cell(actions)",
                         fn: function(row) {
                           return [
@@ -7182,14 +7177,28 @@ var render = function() {
                               "router-link",
                               {
                                 staticClass: "btn btn-sm btn-secondary mr-2",
-                                attrs: { to: "/admin/course/edit" }
+                                attrs: {
+                                  to: {
+                                    name: "CompetitionEdit",
+                                    params: { competitionId: row.item.id }
+                                  }
+                                }
                               },
                               [_c("i", { staticClass: "far fa-edit" })]
                             ),
                             _vm._v(" "),
-                            _c("b-button", { attrs: { size: "sm" } }, [
-                              _c("i", { staticClass: "fas fa-trash" })
-                            ])
+                            _c(
+                              "b-button",
+                              {
+                                attrs: { size: "sm" },
+                                on: {
+                                  click: function($event) {
+                                    return _vm.deleteCompetition(row.item.id)
+                                  }
+                                }
+                              },
+                              [_c("i", { staticClass: "fas fa-trash" })]
+                            )
                           ]
                         }
                       }
@@ -7318,119 +7327,104 @@ var render = function() {
             [
               _c("li", { staticClass: "menu-title" }, [_vm._v("Main")]),
               _vm._v(" "),
-              _c(
-                "li",
-                [
-                  _c(
-                    "router-link",
-                    {
-                      staticClass: "side-nav-link",
-                      attrs: { tag: "a", to: "/admin" }
-                    },
-                    [
-                      _c("i", { staticClass: "ti-home" }),
-                      _vm._v(" "),
-                      _c("span", [_vm._v("Dashboard")])
-                    ]
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "li",
-                [
-                  _c(
-                    "router-link",
-                    {
-                      staticClass: "side-nav-link",
-                      attrs: { tag: "a", to: "/admin/users" }
-                    },
-                    [
-                      _c("i", { staticClass: "ti-id-badge" }),
-                      _vm._v(" "),
-                      _c("span", [_vm._v("Users")])
-                    ]
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "li",
-                [
-                  _c(
-                    "router-link",
-                    {
-                      staticClass: "side-nav-link",
-                      attrs: { tag: "a", to: "/admin/categories" }
-                    },
-                    [
-                      _c("i", { staticClass: "ti-video-clapper" }),
-                      _vm._v(" "),
-                      _c("span", [_vm._v("Categories")])
-                    ]
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "li",
-                [
-                  _c(
-                    "router-link",
-                    {
-                      staticClass: "side-nav-link",
-                      attrs: { tag: "a", to: "/admin/types" }
-                    },
-                    [
-                      _c("i", { staticClass: "ti-crown" }),
-                      _vm._v(" "),
-                      _c("span", [_vm._v("Competition Types")])
-                    ]
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "li",
-                [
-                  _c(
-                    "router-link",
-                    {
-                      staticClass: "side-nav-link",
-                      attrs: { tag: "a", to: "/admin/lycras" }
-                    },
-                    [
-                      _c("i", { staticClass: "ti-crown" }),
-                      _vm._v(" "),
-                      _c("span", [_vm._v("Lycras")])
-                    ]
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "li",
-                [
-                  _c(
-                    "router-link",
-                    {
-                      staticClass: "side-nav-link",
-                      attrs: { tag: "a", to: "/admin/clubs" }
-                    },
-                    [
-                      _c("i", { staticClass: "ti-crown" }),
-                      _vm._v(" "),
-                      _c("span", [_vm._v("Clubs")])
-                    ]
-                  )
-                ],
-                1
-              ),
+              _c("li", [
+                _c(
+                  "a",
+                  {
+                    staticClass: "has-arrow",
+                    attrs: { href: "javascript: void(0);" }
+                  },
+                  [
+                    _c("i", { staticClass: "ti-save" }),
+                    _vm._v(" "),
+                    _c("span", [_vm._v("Competitions Data")])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "ul",
+                  {
+                    staticClass: "sub-menu",
+                    attrs: { "aria-expanded": "false" }
+                  },
+                  [
+                    _c(
+                      "li",
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            staticClass: "side-nav-link",
+                            attrs: { tag: "a", to: "/admin/users" }
+                          },
+                          [_c("span", [_vm._v("Users")])]
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "li",
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            staticClass: "side-nav-link",
+                            attrs: { tag: "a", to: "/admin/categories" }
+                          },
+                          [_c("span", [_vm._v("Categories")])]
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "li",
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            staticClass: "side-nav-link",
+                            attrs: { tag: "a", to: "/admin/competition_types" }
+                          },
+                          [_c("span", [_vm._v("Competition Types")])]
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "li",
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            staticClass: "side-nav-link",
+                            attrs: { tag: "a", to: "/admin/lycras" }
+                          },
+                          [_c("span", [_vm._v("Lycras")])]
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "li",
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            staticClass: "side-nav-link",
+                            attrs: { tag: "a", to: "/admin/clubs" }
+                          },
+                          [_c("span", [_vm._v("Clubs")])]
+                        )
+                      ],
+                      1
+                    )
+                  ]
+                )
+              ]),
               _vm._v(" "),
               _c(
                 "li",
@@ -7449,7 +7443,65 @@ var render = function() {
                   )
                 ],
                 1
-              )
+              ),
+              _vm._v(" "),
+              _c(
+                "li",
+                [
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "side-nav-link",
+                      attrs: { tag: "a", to: "/admin/participants" }
+                    },
+                    [
+                      _c("i", { staticClass: "ti-user" }),
+                      _vm._v(" "),
+                      _c("span", [_vm._v("Manage Participants")])
+                    ]
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("li", [
+                _c(
+                  "a",
+                  {
+                    staticClass: "has-arrow",
+                    attrs: { href: "javascript: void(0);" }
+                  },
+                  [
+                    _c("i", { staticClass: "ti-list-ol" }),
+                    _vm._v(" "),
+                    _c("span", [_vm._v("Manage Ranking")])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "ul",
+                  {
+                    staticClass: "sub-menu",
+                    attrs: { "aria-expanded": "false" }
+                  },
+                  [
+                    _c(
+                      "li",
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            staticClass: "side-nav-link",
+                            attrs: { tag: "a", to: "/admin" }
+                          },
+                          [_c("span", [_vm._v("Ranking")])]
+                        )
+                      ],
+                      1
+                    )
+                  ]
+                )
+              ])
             ]
           )
         ])
@@ -7497,7 +7549,8 @@ var render = function() {
                     attrs: {
                       src: __webpack_require__(/*! @/assets/images/logo-sm.png */ "./resources/js/assets/images/logo-sm.png"),
                       alt: "",
-                      height: "30"
+                      height: "30",
+                      width: "30"
                     }
                   })
                 ]),
@@ -7524,7 +7577,8 @@ var render = function() {
                     attrs: {
                       src: __webpack_require__(/*! @/assets/images/logo-sm.png */ "./resources/js/assets/images/logo-sm.png"),
                       alt: "",
-                      height: "30"
+                      height: "30",
+                      width: "30"
                     }
                   })
                 ]),
@@ -7534,8 +7588,8 @@ var render = function() {
                     attrs: {
                       src: __webpack_require__(/*! @/assets/images/logo-light.png */ "./resources/js/assets/images/logo-light.png"),
                       alt: "",
-                      height: "60",
-                      width: "130"
+                      height: "50",
+                      width: "120"
                     }
                   })
                 ])

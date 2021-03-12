@@ -7,7 +7,7 @@
 
   export default {
     page: {
-        title: "Courses",
+        title: "COMPETITIONS",
         meta: [{ name: "description", content: appConfig.description }]
     },
     components: {
@@ -16,18 +16,17 @@
     },
     data() {
       return {
-        title: "Courses",
+        title: "COMPETITIONS",
         items: [
           {
-            text: "AudioTriki",
+            text: "Administrator",
             href: "/"
           },
           {
-            text: "Courses",
+            text: "Competitions",
             active: true
           }
         ],
-        tableData: courseData,
         totalRows: 1,
         currentPage: 1,
         perPage: 10,
@@ -38,25 +37,33 @@
         sortDesc: false,
         fields: [
           { key: "title", sortable: true },
-          { key: "rate", sortable: false },
-          { key: "detail", sortable: false },
-          { key: "category", sortable: false },
-          { key: "genre", sortable: false },
-          { key: "tutor", sortable: false },
+          { key: "competition_type", sortable: true },
+          { key: "place", sortable: false },
+          { key: "start_time", sortable: true },
+          { key: "ranking_score", sortable: true },
+          { key: "status", sortable: true },
           { key: "actions", sortable: false }
         ]
       }
     },
     computed: {
+      ...mapGetters([
+        'getCompetitions',
+      ]),
       rows() {
-        return this.tableData.length;
+        return this.getCompetitions.length;
       },
     },
     mounted() {
       // Set the initial number of items
-      this.totalRows = this.tableData.length;
+      this.totalRows = this.getCompetitions.length;
+      this.initCompetitions();
     },
     methods: {
+      ...mapActions ([
+        'initCompetitions',
+        'deleteCompetition'
+      ]),
       /**
        * Search the table data with search input
        */
@@ -72,10 +79,10 @@
   <Layout>
     <PageHeader :title="title" :items="items">
       <div class="float-right">
-        <router-link to="/admin/course/create"
+        <router-link to="/admin/competition/create"
           class="btn btn-info btn-block d-inline-block"
         >
-          <i class="fas fa-plus mr-1"></i> ADD COURSE
+          <i class="fas fa-plus mr-1"></i> ADD COMPETITION
         </router-link>
       </div>
     </PageHeader>
@@ -84,7 +91,7 @@
       <div class="col-12">
         <div class="card">
           <div class="card-body">
-            <h4 class="card-title">Course Table</h4>
+            <h4 class="card-title">Competition Table</h4>
             <p class="card-title-desc"></p>
             <div class="row mb-md-2">
               <div class="col-sm-12 col-md-6">
@@ -114,7 +121,7 @@
             <!-- Table -->
             <div class="table-responsive mb-0">
               <b-table
-                :items="tableData"
+                :items="getCompetitions"
                 :fields="fields"
                 responsive="sm"
                 :per-page="perPage"
@@ -125,17 +132,11 @@
                 :filter-included-fields="filterOn"
                 @filtered="onFiltered"
               >
-                <template #cell(detail)="row">
-                  <div>{{ row.value | truncate(50) }}</div>
-                </template>
                 <template #cell(actions)="row">
-                  <!-- <b-button size="sm" class="mr-2">
-                    <i class="fas fa-expand-arrows-alt"></i>
-                  </b-button> -->
-                  <router-link to="/admin/course/edit" class="btn btn-sm btn-secondary mr-2">
+                  <router-link :to="{ name: 'CompetitionEdit', params: { competitionId: row.item.id }}" class="btn btn-sm btn-secondary mr-2">
                     <i class="far fa-edit"></i>
                   </router-link>
-                  <b-button size="sm">
+                  <b-button size="sm" @click="deleteCompetition(row.item.id)">
                     <i class="fas fa-trash"></i>
                   </b-button>
                 </template>

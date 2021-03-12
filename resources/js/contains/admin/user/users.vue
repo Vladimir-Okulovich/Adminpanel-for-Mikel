@@ -7,7 +7,7 @@
 
 	export default {
 		page: {
-        title: "Users",
+        title: "USERS",
         meta: [{ name: "description", content: appConfig.description }]
     },
     components: {
@@ -16,11 +16,15 @@
     },
     data() {
       return {
-        title: "Users",
+        title: "USERS",
         items: [
           {
             text: "Administrator",
             href: "/"
+          },
+          {
+            text: "Competition Data",
+            active: true
           },
           {
             text: "Users",

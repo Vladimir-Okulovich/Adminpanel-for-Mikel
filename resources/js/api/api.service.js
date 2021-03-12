@@ -27,6 +27,16 @@ const ApiService = {
     post(resource, params) {
         return axios.post(`${API_URL}/${resource}`, params);
     },
+
+    put(resource, params) {
+        return axios.put(`${API_URL}/${resource}`, params);
+    },
+
+    delete(resource, slug = "") {
+        return axios.delete(`${API_URL}/${resource}/${slug}`).catch(error => {
+            throw new Error(`[RWV] ApiService ${error}`);
+        });     
+    },
 };
 
 export default ApiService;

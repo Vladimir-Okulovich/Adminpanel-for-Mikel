@@ -89,46 +89,62 @@
             <ul class="metismenu list-unstyled" id="side-menu">
               <li class="menu-title">Main</li>
               <li>
-                <router-link tag="a" to="/admin" class="side-nav-link">
-                  <i class="ti-home"></i>
-                  <span>Dashboard</span>
-                </router-link>
-              </li>
-              <li>
-                <router-link tag="a" to="/admin/users" class="side-nav-link">
-                  <i class="ti-id-badge"></i>
-                  <span>Users</span>
-                </router-link>
-              </li>
-              <li>
-                <router-link tag="a" to="/admin/categories" class="side-nav-link">
-                  <i class="ti-video-clapper"></i>
-                  <span>Categories</span>
-                </router-link>
-              </li>
-              <li>
-                <router-link tag="a" to="/admin/types" class="side-nav-link">
-                  <i class="ti-crown"></i>
-                  <span>Competition Types</span>
-                </router-link>
-              </li>
-              <li>
-                <router-link tag="a" to="/admin/lycras" class="side-nav-link">
-                  <i class="ti-crown"></i>
-                  <span>Lycras</span>
-                </router-link>
-              </li>
-              <li>
-                <router-link tag="a" to="/admin/clubs" class="side-nav-link">
-                  <i class="ti-crown"></i>
-                  <span>Clubs</span>
-                </router-link>
+                <a href="javascript: void(0);" class="has-arrow">
+                  <i class="ti-save"></i>
+                  <span>Competitions Data</span>
+                </a>
+                <ul class="sub-menu" aria-expanded="false">
+                  <li>
+                    <router-link tag="a" to="/admin/users" class="side-nav-link">
+                      <span>Users</span>
+                    </router-link>
+                  </li>
+                  <li>
+                    <router-link tag="a" to="/admin/categories" class="side-nav-link">
+                      <span>Categories</span>
+                    </router-link>
+                  </li>
+                  <li>
+                    <router-link tag="a" to="/admin/competition_types" class="side-nav-link">
+                      <span>Competition Types</span>
+                    </router-link>
+                  </li>
+                  <li>
+                    <router-link tag="a" to="/admin/lycras" class="side-nav-link">
+                      <span>Lycras</span>
+                    </router-link>
+                  </li>
+                  <li>
+                    <router-link tag="a" to="/admin/clubs" class="side-nav-link">
+                      <span>Clubs</span>
+                    </router-link>
+                  </li>
+                </ul>
               </li>
               <li>
                 <router-link tag="a" to="/admin/competitions" class="side-nav-link">
                   <i class="ti-crown"></i>
                   <span>Competitions</span>
                 </router-link>
+              </li>
+              <li>
+                <router-link tag="a" to="/admin/participants" class="side-nav-link">
+                  <i class="ti-user"></i>
+                  <span>Manage Participants</span>
+                </router-link>
+              </li>
+              <li>
+                <a href="javascript: void(0);" class="has-arrow">
+                  <i class="ti-list-ol"></i>
+                  <span>Manage Ranking</span>
+                </a>
+                <ul class="sub-menu" aria-expanded="false">
+                  <li>
+                    <router-link tag="a" to="/admin" class="side-nav-link">
+                      <span>Ranking</span>
+                    </router-link>
+                  </li>
+                </ul>
               </li>
             </ul>
           </div>

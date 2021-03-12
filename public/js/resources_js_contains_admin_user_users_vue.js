@@ -257,7 +257,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   page: {
-    title: "Users",
+    title: "USERS",
     meta: [{
       name: "description",
       content: _app_config__WEBPACK_IMPORTED_MODULE_4__.description
@@ -269,10 +269,13 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      title: "Users",
+      title: "USERS",
       items: [{
         text: "Administrator",
         href: "/"
+      }, {
+        text: "Competition Data",
+        active: true
       }, {
         text: "Users",
         active: true
@@ -7084,119 +7087,104 @@ var render = function() {
             [
               _c("li", { staticClass: "menu-title" }, [_vm._v("Main")]),
               _vm._v(" "),
-              _c(
-                "li",
-                [
-                  _c(
-                    "router-link",
-                    {
-                      staticClass: "side-nav-link",
-                      attrs: { tag: "a", to: "/admin" }
-                    },
-                    [
-                      _c("i", { staticClass: "ti-home" }),
-                      _vm._v(" "),
-                      _c("span", [_vm._v("Dashboard")])
-                    ]
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "li",
-                [
-                  _c(
-                    "router-link",
-                    {
-                      staticClass: "side-nav-link",
-                      attrs: { tag: "a", to: "/admin/users" }
-                    },
-                    [
-                      _c("i", { staticClass: "ti-id-badge" }),
-                      _vm._v(" "),
-                      _c("span", [_vm._v("Users")])
-                    ]
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "li",
-                [
-                  _c(
-                    "router-link",
-                    {
-                      staticClass: "side-nav-link",
-                      attrs: { tag: "a", to: "/admin/categories" }
-                    },
-                    [
-                      _c("i", { staticClass: "ti-video-clapper" }),
-                      _vm._v(" "),
-                      _c("span", [_vm._v("Categories")])
-                    ]
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "li",
-                [
-                  _c(
-                    "router-link",
-                    {
-                      staticClass: "side-nav-link",
-                      attrs: { tag: "a", to: "/admin/types" }
-                    },
-                    [
-                      _c("i", { staticClass: "ti-crown" }),
-                      _vm._v(" "),
-                      _c("span", [_vm._v("Competition Types")])
-                    ]
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "li",
-                [
-                  _c(
-                    "router-link",
-                    {
-                      staticClass: "side-nav-link",
-                      attrs: { tag: "a", to: "/admin/lycras" }
-                    },
-                    [
-                      _c("i", { staticClass: "ti-crown" }),
-                      _vm._v(" "),
-                      _c("span", [_vm._v("Lycras")])
-                    ]
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "li",
-                [
-                  _c(
-                    "router-link",
-                    {
-                      staticClass: "side-nav-link",
-                      attrs: { tag: "a", to: "/admin/clubs" }
-                    },
-                    [
-                      _c("i", { staticClass: "ti-crown" }),
-                      _vm._v(" "),
-                      _c("span", [_vm._v("Clubs")])
-                    ]
-                  )
-                ],
-                1
-              ),
+              _c("li", [
+                _c(
+                  "a",
+                  {
+                    staticClass: "has-arrow",
+                    attrs: { href: "javascript: void(0);" }
+                  },
+                  [
+                    _c("i", { staticClass: "ti-save" }),
+                    _vm._v(" "),
+                    _c("span", [_vm._v("Competitions Data")])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "ul",
+                  {
+                    staticClass: "sub-menu",
+                    attrs: { "aria-expanded": "false" }
+                  },
+                  [
+                    _c(
+                      "li",
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            staticClass: "side-nav-link",
+                            attrs: { tag: "a", to: "/admin/users" }
+                          },
+                          [_c("span", [_vm._v("Users")])]
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "li",
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            staticClass: "side-nav-link",
+                            attrs: { tag: "a", to: "/admin/categories" }
+                          },
+                          [_c("span", [_vm._v("Categories")])]
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "li",
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            staticClass: "side-nav-link",
+                            attrs: { tag: "a", to: "/admin/competition_types" }
+                          },
+                          [_c("span", [_vm._v("Competition Types")])]
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "li",
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            staticClass: "side-nav-link",
+                            attrs: { tag: "a", to: "/admin/lycras" }
+                          },
+                          [_c("span", [_vm._v("Lycras")])]
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "li",
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            staticClass: "side-nav-link",
+                            attrs: { tag: "a", to: "/admin/clubs" }
+                          },
+                          [_c("span", [_vm._v("Clubs")])]
+                        )
+                      ],
+                      1
+                    )
+                  ]
+                )
+              ]),
               _vm._v(" "),
               _c(
                 "li",
@@ -7215,7 +7203,65 @@ var render = function() {
                   )
                 ],
                 1
-              )
+              ),
+              _vm._v(" "),
+              _c(
+                "li",
+                [
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "side-nav-link",
+                      attrs: { tag: "a", to: "/admin/participants" }
+                    },
+                    [
+                      _c("i", { staticClass: "ti-user" }),
+                      _vm._v(" "),
+                      _c("span", [_vm._v("Manage Participants")])
+                    ]
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("li", [
+                _c(
+                  "a",
+                  {
+                    staticClass: "has-arrow",
+                    attrs: { href: "javascript: void(0);" }
+                  },
+                  [
+                    _c("i", { staticClass: "ti-list-ol" }),
+                    _vm._v(" "),
+                    _c("span", [_vm._v("Manage Ranking")])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "ul",
+                  {
+                    staticClass: "sub-menu",
+                    attrs: { "aria-expanded": "false" }
+                  },
+                  [
+                    _c(
+                      "li",
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            staticClass: "side-nav-link",
+                            attrs: { tag: "a", to: "/admin" }
+                          },
+                          [_c("span", [_vm._v("Ranking")])]
+                        )
+                      ],
+                      1
+                    )
+                  ]
+                )
+              ])
             ]
           )
         ])

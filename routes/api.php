@@ -34,19 +34,6 @@ Route::group([ 'prefix' => 'v1', 'middleware' => 'api'], function(){
     // Get auth user
     Route::get('token/validate', 'App\Http\Controllers\Api\v1\AuthController@auth');
 
-    // Course actions
-    Route::prefix('course')->group(function () {
-        /* Get all course details*/
-        Route::get('/', 'App\Http\Controllers\Api\v1\CourseController@getAll');
-        /* Get course detail by id */
-        Route::get('{courseId}', 'App\Http\Controllers\Api\v1\CourseController@getById');
-        // /* Add a course */
-        // Route::post('/', 'App\Http\Controllers\Api\v1\CourseController@create');
-        // /* Update a course by id */
-        // Route::put('{courseId}', 'App\Http\Controllers\Api\v1\CourseController@update');
-        // /* Delete course by id */
-        // Route::delete('{courseId}', 'App\Http\Controllers\Api\v1\CourseController@delete');
-    });
     //Admin actions
     Route::group([ 'prefix' => 'admin' ], function(){
         /* Get all users details*/
@@ -54,11 +41,33 @@ Route::group([ 'prefix' => 'v1', 'middleware' => 'api'], function(){
         // /* Add a user */
         Route::post('user/create', 'App\Http\Controllers\Api\v1\UserController@create');
         // /* Update a user */
-        Route::post('user/update', 'App\Http\Controllers\Api\v1\UserController@update');
+        Route::put('user/update', 'App\Http\Controllers\Api\v1\UserController@update');
         /* Get user detail by id */
         Route::get('user/{userId}', 'App\Http\Controllers\Api\v1\UserController@getById');
         /* delete user by id */
-        Route::get('user/delete/{userId}', 'App\Http\Controllers\Api\v1\UserController@delete');
+        Route::delete('user/delete/{userId}', 'App\Http\Controllers\Api\v1\UserController@delete');
+
+        /* Get all competition_types details*/
+        Route::get('competition_types', 'App\Http\Controllers\Api\v1\CompetitionTypeController@getAll');
+        // /* Add a competition_type */
+        Route::post('competition_type/create', 'App\Http\Controllers\Api\v1\CompetitionTypeController@create');
+        // /* Update a competition_type */
+        Route::put('competition_type/update', 'App\Http\Controllers\Api\v1\CompetitionTypeController@update');
+        /* Get competition_type detail by id */
+        Route::get('competition_type/{competition_typeId}', 'App\Http\Controllers\Api\v1\CompetitionTypeController@getById');
+        /* delete competition_type by id */
+        Route::delete('competition_type/delete/{competition_typeId}', 'App\Http\Controllers\Api\v1\CompetitionTypeController@delete');
+
+        /* Get all competitions details*/
+        Route::get('competitions', 'App\Http\Controllers\Api\v1\CompetitionController@getAll');
+        // /* Add a Competition */
+        Route::post('competition/create', 'App\Http\Controllers\Api\v1\CompetitionController@create');
+        // /* Update a Competition */
+        Route::put('competition/update', 'App\Http\Controllers\Api\v1\CompetitionController@update');
+        /* Get Competition detail by id */
+        Route::get('competition/{competitionId}', 'App\Http\Controllers\Api\v1\CompetitionController@getById');
+        /* delete Competition by id */
+        Route::delete('competition/delete/{competitionId}', 'App\Http\Controllers\Api\v1\CompetitionController@delete');
     });
 
     Route::group(['middleware' => ['jwt.auth']], function() {

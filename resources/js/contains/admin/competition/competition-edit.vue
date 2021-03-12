@@ -1,11 +1,7 @@
 <script>
-import vue2Dropzone from "vue2-dropzone";
-
 import Layout from "../subcomponent/layout";
 import PageHeader from "@/components/page-header";
 import appConfig from "@/app.config";
-
-import { courseData } from "./data";
 
 import {
   required,
@@ -22,21 +18,21 @@ import {
 
 export default {
   page: {
-    title: "EDIT COURSE",
+    title: "EDIT COMPETITION",
     meta: [{ name: "description", content: appConfig.description }]
   },
   components: { vueDropzone: vue2Dropzone, Layout, PageHeader },
   data() {
     return {
-      title: "EDIT COURSE",
+      title: "EDIT COMPETITION",
       items: [
         {
-          text: "AudioTriki",
+          text: "Administrator",
           href: "/"
         },
         {
-          text: "Course",
-          href: "/admin/courses"
+          text: "Competition",
+          href: "/admin/competitions"
         },
         {
           text: "Edit",
@@ -44,38 +40,70 @@ export default {
         }
       ],
       typeform: {
-        title: courseData[0].title,
-        tutor: "",
-        description: courseData[0].detail,
-        category: courseData[0].category,
-        genre: courseData[0].genre,
+        title: "",
+        competition_type: "",
+        place: "",
+        start_time: "",
+        ranking_score: 0,
+        status: "",
       },
       typesubmit: false,
-      dropzoneOptions: {
-        url: "https://httpbin.org/post",
-        thumbnailWidth: 150,
-        maxFilesize: 100,
-        addRemoveLinks: true,
-        headers: { "My-Awesome-Header": "header value" }
-      }
     };
   },
   validations: {
     typeform: {
       title: { required },
-      tutor: { required },
-      description: { required, minLength: minLength(20) },
+      place: { required },
+      start_time: { required },
+      ranking_score: { required },
+      status: { required },
     }
   },
+  mounted() {
+    this.getCompetitionById(this.$route.params.competitionId);
+  },
+  computed: {
+    ...mapGetters([
+      'getCompetition'
+    ]),
+  },
   methods: {
+    ...mapActions([
+      'getCompetitionById',
+      'updateCompetition'
+    ]),
     /**
      * Validation type submit
      */
     // eslint-disable-next-line no-unused-vars
     typeForm(e) {
       this.typesubmit = true;
+      this.isError = false;
+      this.Error = null;
       // stop here if form is invalid
       this.$v.$touch();
+      if (this.$v.typeform.title.$error || this.$v.typeform.place.$error || this.$v.typeform.start_time.$error || this.$v.typeform.ranking_score.$error || this.$v.typeform.status.$error) {
+        return ;
+      }
+      return (
+        this.updateCompetition({
+            id: this.getCompetitionType.id,
+            title: this.typeform.title,
+            place: this.typeform.place,
+            start_time: this.typeform.start_time,
+            ranking_score: this.typeform.ranking_score,
+            status: this.typeform.status,
+          })
+          .then((res) => {
+            this.$router.push({name: "Competitions"});
+            this.typesubmit = false;
+          })
+          .catch(error => {
+            this.typesubmit = false;
+            this.Error = error ? error : "";
+            this.isError = true;
+          })
+      );
     }
   }
 };
