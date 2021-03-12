@@ -47,6 +47,17 @@ Route::group([ 'prefix' => 'v1', 'middleware' => 'api'], function(){
         /* delete user by id */
         Route::delete('user/delete/{userId}', 'App\Http\Controllers\Api\v1\UserController@delete');
 
+        /* Get all categories details*/
+        Route::get('categories', 'App\Http\Controllers\Api\v1\CategoryController@getAll');
+        // /* Add a category */
+        Route::post('category/create', 'App\Http\Controllers\Api\v1\CategoryController@create');
+        // /* Update a category */
+        Route::put('category/update', 'App\Http\Controllers\Api\v1\CategoryController@update');
+        /* Get category detail by id */
+        Route::get('category/{categoryId}', 'App\Http\Controllers\Api\v1\CategoryController@getById');
+        /* delete category by id */
+        Route::delete('category/delete/{categoryId}', 'App\Http\Controllers\Api\v1\CategoryController@delete');
+
         /* Get all competition_types details*/
         Route::get('competition_types', 'App\Http\Controllers\Api\v1\CompetitionTypeController@getAll');
         // /* Add a competition_type */
@@ -57,6 +68,17 @@ Route::group([ 'prefix' => 'v1', 'middleware' => 'api'], function(){
         Route::get('competition_type/{competition_typeId}', 'App\Http\Controllers\Api\v1\CompetitionTypeController@getById');
         /* delete competition_type by id */
         Route::delete('competition_type/delete/{competition_typeId}', 'App\Http\Controllers\Api\v1\CompetitionTypeController@delete');
+
+        /* Get all lycras details*/
+        Route::get('lycras', 'App\Http\Controllers\Api\v1\LycraController@getAll');
+        // /* Add a lycra */
+        Route::post('lycra/create', 'App\Http\Controllers\Api\v1\LycraController@create');
+        // /* Update a lycra */
+        Route::put('lycra/update', 'App\Http\Controllers\Api\v1\LycraController@update');
+        /* Get lycra detail by id */
+        Route::get('lycra/{lycraId}', 'App\Http\Controllers\Api\v1\LycraController@getById');
+        /* delete lycra by id */
+        Route::delete('lycra/delete/{lycraId}', 'App\Http\Controllers\Api\v1\LycraController@delete');
 
         /* Get all competitions details*/
         Route::get('competitions', 'App\Http\Controllers\Api\v1\CompetitionController@getAll');

@@ -45,7 +45,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _subcomponent_layout__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../subcomponent/layout */ "./resources/js/contains/admin/subcomponent/layout.vue");
 /* harmony import */ var _components_page_header__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/components/page-header */ "./resources/js/components/page-header.vue");
 /* harmony import */ var _app_config__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/app.config */ "./resources/js/app.config.json");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.mjs");
 /* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
+
 
 
 
@@ -110,7 +112,7 @@ __webpack_require__.r(__webpack_exports__);
       }
     }
   },
-  methods: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)((0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, mapActions(['createCompetition'])), {}, {
+  methods: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)((0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_7__.mapActions)(['createCompetition'])), {}, {
     /**
      * Validation type submit
      */
@@ -7114,7 +7116,7 @@ var render = function() {
                         },
                         attrs: {
                           type: "text",
-                          placeholder: "Course Title",
+                          placeholder: "Competition Title",
                           name: "title"
                         },
                         domProps: { value: _vm.typeform.title },

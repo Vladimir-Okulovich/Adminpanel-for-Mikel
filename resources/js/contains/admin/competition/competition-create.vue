@@ -3,6 +3,8 @@ import Layout from "../subcomponent/layout";
 import PageHeader from "@/components/page-header";
 import appConfig from "@/app.config";
 
+import { mapActions, mapGetters } from 'vuex';
+
 import {
   required,
   email,
@@ -122,7 +124,7 @@ export default {
                   v-model="typeform.title"
                   type="text"
                   class="form-control"
-                  placeholder="Course Title"
+                  placeholder="Competition Title"
                   name="title"
                   :class="{ 'is-invalid': typesubmit && $v.typeform.title.$error }"
                 />

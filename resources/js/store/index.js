@@ -4,6 +4,8 @@ import authModule from './auth';
 import layoutModule from './layout';
 import competitionModule from './competition';
 import competitionTypeModule from './competition_type';
+import categoryModule from './category';
+import lycraModule from './lycra';
 import userModule from './user';
 
 Vue.use(Vuex);
@@ -14,6 +16,8 @@ export default new Vuex.Store({
     layout: layoutModule,
     competition: competitionModule,
     competitionType: competitionTypeModule,
+    category: categoryModule,
+    lycra: lycraModule,
     user: userModule,
   },
 });

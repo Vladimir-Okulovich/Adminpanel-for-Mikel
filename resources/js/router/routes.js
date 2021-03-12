@@ -110,6 +110,56 @@ export default [
     },
 
     {
+        path: '/admin/categories',
+        name: 'Categories',
+        component: () => import('../contains/admin/category/categories'),
+        meta: {
+            authRequired: true,
+        },
+    },
+    {
+        path: '/admin/category/create',
+        name: 'CategoryCreate',
+        component: () => import('../contains/admin/category/category-create'),
+        meta: {
+            authRequired: true,
+        },
+    },
+    {
+        path: '/admin/category/edit/:categoryId',
+        name: 'CategoryEdit',
+        component: () => import('../contains/admin/category/category-edit'),
+        meta: {
+            authRequired: true,
+        },
+    },
+
+    {
+        path: '/admin/lycras',
+        name: 'Lycras',
+        component: () => import('../contains/admin/lycra/lycras'),
+        meta: {
+            authRequired: true,
+        },
+    },
+    {
+        path: '/admin/lycra/create',
+        name: 'LycraCreate',
+        component: () => import('../contains/admin/lycra/lycra-create'),
+        meta: {
+            authRequired: true,
+        },
+    },
+    {
+        path: '/admin/lycra/edit/:lycraId',
+        name: 'LycraEdit',
+        component: () => import('../contains/admin/lycra/lycra-edit'),
+        meta: {
+            authRequired: true,
+        },
+    },
+
+    {
         path: '/admin/competition_types',
         name: 'CompetitionTypes',
         component: () => import('../contains/admin/competition_type/competition_types'),
