@@ -160,6 +160,31 @@ export default [
     },
 
     {
+        path: '/admin/clubs',
+        name: 'Clubs',
+        component: () => import('../contains/admin/club/clubs'),
+        meta: {
+            authRequired: true,
+        },
+    },
+    {
+        path: '/admin/club/create',
+        name: 'ClubCreate',
+        component: () => import('../contains/admin/club/club-create'),
+        meta: {
+            authRequired: true,
+        },
+    },
+    {
+        path: '/admin/club/edit/:clubId',
+        name: 'ClubEdit',
+        component: () => import('../contains/admin/club/club-edit'),
+        meta: {
+            authRequired: true,
+        },
+    },
+
+    {
         path: '/admin/competition_types',
         name: 'CompetitionTypes',
         component: () => import('../contains/admin/competition_type/competition_types'),

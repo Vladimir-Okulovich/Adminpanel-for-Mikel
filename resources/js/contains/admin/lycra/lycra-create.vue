@@ -48,7 +48,7 @@ export default {
       isError: false,
       Error: null,
       typeform: {
-        color: "",
+        color: "#000000",
       },
       typesubmit: false,
     };
@@ -113,9 +113,8 @@ export default {
                 <label>Color</label>
                 <input
                   v-model="typeform.color"
-                  type="text"
+                  type="color"
                   class="form-control"
-                  placeholder="Color"
                   name="color"
                   :class="{ 'is-invalid': typesubmit && $v.typeform.color.$error }"
                 />

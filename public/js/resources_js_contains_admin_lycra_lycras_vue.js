@@ -84,15 +84,19 @@ __webpack_require__.r(__webpack_exports__);
       pageOptions: [10, 25, 50, 100],
       filter: null,
       filterOn: [],
-      sortBy: "name",
+      sortBy: "color",
       sortDesc: false,
       fields: [{
         key: "color",
         sortable: true
       }, {
+        key: "Hex",
+        sortable: false
+      }, {
         key: "actions",
         sortable: false
-      }]
+      }],
+      deletingId: 0
     };
   },
   computed: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)((0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_6__.mapGetters)(['getLycras'])), {}, {
@@ -116,6 +120,13 @@ __webpack_require__.r(__webpack_exports__);
       // Trigger pagination to update the number of buttons/pages due to filtering
       this.totalRows = filteredItems.length;
       this.currentPage = 1;
+    },
+    setId: function setId(id) {
+      this.deletingId = id;
+    },
+    realDelete: function realDelete() {
+      this.deleteLycra(this.deletingId);
+      this.$bvModal.hide('delete-modal');
     }
   })
 });
@@ -7159,6 +7170,50 @@ var render = function() {
                     },
                     scopedSlots: _vm._u([
                       {
+                        key: "cell(color)",
+                        fn: function(row) {
+                          return [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: row.item.color,
+                                  expression: "row.item.color"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              attrs: { type: "color", disabled: "" },
+                              domProps: { value: row.item.color },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    row.item,
+                                    "color",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            })
+                          ]
+                        }
+                      },
+                      {
+                        key: "cell(hex)",
+                        fn: function(row) {
+                          return [
+                            _vm._v(
+                              "\n                " +
+                                _vm._s(row.item.color) +
+                                "\n              "
+                            )
+                          ]
+                        }
+                      },
+                      {
                         key: "cell(actions)",
                         fn: function(row) {
                           return [
@@ -7179,10 +7234,17 @@ var render = function() {
                             _c(
                               "b-button",
                               {
+                                directives: [
+                                  {
+                                    name: "b-modal",
+                                    rawName: "v-b-modal.delete-modal",
+                                    modifiers: { "delete-modal": true }
+                                  }
+                                ],
                                 attrs: { size: "sm" },
                                 on: {
                                   click: function($event) {
-                                    return _vm.deleteLycra(row.item.id)
+                                    return _vm.setId(row.item.id)
                                   }
                                 }
                               },
@@ -7233,7 +7295,60 @@ var render = function() {
             ])
           ])
         ])
-      ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "b-modal",
+        {
+          attrs: {
+            id: "delete-modal",
+            centered: "",
+            title: "Delete Item",
+            "title-class": "font-18",
+            "hide-footer": ""
+          }
+        },
+        [
+          _c("p", [_vm._v("Are you sure you want to delete selected item?")]),
+          _vm._v(" "),
+          _c(
+            "footer",
+            {
+              staticClass: "modal-footer",
+              attrs: { id: "delete-modal___BV_modal_footer_" }
+            },
+            [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-secondary",
+                  attrs: { type: "button" },
+                  on: {
+                    click: function($event) {
+                      return _vm.$bvModal.hide("delete-modal")
+                    }
+                  }
+                },
+                [_vm._v("Cancel")]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: { type: "button" },
+                  on: {
+                    click: function($event) {
+                      return _vm.realDelete()
+                    }
+                  }
+                },
+                [_vm._v("OK")]
+              )
+            ]
+          )
+        ]
+      )
     ],
     1
   )

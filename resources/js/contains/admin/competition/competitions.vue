@@ -43,7 +43,8 @@
           { key: "ranking_score", sortable: true },
           { key: "status", sortable: true },
           { key: "actions", sortable: false }
-        ]
+        ],
+        deletingId: 0,
       }
     },
     computed: {
@@ -71,6 +72,13 @@
         // Trigger pagination to update the number of buttons/pages due to filtering
         this.totalRows = filteredItems.length;
         this.currentPage = 1;
+      },
+      setId(id) {
+        this.deletingId = id;
+      },
+      realDelete() {
+        this.deleteCompetition(this.deletingId);
+        this.$bvModal.hide('delete-modal');
       }
     }
   };
@@ -136,7 +144,7 @@
                   <router-link :to="{ name: 'CompetitionEdit', params: { competitionId: row.item.id }}" class="btn btn-sm btn-secondary mr-2">
                     <i class="far fa-edit"></i>
                   </router-link>
-                  <b-button size="sm" @click="deleteCompetition(row.item.id)">
+                  <b-button size="sm" @click="setId(row.item.id)" v-b-modal.delete-modal>
                     <i class="fas fa-trash"></i>
                   </b-button>
                 </template>
@@ -156,5 +164,19 @@
         </div>
       </div>
     </div>
+
+    <b-modal
+      id="delete-modal"
+      centered
+      title="Delete Item"
+      title-class="font-18"
+      hide-footer
+    >
+      <p>Are you sure you want to delete selected item?</p>
+      <footer id="delete-modal___BV_modal_footer_" class="modal-footer">
+        <button type="button" class="btn btn-secondary" @click="$bvModal.hide('delete-modal')">Cancel</button>
+        <button type="button" class="btn btn-primary" @click="realDelete()">OK</button>
+      </footer>
+    </b-modal>
   </Layout>
 </template>

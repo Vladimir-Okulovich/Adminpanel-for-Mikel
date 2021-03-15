@@ -74,7 +74,6 @@ const actions = {
         return new Promise((resolve) =>{
             ApiService.delete("api/v1/admin/user/delete/" + userId)
                 .then(({data}) => {
-                    console.log(data);
                     context.commit(type.SET_ALL_USERS, data)
                     toastr.success('Successfully deleted', 'Hello', {timeout: 1000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
                 })

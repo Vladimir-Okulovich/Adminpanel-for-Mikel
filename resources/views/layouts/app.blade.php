@@ -19,7 +19,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body>
+<body class="sidebar-enable vertical-collpsed">
     <div id="app">
     </div>
 </body>

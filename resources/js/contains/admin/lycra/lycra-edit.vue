@@ -123,9 +123,8 @@ export default {
                 <label>Color</label>
                 <input
                   v-model="typeform.color=getLycra.color"
-                  type="text"
+                  type="color"
                   class="form-control"
-                  placeholder="Color"
                   name="color"
                   :class="{ 'is-invalid': typesubmit && $v.typeform.color.$error }"
                 />

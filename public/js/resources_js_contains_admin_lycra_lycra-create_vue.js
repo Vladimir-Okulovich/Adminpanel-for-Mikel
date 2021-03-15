@@ -86,7 +86,7 @@ __webpack_require__.r(__webpack_exports__);
       isError: false,
       Error: null,
       typeform: {
-        color: ""
+        color: "#000000"
       },
       typesubmit: false
     };
@@ -7096,11 +7096,7 @@ var render = function() {
                           "is-invalid":
                             _vm.typesubmit && _vm.$v.typeform.color.$error
                         },
-                        attrs: {
-                          type: "text",
-                          placeholder: "Color",
-                          name: "color"
-                        },
+                        attrs: { type: "color", name: "color" },
                         domProps: { value: _vm.typeform.color },
                         on: {
                           input: function($event) {

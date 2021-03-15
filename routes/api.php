@@ -80,6 +80,17 @@ Route::group([ 'prefix' => 'v1', 'middleware' => 'api'], function(){
         /* delete lycra by id */
         Route::delete('lycra/delete/{lycraId}', 'App\Http\Controllers\Api\v1\LycraController@delete');
 
+        /* Get all clubs details*/
+        Route::get('clubs', 'App\Http\Controllers\Api\v1\ClubController@getAll');
+        // /* Add a club */
+        Route::post('club/create', 'App\Http\Controllers\Api\v1\ClubController@create');
+        // /* Update a club */
+        Route::put('club/update', 'App\Http\Controllers\Api\v1\ClubController@update');
+        /* Get club detail by id */
+        Route::get('club/{clubId}', 'App\Http\Controllers\Api\v1\ClubController@getById');
+        /* delete club by id */
+        Route::delete('club/delete/{clubId}', 'App\Http\Controllers\Api\v1\ClubController@delete');
+
         /* Get all competitions details*/
         Route::get('competitions', 'App\Http\Controllers\Api\v1\CompetitionController@getAll');
         // /* Add a Competition */

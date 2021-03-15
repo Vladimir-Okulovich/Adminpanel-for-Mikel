@@ -95,7 +95,8 @@ __webpack_require__.r(__webpack_exports__);
       }, {
         key: "actions",
         sortable: false
-      }]
+      }],
+      deletingId: 0
     };
   },
   computed: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)((0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_6__.mapGetters)(['getCategories'])), {}, {
@@ -119,6 +120,13 @@ __webpack_require__.r(__webpack_exports__);
       // Trigger pagination to update the number of buttons/pages due to filtering
       this.totalRows = filteredItems.length;
       this.currentPage = 1;
+    },
+    setId: function setId(id) {
+      this.deletingId = id;
+    },
+    realDelete: function realDelete() {
+      this.deleteCategory(this.deletingId);
+      this.$bvModal.hide('delete-modal');
     }
   })
 });
@@ -7164,6 +7172,20 @@ var render = function() {
                     },
                     scopedSlots: _vm._u([
                       {
+                        key: "cell(description)",
+                        fn: function(row) {
+                          return [
+                            _vm._v(
+                              "\n                " +
+                                _vm._s(
+                                  _vm._f("truncate")(row.item.description, 50)
+                                ) +
+                                "\n              "
+                            )
+                          ]
+                        }
+                      },
+                      {
                         key: "cell(actions)",
                         fn: function(row) {
                           return [
@@ -7184,10 +7206,17 @@ var render = function() {
                             _c(
                               "b-button",
                               {
+                                directives: [
+                                  {
+                                    name: "b-modal",
+                                    rawName: "v-b-modal.delete-modal",
+                                    modifiers: { "delete-modal": true }
+                                  }
+                                ],
                                 attrs: { size: "sm" },
                                 on: {
                                   click: function($event) {
-                                    return _vm.deleteCategory(row.item.id)
+                                    return _vm.setId(row.item.id)
                                   }
                                 }
                               },
@@ -7238,7 +7267,60 @@ var render = function() {
             ])
           ])
         ])
-      ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "b-modal",
+        {
+          attrs: {
+            id: "delete-modal",
+            centered: "",
+            title: "Delete Item",
+            "title-class": "font-18",
+            "hide-footer": ""
+          }
+        },
+        [
+          _c("p", [_vm._v("Are you sure you want to delete selected item?")]),
+          _vm._v(" "),
+          _c(
+            "footer",
+            {
+              staticClass: "modal-footer",
+              attrs: { id: "delete-modal___BV_modal_footer_" }
+            },
+            [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-secondary",
+                  attrs: { type: "button" },
+                  on: {
+                    click: function($event) {
+                      return _vm.$bvModal.hide("delete-modal")
+                    }
+                  }
+                },
+                [_vm._v("Cancel")]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: { type: "button" },
+                  on: {
+                    click: function($event) {
+                      return _vm.realDelete()
+                    }
+                  }
+                },
+                [_vm._v("OK")]
+              )
+            ]
+          )
+        ]
+      )
     ],
     1
   )
