@@ -233,4 +233,29 @@ export default [
             authRequired: true,
         },
     },
+
+    {
+        path: '/admin/participants',
+        name: 'Participants',
+        component: () => import('../contains/admin/participant/participants'),
+        meta: {
+            authRequired: true,
+        },
+    },
+    {
+        path: '/admin/participant/create',
+        name: 'ParticipantCreate',
+        component: () => import('../contains/admin/participant/participant-create'),
+        meta: {
+            authRequired: true,
+        },
+    },
+    {
+        path: '/admin/participant/edit/:participantId',
+        name: 'ParticipantEdit',
+        component: () => import('../contains/admin/participant/participant-edit'),
+        meta: {
+            authRequired: true,
+        },
+    },
 ]

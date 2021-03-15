@@ -7,6 +7,7 @@ import competitionTypeModule from './competition_type';
 import categoryModule from './category';
 import lycraModule from './lycra';
 import clubModule from './club';
+import participantModule from './participant';
 import userModule from './user';
 
 Vue.use(Vuex);
@@ -20,6 +21,7 @@ export default new Vuex.Store({
     category: categoryModule,
     lycra: lycraModule,
     club: clubModule,
+    participant: participantModule,
     user: userModule,
   },
 });

@@ -27,6 +27,20 @@ class ClubController extends Controller
         ], 200);
     }
 
+    public function getClubOptions()
+    {
+        $clubOptions = collect([]);
+        $clubs = Club::all();
+        foreach ($clubs as $club) {
+            $clubOptions->push($club->name);
+        }
+        $clubOptions->all();
+        return response()->json([
+            'message' => 'success',
+            'clubs' => $clubOptions,
+        ], 200);
+    }
+
     /**
      * Response one data by id
      * 

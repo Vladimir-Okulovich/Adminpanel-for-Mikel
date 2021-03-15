@@ -82,6 +82,8 @@ Route::group([ 'prefix' => 'v1', 'middleware' => 'api'], function(){
 
         /* Get all clubs details*/
         Route::get('clubs', 'App\Http\Controllers\Api\v1\ClubController@getAll');
+        /* Get all clubs' names*/
+        Route::get('club/options', 'App\Http\Controllers\Api\v1\ClubController@getClubOptions');
         // /* Add a club */
         Route::post('club/create', 'App\Http\Controllers\Api\v1\ClubController@create');
         // /* Update a club */
@@ -101,6 +103,17 @@ Route::group([ 'prefix' => 'v1', 'middleware' => 'api'], function(){
         Route::get('competition/{competitionId}', 'App\Http\Controllers\Api\v1\CompetitionController@getById');
         /* delete Competition by id */
         Route::delete('competition/delete/{competitionId}', 'App\Http\Controllers\Api\v1\CompetitionController@delete');
+
+        /* Get all participants details*/
+        Route::get('participants', 'App\Http\Controllers\Api\v1\ParticipantController@getAll');
+        // /* Add a participant */
+        Route::post('participant/create', 'App\Http\Controllers\Api\v1\ParticipantController@create');
+        // /* Update a participant */
+        Route::put('participant/update', 'App\Http\Controllers\Api\v1\ParticipantController@update');
+        /* Get participant detail by id */
+        Route::get('participant/{participantId}', 'App\Http\Controllers\Api\v1\ParticipantController@getById');
+        /* delete participant by id */
+        Route::delete('participant/delete/{participantId}', 'App\Http\Controllers\Api\v1\ParticipantController@delete');
     });
 
     Route::group(['middleware' => ['jwt.auth']], function() {
