@@ -17,11 +17,11 @@ class CreateCompetitionsTable extends Migration
             $table->id();
             $table->foreignId('competition_type_id')->constrained('competition_types');
             $table->string('title');
-            // $table->decimal('rate', 2, 2);
+            $table->string('description');
             $table->string('place');
             $table->datetime('start_time');
             $table->float('ranking_score');
-            $table->string('status');
+            $table->foreignId('status_id')->constrained('status');
             $table->timestamps();
         });
     }

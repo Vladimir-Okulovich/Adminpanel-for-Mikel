@@ -54,6 +54,7 @@
     "firebase": "^7.6.2",
     "laravel-mix-alias": "^1.0.2",
     "metismenujs": "^1.1.0",
+    "moment": "^2.29.1",
     "simplebar-vue": "^1.4.0",
     "toastr": "^2.1.4",
     "truncate-vue": "0.0.2",

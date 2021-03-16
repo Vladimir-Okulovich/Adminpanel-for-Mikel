@@ -63,14 +63,25 @@ class ParticipantController extends Controller
             return response()->json($validator->errors()->toJson(), 400);
         }
 
-        $participant = Participant::create([
-            'name' => $request->name,
-            'surname' => $request->surname,
-            'dni_ficha' => $request->dni_ficha,
-            'birthday' => $request->birthday,
-            'sex' => $request->sex,
-            'club_id' => $request->club,
-        ]);
+        // $participant = Participant::create([
+        //     'name' => $request->name,
+        //     'surname' => $request->surname,
+        //     'dni_ficha' => $request->dni_ficha,
+        //     'birthday' => $request->birthday,
+        //     'sex' => $request->sex,
+        //     'club_id' => $request->club,
+        // ]);
+
+        $participant = new Participant;
+        $participant->name = $request->name;
+        $participant->surname = $request->surname;
+        $participant->dni_ficha = $request->dni_ficha;
+        $participant->birthday = $request->birthday;
+        $participant->sex = $request->sex;
+        $participant->club_id = $request->club;
+        $participant->club();
+        $participant->save();
+
         return response()->json([
             'message' => 'Participant successfully registered',
             'participant' => $participant
