@@ -209,7 +209,7 @@ export default {
               <div>
                 <label>Club</label>
                 <multiselect 
-                  v-model="typeform.club=getParticipant.club" 
+                  v-model="typeform.club=getParticipant.club.name" 
                   :options="initClubOptions=clubOptions"
                   :class="{ 'is-invalid': typesubmit && $v.typeform.club.$error }"  
                 ></multiselect>

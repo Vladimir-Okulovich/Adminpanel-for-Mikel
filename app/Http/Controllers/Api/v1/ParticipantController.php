@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\v1;
 
 use Illuminate\Http\Request;
 use App\Models\Participant;
+use App\Models\Club;
 use App\Http\Controllers\Controller;
 use Validator;
 
@@ -24,6 +25,7 @@ class ParticipantController extends Controller
         foreach ($participants as $participant) {
             $participant->club;
         }
+        
         return response()->json([
             'message' => 'success',
             'participants' => $participants
@@ -39,6 +41,7 @@ class ParticipantController extends Controller
     public function getById(Request $request, $participantId)
     {
         $participant = Participant::find($participantId);
+        $participant->club;
         return response()->json([
             'message' => 'success',
             'participant' => $participant
@@ -63,28 +66,17 @@ class ParticipantController extends Controller
             return response()->json($validator->errors()->toJson(), 400);
         }
 
-        // $participant = Participant::create([
-        //     'name' => $request->name,
-        //     'surname' => $request->surname,
-        //     'dni_ficha' => $request->dni_ficha,
-        //     'birthday' => $request->birthday,
-        //     'sex' => $request->sex,
-        //     'club_id' => $request->club,
-        // ]);
-
-        $participant = new Participant;
-        $participant->name = $request->name;
-        $participant->surname = $request->surname;
-        $participant->dni_ficha = $request->dni_ficha;
-        $participant->birthday = $request->birthday;
-        $participant->sex = $request->sex;
-        $participant->club_id = $request->club;
-        $participant->club();
-        $participant->save();
+        $club = Club::where('name', $request->club)->first();
+        $club->participants()->create([
+            'name' => $request->name,
+            'surname' => $request->surname,
+            'dni_ficha' => $request->dni_ficha,
+            'birthday' => $request->birthday,
+            'sex' => $request->sex,
+        ]);
 
         return response()->json([
             'message' => 'Participant successfully registered',
-            'participant' => $participant
         ], 201);
     }
 

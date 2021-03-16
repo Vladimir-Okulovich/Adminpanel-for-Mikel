@@ -39,7 +39,8 @@
           { key: "title", sortable: true },
           { key: "competition_type", sortable: true },
           { key: "place", sortable: false },
-          { key: "start_time", sortable: true },
+          { key: "date", sortable: true },
+          { key: "time", sortable: false },
           { key: "ranking_score", sortable: true },
           { key: "status", sortable: true },
           { key: "actions", sortable: false }

@@ -25,7 +25,7 @@ class CompetitionController extends Controller
     {
         $competitions = Competition::all();
         foreach ($competitions as $competition) {
-            $competition->competition_type;
+            $competition->competition_type();
         }
         return response()->json([
             'message' => 'success',
@@ -42,7 +42,7 @@ class CompetitionController extends Controller
     public function getById(Request $request, $competitionId)
     {
         $competition = competition::find($competitionId);
-        $competition->competition_type;
+        $competition->competition_type();
         return response()->json([
             'message' => 'success',    
             'competition' => $competition,

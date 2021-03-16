@@ -2534,16 +2534,6 @@ module.exports = "/images/logo-sm.png?2c12af685035e4b0f0310c516ecac99c";
 
 /***/ }),
 
-/***/ "./resources/js/assets/images/users/user-4.jpg":
-/*!*****************************************************!*\
-  !*** ./resources/js/assets/images/users/user-4.jpg ***!
-  \*****************************************************/
-/***/ (function(module) {
-
-module.exports = "/images/user-4.jpg?f20fe522d8237300dbe35332a09b25a2";
-
-/***/ }),
-
 /***/ "./node_modules/lodash.debounce/index.js":
 /*!***********************************************!*\
   !*** ./node_modules/lodash.debounce/index.js ***!
@@ -7562,10 +7552,7 @@ var render = function() {
                     return [
                       _c("img", {
                         staticClass: "rounded-circle header-profile-user",
-                        attrs: {
-                          src: __webpack_require__(/*! @/assets/images/users/user-4.jpg */ "./resources/js/assets/images/users/user-4.jpg"),
-                          alt: "Header Avatar"
-                        }
+                        attrs: { src: "/images/user.jpg", alt: "Header Avatar" }
                       })
                     ]
                   },

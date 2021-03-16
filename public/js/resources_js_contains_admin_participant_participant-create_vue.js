@@ -139,6 +139,7 @@ __webpack_require__.r(__webpack_exports__);
     typeForm: function typeForm(e) {
       var _this = this;
 
+      console.log(this.typeform.birthday);
       this.typesubmit = true;
       this.isError = false;
       this.Error = null; // stop here if form is invalid
@@ -3260,16 +3261,6 @@ module.exports = "/images/logo-light.png?2c12af685035e4b0f0310c516ecac99c";
 /***/ (function(module) {
 
 module.exports = "/images/logo-sm.png?2c12af685035e4b0f0310c516ecac99c";
-
-/***/ }),
-
-/***/ "./resources/js/assets/images/users/user-4.jpg":
-/*!*****************************************************!*\
-  !*** ./resources/js/assets/images/users/user-4.jpg ***!
-  \*****************************************************/
-/***/ (function(module) {
-
-module.exports = "/images/user-4.jpg?f20fe522d8237300dbe35332a09b25a2";
 
 /***/ }),
 
@@ -8489,10 +8480,7 @@ var render = function() {
                     return [
                       _c("img", {
                         staticClass: "rounded-circle header-profile-user",
-                        attrs: {
-                          src: __webpack_require__(/*! @/assets/images/users/user-4.jpg */ "./resources/js/assets/images/users/user-4.jpg"),
-                          alt: "Header Avatar"
-                        }
+                        attrs: { src: "/images/user.jpg", alt: "Header Avatar" }
                       })
                     ]
                   },
