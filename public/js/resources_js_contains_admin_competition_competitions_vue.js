@@ -7171,6 +7171,30 @@ var render = function() {
                     },
                     scopedSlots: _vm._u([
                       {
+                        key: "cell(competition_type)",
+                        fn: function(row) {
+                          return [
+                            _vm._v(
+                              "\n                " +
+                                _vm._s(row.item.competition_type.name) +
+                                "\n              "
+                            )
+                          ]
+                        }
+                      },
+                      {
+                        key: "cell(status)",
+                        fn: function(row) {
+                          return [
+                            _vm._v(
+                              "\n                " +
+                                _vm._s(row.item.status.name) +
+                                "\n              "
+                            )
+                          ]
+                        }
+                      },
+                      {
                         key: "cell(actions)",
                         fn: function(row) {
                           return [

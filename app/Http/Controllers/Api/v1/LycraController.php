@@ -104,4 +104,17 @@ class LycraController extends Controller
             'lycras' => $lycras
         ], 200);
     }
+    public function getLycraOptions()
+    {
+        $lycraOptions = collect([]);
+        $lycras = Lycra::all();
+        foreach ($lycras as $lycra) {
+            $lycraOptions->push($lycra->color);
+        }
+        $lycraOptions->all();
+        return response()->json([
+            'message' => 'success',
+            'lycras' => $lycraOptions,
+        ], 200);
+    }
 }

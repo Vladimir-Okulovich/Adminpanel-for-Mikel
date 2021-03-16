@@ -7176,7 +7176,7 @@ var render = function() {
                           return [
                             _vm._v(
                               "\n                " +
-                                _vm._s(row.item.name) +
+                                _vm._s(row.item.club.name) +
                                 "\n              "
                             )
                           ]

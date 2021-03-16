@@ -58,7 +58,6 @@ export default {
         "Male",
         "Female"
       ],
-      initClubOptions: [],
       typesubmit: false,
     };
   },
@@ -184,6 +183,7 @@ export default {
                 <date-picker
                   v-model="typeform.birthday"
                   format="MM/DD/YYYY"
+                  value-type="format"
                   :first-day-of-week="1"
                   lang="en"
                   placeholder="Select date"
@@ -209,7 +209,7 @@ export default {
                 <label>Club</label>
                 <multiselect 
                   v-model="typeform.club" 
-                  :options="initClubOptions=clubOptions"
+                  :options="clubOptions"
                   :class="{ 'is-invalid': typesubmit && $v.typeform.club.$error }"  
                 ></multiselect>
                 <div v-if="typesubmit && $v.typeform.club.$error" class="invalid-feedback">

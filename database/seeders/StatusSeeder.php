@@ -15,7 +15,7 @@ class StatusSeeder extends Seeder
     public function run()
     {
         //
-        DB::table('status')->insert([[
+        DB::table('statuses')->insert([[
             'name' => 'CLOSED'
         ], [
             'name' => 'REGISTRATION OPEN'

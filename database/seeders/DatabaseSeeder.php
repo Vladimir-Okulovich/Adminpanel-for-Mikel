@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             ModalitySeeder::class,
             StatusSeeder::class,
+            CompetitionTypeSeeder::class,
         ]);
     }
 }

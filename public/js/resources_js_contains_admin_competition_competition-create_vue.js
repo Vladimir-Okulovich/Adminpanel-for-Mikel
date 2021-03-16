@@ -99,17 +99,15 @@ __webpack_require__.r(__webpack_exports__);
         place: "",
         date: "",
         time: "",
-        ranking_score: "",
+        ranking_score: false,
         status: "REGISTRATION OPEN",
         lycra: "",
         modality: "",
-        category: ""
+        category: "",
+        logo: null
       },
       statusOptions: ["CLOSED", "REGISTRATION OPEN", "COMPETITION IN PROGRESS"],
       modalityOptions: ["Short Boat", "Long Ship"],
-      typeOptions: [],
-      categoryOptions: [],
-      lycraOptions: [],
       typesubmit: false
     };
   },
@@ -144,7 +142,18 @@ __webpack_require__.r(__webpack_exports__);
       }
     }
   },
-  methods: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)((0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_10__.mapActions)(['createCompetition'])), {}, {
+  computed: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_10__.mapGetters)(['typeOptions', 'categoryOptions', 'lycraOptions'])),
+  mounted: function mounted() {
+    this.getTypeOptions();
+    this.getLycraOptions();
+    this.getCategoryOptions();
+  },
+  methods: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)((0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_10__.mapActions)(['createCompetition', 'getTypeOptions', 'getLycraOptions', 'getCategoryOptions'])), {}, {
+    selectFile: function selectFile(event) {
+      // `files` is always an array because the file input may be in multiple mode
+      this.typeform.logo = event.target.files[0]; // console.log(this.typeform.logo)
+    },
+
     /**
      * Validation type submit
      */
@@ -164,10 +173,17 @@ __webpack_require__.r(__webpack_exports__);
 
       return this.createCompetition({
         title: this.typeform.title,
+        competition_type: this.typeform.competition_type,
+        description: this.typeform.description,
         place: this.typeform.place,
-        start_time: this.typeform.start_time,
+        date: this.typeform.date,
+        time: this.typeform.time,
         ranking_score: this.typeform.ranking_score,
-        status: this.typeform.status
+        status: this.typeform.status,
+        lycra: this.typeform.lycra,
+        modality: this.typeform.modality,
+        category: this.typeform.category,
+        logo: this.typeform.logo
       }).then(function (res) {
         _this.$router.push({
           name: "Competitions"
@@ -8090,7 +8106,7 @@ var render = function() {
                 _c(
                   "form",
                   {
-                    attrs: { action: "#" },
+                    attrs: { action: "#", enctype: "multipart/form-data" },
                     on: {
                       submit: function($event) {
                         $event.preventDefault()
@@ -8300,6 +8316,7 @@ var render = function() {
                               },
                               attrs: {
                                 format: "MM/DD/YYYY",
+                                "value-type": "format",
                                 "first-day-of-week": 1,
                                 lang: "en",
                                 placeholder: "Select date"
@@ -8580,7 +8597,8 @@ var render = function() {
                           _vm._v(" "),
                           _c("input", {
                             staticClass: "form-control-file",
-                            attrs: { type: "file", id: "logo" }
+                            attrs: { type: "file", id: "logo" },
+                            on: { change: _vm.selectFile }
                           })
                         ]),
                         _vm._v(" "),

@@ -107,4 +107,18 @@ class CategoryController extends Controller
             'categories' => $categories
         ], 200);
     }
+
+    public function getCategoryOptions()
+    {
+        $categoryOptions = collect([]);
+        $categories = Category::all();
+        foreach ($categories as $category) {
+            $categoryOptions->push($category->name);
+        }
+        $categoryOptions->all();
+        return response()->json([
+            'message' => 'success',
+            'categories' => $categoryOptions,
+        ], 200);
+    }
 }

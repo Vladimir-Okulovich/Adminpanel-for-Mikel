@@ -144,7 +144,7 @@
                 @filtered="onFiltered"
               >
                 <template #cell(club)="row">
-                  {{ row.item.name }}
+                  {{ row.item.club.name }}
                 </template>
                 <template #cell(actions)="row">
                   <router-link :to="{ name: 'ParticipantEdit', params: { participantId: row.item.id }}" class="btn btn-sm btn-secondary mr-2">

@@ -101,9 +101,15 @@ class ParticipantController extends Controller
             return response()->json($validator->errors()->toJson(), 400);
         }
 
+        $club = Club::where('name', $request->club)->first();
         $participant = Participant::find($request->id);
         $participant -> update([
             'name' => $request->name,
+            'surname' => $request->surname,
+            'dni_ficha' => $request->dni_ficha,
+            'birthday' => $request->birthday,
+            'sex' => $request->sex,
+            'club_id' => $club->id,
         ]);
         return response()->json([
             'message' => 'Participant successfully updated',

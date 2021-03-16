@@ -8,5 +8,8 @@ const mutations = {
   [type.SET_CATEGORY] (state, data) {
     state.category = data.category;
   },
+  [type.SET_CATEGORY_OPTIONS] (state, data) {
+    state.categoryOptions = data.categories;
+  },
 };
 export default mutations;

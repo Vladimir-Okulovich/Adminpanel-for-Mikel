@@ -14,7 +14,9 @@ const ApiService = {
     setHeader(){
         axios.defaults.headers.common = {
             'X-Requested-With': 'XMLHttpRequest',
-            "Authorization":`Bearer ${JwtService.getToken()}`
+            "Authorization":`Bearer ${JwtService.getToken()}`,
+            // 'content-type': 'multipart/form-data',
+            // 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
         };
     },
 

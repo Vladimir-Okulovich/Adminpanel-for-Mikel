@@ -71,6 +71,19 @@ const actions = {
                 });
         });
     },
+    getLycraOptions(context) {
+        ApiService.setHeader();
+        return new Promise((resolve) =>{
+            ApiService.get("api/v1/admin/lycra/options")
+                .then(({data}) => {
+                    console.log(data);
+                    context.commit(type.SET_LYCRA_OPTIONS, data)
+                })
+                .catch(({ response }) => {
+                    // context.commit(type.AUTH_LOGOUT);
+                });
+        });
+    },
 };
 
 export default actions;

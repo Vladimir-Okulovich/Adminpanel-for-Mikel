@@ -54,11 +54,12 @@ export default {
         place: "",
         date: "",
         time: "",
-        ranking_score: "",
+        ranking_score: false,
         status: "REGISTRATION OPEN",
         lycra: "",
         modality: "",
         category: "",
+        logo: null,
       },
       statusOptions: [
         "CLOSED",
@@ -69,9 +70,6 @@ export default {
         "Short Boat",
         "Long Ship"
       ],
-      typeOptions: [],
-      categoryOptions: [],
-      lycraOptions: [],
       typesubmit: false,
     };
   },
@@ -88,10 +86,30 @@ export default {
       category: { required },
     }
   },
+  computed: {
+    ...mapGetters([
+      'typeOptions',
+      'categoryOptions',
+      'lycraOptions',
+    ]),
+  },
+  mounted() {
+    this.getTypeOptions();
+    this.getLycraOptions();
+    this.getCategoryOptions();
+  },
   methods: {
     ...mapActions([
-      'createCompetition'
+      'createCompetition',
+      'getTypeOptions',
+      'getLycraOptions',
+      'getCategoryOptions',
     ]),
+    selectFile(event) {
+      // `files` is always an array because the file input may be in multiple mode
+      this.typeform.logo = event.target.files[0];
+      // console.log(this.typeform.logo)
+    },
     /**
      * Validation type submit
      */
@@ -108,10 +126,17 @@ export default {
       return (
         this.createCompetition({
             title: this.typeform.title,
+            competition_type: this.typeform.competition_type,
+            description: this.typeform.description,
             place: this.typeform.place,
-            start_time: this.typeform.start_time,
+            date: this.typeform.date,
+            time: this.typeform.time,
             ranking_score: this.typeform.ranking_score,
             status: this.typeform.status,
+            lycra: this.typeform.lycra,
+            modality: this.typeform.modality,
+            category: this.typeform.category,
+            logo: this.typeform.logo,
           })
           .then((res) => {
             this.$router.push({name: "Competitions"});
@@ -142,7 +167,7 @@ export default {
               class="mt-3"
               dismissible
             >{{ Error }}</b-alert>
-            <form action="#" @submit.prevent="typeForm">
+            <form action="#" @submit.prevent="typeForm" enctype="multipart/form-data">
               <div class="row">
                 <div class="col-lg-6 col-md-12">
                   <div class="form-group">
@@ -205,6 +230,7 @@ export default {
                     <date-picker
                       v-model="typeform.date"
                       format="MM/DD/YYYY"
+                      value-type="format"
                       :first-day-of-week="1"
                       lang="en"
                       placeholder="Select date"
@@ -283,7 +309,7 @@ export default {
                   </div>
                   <div class="form-group">
                     <label for="logo">Logo</label>
-                    <input type="file" class="form-control-file" id="logo" />
+                    <input type="file" class="form-control-file" id="logo" @change="selectFile" />
                   </div>
                   <div class="form-group mt-4 mb-0">
                     <div style="float: right;">

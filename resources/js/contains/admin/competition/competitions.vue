@@ -141,6 +141,12 @@
                 :filter-included-fields="filterOn"
                 @filtered="onFiltered"
               >
+                <template #cell(competition_type)="row">
+                  {{ row.item.competition_type.name }}
+                </template>
+                <template #cell(status)="row">
+                  {{ row.item.status.name }}
+                </template>
                 <template #cell(actions)="row">
                   <router-link :to="{ name: 'CompetitionEdit', params: { competitionId: row.item.id }}" class="btn btn-sm btn-secondary mr-2">
                     <i class="far fa-edit"></i>

@@ -101,7 +101,6 @@ __webpack_require__.r(__webpack_exports__);
         club: ""
       },
       sexOptions: ["Male", "Female"],
-      initClubOptions: [],
       typesubmit: false
     };
   },
@@ -7941,6 +7940,7 @@ var render = function() {
                           },
                           attrs: {
                             format: "MM/DD/YYYY",
+                            "value-type": "format",
                             "first-day-of-week": 1,
                             lang: "en",
                             placeholder: "Select date"
@@ -8012,9 +8012,7 @@ var render = function() {
                             "is-invalid":
                               _vm.typesubmit && _vm.$v.typeform.club.$error
                           },
-                          attrs: {
-                            options: (_vm.initClubOptions = _vm.clubOptions)
-                          },
+                          attrs: { options: _vm.clubOptions },
                           model: {
                             value: _vm.typeform.club,
                             callback: function($$v) {

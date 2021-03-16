@@ -28,8 +28,8 @@ class Competition extends Model
         return $this->belongsTo(Competition_type::class);
     }
 
-    // public function tutorials()
-    // {
-    //     return $this->hasMany(Tutorial::class);
-    // }
+    public function status()
+    {
+        return $this->belongsTo(Status::class);
+    }
 }

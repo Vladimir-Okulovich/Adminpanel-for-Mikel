@@ -5,6 +5,7 @@ import JwtService from "@/common/jwt.service"
 
 const defaultState = {
   competition_types: [],
+  typeOptions: [],
   competition_type: {}
 };
 

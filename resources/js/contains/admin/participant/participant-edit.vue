@@ -58,7 +58,6 @@ export default {
         "Male",
         "Female"
       ],
-      initClubOptions: [],
       typesubmit: false,
     };
   },
@@ -103,6 +102,7 @@ export default {
       }
       return (
         this.updateParticipant({
+            id: this.getParticipant.id,
             name: this.typeform.name,
             surname: this.typeform.surname,
             dni_ficha: this.typeform.dni_ficha,
@@ -144,7 +144,7 @@ export default {
                 <label>Name</label>
                 <input
                   v-model="typeform.name=getParticipant.name"
-                  type="name"
+                  type="text"
                   class="form-control"
                   name="name"
                   :class="{ 'is-invalid': typesubmit && $v.typeform.name.$error }"
@@ -157,7 +157,7 @@ export default {
                 <label>Surname</label>
                 <input
                   v-model="typeform.surname=getParticipant.surname"
-                  type="name"
+                  type="text"
                   class="form-control"
                   name="surname"
                   :class="{ 'is-invalid': typesubmit && $v.typeform.surname.$error }"
@@ -185,6 +185,7 @@ export default {
                 <date-picker
                   v-model="typeform.birthday=getParticipant.birthday"
                   format="MM/DD/YYYY"
+                  value-type="format"
                   :first-day-of-week="1"
                   lang="en"
                   placeholder="Select date"
@@ -210,7 +211,7 @@ export default {
                 <label>Club</label>
                 <multiselect 
                   v-model="typeform.club=getParticipant.club.name" 
-                  :options="initClubOptions=clubOptions"
+                  :options="clubOptions"
                   :class="{ 'is-invalid': typesubmit && $v.typeform.club.$error }"  
                 ></multiselect>
                 <div v-if="typesubmit && $v.typeform.club.$error" class="invalid-feedback">

@@ -101,7 +101,6 @@ __webpack_require__.r(__webpack_exports__);
         club: ""
       },
       sexOptions: ["Male", "Female"],
-      initClubOptions: [],
       typesubmit: false
     };
   },
@@ -151,6 +150,7 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       return this.updateParticipant({
+        id: this.getParticipant.id,
         name: this.typeform.name,
         surname: this.typeform.surname,
         dni_ficha: this.typeform.dni_ficha,
@@ -7822,7 +7822,7 @@ var render = function() {
                           "is-invalid":
                             _vm.typesubmit && _vm.$v.typeform.name.$error
                         },
-                        attrs: { type: "name", name: "name" },
+                        attrs: { type: "text", name: "name" },
                         domProps: {
                           value: (_vm.typeform.name = _vm.getParticipant.name)
                         },
@@ -7868,7 +7868,7 @@ var render = function() {
                           "is-invalid":
                             _vm.typesubmit && _vm.$v.typeform.surname.$error
                         },
-                        attrs: { type: "name", name: "surname" },
+                        attrs: { type: "text", name: "surname" },
                         domProps: {
                           value: (_vm.typeform.surname =
                             _vm.getParticipant.surname)
@@ -7958,6 +7958,7 @@ var render = function() {
                           },
                           attrs: {
                             format: "MM/DD/YYYY",
+                            "value-type": "format",
                             "first-day-of-week": 1,
                             lang: "en",
                             placeholder: "Select date"
@@ -8039,9 +8040,7 @@ var render = function() {
                             "is-invalid":
                               _vm.typesubmit && _vm.$v.typeform.club.$error
                           },
-                          attrs: {
-                            options: (_vm.initClubOptions = _vm.clubOptions)
-                          },
+                          attrs: { options: _vm.clubOptions },
                           model: {
                             value: (_vm.typeform.club =
                               _vm.getParticipant.club.name),

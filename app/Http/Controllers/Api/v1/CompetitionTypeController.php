@@ -107,4 +107,18 @@ class CompetitionTypeController extends Controller
             'competition_types' => $competition_types
         ], 200);
     }
+
+    public function getTypeOptions()
+    {
+        $typeOptions = collect([]);
+        $competition_types = Competition_type::all();
+        foreach ($competition_types as $competition_type) {
+            $typeOptions->push($competition_type->name);
+        }
+        $typeOptions->all();
+        return response()->json([
+            'message' => 'success',
+            'competition_types' => $typeOptions,
+        ], 200);
+    }
 }

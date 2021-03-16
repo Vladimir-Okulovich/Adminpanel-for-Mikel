@@ -5,6 +5,7 @@ import JwtService from "@/common/jwt.service"
 
 const defaultState = {
   categories: [],
+  categoryOptions: [],
   category: {}
 };
 

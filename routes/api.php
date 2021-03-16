@@ -49,6 +49,8 @@ Route::group([ 'prefix' => 'v1', 'middleware' => 'api'], function(){
 
         /* Get all categories details*/
         Route::get('categories', 'App\Http\Controllers\Api\v1\CategoryController@getAll');
+        /* Get all categories' names*/
+        Route::get('category/options', 'App\Http\Controllers\Api\v1\CategoryController@getCategoryOptions');
         // /* Add a category */
         Route::post('category/create', 'App\Http\Controllers\Api\v1\CategoryController@create');
         // /* Update a category */
@@ -60,6 +62,8 @@ Route::group([ 'prefix' => 'v1', 'middleware' => 'api'], function(){
 
         /* Get all competition_types details*/
         Route::get('competition_types', 'App\Http\Controllers\Api\v1\CompetitionTypeController@getAll');
+        /* Get all competition_types' names*/
+        Route::get('competition_type/options', 'App\Http\Controllers\Api\v1\CompetitionTypeController@getTypeOptions');
         // /* Add a competition_type */
         Route::post('competition_type/create', 'App\Http\Controllers\Api\v1\CompetitionTypeController@create');
         // /* Update a competition_type */
@@ -71,6 +75,8 @@ Route::group([ 'prefix' => 'v1', 'middleware' => 'api'], function(){
 
         /* Get all lycras details*/
         Route::get('lycras', 'App\Http\Controllers\Api\v1\LycraController@getAll');
+        /* Get all lycras' names*/
+        Route::get('lycra/options', 'App\Http\Controllers\Api\v1\LycraController@getLycraOptions');
         // /* Add a lycra */
         Route::post('lycra/create', 'App\Http\Controllers\Api\v1\LycraController@create');
         // /* Update a lycra */
