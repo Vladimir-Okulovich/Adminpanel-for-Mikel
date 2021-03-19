@@ -198,7 +198,7 @@ export default {
               <div>
                 <label>Sex</label>
                 <multiselect 
-                  v-model="typeform.sex=getParticipant.sex" 
+                  v-model="typeform.sex=getParticipant.sex.name" 
                   :options="sexOptions"
                   :class="{ 'is-invalid': typesubmit && $v.typeform.sex.$error }"
                 ></multiselect>
@@ -210,7 +210,8 @@ export default {
               <div>
                 <label>Club</label>
                 <multiselect 
-                  v-model="typeform.club=getParticipant.club.name" 
+                  v-model="typeform.club=getParticipant.clubNames"
+                  :multiple="true"
                   :options="clubOptions"
                   :class="{ 'is-invalid': typesubmit && $v.typeform.club.$error }"  
                 ></multiselect>

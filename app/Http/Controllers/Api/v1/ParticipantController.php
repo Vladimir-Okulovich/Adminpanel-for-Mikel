@@ -24,9 +24,13 @@ class ParticipantController extends Controller
     {
         $participants = Participant::all();
         foreach ($participants as $participant) {
-            $participant->club;
+            $participant->sex;
+            $clubNames = collect([]);
+            foreach ($participant->clubs as $club) {
+                $clubNames->push($club->name);
+            }
+            $participant->clubNames = $clubNames;
         }
-        
         return response()->json([
             'message' => 'success',
             'participants' => $participants
@@ -42,7 +46,12 @@ class ParticipantController extends Controller
     public function getById(Request $request, $participantId)
     {
         $participant = Participant::find($participantId);
-        $participant->club;
+        $participant->sex;
+        $clubNames = collect([]);
+        foreach ($participant->clubs as $club) {
+            $clubNames->push($club->name);
+        }
+        $participant->clubNames = $clubNames;
         return response()->json([
             'message' => 'success',
             'participant' => $participant
@@ -61,20 +70,27 @@ class ParticipantController extends Controller
             'dni_ficha' => 'required|string',
             'birthday' => 'required',
             'sex' => 'required|string',
+            'club' => 'required',
         ]);
 
         if($validator->fails()){
             return response()->json($validator->errors()->toJson(), 400);
         }
 
-        $club = Club::where('name', $request->club)->first();
-        $club->participants()->create([
+        $sex = Sex::where('name', $request->sex)->first();
+        $participant = $sex->participants()->create([
             'name' => $request->name,
             'surname' => $request->surname,
             'dni_ficha' => $request->dni_ficha,
             'birthday' => $request->birthday,
-            'sex' => $request->sex,
         ]);
+
+        $clubs = Club::whereIn('name', $request->club)->get();
+        $clubIds = collect([]);
+        foreach ($clubs as $club) {
+            $clubIds->push($club->id);
+        }
+        $participant->clubs()->attach($clubIds);
 
         return response()->json([
             'message' => 'Participant successfully registered',
@@ -96,22 +112,29 @@ class ParticipantController extends Controller
             'dni_ficha' => 'required|string',
             'birthday' => 'required',
             'sex' => 'required|string',
+            'club' => 'required',
         ]);
 
         if($validator->fails()){
             return response()->json($validator->errors()->toJson(), 400);
         }
 
-        $club = Club::where('name', $request->club)->first();
+        $sex = Sex::where('name', $request->sex)->first();
         $participant = Participant::find($request->id);
         $participant -> update([
             'name' => $request->name,
             'surname' => $request->surname,
             'dni_ficha' => $request->dni_ficha,
             'birthday' => $request->birthday,
-            'sex' => $request->sex,
-            'club_id' => $club->id,
+            'sex_id' => $sex->id,
         ]);
+        $clubs = Club::whereIn('name', $request->club)->get();
+        $clubIds = collect([]);
+        foreach ($clubs as $club) {
+            $clubIds->push($club->id);
+        }
+        $participant->clubs()->sync($clubIds);
+
         return response()->json([
             'message' => 'Participant successfully updated',
             'participant' => $participant
@@ -129,9 +152,18 @@ class ParticipantController extends Controller
         //delete participant
         $participant = Participant::find($participantId);
         $participant -> delete();
+
         $participants = Participant::all();
+        foreach ($participants as $participant) {
+            $participant->sex;
+            $clubNames = collect([]);
+            foreach ($participant->clubs as $club) {
+                $clubNames->push($club->name);
+            }
+            $participant->clubNames = $clubNames;
+        }
         return response()->json([
-            'message' => 'successfully deleted',
+            'message' => 'success',
             'participants' => $participants
         ], 200);
     }

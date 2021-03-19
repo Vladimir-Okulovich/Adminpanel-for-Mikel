@@ -19,6 +19,11 @@ class Participant extends Model
 
     public function sex()
     {
-        return $this->belongsTo(Club::class);
+        return $this->belongsTo(Sex::class);
+    }
+
+    public function clubs()
+    {
+        return $this->belongsToMany(Club::class, 'club_participant');
     }
 }

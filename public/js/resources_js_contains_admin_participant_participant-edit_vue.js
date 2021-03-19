@@ -8003,15 +8003,16 @@ var render = function() {
                           },
                           attrs: { options: _vm.sexOptions },
                           model: {
-                            value: (_vm.typeform.sex = _vm.getParticipant.sex),
+                            value: (_vm.typeform.sex =
+                              _vm.getParticipant.sex.name),
                             callback: function($$v) {
                               _vm.$set(
-                                (_vm.typeform.sex = _vm.getParticipant),
-                                "sex",
+                                (_vm.typeform.sex = _vm.getParticipant.sex),
+                                "name",
                                 $$v
                               )
                             },
-                            expression: "typeform.sex=getParticipant.sex"
+                            expression: "typeform.sex=getParticipant.sex.name"
                           }
                         }),
                         _vm._v(" "),
@@ -8040,18 +8041,18 @@ var render = function() {
                             "is-invalid":
                               _vm.typesubmit && _vm.$v.typeform.club.$error
                           },
-                          attrs: { options: _vm.clubOptions },
+                          attrs: { multiple: true, options: _vm.clubOptions },
                           model: {
                             value: (_vm.typeform.club =
-                              _vm.getParticipant.club.name),
+                              _vm.getParticipant.clubNames),
                             callback: function($$v) {
                               _vm.$set(
-                                (_vm.typeform.club = _vm.getParticipant.club),
-                                "name",
+                                (_vm.typeform.club = _vm.getParticipant),
+                                "clubNames",
                                 $$v
                               )
                             },
-                            expression: "typeform.club=getParticipant.club.name"
+                            expression: "typeform.club=getParticipant.clubNames"
                           }
                         }),
                         _vm._v(" "),

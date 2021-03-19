@@ -147,7 +147,9 @@
                   {{ row.item.sex.name }}
                 </template>
                 <template #cell(club)="row">
-                  {{ row.item.club.name }}
+                  <span v-for="(clubName, index) in row.item.clubNames" :key="index" class="pr-1">
+                    {{ clubName }}
+                  </span>
                 </template>
                 <template #cell(actions)="row">
                   <router-link :to="{ name: 'ParticipantEdit', params: { participantId: row.item.id }}" class="btn btn-sm btn-secondary mr-2">

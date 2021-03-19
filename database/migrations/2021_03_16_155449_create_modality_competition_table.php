@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateModalityCompetitionsTable extends Migration
+class CreateModalityCompetitionTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateModalityCompetitionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('modality_competitions', function (Blueprint $table) {
+        Schema::create('modality_competition', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('modality_id')->constrained('modalities');
-            $table->foreignId('competition_id')->constrained('competitions');
+            $table->foreignId('modality_id')->constrained('modalities')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('competition_id')->constrained('competitions')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

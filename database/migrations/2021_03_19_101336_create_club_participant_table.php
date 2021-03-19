@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCategoryCompetitionsTable extends Migration
+class CreateClubParticipantTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateCategoryCompetitionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('category_competitions', function (Blueprint $table) {
+        Schema::create('club_participant', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('category_id')->constrained('categories');
-            $table->foreignId('competition_id')->constrained('competitions');
+            $table->foreignId('participant_id')->constrained('participants')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('club_id')->constrained('clubs')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateCategoryCompetitionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('category_competitions');
+        Schema::dropIfExists('club_participants');
     }
 }

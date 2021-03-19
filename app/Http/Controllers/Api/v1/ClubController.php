@@ -34,7 +34,6 @@ class ClubController extends Controller
         foreach ($clubs as $club) {
             $clubOptions->push($club->name);
         }
-        $clubOptions->all();
         return response()->json([
             'message' => 'success',
             'clubs' => $clubOptions,

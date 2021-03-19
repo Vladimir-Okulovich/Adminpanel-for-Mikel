@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLycraCompetitionsTable extends Migration
+class CreateLycraCompetitionTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateLycraCompetitionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('lycra_competitions', function (Blueprint $table) {
+        Schema::create('lycra_competition', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('lycra_id')->constrained('lycras');
-            $table->foreignId('competition_id')->constrained('competitions');
+            $table->foreignId('lycra_id')->constrained('lycras')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('competition_id')->constrained('competitions')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

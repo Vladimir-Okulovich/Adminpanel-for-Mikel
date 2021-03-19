@@ -138,7 +138,6 @@ __webpack_require__.r(__webpack_exports__);
     typeForm: function typeForm(e) {
       var _this = this;
 
-      console.log(this.typeform.birthday);
       this.typesubmit = true;
       this.isError = false;
       this.Error = null; // stop here if form is invalid
@@ -8012,7 +8011,7 @@ var render = function() {
                             "is-invalid":
                               _vm.typesubmit && _vm.$v.typeform.club.$error
                           },
-                          attrs: { options: _vm.clubOptions },
+                          attrs: { multiple: true, options: _vm.clubOptions },
                           model: {
                             value: _vm.typeform.club,
                             callback: function($$v) {
