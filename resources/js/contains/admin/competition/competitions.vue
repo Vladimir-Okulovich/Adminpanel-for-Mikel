@@ -128,7 +128,7 @@
               <!-- End search -->
             </div>
             <!-- Table -->
-            <div class="table-responsive mb-0">
+            <div class="table-responsive table-dark mb-0">
               <b-table
                 :items="getCompetitions"
                 :fields="fields"
@@ -143,6 +143,10 @@
               >
                 <template #cell(competition_type)="row">
                   {{ row.item.competition_type.name }}
+                </template>
+                <template #cell(ranking_score)="row">
+                  <span class="badge badge-info" v-if="row.item.ranking_score=='Yes'">{{ row.item.ranking_score }}</span>
+                  <span class="badge badge-warning" v-if="row.item.ranking_score=='No'">{{ row.item.ranking_score }}</span>
                 </template>
                 <template #cell(status)="row">
                   {{ row.item.status.name }}

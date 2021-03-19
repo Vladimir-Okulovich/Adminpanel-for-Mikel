@@ -41,12 +41,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var core_js_modules_es_symbol_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_symbol_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es.symbol.description.js */ "./node_modules/core-js/modules/es.symbol.description.js");
 /* harmony import */ var core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
-/* harmony import */ var _subcomponent_layout__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../subcomponent/layout */ "./resources/js/contains/admin/subcomponent/layout.vue");
-/* harmony import */ var _components_page_header__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/components/page-header */ "./resources/js/components/page-header.vue");
-/* harmony import */ var _app_config__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/app.config */ "./resources/js/app.config.json");
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.mjs");
-/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
+/* harmony import */ var core_js_modules_es_function_name_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core-js/modules/es.function.name.js */ "./node_modules/core-js/modules/es.function.name.js");
+/* harmony import */ var core_js_modules_es_function_name_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_function_name_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
+/* harmony import */ var _subcomponent_layout__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../subcomponent/layout */ "./resources/js/contains/admin/subcomponent/layout.vue");
+/* harmony import */ var _components_page_header__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/components/page-header */ "./resources/js/components/page-header.vue");
+/* harmony import */ var _app_config__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/app.config */ "./resources/js/app.config.json");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.mjs");
+/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
+
 
 
 
@@ -60,12 +63,12 @@ __webpack_require__.r(__webpack_exports__);
     title: "ADD LYCRA",
     meta: [{
       name: "description",
-      content: _app_config__WEBPACK_IMPORTED_MODULE_5__.description
+      content: _app_config__WEBPACK_IMPORTED_MODULE_6__.description
     }]
   },
   components: {
-    Layout: _subcomponent_layout__WEBPACK_IMPORTED_MODULE_3__.default,
-    PageHeader: _components_page_header__WEBPACK_IMPORTED_MODULE_4__.default
+    Layout: _subcomponent_layout__WEBPACK_IMPORTED_MODULE_4__.default,
+    PageHeader: _components_page_header__WEBPACK_IMPORTED_MODULE_5__.default
   },
   data: function data() {
     return {
@@ -86,6 +89,7 @@ __webpack_require__.r(__webpack_exports__);
       isError: false,
       Error: null,
       typeform: {
+        name: "",
         color: "#000000"
       },
       typesubmit: false
@@ -93,12 +97,15 @@ __webpack_require__.r(__webpack_exports__);
   },
   validations: {
     typeform: {
+      name: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_7__.required
+      },
       color: {
-        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_6__.required
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_7__.required
       }
     }
   },
-  methods: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)((0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_7__.mapActions)(['createLycra'])), {}, {
+  methods: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_3__.default)((0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_3__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_8__.mapActions)(['createLycra'])), {}, {
     /**
      * Validation type submit
      */
@@ -112,12 +119,13 @@ __webpack_require__.r(__webpack_exports__);
 
       this.$v.$touch();
 
-      if (this.$v.typeform.color.$error) {
+      if (this.$v.typeform.color.$error || this.$v.typeform.name.$error) {
         return;
       }
 
       return this.createLycra({
-        color: this.typeform.color
+        color: this.typeform.color,
+        name: this.typeform.name
       }).then(function (res) {
         _this.$router.push({
           name: "Lycras"
@@ -7069,6 +7077,48 @@ var render = function() {
                     }
                   },
                   [
+                    _c("div", { staticClass: "form-group" }, [
+                      _c("label", [_vm._v("Name")]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.typeform.name,
+                            expression: "typeform.name"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        class: {
+                          "is-invalid":
+                            _vm.typesubmit && _vm.$v.typeform.name.$error
+                        },
+                        attrs: {
+                          type: "text",
+                          placeholder: "Color Name",
+                          name: "name"
+                        },
+                        domProps: { value: _vm.typeform.name },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.typeform, "name", $event.target.value)
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _vm.typesubmit && _vm.$v.typeform.name.$error
+                        ? _c("div", { staticClass: "invalid-feedback" }, [
+                            !_vm.$v.typeform.name.required
+                              ? _c("span", [_vm._v("This value is required.")])
+                              : _vm._e()
+                          ])
+                        : _vm._e()
+                    ]),
+                    _vm._v(" "),
                     _c("div", { staticClass: "form-group" }, [
                       _c("label", [_vm._v("Color")]),
                       _vm._v(" "),

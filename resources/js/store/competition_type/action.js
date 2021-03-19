@@ -8,7 +8,7 @@ const actions = {
         return new Promise((resolve) =>{
             ApiService.get("api/v1/admin/competition_types")
                 .then(({data}) => {
-                    console.log(data);
+                    resolve(data)
                     context.commit(type.SET_ALL_COMPETITION_TYPES, data)
                 })
                 .catch(({ response }) => {
@@ -21,7 +21,7 @@ const actions = {
         return new Promise((resolve) =>{
             ApiService.get("api/v1/admin/competition_type/" + competition_typeId)
                 .then(({data}) => {
-                    console.log(data);
+                    resolve(data)
                     context.commit(type.SET_COMPETITION_TYPE, data)
                 })
                 .catch(({ response }) => {
@@ -62,7 +62,7 @@ const actions = {
         return new Promise((resolve) =>{
             ApiService.delete("api/v1/admin/competition_type/delete/" + competition_typeId)
                 .then(({data}) => {
-                    console.log(data);
+                    resolve(data)
                     context.commit(type.SET_ALL_COMPETITION_TYPES, data)
                     toastr.success('Successfully deleted', 'Hello', {timeout: 1000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
                 })
@@ -76,7 +76,7 @@ const actions = {
         return new Promise((resolve) =>{
             ApiService.get("api/v1/admin/competition_type/options")
                 .then(({data}) => {
-                    console.log(data);
+                    resolve(data)
                     context.commit(type.SET_TYPE_OPTIONS, data)
                 })
                 .catch(({ response }) => {

@@ -184,7 +184,7 @@ export default {
                 <br />
                 <date-picker
                   v-model="typeform.birthday=getParticipant.birthday"
-                  format="MM/DD/YYYY"
+                  format="YYYY-MM-DD"
                   value-type="format"
                   :first-day-of-week="1"
                   lang="en"

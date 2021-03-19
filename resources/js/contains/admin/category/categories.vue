@@ -41,6 +41,7 @@
         sortDesc: false,
         fields: [
           { key: "name", sortable: true },
+          { key: "Age", sortable: true },
           { key: "description", sortable: false },
           { key: "actions", sortable: false }
         ],
@@ -130,7 +131,7 @@
               <!-- End search -->
             </div>
             <!-- Table -->
-            <div class="table-responsive mb-0">
+            <div class="table-responsive table-dark mb-0">
               <b-table
                 :items="getCategories"
                 :fields="fields"
@@ -145,6 +146,9 @@
               >
                 <template #cell(description)="row">
                   {{ row.item.description | truncate(50) }}
+                </template>
+                <template #cell(age)="row">
+                  {{row.item.year1}}~{{row.item.year2}} years
                 </template>
                 <template #cell(actions)="row">
                   <router-link :to="{ name: 'CategoryEdit', params: { categoryId: row.item.id }}" class="btn btn-sm btn-secondary mr-2">

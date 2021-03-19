@@ -87,11 +87,11 @@ __webpack_require__.r(__webpack_exports__);
       sortBy: "color",
       sortDesc: false,
       fields: [{
-        key: "color",
+        key: "name",
         sortable: true
       }, {
-        key: "Hex",
-        sortable: false
+        key: "color",
+        sortable: true
       }, {
         key: "actions",
         sortable: false
@@ -7129,7 +7129,7 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "div",
-                { staticClass: "table-responsive mb-0" },
+                { staticClass: "table-responsive table-dark mb-0" },
                 [
                   _c("b-table", {
                     attrs: {
@@ -7188,18 +7188,6 @@ var render = function() {
                                 }
                               }
                             })
-                          ]
-                        }
-                      },
-                      {
-                        key: "cell(hex)",
-                        fn: function(row) {
-                          return [
-                            _vm._v(
-                              "\n                " +
-                                _vm._s(row.item.color) +
-                                "\n              "
-                            )
                           ]
                         }
                       },

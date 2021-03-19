@@ -80,11 +80,11 @@ class CompetitionController extends Controller
             return response()->json($validator->errors()->toJson(), 400);
         }
 
-        if($request->file('logo')){
-            $result = $request->file('logo')->store('public');
-        } else {
-            $result = null;
-        }
+        // if($request->file('logo')){
+        //     $result = $request->file('logo')->store('public');
+        // } else {
+        //     $result = null;
+        // }
 
         $competition_type = Competition_type::where('name', $request->competition_type)->first();
         $status = Status::where('name', $request->status)->first();
@@ -98,11 +98,12 @@ class CompetitionController extends Controller
         $competition->ranking_score = $request->ranking_score;
         $competition->competition_type()->associate($competition_type);
         $competition->status()->associate($status);
-        $competition->logo = $result;
+        // $competition->logo = $result;
         $competition->save();
 
         return response()->json([
             'message' => 'Participant successfully registered',
+            'competition' => $competition
         ], 201);
     }
 
@@ -158,6 +159,7 @@ class CompetitionController extends Controller
 
         return response()->json([
             'message' => 'Participant successfully updated',
+            'competition' => $competition
         ], 201);
     }
 

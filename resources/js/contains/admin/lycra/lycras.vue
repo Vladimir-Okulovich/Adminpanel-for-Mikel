@@ -40,8 +40,8 @@
         sortBy: "color",
         sortDesc: false,
         fields: [
+          { key: "name", sortable: true },
           { key: "color", sortable: true },
-          { key: "Hex", sortable: false },
           { key: "actions", sortable: false }
         ],
         deletingId: 0,
@@ -130,7 +130,7 @@
               <!-- End search -->
             </div>
             <!-- Table -->
-            <div class="table-responsive mb-0">
+            <div class="table-responsive table-dark mb-0">
               <b-table
                 :items="getLycras"
                 :fields="fields"
@@ -150,9 +150,6 @@
                     class="form-control"
                     disabled
                   />
-                </template>
-                <template #cell(hex)="row">
-                  {{ row.item.color }}
                 </template>
                 <template #cell(actions)="row">
                   <router-link :to="{ name: 'LycraEdit', params: { lycraId: row.item.id }}" class="btn btn-sm btn-secondary mr-2">

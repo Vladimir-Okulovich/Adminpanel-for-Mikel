@@ -49,12 +49,14 @@ export default {
       Error: null,
       typeform: {
         color: "",
+        name: "",
       },
       typesubmit: false,
     };
   },
   validations: {
     typeform: {
+      name: { required },
       color: { required },
     }
   },
@@ -81,13 +83,14 @@ export default {
       this.Error = null;
       // stop here if form is invalid
       this.$v.$touch();
-      if (this.$v.typeform.color.$error) {
+      if (this.$v.typeform.color.$error || this.$v.typeform.name.$error) {
         return ;
       }
       return (
         this.updateLycra({
             id: this.getLycra.id,
             color: this.typeform.color,
+            name: this.typeform.name,
           })
           .then((res) => {
             this.$router.push({name: "Lycras"});
@@ -119,6 +122,20 @@ export default {
               dismissible
             >{{ Error }}</b-alert>
             <form action="#" @submit.prevent="typeForm">
+              <div class="form-group">
+                <label>Name</label>
+                <input
+                  v-model="typeform.name=getLycra.name"
+                  type="text"
+                  class="form-control"
+                  placeholder="Color Name"
+                  name="name"
+                  :class="{ 'is-invalid': typesubmit && $v.typeform.name.$error }"
+                />
+                <div v-if="typesubmit && $v.typeform.name.$error" class="invalid-feedback">
+                  <span v-if="!$v.typeform.name.required">This value is required.</span>
+                </div>
+              </div>
               <div class="form-group">
                 <label>Color</label>
                 <input

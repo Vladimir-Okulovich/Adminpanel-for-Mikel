@@ -99,13 +99,14 @@ __webpack_require__.r(__webpack_exports__);
         place: "",
         date: "",
         time: "",
-        ranking_score: false,
+        ranking_score: "",
         status: "REGISTRATION OPEN",
         lycra: "",
         modality: "",
         category: "",
         logo: null
       },
+      rankingScoreOptions: ["Yes", "No"],
       statusOptions: ["CLOSED", "REGISTRATION OPEN", "COMPETITION IN PROGRESS"],
       modalityOptions: ["Short Boat", "Long Ship"],
       typesubmit: false
@@ -129,6 +130,9 @@ __webpack_require__.r(__webpack_exports__);
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_9__.required
       },
       time: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_9__.required
+      },
+      ranking_score: {
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_9__.required
       },
       lycra: {
@@ -191,6 +195,7 @@ __webpack_require__.r(__webpack_exports__);
 
         _this.typesubmit = false;
       })["catch"](function (error) {
+        console.log("error");
         _this.typesubmit = false;
         _this.Error = error ? error : "";
         _this.isError = true;
@@ -8315,7 +8320,7 @@ var render = function() {
                                   _vm.typesubmit && _vm.$v.typeform.date.$error
                               },
                               attrs: {
-                                format: "MM/DD/YYYY",
+                                format: "YYYY-MM-DD",
                                 "value-type": "format",
                                 "first-day-of-week": 1,
                                 lang: "en",
@@ -8356,12 +8361,7 @@ var render = function() {
                                 "is-invalid":
                                   _vm.typesubmit && _vm.$v.typeform.time.$error
                               },
-                              attrs: {
-                                format: "hh:mm:ss a",
-                                "value-type": "format",
-                                type: "time",
-                                placeholder: "hh:mm:ss a"
-                              },
+                              attrs: { type: "time", placeholder: "hh:mm:ss" },
                               model: {
                                 value: _vm.typeform.time,
                                 callback: function($$v) {
@@ -8388,13 +8388,17 @@ var render = function() {
                       _c("div", { staticClass: "col-lg-6 col-md-12" }, [
                         _c(
                           "div",
-                          { staticClass: "mb-2" },
+                          { staticClass: "mb-3" },
                           [
-                            _c("p", [_vm._v("Ranking Score")]),
+                            _c("label", [_vm._v("Ranking_score")]),
                             _vm._v(" "),
-                            _c("switches", {
-                              staticClass: "ml-1 mb-0",
-                              attrs: { "type-bold": "false", color: "info" },
+                            _c("multiselect", {
+                              class: {
+                                "is-invalid":
+                                  _vm.typesubmit &&
+                                  _vm.$v.typeform.ranking_score.$error
+                              },
+                              attrs: { options: _vm.rankingScoreOptions },
                               model: {
                                 value: _vm.typeform.ranking_score,
                                 callback: function($$v) {
@@ -8402,7 +8406,18 @@ var render = function() {
                                 },
                                 expression: "typeform.ranking_score"
                               }
-                            })
+                            }),
+                            _vm._v(" "),
+                            _vm.typesubmit &&
+                            _vm.$v.typeform.ranking_score.$error
+                              ? _c("div", { staticClass: "invalid-feedback" }, [
+                                  !_vm.$v.typeform.ranking_score.required
+                                    ? _c("span", [
+                                        _vm._v("This value is required.")
+                                      ])
+                                    : _vm._e()
+                                ])
+                              : _vm._e()
                           ],
                           1
                         ),

@@ -7939,7 +7939,7 @@ var render = function() {
                               _vm.typesubmit && _vm.$v.typeform.birthday.$error
                           },
                           attrs: {
-                            format: "MM/DD/YYYY",
+                            format: "YYYY-MM-DD",
                             "value-type": "format",
                             "first-day-of-week": 1,
                             lang: "en",

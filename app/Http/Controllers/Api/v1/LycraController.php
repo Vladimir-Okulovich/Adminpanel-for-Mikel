@@ -49,6 +49,7 @@ class LycraController extends Controller
      */
     public function create(Request $request) {
         $validator = Validator::make($request->all(), [
+            'name' => 'required|string|between:1,100',
             'color' => 'required|string|between:1,100',
         ]);
 
@@ -75,10 +76,13 @@ class LycraController extends Controller
     {
         // Update Lycra
         $request->validate([
+            'name' => 'required|string|between:1,100',
             'color' => 'required|string|between:1,100',
         ]);
+
         $lycra = Lycra::find($request->id);
         $lycra -> update([
+            'name' => $request->name,
             'color' => $request->color,
         ]);
         return response()->json([

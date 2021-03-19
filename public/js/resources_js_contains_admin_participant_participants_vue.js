@@ -7140,7 +7140,7 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "div",
-                { staticClass: "table-responsive mb-0" },
+                { staticClass: "table-responsive table-dark mb-0" },
                 [
                   _c("b-table", {
                     attrs: {

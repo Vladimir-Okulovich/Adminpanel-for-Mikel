@@ -51,6 +51,8 @@ class CategoryController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|between:1,100',
             'description' => 'required|string|max:1000',
+            'year1' => 'required|integer',
+            'year2' => 'required|integer',
         ]);
 
         if($validator->fails()){
@@ -78,11 +80,15 @@ class CategoryController extends Controller
         $request->validate([
             'name' => 'required|string|between:1,100',
             'description' => 'required|string|max:1000',
+            'year1' => 'required|integer',
+            'year2' => 'required|integer',
         ]);
         $category = Category::find($request->id);
         $category -> update([
             'name' => $request->name,
             'description' => $request->description,
+            'year1' => $request->year1,
+            'year2' => $request->year2,
         ]);
         return response()->json([
             'message' => 'Category successfully updated',

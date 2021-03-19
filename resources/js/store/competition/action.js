@@ -33,7 +33,7 @@ const actions = {
         return new Promise((resolve, reject) => {
             ApiService.post("api/v1/admin/competition/create", competitionInfo)
                 .then((data) => {
-                    console.log(response);
+                    resolve(data)
                     toastr.success('Successfully created', 'Hello', {timeout: 1000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
                 })
                 .catch(({response, status}) => {

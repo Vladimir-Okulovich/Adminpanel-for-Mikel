@@ -86,11 +86,14 @@ __webpack_require__.r(__webpack_exports__);
         text: "Edit",
         active: true
       }],
+      minValue: true,
       isError: false,
       Error: null,
       typeform: {
         name: "",
-        description: ""
+        description: "",
+        year1: 0,
+        year2: 0
       },
       typesubmit: false
     };
@@ -101,6 +104,12 @@ __webpack_require__.r(__webpack_exports__);
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_7__.required
       },
       description: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_7__.required
+      },
+      year1: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_7__.required
+      },
+      year2: {
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_7__.required
       }
     }
@@ -119,18 +128,27 @@ __webpack_require__.r(__webpack_exports__);
 
       this.typesubmit = true;
       this.isError = false;
-      this.Error = null; // stop here if form is invalid
+      this.Error = null;
+
+      if (this.typeform.year1 >= this.typeform.year2) {
+        this.minValue = false;
+      } else {
+        this.minValue = true;
+      } // stop here if form is invalid
+
 
       this.$v.$touch();
 
-      if (this.$v.typeform.name.$error || this.$v.typeform.description.$error) {
+      if (!this.minValue || this.$v.typeform.name.$error || this.$v.typeform.description.$error || this.$v.typeform.year1.$error || this.$v.typeform.year2.$error) {
         return;
       }
 
       return this.updateCategory({
         id: this.getCategory.id,
         name: this.typeform.name,
-        description: this.typeform.description
+        description: this.typeform.description,
+        year1: this.typeform.year1,
+        year2: this.typeform.year2
       }).then(function (res) {
         _this.$router.push({
           name: "Categories"
@@ -7181,6 +7199,112 @@ var render = function() {
                             ])
                           : _vm._e()
                       ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group" }, [
+                      _c("label", [_vm._v("Year1")]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: (_vm.typeform.year1 = _vm.getCategory.year1),
+                            expression: "typeform.year1=getCategory.year1"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        class: {
+                          "is-invalid":
+                            _vm.typesubmit && _vm.$v.typeform.year1.$error
+                        },
+                        attrs: {
+                          type: "number",
+                          placeholder: "Min year",
+                          name: "year1"
+                        },
+                        domProps: {
+                          value: (_vm.typeform.year1 = _vm.getCategory.year1)
+                        },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              (_vm.typeform.year1 = _vm.getCategory),
+                              "year1",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _vm.typesubmit && _vm.$v.typeform.year1.$error
+                        ? _c("div", { staticClass: "invalid-feedback" }, [
+                            !_vm.$v.typeform.year1.required
+                              ? _c("span", [_vm._v("This value is required.")])
+                              : _vm._e()
+                          ])
+                        : _vm._e()
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group" }, [
+                      _c("label", [_vm._v("Year2")]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: (_vm.typeform.year2 = _vm.getCategory.year2),
+                            expression: "typeform.year2=getCategory.year2"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        class: {
+                          "is-invalid":
+                            _vm.typesubmit &&
+                            (_vm.$v.typeform.year2.$error || !_vm.minValue)
+                        },
+                        attrs: {
+                          type: "number",
+                          placeholder: "Max year",
+                          name: "year2"
+                        },
+                        domProps: {
+                          value: (_vm.typeform.year2 = _vm.getCategory.year2)
+                        },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              (_vm.typeform.year2 = _vm.getCategory),
+                              "year2",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _vm.typesubmit &&
+                      (_vm.$v.typeform.year2.$error || !_vm.minValue)
+                        ? _c("div", { staticClass: "invalid-feedback" }, [
+                            !_vm.$v.typeform.year2.required
+                              ? _c("span", [_vm._v("This value is required.")])
+                              : _vm._e(),
+                            _vm._v(" "),
+                            !_vm.minValue
+                              ? _c("span", [
+                                  _vm._v(
+                                    "This value should be greater than Year1."
+                                  )
+                                ])
+                              : _vm._e()
+                          ])
+                        : _vm._e()
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "form-group mt-5 mb-0" }, [

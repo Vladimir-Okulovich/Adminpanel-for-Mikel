@@ -54,13 +54,17 @@ export default {
         place: "",
         date: "",
         time: "",
-        ranking_score: false,
+        ranking_score: "",
         status: "",
         lycra: "",
         modality: "",
         category: "",
         logo: null,
       },
+      rankingScoreOptions: [
+        "Yes",
+        "No"
+      ],
       statusOptions: [
         "CLOSED",
         "REGISTRATION OPEN",
@@ -81,6 +85,7 @@ export default {
       place: { required },
       date: { required },
       time: { required },
+      ranking_score: { required },
       status: { required },
       lycra: { required },
       modality: { required },
@@ -234,7 +239,7 @@ export default {
                     <br />
                     <date-picker
                       v-model="typeform.date=getCompetition.date"
-                      format="MM/DD/YYYY"
+                      format="YYYY-MM-DD"
                       value-type="format"
                       :first-day-of-week="1"
                       lang="en"
@@ -250,10 +255,8 @@ export default {
                     <br />
                     <date-picker
                       v-model="typeform.time=getCompetition.time"
-                      format="hh:mm:ss a"
-                      value-type="format"
                       type="time"
-                      placeholder="hh:mm:ss a"
+                      placeholder="hh:mm:ss"
                       :class="{ 'is-invalid': typesubmit && $v.typeform.time.$error }"
                     ></date-picker>
                     <div v-if="typesubmit && $v.typeform.time.$error" class="invalid-feedback">
@@ -262,9 +265,16 @@ export default {
                   </div>
                 </div>
                 <div class="col-lg-6 col-md-12">
-                  <div class="mb-2">
-                    <p>Ranking Score</p>
-                    <switches v-model="typeform.ranking_score=getCompetition.ranking_score" type-bold="false" color="info" class="ml-1 mb-0"></switches>
+                  <div class="mb-3">
+                    <label>Ranking_score</label>
+                    <multiselect 
+                      v-model="typeform.ranking_score=getCompetition.ranking_score" 
+                      :options="rankingScoreOptions"
+                      :class="{ 'is-invalid': typesubmit && $v.typeform.ranking_score.$error }"
+                    ></multiselect>
+                    <div v-if="typesubmit && $v.typeform.ranking_score.$error" class="invalid-feedback">
+                      <span v-if="!$v.typeform.ranking_score.required">This value is required.</span>
+                    </div>
                   </div>
                   <div class="form-group">
                     <label>Status</label>

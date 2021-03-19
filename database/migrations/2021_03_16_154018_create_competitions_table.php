@@ -21,7 +21,7 @@ class CreateCompetitionsTable extends Migration
             $table->string('place');
             $table->date('date');
             $table->time('time');
-            $table->boolean('ranking_score');
+            $table->string('ranking_score');
             $table->string('logo')->nullable();
             $table->foreignId('status_id')->constrained('statuses');
             $table->timestamps();

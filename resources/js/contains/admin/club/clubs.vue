@@ -129,7 +129,7 @@
               <!-- End search -->
             </div>
             <!-- Table -->
-            <div class="table-responsive mb-0">
+            <div class="table-responsive table-dark mb-0">
               <b-table
                 :items="getClubs"
                 :fields="fields"

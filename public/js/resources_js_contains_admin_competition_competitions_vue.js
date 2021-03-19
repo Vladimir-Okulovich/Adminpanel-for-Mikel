@@ -7140,7 +7140,7 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "div",
-                { staticClass: "table-responsive mb-0" },
+                { staticClass: "table-responsive table-dark mb-0" },
                 [
                   _c("b-table", {
                     attrs: {
@@ -7179,6 +7179,28 @@ var render = function() {
                                 _vm._s(row.item.competition_type.name) +
                                 "\n              "
                             )
+                          ]
+                        }
+                      },
+                      {
+                        key: "cell(ranking_score)",
+                        fn: function(row) {
+                          return [
+                            row.item.ranking_score == "Yes"
+                              ? _c(
+                                  "span",
+                                  { staticClass: "badge badge-info" },
+                                  [_vm._v(_vm._s(row.item.ranking_score))]
+                                )
+                              : _vm._e(),
+                            _vm._v(" "),
+                            row.item.ranking_score == "No"
+                              ? _c(
+                                  "span",
+                                  { staticClass: "badge badge-warning" },
+                                  [_vm._v(_vm._s(row.item.ranking_score))]
+                                )
+                              : _vm._e()
                           ]
                         }
                       },

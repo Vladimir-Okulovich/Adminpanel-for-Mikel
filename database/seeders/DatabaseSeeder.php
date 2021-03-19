@@ -18,6 +18,8 @@ class DatabaseSeeder extends Seeder
             ModalitySeeder::class,
             StatusSeeder::class,
             CompetitionTypeSeeder::class,
+            LycraSeeder::class,
+            SexSeeder::class,
         ]);
     }
 }

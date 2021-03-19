@@ -45,11 +45,14 @@ export default {
           active: true
         }
       ],
+      minValue: true,
       isError: false,
       Error: null,
       typeform: {
         name: "",
         description: "",
+        year1: 0,
+        year2: 0,
       },
       typesubmit: false,
     };
@@ -58,6 +61,8 @@ export default {
     typeform: {
       name: { required },
       description: { required },
+      year1: { required },
+      year2: { required },
     }
   },
   methods: {
@@ -72,15 +77,22 @@ export default {
       this.typesubmit = true;
       this.isError = false;
       this.Error = null;
+      if (this.typeform.year1 >= this.typeform.year2) {
+        this.minValue = false;
+      } else {
+        this.minValue = true;
+      }
       // stop here if form is invalid
       this.$v.$touch()
-      if (this.$v.typeform.name.$error || this.$v.typeform.description.$error) {
+      if (!this.minValue || this.$v.typeform.name.$error || this.$v.typeform.description.$error || this.$v.typeform.year1.$error || this.$v.typeform.year2.$error) {
         return ;
       }
       return (
         this.createCategory({
             name: this.typeform.name,
-            description: this.typeform.description
+            description: this.typeform.description,
+            year1: this.typeform.year1,
+            year2: this.typeform.year2,
           })
           .then((res) => {
             this.$router.push({name: "Categories"});
@@ -139,6 +151,37 @@ export default {
                   <div v-if="typesubmit && $v.typeform.description.$error" class="invalid-feedback">
                     <span v-if="!$v.typeform.description.required">This value is required.</span>
                   </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Year1</label>
+                <input
+                  v-model="typeform.year1"
+                  type="number"
+                  class="form-control"
+                  placeholder="Min year"
+                  name="year1"
+                  :class="{ 'is-invalid': typesubmit && $v.typeform.year1.$error }"
+                />
+                <div v-if="typesubmit && $v.typeform.year1.$error" class="invalid-feedback">
+                  <span v-if="!$v.typeform.year1.required">This value is required.</span>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Year2</label>
+                <input
+                  v-model="typeform.year2"
+                  type="number"
+                  class="form-control"
+                  placeholder="Max year"
+                  name="year2"
+                  :class="{ 'is-invalid': typesubmit && ($v.typeform.year2.$error || !minValue) }"
+                />
+                <div v-if="typesubmit && ($v.typeform.year2.$error || !minValue)" class="invalid-feedback">
+                  <span v-if="!$v.typeform.year2.required">This value is required.</span>
+                  <span
+                      v-if="!minValue"
+                    >This value should be greater than Year1.</span>
                 </div>
               </div>
               <div class="form-group mt-5 mb-0">
