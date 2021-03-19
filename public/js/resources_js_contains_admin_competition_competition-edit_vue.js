@@ -8389,7 +8389,11 @@ var render = function() {
                                 "is-invalid":
                                   _vm.typesubmit && _vm.$v.typeform.time.$error
                               },
-                              attrs: { type: "time", placeholder: "hh:mm:ss" },
+                              attrs: {
+                                type: "time",
+                                placeholder: "hh:mm:ss",
+                                "value-type": "format"
+                              },
                               model: {
                                 value: (_vm.typeform.time =
                                   _vm.getCompetition.time),
@@ -8521,11 +8525,18 @@ var render = function() {
                                 multiple: true
                               },
                               model: {
-                                value: _vm.typeform.category,
+                                value: (_vm.typeform.category =
+                                  _vm.getCompetition.categoryNames),
                                 callback: function($$v) {
-                                  _vm.$set(_vm.typeform, "category", $$v)
+                                  _vm.$set(
+                                    (_vm.typeform.category =
+                                      _vm.getCompetition),
+                                    "categoryNames",
+                                    $$v
+                                  )
                                 },
-                                expression: "typeform.category"
+                                expression:
+                                  "typeform.category=getCompetition.categoryNames"
                               }
                             }),
                             _vm._v(" "),
@@ -8559,11 +8570,18 @@ var render = function() {
                                 multiple: true
                               },
                               model: {
-                                value: _vm.typeform.modality,
+                                value: (_vm.typeform.modality =
+                                  _vm.getCompetition.modalityNames),
                                 callback: function($$v) {
-                                  _vm.$set(_vm.typeform, "modality", $$v)
+                                  _vm.$set(
+                                    (_vm.typeform.modality =
+                                      _vm.getCompetition),
+                                    "modalityNames",
+                                    $$v
+                                  )
                                 },
-                                expression: "typeform.modality"
+                                expression:
+                                  "typeform.modality=getCompetition.modalityNames"
                               }
                             }),
                             _vm._v(" "),
@@ -8596,11 +8614,17 @@ var render = function() {
                                 multiple: true
                               },
                               model: {
-                                value: _vm.typeform.lycra,
+                                value: (_vm.typeform.lycra =
+                                  _vm.getCompetition.lycraNames),
                                 callback: function($$v) {
-                                  _vm.$set(_vm.typeform, "lycra", $$v)
+                                  _vm.$set(
+                                    (_vm.typeform.lycra = _vm.getCompetition),
+                                    "lycraNames",
+                                    $$v
+                                  )
                                 },
-                                expression: "typeform.lycra"
+                                expression:
+                                  "typeform.lycra=getCompetition.lycraNames"
                               }
                             }),
                             _vm._v(" "),

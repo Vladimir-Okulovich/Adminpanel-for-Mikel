@@ -21,4 +21,9 @@ class Category extends Model
     {
         return $this->belongsTo(Sex::class);
     }
+
+    public function competitions()
+    {
+        return $this->belongsToMany(Competition::class, 'category_competition');
+    }
 }

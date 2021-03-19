@@ -52,7 +52,7 @@ export default {
         dni_ficha: "",
         birthday: "",
         sex: "Male",
-        club: "",
+        club: [],
       },
       sexOptions: [
         "Male",

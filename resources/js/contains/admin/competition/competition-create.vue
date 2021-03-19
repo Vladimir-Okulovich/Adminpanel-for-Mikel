@@ -120,6 +120,7 @@ export default {
      */
     // eslint-disable-next-line no-unused-vars
     typeForm(e) {
+      console.log(this.typeform.time)
       this.typesubmit = true;
       this.isError = false;
       this.Error = null;
@@ -253,6 +254,7 @@ export default {
                       v-model="typeform.time"
                       type="time"
                       placeholder="hh:mm:ss"
+                      value-type="format"
                       :class="{ 'is-invalid': typesubmit && $v.typeform.time.$error }"
                     ></date-picker>
                     <div v-if="typesubmit && $v.typeform.time.$error" class="invalid-feedback">
@@ -285,7 +287,7 @@ export default {
                   <div class="mb-3">
                     <label>Category</label>
                     <multiselect 
-                      v-model="typeform.category" 
+                      v-model="typeform.category=categoryOptions" 
                       :options="categoryOptions"
                       :multiple="true"
                       :class="{ 'is-invalid': typesubmit && $v.typeform.category.$error }"
@@ -297,7 +299,7 @@ export default {
                   <div class="mb-3">
                     <label>Modality</label>
                     <multiselect 
-                      v-model="typeform.modality" 
+                      v-model="typeform.modality=modalityOptions"
                       :options="modalityOptions"
                       :multiple="true"
                       :class="{ 'is-invalid': typesubmit && $v.typeform.modality.$error }"
@@ -309,7 +311,7 @@ export default {
                   <div class="mb-3">
                     <label>Lycra</label>
                     <multiselect 
-                      v-model="typeform.lycra" 
+                      v-model="typeform.lycra=lycraOptions" 
                       :options="lycraOptions"
                       :multiple="true"
                       :class="{ 'is-invalid': typesubmit && $v.typeform.lycra.$error }"

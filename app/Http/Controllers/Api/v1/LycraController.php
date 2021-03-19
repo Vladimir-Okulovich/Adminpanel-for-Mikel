@@ -113,7 +113,7 @@ class LycraController extends Controller
         $lycraOptions = collect([]);
         $lycras = Lycra::all();
         foreach ($lycras as $lycra) {
-            $lycraOptions->push($lycra->color);
+            $lycraOptions->push($lycra->name);
         }
         $lycraOptions->all();
         return response()->json([

@@ -33,4 +33,19 @@ class Competition extends Model
     {
         return $this->belongsTo(Status::class);
     }
+
+    public function lycras()
+    {
+        return $this->belongsToMany(Lycra::class, 'lycra_competition');
+    }
+
+    public function modalities()
+    {
+        return $this->belongsToMany(Modality::class, 'modality_competition');
+    }
+
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class, 'category_competition');
+    }
 }

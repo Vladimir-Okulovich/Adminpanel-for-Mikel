@@ -98,7 +98,7 @@ __webpack_require__.r(__webpack_exports__);
         dni_ficha: "",
         birthday: "",
         sex: "Male",
-        club: ""
+        club: []
       },
       sexOptions: ["Male", "Female"],
       typesubmit: false

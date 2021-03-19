@@ -165,6 +165,7 @@ __webpack_require__.r(__webpack_exports__);
     typeForm: function typeForm(e) {
       var _this = this;
 
+      console.log(this.typeform.time);
       this.typesubmit = true;
       this.isError = false;
       this.Error = null; // stop here if form is invalid
@@ -8361,7 +8362,11 @@ var render = function() {
                                 "is-invalid":
                                   _vm.typesubmit && _vm.$v.typeform.time.$error
                               },
-                              attrs: { type: "time", placeholder: "hh:mm:ss" },
+                              attrs: {
+                                type: "time",
+                                placeholder: "hh:mm:ss",
+                                "value-type": "format"
+                              },
                               model: {
                                 value: _vm.typeform.time,
                                 callback: function($$v) {
@@ -8509,11 +8514,16 @@ var render = function() {
                                 multiple: true
                               },
                               model: {
-                                value: _vm.typeform.category,
+                                value: (_vm.typeform.category =
+                                  _vm.categoryOptions),
                                 callback: function($$v) {
-                                  _vm.$set(_vm.typeform, "category", $$v)
+                                  _vm.$set(
+                                    _vm.typeform,
+                                    "category=categoryOptions",
+                                    $$v
+                                  )
                                 },
-                                expression: "typeform.category"
+                                expression: "typeform.category=categoryOptions"
                               }
                             }),
                             _vm._v(" "),
@@ -8547,11 +8557,16 @@ var render = function() {
                                 multiple: true
                               },
                               model: {
-                                value: _vm.typeform.modality,
+                                value: (_vm.typeform.modality =
+                                  _vm.modalityOptions),
                                 callback: function($$v) {
-                                  _vm.$set(_vm.typeform, "modality", $$v)
+                                  _vm.$set(
+                                    _vm.typeform,
+                                    "modality=modalityOptions",
+                                    $$v
+                                  )
                                 },
-                                expression: "typeform.modality"
+                                expression: "typeform.modality=modalityOptions"
                               }
                             }),
                             _vm._v(" "),
@@ -8584,11 +8599,15 @@ var render = function() {
                                 multiple: true
                               },
                               model: {
-                                value: _vm.typeform.lycra,
+                                value: (_vm.typeform.lycra = _vm.lycraOptions),
                                 callback: function($$v) {
-                                  _vm.$set(_vm.typeform, "lycra", $$v)
+                                  _vm.$set(
+                                    _vm.typeform,
+                                    "lycra=lycraOptions",
+                                    $$v
+                                  )
                                 },
-                                expression: "typeform.lycra"
+                                expression: "typeform.lycra=lycraOptions"
                               }
                             }),
                             _vm._v(" "),

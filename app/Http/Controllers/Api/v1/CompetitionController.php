@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Api\v1;
 use App\Models\Competition;
 use App\Models\Competition_type;
 use App\Models\Status;
+use App\Models\Lycra;
+use App\Models\Modality;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Validator;
@@ -48,6 +51,25 @@ class CompetitionController extends Controller
         $competition = competition::find($competitionId);
         $competition->competition_type;
         $competition->status;
+
+        $categoryNames = collect([]);
+        foreach ($competition->categories as $category) {
+            $categoryNames->push($category->name);
+        }
+        $competition->categoryNames = $categoryNames;
+
+        $modalityNames = collect([]);
+        foreach ($competition->modalities as $modality) {
+            $modalityNames->push($modality->name);
+        }
+        $competition->modalityNames = $modalityNames;
+
+        $lycraNames = collect([]);
+        foreach ($competition->lycras as $lycra) {
+            $lycraNames->push($lycra->name);
+        }
+        $competition->lycraNames = $lycraNames;
+
         return response()->json([
             'message' => 'success',
             'competition' => $competition,
@@ -101,8 +123,29 @@ class CompetitionController extends Controller
         // $competition->logo = $result;
         $competition->save();
 
+        $lycras = Lycra::whereIn('name', $request->lycra)->get();
+        $lycraIds = collect([]);
+        foreach ($lycras as $lycra) {
+            $lycraIds->push($lycra->id);
+        }
+        $competition->lycras()->attach($lycraIds);
+
+        $modalities = Modality::whereIn('name', $request->modality)->get();
+        $modalityIds = collect([]);
+        foreach ($modalities as $modality) {
+            $modalityIds->push($modality->id);
+        }
+        $competition->modalities()->attach($modalityIds);
+
+        $categories = Category::whereIn('name', $request->category)->get();
+        $categoryIds = collect([]);
+        foreach ($categories as $category) {
+            $categoryIds->push($category->id);
+        }
+        $competition->categories()->attach($categoryIds);
+
         return response()->json([
-            'message' => 'Participant successfully registered',
+            'message' => 'Competition successfully registered',
             'competition' => $competition
         ], 201);
     }
@@ -156,9 +199,29 @@ class CompetitionController extends Controller
             'status_id' => $status->id,
             'logo' => $result,
         ]);
+        $modalities = Modality::whereIn('name', $request->modality)->get();
+        $modalityIds = collect([]);
+        foreach ($modalities as $modality) {
+            $modalityIds->push($modality->id);
+        }
+        $competition->modalities()->sync($modalityIds);
+
+        $categories = Category::whereIn('name', $request->category)->get();
+        $categoryIds = collect([]);
+        foreach ($categories as $category) {
+            $categoryIds->push($category->id);
+        }
+        $competition->categories()->sync($categoryIds);
+
+        $lycras = Lycra::whereIn('name', $request->lycra)->get();
+        $lycraIds = collect([]);
+        foreach ($lycras as $lycra) {
+            $lycraIds->push($lycra->id);
+        }
+        $competition->lycras()->sync($lycraIds);
 
         return response()->json([
-            'message' => 'Participant successfully updated',
+            'message' => 'Competition successfully updated',
             'competition' => $competition
         ], 201);
     }
@@ -174,6 +237,7 @@ class CompetitionController extends Controller
         //delete competition
         $competition = Competition::find($competitionId);
         $competition -> delete();
+
         $competitions = Competition::all();
         foreach ($competitions as $competition) {
             $competition->competition_type;

@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Modality extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'name',
+    ];
+
+    public function competitions()
+    {
+        return $this->belongsToMany(Competition::class, 'modality_competition');
+    }
 }
