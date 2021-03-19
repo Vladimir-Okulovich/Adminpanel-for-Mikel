@@ -5,6 +5,8 @@ import appConfig from "@/app.config";
 
 import { mapActions, mapGetters } from 'vuex';
 
+import Multiselect from "vue-multiselect";
+
 import {
   required,
   email,
@@ -23,7 +25,7 @@ export default {
     title: "EDIT CATEGORY",
     meta: [{ name: "description", content: appConfig.description }]
   },
-  components: { Layout, PageHeader },
+  components: { Multiselect, Layout, PageHeader },
   data() {
     return {
       title: "EDIT CATEGORY",
@@ -45,6 +47,10 @@ export default {
           active: true
         }
       ],
+      sexOptions: [
+        "Female",
+        "Male"
+      ],
       minValue: true,
       isError: false,
       Error: null,
@@ -53,6 +59,7 @@ export default {
         description: "",
         year1: 0,
         year2: 0,
+        sex: "",
       },
       typesubmit: false,
     };
@@ -63,6 +70,7 @@ export default {
       description: { required },
       year1: { required },
       year2: { required },
+      sex: { required },
     }
   },
   mounted() {
@@ -83,6 +91,7 @@ export default {
      */
     // eslint-disable-next-line no-unused-vars
     typeForm(e) {
+      console.log(this.typeform.sex)
       this.typesubmit = true;
       this.isError = false;
       this.Error = null;
@@ -93,7 +102,7 @@ export default {
       }
       // stop here if form is invalid
       this.$v.$touch();
-      if (!this.minValue || this.$v.typeform.name.$error || this.$v.typeform.description.$error || this.$v.typeform.year1.$error || this.$v.typeform.year2.$error) {
+      if (!this.minValue || this.$v.typeform.sex.$error || this.$v.typeform.name.$error || this.$v.typeform.description.$error || this.$v.typeform.year1.$error || this.$v.typeform.year2.$error) {
         return ;
       }
       return (
@@ -103,6 +112,7 @@ export default {
             description: this.typeform.description,
             year1: this.typeform.year1,
             year2: this.typeform.year2,
+            sex: this.typeform.sex,
           })
           .then((res) => {
             this.$router.push({name: "Categories"});
@@ -193,7 +203,18 @@ export default {
                       v-if="!minValue"
                     >This value should be greater than Year1.</span>
                 </div>
-              </div>             
+              </div>
+              <div class="mb-3">
+                <label>Sex</label>
+                <multiselect 
+                  v-model="typeform.sex=getCategory.sex.name" 
+                  :options="sexOptions"
+                  :class="{ 'is-invalid': typesubmit && $v.typeform.sex.$error }"
+                ></multiselect>
+                <div v-if="typesubmit && $v.typeform.sex.$error" class="invalid-feedback">
+                  <span v-if="!$v.typeform.sex.required">This value is required.</span>
+                </div>
+              </div>
               <div class="form-group mt-5 mb-0">
                 <div>
                   <button type="submit" class="btn btn-primary">Save</button>

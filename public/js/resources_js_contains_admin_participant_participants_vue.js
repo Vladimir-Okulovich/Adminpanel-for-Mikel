@@ -90,13 +90,13 @@ __webpack_require__.r(__webpack_exports__);
         key: "surname",
         sortable: true
       }, {
-        key: "dni_ficha",
+        key: "sex",
         sortable: false
       }, {
         key: "birthday",
         sortable: true
       }, {
-        key: "sex",
+        key: "dni_ficha",
         sortable: false
       }, {
         key: "club",
@@ -7170,6 +7170,18 @@ var render = function() {
                       filtered: _vm.onFiltered
                     },
                     scopedSlots: _vm._u([
+                      {
+                        key: "cell(sex)",
+                        fn: function(row) {
+                          return [
+                            _vm._v(
+                              "\n                " +
+                                _vm._s(row.item.sex.name) +
+                                "\n              "
+                            )
+                          ]
+                        }
+                      },
                       {
                         key: "cell(club)",
                         fn: function(row) {

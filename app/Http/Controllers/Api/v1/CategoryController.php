@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\v1;
 
 use App\Models\Category;
+use App\Models\Sex;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Validator;
@@ -21,6 +22,9 @@ class CategoryController extends Controller
     public function getAll()
     {
         $categories = Category::all();
+        foreach ($categories as $category) {
+            $category->sex;
+        }
         return response()->json([
             'message' => 'success',
             'categories' => $categories
@@ -36,6 +40,7 @@ class CategoryController extends Controller
     public function getById(Request $request, $categoryId)
     {
         $category = Category::find($categoryId);
+        $category->sex;
         return response()->json([
             'message' => 'success',
             'category' => $category
@@ -53,18 +58,22 @@ class CategoryController extends Controller
             'description' => 'required|string|max:1000',
             'year1' => 'required|integer',
             'year2' => 'required|integer',
+            'sex' => 'required'
         ]);
 
         if($validator->fails()){
             return response()->json($validator->errors()->toJson(), 400);
         }
 
-        $category = Category::create(array_merge(
-            $validator->validated(),
-        ));
+        $sex = Sex::where('name', $request->sex)->first();
+        $sex->categories()->create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'year1' => $request->year1,
+            'year2' => $request->year2,
+        ]);
         return response()->json([
             'message' => 'Category successfully registered',
-            'category' => $category
         ], 201);
     }
 
@@ -77,18 +86,26 @@ class CategoryController extends Controller
     public function update(Request $request)
     {
         // Update Category
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             'name' => 'required|string|between:1,100',
             'description' => 'required|string|max:1000',
             'year1' => 'required|integer',
             'year2' => 'required|integer',
+            'sex' => 'required'
         ]);
+
+        if($validator->fails()){
+            return response()->json($validator->errors()->toJson(), 400);
+        }
+
+        $sex = Sex::where('name', $request->sex)->first();
         $category = Category::find($request->id);
         $category -> update([
             'name' => $request->name,
             'description' => $request->description,
             'year1' => $request->year1,
             'year2' => $request->year2,
+            'sex_id' => $sex->id,
         ]);
         return response()->json([
             'message' => 'Category successfully updated',
@@ -108,6 +125,9 @@ class CategoryController extends Controller
         $category = Category::find($categoryId);
         $category -> delete();
         $categories = Category::all();
+        foreach ($categories as $category) {
+            $category->sex;
+        }
         return response()->json([
             'message' => 'successfully deleted',
             'categories' => $categories

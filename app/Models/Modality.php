@@ -5,12 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Lycra extends Model
+class Modality extends Model
 {
     use HasFactory;
-
-    protected $fillable = [
-        'color',
-        'name',
-    ];
 }

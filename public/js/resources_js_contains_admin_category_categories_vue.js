@@ -90,8 +90,11 @@ __webpack_require__.r(__webpack_exports__);
         key: "name",
         sortable: true
       }, {
-        key: "Age",
+        key: "age",
         sortable: true
+      }, {
+        key: "sex",
+        sortable: false
       }, {
         key: "description",
         sortable: false
@@ -7188,6 +7191,18 @@ var render = function() {
                                 "~" +
                                 _vm._s(row.item.year2) +
                                 " years\n              "
+                            )
+                          ]
+                        }
+                      },
+                      {
+                        key: "cell(sex)",
+                        fn: function(row) {
+                          return [
+                            _vm._v(
+                              "\n                " +
+                                _vm._s(row.item.sex.name) +
+                                "\n              "
                             )
                           ]
                         }

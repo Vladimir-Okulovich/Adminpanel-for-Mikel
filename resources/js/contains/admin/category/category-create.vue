@@ -3,6 +3,8 @@ import Layout from "../subcomponent/layout";
 import PageHeader from "@/components/page-header";
 import appConfig from "@/app.config";
 
+import Multiselect from "vue-multiselect";
+
 import { mapActions, mapGetters } from 'vuex';
 
 import {
@@ -23,7 +25,7 @@ export default {
     title: "ADD CATEGORY",
     meta: [{ name: "description", content: appConfig.description }]
   },
-  components: { Layout, PageHeader },
+  components: { Multiselect, Layout, PageHeader },
   data() {
     return {
       title: "ADD CATEGORY",
@@ -45,6 +47,10 @@ export default {
           active: true
         }
       ],
+      sexOptions: [
+        "Female",
+        "Male"
+      ],
       minValue: true,
       isError: false,
       Error: null,
@@ -53,6 +59,7 @@ export default {
         description: "",
         year1: 0,
         year2: 0,
+        sex: "",
       },
       typesubmit: false,
     };
@@ -63,6 +70,7 @@ export default {
       description: { required },
       year1: { required },
       year2: { required },
+      sex: { required },
     }
   },
   methods: {
@@ -84,7 +92,7 @@ export default {
       }
       // stop here if form is invalid
       this.$v.$touch()
-      if (!this.minValue || this.$v.typeform.name.$error || this.$v.typeform.description.$error || this.$v.typeform.year1.$error || this.$v.typeform.year2.$error) {
+      if (!this.minValue || this.$v.typeform.name.$error || this.$v.typeform.description.$error || this.$v.typeform.year1.$error || this.$v.typeform.year2.$error || this.$v.typeform.sex.$error) {
         return ;
       }
       return (
@@ -93,6 +101,7 @@ export default {
             description: this.typeform.description,
             year1: this.typeform.year1,
             year2: this.typeform.year2,
+            sex: this.typeform.sex,
           })
           .then((res) => {
             this.$router.push({name: "Categories"});
@@ -182,6 +191,17 @@ export default {
                   <span
                       v-if="!minValue"
                     >This value should be greater than Year1.</span>
+                </div>
+              </div>
+              <div class="mb-3">
+                <label>Sex</label>
+                <multiselect 
+                  v-model="typeform.sex" 
+                  :options="sexOptions"
+                  :class="{ 'is-invalid': typesubmit && $v.typeform.sex.$error }"
+                ></multiselect>
+                <div v-if="typesubmit && $v.typeform.sex.$error" class="invalid-feedback">
+                  <span v-if="!$v.typeform.sex.required">This value is required.</span>
                 </div>
               </div>
               <div class="form-group mt-5 mb-0">

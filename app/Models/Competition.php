@@ -18,9 +18,10 @@ class Competition extends Model
     protected $fillable = [
         'title',
         'place',
-        'start_time',
+        'description',
+        'date',
+        'time',
         'ranking_score',
-        'status',
     ];
 
     public function competition_type()

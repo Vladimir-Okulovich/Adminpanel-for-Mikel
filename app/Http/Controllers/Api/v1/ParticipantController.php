@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\v1;
 use Illuminate\Http\Request;
 use App\Models\Participant;
 use App\Models\Club;
+use App\Models\Sex;
 use App\Http\Controllers\Controller;
 use Validator;
 

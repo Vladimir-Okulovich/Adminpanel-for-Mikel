@@ -38,9 +38,9 @@
         fields: [
           { key: "name", sortable: true },
           { key: "surname", sortable: true },
-          { key: "dni_ficha", sortable: false },
-          { key: "birthday", sortable: true },
           { key: "sex", sortable: false },
+          { key: "birthday", sortable: true },
+          { key: "dni_ficha", sortable: false },
           { key: "club", sortable: false },
           { key: "actions", sortable: false },
         ],
@@ -143,6 +143,9 @@
                 :filter-included-fields="filterOn"
                 @filtered="onFiltered"
               >
+                <template #cell(sex)="row">
+                  {{ row.item.sex.name }}
+                </template>
                 <template #cell(club)="row">
                   {{ row.item.club.name }}
                 </template>

@@ -14,5 +14,11 @@ class Category extends Model
         'description',
         'year1',
         'year2',
+        'sex_id',
     ];
+
+    public function sex()
+    {
+        return $this->belongsTo(Sex::class);
+    }
 }

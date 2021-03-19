@@ -14,11 +14,10 @@ class Participant extends Model
         'surname',
         'dni_ficha',
         'birthday',
-        'sex',
-        'club_id',
+        'sex_id',
     ];
 
-    public function club()
+    public function sex()
     {
         return $this->belongsTo(Club::class);
     }

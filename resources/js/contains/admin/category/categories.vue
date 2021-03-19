@@ -41,7 +41,8 @@
         sortDesc: false,
         fields: [
           { key: "name", sortable: true },
-          { key: "Age", sortable: true },
+          { key: "age", sortable: true },
+          { key: "sex", sortable: false },
           { key: "description", sortable: false },
           { key: "actions", sortable: false }
         ],
@@ -149,6 +150,9 @@
                 </template>
                 <template #cell(age)="row">
                   {{row.item.year1}}~{{row.item.year2}} years
+                </template>
+                <template #cell(sex)="row">
+                  {{row.item.sex.name}}
                 </template>
                 <template #cell(actions)="row">
                   <router-link :to="{ name: 'CategoryEdit', params: { categoryId: row.item.id }}" class="btn btn-sm btn-secondary mr-2">
