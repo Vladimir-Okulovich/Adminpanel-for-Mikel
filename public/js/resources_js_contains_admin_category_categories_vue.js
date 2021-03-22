@@ -87,14 +87,11 @@ __webpack_require__.r(__webpack_exports__);
       sortBy: "name",
       sortDesc: false,
       fields: [{
-        key: "name",
+        key: "category",
         sortable: true
       }, {
         key: "age",
         sortable: true
-      }, {
-        key: "sex",
-        sortable: false
       }, {
         key: "description",
         sortable: false
@@ -119,6 +116,12 @@ __webpack_require__.r(__webpack_exports__);
     this.initCategories();
   },
   methods: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)((0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_6__.mapActions)(['initCategories', 'deleteCategory'])), {}, {
+    age: function age(year) {
+      var d = new Date();
+      var currentYear = d.getFullYear();
+      return currentYear - year;
+    },
+
     /**
      * Search the table data with search input
      */
@@ -7168,6 +7171,20 @@ var render = function() {
                     },
                     scopedSlots: _vm._u([
                       {
+                        key: "cell(category)",
+                        fn: function(row) {
+                          return [
+                            _vm._v(
+                              "\n                " +
+                                _vm._s(
+                                  row.item.name + ", " + row.item.sex.name
+                                ) +
+                                "\n              "
+                            )
+                          ]
+                        }
+                      },
+                      {
                         key: "cell(description)",
                         fn: function(row) {
                           return [
@@ -7187,22 +7204,10 @@ var render = function() {
                           return [
                             _vm._v(
                               "\n                " +
-                                _vm._s(row.item.year1) +
+                                _vm._s(_vm.age(row.item.year2)) +
                                 "~" +
-                                _vm._s(row.item.year2) +
+                                _vm._s(_vm.age(row.item.year1)) +
                                 " years\n              "
-                            )
-                          ]
-                        }
-                      },
-                      {
-                        key: "cell(sex)",
-                        fn: function(row) {
-                          return [
-                            _vm._v(
-                              "\n                " +
-                                _vm._s(row.item.sex.name) +
-                                "\n              "
                             )
                           ]
                         }

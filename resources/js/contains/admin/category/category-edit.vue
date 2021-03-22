@@ -4,6 +4,7 @@ import PageHeader from "@/components/page-header";
 import appConfig from "@/app.config";
 
 import { mapActions, mapGetters } from 'vuex';
+import DatePicker from "vue2-datepicker";
 
 import Multiselect from "vue-multiselect";
 
@@ -25,7 +26,7 @@ export default {
     title: "EDIT CATEGORY",
     meta: [{ name: "description", content: appConfig.description }]
   },
-  components: { Multiselect, Layout, PageHeader },
+  components: { DatePicker, Multiselect, Layout, PageHeader },
   data() {
     return {
       title: "EDIT CATEGORY",
@@ -57,8 +58,8 @@ export default {
       typeform: {
         name: "",
         description: "",
-        year1: 0,
-        year2: 0,
+        year1: "",
+        year2: "",
         sex: "",
       },
       typesubmit: false,
@@ -86,12 +87,15 @@ export default {
       'getCategoryById',
       'updateCategory'
     ]),
+    gstr(year) {
+      return ToString(year);
+    },
     /**
      * Validation type submit
      */
     // eslint-disable-next-line no-unused-vars
     typeForm(e) {
-      console.log(this.typeform.sex)
+      // console.log(typeof(this.getCategory.year1))
       this.typesubmit = true;
       this.isError = false;
       this.Error = null;
@@ -175,28 +179,30 @@ export default {
               </div> 
               <div class="form-group">
                 <label>Year1</label>
-                <input
+                <br />
+                <date-picker
                   v-model="typeform.year1=getCategory.year1"
-                  type="number"
-                  class="form-control"
+                  type="year"
+                  value-type="format"
+                  lang="en"
                   placeholder="Min year"
-                  name="year1"
                   :class="{ 'is-invalid': typesubmit && $v.typeform.year1.$error }"
-                />
+                ></date-picker>
                 <div v-if="typesubmit && $v.typeform.year1.$error" class="invalid-feedback">
                   <span v-if="!$v.typeform.year1.required">This value is required.</span>
                 </div>
               </div>
               <div class="form-group">
                 <label>Year2</label>
-                <input
+                <br />
+                <date-picker
                   v-model="typeform.year2=getCategory.year2"
-                  type="number"
-                  class="form-control"
+                  type="year"
+                  value-type="format"
+                  lang="en"
                   placeholder="Max year"
-                  name="year2"
                   :class="{ 'is-invalid': typesubmit && ($v.typeform.year2.$error || !minValue) }"
-                />
+                ></date-picker>
                 <div v-if="typesubmit && ($v.typeform.year2.$error || !minValue)" class="invalid-feedback">
                   <span v-if="!$v.typeform.year2.required">This value is required.</span>
                   <span

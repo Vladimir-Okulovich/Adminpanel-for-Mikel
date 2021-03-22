@@ -20,6 +20,7 @@ class CreateParticipantsTable extends Migration
             $table->string('dni_ficha');
             $table->date('birthday');
             $table->foreignId('sex_id')->constrained('sexes');
+            $table->foreignId('club_id')->constrained('clubs');
             $table->timestamps();
         });
     }

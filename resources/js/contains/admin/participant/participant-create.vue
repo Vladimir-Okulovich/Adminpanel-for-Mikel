@@ -52,7 +52,7 @@ export default {
         dni_ficha: "",
         birthday: "",
         sex: "Male",
-        club: [],
+        club: "",
       },
       sexOptions: [
         "Male",
@@ -208,7 +208,6 @@ export default {
                 <label>Club</label>
                 <multiselect 
                   v-model="typeform.club"
-                  :multiple="true"
                   :options="clubOptions"
                   :class="{ 'is-invalid': typesubmit && $v.typeform.club.$error }"  
                 ></multiselect>

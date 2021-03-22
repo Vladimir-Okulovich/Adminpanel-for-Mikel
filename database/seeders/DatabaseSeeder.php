@@ -20,6 +20,8 @@ class DatabaseSeeder extends Seeder
             CompetitionTypeSeeder::class,
             LycraSeeder::class,
             SexSeeder::class,
+            CategorySeeder::class,
+            ClubSeeder::class,
         ]);
     }
 }

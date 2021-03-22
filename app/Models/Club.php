@@ -15,6 +15,6 @@ class Club extends Model
 
     public function participants()
     {
-        return $this->belongsToMany(Participant::class, 'club_participant');
+        return $this->hasMany(Participant::class);
     }
 }

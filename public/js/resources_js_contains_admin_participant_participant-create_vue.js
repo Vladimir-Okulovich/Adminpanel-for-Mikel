@@ -98,7 +98,7 @@ __webpack_require__.r(__webpack_exports__);
         dni_ficha: "",
         birthday: "",
         sex: "Male",
-        club: []
+        club: ""
       },
       sexOptions: ["Male", "Female"],
       typesubmit: false
@@ -8011,7 +8011,7 @@ var render = function() {
                             "is-invalid":
                               _vm.typesubmit && _vm.$v.typeform.club.$error
                           },
-                          attrs: { multiple: true, options: _vm.clubOptions },
+                          attrs: { options: _vm.clubOptions },
                           model: {
                             value: _vm.typeform.club,
                             callback: function($$v) {

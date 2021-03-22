@@ -40,9 +40,8 @@
         sortBy: "name",
         sortDesc: false,
         fields: [
-          { key: "name", sortable: true },
+          { key: "category", sortable: true },
           { key: "age", sortable: true },
-          { key: "sex", sortable: false },
           { key: "description", sortable: false },
           { key: "actions", sortable: false }
         ],
@@ -70,6 +69,11 @@
         'initCategories',
         'deleteCategory',
       ]),
+      age(year) {
+        var d = new Date();
+        var currentYear = d.getFullYear();
+        return currentYear-year;
+      },
       /**
        * Search the table data with search input
        */
@@ -145,14 +149,14 @@
                 :filter-included-fields="filterOn"
                 @filtered="onFiltered"
               >
+                <template #cell(category)="row">
+                  {{row.item.name + ", " +row.item.sex.name}}
+                </template>
                 <template #cell(description)="row">
                   {{ row.item.description | truncate(50) }}
                 </template>
                 <template #cell(age)="row">
-                  {{row.item.year1}}~{{row.item.year2}} years
-                </template>
-                <template #cell(sex)="row">
-                  {{row.item.sex.name}}
+                  {{age(row.item.year2)}}~{{age(row.item.year1)}} years
                 </template>
                 <template #cell(actions)="row">
                   <router-link :to="{ name: 'CategoryEdit', params: { categoryId: row.item.id }}" class="btn btn-sm btn-secondary mr-2">

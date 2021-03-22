@@ -32,7 +32,9 @@ class ClubController extends Controller
         $clubOptions = collect([]);
         $clubs = Club::all();
         foreach ($clubs as $club) {
-            $clubOptions->push($club->name);
+            if ($club->name != "Independiente") {
+                $clubOptions->push($club->name);
+            }
         }
         return response()->json([
             'message' => 'success',
@@ -110,6 +112,11 @@ class ClubController extends Controller
     {
         //delete club
         $club = Club::find($clubId);
+        foreach ($club->participants as $participant) {
+            $participant -> update([
+                'club_id' => 1,
+            ]);
+        }
         $club -> delete();
         $clubs = Club::all();
         return response()->json([

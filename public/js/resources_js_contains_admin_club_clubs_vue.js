@@ -7160,39 +7160,44 @@ var render = function() {
                         key: "cell(actions)",
                         fn: function(row) {
                           return [
-                            _c(
-                              "router-link",
-                              {
-                                staticClass: "btn btn-sm btn-secondary mr-2",
-                                attrs: {
-                                  to: {
-                                    name: "ClubEdit",
-                                    params: { clubId: row.item.id }
-                                  }
-                                }
-                              },
-                              [_c("i", { staticClass: "far fa-edit" })]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "b-button",
-                              {
-                                directives: [
+                            row.item.id != 1
+                              ? _c(
+                                  "router-link",
                                   {
-                                    name: "b-modal",
-                                    rawName: "v-b-modal.delete-modal",
-                                    modifiers: { "delete-modal": true }
-                                  }
-                                ],
-                                attrs: { size: "sm" },
-                                on: {
-                                  click: function($event) {
-                                    return _vm.setId(row.item.id)
-                                  }
-                                }
-                              },
-                              [_c("i", { staticClass: "fas fa-trash" })]
-                            )
+                                    staticClass:
+                                      "btn btn-sm btn-secondary mr-2",
+                                    attrs: {
+                                      to: {
+                                        name: "ClubEdit",
+                                        params: { clubId: row.item.id }
+                                      }
+                                    }
+                                  },
+                                  [_c("i", { staticClass: "far fa-edit" })]
+                                )
+                              : _vm._e(),
+                            _vm._v(" "),
+                            row.item.id != 1
+                              ? _c(
+                                  "b-button",
+                                  {
+                                    directives: [
+                                      {
+                                        name: "b-modal",
+                                        rawName: "v-b-modal.delete-modal",
+                                        modifiers: { "delete-modal": true }
+                                      }
+                                    ],
+                                    attrs: { size: "sm" },
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.setId(row.item.id)
+                                      }
+                                    }
+                                  },
+                                  [_c("i", { staticClass: "fas fa-trash" })]
+                                )
+                              : _vm._e()
                           ]
                         }
                       }

@@ -15,6 +15,7 @@ class Participant extends Model
         'dni_ficha',
         'birthday',
         'sex_id',
+        'club_id',
     ];
 
     public function sex()
@@ -22,8 +23,8 @@ class Participant extends Model
         return $this->belongsTo(Sex::class);
     }
 
-    public function clubs()
+    public function club()
     {
-        return $this->belongsToMany(Club::class, 'club_participant');
+        return $this->belongsTo(Club::class);
     }
 }

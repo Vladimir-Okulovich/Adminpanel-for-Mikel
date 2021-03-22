@@ -92,6 +92,7 @@ export default {
      */
     // eslint-disable-next-line no-unused-vars
     typeForm(e) {
+      // console.log(this.typeform.club)
       this.typesubmit = true;
       this.isError = false;
       this.Error = null;
@@ -210,8 +211,7 @@ export default {
               <div>
                 <label>Club</label>
                 <multiselect 
-                  v-model="typeform.club=getParticipant.clubNames"
-                  :multiple="true"
+                  v-model="typeform.club=getParticipant.club.name"
                   :options="clubOptions"
                   :class="{ 'is-invalid': typesubmit && $v.typeform.club.$error }"  
                 ></multiselect>

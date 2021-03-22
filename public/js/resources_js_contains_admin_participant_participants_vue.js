@@ -7185,22 +7185,13 @@ var render = function() {
                       {
                         key: "cell(club)",
                         fn: function(row) {
-                          return _vm._l(row.item.clubNames, function(
-                            clubName,
-                            index
-                          ) {
-                            return _c(
-                              "span",
-                              { key: index, staticClass: "pr-1" },
-                              [
-                                _vm._v(
-                                  "\n                  " +
-                                    _vm._s(clubName) +
-                                    "\n                "
-                                )
-                              ]
+                          return [
+                            _vm._v(
+                              "\n                " +
+                                _vm._s(row.item.club.name) +
+                                "\n              "
                             )
-                          })
+                          ]
                         }
                       },
                       {
