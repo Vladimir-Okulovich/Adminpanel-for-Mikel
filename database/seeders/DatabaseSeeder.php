@@ -22,6 +22,8 @@ class DatabaseSeeder extends Seeder
             SexSeeder::class,
             CategorySeeder::class,
             ClubSeeder::class,
+            RankingSeeder::class,
+            RankingPositionPointSeeder::class,
         ]);
     }
 }

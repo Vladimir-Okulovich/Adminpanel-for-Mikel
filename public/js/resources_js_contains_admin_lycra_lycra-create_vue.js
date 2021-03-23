@@ -7448,7 +7448,22 @@ var render = function() {
                             staticClass: "side-nav-link",
                             attrs: { tag: "a", to: "/admin" }
                           },
-                          [_c("span", [_vm._v("Ranking")])]
+                          [_c("span", [_vm._v("Ranking Points")])]
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "li",
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            staticClass: "side-nav-link",
+                            attrs: { tag: "a", to: "/admin" }
+                          },
+                          [_c("span", [_vm._v("Manage Ranking")])]
                         )
                       ],
                       1

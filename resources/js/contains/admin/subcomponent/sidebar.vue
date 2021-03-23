@@ -141,7 +141,12 @@
                 <ul class="sub-menu" aria-expanded="false">
                   <li>
                     <router-link tag="a" to="/admin" class="side-nav-link">
-                      <span>Ranking</span>
+                      <span>Ranking Points</span>
+                    </router-link>
+                  </li>
+                  <li>
+                    <router-link tag="a" to="/admin" class="side-nav-link">
+                      <span>Manage Ranking</span>
                     </router-link>
                   </li>
                 </ul>

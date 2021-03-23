@@ -2912,7 +2912,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.currency li {\n  cursor: pointer;\n}\n.currency .active {\n  color: white;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* .currency li {\n  cursor: pointer;\n}\n.currency .active {\n  color: white;\n} */\n", ""]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
@@ -2961,83 +2961,13 @@ ___CSS_LOADER_EXPORT___.push([module.id, "\n.course-div .title {\n  color: black
 
 /***/ }),
 
-/***/ "./resources/js/assets/images/flags/britain_flag.jpg":
-/*!***********************************************************!*\
-  !*** ./resources/js/assets/images/flags/britain_flag.jpg ***!
-  \***********************************************************/
-/***/ (function(module) {
-
-module.exports = "/images/britain_flag.jpg?085c4ac98ec5b5d6db7959a80720a9ae";
-
-/***/ }),
-
-/***/ "./resources/js/assets/images/flags/europe_flag.jpg":
-/*!**********************************************************!*\
-  !*** ./resources/js/assets/images/flags/europe_flag.jpg ***!
-  \**********************************************************/
-/***/ (function(module) {
-
-module.exports = "/images/europe_flag.jpg?bddea772437f6b4c582222810f219bd9";
-
-/***/ }),
-
-/***/ "./resources/js/assets/images/flags/us_flag.jpg":
-/*!******************************************************!*\
-  !*** ./resources/js/assets/images/flags/us_flag.jpg ***!
-  \******************************************************/
-/***/ (function(module) {
-
-module.exports = "/images/us_flag.jpg?6dd96569bff0a5c5ada7d99222b9815d";
-
-/***/ }),
-
-/***/ "./resources/js/assets/images/gallery/carousel-1.jpg":
-/*!***********************************************************!*\
-  !*** ./resources/js/assets/images/gallery/carousel-1.jpg ***!
-  \***********************************************************/
-/***/ (function(module) {
-
-module.exports = "/images/carousel-1.jpg?6f10803cea20dae1ee720275ad0aace7";
-
-/***/ }),
-
-/***/ "./resources/js/assets/images/gallery/carousel-2.jpg":
-/*!***********************************************************!*\
-  !*** ./resources/js/assets/images/gallery/carousel-2.jpg ***!
-  \***********************************************************/
-/***/ (function(module) {
-
-module.exports = "/images/carousel-2.jpg?53289952144d0553df2bd6da32762d66";
-
-/***/ }),
-
-/***/ "./resources/js/assets/images/gallery/carousel-3.jpg":
-/*!***********************************************************!*\
-  !*** ./resources/js/assets/images/gallery/carousel-3.jpg ***!
-  \***********************************************************/
-/***/ (function(module) {
-
-module.exports = "/images/carousel-3.jpg?feb7e11a4bb6030c38309542e5685cfd";
-
-/***/ }),
-
-/***/ "./resources/js/assets/images/gallery/home-logos.jpg":
-/*!***********************************************************!*\
-  !*** ./resources/js/assets/images/gallery/home-logos.jpg ***!
-  \***********************************************************/
-/***/ (function(module) {
-
-module.exports = "/images/home-logos.jpg?59cae0764efdf9b06e3135f4b976ea48";
-
-/***/ }),
-
 /***/ "./resources/js/assets/images/logo-dark.png":
 /*!**************************************************!*\
   !*** ./resources/js/assets/images/logo-dark.png ***!
   \**************************************************/
 /***/ (function(module) {
 
-module.exports = "/images/logo-dark.png?bd59ead970a8d128d4676404d62601a2";
+module.exports = "/images/logo-dark.png?2c12af685035e4b0f0310c516ecac99c";
 
 /***/ }),
 
@@ -3047,7 +2977,7 @@ module.exports = "/images/logo-dark.png?bd59ead970a8d128d4676404d62601a2";
   \***************************************************/
 /***/ (function(module) {
 
-module.exports = "/images/logo-light.png?bd59ead970a8d128d4676404d62601a2";
+module.exports = "/images/logo-light.png?2c12af685035e4b0f0310c516ecac99c";
 
 /***/ }),
 
@@ -3057,57 +2987,7 @@ module.exports = "/images/logo-light.png?bd59ead970a8d128d4676404d62601a2";
   \************************************************/
 /***/ (function(module) {
 
-module.exports = "/images/logo-sm.png?bd59ead970a8d128d4676404d62601a2";
-
-/***/ }),
-
-/***/ "./resources/js/assets/images/product/img-1.png":
-/*!******************************************************!*\
-  !*** ./resources/js/assets/images/product/img-1.png ***!
-  \******************************************************/
-/***/ (function(module) {
-
-module.exports = "/images/img-1.png?a9b1b2a353be38935fb7029173bc36ca";
-
-/***/ }),
-
-/***/ "./resources/js/assets/images/product/img-2.png":
-/*!******************************************************!*\
-  !*** ./resources/js/assets/images/product/img-2.png ***!
-  \******************************************************/
-/***/ (function(module) {
-
-module.exports = "/images/img-2.png?714cfaa84d2e3402537aa471e47593dc";
-
-/***/ }),
-
-/***/ "./resources/js/assets/images/small/img-1.jpg":
-/*!****************************************************!*\
-  !*** ./resources/js/assets/images/small/img-1.jpg ***!
-  \****************************************************/
-/***/ (function(module) {
-
-module.exports = "/images/img-1.jpg?f90f903c32c70c8d75c6f311ebaf8627";
-
-/***/ }),
-
-/***/ "./resources/js/assets/images/small/img-2.jpg":
-/*!****************************************************!*\
-  !*** ./resources/js/assets/images/small/img-2.jpg ***!
-  \****************************************************/
-/***/ (function(module) {
-
-module.exports = "/images/img-2.jpg?750ced6e574bde85d858e64e0fa843ff";
-
-/***/ }),
-
-/***/ "./resources/js/assets/images/users/user-4.jpg":
-/*!*****************************************************!*\
-  !*** ./resources/js/assets/images/users/user-4.jpg ***!
-  \*****************************************************/
-/***/ (function(module) {
-
-module.exports = "/images/user-4.jpg?f20fe522d8237300dbe35332a09b25a2";
+module.exports = "/images/logo-sm.png?2c12af685035e4b0f0310c516ecac99c";
 
 /***/ }),
 
@@ -8068,145 +7948,12 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("footer", { staticClass: "footer" }, [
     _c("div", { staticClass: "container-fluid" }, [
-      _c(
-        "div",
-        { staticClass: "d-flex justify-content-between align-items-center" },
-        [
-          _c("div", { staticClass: "d-flex align-items-center" }, [
-            _vm._m(0),
-            _vm._v(" "),
-            _c("div", { staticClass: "navbar-expand-lg" }, [
-              _c("ul", { staticClass: "navbar-nav" }, [
-                _c(
-                  "li",
-                  { staticClass: "nav-item" },
-                  [
-                    _c(
-                      "router-link",
-                      {
-                        staticClass: "nav-link side-nav-link",
-                        attrs: { tag: "a", to: "/" }
-                      },
-                      [_vm._v("\n                About\n              ")]
-                    )
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "li",
-                  { staticClass: "nav-item" },
-                  [
-                    _c(
-                      "router-link",
-                      {
-                        staticClass: "nav-link side-nav-link",
-                        attrs: { tag: "a", to: "/" }
-                      },
-                      [
-                        _vm._v(
-                          "\n                Terms and Conditions\n              "
-                        )
-                      ]
-                    )
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "li",
-                  { staticClass: "nav-item" },
-                  [
-                    _c(
-                      "router-link",
-                      {
-                        staticClass: "nav-link side-nav-link",
-                        attrs: { tag: "a", to: "/" }
-                      },
-                      [
-                        _vm._v(
-                          "\n                Privacy and Policy\n              "
-                        )
-                      ]
-                    )
-                  ],
-                  1
-                )
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "navbar-expand-lg" }, [
-            _vm._m(1),
-            _vm._v(" "),
-            _c("ul", { staticClass: "navbar-nav currency" }, [
-              _c(
-                "li",
-                { staticClass: "nav-item active pr-3" },
-                [
-                  _c("b-img", {
-                    attrs: {
-                      src: __webpack_require__(/*! @/assets/images/flags/britain_flag.jpg */ "./resources/js/assets/images/flags/britain_flag.jpg"),
-                      rounded: "circle",
-                      width: "15",
-                      height: "15",
-                      alt: "flag"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("span", [_vm._v("£ GBP")])
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "li",
-                { staticClass: "nav-item pr-3" },
-                [
-                  _c("b-img", {
-                    attrs: {
-                      src: __webpack_require__(/*! @/assets/images/flags/europe_flag.jpg */ "./resources/js/assets/images/flags/europe_flag.jpg"),
-                      rounded: "circle",
-                      width: "15",
-                      height: "15",
-                      alt: "flag"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("span", [_vm._v("€ EUR")])
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "li",
-                { staticClass: "nav-item" },
-                [
-                  _c("b-img", {
-                    attrs: {
-                      src: __webpack_require__(/*! @/assets/images/flags/us_flag.jpg */ "./resources/js/assets/images/flags/us_flag.jpg"),
-                      rounded: "circle",
-                      width: "15",
-                      height: "15",
-                      alt: "flag"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("span", [_vm._v("$ USD")])
-                ],
-                1
-              )
-            ])
-          ])
-        ]
-      ),
-      _vm._v(" "),
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col-12" }, [
           _vm._v(
             "\n        © " + _vm._s(new Date().getFullYear()) + " \n        "
           ),
-          _vm._m(2)
+          _vm._m(0)
         ])
       ])
     ])
@@ -8217,37 +7964,10 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "mr-4" }, [
-      _c("a", { attrs: { href: "/" } }, [
-        _c("span", { staticClass: "logo-lg" }, [
-          _c("img", {
-            attrs: {
-              src: __webpack_require__(/*! @/assets/images/logo-sm.png */ "./resources/js/assets/images/logo-sm.png"),
-              alt: "",
-              height: "50",
-              width: "50"
-            }
-          })
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "text-right" }, [
-      _c("p", { staticClass: "mb-1" }, [_vm._v("Select Preferred Currency")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("span", { staticClass: "d-none d-sm-inline-block" }, [
       _vm._v("\n          - Copyright\n          "),
       _c("i", { staticClass: "mdi mdi-heart text-danger" }),
-      _vm._v(" by AudioTri.\n        ")
+      _vm._v(" by Mikel.\n        ")
     ])
   }
 ]
@@ -8553,7 +8273,7 @@ var render = function() {
                             _c("img", {
                               staticClass: "rounded-circle header-profile-user",
                               attrs: {
-                                src: __webpack_require__(/*! @/assets/images/users/user-4.jpg */ "./resources/js/assets/images/users/user-4.jpg"),
+                                src: __webpack_require__(Object(function webpackMissingModule() { var e = new Error("Cannot find module '@/assets/images/users/user-4.jpg'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())),
                                 alt: "Header Avatar"
                               }
                             })
@@ -8628,7 +8348,7 @@ var render = function() {
                           _c("img", {
                             staticClass: "rounded-circle header-profile-user",
                             attrs: {
-                              src: __webpack_require__(/*! @/assets/images/users/user-4.jpg */ "./resources/js/assets/images/users/user-4.jpg"),
+                              src: __webpack_require__(Object(function webpackMissingModule() { var e = new Error("Cannot find module '@/assets/images/users/user-4.jpg'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())),
                               alt: "Header Avatar"
                             }
                           })
@@ -8795,7 +8515,7 @@ var render = function() {
               _c("ul", { staticClass: "pl-0" }, [
                 _c("li", { staticClass: "d-flex align-items-center" }, [
                   _c("img", {
-                    attrs: { src: __webpack_require__(/*! @/assets/images/product/img-1.png */ "./resources/js/assets/images/product/img-1.png") }
+                    attrs: { src: __webpack_require__(Object(function webpackMissingModule() { var e = new Error("Cannot find module '@/assets/images/product/img-1.png'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())) }
                   }),
                   _vm._v(" "),
                   _c("p", { staticClass: "mb-0" }, [_vm._v("Product 1")])
@@ -8803,7 +8523,7 @@ var render = function() {
                 _vm._v(" "),
                 _c("li", { staticClass: "d-flex align-items-center" }, [
                   _c("img", {
-                    attrs: { src: __webpack_require__(/*! @/assets/images/product/img-2.png */ "./resources/js/assets/images/product/img-2.png") }
+                    attrs: { src: __webpack_require__(Object(function webpackMissingModule() { var e = new Error("Cannot find module '@/assets/images/product/img-2.png'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())) }
                   }),
                   _vm._v(" "),
                   _c("p", { staticClass: "mb-0" }, [_vm._v("Product 2")])
@@ -8817,7 +8537,7 @@ var render = function() {
               _c("ul", { staticClass: "pl-0" }, [
                 _c("li", { staticClass: "d-flex align-items-center" }, [
                   _c("img", {
-                    attrs: { src: __webpack_require__(/*! @/assets/images/small/img-1.jpg */ "./resources/js/assets/images/small/img-1.jpg") }
+                    attrs: { src: __webpack_require__(Object(function webpackMissingModule() { var e = new Error("Cannot find module '@/assets/images/small/img-1.jpg'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())) }
                   }),
                   _vm._v(" "),
                   _c("p", { staticClass: "mb-0" }, [
@@ -8827,7 +8547,7 @@ var render = function() {
                 _vm._v(" "),
                 _c("li", { staticClass: "d-flex align-items-center" }, [
                   _c("img", {
-                    attrs: { src: __webpack_require__(/*! @/assets/images/small/img-2.jpg */ "./resources/js/assets/images/small/img-2.jpg") }
+                    attrs: { src: __webpack_require__(Object(function webpackMissingModule() { var e = new Error("Cannot find module '@/assets/images/small/img-2.jpg'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())) }
                   }),
                   _vm._v(" "),
                   _c("p", { staticClass: "mb-0" }, [
@@ -10392,7 +10112,7 @@ var render = function() {
                             _c("img", {
                               staticClass: "rounded-circle header-profile-user",
                               attrs: {
-                                src: __webpack_require__(/*! @/assets/images/users/user-4.jpg */ "./resources/js/assets/images/users/user-4.jpg"),
+                                src: __webpack_require__(Object(function webpackMissingModule() { var e = new Error("Cannot find module '@/assets/images/users/user-4.jpg'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())),
                                 alt: "Header Avatar"
                               }
                             })
@@ -10467,7 +10187,7 @@ var render = function() {
                           _c("img", {
                             staticClass: "rounded-circle header-profile-user",
                             attrs: {
-                              src: __webpack_require__(/*! @/assets/images/users/user-4.jpg */ "./resources/js/assets/images/users/user-4.jpg"),
+                              src: __webpack_require__(Object(function webpackMissingModule() { var e = new Error("Cannot find module '@/assets/images/users/user-4.jpg'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())),
                               alt: "Header Avatar"
                             }
                           })
@@ -10694,7 +10414,7 @@ var render = function() {
           [
             _c("b-img", {
               attrs: {
-                src: __webpack_require__(/*! @/assets/images/gallery/home-logos.jpg */ "./resources/js/assets/images/gallery/home-logos.jpg"),
+                src: __webpack_require__(Object(function webpackMissingModule() { var e = new Error("Cannot find module '@/assets/images/gallery/home-logos.jpg'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())),
                 fluid: "",
                 alt: "logos"
               }
@@ -10742,7 +10462,7 @@ var render = function() {
               "b-carousel-slide",
               {
                 attrs: {
-                  "img-src": __webpack_require__(/*! @/assets/images/gallery/carousel-1.jpg */ "./resources/js/assets/images/gallery/carousel-1.jpg")
+                  "img-src": __webpack_require__(Object(function webpackMissingModule() { var e = new Error("Cannot find module '@/assets/images/gallery/carousel-1.jpg'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()))
                 }
               },
               [
@@ -10762,7 +10482,7 @@ var render = function() {
               "b-carousel-slide",
               {
                 attrs: {
-                  "img-src": __webpack_require__(/*! @/assets/images/gallery/carousel-2.jpg */ "./resources/js/assets/images/gallery/carousel-2.jpg")
+                  "img-src": __webpack_require__(Object(function webpackMissingModule() { var e = new Error("Cannot find module '@/assets/images/gallery/carousel-2.jpg'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()))
                 }
               },
               [
@@ -10782,7 +10502,7 @@ var render = function() {
               "b-carousel-slide",
               {
                 attrs: {
-                  "img-src": __webpack_require__(/*! @/assets/images/gallery/carousel-3.jpg */ "./resources/js/assets/images/gallery/carousel-3.jpg")
+                  "img-src": __webpack_require__(Object(function webpackMissingModule() { var e = new Error("Cannot find module '@/assets/images/gallery/carousel-3.jpg'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()))
                 }
               },
               [
