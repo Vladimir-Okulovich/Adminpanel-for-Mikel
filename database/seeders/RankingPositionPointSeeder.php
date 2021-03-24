@@ -95,6 +95,126 @@ class RankingPositionPointSeeder extends Seeder
             'ranking_id' => 1,
             'ranking_position' => 20,
             'ranking_points' => 50
+        ], [
+            'ranking_id' => 1,
+            'ranking_position' => 21,
+            'ranking_points' => 49
+        ], [
+            'ranking_id' => 1,
+            'ranking_position' => 22,
+            'ranking_points' => 48
+        ], [
+            'ranking_id' => 1,
+            'ranking_position' => 23,
+            'ranking_points' => 47
+        ], [
+            'ranking_id' => 1,
+            'ranking_position' => 24,
+            'ranking_points' => 46
+        ], [
+            'ranking_id' => 1,
+            'ranking_position' => 25,
+            'ranking_points' => 45
+        ], [
+            'ranking_id' => 1,
+            'ranking_position' => 26,
+            'ranking_points' => 44
+        ], [
+            'ranking_id' => 1,
+            'ranking_position' => 27,
+            'ranking_points' => 43
+        ], [
+            'ranking_id' => 1,
+            'ranking_position' => 28,
+            'ranking_points' => 42
+        ], [
+            'ranking_id' => 1,
+            'ranking_position' => 29,
+            'ranking_points' => 41
+        ], [
+            'ranking_id' => 1,
+            'ranking_position' => 30,
+            'ranking_points' => 40
+        ], [
+            'ranking_id' => 1,
+            'ranking_position' => 31,
+            'ranking_points' => 39
+        ], [
+            'ranking_id' => 1,
+            'ranking_position' => 32,
+            'ranking_points' => 38
+        ], [
+            'ranking_id' => 1,
+            'ranking_position' => 33,
+            'ranking_points' => 37
+        ], [
+            'ranking_id' => 1,
+            'ranking_position' => 34,
+            'ranking_points' => 36
+        ], [
+            'ranking_id' => 1,
+            'ranking_position' => 35,
+            'ranking_points' => 35
+        ], [
+            'ranking_id' => 1,
+            'ranking_position' => 36,
+            'ranking_points' => 34
+        ], [
+            'ranking_id' => 1,
+            'ranking_position' => 37,
+            'ranking_points' => 33
+        ], [
+            'ranking_id' => 1,
+            'ranking_position' => 38,
+            'ranking_points' => 32
+        ], [
+            'ranking_id' => 1,
+            'ranking_position' => 39,
+            'ranking_points' => 31
+        ], [
+            'ranking_id' => 1,
+            'ranking_position' => 40,
+            'ranking_points' => 30
+        ], [
+            'ranking_id' => 1,
+            'ranking_position' => 41,
+            'ranking_points' => 29
+        ], [
+            'ranking_id' => 1,
+            'ranking_position' => 42,
+            'ranking_points' => 28
+        ], [
+            'ranking_id' => 1,
+            'ranking_position' => 43,
+            'ranking_points' => 27
+        ], [
+            'ranking_id' => 1,
+            'ranking_position' => 44,
+            'ranking_points' => 26
+        ], [
+            'ranking_id' => 1,
+            'ranking_position' => 45,
+            'ranking_points' => 25
+        ], [
+            'ranking_id' => 1,
+            'ranking_position' => 46,
+            'ranking_points' => 24
+        ], [
+            'ranking_id' => 1,
+            'ranking_position' => 47,
+            'ranking_points' => 23
+        ], [
+            'ranking_id' => 1,
+            'ranking_position' => 48,
+            'ranking_points' => 22
+        ], [
+            'ranking_id' => 1,
+            'ranking_position' => 49,
+            'ranking_points' => 21
+        ], [
+            'ranking_id' => 1,
+            'ranking_position' => 50,
+            'ranking_points' => 20
         ]]);
     }
 }
