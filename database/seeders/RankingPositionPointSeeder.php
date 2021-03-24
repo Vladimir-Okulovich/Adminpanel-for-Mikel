@@ -17,204 +17,204 @@ class RankingPositionPointSeeder extends Seeder
         //
         DB::table('ranking_position_points')->insert([[
             'ranking_id' => 1,
-            'ranking_position' => 1,
-            'ranking_points' => 110
+            'position' => 1,
+            'points' => 110
         ], [
             'ranking_id' => 1,
-            'ranking_position' => 2,
-            'ranking_points' => 100
+            'position' => 2,
+            'points' => 100
         ], [
             'ranking_id' => 1,
-            'ranking_position' => 3,
-            'ranking_points' => 92
+            'position' => 3,
+            'points' => 92
         ], [
             'ranking_id' => 1,
-            'ranking_position' => 4,
-            'ranking_points' => 86
+            'position' => 4,
+            'points' => 86
         ], [
             'ranking_id' => 1,
-            'ranking_position' => 5,
-            'ranking_points' => 82
+            'position' => 5,
+            'points' => 82
         ], [
             'ranking_id' => 1,
-            'ranking_position' => 6,
-            'ranking_points' => 78
+            'position' => 6,
+            'points' => 78
         ], [
             'ranking_id' => 1,
-            'ranking_position' => 7,
-            'ranking_points' => 74
+            'position' => 7,
+            'points' => 74
         ], [
             'ranking_id' => 1,
-            'ranking_position' => 8,
-            'ranking_points' => 70
+            'position' => 8,
+            'points' => 70
         ], [
             'ranking_id' => 1,
-            'ranking_position' => 9,
-            'ranking_points' => 68
+            'position' => 9,
+            'points' => 68
         ], [
             'ranking_id' => 1,
-            'ranking_position' => 10,
-            'ranking_points' => 66
+            'position' => 10,
+            'points' => 66
         ], [
             'ranking_id' => 1,
-            'ranking_position' => 11,
-            'ranking_points' => 64
+            'position' => 11,
+            'points' => 64
         ], [
             'ranking_id' => 1,
-            'ranking_position' => 12,
-            'ranking_points' => 62
+            'position' => 12,
+            'points' => 62
         ], [
             'ranking_id' => 1,
-            'ranking_position' => 13,
-            'ranking_points' => 60
+            'position' => 13,
+            'points' => 60
         ], [
             'ranking_id' => 1,
-            'ranking_position' => 14,
-            'ranking_points' => 58
+            'position' => 14,
+            'points' => 58
         ], [
             'ranking_id' => 1,
-            'ranking_position' => 15,
-            'ranking_points' => 56
+            'position' => 15,
+            'points' => 56
         ], [
             'ranking_id' => 1,
-            'ranking_position' => 16,
-            'ranking_points' => 54
+            'position' => 16,
+            'points' => 54
         ], [
             'ranking_id' => 1,
-            'ranking_position' => 17,
-            'ranking_points' => 53
+            'position' => 17,
+            'points' => 53
         ], [
             'ranking_id' => 1,
-            'ranking_position' => 18,
-            'ranking_points' => 52
+            'position' => 18,
+            'points' => 52
         ], [
             'ranking_id' => 1,
-            'ranking_position' => 19,
-            'ranking_points' => 51
+            'position' => 19,
+            'points' => 51
         ], [
             'ranking_id' => 1,
-            'ranking_position' => 20,
-            'ranking_points' => 50
+            'position' => 20,
+            'points' => 50
         ], [
             'ranking_id' => 1,
-            'ranking_position' => 21,
-            'ranking_points' => 49
+            'position' => 21,
+            'points' => 49
         ], [
             'ranking_id' => 1,
-            'ranking_position' => 22,
-            'ranking_points' => 48
+            'position' => 22,
+            'points' => 48
         ], [
             'ranking_id' => 1,
-            'ranking_position' => 23,
-            'ranking_points' => 47
+            'position' => 23,
+            'points' => 47
         ], [
             'ranking_id' => 1,
-            'ranking_position' => 24,
-            'ranking_points' => 46
+            'position' => 24,
+            'points' => 46
         ], [
             'ranking_id' => 1,
-            'ranking_position' => 25,
-            'ranking_points' => 45
+            'position' => 25,
+            'points' => 45
         ], [
             'ranking_id' => 1,
-            'ranking_position' => 26,
-            'ranking_points' => 44
+            'position' => 26,
+            'points' => 44
         ], [
             'ranking_id' => 1,
-            'ranking_position' => 27,
-            'ranking_points' => 43
+            'position' => 27,
+            'points' => 43
         ], [
             'ranking_id' => 1,
-            'ranking_position' => 28,
-            'ranking_points' => 42
+            'position' => 28,
+            'points' => 42
         ], [
             'ranking_id' => 1,
-            'ranking_position' => 29,
-            'ranking_points' => 41
+            'position' => 29,
+            'points' => 41
         ], [
             'ranking_id' => 1,
-            'ranking_position' => 30,
-            'ranking_points' => 40
+            'position' => 30,
+            'points' => 40
         ], [
             'ranking_id' => 1,
-            'ranking_position' => 31,
-            'ranking_points' => 39
+            'position' => 31,
+            'points' => 39
         ], [
             'ranking_id' => 1,
-            'ranking_position' => 32,
-            'ranking_points' => 38
+            'position' => 32,
+            'points' => 38
         ], [
             'ranking_id' => 1,
-            'ranking_position' => 33,
-            'ranking_points' => 37
+            'position' => 33,
+            'points' => 37
         ], [
             'ranking_id' => 1,
-            'ranking_position' => 34,
-            'ranking_points' => 36
+            'position' => 34,
+            'points' => 36
         ], [
             'ranking_id' => 1,
-            'ranking_position' => 35,
-            'ranking_points' => 35
+            'position' => 35,
+            'points' => 35
         ], [
             'ranking_id' => 1,
-            'ranking_position' => 36,
-            'ranking_points' => 34
+            'position' => 36,
+            'points' => 34
         ], [
             'ranking_id' => 1,
-            'ranking_position' => 37,
-            'ranking_points' => 33
+            'position' => 37,
+            'points' => 33
         ], [
             'ranking_id' => 1,
-            'ranking_position' => 38,
-            'ranking_points' => 32
+            'position' => 38,
+            'points' => 32
         ], [
             'ranking_id' => 1,
-            'ranking_position' => 39,
-            'ranking_points' => 31
+            'position' => 39,
+            'points' => 31
         ], [
             'ranking_id' => 1,
-            'ranking_position' => 40,
-            'ranking_points' => 30
+            'position' => 40,
+            'points' => 30
         ], [
             'ranking_id' => 1,
-            'ranking_position' => 41,
-            'ranking_points' => 29
+            'position' => 41,
+            'points' => 29
         ], [
             'ranking_id' => 1,
-            'ranking_position' => 42,
-            'ranking_points' => 28
+            'position' => 42,
+            'points' => 28
         ], [
             'ranking_id' => 1,
-            'ranking_position' => 43,
-            'ranking_points' => 27
+            'position' => 43,
+            'points' => 27
         ], [
             'ranking_id' => 1,
-            'ranking_position' => 44,
-            'ranking_points' => 26
+            'position' => 44,
+            'points' => 26
         ], [
             'ranking_id' => 1,
-            'ranking_position' => 45,
-            'ranking_points' => 25
+            'position' => 45,
+            'points' => 25
         ], [
             'ranking_id' => 1,
-            'ranking_position' => 46,
-            'ranking_points' => 24
+            'position' => 46,
+            'points' => 24
         ], [
             'ranking_id' => 1,
-            'ranking_position' => 47,
-            'ranking_points' => 23
+            'position' => 47,
+            'points' => 23
         ], [
             'ranking_id' => 1,
-            'ranking_position' => 48,
-            'ranking_points' => 22
+            'position' => 48,
+            'points' => 22
         ], [
             'ranking_id' => 1,
-            'ranking_position' => 49,
-            'ranking_points' => 21
+            'position' => 49,
+            'points' => 21
         ], [
             'ranking_id' => 1,
-            'ranking_position' => 50,
-            'ranking_points' => 20
+            'position' => 50,
+            'points' => 20
         ]]);
     }
 }

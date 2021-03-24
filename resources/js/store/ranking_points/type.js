@@ -1,0 +1,6 @@
+const type = {
+    SET_ALL_RANKING_POINTS: 'SET_ALL_RANKING_POINTS',
+    SET_RANKING_POINTS: 'SET_RANKING_POINTS',
+}
+
+export default type;

@@ -16,8 +16,8 @@ class CreateRankingPositionPointsTable extends Migration
         Schema::create('ranking_position_points', function (Blueprint $table) {
             $table->id();
             $table->foreignId('ranking_id')->constrained('rankings');
-            $table->integer('ranking_position');
-            $table->integer('ranking_points');
+            $table->integer('position');
+            $table->integer('points');
             $table->timestamps();
         });
     }

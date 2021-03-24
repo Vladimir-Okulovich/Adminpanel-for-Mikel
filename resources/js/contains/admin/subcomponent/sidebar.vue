@@ -140,7 +140,7 @@
                 </a>
                 <ul class="sub-menu" aria-expanded="false">
                   <li>
-                    <router-link tag="a" to="/admin" class="side-nav-link">
+                    <router-link tag="a" to="/admin/ranking_points" class="side-nav-link">
                       <span>Ranking Points</span>
                     </router-link>
                   </li>

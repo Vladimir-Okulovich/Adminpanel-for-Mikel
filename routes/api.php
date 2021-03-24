@@ -120,6 +120,17 @@ Route::group([ 'prefix' => 'v1', 'middleware' => 'api'], function(){
         Route::get('participant/{participantId}', 'App\Http\Controllers\Api\v1\ParticipantController@getById');
         /* delete participant by id */
         Route::delete('participant/delete/{participantId}', 'App\Http\Controllers\Api\v1\ParticipantController@delete');
+
+        /* Get all ranking_points details*/
+        Route::get('all_ranking_points', 'App\Http\Controllers\Api\v1\RankingPointsController@getAll');
+        // /* Add a competition_type */
+        Route::post('ranking_points/create', 'App\Http\Controllers\Api\v1\RankingPointsController@create');
+        // /* Update a ranking_points */
+        Route::put('ranking_points/update', 'App\Http\Controllers\Api\v1\RankingPointsController@update');
+        /* Get ranking_points detail by id */
+        Route::get('ranking_points/{ranking_pointsId}', 'App\Http\Controllers\Api\v1\RankingPointsController@getById');
+        /* delete ranking_points by id */
+        Route::delete('ranking_points/delete/{ranking_pointsId}', 'App\Http\Controllers\Api\v1\RankingPointsController@delete');
     });
 
     Route::group(['middleware' => ['jwt.auth']], function() {

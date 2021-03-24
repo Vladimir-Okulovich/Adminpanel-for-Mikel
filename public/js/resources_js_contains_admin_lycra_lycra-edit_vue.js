@@ -7454,7 +7454,7 @@ var render = function() {
                           "router-link",
                           {
                             staticClass: "side-nav-link",
-                            attrs: { tag: "a", to: "/admin" }
+                            attrs: { tag: "a", to: "/admin/ranking_points" }
                           },
                           [_c("span", [_vm._v("Ranking Points")])]
                         )
