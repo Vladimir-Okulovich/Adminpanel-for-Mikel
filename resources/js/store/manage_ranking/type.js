@@ -1,0 +1,6 @@
+const type = {
+    SET_ALL_CATEGORY_MODALITY: 'SET_ALL_CATEGORY_MODALITY',
+    SET_ALL_RANKING_DATA: 'SET_ALL_RANKING_DATA',
+}
+
+export default type;

@@ -145,7 +145,7 @@
                     </router-link>
                   </li>
                   <li>
-                    <router-link tag="a" to="/admin" class="side-nav-link">
+                    <router-link tag="a" to="/admin/category-modality" class="side-nav-link">
                       <span>Manage Ranking</span>
                     </router-link>
                   </li>

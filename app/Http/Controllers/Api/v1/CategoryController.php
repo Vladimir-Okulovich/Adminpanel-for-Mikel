@@ -141,7 +141,6 @@ class CategoryController extends Controller
         foreach ($categories as $category) {
             $categoryOptions->push($category->name);
         }
-        $categoryOptions->all();
         return response()->json([
             'message' => 'success',
             'categories' => $categoryOptions,

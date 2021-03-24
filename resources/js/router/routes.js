@@ -283,4 +283,20 @@ export default [
     //         authRequired: true,
     //     },
     // },
+    {
+        path: '/admin/category-modality',
+        name: 'CategoryModality',
+        component: () => import('../contains/admin/manage_ranking/category-modality'),
+        meta: {
+            authRequired: true,
+        },
+    },
+    {
+        path: '/admin/manage-ranking',
+        name: 'ManageRanking',
+        component: () => import('../contains/admin/manage_ranking/manage-ranking'),
+        meta: {
+            authRequired: true,
+        },
+    },
 ]

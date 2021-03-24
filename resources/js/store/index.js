@@ -9,6 +9,7 @@ import lycraModule from './lycra';
 import clubModule from './club';
 import participantModule from './participant';
 import rankingPointsModule from './ranking_points';
+import manageRankingModule from './manage_ranking';
 import userModule from './user';
 
 Vue.use(Vuex);
@@ -24,6 +25,7 @@ export default new Vuex.Store({
     club: clubModule,
     participant: participantModule,
     rankingPoints: rankingPointsModule,
+    manageRanking: manageRankingModule,
     user: userModule,
   },
 });

@@ -131,6 +131,11 @@ Route::group([ 'prefix' => 'v1', 'middleware' => 'api'], function(){
         Route::get('ranking_points/{ranking_pointsId}', 'App\Http\Controllers\Api\v1\RankingPointsController@getById');
         /* delete ranking_points by id */
         Route::delete('ranking_points/delete/{ranking_pointsId}', 'App\Http\Controllers\Api\v1\RankingPointsController@delete');
+
+        /* Get all all_category_modality details*/
+        Route::get('manage_ranking/all_category_modality', 'App\Http\Controllers\Api\v1\ManageRankingController@getAllCategoryModality');
+        /* Get all all_ranking_data details*/
+        Route::post('manage_ranking/all_ranking_data', 'App\Http\Controllers\Api\v1\ManageRankingController@getAllRankingData');
     });
 
     Route::group(['middleware' => ['jwt.auth']], function() {

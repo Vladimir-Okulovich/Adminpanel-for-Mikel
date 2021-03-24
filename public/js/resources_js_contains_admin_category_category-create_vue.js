@@ -8325,7 +8325,7 @@ var render = function() {
                           "router-link",
                           {
                             staticClass: "side-nav-link",
-                            attrs: { tag: "a", to: "/admin" }
+                            attrs: { tag: "a", to: "/admin/category-modality" }
                           },
                           [_c("span", [_vm._v("Manage Ranking")])]
                         )
