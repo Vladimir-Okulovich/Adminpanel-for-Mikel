@@ -7,7 +7,7 @@
 
 	export default {
 		page: {
-        title: "RANKING POINTS",
+        title: "RANKINGS",
         meta: [{ name: "description", content: appConfig.description }]
     },
     components: {
@@ -16,7 +16,7 @@
     },
     data() {
       return {
-        title: "RANKING POINTS",
+        title: "RANKINGS",
         items: [
           {
             text: "Administrator",
@@ -37,37 +37,33 @@
         pageOptions: [10, 25, 50, 100],
         filter: null,
         filterOn: [],
-        sortBy: "position",
+        sortBy: "name",
         sortDesc: false,
         fields: [
           { key: "name", sortable: false },
-          { key: "position", sortable: true },
-          { key: "points", sortable: false },
-          // { key: "actions", sortable: false }
+          { key: "actions", sortable: false }
         ],
-        deletingId: 0,
       }
     },
     computed: {
       ...mapGetters([
-        'getAllRankingPoints'
+        'getRankings'
       ]),
       /**
        * Total no. of records
        */
       rows() {
-        return this.getAllRankingPoints.length;
+        return this.getRankings.length;
       }
     },
     mounted() {
       // Set the initial number of items
-      this.totalRows = this.getAllRankingPoints.length;
-      this.initRankingPoints();
+      this.totalRows = this.getRankings.length;
+      this.getAllRankings();
     },
     methods: {
       ...mapActions([
-        'initRankingPoints',
-        'deleteRankingPoints',
+        'getAllRankings',
       ]),
       /**
        * Search the table data with search input
@@ -77,33 +73,19 @@
         this.totalRows = filteredItems.length;
         this.currentPage = 1;
       },
-      setId(id) {
-        this.deletingId = id;
-      },
-      realDelete() {
-        this.deleteRankingPoints(this.deletingId);
-        this.$bvModal.hide('delete-modal');
-      }
     }
 	};
 </script>
 <template>
   <Layout>
     <PageHeader :title="title" :items="items">
-      <!-- <div class="float-right">
-        <router-link to="/admin/ranking_points/create"
-          class="btn btn-info btn-block d-inline-block"
-        >
-          <i class="fas fa-plus mr-1"></i> ADD RANKING POINTS
-        </router-link>
-      </div> -->
     </PageHeader>
 
     <div class="row">
       <div class="col-12">
         <div class="card">
           <div class="card-body">
-            <h4 class="card-title">Ranking Points Table</h4>
+            <h4 class="card-title">Rankings Table</h4>
             <p class="card-title-desc"></p>
             <div class="row mb-md-2">
               <div class="col-sm-12 col-md-6">
@@ -133,7 +115,7 @@
             <!-- Table -->
             <div class="table-responsive table-dark mb-0">
               <b-table
-                :items="getAllRankingPoints"
+                :items="getRankings"
                 :fields="fields"
                 responsive="sm"
                 :per-page="perPage"
@@ -145,16 +127,13 @@
                 @filtered="onFiltered"
               >
                 <template #cell(name)="row">
-                  {{ row.item.ranking.name + " " + row.item.ranking.year }}
+                  {{ row.item.name + " " + row.item.year }}
                 </template>
-                <!-- <template #cell(actions)="row">
-                  <router-link :to="{ name: 'RankingPointsEdit', params: { ranking_pointsId: row.item.id }}" class="btn btn-sm btn-secondary mr-2">
+                <template #cell(actions)="row">
+                  <router-link :to="{ name: 'RankingPointsEdit', params: { rankingId: row.item.id }}" class="btn btn-sm btn-secondary mr-2">
                     <i class="far fa-edit"></i>
                   </router-link>
-                  <b-button size="sm" @click="setId(row.item.id)" v-b-modal.delete-modal>
-                    <i class="fas fa-trash"></i>
-                  </b-button>
-                </template> -->
+                </template>
               </b-table>
             </div>
             <div class="row">
@@ -171,19 +150,5 @@
         </div>
       </div>
     </div>
-
-    <b-modal
-      id="delete-modal"
-      centered
-      title="Delete Item"
-      title-class="font-18"
-      hide-footer
-    >
-      <p>Are you sure you want to delete selected item?</p>
-      <footer id="delete-modal___BV_modal_footer_" class="modal-footer">
-        <button type="button" class="btn btn-secondary" @click="$bvModal.hide('delete-modal')">Cancel</button>
-        <button type="button" class="btn btn-primary" @click="realDelete()">OK</button>
-      </footer>
-    </b-modal>
   </Layout>
 </template>

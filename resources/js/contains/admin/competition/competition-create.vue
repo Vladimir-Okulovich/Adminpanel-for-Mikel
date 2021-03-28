@@ -54,7 +54,7 @@ export default {
         place: "",
         date: "",
         time: "",
-        ranking_score: "",
+        ranking_score: "No",
         status: "REGISTRATION OPEN",
         lycra: "",
         modality: "",

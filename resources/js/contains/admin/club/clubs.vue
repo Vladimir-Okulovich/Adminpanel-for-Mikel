@@ -174,7 +174,7 @@
       title-class="font-18"
       hide-footer
     >
-      <p>Are you sure you want to delete selected item?</p>
+      <p>Todos los miembros del club pasarán a Club “Independiente” hasta que se les asigne un nuevo club</p>
       <footer id="delete-modal___BV_modal_footer_" class="modal-footer">
         <button type="button" class="btn btn-secondary" @click="$bvModal.hide('delete-modal')">Cancel</button>
         <button type="button" class="btn btn-primary" @click="realDelete()">OK</button>

@@ -2,8 +2,11 @@ const getters = {
     getAllRankingPoints(state) {
         return state.all_ranking_points;
     },
-    getRankingPoints(state) {
-        return state.ranking_points;
+    getRanking(state) {
+        return state.ranking;
+    },
+    getRankings(state) {
+        return state.rankings;
     },
   };
   

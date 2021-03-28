@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\v1;
 
 use App\Models\Category;
 use App\Models\Sex;
+use App\Models\Modality_competition;
 use App\Models\Modality;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -43,6 +44,20 @@ class ManageRankingController extends Controller
 
     public function getAllRankingData(Request $request) {
         $all_ranking_data = [];
+
+        $modality = Modality::where('name', $request->modality)->first();
+        $sex = Sex::where('name', $request->sex)->first();
+        $category = Category::where('name', $request->category)->where('sex_id', $sex->id)->first();
+        $category->competitions;
+        foreach ($category->competitions as $competition) {
+            $temp = Modality_competition::where('competition_id', $competition->id)->where('modality_id', $modality->id);
+            // array_push($all_ranking_data, $competition);
+            if (empty($temp)) {
+                echo("false");
+            } else {
+                echo("true");
+            }
+        }
         return response()->json([
             'message' => 'success',
             'all_ranking_data' => $all_ranking_data

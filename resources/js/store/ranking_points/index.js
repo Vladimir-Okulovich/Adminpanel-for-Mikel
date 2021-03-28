@@ -5,7 +5,8 @@ import JwtService from "@/common/jwt.service"
 
 const defaultState = {
   all_ranking_points: [],
-  ranking_points: {}
+  ranking: {},
+  rankings: [],
 };
 
 export default {

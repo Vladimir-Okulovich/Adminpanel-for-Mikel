@@ -123,14 +123,12 @@ Route::group([ 'prefix' => 'v1', 'middleware' => 'api'], function(){
 
         /* Get all ranking_points details*/
         Route::get('all_ranking_points', 'App\Http\Controllers\Api\v1\RankingPointsController@getAll');
-        // /* Add a competition_type */
-        Route::post('ranking_points/create', 'App\Http\Controllers\Api\v1\RankingPointsController@create');
-        // /* Update a ranking_points */
-        Route::put('ranking_points/update', 'App\Http\Controllers\Api\v1\RankingPointsController@update');
-        /* Get ranking_points detail by id */
-        Route::get('ranking_points/{ranking_pointsId}', 'App\Http\Controllers\Api\v1\RankingPointsController@getById');
-        /* delete ranking_points by id */
-        Route::delete('ranking_points/delete/{ranking_pointsId}', 'App\Http\Controllers\Api\v1\RankingPointsController@delete');
+
+        Route::get('rankings', 'App\Http\Controllers\Api\v1\RankingPointsController@getAllRankings');
+        // /* Update a ranking */
+        Route::put('ranking/update', 'App\Http\Controllers\Api\v1\RankingPointsController@updateRanking');
+        /* Get ranking detail by id */
+        Route::get('ranking/{rankingId}', 'App\Http\Controllers\Api\v1\RankingPointsController@getRankingById');
 
         /* Get all all_category_modality details*/
         Route::get('manage_ranking/all_category_modality', 'App\Http\Controllers\Api\v1\ManageRankingController@getAllCategoryModality');

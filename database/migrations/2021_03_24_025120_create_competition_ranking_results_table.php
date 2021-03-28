@@ -17,7 +17,9 @@ class CreateCompetitionRankingResultsTable extends Migration
             $table->id();
             $table->foreignId('competition_id')->constrained('competitions');
             $table->foreignId('participant_id')->constrained('participants');
-            $table->integer('position');
+            $table->integer('points');
+            $table->foreignId('category_id')->constrained('categories');
+            $table->foreignId('modality_id')->constrained('modalities');
             $table->timestamps();
         });
     }

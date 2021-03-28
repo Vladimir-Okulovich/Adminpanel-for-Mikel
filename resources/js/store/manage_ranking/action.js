@@ -17,14 +17,13 @@ const actions = {
                 });
         });
     },
-    getAllRankingData(context, categoryModality) {
+    getAllRankingPoints(context, categoryModality) {
         ApiService.setHeader();
         return new Promise((resolve) =>{
             ApiService.post("api/v1/admin/manage_ranking/all_ranking_data", categoryModality)
                 .then(({data}) => {
                     console.log(data);
                     context.commit(type.SET_ALL_RANKING_DATA, data)
-                    router.push({name: "ManageRanking"});
                 })
                 .catch(({ response }) => {
                     // context.commit(type.AUTH_LOGOUT);

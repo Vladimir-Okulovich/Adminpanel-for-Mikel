@@ -7257,7 +7257,11 @@ var render = function() {
           }
         },
         [
-          _c("p", [_vm._v("Are you sure you want to delete selected item?")]),
+          _c("p", [
+            _vm._v(
+              "Todos los miembros del club pasarán a Club “Independiente” hasta que se les asigne un nuevo club"
+            )
+          ]),
           _vm._v(" "),
           _c(
             "footer",

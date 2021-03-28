@@ -275,26 +275,18 @@ export default [
     //         authRequired: true,
     //     },
     // },
-    // {
-    //     path: '/admin/ranking_points/edit/:ranking_pointsId',
-    //     name: 'RankingPointsEdit',
-    //     component: () => import('../contains/admin/ranking_points/ranking_points-edit'),
-    //     meta: {
-    //         authRequired: true,
-    //     },
-    // },
     {
-        path: '/admin/category-modality',
-        name: 'CategoryModality',
-        component: () => import('../contains/admin/manage_ranking/category-modality'),
+        path: '/admin/ranking_points/edit/:rankingId',
+        name: 'RankingPointsEdit',
+        component: () => import('../contains/admin/ranking_points/ranking_points-edit'),
         meta: {
             authRequired: true,
         },
     },
     {
-        path: '/admin/manage-ranking',
-        name: 'ManageRanking',
-        component: () => import('../contains/admin/manage_ranking/manage-ranking'),
+        path: '/admin/category-modality',
+        name: 'CategoryModality',
+        component: () => import('../contains/admin/manage_ranking/category-modality'),
         meta: {
             authRequired: true,
         },

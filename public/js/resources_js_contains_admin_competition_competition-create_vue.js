@@ -99,7 +99,7 @@ __webpack_require__.r(__webpack_exports__);
         place: "",
         date: "",
         time: "",
-        ranking_score: "",
+        ranking_score: "No",
         status: "REGISTRATION OPEN",
         lycra: "",
         modality: "",
