@@ -36,6 +36,10 @@ export default {
           href: "/"
         },
         {
+          text: "Competition",
+          href: "/admin/competitions"
+        },
+        {
           text: "Participant",
           href: "/admin/participants"
         },

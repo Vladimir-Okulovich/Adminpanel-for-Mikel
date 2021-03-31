@@ -139,7 +139,8 @@ class CategoryController extends Controller
         $categoryOptions = collect([]);
         $categories = Category::all();
         foreach ($categories as $category) {
-            $categoryOptions->push($category->name);
+            $temp = $category->sex->name;
+            $categoryOptions->push("$category->name, $temp");
         }
         return response()->json([
             'message' => 'success',

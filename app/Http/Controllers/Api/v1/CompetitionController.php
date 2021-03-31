@@ -54,7 +54,8 @@ class CompetitionController extends Controller
 
         $categoryNames = collect([]);
         foreach ($competition->categories as $category) {
-            $categoryNames->push($category->name);
+            $temp = $category->sex->name;
+            $categoryNames->push("$category->name, $temp");
         }
         $competition->categoryNames = $categoryNames;
 
@@ -137,7 +138,12 @@ class CompetitionController extends Controller
         }
         $competition->modalities()->attach($modalityIds);
 
-        $categories = Category::whereIn('name', $request->category)->get();
+        $categoryNames = collect([]);
+        foreach ($request->category as $str) {
+            $str = explode(",",$str);
+            $categoryNames->push($str[0]);
+        }
+        $categories = Category::whereIn('name', $categoryNames)->get();
         $categoryIds = collect([]);
         foreach ($categories as $category) {
             $categoryIds->push($category->id);
@@ -206,7 +212,12 @@ class CompetitionController extends Controller
         }
         $competition->modalities()->sync($modalityIds);
 
-        $categories = Category::whereIn('name', $request->category)->get();
+        $categoryNames = collect([]);
+        foreach ($request->category as $str) {
+            $str = explode(",",$str);
+            $categoryNames->push($str[0]);
+        }
+        $categories = Category::whereIn('name', $categoryNames)->get();
         $categoryIds = collect([]);
         foreach ($categories as $category) {
             $categoryIds->push($category->id);

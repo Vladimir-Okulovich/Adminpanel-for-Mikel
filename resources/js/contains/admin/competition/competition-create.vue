@@ -287,7 +287,7 @@ export default {
                   <div class="mb-3">
                     <label>Category</label>
                     <multiselect 
-                      v-model="typeform.category" 
+                      v-model="typeform.category=categoryOptions" 
                       :options="categoryOptions"
                       :multiple="true"
                       :class="{ 'is-invalid': typesubmit && $v.typeform.category.$error }"
@@ -299,7 +299,7 @@ export default {
                   <div class="mb-3">
                     <label>Modality</label>
                     <multiselect 
-                      v-model="typeform.modality"
+                      v-model="typeform.modality=modalityOptions"
                       :options="modalityOptions"
                       :multiple="true"
                       :class="{ 'is-invalid': typesubmit && $v.typeform.modality.$error }"

@@ -84,6 +84,9 @@ __webpack_require__.r(__webpack_exports__);
         text: "Administrator",
         href: "/"
       }, {
+        text: "Competition",
+        href: "/admin/competitions"
+      }, {
         text: "Participant",
         href: "/admin/participants"
       }, {

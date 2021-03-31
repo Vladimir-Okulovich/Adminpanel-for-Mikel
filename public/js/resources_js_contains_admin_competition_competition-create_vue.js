@@ -8514,11 +8514,16 @@ var render = function() {
                                 multiple: true
                               },
                               model: {
-                                value: _vm.typeform.category,
+                                value: (_vm.typeform.category =
+                                  _vm.categoryOptions),
                                 callback: function($$v) {
-                                  _vm.$set(_vm.typeform, "category", $$v)
+                                  _vm.$set(
+                                    _vm.typeform,
+                                    "category=categoryOptions",
+                                    $$v
+                                  )
                                 },
-                                expression: "typeform.category"
+                                expression: "typeform.category=categoryOptions"
                               }
                             }),
                             _vm._v(" "),
@@ -8552,11 +8557,16 @@ var render = function() {
                                 multiple: true
                               },
                               model: {
-                                value: _vm.typeform.modality,
+                                value: (_vm.typeform.modality =
+                                  _vm.modalityOptions),
                                 callback: function($$v) {
-                                  _vm.$set(_vm.typeform, "modality", $$v)
+                                  _vm.$set(
+                                    _vm.typeform,
+                                    "modality=modalityOptions",
+                                    $$v
+                                  )
                                 },
-                                expression: "typeform.modality"
+                                expression: "typeform.modality=modalityOptions"
                               }
                             }),
                             _vm._v(" "),

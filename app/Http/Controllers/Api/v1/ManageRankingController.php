@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Sex;
 use Illuminate\Support\Facades\DB;
 use App\Models\Modality;
+use App\Models\Participant;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Validator;
@@ -62,5 +63,36 @@ class ManageRankingController extends Controller
             'message' => 'success',
             'all_ranking_data' => $temp
         ], 200);
+    }
+
+    public function participantCreate(Request $request) {
+        $participant = Participant::where('dni_ficha', $request->dni_ficha)->get();
+        if (count($participant) == 0) {
+            $validator = Validator::make($request->all(), [
+                'name' => 'required|string|between:1,100',
+                'surname' => 'required|string',
+                'dni_ficha' => 'required|string',
+                'birthday' => 'required',
+                'sex' => 'required|string',
+                'club' => 'required',
+            ]);
+    
+            if($validator->fails()){
+                return response()->json($validator->errors()->toJson(), 400);
+            }
+    
+            $sex = Sex::where('name', $request->sex)->first();
+            $club = Club::where('name', $request->club)->first();
+            $participant = new Participant;
+            $participant->name = $request->name;
+            $participant->surname = $request->surname;
+            $participant->dni_ficha = $request->dni_ficha;
+            $participant->birthday = $request->birthday;
+            $participant->sex()->associate($sex);
+            $participant->club()->associate($club);
+            $participant->save();
+        } else {
+            var_dump($participant);
+        }
     }
 }
