@@ -115,7 +115,6 @@ class LycraController extends Controller
         foreach ($lycras as $lycra) {
             $lycraOptions->push($lycra->name);
         }
-        $lycraOptions->all();
         return response()->json([
             'message' => 'success',
             'lycras' => $lycraOptions,

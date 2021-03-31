@@ -110,6 +110,9 @@ Route::group([ 'prefix' => 'v1', 'middleware' => 'api'], function(){
         /* delete Competition by id */
         Route::delete('competition/delete/{competitionId}', 'App\Http\Controllers\Api\v1\CompetitionController@delete');
 
+        // /* Add a Participant to competition */
+        Route::post('competition/participant/create', 'App\Http\Controllers\Api\v1\CompetitionParticipantController@participantCreate');
+
         /* Get all participants details*/
         Route::get('participants', 'App\Http\Controllers\Api\v1\ParticipantController@getAll');
         // /* Add a participant */

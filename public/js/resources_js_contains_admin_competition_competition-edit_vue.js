@@ -169,6 +169,7 @@ __webpack_require__.r(__webpack_exports__);
     typeForm: function typeForm(e) {
       var _this = this;
 
+      // console.log(this.typeform.status)
       this.typesubmit = true;
       this.isError = false;
       this.Error = null; // stop here if form is invalid

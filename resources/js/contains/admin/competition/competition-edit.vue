@@ -124,6 +124,7 @@ export default {
      */
     // eslint-disable-next-line no-unused-vars
     typeForm(e) {
+      // console.log(this.typeform.status)
       this.typesubmit = true;
       this.isError = false;
       this.Error = null;

@@ -33,8 +33,8 @@
         pageOptions: [10, 25, 50, 100],
         filter: null,
         filterOn: [],
-        sortBy: "title",
-        sortDesc: false,
+        sortBy: "date",
+        sortDesc: true,
         fields: [
           { key: "title", sortable: true },
           { key: "competition_type", sortable: true },
@@ -80,6 +80,16 @@
       realDelete() {
         this.deleteCompetition(this.deletingId);
         this.$bvModal.hide('delete-modal');
+      },
+      rowClicked(item, index, event) {
+        // console.log(item.status.name)
+        if (item.status.name == "REGISTRATION OPEN") {
+          this.$router.push({name: "CompetitionParticipantCreate", params: { competitionId: item.id }});
+        } else if (item.status.name == "COMPETITION IN PROGRESS") {
+          alert("COMPETITION IN PROGRESS")
+        } else if (item.status.name == "CLOSED") {
+          alert("CLOSED")
+        }
       }
     }
   };
@@ -140,6 +150,7 @@
                 :filter="filter"
                 :filter-included-fields="filterOn"
                 @filtered="onFiltered"
+                @row-clicked="rowClicked"
               >
                 <template #cell(competition_type)="row">
                   {{ row.item.competition_type.name }}
@@ -191,3 +202,8 @@
     </b-modal>
   </Layout>
 </template>
+<style>
+  tbody tr {
+    cursor: pointer;
+  }
+</style>

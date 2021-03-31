@@ -287,7 +287,7 @@ export default {
                   <div class="mb-3">
                     <label>Category</label>
                     <multiselect 
-                      v-model="typeform.category=categoryOptions" 
+                      v-model="typeform.category" 
                       :options="categoryOptions"
                       :multiple="true"
                       :class="{ 'is-invalid': typesubmit && $v.typeform.category.$error }"
@@ -299,7 +299,7 @@ export default {
                   <div class="mb-3">
                     <label>Modality</label>
                     <multiselect 
-                      v-model="typeform.modality=modalityOptions"
+                      v-model="typeform.modality"
                       :options="modalityOptions"
                       :multiple="true"
                       :class="{ 'is-invalid': typesubmit && $v.typeform.modality.$error }"
@@ -311,7 +311,7 @@ export default {
                   <div class="mb-3">
                     <label>Lycra</label>
                     <multiselect 
-                      v-model="typeform.lycra=lycraOptions" 
+                      v-model="typeform.lycra" 
                       :options="lycraOptions"
                       :multiple="true"
                       :class="{ 'is-invalid': typesubmit && $v.typeform.lycra.$error }"

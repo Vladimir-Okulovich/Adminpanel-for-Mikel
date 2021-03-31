@@ -83,7 +83,6 @@ export default {
     ...mapActions([
         'createParticipant',
         'getClubOptions',
-        'format_date'
       ]),
     /**
      * Validation type submit

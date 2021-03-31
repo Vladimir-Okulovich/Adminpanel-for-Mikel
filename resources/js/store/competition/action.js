@@ -53,7 +53,7 @@ const actions = {
                     toastr.success('Successfully updated', '', {timeout: 1000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
                 })
                 .catch(({response, status}) => {
-                    console.log(response);
+                    // console.log(response);
                     reject(response);
                 });
         });
@@ -72,6 +72,20 @@ const actions = {
                 });
         });
     },
+    createCompetitionToParticipant(context, participantInfo) {
+        ApiService.setHeader();
+        return new Promise((resolve, reject) => {
+            ApiService.post("api/v1/admin/competition/participant/create", participantInfo)
+                .then((data) => {
+                    resolve(data)
+                    toastr.success('Successfully created', '', {timeout: 1000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
+                })
+                .catch(({response, status}) => {
+                    console.log(response);
+                    reject(response);
+                });
+        });
+    }
 };
 
 

@@ -9,6 +9,10 @@ class Status extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+    ];
+
     public function competitions()
     {
         return $this->hasMany(Competition::class);

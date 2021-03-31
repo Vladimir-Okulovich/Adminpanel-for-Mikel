@@ -233,6 +233,14 @@ export default [
             authRequired: true,
         },
     },
+    {
+        path: '/admin/competition/participant/create/:competitionId',
+        name: 'CompetitionParticipantCreate',
+        component: () => import('../contains/admin/participant/competition-participant-create'),
+        meta: {
+            authRequired: true,
+        },
+    },
 
     {
         path: '/admin/participants',

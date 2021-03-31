@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api\v1;
 
 use App\Models\Category;
 use App\Models\Sex;
-use App\Models\Modality_competition;
+use Illuminate\Support\Facades\DB;
 use App\Models\Modality;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -50,9 +50,9 @@ class ManageRankingController extends Controller
         $category = Category::where('name', $request->category)->where('sex_id', $sex->id)->first();
         $category->competitions;
         foreach ($category->competitions as $competition) {
-            $temp = Modality_competition::where('competition_id', $competition->id)->where('modality_id', $modality->id);
+            $temp = DB::table('modality_competition')->where('competition_id', $competition->id)->where('modality_id', $modality->id)->get();
             // array_push($all_ranking_data, $competition);
-            if (empty($temp)) {
+            if (count($temp) == 0) {
                 echo("false");
             } else {
                 echo("true");
@@ -60,7 +60,7 @@ class ManageRankingController extends Controller
         }
         return response()->json([
             'message' => 'success',
-            'all_ranking_data' => $all_ranking_data
+            'all_ranking_data' => $temp
         ], 200);
     }
 }

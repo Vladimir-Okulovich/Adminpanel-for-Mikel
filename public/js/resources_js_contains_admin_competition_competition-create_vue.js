@@ -8514,16 +8514,11 @@ var render = function() {
                                 multiple: true
                               },
                               model: {
-                                value: (_vm.typeform.category =
-                                  _vm.categoryOptions),
+                                value: _vm.typeform.category,
                                 callback: function($$v) {
-                                  _vm.$set(
-                                    _vm.typeform,
-                                    "category=categoryOptions",
-                                    $$v
-                                  )
+                                  _vm.$set(_vm.typeform, "category", $$v)
                                 },
-                                expression: "typeform.category=categoryOptions"
+                                expression: "typeform.category"
                               }
                             }),
                             _vm._v(" "),
@@ -8557,16 +8552,11 @@ var render = function() {
                                 multiple: true
                               },
                               model: {
-                                value: (_vm.typeform.modality =
-                                  _vm.modalityOptions),
+                                value: _vm.typeform.modality,
                                 callback: function($$v) {
-                                  _vm.$set(
-                                    _vm.typeform,
-                                    "modality=modalityOptions",
-                                    $$v
-                                  )
+                                  _vm.$set(_vm.typeform, "modality", $$v)
                                 },
-                                expression: "typeform.modality=modalityOptions"
+                                expression: "typeform.modality"
                               }
                             }),
                             _vm._v(" "),
@@ -8599,15 +8589,11 @@ var render = function() {
                                 multiple: true
                               },
                               model: {
-                                value: (_vm.typeform.lycra = _vm.lycraOptions),
+                                value: _vm.typeform.lycra,
                                 callback: function($$v) {
-                                  _vm.$set(
-                                    _vm.typeform,
-                                    "lycra=lycraOptions",
-                                    $$v
-                                  )
+                                  _vm.$set(_vm.typeform, "lycra", $$v)
                                 },
-                                expression: "typeform.lycra=lycraOptions"
+                                expression: "typeform.lycra"
                               }
                             }),
                             _vm._v(" "),
