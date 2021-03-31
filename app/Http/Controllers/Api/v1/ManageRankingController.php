@@ -7,6 +7,7 @@ use App\Models\Sex;
 use Illuminate\Support\Facades\DB;
 use App\Models\Modality;
 use App\Models\Participant;
+use App\Models\Competition_ranking_result;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Validator;
@@ -91,8 +92,40 @@ class ManageRankingController extends Controller
             $participant->sex()->associate($sex);
             $participant->club()->associate($club);
             $participant->save();
+
+            $categories = [];
+            foreach ($request->modality as $modality) {
+                foreach ($categories as $category) {
+                    $competition_ranking_result = new Competition_ranking_result;
+                    $competition_ranking_result->competition_id = $request->competitionId;
+                    $competition_ranking_result->participant_id = $participant->id;
+                    $competition_ranking_result->modality_id = $modality->id;
+                    $competition_ranking_result->category = $category->id;
+                    $competition_ranking_result->save();
+                }
+            }
+
+            return response()->json([
+                'message' => 'success',
+                'participant' => $participant
+            ], 200);
         } else {
-            var_dump($participant);
+            $categories = [];
+            foreach ($request->modality as $modality) {
+                foreach ($categories as $category) {
+                    $competition_ranking_result = new Competition_ranking_result;
+                    $competition_ranking_result->competition_id = $request->competitionId;
+                    $competition_ranking_result->participant_id = $participant->id;
+                    $competition_ranking_result->modality_id = $modality->id;
+                    $competition_ranking_result->category = $category->id;
+                    $competition_ranking_result->save();
+                }
+            }
+            
+            return response()->json([
+                'message' => 'success',
+                'participant' => $participant
+            ], 200);
         }
     }
 }
