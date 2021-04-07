@@ -91,7 +91,7 @@ export default {
   },
   methods: {
     ...mapActions([
-        'createCompetitionToParticipant',
+        'addParticipantToCompetition',
         'getClubOptions',
       ]),
     /**
@@ -108,7 +108,7 @@ export default {
         return ;
       }
       return (
-        this.createCompetitionToParticipant({
+        this.addParticipantToCompetition({
             competitionId: this.$route.params.competitionId,
             name: this.typeform.name,
             surname: this.typeform.surname,
@@ -119,6 +119,7 @@ export default {
             modality: this.typeform.modality,
           })
           .then((res) => {
+            // console.log(res)
             this.$router.push({name: "Competitions"});
             this.typesubmit = false;
           })

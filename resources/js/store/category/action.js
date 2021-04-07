@@ -8,7 +8,7 @@ const actions = {
         return new Promise((resolve) =>{
             ApiService.get("api/v1/admin/categories")
                 .then(({data}) => {
-                    console.log(data);
+                    // console.log(data);
                     context.commit(type.SET_ALL_CATEGORIES, data)
                 })
                 .catch(({ response }) => {
@@ -21,7 +21,7 @@ const actions = {
         return new Promise((resolve) =>{
             ApiService.get("api/v1/admin/category/" + categoryId)
                 .then(({data}) => {
-                    console.log(data);
+                    // console.log(data);
                     context.commit(type.SET_CATEGORY, data)
                 })
                 .catch(({ response }) => {
@@ -62,7 +62,7 @@ const actions = {
         return new Promise((resolve) =>{
             ApiService.delete("api/v1/admin/category/delete/" + categoryId)
                 .then(({data}) => {
-                    console.log(data);
+                    // console.log(data);
                     context.commit(type.SET_ALL_CATEGORIES, data)
                     toastr.success('Successfully deleted', '', {timeout: 1000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
                 })
@@ -76,7 +76,7 @@ const actions = {
         return new Promise((resolve) =>{
             ApiService.get("api/v1/admin/category/options")
                 .then(({data}) => {
-                    console.log(data);
+                    // console.log(data);
                     context.commit(type.SET_CATEGORY_OPTIONS, data)
                 })
                 .catch(({ response }) => {

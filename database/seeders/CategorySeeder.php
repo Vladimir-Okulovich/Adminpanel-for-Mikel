@@ -44,26 +44,26 @@ class CategorySeeder extends Seeder
             'sex_id' => 2,
             'name' => 'Junior', 
             'description' => 'Categoria Junior Masculina',
-            'year1' => 2008,
-            'year2' => 2010
+            'year1' => 2003,
+            'year2' => 2004
         ], [
             'sex_id' => 1,
             'name' => 'Junior', 
             'description' => 'Categoria Junior Femenino',
-            'year1' => 2008,
-            'year2' => 2010
+            'year1' => 2003,
+            'year2' => 2004
         ], [
             'sex_id' => 2,
             'name' => 'Senior', 
             'description' => 'Categoria Senior Masculina',
-            'year1' => 2008,
-            'year2' => 2010
+            'year1' => 1982,
+            'year2' => 2002
         ], [
             'sex_id' => 1,
             'name' => 'Senior', 
             'description' => 'Categoria Senior Femenino',
-            'year1' => 2008,
-            'year2' => 2010
+            'year1' => 1982,
+            'year2' => 2002
         ], [
             'sex_id' => 2,
             'name' => 'Master', 
@@ -80,26 +80,26 @@ class CategorySeeder extends Seeder
             'sex_id' => 2,
             'name' => 'GRANDMaster', 
             'description' => 'Categoria GRANDMaster Masculina',
-            'year1' => 1972,
-            'year2' => 1981
+            'year1' => 1962,
+            'year2' => 1971
         ], [
             'sex_id' => 1,
             'name' => 'GRANDMaster', 
             'description' => 'Categoria GRANDMaster Femenino',
-            'year1' => 1972,
-            'year2' => 1981
+            'year1' => 1962,
+            'year2' => 1971
         ], [
             'sex_id' => 2,
             'name' => 'Master', 
             'description' => 'Categoria GRANDGRANDMaster Masculina',
             'year1' => 1920,
-            'year2' => 1981
+            'year2' => 1961
         ], [
             'sex_id' => 1,
             'name' => 'Master', 
             'description' => 'Categoria GRANDGRANDMaster Femenino',
             'year1' => 1920,
-            'year2' => 1981
+            'year2' => 1961
         ]]);
     }
 }

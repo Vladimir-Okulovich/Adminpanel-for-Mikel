@@ -156,6 +156,7 @@ __webpack_require__.r(__webpack_exports__);
         sex: this.typeform.sex,
         club: this.typeform.club
       }).then(function (res) {
+        // console.log(res)
         _this.$router.push({
           name: "Participants"
         });

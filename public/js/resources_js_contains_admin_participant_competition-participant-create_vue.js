@@ -138,7 +138,7 @@ __webpack_require__.r(__webpack_exports__);
     this.getClubOptions();
   },
   computed: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_3__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_10__.mapGetters)(['clubOptions'])),
-  methods: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_3__.default)((0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_3__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_10__.mapActions)(['createCompetitionToParticipant', 'getClubOptions'])), {}, {
+  methods: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_3__.default)((0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_3__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_10__.mapActions)(['addParticipantToCompetition', 'getClubOptions'])), {}, {
     /**
      * Validation type submit
      */
@@ -156,7 +156,7 @@ __webpack_require__.r(__webpack_exports__);
         return;
       }
 
-      return this.createCompetitionToParticipant({
+      return this.addParticipantToCompetition({
         competitionId: this.$route.params.competitionId,
         name: this.typeform.name,
         surname: this.typeform.surname,
@@ -166,6 +166,7 @@ __webpack_require__.r(__webpack_exports__);
         club: this.typeform.club,
         modality: this.typeform.modality
       }).then(function (res) {
+        // console.log(res)
         _this.$router.push({
           name: "Competitions"
         });

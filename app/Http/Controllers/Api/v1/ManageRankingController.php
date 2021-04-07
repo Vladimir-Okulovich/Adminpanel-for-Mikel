@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\v1;
 
 use App\Models\Category;
 use App\Models\Sex;
+use App\Models\Club;
 use Illuminate\Support\Facades\DB;
 use App\Models\Modality;
 use App\Models\Participant;
@@ -67,20 +68,23 @@ class ManageRankingController extends Controller
     }
 
     public function participantCreate(Request $request) {
-        $participant = Participant::where('dni_ficha', $request->dni_ficha)->get();
-        if (count($participant) == 0) {
-            $validator = Validator::make($request->all(), [
-                'name' => 'required|string|between:1,100',
-                'surname' => 'required|string',
-                'dni_ficha' => 'required|string',
-                'birthday' => 'required',
-                'sex' => 'required|string',
-                'club' => 'required',
-            ]);
-    
-            if($validator->fails()){
-                return response()->json($validator->errors()->toJson(), 400);
-            }
+
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|between:1,100',
+            'surname' => 'required|string',
+            'dni_ficha' => 'required|string',
+            'birthday' => 'required',
+            'sex' => 'required|string',
+            'club' => 'required',
+        ]);
+
+        if($validator->fails()){
+            return response()->json($validator->errors()->toJson(), 400);
+        }
+
+        $participants = Participant::where('dni_ficha', $request->dni_ficha)->get();
+
+        if (count($participants) == 0) {
     
             $sex = Sex::where('name', $request->sex)->first();
             $club = Club::where('name', $request->club)->first();
@@ -92,40 +96,72 @@ class ManageRankingController extends Controller
             $participant->sex()->associate($sex);
             $participant->club()->associate($club);
             $participant->save();
+            // var_dump($participant);
+            $categories = $this->getCategoryFromParticipant($participant);
 
-            $categories = [];
-            foreach ($request->modality as $modality) {
-                foreach ($categories as $category) {
+            if (count($categories) == 0) {
+                return response()->json([
+                    'message' => 'Any category doesnt include the participant',
+                    'participant' => $participant
+                ], 200);
+            }
+
+            foreach ($categories as $category) {
+                foreach ($request->modality as $modality_name) {
+                    $modality = Modality::where('name', $modality_name)->first();
+
                     $competition_ranking_result = new Competition_ranking_result;
                     $competition_ranking_result->competition_id = $request->competitionId;
                     $competition_ranking_result->participant_id = $participant->id;
                     $competition_ranking_result->modality_id = $modality->id;
-                    $competition_ranking_result->category = $category->id;
+                    $competition_ranking_result->category_id = $category->id;
                     $competition_ranking_result->save();
                 }
             }
 
             return response()->json([
-                'message' => 'success',
+                'message' => 'Success',
                 'participant' => $participant
             ], 200);
         } else {
-            $categories = [];
-            foreach ($request->modality as $modality) {
-                foreach ($categories as $category) {
+            $participant = $participants->first();
+            // var_dump($participant);
+            $categories = $this->getCategoryFromParticipant($participant);
+
+            if (count($categories) == 0) {
+                return response()->json([
+                    'message' => 'Any category doesnt include the participant',
+                    'participant' => $participant
+                ], 200);
+            }
+
+            foreach ($categories as $category) {
+                foreach ($request->modality as $modality_name) {
+                    $modality = Modality::where('name', $modality_name)->first();
+
                     $competition_ranking_result = new Competition_ranking_result;
                     $competition_ranking_result->competition_id = $request->competitionId;
                     $competition_ranking_result->participant_id = $participant->id;
                     $competition_ranking_result->modality_id = $modality->id;
-                    $competition_ranking_result->category = $category->id;
+                    $competition_ranking_result->category_id = $category->id;
                     $competition_ranking_result->save();
                 }
             }
             
             return response()->json([
-                'message' => 'success',
+                'message' => 'Success',
                 'participant' => $participant
             ], 200);
         }
+    }
+
+    public function getCategoryFromParticipant($participant) {
+        $year = date('Y',strtotime($participant->birthday));
+
+        $categories = Category::where('year1', '<=', $year)
+                        ->where('year2', '>=', $year)
+                        ->where('sex_id', $participant->sex_id)
+                        ->get();
+        return $categories;
     }
 }

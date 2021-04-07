@@ -8,7 +8,7 @@ const actions = {
         return new Promise((resolve) =>{
             ApiService.get("api/v1/admin/clubs")
                 .then(({data}) => {
-                    console.log(data);
+                    // console.log(data);
                     context.commit(type.SET_ALL_CLUBS, data)
                 })
                 .catch(({ response }) => {
@@ -21,7 +21,7 @@ const actions = {
         return new Promise((resolve) =>{
             ApiService.get("api/v1/admin/club/" + clubId)
                 .then(({data}) => {
-                    console.log(data);
+                    // console.log(data);
                     context.commit(type.SET_CLUB, data)
                 })
                 .catch(({ response }) => {
@@ -62,7 +62,7 @@ const actions = {
         return new Promise((resolve) =>{
             ApiService.delete("api/v1/admin/club/delete/" + clubId)
                 .then(({data}) => {
-                    console.log(data);
+                    // console.log(data);
                     context.commit(type.SET_ALL_CLUBS, data)
                     toastr.success('Successfully deleted', '', {timeout: 1000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
                 })
@@ -76,7 +76,7 @@ const actions = {
         return new Promise((resolve) =>{
             ApiService.get("api/v1/admin/club/options")
                 .then(({data}) => {
-                    console.log(data);
+                    // console.log(data);
                     context.commit(type.SET_CLUB_OPTIONS, data)
                 })
                 .catch(({ response }) => {

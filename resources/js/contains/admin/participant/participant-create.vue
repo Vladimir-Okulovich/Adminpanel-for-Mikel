@@ -107,6 +107,7 @@ export default {
             club: this.typeform.club,
           })
           .then((res) => {
+            // console.log(res)
             this.$router.push({name: "Participants"});
             this.typesubmit = false;
           })
