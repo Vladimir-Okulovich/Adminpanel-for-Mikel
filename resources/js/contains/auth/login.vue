@@ -35,7 +35,7 @@ export default {
             password: this.password
           })
           .then((res) => {
-            this.$router.push({name: "home"});
+            this.$router.push({name: "Users"});
             this.tryingToLogIn = false;
             this.isAuthError = false;
           })

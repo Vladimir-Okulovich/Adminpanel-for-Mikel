@@ -56,7 +56,7 @@ __webpack_require__.r(__webpack_exports__);
         password: this.password
       }).then(function (res) {
         _this.$router.push({
-          name: "home"
+          name: "Users"
         });
 
         _this.tryingToLogIn = false;

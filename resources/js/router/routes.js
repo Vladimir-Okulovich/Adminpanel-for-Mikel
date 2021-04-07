@@ -18,7 +18,7 @@ export default [
                 // If the user is already logged in
                 if (store.getters['isAuthenticated']) {
                     // Redirect to the home page instead
-                    next({ name: 'Admin' })
+                    next({ name: 'Users' })
                 } else {
                     // Continue to the login page
                     next()
@@ -35,7 +35,7 @@ export default [
                 // If the user is already logged in
                 if (store.getters['isAuthenticated']) {
                     // Redirect to the home page instead
-                    next({ name: 'Admin' })
+                    next({ name: 'Users' })
                 } else {
                     // Continue to the login page
                     next()
@@ -52,7 +52,7 @@ export default [
                 // If the user is already logged in
                 if (store.getters['isAuthenticated']) {
                     // Redirect to the home page instead
-                    next({ name: 'Admin' })
+                    next({ name: 'USers' })
                 } else {
                     // Continue to the login page
                     next()
@@ -71,7 +71,7 @@ export default [
                     (route) => route.push('/login')
                 )
                 // Navigate back to previous page, or home as a fallback
-                next(authRequiredOnPreviousRoute ? { name: 'home' } : { ...routeFrom })
+                next(authRequiredOnPreviousRoute ? { name: 'Users' } : { ...routeFrom })
             },
         },
     },
