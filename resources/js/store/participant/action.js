@@ -35,7 +35,7 @@ const actions = {
             ApiService.post("api/v1/admin/participant/create", participantInfo)
                 .then((data) => {
                     resolve(data);
-                    toastr.success('Successfully created', '', {timeout: 1000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
+                    toastr.success(data.data.message, '', {timeout: 1000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
                 })
                 .catch(({response, status}) => {
                     console.log(response);

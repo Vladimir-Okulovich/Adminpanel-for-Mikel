@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 
 class Competition extends Model
@@ -25,6 +26,21 @@ class Competition extends Model
         'competition_type_id',
         'status_id',
     ];
+
+    protected $casts = [
+        'date' => 'datetime:d-m-Y', // Change your format
+    ];
+
+    public function setDateAttribute($value)
+    {
+        $this->attributes['date'] = Carbon::createFromFormat('d-m-Y', $value)->format('Y-m-d');
+    }
+
+    public function getDateAttribute()
+    {
+        $value = $this->attributes['date'];
+        return Carbon::parse($value)->format('d-m-Y');
+    }
 
     public function competition_type()
     {

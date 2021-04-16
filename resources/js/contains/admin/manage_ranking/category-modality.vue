@@ -2,6 +2,7 @@
 	import Layout from "../subcomponent/layout";
 	import appConfig from "@/app.config";
   import PageHeader from "@/components/page-header";
+  import Multiselect from "vue-multiselect";
 
   import { mapActions, mapGetters } from 'vuex';
 import categoryCreateVue from '../category/category-create.vue';
@@ -13,7 +14,8 @@ import categoryCreateVue from '../category/category-create.vue';
     },
     components: {
       Layout,
-      PageHeader
+      PageHeader,
+      Multiselect
     },
     data() {
       return {
@@ -21,7 +23,7 @@ import categoryCreateVue from '../category/category-create.vue';
         items: [
           {
             text: "Administrator",
-            href: "/"
+            href: "/admin"
           },
           {
             text: "Manage Ranking",
@@ -32,11 +34,7 @@ import categoryCreateVue from '../category/category-create.vue';
             active: true
           }
         ],
-        categoryModality: {
-          category: "",
-          sex: "",
-          modality: "",
-        },
+        categoryModality: "",
         totalRows: 1,
         currentPage: 1,
         perPage: 50,
@@ -90,20 +88,14 @@ import categoryCreateVue from '../category/category-create.vue';
         this.totalRows = filteredItems.length;
         this.currentPage = 1;
       },
-      // rowClicked(item, index, event) {
-      //   this.getAllRankingData({
-      //       category: item.category,
-      //       sex: item.sex,
-      //       modality: item.modality,
-      //     });
-      // }
-      itemClicked(item) {
-        this.categoryModality = item;
-        this.getAllRankingPoints({
-            category: item.category,
-            sex: item.sex,
-            modality: item.modality,
-          });
+      categoryModalityHandler() {
+        console.log(this.categoryModality)
+        // this.categoryModality = item;
+        // this.getAllRankingPoints({
+        //     category: item.category,
+        //     sex: item.sex,
+        //     modality: item.modality,
+        //   });
       }
     }
 	};
@@ -117,13 +109,11 @@ import categoryCreateVue from '../category/category-create.vue';
         <div class="card">
           <div class="card-body">
             <h4 class="card-title mb-4">Categories and Modalities</h4>
-            <div class="row">
-              <div class="col-lg-3 col-md-4 select-field" v-for="(category_modality, index) in getAllCategoryModality" :key="index">
-                <button class="btn btn-secondary" v-on:click="itemClicked(category_modality)">
-                  {{ category_modality.category + " " + category_modality.sex + " " + category_modality.modality }}
-                </button>
-              </div>
-            </div>
+            <multiselect 
+              v-model="categoryModality=getAllCategoryModality[0]" 
+              :options="getAllCategoryModality"
+              @change="categoryModalityHandler"
+            ></multiselect>
           </div>
         </div>
 

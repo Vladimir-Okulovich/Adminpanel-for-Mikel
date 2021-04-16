@@ -234,9 +234,17 @@ export default [
         },
     },
     {
-        path: '/admin/competition/participant/create/:competitionId',
-        name: 'CompetitionParticipantCreate',
-        component: () => import('../contains/admin/participant/competition-participant-create'),
+        path: '/admin/competition/participant/regist/:competitionId',
+        name: 'CompetitionParticipantRegist',
+        component: () => import('../contains/admin/competition/competition-participant-regist'),
+        meta: {
+            authRequired: true,
+        },
+    },
+    {
+        path: '/admin/competition/participant/add/:competitionId',
+        name: 'CompetitionParticipantAdd',
+        component: () => import('../contains/admin/competition/competition-participant-add'),
         meta: {
             authRequired: true,
         },

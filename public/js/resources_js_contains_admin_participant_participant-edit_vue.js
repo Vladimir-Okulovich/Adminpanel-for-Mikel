@@ -82,7 +82,7 @@ __webpack_require__.r(__webpack_exports__);
       title: "EDIT PARTICIPANT",
       items: [{
         text: "Administrator",
-        href: "/"
+        href: "/admin"
       }, {
         text: "Participant",
         href: "/admin/participants"
@@ -7958,11 +7958,11 @@ var render = function() {
                               _vm.typesubmit && _vm.$v.typeform.birthday.$error
                           },
                           attrs: {
-                            format: "YYYY-MM-DD",
+                            format: "DD-MM-YYYY",
                             "value-type": "format",
                             "first-day-of-week": 1,
                             lang: "en",
-                            placeholder: "Select date"
+                            placeholder: "DD-MM-YYYY"
                           },
                           model: {
                             value: (_vm.typeform.birthday =

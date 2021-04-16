@@ -20,7 +20,7 @@ class StatusSeeder extends Seeder
         ], [
             'name' => 'REGISTRATION OPEN'
         ], [
-            'name' => 'COMPETITION IN PROGRESS'
+            'name' => 'COMPETICIÓN EN CURSO'
         ]]);
     }
 }

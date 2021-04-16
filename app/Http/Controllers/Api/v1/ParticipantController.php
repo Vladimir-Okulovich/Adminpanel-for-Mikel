@@ -44,6 +44,8 @@ class ParticipantController extends Controller
         $participant = Participant::find($participantId);
         $participant->sex;
         $participant->club;
+        $participant->birthday = $participant->getDateAttribute();
+
         return response()->json([
             'message' => 'success',
             'participant' => $participant
@@ -69,13 +71,21 @@ class ParticipantController extends Controller
             return response()->json($validator->errors()->toJson(), 400);
         }
 
+        $participant = Participant::where('dni_ficha', $request->dni_ficha)->get();
+        if (count($participant) != 0) {
+            return response()->json([
+                'message' => 'Already exists such DNI_FICHA',
+                'participant' => $participant
+            ], 201);
+        }
+
         $sex = Sex::where('name', $request->sex)->first();
         $club = Club::where('name', $request->club)->first();
         $participant = new Participant;
         $participant->name = $request->name;
         $participant->surname = $request->surname;
         $participant->dni_ficha = $request->dni_ficha;
-        $participant->birthday = $request->birthday;
+        $participant->setDateAttribute($request->birthday);
         $participant->sex()->associate($sex);
         $participant->club()->associate($club);
         $participant->save();
@@ -110,16 +120,15 @@ class ParticipantController extends Controller
         
         $sex = Sex::where('name', $request->sex)->first();
         $club = Club::where('name', $request->club)->first();
-        var_dump($club);
+        // var_dump($club);
         $participant = Participant::find($request->id);
-        $participant -> update([
-            'name' => $request->name,
-            'surname' => $request->surname,
-            'dni_ficha' => $request->dni_ficha,
-            'birthday' => $request->birthday,
-            'sex_id' => $sex->id,
-            'club_id' => $club->id,
-        ]);
+        $participant->name = $request->name;
+        $participant->surname = $request->surname;
+        $participant->dni_ficha = $request->dni_ficha;
+        $participant->setDateAttribute($request->birthday);
+        $participant->sex_id = $sex->id;
+        $participant->club_id = $club->id;
+        $participant->save();
 
         return response()->json([
             'message' => 'Participant successfully updated',

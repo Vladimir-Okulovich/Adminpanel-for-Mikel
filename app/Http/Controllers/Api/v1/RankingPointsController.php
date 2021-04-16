@@ -19,15 +19,15 @@ class RankingPointsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function getAll()
+    public function getRankingPointsById(Request $request, $rankingId)
     {
-        $all_ranking_points = Ranking_position_point::all();
-        foreach ($all_ranking_points as $ranking_points) {
-            $ranking_points->ranking;
+        $ranking_points = Ranking_position_point::where('ranking_id', $rankingId)->get();
+        foreach ($ranking_points as $ranking_point) {
+            $ranking_point->ranking;
         }
         return response()->json([
             'message' => 'success',
-            'all_ranking_points' => $all_ranking_points
+            'ranking_points' => $ranking_points
         ], 200);
     }
 

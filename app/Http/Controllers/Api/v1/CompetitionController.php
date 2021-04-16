@@ -11,6 +11,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Validator;
+// use Carbon\Carbon;
 
 class CompetitionController extends Controller
 {
@@ -48,9 +49,10 @@ class CompetitionController extends Controller
      */
     public function getById(Request $request, $competitionId)
     {
-        $competition = competition::find($competitionId);
+        $competition = Competition::find($competitionId);
         $competition->competition_type;
         $competition->status;
+        $competition->date = $competition->getDateAttribute();
 
         $categoryNames = collect([]);
         foreach ($competition->categories as $category) {
@@ -116,7 +118,7 @@ class CompetitionController extends Controller
         $competition->title = $request->title;
         $competition->description = $request->description;
         $competition->place = $request->place;
-        $competition->date = $request->date;
+        $competition->setDateAttribute($request->date);
         $competition->time = $request->time;
         $competition->ranking_score = $request->ranking_score;
         $competition->competition_type()->associate($competition_type);
@@ -194,17 +196,28 @@ class CompetitionController extends Controller
         $status = Status::where('name', $request->status)->first();
 
         $competition = Competition::find($request->id);
-        $competition -> update([
-            'title' => $request->title,
-            'description' => $request->description,
-            'place' => $request->place,
-            'date' => $request->date,
-            'time' => $request->time,
-            'ranking_score' => $request->ranking_score,
-            'competition_type_id' => $competition_type->id,
-            'status_id' => $status->id,
-            'logo' => $result,
-        ]);
+        // $competition -> update([
+        //     'title' => $request->title,
+        //     'description' => $request->description,
+        //     'place' => $request->place,
+        //     'date' => Carbon::createFromFormat('d-m-Y', $request->date)->format('Y-m-d'),
+        //     'time' => $request->time,
+        //     'ranking_score' => $request->ranking_score,
+        //     'competition_type_id' => $competition_type->id,
+        //     'status_id' => $status->id,
+        //     'logo' => $result,
+        // ]);
+        $competition->title = $request->title;
+        $competition->description = $request->description;
+        $competition->place = $request->place;
+        $competition->setDateAttribute($request->date);
+        $competition->time = $request->time;
+        $competition->ranking_score = $request->ranking_score;
+        $competition->competition_type_id = $competition_type->id;
+        $competition->status_id = $status->id;
+        // $competition->logo = $result;
+        $competition->save();
+
         $modalities = Modality::whereIn('name', $request->modality)->get();
         $modalityIds = collect([]);
         foreach ($modalities as $modality) {
@@ -234,6 +247,34 @@ class CompetitionController extends Controller
         return response()->json([
             'message' => 'Competition successfully updated',
             'competition' => $competition
+        ], 201);
+    }
+
+    public function statusUpdate(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'status' => 'required',
+        ]);
+
+        if($validator->fails()){
+            return response()->json($validator->errors()->toJson(), 400);
+        }
+
+        $status = Status::where('name', $request->status)->first();
+
+        $competition = Competition::find($request->id);
+        $competition -> update([
+            'status_id' => $status->id,
+        ]);
+
+        $competitions = Competition::all();
+        foreach ($competitions as $competition) {
+            $competition->competition_type;
+            $competition->status;
+        }
+        return response()->json([
+            'message' => "Competition's Status successfully updated",
+            'competitions' => $competitions
         ], 201);
     }
 

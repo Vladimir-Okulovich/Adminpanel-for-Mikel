@@ -82,7 +82,7 @@ __webpack_require__.r(__webpack_exports__);
       title: "EDIT COMPETITION",
       items: [{
         text: "Administrator",
-        href: "/"
+        href: "/admin"
       }, {
         text: "Competition",
         href: "/admin/competitions"
@@ -107,7 +107,7 @@ __webpack_require__.r(__webpack_exports__);
         logo: null
       },
       rankingScoreOptions: ["Yes", "No"],
-      statusOptions: ["CLOSED", "REGISTRATION OPEN", "COMPETITION IN PROGRESS"],
+      statusOptions: ["CLOSED", "REGISTRATION OPEN", "COMPETICIÓN EN CURSO"],
       modalityOptions: ["Short Boat", "Long Ship"],
       typesubmit: false
     };
@@ -8344,11 +8344,11 @@ var render = function() {
                                   _vm.typesubmit && _vm.$v.typeform.date.$error
                               },
                               attrs: {
-                                format: "YYYY-MM-DD",
+                                format: "DD-MM-YYYY",
                                 "value-type": "format",
                                 "first-day-of-week": 1,
                                 lang: "en",
-                                placeholder: "Select date"
+                                placeholder: "dd-mm-yyyy"
                               },
                               model: {
                                 value: (_vm.typeform.date =

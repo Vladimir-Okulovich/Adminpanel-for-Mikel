@@ -70,10 +70,7 @@ __webpack_require__.r(__webpack_exports__);
       title: "CLUBS",
       items: [{
         text: "Administrator",
-        href: "/"
-      }, {
-        text: "Competition Data",
-        active: true
+        href: "/admin"
       }, {
         text: "Clubs",
         active: true

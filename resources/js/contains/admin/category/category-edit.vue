@@ -33,11 +33,7 @@ export default {
       items: [
         {
           text: "Administrator",
-          href: "/"
-        },
-        {
-          text: "Competition Data",
-          active: true
+          href: "/admin"
         },
         {
           text: "Category",

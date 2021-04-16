@@ -20,11 +20,7 @@
         items: [
           {
             text: "Administrator",
-            href: "/"
-          },
-          {
-            text: "Competition Data",
-            active: true
+            href: "/admin"
           },
           {
             text: "Categories",
@@ -37,7 +33,7 @@
         pageOptions: [10, 25, 50, 100],
         filter: null,
         filterOn: [],
-        sortBy: "name",
+        sortBy: "",
         sortDesc: false,
         fields: [
           { key: "category", sortable: true },

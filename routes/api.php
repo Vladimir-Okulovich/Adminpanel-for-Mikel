@@ -109,9 +109,13 @@ Route::group([ 'prefix' => 'v1', 'middleware' => 'api'], function(){
         Route::get('competition/{competitionId}', 'App\Http\Controllers\Api\v1\CompetitionController@getById');
         /* delete Competition by id */
         Route::delete('competition/delete/{competitionId}', 'App\Http\Controllers\Api\v1\CompetitionController@delete');
+        // /* Update a Competition's Status */
+        Route::put('competition/status/update', 'App\Http\Controllers\Api\v1\CompetitionController@statusUpdate');
 
+        // /* Create a Participant to competition */
+        Route::post('competition/participant/add', 'App\Http\Controllers\Api\v1\ManageRankingController@addParticipantToCompetition');
         // /* Add a Participant to competition */
-        Route::post('competition/participant/create', 'App\Http\Controllers\Api\v1\ManageRankingController@participantCreate');
+        Route::post('competition/participant/regist', 'App\Http\Controllers\Api\v1\ManageRankingController@registParticipantToCompetition');
 
         /* Get all participants details*/
         Route::get('participants', 'App\Http\Controllers\Api\v1\ParticipantController@getAll');
@@ -125,7 +129,7 @@ Route::group([ 'prefix' => 'v1', 'middleware' => 'api'], function(){
         Route::delete('participant/delete/{participantId}', 'App\Http\Controllers\Api\v1\ParticipantController@delete');
 
         /* Get all ranking_points details*/
-        Route::get('all_ranking_points', 'App\Http\Controllers\Api\v1\RankingPointsController@getAll');
+        Route::get('ranking_points/{rankingId}', 'App\Http\Controllers\Api\v1\RankingPointsController@getRankingPointsById');
 
         Route::get('rankings', 'App\Http\Controllers\Api\v1\RankingPointsController@getAllRankings');
         // /* Update a ranking */

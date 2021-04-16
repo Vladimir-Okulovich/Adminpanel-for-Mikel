@@ -277,10 +277,7 @@ __webpack_require__.r(__webpack_exports__);
       title: "ADD USER",
       items: [{
         text: "Administrator",
-        href: "/"
-      }, {
-        text: "Competition Data",
-        active: true
+        href: "/admin"
       }, {
         text: "User",
         href: "/admin/users"

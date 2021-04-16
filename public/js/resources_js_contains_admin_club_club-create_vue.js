@@ -75,10 +75,7 @@ __webpack_require__.r(__webpack_exports__);
       title: "ADD CLUB",
       items: [{
         text: "Administrator",
-        href: "/"
-      }, {
-        text: "Competition Data",
-        active: true
+        href: "/admin"
       }, {
         text: "Club",
         href: "/admin/clubs"

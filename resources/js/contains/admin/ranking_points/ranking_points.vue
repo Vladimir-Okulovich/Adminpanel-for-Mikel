@@ -20,11 +20,7 @@
         items: [
           {
             text: "Administrator",
-            href: "/"
-          },
-          {
-            text: "Manage Ranking",
-            active: true
+            href: "/admin"
           },
           {
             text: "Ranking Points",

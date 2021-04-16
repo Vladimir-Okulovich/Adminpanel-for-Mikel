@@ -33,7 +33,7 @@ export default {
       items: [
         {
           text: "Administrator",
-          href: "/"
+          href: "/admin"
         },
         {
           text: "Participant",
@@ -108,7 +108,9 @@ export default {
           })
           .then((res) => {
             // console.log(res)
-            this.$router.push({name: "Participants"});
+            if (res.status == 200) {
+              this.$router.push({name: "Participants"});
+            }
             this.typesubmit = false;
           })
           .catch(error => {
@@ -181,11 +183,11 @@ export default {
                 <br />
                 <date-picker
                   v-model="typeform.birthday"
-                  format="YYYY-MM-DD"
+                  format="DD-MM-YYYY"
                   value-type="format"
                   :first-day-of-week="1"
                   lang="en"
-                  placeholder="Select date"
+                  placeholder="DD-MM-YYYY"
                   :class="{ 'is-invalid': typesubmit && $v.typeform.birthday.$error }"
                 ></date-picker>
                 <div v-if="typesubmit && $v.typeform.birthday.$error" class="invalid-feedback">

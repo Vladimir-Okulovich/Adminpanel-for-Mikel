@@ -75,10 +75,7 @@ __webpack_require__.r(__webpack_exports__);
       title: "ADD COMPETITION TYPE",
       items: [{
         text: "Administrator",
-        href: "/"
-      }, {
-        text: "Competition Data",
-        active: true
+        href: "/admin"
       }, {
         text: "Competition Type",
         href: "/admin/competition_types"

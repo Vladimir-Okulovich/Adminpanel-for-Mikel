@@ -15,8 +15,8 @@ class CreateCompetitionRankingResultsTable extends Migration
     {
         Schema::create('competition_ranking_results', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('competition_id')->constrained('competitions');
-            $table->foreignId('participant_id')->constrained('participants');
+            $table->foreignId('competition_id')->constrained('competitions')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('participant_id')->constrained('participants')->onUpdate('cascade')->onDelete('cascade');
             $table->integer('points')->default(0);
             $table->foreignId('category_id')->constrained('categories');
             $table->foreignId('modality_id')->constrained('modalities');
