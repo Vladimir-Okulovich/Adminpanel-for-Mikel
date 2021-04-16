@@ -35,7 +35,7 @@ const actions = {
             ApiService.post("api/v1/admin/competition_type/create", competition_typeInfo)
                 .then((data) => {
                     resolve(data);
-                    toastr.success('Successfully created', 'Hello', {timeout: 1000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
+                    toastr.success('Successfully created', '', {timeout: 1000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
                 })
                 .catch(({response, status}) => {
                     console.log(response);
@@ -49,7 +49,7 @@ const actions = {
             ApiService.put("api/v1/admin/competition_type/update", competition_typeInfo)
                 .then((data) => {
                     resolve(data);
-                    toastr.success('Successfully updated', 'Hello', {timeout: 1000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
+                    toastr.success('Successfully updated', '', {timeout: 1000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
                 })
                 .catch(({response, status}) => {
                     console.log(response);
@@ -64,7 +64,7 @@ const actions = {
                 .then(({data}) => {
                     resolve(data)
                     context.commit(type.SET_ALL_COMPETITION_TYPES, data)
-                    toastr.success('Successfully deleted', 'Hello', {timeout: 1000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
+                    toastr.success('Successfully deleted', '', {timeout: 1000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
                 })
                 .catch(({ response }) => {
                     // context.commit(type.AUTH_LOGOUT);

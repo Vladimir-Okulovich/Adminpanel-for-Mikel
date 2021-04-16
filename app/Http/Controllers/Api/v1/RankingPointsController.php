@@ -31,44 +31,28 @@ class RankingPointsController extends Controller
         ], 200);
     }
 
+    public function getAllRankings()
+    {
+        $rankings = Ranking::all();
+        return response()->json([
+            'message' => 'success',
+            'rankings' => $rankings
+        ], 200);
+    }
+
     /**
      * Response one data by id
      * 
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function getById(Request $request, $ranking_pointsId)
+    public function getRankingById(Request $request, $rankingId)
     {
-        $ranking_points = Ranking_position_point::find($ranking_pointsId);
-        $ranking_points->ranking;
+        $ranking = Ranking::find($rankingId);
         return response()->json([
             'message' => 'success',
-            'ranking_points' => $ranking_points,
+            'ranking' => $ranking,
         ], 200);
-    }
-
-    /**
-     * Create new data
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create(Request $request) {
-        $validator = Validator::make($request->all(), [
-            'name' => 'required|string|between:1,100',
-            'description' => 'required|max:1000',
-        ]);
-
-        if($validator->fails()){
-            return response()->json($validator->errors()->toJson(), 400);
-        }
-
-        $ranking_points = Ranking_position_point::create(array_merge(
-            $validator->validated(),
-        ));
-        return response()->json([
-            'message' => 'ranking_points successfully registered',
-            'ranking_points' => $ranking_points
-        ], 201);
     }
 
     /**
@@ -77,42 +61,21 @@ class RankingPointsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function updateRanking(Request $request)
     {
         // Update ranking_points
         $request->validate([
             'name' => 'required|string|between:1,100',
-            'description' => 'required|max:1000',
+            'year' => 'required',
         ]);
-        $ranking_points = Ranking_position_point::find($request->id);
-        $ranking_points -> update([
+        $ranking = Ranking::find($request->id);
+        $ranking -> update([
             'name' => $request->name,
-            'description' => $request->description,
+            'year' => $request->year,
         ]);
         return response()->json([
-            'message' => 'ranking_points successfully updated',
-            'ranking_points' => $ranking_points
+            'message' => 'ranking successfully updated',
+            'ranking' => $ranking
         ], 201);
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function delete(Request $request, $ranking_pointsId)
-    {
-        //delete ranking_points
-        $ranking_points = Ranking_position_point::find($ranking_pointsId);
-        $ranking_points -> delete();
-        $all_ranking_points = Ranking_position_point::all();
-        foreach ($all_ranking_points as $ranking_points) {
-            $ranking_points->ranking;
-        }
-        return response()->json([
-            'message' => 'successfully deleted',
-            'all_ranking_points' => $all_ranking_points
-        ], 200);
     }
 }

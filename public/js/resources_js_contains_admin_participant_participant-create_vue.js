@@ -130,7 +130,7 @@ __webpack_require__.r(__webpack_exports__);
     this.getClubOptions();
   },
   computed: (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_3__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_10__.mapGetters)(['clubOptions'])),
-  methods: (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_3__.default)((0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_3__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_10__.mapActions)(['createParticipant', 'getClubOptions', 'format_date'])), {}, {
+  methods: (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_3__.default)((0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_3__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_10__.mapActions)(['createParticipant', 'getClubOptions'])), {}, {
     /**
      * Validation type submit
      */
@@ -156,6 +156,7 @@ __webpack_require__.r(__webpack_exports__);
         sex: this.typeform.sex,
         club: this.typeform.club
       }).then(function (res) {
+        // console.log(res)
         _this.$router.push({
           name: "Participants"
         });

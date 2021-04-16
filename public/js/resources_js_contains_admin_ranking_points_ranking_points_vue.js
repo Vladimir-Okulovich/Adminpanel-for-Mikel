@@ -55,7 +55,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   page: {
-    title: "RANKING POINTS",
+    title: "RANKINGS",
     meta: [{
       name: "description",
       content: _app_config__WEBPACK_IMPORTED_MODULE_4__.description
@@ -67,7 +67,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      title: "RANKING POINTS",
+      title: "RANKINGS",
       items: [{
         text: "Administrator",
         href: "/"
@@ -84,36 +84,31 @@ __webpack_require__.r(__webpack_exports__);
       pageOptions: [10, 25, 50, 100],
       filter: null,
       filterOn: [],
-      sortBy: "position",
+      sortBy: "name",
       sortDesc: false,
       fields: [{
         key: "name",
         sortable: false
       }, {
-        key: "position",
-        sortable: true
-      }, {
-        key: "points",
+        key: "actions",
         sortable: false
-      } // { key: "actions", sortable: false }
-      ],
-      deletingId: 0
+      }]
     };
   },
-  computed: (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)((0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_6__.mapGetters)(['getAllRankingPoints'])), {}, {
+  computed: (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)((0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_6__.mapGetters)(['getRankings'])), {}, {
     /**
      * Total no. of records
      */
     rows: function rows() {
-      return this.getAllRankingPoints.length;
+      return this.getRankings.length;
     }
   }),
   mounted: function mounted() {
     // Set the initial number of items
-    this.totalRows = this.getAllRankingPoints.length;
-    this.initRankingPoints();
+    this.totalRows = this.getRankings.length;
+    this.getAllRankings();
   },
-  methods: (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)((0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_6__.mapActions)(['initRankingPoints', 'deleteRankingPoints'])), {}, {
+  methods: (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)((0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_6__.mapActions)(['getAllRankings'])), {}, {
     /**
      * Search the table data with search input
      */
@@ -121,13 +116,6 @@ __webpack_require__.r(__webpack_exports__);
       // Trigger pagination to update the number of buttons/pages due to filtering
       this.totalRows = filteredItems.length;
       this.currentPage = 1;
-    },
-    setId: function setId(id) {
-      this.deletingId = id;
-    },
-    realDelete: function realDelete() {
-      this.deleteRankingPoints(this.deletingId);
-      this.$bvModal.hide('delete-modal');
     }
   })
 });
@@ -7038,7 +7026,7 @@ var render = function() {
           _c("div", { staticClass: "card" }, [
             _c("div", { staticClass: "card-body" }, [
               _c("h4", { staticClass: "card-title" }, [
-                _vm._v("Ranking Points Table")
+                _vm._v("Rankings Table")
               ]),
               _vm._v(" "),
               _c("p", { staticClass: "card-title-desc" }),
@@ -7117,7 +7105,7 @@ var render = function() {
                 [
                   _c("b-table", {
                     attrs: {
-                      items: _vm.getAllRankingPoints,
+                      items: _vm.getRankings,
                       fields: _vm.fields,
                       responsive: "sm",
                       "per-page": _vm.perPage,
@@ -7149,12 +7137,28 @@ var render = function() {
                           return [
                             _vm._v(
                               "\n                " +
-                                _vm._s(
-                                  row.item.ranking.name +
-                                    " " +
-                                    row.item.ranking.year
-                                ) +
+                                _vm._s(row.item.name + " " + row.item.year) +
                                 "\n              "
+                            )
+                          ]
+                        }
+                      },
+                      {
+                        key: "cell(actions)",
+                        fn: function(row) {
+                          return [
+                            _c(
+                              "router-link",
+                              {
+                                staticClass: "btn btn-sm btn-secondary mr-2",
+                                attrs: {
+                                  to: {
+                                    name: "RankingPointsEdit",
+                                    params: { rankingId: row.item.id }
+                                  }
+                                }
+                              },
+                              [_c("i", { staticClass: "far fa-edit" })]
                             )
                           ]
                         }
@@ -7201,60 +7205,7 @@ var render = function() {
             ])
           ])
         ])
-      ]),
-      _vm._v(" "),
-      _c(
-        "b-modal",
-        {
-          attrs: {
-            id: "delete-modal",
-            centered: "",
-            title: "Delete Item",
-            "title-class": "font-18",
-            "hide-footer": ""
-          }
-        },
-        [
-          _c("p", [_vm._v("Are you sure you want to delete selected item?")]),
-          _vm._v(" "),
-          _c(
-            "footer",
-            {
-              staticClass: "modal-footer",
-              attrs: { id: "delete-modal___BV_modal_footer_" }
-            },
-            [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-secondary",
-                  attrs: { type: "button" },
-                  on: {
-                    click: function($event) {
-                      return _vm.$bvModal.hide("delete-modal")
-                    }
-                  }
-                },
-                [_vm._v("Cancel")]
-              ),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-primary",
-                  attrs: { type: "button" },
-                  on: {
-                    click: function($event) {
-                      return _vm.realDelete()
-                    }
-                  }
-                },
-                [_vm._v("OK")]
-              )
-            ]
-          )
-        ]
-      )
+      ])
     ],
     1
   )

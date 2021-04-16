@@ -9,6 +9,11 @@ class Ranking extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'year',
+    ];
+
     public function ranking_position_points()
     {
         return $this->hasMany(Ranking_position_point::class);

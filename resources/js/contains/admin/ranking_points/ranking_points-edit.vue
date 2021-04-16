@@ -6,61 +6,46 @@ import appConfig from "@/app.config";
 import { mapActions, mapGetters } from 'vuex';
 import DatePicker from "vue2-datepicker";
 
-import Multiselect from "vue-multiselect";
-
 import {
   required,
-  email,
-  minLength,
-  sameAs,
-  maxLength,
-  minValue,
-  maxValue,
-  numeric,
-  url,
-  alphaNum
 } from "vuelidate/lib/validators";
 
 export default {
   page: {
-    title: "EDIT CATEGORY",
+    title: "RANKING POINTS",
     meta: [{ name: "description", content: appConfig.description }]
   },
-  components: { DatePicker, Multiselect, Layout, PageHeader },
+  components: { DatePicker, Layout, PageHeader },
   data() {
     return {
-      title: "EDIT CATEGORY",
+      title: "RANKING POINTS",
       items: [
         {
           text: "Administrator",
           href: "/"
         },
         {
-          text: "Competition Data",
+          text: "Manage Ranking",
           active: true
         },
         {
-          text: "Category",
-          href: "/admin/categories"
-        },
-        {
-          text: "Edit",
+          text: "Ranking Points",
           active: true
         }
       ],
-      sexOptions: [
-        "Female",
-        "Male"
+      totalRows: 1,
+      sortBy: "position",
+      sortDesc: false,
+      fields: [
+        { key: "name", sortable: false },
+        { key: "position", sortable: true },
+        { key: "points", sortable: false },
       ],
-      minValue: true,
       isError: false,
       Error: null,
       typeform: {
         name: "",
-        description: "",
-        year1: "",
-        year2: "",
-        sex: "",
+        year: "",
       },
       typesubmit: false,
     };
@@ -68,24 +53,28 @@ export default {
   validations: {
     typeform: {
       name: { required },
-      description: { required },
-      year1: { required },
-      year2: { required },
-      sex: { required },
+      year: { required },
     }
   },
   mounted() {
-    this.getCategoryById(this.$route.params.categoryId);
+    this.getRankingById(this.$route.params.rankingId);
+    this.totalRows = this.getAllRankingPoints.length;
+    this.initRankingPoints();
   },
   computed: {
     ...mapGetters([
-      'getCategory'
+      'getRanking',
+      'getAllRankingPoints'
     ]),
+    rows() {
+      return this.getAllRankingPoints.length;
+    }
   },
   methods: {
     ...mapActions([
-      'getCategoryById',
-      'updateCategory'
+      'getRankingById',
+      'updateRanking',
+      'initRankingPoints',
     ]),
     gstr(year) {
       return ToString(year);
@@ -95,31 +84,23 @@ export default {
      */
     // eslint-disable-next-line no-unused-vars
     typeForm(e) {
-      // console.log(typeof(this.getCategory.year1))
+      // console.log(typeof(this.getRanking.year1))
       this.typesubmit = true;
       this.isError = false;
       this.Error = null;
-      if (this.typeform.year1 >= this.typeform.year2) {
-        this.minValue = false;
-      } else {
-        this.minValue = true;
-      }
       // stop here if form is invalid
       this.$v.$touch();
-      if (!this.minValue || this.$v.typeform.sex.$error || this.$v.typeform.name.$error || this.$v.typeform.description.$error || this.$v.typeform.year1.$error || this.$v.typeform.year2.$error) {
+      if (this.$v.typeform.name.$error || this.$v.typeform.year.$error) {
         return ;
       }
       return (
-        this.updateCategory({
-            id: this.getCategory.id,
+        this.updateRanking({
+            id: this.getRanking.id,
             name: this.typeform.name,
-            description: this.typeform.description,
-            year1: this.typeform.year1,
-            year2: this.typeform.year2,
-            sex: this.typeform.sex,
+            year: this.typeform.year,
           })
           .then((res) => {
-            this.$router.push({name: "Categories"});
+            this.$router.push({name: "RankingPoints"});
             this.typesubmit = false;
           })
           .catch(error => {
@@ -151,7 +132,7 @@ export default {
               <div class="form-group">
                 <label>Name</label>
                 <input
-                  v-model="typeform.name=getCategory.name"
+                  v-model="typeform.name=getRanking.name"
                   type="text"
                   class="form-control"
                   placeholder="Name"
@@ -163,71 +144,43 @@ export default {
                 </div>
               </div>
               <div class="form-group">
-                <label>Description</label>
-                <div>
-                  <textarea
-                    v-model="typeform.description=getCategory.description"
-                    class="form-control"
-                    name="description"
-                    :style="{ 'min-height': '100px' }"
-                    :class="{ 'is-invalid': typesubmit && $v.typeform.description.$error }"
-                  ></textarea>
-                  <div v-if="typesubmit && $v.typeform.description.$error" class="invalid-feedback">
-                    <span v-if="!$v.typeform.description.required">This value is required.</span>
-                  </div>
-                </div>
-              </div> 
-              <div class="form-group">
-                <label>Year1</label>
+                <label>Year</label>
                 <br />
                 <date-picker
-                  v-model="typeform.year1=getCategory.year1"
+                  v-model="typeform.year=getRanking.year"
                   type="year"
                   value-type="format"
                   lang="en"
-                  placeholder="Min year"
-                  :class="{ 'is-invalid': typesubmit && $v.typeform.year1.$error }"
+                  placeholder="Year"
+                  :class="{ 'is-invalid': typesubmit && $v.typeform.year.$error }"
                 ></date-picker>
-                <div v-if="typesubmit && $v.typeform.year1.$error" class="invalid-feedback">
-                  <span v-if="!$v.typeform.year1.required">This value is required.</span>
-                </div>
-              </div>
-              <div class="form-group">
-                <label>Year2</label>
-                <br />
-                <date-picker
-                  v-model="typeform.year2=getCategory.year2"
-                  type="year"
-                  value-type="format"
-                  lang="en"
-                  placeholder="Max year"
-                  :class="{ 'is-invalid': typesubmit && ($v.typeform.year2.$error || !minValue) }"
-                ></date-picker>
-                <div v-if="typesubmit && ($v.typeform.year2.$error || !minValue)" class="invalid-feedback">
-                  <span v-if="!$v.typeform.year2.required">This value is required.</span>
-                  <span
-                      v-if="!minValue"
-                    >This value should be greater than Year1.</span>
-                </div>
-              </div>
-              <div class="mb-3">
-                <label>Sex</label>
-                <multiselect 
-                  v-model="typeform.sex=getCategory.sex.name" 
-                  :options="sexOptions"
-                  :class="{ 'is-invalid': typesubmit && $v.typeform.sex.$error }"
-                ></multiselect>
-                <div v-if="typesubmit && $v.typeform.sex.$error" class="invalid-feedback">
-                  <span v-if="!$v.typeform.sex.required">This value is required.</span>
+                <div v-if="typesubmit && $v.typeform.year.$error" class="invalid-feedback">
+                  <span v-if="!$v.typeform.year.required">This value is required.</span>
                 </div>
               </div>
               <div class="form-group mt-5 mb-0">
                 <div>
                   <button type="submit" class="btn btn-primary">Save</button>
-                  <router-link to="/admin/categories" class="btn btn-secondary m-l-5 ml-1">Cancel</router-link>
+                  <router-link to="/admin/ranking_points" class="btn btn-secondary m-l-5 ml-1">Cancel</router-link>
                 </div>
               </div>
             </form>
+          </div>
+        </div>
+        <div>
+          <!-- Table -->
+          <div class="table-responsive table-dark mb-0">
+            <b-table
+              :items="getAllRankingPoints"
+              :fields="fields"
+              responsive="sm"
+              :sort-by.sync="sortBy"
+              :sort-desc.sync="sortDesc"
+            >
+              <template #cell(name)="row">
+                {{ row.item.ranking.name + " " + row.item.ranking.year }}
+              </template>
+            </b-table>
           </div>
         </div>
       </div>

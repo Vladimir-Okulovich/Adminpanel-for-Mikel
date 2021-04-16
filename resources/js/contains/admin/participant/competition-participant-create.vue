@@ -36,6 +36,10 @@ export default {
           href: "/"
         },
         {
+          text: "Competition",
+          href: "/admin/competitions"
+        },
+        {
           text: "Participant",
           href: "/admin/participants"
         },
@@ -53,10 +57,15 @@ export default {
         birthday: "",
         sex: "Male",
         club: "",
+        modality: [],
       },
       sexOptions: [
         "Male",
         "Female"
+      ],
+      modalityOptions: [
+        "Short Boat",
+        "Long Ship"
       ],
       typesubmit: false,
     };
@@ -69,6 +78,7 @@ export default {
       birthday: { required },
       sex: { required },
       club: { required },
+      modality: { required },
     }
   },
   mounted() {
@@ -81,7 +91,7 @@ export default {
   },
   methods: {
     ...mapActions([
-        'createParticipant',
+        'addParticipantToCompetition',
         'getClubOptions',
       ]),
     /**
@@ -94,21 +104,23 @@ export default {
       this.Error = null;
       // stop here if form is invalid
       this.$v.$touch()
-      if (this.$v.typeform.name.$error || this.$v.typeform.surname.$error || this.$v.typeform.dni_ficha.$error || this.$v.typeform.birthday.$error || this.$v.typeform.sex.$error || this.$v.typeform.club.$error) {
+      if (this.$v.typeform.name.$error || this.$v.typeform.surname.$error || this.$v.typeform.dni_ficha.$error || this.$v.typeform.birthday.$error || this.$v.typeform.sex.$error || this.$v.typeform.club.$error || this.$v.typeform.modality.$error) {
         return ;
       }
       return (
-        this.createParticipant({
+        this.addParticipantToCompetition({
+            competitionId: this.$route.params.competitionId,
             name: this.typeform.name,
             surname: this.typeform.surname,
             dni_ficha: this.typeform.dni_ficha,
             birthday: this.typeform.birthday,
             sex: this.typeform.sex,
             club: this.typeform.club,
+            modality: this.typeform.modality,
           })
           .then((res) => {
             // console.log(res)
-            this.$router.push({name: "Participants"});
+            this.$router.push({name: "Competitions"});
             this.typesubmit = false;
           })
           .catch(error => {
@@ -192,7 +204,7 @@ export default {
                   <span v-if="!$v.typeform.birthday.required">This value is required.</span>
                 </div>
               </div>
-              <div>
+              <div class="mb-3">
                 <label>Sex</label>
                 <multiselect 
                   v-model="typeform.sex" 
@@ -203,8 +215,7 @@ export default {
                   <span v-if="!$v.typeform.sex.required">This value is required.</span>
                 </div>
               </div>
-              <br />
-              <div>
+              <div class="mb-3">
                 <label>Club</label>
                 <multiselect 
                   v-model="typeform.club"
@@ -215,10 +226,22 @@ export default {
                   <span v-if="!$v.typeform.club.required">This value is required.</span>
                 </div>
               </div>
+              <div>
+                <label>Modality</label>
+                <multiselect 
+                  v-model="typeform.modality"
+                  :options="modalityOptions"
+                  :multiple="true"
+                  :class="{ 'is-invalid': typesubmit && $v.typeform.modality.$error }"
+                ></multiselect>
+                <div v-if="typesubmit && $v.typeform.modality.$error" class="invalid-feedback">
+                  <span v-if="!$v.typeform.modality.required">This value is required.</span>
+                </div>
+              </div>
               <div class="form-group mt-5 mb-0">
                 <div>
                   <button type="submit" class="btn btn-primary">Submit</button>
-                  <router-link to="/admin/participants" class="btn btn-secondary m-l-5 ml-1">Cancel</router-link>
+                  <router-link to="/admin/competitions" class="btn btn-secondary m-l-5 ml-1">Cancel</router-link>
                   <button type="reset" class="btn btn-warning m-l-5 ml-1">Reset</button>
                 </div>
               </div>

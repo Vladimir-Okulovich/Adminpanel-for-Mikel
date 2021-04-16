@@ -54,7 +54,7 @@ export default {
         place: "",
         date: "",
         time: "",
-        ranking_score: "",
+        ranking_score: "No",
         status: "REGISTRATION OPEN",
         lycra: "",
         modality: "",
@@ -311,7 +311,7 @@ export default {
                   <div class="mb-3">
                     <label>Lycra</label>
                     <multiselect 
-                      v-model="typeform.lycra=lycraOptions" 
+                      v-model="typeform.lycra" 
                       :options="lycraOptions"
                       :multiple="true"
                       :class="{ 'is-invalid': typesubmit && $v.typeform.lycra.$error }"

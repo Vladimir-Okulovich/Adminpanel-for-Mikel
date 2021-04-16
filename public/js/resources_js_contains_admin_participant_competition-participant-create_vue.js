@@ -1,4 +1,4 @@
-(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_contains_admin_competition_competition-create_vue"],{
+(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_contains_admin_participant_competition-participant-create_vue"],{
 
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/page-header.vue?vue&type=script&lang=js&":
 /*!******************************************************************************************************************************************************************************************************************!*\
@@ -29,10 +29,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/contains/admin/competition/competition-create.vue?vue&type=script&lang=js&":
-/*!*****************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/contains/admin/competition/competition-create.vue?vue&type=script&lang=js& ***!
-  \*****************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/contains/admin/participant/competition-participant-create.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/contains/admin/participant/competition-participant-create.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************************************************************************************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -41,14 +41,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var core_js_modules_es_symbol_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_symbol_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es.symbol.description.js */ "./node_modules/core-js/modules/es.symbol.description.js");
 /* harmony import */ var core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
-/* harmony import */ var _subcomponent_layout__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../subcomponent/layout */ "./resources/js/contains/admin/subcomponent/layout.vue");
-/* harmony import */ var _components_page_header__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/components/page-header */ "./resources/js/components/page-header.vue");
-/* harmony import */ var _app_config__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/app.config */ "./resources/js/app.config.json");
-/* harmony import */ var vue2_datepicker__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vue2-datepicker */ "./node_modules/vue2-datepicker/index.esm.js");
-/* harmony import */ var vue_multiselect__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vue-multiselect */ "./node_modules/vue-multiselect/dist/vue-multiselect.min.js");
-/* harmony import */ var vue_multiselect__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(vue_multiselect__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var vue_switches__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vue-switches */ "./node_modules/vue-switches/src/switches.vue");
+/* harmony import */ var core_js_modules_es_function_name_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core-js/modules/es.function.name.js */ "./node_modules/core-js/modules/es.function.name.js");
+/* harmony import */ var core_js_modules_es_function_name_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_function_name_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
+/* harmony import */ var _subcomponent_layout__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../subcomponent/layout */ "./resources/js/contains/admin/subcomponent/layout.vue");
+/* harmony import */ var _components_page_header__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/components/page-header */ "./resources/js/components/page-header.vue");
+/* harmony import */ var _app_config__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/app.config */ "./resources/js/app.config.json");
+/* harmony import */ var vue2_datepicker__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vue2-datepicker */ "./node_modules/vue2-datepicker/index.esm.js");
+/* harmony import */ var vue_multiselect__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vue-multiselect */ "./node_modules/vue-multiselect/dist/vue-multiselect.min.js");
+/* harmony import */ var vue_multiselect__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(vue_multiselect__WEBPACK_IMPORTED_MODULE_8__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.mjs");
 /* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
 
@@ -64,22 +65,21 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   page: {
-    title: "ADD COMPETITION",
+    title: "ADD PARTICIPANT",
     meta: [{
       name: "description",
-      content: _app_config__WEBPACK_IMPORTED_MODULE_5__.description
+      content: _app_config__WEBPACK_IMPORTED_MODULE_6__.description
     }]
   },
   components: {
-    DatePicker: vue2_datepicker__WEBPACK_IMPORTED_MODULE_6__.default,
-    Multiselect: (vue_multiselect__WEBPACK_IMPORTED_MODULE_7___default()),
-    Switches: vue_switches__WEBPACK_IMPORTED_MODULE_8__.default,
-    Layout: _subcomponent_layout__WEBPACK_IMPORTED_MODULE_3__.default,
-    PageHeader: _components_page_header__WEBPACK_IMPORTED_MODULE_4__.default
+    DatePicker: vue2_datepicker__WEBPACK_IMPORTED_MODULE_7__.default,
+    Multiselect: (vue_multiselect__WEBPACK_IMPORTED_MODULE_8___default()),
+    Layout: _subcomponent_layout__WEBPACK_IMPORTED_MODULE_4__.default,
+    PageHeader: _components_page_header__WEBPACK_IMPORTED_MODULE_5__.default
   },
   data: function data() {
     return {
-      title: "ADD COMPETITION",
+      title: "ADD PARTICIPANT",
       items: [{
         text: "Administrator",
         href: "/"
@@ -87,77 +87,58 @@ __webpack_require__.r(__webpack_exports__);
         text: "Competition",
         href: "/admin/competitions"
       }, {
+        text: "Participant",
+        href: "/admin/participants"
+      }, {
         text: "Add",
         active: true
       }],
       isError: false,
       Error: null,
       typeform: {
-        title: "",
-        competition_type: "",
-        description: "",
-        place: "",
-        date: "",
-        time: "",
-        ranking_score: "No",
-        status: "REGISTRATION OPEN",
-        lycra: "",
-        modality: "",
-        category: "",
-        logo: null
+        name: "",
+        surname: "",
+        dni_ficha: "",
+        birthday: "",
+        sex: "Male",
+        club: "",
+        modality: []
       },
-      rankingScoreOptions: ["Yes", "No"],
-      statusOptions: ["CLOSED", "REGISTRATION OPEN", "COMPETITION IN PROGRESS"],
+      sexOptions: ["Male", "Female"],
       modalityOptions: ["Short Boat", "Long Ship"],
       typesubmit: false
     };
   },
   validations: {
     typeform: {
-      title: {
+      name: {
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_9__.required
       },
-      competition_type: {
+      surname: {
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_9__.required
       },
-      description: {
+      dni_ficha: {
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_9__.required
       },
-      place: {
+      birthday: {
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_9__.required
       },
-      date: {
+      sex: {
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_9__.required
       },
-      time: {
-        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_9__.required
-      },
-      ranking_score: {
-        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_9__.required
-      },
-      lycra: {
+      club: {
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_9__.required
       },
       modality: {
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_9__.required
-      },
-      category: {
-        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_9__.required
       }
     }
   },
-  computed: (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_10__.mapGetters)(['typeOptions', 'categoryOptions', 'lycraOptions'])),
   mounted: function mounted() {
-    this.getTypeOptions();
-    this.getLycraOptions();
-    this.getCategoryOptions();
+    this.getClubOptions();
   },
-  methods: (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)((0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_10__.mapActions)(['createCompetition', 'getTypeOptions', 'getLycraOptions', 'getCategoryOptions'])), {}, {
-    selectFile: function selectFile(event) {
-      // `files` is always an array because the file input may be in multiple mode
-      this.typeform.logo = event.target.files[0]; // console.log(this.typeform.logo)
-    },
-
+  computed: (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_3__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_10__.mapGetters)(['clubOptions'])),
+  methods: (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_3__.default)((0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_3__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_10__.mapActions)(['addParticipantToCompetition', 'getClubOptions'])), {}, {
     /**
      * Validation type submit
      */
@@ -165,38 +146,33 @@ __webpack_require__.r(__webpack_exports__);
     typeForm: function typeForm(e) {
       var _this = this;
 
-      console.log(this.typeform.time);
       this.typesubmit = true;
       this.isError = false;
       this.Error = null; // stop here if form is invalid
 
       this.$v.$touch();
 
-      if (this.$v.typeform.title.$error || this.$v.typeform.place.$error || this.$v.typeform.date.$error || this.$v.typeform.time.$error || this.$v.typeform.description.$error || this.$v.typeform.competition_type.$error || this.$v.typeform.lycra.$error || this.$v.typeform.modality.$error || this.$v.typeform.category.$error) {
+      if (this.$v.typeform.name.$error || this.$v.typeform.surname.$error || this.$v.typeform.dni_ficha.$error || this.$v.typeform.birthday.$error || this.$v.typeform.sex.$error || this.$v.typeform.club.$error || this.$v.typeform.modality.$error) {
         return;
       }
 
-      return this.createCompetition({
-        title: this.typeform.title,
-        competition_type: this.typeform.competition_type,
-        description: this.typeform.description,
-        place: this.typeform.place,
-        date: this.typeform.date,
-        time: this.typeform.time,
-        ranking_score: this.typeform.ranking_score,
-        status: this.typeform.status,
-        lycra: this.typeform.lycra,
-        modality: this.typeform.modality,
-        category: this.typeform.category,
-        logo: this.typeform.logo
+      return this.addParticipantToCompetition({
+        competitionId: this.$route.params.competitionId,
+        name: this.typeform.name,
+        surname: this.typeform.surname,
+        dni_ficha: this.typeform.dni_ficha,
+        birthday: this.typeform.birthday,
+        sex: this.typeform.sex,
+        club: this.typeform.club,
+        modality: this.typeform.modality
       }).then(function (res) {
+        // console.log(res)
         _this.$router.push({
           name: "Competitions"
         });
 
         _this.typesubmit = false;
       })["catch"](function (error) {
-        console.log("error");
         _this.typesubmit = false;
         _this.Error = error ? error : "";
         _this.isError = true;
@@ -2565,27 +2541,6 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
 ___CSS_LOADER_EXPORT___.push([module.id, "\n.admin-layout .page-content {\n  padding: 0 24px 60px 24px !important;\n}\n", ""]);
-// Exports
-/* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
-
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-switches/dist/switches.css?vue&type=style&index=0&lang=css&":
-/*!********************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-switches/dist/switches.css?vue&type=style&index=0&lang=css& ***!
-  \********************************************************************************************************************************************************************************************************************************************************************************************************/
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
-/* harmony import */ var _css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
-// Imports
-
-var ___CSS_LOADER_EXPORT___ = _css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
-// Module
-___CSS_LOADER_EXPORT___.push([module.id, "/**\n * Default\n */\n/**\n * Bulma\n */\n/**\n * Bootstrap\n */\n.vue-switcher {\n  position: relative;\n  display: inline-block;\n}\n.vue-switcher__label {\n    display: block;\n    font-size: 10px;\n    margin-bottom: 5px;\n}\n.vue-switcher input {\n    opacity: 0;\n    width: 100%;\n    height: 100%;\n    position: absolute;\n    z-index: 1;\n    cursor: pointer;\n}\n.vue-switcher div {\n    height: 15px;\n    width: 36px;\n    position: relative;\n    border-radius: 30px;\n    display: -webkit-flex;\n    display: -ms-flex;\n    display: flex;\n    align-items: center;\n    justify-content: flex-start;\n    cursor: pointer;\n    transition: linear .2s, background-color linear .2s;\n}\n.vue-switcher div:after {\n      content: '';\n      height: 20px;\n      width: 20px;\n      border-radius: 100px;\n      display: block;\n      transition: linear .15s, background-color linear .15s;\n      position: absolute;\n      left: 100%;\n      margin-left: -18px;\n      cursor: pointer;\n      top: -3px;\n      box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.1);\n}\n.vue-switcher--unchecked div {\n    justify-content: flex-end;\n}\n.vue-switcher--unchecked div:after {\n      left: 15px;\n}\n.vue-switcher--disabled div {\n    opacity: .3;\n}\n.vue-switcher--disabled input {\n    cursor: not-allowed;\n}\n.vue-switcher--bold div {\n    top: -8px;\n    height: 26px;\n    width: 51px;\n}\n.vue-switcher--bold div:after {\n      margin-left: -24px;\n      top: 3px;\n}\n.vue-switcher--bold--unchecked div:after {\n    left: 28px;\n}\n.vue-switcher--bold .vue-switcher__label span {\n    padding-bottom: 7px;\n    display: inline-block;\n}\n.vue-switcher-theme--default.vue-switcher-color--default div {\n    background-color: #b7b7b7;\n}\n.vue-switcher-theme--default.vue-switcher-color--default div:after {\n      background-color: #9d9d9d;\n}\n.vue-switcher-theme--default.vue-switcher-color--default.vue-switcher--unchecked div {\n    background-color: #aaa;\n}\n.vue-switcher-theme--default.vue-switcher-color--default.vue-switcher--unchecked div:after {\n      background-color: #c4c4c4;\n}\n.vue-switcher-theme--default.vue-switcher-color--blue div {\n    background-color: #77b0c8;\n}\n.vue-switcher-theme--default.vue-switcher-color--blue div:after {\n      background-color: #539bb9;\n}\n.vue-switcher-theme--default.vue-switcher-color--blue.vue-switcher--unchecked div {\n    background-color: #c0dae5;\n}\n.vue-switcher-theme--default.vue-switcher-color--blue.vue-switcher--unchecked div:after {\n      background-color: #77b0c8;\n}\n.vue-switcher-theme--default.vue-switcher-color--red div {\n    background-color: #c87777;\n}\n.vue-switcher-theme--default.vue-switcher-color--red div:after {\n      background-color: #b95353;\n}\n.vue-switcher-theme--default.vue-switcher-color--red.vue-switcher--unchecked div {\n    background-color: #e5c0c0;\n}\n.vue-switcher-theme--default.vue-switcher-color--red.vue-switcher--unchecked div:after {\n      background-color: #c87777;\n}\n.vue-switcher-theme--default.vue-switcher-color--yellow div {\n    background-color: #c9c377;\n}\n.vue-switcher-theme--default.vue-switcher-color--yellow div:after {\n      background-color: #bab353;\n}\n.vue-switcher-theme--default.vue-switcher-color--yellow.vue-switcher--unchecked div {\n    background-color: #e6e3c0;\n}\n.vue-switcher-theme--default.vue-switcher-color--yellow.vue-switcher--unchecked div:after {\n      background-color: #c9c377;\n}\n.vue-switcher-theme--default.vue-switcher-color--orange div {\n    background-color: #c89577;\n}\n.vue-switcher-theme--default.vue-switcher-color--orange div:after {\n      background-color: #b97953;\n}\n.vue-switcher-theme--default.vue-switcher-color--orange.vue-switcher--unchecked div {\n    background-color: #e5cec0;\n}\n.vue-switcher-theme--default.vue-switcher-color--orange.vue-switcher--unchecked div:after {\n      background-color: #c89577;\n}\n.vue-switcher-theme--default.vue-switcher-color--green div {\n    background-color: #77c88d;\n}\n.vue-switcher-theme--default.vue-switcher-color--green div:after {\n      background-color: #53b96e;\n}\n.vue-switcher-theme--default.vue-switcher-color--green.vue-switcher--unchecked div {\n    background-color: #c0e5ca;\n}\n.vue-switcher-theme--default.vue-switcher-color--green.vue-switcher--unchecked div:after {\n      background-color: #77c88d;\n}\n.vue-switcher-theme--bulma.vue-switcher-color--default div {\n    background-color: gainsboro;\n}\n.vue-switcher-theme--bulma.vue-switcher-color--default div:after {\n      background-color: #f5f5f5;\n}\n.vue-switcher-theme--bulma.vue-switcher-color--default.vue-switcher--unchecked div {\n    background-color: #e8e8e8;\n}\n.vue-switcher-theme--bulma.vue-switcher-color--default.vue-switcher--unchecked div:after {\n      background-color: #f5f5f5;\n}\n.vue-switcher-theme--bulma.vue-switcher-color--primary div {\n    background-color: #05ffda;\n}\n.vue-switcher-theme--bulma.vue-switcher-color--primary div:after {\n      background-color: #00d1b2;\n}\n.vue-switcher-theme--bulma.vue-switcher-color--primary.vue-switcher--unchecked div {\n    background-color: #6bffe9;\n}\n.vue-switcher-theme--bulma.vue-switcher-color--primary.vue-switcher--unchecked div:after {\n      background-color: #05ffda;\n}\n.vue-switcher-theme--bulma.vue-switcher-color--blue div {\n    background-color: #5e91e3;\n}\n.vue-switcher-theme--bulma.vue-switcher-color--blue div:after {\n      background-color: #3273dc;\n}\n.vue-switcher-theme--bulma.vue-switcher-color--blue.vue-switcher--unchecked div {\n    background-color: #b5ccf2;\n}\n.vue-switcher-theme--bulma.vue-switcher-color--blue.vue-switcher--unchecked div:after {\n      background-color: #5e91e3;\n}\n.vue-switcher-theme--bulma.vue-switcher-color--red div {\n    background-color: #ff6b89;\n}\n.vue-switcher-theme--bulma.vue-switcher-color--red div:after {\n      background-color: #ff3860;\n}\n.vue-switcher-theme--bulma.vue-switcher-color--red.vue-switcher--unchecked div {\n    background-color: #ffd1da;\n}\n.vue-switcher-theme--bulma.vue-switcher-color--red.vue-switcher--unchecked div:after {\n      background-color: #ff6b89;\n}\n.vue-switcher-theme--bulma.vue-switcher-color--yellow div {\n    background-color: #ffe78a;\n}\n.vue-switcher-theme--bulma.vue-switcher-color--yellow div:after {\n      background-color: #ffdd57;\n}\n.vue-switcher-theme--bulma.vue-switcher-color--yellow.vue-switcher--unchecked div {\n    background-color: #fffcf0;\n}\n.vue-switcher-theme--bulma.vue-switcher-color--yellow.vue-switcher--unchecked div:after {\n      background-color: #ffe78a;\n}\n.vue-switcher-theme--bulma.vue-switcher-color--green div {\n    background-color: #3dde75;\n}\n.vue-switcher-theme--bulma.vue-switcher-color--green div:after {\n      background-color: #22c65b;\n}\n.vue-switcher-theme--bulma.vue-switcher-color--green.vue-switcher--unchecked div {\n    background-color: #94edb3;\n}\n.vue-switcher-theme--bulma.vue-switcher-color--green.vue-switcher--unchecked div:after {\n      background-color: #3dde75;\n}\n.vue-switcher-theme--bootstrap.vue-switcher-color--default div {\n    background-color: #e6e6e6;\n}\n.vue-switcher-theme--bootstrap.vue-switcher-color--default div:after {\n      background-color: #f0f0f0;\n}\n.vue-switcher-theme--bootstrap.vue-switcher-color--default.vue-switcher--unchecked div {\n    background-color: whitesmoke;\n}\n.vue-switcher-theme--bootstrap.vue-switcher-color--default.vue-switcher--unchecked div:after {\n      background-color: #f0f0f0;\n}\n.vue-switcher-theme--bootstrap.vue-switcher-color--primary div {\n    background-color: #4f93ce;\n}\n.vue-switcher-theme--bootstrap.vue-switcher-color--primary div:after {\n      background-color: #337ab7;\n}\n.vue-switcher-theme--bootstrap.vue-switcher-color--primary.vue-switcher--unchecked div {\n    background-color: #9fc4e4;\n}\n.vue-switcher-theme--bootstrap.vue-switcher-color--primary.vue-switcher--unchecked div:after {\n      background-color: #4f93ce;\n}\n.vue-switcher-theme--bootstrap.vue-switcher-color--success div {\n    background-color: #80c780;\n}\n.vue-switcher-theme--bootstrap.vue-switcher-color--success div:after {\n      background-color: #5cb85c;\n}\n.vue-switcher-theme--bootstrap.vue-switcher-color--success.vue-switcher--unchecked div {\n    background-color: #c7e6c7;\n}\n.vue-switcher-theme--bootstrap.vue-switcher-color--success.vue-switcher--unchecked div:after {\n      background-color: #80c780;\n}\n.vue-switcher-theme--bootstrap.vue-switcher-color--info div {\n    background-color: #85d0e7;\n}\n.vue-switcher-theme--bootstrap.vue-switcher-color--info div:after {\n      background-color: #5bc0de;\n}\n.vue-switcher-theme--bootstrap.vue-switcher-color--info.vue-switcher--unchecked div {\n    background-color: #daf1f8;\n}\n.vue-switcher-theme--bootstrap.vue-switcher-color--info.vue-switcher--unchecked div:after {\n      background-color: #85d0e7;\n}\n.vue-switcher-theme--bootstrap.vue-switcher-color--warning div {\n    background-color: #f4c37d;\n}\n.vue-switcher-theme--bootstrap.vue-switcher-color--warning div:after {\n      background-color: #f0ad4e;\n}\n.vue-switcher-theme--bootstrap.vue-switcher-color--warning.vue-switcher--unchecked div {\n    background-color: #fceedb;\n}\n.vue-switcher-theme--bootstrap.vue-switcher-color--warning.vue-switcher--unchecked div:after {\n      background-color: #f4c37d;\n}\n.vue-switcher-theme--bootstrap.vue-switcher-color--danger div {\n    background-color: #d9534f;\n}\n.vue-switcher-theme--bootstrap.vue-switcher-color--danger div:after {\n      background-color: #c9302c;\n}\n.vue-switcher-theme--bootstrap.vue-switcher-color--danger.vue-switcher--unchecked div {\n    background-color: #eba5a3;\n}\n.vue-switcher-theme--bootstrap.vue-switcher-color--danger.vue-switcher--unchecked div:after {\n      background-color: #d9534f;\n}\n", ""]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
@@ -7299,175 +7254,6 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 /***/ }),
 
-/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-switches/dist/switches.css?vue&type=style&index=0&lang=css&":
-/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-switches/dist/switches.css?vue&type=style&index=0&lang=css& ***!
-  \************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
-/* harmony import */ var _style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_vue_loader_lib_loaders_stylePostLoader_js_postcss_loader_src_index_js_clonedRuleSet_9_0_rules_0_use_2_switches_css_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../vue-loader/lib/loaders/stylePostLoader.js!../../postcss-loader/src/index.js??clonedRuleSet-9[0].rules[0].use[2]!./switches.css?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-switches/dist/switches.css?vue&type=style&index=0&lang=css&");
-
-            
-
-var options = {};
-
-options.insert = "head";
-options.singleton = false;
-
-var update = _style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_vue_loader_lib_loaders_stylePostLoader_js_postcss_loader_src_index_js_clonedRuleSet_9_0_rules_0_use_2_switches_css_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_1__.default, options);
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = (_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_vue_loader_lib_loaders_stylePostLoader_js_postcss_loader_src_index_js_clonedRuleSet_9_0_rules_0_use_2_switches_css_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
-
-/***/ }),
-
-/***/ "./node_modules/vue-switches/src/switches.vue":
-/*!****************************************************!*\
-  !*** ./node_modules/vue-switches/src/switches.vue ***!
-  \****************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _switches_vue_vue_type_template_id_f8bdc788___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./switches.vue?vue&type=template&id=f8bdc788& */ "./node_modules/vue-switches/src/switches.vue?vue&type=template&id=f8bdc788&");
-/* harmony import */ var _switches_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./switches.vue?vue&type=script&lang=js& */ "./node_modules/vue-switches/src/switches.vue?vue&type=script&lang=js&");
-/* harmony import */ var _dist_switches_css_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../dist/switches.css?vue&type=style&index=0&lang=css& */ "./node_modules/vue-switches/dist/switches.css?vue&type=style&index=0&lang=css&");
-/* harmony import */ var _vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-;
-
-
-/* normalize component */
-
-var component = (0,_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__.default)(
-  _switches_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
-  _switches_vue_vue_type_template_id_f8bdc788___WEBPACK_IMPORTED_MODULE_0__.render,
-  _switches_vue_vue_type_template_id_f8bdc788___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "node_modules/vue-switches/src/switches.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/index.js??vue-loader-options!./node_modules/vue-switches/src/switches.vue?vue&type=script&lang=js&":
-/*!****************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/index.js??vue-loader-options!./node_modules/vue-switches/src/switches.vue?vue&type=script&lang=js& ***!
-  \****************************************************************************************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    name: 'switches',
-
-    props: {
-        typeBold: {
-            default: false
-        },
-
-        value: {
-            default: false
-        },
-
-        disabled: {
-            default: false
-        },
-
-        label: {
-            default: ''
-        },
-
-        textEnabled: {
-            default: ''
-        },
-
-        textDisabled: {
-            default: ''
-        },
-
-        color: {
-            default: 'default'
-        },
-
-        theme: {
-            default: 'default'
-        },
-
-        emitOnMount: {
-            default: true
-        }
-    },
-
-    mounted () {
-        if(this.emitOnMount) {
-            this.$emit('input', this.value)
-        }
-    },
-
-    methods: {
-        trigger (e) {
-            this.$emit('input', e.target.checked)
-        }
-    },
-
-    computed: {
-        classObject () {
-
-            const { color, value, theme, typeBold, disabled } = this;
-
-            return {
-                'vue-switcher' : true,
-                ['vue-switcher--unchecked'] : !value,
-                ['vue-switcher--disabled'] : disabled,
-                ['vue-switcher--bold']: typeBold,
-                ['vue-switcher--bold--unchecked']: typeBold && !value,
-                [`vue-switcher-theme--${theme}`] : color,
-                [`vue-switcher-color--${color}`] : color,
-            };
-
-        },
-
-        shouldShowLabel () {
-            return this.label !== '' || this.textEnabled !== '' || this.textDisabled !== '';
-        }
-    }
-});
-
-
-
-/***/ }),
-
 /***/ "./resources/js/components/footer.vue":
 /*!********************************************!*\
   !*** ./resources/js/components/footer.vue ***!
@@ -7540,16 +7326,16 @@ component.options.__file = "resources/js/components/page-header.vue"
 
 /***/ }),
 
-/***/ "./resources/js/contains/admin/competition/competition-create.vue":
-/*!************************************************************************!*\
-  !*** ./resources/js/contains/admin/competition/competition-create.vue ***!
-  \************************************************************************/
+/***/ "./resources/js/contains/admin/participant/competition-participant-create.vue":
+/*!************************************************************************************!*\
+  !*** ./resources/js/contains/admin/participant/competition-participant-create.vue ***!
+  \************************************************************************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _competition_create_vue_vue_type_template_id_7436fd88___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./competition-create.vue?vue&type=template&id=7436fd88& */ "./resources/js/contains/admin/competition/competition-create.vue?vue&type=template&id=7436fd88&");
-/* harmony import */ var _competition_create_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./competition-create.vue?vue&type=script&lang=js& */ "./resources/js/contains/admin/competition/competition-create.vue?vue&type=script&lang=js&");
+/* harmony import */ var _competition_participant_create_vue_vue_type_template_id_1fde6222___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./competition-participant-create.vue?vue&type=template&id=1fde6222& */ "./resources/js/contains/admin/participant/competition-participant-create.vue?vue&type=template&id=1fde6222&");
+/* harmony import */ var _competition_participant_create_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./competition-participant-create.vue?vue&type=script&lang=js& */ "./resources/js/contains/admin/participant/competition-participant-create.vue?vue&type=script&lang=js&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -7559,9 +7345,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 ;
 var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
-  _competition_create_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
-  _competition_create_vue_vue_type_template_id_7436fd88___WEBPACK_IMPORTED_MODULE_0__.render,
-  _competition_create_vue_vue_type_template_id_7436fd88___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  _competition_participant_create_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _competition_participant_create_vue_vue_type_template_id_1fde6222___WEBPACK_IMPORTED_MODULE_0__.render,
+  _competition_participant_create_vue_vue_type_template_id_1fde6222___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
   false,
   null,
   null,
@@ -7571,7 +7357,7 @@ var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/contains/admin/competition/competition-create.vue"
+component.options.__file = "resources/js/contains/admin/participant/competition-participant-create.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
@@ -7699,16 +7485,16 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/contains/admin/competition/competition-create.vue?vue&type=script&lang=js&":
-/*!*************************************************************************************************!*\
-  !*** ./resources/js/contains/admin/competition/competition-create.vue?vue&type=script&lang=js& ***!
-  \*************************************************************************************************/
+/***/ "./resources/js/contains/admin/participant/competition-participant-create.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************!*\
+  !*** ./resources/js/contains/admin/participant/competition-participant-create.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_competition_create_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./competition-create.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/contains/admin/competition/competition-create.vue?vue&type=script&lang=js&");
- /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_competition_create_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_competition_participant_create_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./competition-participant-create.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/contains/admin/participant/competition-participant-create.vue?vue&type=script&lang=js&");
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_competition_participant_create_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
 
 /***/ }),
 
@@ -7751,19 +7537,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/vue-switches/dist/switches.css?vue&type=style&index=0&lang=css&":
-/*!**************************************************************************************!*\
-  !*** ./node_modules/vue-switches/dist/switches.css?vue&type=style&index=0&lang=css& ***!
-  \**************************************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _style_loader_dist_cjs_js_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_vue_loader_lib_loaders_stylePostLoader_js_postcss_loader_src_index_js_clonedRuleSet_9_0_rules_0_use_2_switches_css_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../style-loader/dist/cjs.js!../../css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../vue-loader/lib/loaders/stylePostLoader.js!../../postcss-loader/src/index.js??clonedRuleSet-9[0].rules[0].use[2]!./switches.css?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-switches/dist/switches.css?vue&type=style&index=0&lang=css&");
-
-
-/***/ }),
-
 /***/ "./resources/js/components/footer.vue?vue&type=style&index=0&lang=css&":
 /*!*****************************************************************************!*\
   !*** ./resources/js/components/footer.vue?vue&type=style&index=0&lang=css& ***!
@@ -7786,36 +7559,6 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_layout_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/style-loader/dist/cjs.js!../../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src/index.js??clonedRuleSet-9[0].rules[0].use[2]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./layout.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/contains/admin/subcomponent/layout.vue?vue&type=style&index=0&lang=css&");
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-switches/src/switches.vue?vue&type=script&lang=js&":
-/*!*****************************************************************************!*\
-  !*** ./node_modules/vue-switches/src/switches.vue?vue&type=script&lang=js& ***!
-  \*****************************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _vue_loader_lib_index_js_vue_loader_options_switches_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../vue-loader/lib/index.js??vue-loader-options!./switches.vue?vue&type=script&lang=js& */ "./node_modules/vue-loader/lib/index.js??vue-loader-options!./node_modules/vue-switches/src/switches.vue?vue&type=script&lang=js&");
- /* harmony default export */ __webpack_exports__["default"] = (_vue_loader_lib_index_js_vue_loader_options_switches_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
-
-/***/ }),
-
-/***/ "./node_modules/vue-switches/src/switches.vue?vue&type=template&id=f8bdc788&":
-/*!***********************************************************************************!*\
-  !*** ./node_modules/vue-switches/src/switches.vue?vue&type=template&id=f8bdc788& ***!
-  \***********************************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": function() { return /* reexport safe */ _vue_loader_lib_loaders_templateLoader_js_vue_loader_options_vue_loader_lib_index_js_vue_loader_options_switches_vue_vue_type_template_id_f8bdc788___WEBPACK_IMPORTED_MODULE_0__.render; },
-/* harmony export */   "staticRenderFns": function() { return /* reexport safe */ _vue_loader_lib_loaders_templateLoader_js_vue_loader_options_vue_loader_lib_index_js_vue_loader_options_switches_vue_vue_type_template_id_f8bdc788___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns; }
-/* harmony export */ });
-/* harmony import */ var _vue_loader_lib_loaders_templateLoader_js_vue_loader_options_vue_loader_lib_index_js_vue_loader_options_switches_vue_vue_type_template_id_f8bdc788___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../vue-loader/lib/index.js??vue-loader-options!./switches.vue?vue&type=template&id=f8bdc788& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./node_modules/vue-switches/src/switches.vue?vue&type=template&id=f8bdc788&");
 
 
 /***/ }),
@@ -7854,19 +7597,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/contains/admin/competition/competition-create.vue?vue&type=template&id=7436fd88&":
-/*!*******************************************************************************************************!*\
-  !*** ./resources/js/contains/admin/competition/competition-create.vue?vue&type=template&id=7436fd88& ***!
-  \*******************************************************************************************************/
+/***/ "./resources/js/contains/admin/participant/competition-participant-create.vue?vue&type=template&id=1fde6222&":
+/*!*******************************************************************************************************************!*\
+  !*** ./resources/js/contains/admin/participant/competition-participant-create.vue?vue&type=template&id=1fde6222& ***!
+  \*******************************************************************************************************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": function() { return /* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_competition_create_vue_vue_type_template_id_7436fd88___WEBPACK_IMPORTED_MODULE_0__.render; },
-/* harmony export */   "staticRenderFns": function() { return /* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_competition_create_vue_vue_type_template_id_7436fd88___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns; }
+/* harmony export */   "render": function() { return /* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_competition_participant_create_vue_vue_type_template_id_1fde6222___WEBPACK_IMPORTED_MODULE_0__.render; },
+/* harmony export */   "staticRenderFns": function() { return /* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_competition_participant_create_vue_vue_type_template_id_1fde6222___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns; }
 /* harmony export */ });
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_competition_create_vue_vue_type_template_id_7436fd88___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./competition-create.vue?vue&type=template&id=7436fd88& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/contains/admin/competition/competition-create.vue?vue&type=template&id=7436fd88&");
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_competition_participant_create_vue_vue_type_template_id_1fde6222___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./competition-participant-create.vue?vue&type=template&id=1fde6222& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/contains/admin/participant/competition-participant-create.vue?vue&type=template&id=1fde6222&");
 
 
 /***/ }),
@@ -7918,57 +7661,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": function() { return /* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_topbar_vue_vue_type_template_id_0cedc27e___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns; }
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_topbar_vue_vue_type_template_id_0cedc27e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./topbar.vue?vue&type=template&id=0cedc27e& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/contains/admin/subcomponent/topbar.vue?vue&type=template&id=0cedc27e&");
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./node_modules/vue-switches/src/switches.vue?vue&type=template&id=f8bdc788&":
-/*!**************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./node_modules/vue-switches/src/switches.vue?vue&type=template&id=f8bdc788& ***!
-  \**************************************************************************************************************************************************************************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": function() { return /* binding */ render; },
-/* harmony export */   "staticRenderFns": function() { return /* binding */ staticRenderFns; }
-/* harmony export */ });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("label", { class: _vm.classObject }, [
-    _vm.shouldShowLabel
-      ? _c("span", { staticClass: "vue-switcher__label" }, [
-          _vm.label
-            ? _c("span", { domProps: { textContent: _vm._s(_vm.label) } })
-            : _vm._e(),
-          _vm._v(" "),
-          !_vm.label && _vm.value
-            ? _c("span", { domProps: { textContent: _vm._s(_vm.textEnabled) } })
-            : _vm._e(),
-          _vm._v(" "),
-          !_vm.label && !_vm.value
-            ? _c("span", {
-                domProps: { textContent: _vm._s(_vm.textDisabled) }
-              })
-            : _vm._e()
-        ])
-      : _vm._e(),
-    _vm._v(" "),
-    _c("input", {
-      attrs: { type: "checkbox", disabled: _vm.disabled },
-      domProps: { checked: _vm.value },
-      on: { change: _vm.trigger }
-    }),
-    _vm._v(" "),
-    _c("div")
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-
 
 
 /***/ }),
@@ -8065,10 +7757,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/contains/admin/competition/competition-create.vue?vue&type=template&id=7436fd88&":
-/*!**********************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/contains/admin/competition/competition-create.vue?vue&type=template&id=7436fd88& ***!
-  \**********************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/contains/admin/participant/competition-participant-create.vue?vue&type=template&id=1fde6222&":
+/*!**********************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/contains/admin/participant/competition-participant-create.vue?vue&type=template&id=1fde6222& ***!
+  \**********************************************************************************************************************************************************************************************************************************************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8112,7 +7804,7 @@ var render = function() {
                 _c(
                   "form",
                   {
-                    attrs: { action: "#", enctype: "multipart/form-data" },
+                    attrs: { action: "#" },
                     on: {
                       submit: function($event) {
                         $event.preventDefault()
@@ -8121,553 +7813,307 @@ var render = function() {
                     }
                   },
                   [
-                    _c("div", { staticClass: "row" }, [
-                      _c("div", { staticClass: "col-lg-6 col-md-12" }, [
-                        _c("div", { staticClass: "form-group" }, [
-                          _c("label", [_vm._v("Title")]),
-                          _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.typeform.title,
-                                expression: "typeform.title"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            class: {
-                              "is-invalid":
-                                _vm.typesubmit && _vm.$v.typeform.title.$error
-                            },
-                            attrs: {
-                              type: "text",
-                              placeholder: "Competition Title",
-                              name: "title"
-                            },
-                            domProps: { value: _vm.typeform.title },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.$set(
-                                  _vm.typeform,
-                                  "title",
-                                  $event.target.value
-                                )
-                              }
-                            }
-                          }),
-                          _vm._v(" "),
-                          _vm.typesubmit && _vm.$v.typeform.title.$error
-                            ? _c("div", { staticClass: "invalid-feedback" }, [
-                                !_vm.$v.typeform.title.required
-                                  ? _c("span", [
-                                      _vm._v("This value is required.")
-                                    ])
-                                  : _vm._e()
-                              ])
-                            : _vm._e()
-                        ]),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "mb-3" },
-                          [
-                            _c("label", [_vm._v("Competition Type")]),
-                            _vm._v(" "),
-                            _c("multiselect", {
-                              class: {
-                                "is-invalid":
-                                  _vm.typesubmit &&
-                                  _vm.$v.typeform.competition_type.$error
-                              },
-                              attrs: { options: _vm.typeOptions },
-                              model: {
-                                value: _vm.typeform.competition_type,
-                                callback: function($$v) {
-                                  _vm.$set(
-                                    _vm.typeform,
-                                    "competition_type",
-                                    $$v
-                                  )
-                                },
-                                expression: "typeform.competition_type"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _vm.typesubmit &&
-                            _vm.$v.typeform.competition_type.$error
-                              ? _c("div", { staticClass: "invalid-feedback" }, [
-                                  !_vm.$v.typeform.competition_type.required
-                                    ? _c("span", [
-                                        _vm._v("This value is required.")
-                                      ])
-                                    : _vm._e()
-                                ])
-                              : _vm._e()
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "form-group" }, [
-                          _c("label", [_vm._v("Description")]),
-                          _vm._v(" "),
-                          _c("div", [
-                            _c("textarea", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.typeform.description,
-                                  expression: "typeform.description"
-                                }
-                              ],
-                              staticClass: "form-control",
-                              class: {
-                                "is-invalid":
-                                  _vm.typesubmit &&
-                                  _vm.$v.typeform.description.$error
-                              },
-                              style: { "min-height": "100px" },
-                              attrs: { name: "description" },
-                              domProps: { value: _vm.typeform.description },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.$set(
-                                    _vm.typeform,
-                                    "description",
-                                    $event.target.value
-                                  )
-                                }
-                              }
-                            }),
-                            _vm._v(" "),
-                            _vm.typesubmit && _vm.$v.typeform.description.$error
-                              ? _c("div", { staticClass: "invalid-feedback" }, [
-                                  !_vm.$v.typeform.description.required
-                                    ? _c("span", [
-                                        _vm._v("This value is required.")
-                                      ])
-                                    : _vm._e()
-                                ])
-                              : _vm._e()
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "form-group" }, [
-                          _c("label", [_vm._v("Place")]),
-                          _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.typeform.place,
-                                expression: "typeform.place"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            class: {
-                              "is-invalid":
-                                _vm.typesubmit && _vm.$v.typeform.place.$error
-                            },
-                            attrs: {
-                              type: "text",
-                              placeholder: "Competition Place",
-                              name: "place"
-                            },
-                            domProps: { value: _vm.typeform.place },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.$set(
-                                  _vm.typeform,
-                                  "place",
-                                  $event.target.value
-                                )
-                              }
-                            }
-                          }),
-                          _vm._v(" "),
-                          _vm.typesubmit && _vm.$v.typeform.place.$error
-                            ? _c("div", { staticClass: "invalid-feedback" }, [
-                                !_vm.$v.typeform.place.required
-                                  ? _c("span", [
-                                      _vm._v("This value is required.")
-                                    ])
-                                  : _vm._e()
-                              ])
-                            : _vm._e()
-                        ]),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "form-group mb-3" },
-                          [
-                            _c("label", [_vm._v("Date")]),
-                            _vm._v(" "),
-                            _c("br"),
-                            _vm._v(" "),
-                            _c("date-picker", {
-                              class: {
-                                "is-invalid":
-                                  _vm.typesubmit && _vm.$v.typeform.date.$error
-                              },
-                              attrs: {
-                                format: "YYYY-MM-DD",
-                                "value-type": "format",
-                                "first-day-of-week": 1,
-                                lang: "en",
-                                placeholder: "Select date"
-                              },
-                              model: {
-                                value: _vm.typeform.date,
-                                callback: function($$v) {
-                                  _vm.$set(_vm.typeform, "date", $$v)
-                                },
-                                expression: "typeform.date"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _vm.typesubmit && _vm.$v.typeform.date.$error
-                              ? _c("div", { staticClass: "invalid-feedback" }, [
-                                  !_vm.$v.typeform.date.required
-                                    ? _c("span", [
-                                        _vm._v("This value is required.")
-                                      ])
-                                    : _vm._e()
-                                ])
-                              : _vm._e()
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "form-group mb-3" },
-                          [
-                            _c("label", [_vm._v("Time")]),
-                            _vm._v(" "),
-                            _c("br"),
-                            _vm._v(" "),
-                            _c("date-picker", {
-                              class: {
-                                "is-invalid":
-                                  _vm.typesubmit && _vm.$v.typeform.time.$error
-                              },
-                              attrs: {
-                                type: "time",
-                                placeholder: "hh:mm:ss",
-                                "value-type": "format"
-                              },
-                              model: {
-                                value: _vm.typeform.time,
-                                callback: function($$v) {
-                                  _vm.$set(_vm.typeform, "time", $$v)
-                                },
-                                expression: "typeform.time"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _vm.typesubmit && _vm.$v.typeform.time.$error
-                              ? _c("div", { staticClass: "invalid-feedback" }, [
-                                  !_vm.$v.typeform.time.required
-                                    ? _c("span", [
-                                        _vm._v("This value is required.")
-                                      ])
-                                    : _vm._e()
-                                ])
-                              : _vm._e()
-                          ],
-                          1
-                        )
-                      ]),
+                    _c("div", { staticClass: "form-group" }, [
+                      _c("label", [_vm._v("Name")]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "col-lg-6 col-md-12" }, [
-                        _c(
-                          "div",
-                          { staticClass: "mb-3" },
-                          [
-                            _c("label", [_vm._v("Ranking_score")]),
-                            _vm._v(" "),
-                            _c("multiselect", {
-                              class: {
-                                "is-invalid":
-                                  _vm.typesubmit &&
-                                  _vm.$v.typeform.ranking_score.$error
-                              },
-                              attrs: { options: _vm.rankingScoreOptions },
-                              model: {
-                                value: _vm.typeform.ranking_score,
-                                callback: function($$v) {
-                                  _vm.$set(_vm.typeform, "ranking_score", $$v)
-                                },
-                                expression: "typeform.ranking_score"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _vm.typesubmit &&
-                            _vm.$v.typeform.ranking_score.$error
-                              ? _c("div", { staticClass: "invalid-feedback" }, [
-                                  !_vm.$v.typeform.ranking_score.required
-                                    ? _c("span", [
-                                        _vm._v("This value is required.")
-                                      ])
-                                    : _vm._e()
-                                ])
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.typeform.name,
+                            expression: "typeform.name"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        class: {
+                          "is-invalid":
+                            _vm.typesubmit && _vm.$v.typeform.name.$error
+                        },
+                        attrs: { type: "name", name: "name" },
+                        domProps: { value: _vm.typeform.name },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.typeform, "name", $event.target.value)
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _vm.typesubmit && _vm.$v.typeform.name.$error
+                        ? _c("div", { staticClass: "invalid-feedback" }, [
+                            !_vm.$v.typeform.name.required
+                              ? _c("span", [_vm._v("This value is required.")])
                               : _vm._e()
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "form-group" }, [
-                          _c("label", [_vm._v("Status")]),
-                          _vm._v(" "),
-                          _c("div", [
-                            _c(
-                              "select",
-                              {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.typeform.status,
-                                    expression: "typeform.status"
-                                  }
-                                ],
-                                staticClass: "custom-select",
-                                on: {
-                                  change: function($event) {
-                                    var $$selectedVal = Array.prototype.filter
-                                      .call($event.target.options, function(o) {
-                                        return o.selected
-                                      })
-                                      .map(function(o) {
-                                        var val =
-                                          "_value" in o ? o._value : o.value
-                                        return val
-                                      })
-                                    _vm.$set(
-                                      _vm.typeform,
-                                      "status",
-                                      $event.target.multiple
-                                        ? $$selectedVal
-                                        : $$selectedVal[0]
-                                    )
-                                  }
-                                }
-                              },
-                              [
-                                _c(
-                                  "option",
-                                  { attrs: { value: "CLOSED", disabled: "" } },
-                                  [_vm._v("CLOSED")]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "option",
-                                  {
-                                    attrs: {
-                                      value: "REGISTRATION OPEN",
-                                      selected: ""
-                                    }
-                                  },
-                                  [_vm._v("REGISTRATION OPEN")]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "option",
-                                  {
-                                    attrs: {
-                                      value: "COMPETITION IN PROGRESS",
-                                      disabled: ""
-                                    }
-                                  },
-                                  [_vm._v("COMPETITION IN PROGRESS")]
-                                )
-                              ]
-                            )
                           ])
-                        ]),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "mb-3" },
-                          [
-                            _c("label", [_vm._v("Category")]),
-                            _vm._v(" "),
-                            _c("multiselect", {
-                              class: {
-                                "is-invalid":
-                                  _vm.typesubmit &&
-                                  _vm.$v.typeform.category.$error
-                              },
-                              attrs: {
-                                options: _vm.categoryOptions,
-                                multiple: true
-                              },
-                              model: {
-                                value: (_vm.typeform.category =
-                                  _vm.categoryOptions),
-                                callback: function($$v) {
-                                  _vm.$set(
-                                    _vm.typeform,
-                                    "category=categoryOptions",
-                                    $$v
-                                  )
-                                },
-                                expression: "typeform.category=categoryOptions"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _vm.typesubmit && _vm.$v.typeform.category.$error
-                              ? _c("div", { staticClass: "invalid-feedback" }, [
-                                  !_vm.$v.typeform.category.required
-                                    ? _c("span", [
-                                        _vm._v("This value is required.")
-                                      ])
-                                    : _vm._e()
-                                ])
+                        : _vm._e()
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group" }, [
+                      _c("label", [_vm._v("Surname")]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.typeform.surname,
+                            expression: "typeform.surname"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        class: {
+                          "is-invalid":
+                            _vm.typesubmit && _vm.$v.typeform.surname.$error
+                        },
+                        attrs: { type: "name", name: "surname" },
+                        domProps: { value: _vm.typeform.surname },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.typeform,
+                              "surname",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _vm.typesubmit && _vm.$v.typeform.surname.$error
+                        ? _c("div", { staticClass: "invalid-feedback" }, [
+                            !_vm.$v.typeform.surname.required
+                              ? _c("span", [_vm._v("This value is required.")])
                               : _vm._e()
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "mb-3" },
-                          [
-                            _c("label", [_vm._v("Modality")]),
-                            _vm._v(" "),
-                            _c("multiselect", {
-                              class: {
-                                "is-invalid":
-                                  _vm.typesubmit &&
-                                  _vm.$v.typeform.modality.$error
-                              },
-                              attrs: {
-                                options: _vm.modalityOptions,
-                                multiple: true
-                              },
-                              model: {
-                                value: (_vm.typeform.modality =
-                                  _vm.modalityOptions),
-                                callback: function($$v) {
-                                  _vm.$set(
-                                    _vm.typeform,
-                                    "modality=modalityOptions",
-                                    $$v
-                                  )
-                                },
-                                expression: "typeform.modality=modalityOptions"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _vm.typesubmit && _vm.$v.typeform.modality.$error
-                              ? _c("div", { staticClass: "invalid-feedback" }, [
-                                  !_vm.$v.typeform.modality.required
-                                    ? _c("span", [
-                                        _vm._v("This value is required.")
-                                      ])
-                                    : _vm._e()
-                                ])
+                          ])
+                        : _vm._e()
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group" }, [
+                      _c("label", [_vm._v("Dni Ficha")]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.typeform.dni_ficha,
+                            expression: "typeform.dni_ficha"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        class: {
+                          "is-invalid":
+                            _vm.typesubmit && _vm.$v.typeform.dni_ficha.$error
+                        },
+                        attrs: { type: "text", name: "dni_ficha" },
+                        domProps: { value: _vm.typeform.dni_ficha },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.typeform,
+                              "dni_ficha",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _vm.typesubmit && _vm.$v.typeform.dni_ficha.$error
+                        ? _c("div", { staticClass: "invalid-feedback" }, [
+                            !_vm.$v.typeform.dni_ficha.required
+                              ? _c("span", [_vm._v("This value is required.")])
                               : _vm._e()
-                          ],
-                          1
-                        ),
+                          ])
+                        : _vm._e()
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "form-group mb-3" },
+                      [
+                        _c("label", [_vm._v("Birthday")]),
                         _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "mb-3" },
-                          [
-                            _c("label", [_vm._v("Lycra")]),
-                            _vm._v(" "),
-                            _c("multiselect", {
-                              class: {
-                                "is-invalid":
-                                  _vm.typesubmit && _vm.$v.typeform.lycra.$error
-                              },
-                              attrs: {
-                                options: _vm.lycraOptions,
-                                multiple: true
-                              },
-                              model: {
-                                value: _vm.typeform.lycra,
-                                callback: function($$v) {
-                                  _vm.$set(_vm.typeform, "lycra", $$v)
-                                },
-                                expression: "typeform.lycra"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _vm.typesubmit && _vm.$v.typeform.lycra.$error
-                              ? _c("div", { staticClass: "invalid-feedback" }, [
-                                  !_vm.$v.typeform.lycra.required
-                                    ? _c("span", [
-                                        _vm._v("This value is required.")
-                                      ])
-                                    : _vm._e()
-                                ])
-                              : _vm._e()
-                          ],
-                          1
-                        ),
+                        _c("br"),
                         _vm._v(" "),
-                        _c("div", { staticClass: "form-group" }, [
-                          _c("label", { attrs: { for: "logo" } }, [
-                            _vm._v("Logo")
-                          ]),
-                          _vm._v(" "),
-                          _c("input", {
-                            staticClass: "form-control-file",
-                            attrs: { type: "file", id: "logo" },
-                            on: { change: _vm.selectFile }
-                          })
-                        ]),
+                        _c("date-picker", {
+                          class: {
+                            "is-invalid":
+                              _vm.typesubmit && _vm.$v.typeform.birthday.$error
+                          },
+                          attrs: {
+                            format: "YYYY-MM-DD",
+                            "value-type": "format",
+                            "first-day-of-week": 1,
+                            lang: "en",
+                            placeholder: "Select date"
+                          },
+                          model: {
+                            value: _vm.typeform.birthday,
+                            callback: function($$v) {
+                              _vm.$set(_vm.typeform, "birthday", $$v)
+                            },
+                            expression: "typeform.birthday"
+                          }
+                        }),
                         _vm._v(" "),
-                        _c("div", { staticClass: "form-group mt-4 mb-0" }, [
+                        _vm.typesubmit && _vm.$v.typeform.birthday.$error
+                          ? _c("div", { staticClass: "invalid-feedback" }, [
+                              !_vm.$v.typeform.birthday.required
+                                ? _c("span", [
+                                    _vm._v("This value is required.")
+                                  ])
+                                : _vm._e()
+                            ])
+                          : _vm._e()
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "mb-3" },
+                      [
+                        _c("label", [_vm._v("Sex")]),
+                        _vm._v(" "),
+                        _c("multiselect", {
+                          class: {
+                            "is-invalid":
+                              _vm.typesubmit && _vm.$v.typeform.sex.$error
+                          },
+                          attrs: { options: _vm.sexOptions },
+                          model: {
+                            value: _vm.typeform.sex,
+                            callback: function($$v) {
+                              _vm.$set(_vm.typeform, "sex", $$v)
+                            },
+                            expression: "typeform.sex"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _vm.typesubmit && _vm.$v.typeform.sex.$error
+                          ? _c("div", { staticClass: "invalid-feedback" }, [
+                              !_vm.$v.typeform.sex.required
+                                ? _c("span", [
+                                    _vm._v("This value is required.")
+                                  ])
+                                : _vm._e()
+                            ])
+                          : _vm._e()
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "mb-3" },
+                      [
+                        _c("label", [_vm._v("Club")]),
+                        _vm._v(" "),
+                        _c("multiselect", {
+                          class: {
+                            "is-invalid":
+                              _vm.typesubmit && _vm.$v.typeform.club.$error
+                          },
+                          attrs: { options: _vm.clubOptions },
+                          model: {
+                            value: _vm.typeform.club,
+                            callback: function($$v) {
+                              _vm.$set(_vm.typeform, "club", $$v)
+                            },
+                            expression: "typeform.club"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _vm.typesubmit && _vm.$v.typeform.club.$error
+                          ? _c("div", { staticClass: "invalid-feedback" }, [
+                              !_vm.$v.typeform.club.required
+                                ? _c("span", [
+                                    _vm._v("This value is required.")
+                                  ])
+                                : _vm._e()
+                            ])
+                          : _vm._e()
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      [
+                        _c("label", [_vm._v("Modality")]),
+                        _vm._v(" "),
+                        _c("multiselect", {
+                          class: {
+                            "is-invalid":
+                              _vm.typesubmit && _vm.$v.typeform.modality.$error
+                          },
+                          attrs: {
+                            options: _vm.modalityOptions,
+                            multiple: true
+                          },
+                          model: {
+                            value: _vm.typeform.modality,
+                            callback: function($$v) {
+                              _vm.$set(_vm.typeform, "modality", $$v)
+                            },
+                            expression: "typeform.modality"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _vm.typesubmit && _vm.$v.typeform.modality.$error
+                          ? _c("div", { staticClass: "invalid-feedback" }, [
+                              !_vm.$v.typeform.modality.required
+                                ? _c("span", [
+                                    _vm._v("This value is required.")
+                                  ])
+                                : _vm._e()
+                            ])
+                          : _vm._e()
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group mt-5 mb-0" }, [
+                      _c(
+                        "div",
+                        [
                           _c(
-                            "div",
-                            { staticStyle: { float: "right" } },
-                            [
-                              _c(
-                                "button",
-                                {
-                                  staticClass: "btn btn-primary",
-                                  attrs: { type: "submit" }
-                                },
-                                [_vm._v("Submit")]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "router-link",
-                                {
-                                  staticClass: "btn btn-secondary m-l-5 ml-1",
-                                  attrs: { to: "/admin/competitions" }
-                                },
-                                [_vm._v("Cancel")]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "button",
-                                {
-                                  staticClass: "btn btn-warning m-l-5 ml-1",
-                                  attrs: { type: "reset" }
-                                },
-                                [_vm._v("Reset")]
-                              )
-                            ],
-                            1
+                            "button",
+                            {
+                              staticClass: "btn btn-primary",
+                              attrs: { type: "submit" }
+                            },
+                            [_vm._v("Submit")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "router-link",
+                            {
+                              staticClass: "btn btn-secondary m-l-5 ml-1",
+                              attrs: { to: "/admin/competitions" }
+                            },
+                            [_vm._v("Cancel")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-warning m-l-5 ml-1",
+                              attrs: { type: "reset" }
+                            },
+                            [_vm._v("Reset")]
                           )
-                        ])
-                      ])
+                        ],
+                        1
+                      )
                     ])
                   ]
                 )

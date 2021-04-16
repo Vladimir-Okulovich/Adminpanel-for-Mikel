@@ -8,7 +8,7 @@ const actions = {
         return new Promise((resolve) =>{
             ApiService.get("api/v1/admin/lycras")
                 .then(({data}) => {
-                    console.log(data);
+                    // console.log(data);
                     context.commit(type.SET_ALL_LYCRAS, data)
                 })
                 .catch(({ response }) => {
@@ -21,7 +21,7 @@ const actions = {
         return new Promise((resolve) =>{
             ApiService.get("api/v1/admin/lycra/" + lycraId)
                 .then(({data}) => {
-                    console.log(data);
+                    // console.log(data);
                     context.commit(type.SET_LYCRA, data)
                 })
                 .catch(({ response }) => {
@@ -35,7 +35,7 @@ const actions = {
             ApiService.post("api/v1/admin/lycra/create", lycraInfo)
                 .then((data) => {
                     resolve(data);
-                    toastr.success('Successfully created', 'Hello', {timeout: 1000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
+                    toastr.success('Successfully created', '', {timeout: 1000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
                 })
                 .catch(({response, status}) => {
                     console.log(response);
@@ -49,7 +49,7 @@ const actions = {
             ApiService.put("api/v1/admin/lycra/update", lycraInfo)
                 .then((data) => {
                     resolve(data);
-                    toastr.success('Successfully updated', 'Hello', {timeout: 1000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
+                    toastr.success('Successfully updated', '', {timeout: 1000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
                 })
                 .catch(({response, status}) => {
                     console.log(response);
@@ -62,9 +62,9 @@ const actions = {
         return new Promise((resolve) =>{
             ApiService.delete("api/v1/admin/lycra/delete/" + lycraId)
                 .then(({data}) => {
-                    console.log(data);
+                    // console.log(data);
                     context.commit(type.SET_ALL_LYCRAS, data)
-                    toastr.success('Successfully deleted', 'Hello', {timeout: 1000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
+                    toastr.success('Successfully deleted', '', {timeout: 1000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
                 })
                 .catch(({ response }) => {
                     // context.commit(type.AUTH_LOGOUT);
@@ -76,7 +76,7 @@ const actions = {
         return new Promise((resolve) =>{
             ApiService.get("api/v1/admin/lycra/options")
                 .then(({data}) => {
-                    console.log(data);
+                    // console.log(data);
                     context.commit(type.SET_LYCRA_OPTIONS, data)
                 })
                 .catch(({ response }) => {

@@ -18,7 +18,7 @@ export default [
                 // If the user is already logged in
                 if (store.getters['isAuthenticated']) {
                     // Redirect to the home page instead
-                    next({ name: 'Admin' })
+                    next({ name: 'Users' })
                 } else {
                     // Continue to the login page
                     next()
@@ -35,7 +35,7 @@ export default [
                 // If the user is already logged in
                 if (store.getters['isAuthenticated']) {
                     // Redirect to the home page instead
-                    next({ name: 'Admin' })
+                    next({ name: 'Users' })
                 } else {
                     // Continue to the login page
                     next()
@@ -52,7 +52,7 @@ export default [
                 // If the user is already logged in
                 if (store.getters['isAuthenticated']) {
                     // Redirect to the home page instead
-                    next({ name: 'Admin' })
+                    next({ name: 'USers' })
                 } else {
                     // Continue to the login page
                     next()
@@ -71,7 +71,7 @@ export default [
                     (route) => route.push('/login')
                 )
                 // Navigate back to previous page, or home as a fallback
-                next(authRequiredOnPreviousRoute ? { name: 'home' } : { ...routeFrom })
+                next(authRequiredOnPreviousRoute ? { name: 'Users' } : { ...routeFrom })
             },
         },
     },
@@ -233,6 +233,14 @@ export default [
             authRequired: true,
         },
     },
+    {
+        path: '/admin/competition/participant/create/:competitionId',
+        name: 'CompetitionParticipantCreate',
+        component: () => import('../contains/admin/participant/competition-participant-create'),
+        meta: {
+            authRequired: true,
+        },
+    },
 
     {
         path: '/admin/participants',
@@ -275,26 +283,18 @@ export default [
     //         authRequired: true,
     //     },
     // },
-    // {
-    //     path: '/admin/ranking_points/edit/:ranking_pointsId',
-    //     name: 'RankingPointsEdit',
-    //     component: () => import('../contains/admin/ranking_points/ranking_points-edit'),
-    //     meta: {
-    //         authRequired: true,
-    //     },
-    // },
     {
-        path: '/admin/category-modality',
-        name: 'CategoryModality',
-        component: () => import('../contains/admin/manage_ranking/category-modality'),
+        path: '/admin/ranking_points/edit/:rankingId',
+        name: 'RankingPointsEdit',
+        component: () => import('../contains/admin/ranking_points/ranking_points-edit'),
         meta: {
             authRequired: true,
         },
     },
     {
-        path: '/admin/manage-ranking',
-        name: 'ManageRanking',
-        component: () => import('../contains/admin/manage_ranking/manage-ranking'),
+        path: '/admin/category-modality',
+        name: 'CategoryModality',
+        component: () => import('../contains/admin/manage_ranking/category-modality'),
         meta: {
             authRequired: true,
         },

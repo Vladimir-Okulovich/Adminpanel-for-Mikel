@@ -22,6 +22,8 @@ class Competition extends Model
         'date',
         'time',
         'ranking_score',
+        'competition_type_id',
+        'status_id',
     ];
 
     public function competition_type()
