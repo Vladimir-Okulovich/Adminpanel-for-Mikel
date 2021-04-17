@@ -114,11 +114,7 @@ export default {
             club: this.typeform.club,
             modality: this.typeform.modality,
           })
-          .then((res) => {
-            console.log(res)
-            if (res.status == 200) {
-              this.$router.push({name: "Competitions"});
-            }
+          .then(() => {
             this.typesubmit = false;
           })
           .catch(error => {

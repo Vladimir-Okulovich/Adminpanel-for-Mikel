@@ -107,7 +107,7 @@ export default {
             club: this.typeform.club,
           })
           .then((res) => {
-            // console.log(res)
+            console.log(res)
             if (res.status == 200) {
               this.$router.push({name: "Participants"});
             }

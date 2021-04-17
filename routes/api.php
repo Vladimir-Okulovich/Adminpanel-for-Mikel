@@ -112,13 +112,21 @@ Route::group([ 'prefix' => 'v1', 'middleware' => 'api'], function(){
         // /* Update a Competition's Status */
         Route::put('competition/status/update', 'App\Http\Controllers\Api\v1\CompetitionController@statusUpdate');
 
-        // /* Create a Participant to competition */
-        Route::post('competition/participant/add', 'App\Http\Controllers\Api\v1\ManageRankingController@addParticipantToCompetition');
         // /* Add a Participant to competition */
+        Route::post('competition/participant/add', 'App\Http\Controllers\Api\v1\ManageRankingController@addParticipantToCompetition');
+        // /* Regist a Participant to competition */
         Route::post('competition/participant/regist', 'App\Http\Controllers\Api\v1\ManageRankingController@registParticipantToCompetition');
+        // /* Update a Participant to competition */
+        Route::post('competition/participant/update', 'App\Http\Controllers\Api\v1\ManageRankingController@updateParticipantToCompetition');
+        // /* Unregist a Participant to competition */
+        Route::post('competition/participant/unregist', 'App\Http\Controllers\Api\v1\ManageRankingController@unregistParticipantToCompetition');
+         // /* Get Modality of Participant */
+        Route::post('competition/modality/participant', 'App\Http\Controllers\Api\v1\ManageRankingController@getModalityOfParticipant');
 
         /* Get all participants details*/
         Route::get('participants', 'App\Http\Controllers\Api\v1\ParticipantController@getAll');
+        /* Get all participants details*/
+        Route::get('participants/register_and_non/{competitionId}', 'App\Http\Controllers\Api\v1\ManageRankingController@getParticipantsForCompetition');
         // /* Add a participant */
         Route::post('participant/create', 'App\Http\Controllers\Api\v1\ParticipantController@create');
         // /* Update a participant */

@@ -82,16 +82,13 @@ __webpack_require__.r(__webpack_exports__);
         text: "Regist Participant",
         active: true
       }],
-      modalityOptions: ["Short Boat", "Long Ship"],
-      modalities: ["Short Boat", "Long Ship"],
-      isRequiredModality: true,
-      totalRows: 1,
-      currentPage: 1,
-      perPage: 25,
+      totalRows_1: 1,
+      currentPage_1: 1,
+      perPage_1: 10,
       pageOptions: [10, 25, 50, 100],
-      filter: null,
-      filterOn: [],
-      sortBy: "name",
+      filter_1: null,
+      filterOn_1: [],
+      sortBy: "surname",
       sortDesc: false,
       fields: [{
         key: "name",
@@ -115,47 +112,101 @@ __webpack_require__.r(__webpack_exports__);
         key: "actions",
         sortable: false
       }],
+      totalRows_2: 1,
+      currentPage_2: 1,
+      perPage_2: 10,
+      filter_2: null,
+      filterOn_2: [],
+      isRequiredModality: {
+        register: true,
+        edit: true
+      },
+      modalityOptions: ["Short Boat", "Long Ship"],
+      register_modalities: ["Short Boat", "Long Ship"],
+      edit_modalities: [],
       participantId: 0
     };
   },
-  computed: (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)((0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_7__.mapGetters)(['getParticipants'])), {}, {
+  computed: (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)((0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_7__.mapGetters)(['getRegisteredParticipants', 'getNonRegisteredParticipants'])), {}, {
     /**
      * Total no. of records
      */
-    rows: function rows() {
-      return this.getParticipants.length;
+    rows_1: function rows_1() {
+      return this.getRegisteredParticipants.length;
+    },
+    rows_2: function rows_2() {
+      return this.getNonRegisteredParticipants.length;
     }
   }),
   mounted: function mounted() {
     // Set the initial number of items
-    this.totalRows = this.getParticipants.length;
-    this.initParticipants();
+    this.totalRows_1 = this.getRegisteredParticipants.length;
+    this.totalRows_2 = this.getNonRegisteredParticipants.length;
+    this.initParticipantsForCompetition(this.$route.params.competitionId);
   },
-  methods: (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)((0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_7__.mapActions)(['initParticipants', 'registParticipantToCompetition'])), {}, {
+  methods: (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)((0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_7__.mapActions)(['initParticipantsForCompetition', 'registParticipantToCompetition', 'updateParticipantToCompetition', 'unregistParticipantToCompetition', 'getModalityOfParticipant'])), {}, {
     /**
      * Search the table data with search input
      */
-    onFiltered: function onFiltered(filteredItems) {
+    onFiltered_1: function onFiltered_1(filteredItems) {
       // Trigger pagination to update the number of buttons/pages due to filtering
-      this.totalRows = filteredItems.length;
-      this.currentPage = 1;
+      this.totalRows_1 = filteredItems.length;
+      this.currentPage_1 = 1;
+    },
+    onFiltered_2: function onFiltered_2(filteredItems) {
+      // Trigger pagination to update the number of buttons/pages due to filtering
+      this.totalRows_2 = filteredItems.length;
+      this.currentPage_2 = 1;
     },
     setParticipantId: function setParticipantId(id) {
       this.participantId = id;
     },
+    getModalityOfParticipantIcon: function getModalityOfParticipantIcon(id) {
+      var _this = this;
+
+      this.setParticipantId(id);
+      this.getModalityOfParticipant({
+        competitionId: this.$route.params.competitionId,
+        participantId: id
+      }).then(function (res) {
+        // console.log(res)
+        _this.edit_modalities = res.data.modality_participant;
+      });
+    },
     registerParticipantWithModality: function registerParticipantWithModality() {
       // console.log(this.modalities.length)
-      if (this.modalities.length > 0) {
-        this.isRequiredModality = true;
+      if (this.register_modalities.length > 0) {
+        this.isRequiredModality.register = true;
         this.registParticipantToCompetition({
           competitionId: this.$route.params.competitionId,
           participantId: this.participantId,
-          modality: this.modalities
+          modality: this.register_modalities
         });
-        this.$bvModal.hide('delete-modal');
+        this.$bvModal.hide('register-modality-modal');
       } else {
-        this.isRequiredModality = false;
+        this.isRequiredModality.register = false;
       }
+    },
+    editParticipantWithModality: function editParticipantWithModality() {
+      // console.log(this.modalities.length)
+      if (this.edit_modalities.length > 0) {
+        this.isRequiredModality.edit = true;
+        this.updateParticipantToCompetition({
+          competitionId: this.$route.params.competitionId,
+          participantId: this.participantId,
+          modality: this.edit_modalities
+        });
+        this.$bvModal.hide('edit-modality-modal');
+      } else {
+        this.isRequiredModality.edit = false;
+      }
+    },
+    unregisterParticipant: function unregisterParticipant() {
+      this.unregistParticipantToCompetition({
+        competitionId: this.$route.params.competitionId,
+        participantId: this.participantId
+      });
+      this.$bvModal.hide('unregister-modality-modal');
     }
   })
 });
@@ -7086,11 +7137,11 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-12" }, [
+        _c("div", { staticClass: "col-lg-6 col-md-12" }, [
           _c("div", { staticClass: "card" }, [
             _c("div", { staticClass: "card-body" }, [
               _c("h4", { staticClass: "card-title" }, [
-                _vm._v("Participants Table")
+                _vm._v("Non-Registered Participants Table")
               ]),
               _vm._v(" "),
               _c("p", { staticClass: "card-title-desc" }),
@@ -7114,11 +7165,11 @@ var render = function() {
                           _c("b-form-select", {
                             attrs: { size: "sm", options: _vm.pageOptions },
                             model: {
-                              value: _vm.perPage,
+                              value: _vm.perPage_1,
                               callback: function($$v) {
-                                _vm.perPage = $$v
+                                _vm.perPage_1 = $$v
                               },
-                              expression: "perPage"
+                              expression: "perPage_1"
                             }
                           }),
                           _vm._v("entries\n                ")
@@ -7148,11 +7199,11 @@ var render = function() {
                             staticClass: "form-control form-control-sm ml-2",
                             attrs: { type: "search", placeholder: "Search..." },
                             model: {
-                              value: _vm.filter,
+                              value: _vm.filter_1,
                               callback: function($$v) {
-                                _vm.filter = $$v
+                                _vm.filter_1 = $$v
                               },
-                              expression: "filter"
+                              expression: "filter_1"
                             }
                           })
                         ],
@@ -7169,15 +7220,15 @@ var render = function() {
                 [
                   _c("b-table", {
                     attrs: {
-                      items: _vm.getParticipants,
+                      items: _vm.getNonRegisteredParticipants,
                       fields: _vm.fields,
                       responsive: "sm",
-                      "per-page": _vm.perPage,
-                      "current-page": _vm.currentPage,
+                      "per-page": _vm.perPage_1,
+                      "current-page": _vm.currentPage_1,
                       "sort-by": _vm.sortBy,
                       "sort-desc": _vm.sortDesc,
-                      filter: _vm.filter,
-                      "filter-included-fields": _vm.filterOn
+                      filter: _vm.filter_1,
+                      "filter-included-fields": _vm.filterOn_1
                     },
                     on: {
                       "update:sortBy": function($event) {
@@ -7192,7 +7243,7 @@ var render = function() {
                       "update:sort-desc": function($event) {
                         _vm.sortDesc = $event
                       },
-                      filtered: _vm.onFiltered
+                      filtered: _vm.onFiltered_1
                     },
                     scopedSlots: _vm._u([
                       {
@@ -7229,8 +7280,11 @@ var render = function() {
                                 directives: [
                                   {
                                     name: "b-modal",
-                                    rawName: "v-b-modal.modality-modal",
-                                    modifiers: { "modality-modal": true }
+                                    rawName:
+                                      "v-b-modal.register-modality-modal",
+                                    modifiers: {
+                                      "register-modality-modal": true
+                                    }
                                   }
                                 ],
                                 attrs: { size: "sm" },
@@ -7266,15 +7320,242 @@ var render = function() {
                         [
                           _c("b-pagination", {
                             attrs: {
-                              "total-rows": _vm.rows,
-                              "per-page": _vm.perPage
+                              "total-rows": _vm.rows_1,
+                              "per-page": _vm.perPage_1
                             },
                             model: {
-                              value: _vm.currentPage,
+                              value: _vm.currentPage_1,
                               callback: function($$v) {
-                                _vm.currentPage = $$v
+                                _vm.currentPage_1 = $$v
                               },
-                              expression: "currentPage"
+                              expression: "currentPage_1"
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ]
+                  )
+                ])
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-lg-6 col-md-12" }, [
+          _c("div", { staticClass: "card" }, [
+            _c("div", { staticClass: "card-body" }, [
+              _c("h4", { staticClass: "card-title" }, [
+                _vm._v("Registered Participants Table")
+              ]),
+              _vm._v(" "),
+              _c("p", { staticClass: "card-title-desc" }),
+              _vm._v(" "),
+              _c("div", { staticClass: "row mb-md-2" }, [
+                _c("div", { staticClass: "col-sm-12 col-md-6" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "dataTables_length",
+                      attrs: { id: "tickets-table_length" }
+                    },
+                    [
+                      _c(
+                        "label",
+                        { staticClass: "d-inline-flex align-items-center" },
+                        [
+                          _vm._v(
+                            "\n                  Show\n                  "
+                          ),
+                          _c("b-form-select", {
+                            attrs: { size: "sm", options: _vm.pageOptions },
+                            model: {
+                              value: _vm.perPage_2,
+                              callback: function($$v) {
+                                _vm.perPage_2 = $$v
+                              },
+                              expression: "perPage_2"
+                            }
+                          }),
+                          _vm._v("entries\n                ")
+                        ],
+                        1
+                      )
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-sm-12 col-md-6" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "dataTables_filter text-md-right",
+                      attrs: { id: "tickets-table_filter" }
+                    },
+                    [
+                      _c(
+                        "label",
+                        { staticClass: "d-inline-flex align-items-center" },
+                        [
+                          _vm._v(
+                            "\n                  Search:\n                  "
+                          ),
+                          _c("b-form-input", {
+                            staticClass: "form-control form-control-sm ml-2",
+                            attrs: { type: "search", placeholder: "Search..." },
+                            model: {
+                              value: _vm.filter_2,
+                              callback: function($$v) {
+                                _vm.filter_2 = $$v
+                              },
+                              expression: "filter_2"
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ]
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "table-responsive table-dark mb-0" },
+                [
+                  _c("b-table", {
+                    attrs: {
+                      items: _vm.getRegisteredParticipants,
+                      fields: _vm.fields,
+                      responsive: "sm",
+                      "per-page": _vm.perPage_2,
+                      "current-page": _vm.currentPage_2,
+                      "sort-by": _vm.sortBy,
+                      "sort-desc": _vm.sortDesc,
+                      filter: _vm.filter_2,
+                      "filter-included-fields": _vm.filterOn_2
+                    },
+                    on: {
+                      "update:sortBy": function($event) {
+                        _vm.sortBy = $event
+                      },
+                      "update:sort-by": function($event) {
+                        _vm.sortBy = $event
+                      },
+                      "update:sortDesc": function($event) {
+                        _vm.sortDesc = $event
+                      },
+                      "update:sort-desc": function($event) {
+                        _vm.sortDesc = $event
+                      },
+                      filtered: _vm.onFiltered_2
+                    },
+                    scopedSlots: _vm._u([
+                      {
+                        key: "cell(sex)",
+                        fn: function(row) {
+                          return [
+                            _vm._v(
+                              "\n                " +
+                                _vm._s(row.item.sex.name) +
+                                "\n              "
+                            )
+                          ]
+                        }
+                      },
+                      {
+                        key: "cell(club)",
+                        fn: function(row) {
+                          return [
+                            _vm._v(
+                              "\n                " +
+                                _vm._s(row.item.club.name) +
+                                "\n              "
+                            )
+                          ]
+                        }
+                      },
+                      {
+                        key: "cell(actions)",
+                        fn: function(row) {
+                          return [
+                            _c(
+                              "b-button",
+                              {
+                                directives: [
+                                  {
+                                    name: "b-modal",
+                                    rawName: "v-b-modal.edit-modality-modal",
+                                    modifiers: { "edit-modality-modal": true }
+                                  }
+                                ],
+                                attrs: { size: "sm" },
+                                on: {
+                                  click: function($event) {
+                                    return _vm.getModalityOfParticipantIcon(
+                                      row.item.id
+                                    )
+                                  }
+                                }
+                              },
+                              [_c("i", { staticClass: "fas fa-user-edit" })]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "b-button",
+                              {
+                                directives: [
+                                  {
+                                    name: "b-modal",
+                                    rawName:
+                                      "v-b-modal.unregister-modality-modal",
+                                    modifiers: {
+                                      "unregister-modality-modal": true
+                                    }
+                                  }
+                                ],
+                                attrs: { size: "sm" },
+                                on: {
+                                  click: function($event) {
+                                    return _vm.setParticipantId(row.item.id)
+                                  }
+                                }
+                              },
+                              [_c("i", { staticClass: "fas fa-user-minus" })]
+                            )
+                          ]
+                        }
+                      }
+                    ])
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "dataTables_paginate paging_simple_numbers float-right"
+                    },
+                    [
+                      _c(
+                        "ul",
+                        { staticClass: "pagination pagination-rounded mb-0" },
+                        [
+                          _c("b-pagination", {
+                            attrs: {
+                              "total-rows": _vm.rows_2,
+                              "per-page": _vm.perPage_2
+                            },
+                            model: {
+                              value: _vm.currentPage_2,
+                              callback: function($$v) {
+                                _vm.currentPage_2 = $$v
+                              },
+                              expression: "currentPage_2"
                             }
                           })
                         ],
@@ -7293,7 +7574,7 @@ var render = function() {
         "b-modal",
         {
           attrs: {
-            id: "modality-modal",
+            id: "register-modality-modal",
             centered: "",
             title: "Select Modality",
             "title-class": "font-18",
@@ -7310,11 +7591,11 @@ var render = function() {
               _c("multiselect", {
                 attrs: { options: _vm.modalityOptions, multiple: true },
                 model: {
-                  value: _vm.modalities,
+                  value: _vm.register_modalities,
                   callback: function($$v) {
-                    _vm.modalities = $$v
+                    _vm.register_modalities = $$v
                   },
-                  expression: "modalities"
+                  expression: "register_modalities"
                 }
               }),
               _vm._v(" "),
@@ -7322,7 +7603,7 @@ var render = function() {
                 "div",
                 {
                   staticClass: "invalid-feedback",
-                  class: { "d-inline-block": !_vm.isRequiredModality }
+                  class: { "d-inline-block": !_vm.isRequiredModality.register }
                 },
                 [_c("span", [_vm._v("This value is required.")])]
               )
@@ -7330,42 +7611,156 @@ var render = function() {
             1
           ),
           _vm._v(" "),
-          _c(
-            "footer",
-            {
-              staticClass: "modal-footer",
-              attrs: { id: "delete-modal___BV_modal_footer_" }
-            },
-            [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-secondary",
-                  attrs: { type: "button" },
-                  on: {
-                    click: function($event) {
-                      return _vm.$bvModal.hide("modality-modal")
-                    }
+          _c("footer", { staticClass: "modal-footer" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-secondary",
+                attrs: { type: "button" },
+                on: {
+                  click: function($event) {
+                    return _vm.$bvModal.hide("register-modality-modal")
                   }
-                },
-                [_vm._v("Cancel")]
-              ),
+                }
+              },
+              [_vm._v("Cancel")]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-primary",
+                attrs: { type: "button" },
+                on: {
+                  click: function($event) {
+                    return _vm.registerParticipantWithModality()
+                  }
+                }
+              },
+              [_vm._v("Register")]
+            )
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "b-modal",
+        {
+          attrs: {
+            id: "edit-modality-modal",
+            centered: "",
+            title: "Update Modality",
+            "title-class": "font-18",
+            "hide-footer": ""
+          }
+        },
+        [
+          _c(
+            "div",
+            {},
+            [
+              _c("label", [_vm._v("Modality")]),
+              _vm._v(" "),
+              _c("multiselect", {
+                attrs: { options: _vm.modalityOptions, multiple: true },
+                model: {
+                  value: _vm.edit_modalities,
+                  callback: function($$v) {
+                    _vm.edit_modalities = $$v
+                  },
+                  expression: "edit_modalities"
+                }
+              }),
               _vm._v(" "),
               _c(
-                "button",
+                "div",
                 {
-                  staticClass: "btn btn-primary",
-                  attrs: { type: "button" },
-                  on: {
-                    click: function($event) {
-                      return _vm.registerParticipantWithModality()
-                    }
-                  }
+                  staticClass: "invalid-feedback",
+                  class: { "d-inline-block": !_vm.isRequiredModality.edit }
                 },
-                [_vm._v("Register")]
+                [_c("span", [_vm._v("This value is required.")])]
               )
-            ]
-          )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("footer", { staticClass: "modal-footer" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-secondary",
+                attrs: { type: "button" },
+                on: {
+                  click: function($event) {
+                    return _vm.$bvModal.hide("edit-modality-modal")
+                  }
+                }
+              },
+              [_vm._v("Cancel")]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-primary",
+                attrs: { type: "button" },
+                on: {
+                  click: function($event) {
+                    return _vm.editParticipantWithModality()
+                  }
+                }
+              },
+              [_vm._v("Update")]
+            )
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "b-modal",
+        {
+          attrs: {
+            id: "unregister-modality-modal",
+            centered: "",
+            title: "Unregister Participant",
+            "title-class": "font-18",
+            "hide-footer": ""
+          }
+        },
+        [
+          _c("p", [
+            _vm._v("Are you sure you want to unregister selected participant?")
+          ]),
+          _vm._v(" "),
+          _c("footer", { staticClass: "modal-footer" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-secondary",
+                attrs: { type: "button" },
+                on: {
+                  click: function($event) {
+                    return _vm.$bvModal.hide("unregister-modality-modal")
+                  }
+                }
+              },
+              [_vm._v("Cancel")]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-primary",
+                attrs: { type: "button" },
+                on: {
+                  click: function($event) {
+                    return _vm.unregisterParticipant()
+                  }
+                }
+              },
+              [_vm._v("Unregister")]
+            )
+          ])
         ]
       )
     ],
