@@ -97,14 +97,8 @@ __webpack_require__.r(__webpack_exports__);
         key: "surname",
         sortable: true
       }, {
-        key: "sex",
-        sortable: false
-      }, {
         key: "birthday",
         sortable: true
-      }, {
-        key: "dni_ficha",
-        sortable: false
       }, {
         key: "club",
         sortable: false

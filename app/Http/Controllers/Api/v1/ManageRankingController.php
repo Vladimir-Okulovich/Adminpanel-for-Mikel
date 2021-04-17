@@ -132,6 +132,7 @@ class ManageRankingController extends Controller
             $categories = $this->getCategoryFromParticipant($participant);
 
             if (count($categories) == 0) {
+                // $participant->delete();
                 return response()->json([
                     'message' => 'Any category doesnt include the participant',
                     'participant' => $participant
