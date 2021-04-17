@@ -5,7 +5,9 @@ import JwtService from "@/common/jwt.service"
 
 const defaultState = {
   competitions: [],
-  competition: {}
+  competition: {},
+  registered_participants: [],
+  non_participants: [],
 };
 
 export default {

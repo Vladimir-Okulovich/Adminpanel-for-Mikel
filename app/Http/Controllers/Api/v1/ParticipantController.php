@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Participant;
 use App\Models\Club;
 use App\Models\Sex;
+use App\Models\Competition_ranking_result;
 use App\Http\Controllers\Controller;
 use Validator;
 
@@ -32,7 +33,6 @@ class ParticipantController extends Controller
             'participants' => $participants
         ], 200);
     }
-
     /**
      * Response one data by id
      * 
@@ -93,7 +93,7 @@ class ParticipantController extends Controller
         return response()->json([
             'message' => 'Participant successfully registered',
             'participant' => $participant
-        ], 201);
+        ], 200);
     }
 
     /**

@@ -162,15 +162,7 @@ __webpack_require__.r(__webpack_exports__);
         sex: this.typeform.sex,
         club: this.typeform.club,
         modality: this.typeform.modality
-      }).then(function (res) {
-        console.log(res);
-
-        if (res.status == 200) {
-          _this.$router.push({
-            name: "Competitions"
-          });
-        }
-
+      }).then(function () {
         _this.typesubmit = false;
       })["catch"](function (error) {
         _this.typesubmit = false;

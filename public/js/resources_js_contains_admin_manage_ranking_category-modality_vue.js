@@ -8483,17 +8483,7 @@ var render = function() {
                                   },
                                   attrs: { variant: "success", colspan: "11" }
                                 },
-                                [
-                                  _vm._v(
-                                    _vm._s(
-                                      _vm.categoryModality.category +
-                                        " " +
-                                        _vm.categoryModality.sex +
-                                        " " +
-                                        _vm.categoryModality.modality
-                                    )
-                                  )
-                                ]
+                                [_vm._v(_vm._s(_vm.categoryModality))]
                               )
                             ],
                             1

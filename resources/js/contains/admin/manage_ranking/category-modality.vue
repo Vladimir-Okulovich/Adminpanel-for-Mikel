@@ -159,7 +159,7 @@ import categoryCreateVue from '../category/category-create.vue';
             >
               <template #thead-top="data">
                 <b-tr>
-                  <b-th variant="success" colspan="11" style="color: black;text-align: center;">{{ categoryModality.category +" "+ categoryModality.sex +" "+ categoryModality.modality }}</b-th>
+                  <b-th variant="success" colspan="11" style="color: black;text-align: center;">{{ categoryModality }}</b-th>
                 </b-tr>
                 <b-tr>
                   <b-th variant="secondary" colspan="3" style="color: black;text-align: center;">RANKING 2021</b-th>

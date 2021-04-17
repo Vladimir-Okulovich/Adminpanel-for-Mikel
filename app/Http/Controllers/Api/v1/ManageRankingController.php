@@ -63,6 +63,42 @@ class ManageRankingController extends Controller
         ], 200);
     }
 
+    public function getRegisteredAndNonParticipants($competitionId)
+    {
+        $registered_participants = [];
+        $non_participants = [];
+
+        $participants = Participant::all();
+        foreach ($participants as $participant) {
+            $participant->sex;
+            $participant->club;
+
+            $competition_ranking_result = Competition_ranking_result::where('participant_id', $participant->id)
+                                                                    ->where('competition_id', $competitionId)
+                                                                    ->get();
+            if (count($competition_ranking_result) > 0) {
+                array_push($registered_participants, $participant);
+            } else {
+                array_push($non_participants, $participant);
+            }
+        }
+
+        return (object)[
+            'registered_participants' => $registered_participants,
+            'non_participants' => $non_participants,
+        ];
+    }
+
+    public function getParticipantsForCompetition($competitionId)
+    {
+        $result = $this->getRegisteredAndNonParticipants($competitionId);
+        return response()->json([
+            'message' => 'success',
+            'registered_participants' => $result->registered_participants,
+            'non_participants' => $result->non_participants,
+        ], 200);
+    }
+
     public function addParticipantToCompetition(Request $request) {
 
         $validator = Validator::make($request->all(), [
@@ -115,9 +151,11 @@ class ManageRankingController extends Controller
                 }
             }
 
+            $result = $this->getRegisteredAndNonParticipants($request->competitionId);
             return response()->json([
-                'message' => 'Successfully added a participant to the competition',
-                'participant' => $participant
+                'message' => 'Successfully added a participant to a competition',
+                'registered_participants' => $result->registered_participants,
+                'non_participants' => $result->non_participants,
             ], 200);
         } else {
             return response()->json([
@@ -161,9 +199,68 @@ class ManageRankingController extends Controller
             }
         }
 
+        $result = $this->getRegisteredAndNonParticipants($request->competitionId);
         return response()->json([
-            'message' => 'Successfully registed a participant to the competition',
-            'participant' => $participant
+            'message' => 'Successfully registered a participant to a competition',
+            'registered_participants' => $result->registered_participants,
+            'non_participants' => $result->non_participants,
+        ], 200);
+    }
+
+    public function getModalityOfParticipant(Request $request) {
+        $modality_id_array = Competition_ranking_result::where('competition_id', $request->competitionId)
+                                    ->where('participant_id', $request->participantId)
+                                    ->pluck('modality_id');
+        $modality_id = $modality_id_array->unique();
+        $modality_id->all();
+
+        $modality_participant = Modality::whereIn('id', $modality_id)->pluck('name');
+
+        return response()->json([
+            'message' => 'Success',
+            'modality_participant' => $modality_participant,
+        ], 200);
+    }
+
+    public function updateParticipantToCompetition(Request $request) {
+        $deleteRows = Competition_ranking_result::where('competition_id', $request->competitionId)
+                                    ->where('participant_id', $request->participantId)
+                                    ->delete();
+        
+        $participant = Participant::find($request->participantId);
+        $categories = $this->getCategoryFromParticipant($participant);
+
+        foreach ($categories as $category) {
+            foreach ($request->modality as $modality_name) {
+                $modality = Modality::where('name', $modality_name)->first();
+
+                $competition_ranking_result = new Competition_ranking_result;
+                $competition_ranking_result->competition_id = $request->competitionId;
+                $competition_ranking_result->participant_id = $request->participantId;
+                $competition_ranking_result->modality_id = $modality->id;
+                $competition_ranking_result->category_id = $category->id;
+                $competition_ranking_result->save();
+            }
+        }
+
+        $result = $this->getRegisteredAndNonParticipants($request->competitionId);
+        return response()->json([
+            'message' => 'Successfully updated a participant to a competition',
+            'registered_participants' => $result->registered_participants,
+            'non_participants' => $result->non_participants,
+        ], 200);
+    }
+
+    public function unregistParticipantToCompetition(Request $request) {
+        $deleteRows = Competition_ranking_result::where('competition_id', $request->competitionId)
+                                    ->where('participant_id', $request->participantId)
+                                    ->delete();
+
+        $result = $this->getRegisteredAndNonParticipants($request->competitionId);
+        return response()->json([
+            'message' => 'Successfully unregistered a participant to a competition',
+            'registered_participants' => $result->registered_participants,
+            'non_participants' => $result->non_participants,
         ], 200);
     }
 
