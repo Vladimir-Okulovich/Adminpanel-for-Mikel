@@ -272,10 +272,7 @@ __webpack_require__.r(__webpack_exports__);
       title: "USERS",
       items: [{
         text: "Administrator",
-        href: "/"
-      }, {
-        text: "Competition Data",
-        active: true
+        href: "/admin"
       }, {
         text: "Users",
         active: true

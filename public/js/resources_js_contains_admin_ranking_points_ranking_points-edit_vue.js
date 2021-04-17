@@ -78,21 +78,18 @@ __webpack_require__.r(__webpack_exports__);
       title: "RANKING POINTS",
       items: [{
         text: "Administrator",
-        href: "/"
-      }, {
-        text: "Manage Ranking",
-        active: true
+        href: "/admin"
       }, {
         text: "Ranking Points",
+        href: "/admin/ranking_points"
+      }, {
+        text: "Ranking Position Points",
         active: true
       }],
       totalRows: 1,
       sortBy: "position",
       sortDesc: false,
       fields: [{
-        key: "name",
-        sortable: false
-      }, {
         key: "position",
         sortable: true
       }, {
@@ -120,15 +117,15 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     this.getRankingById(this.$route.params.rankingId);
-    this.totalRows = this.getAllRankingPoints.length;
-    this.initRankingPoints();
+    this.totalRows = this.getRankingPoints.length;
+    this.getRankingPointsById(this.$route.params.rankingId);
   },
-  computed: (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_3__.default)((0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_3__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_9__.mapGetters)(['getRanking', 'getAllRankingPoints'])), {}, {
+  computed: (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_3__.default)((0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_3__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_9__.mapGetters)(['getRanking', 'getRankingPoints'])), {}, {
     rows: function rows() {
-      return this.getAllRankingPoints.length;
+      return this.getRankingPoints.length;
     }
   }),
-  methods: (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_3__.default)((0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_3__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_9__.mapActions)(['getRankingById', 'updateRanking', 'initRankingPoints'])), {}, {
+  methods: (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_3__.default)((0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_3__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_9__.mapActions)(['getRankingById', 'updateRanking', 'getRankingPointsById'])), {}, {
     gstr: function gstr(year) {
       return ToString(year);
     },
@@ -7934,7 +7931,7 @@ var render = function() {
               [
                 _c("b-table", {
                   attrs: {
-                    items: _vm.getAllRankingPoints,
+                    items: _vm.getRankingPoints,
                     fields: _vm.fields,
                     responsive: "sm",
                     "sort-by": _vm.sortBy,
@@ -7956,17 +7953,30 @@ var render = function() {
                   },
                   scopedSlots: _vm._u([
                     {
-                      key: "cell(name)",
-                      fn: function(row) {
+                      key: "thead-top",
+                      fn: function(data) {
                         return [
-                          _vm._v(
-                            "\n              " +
-                              _vm._s(
-                                row.item.ranking.name +
-                                  " " +
-                                  row.item.ranking.year
-                              ) +
-                              "\n            "
+                          _c(
+                            "b-tr",
+                            [
+                              _c(
+                                "b-th",
+                                {
+                                  staticStyle: { color: "black" },
+                                  attrs: { variant: "success", colspan: "2" }
+                                },
+                                [
+                                  _vm._v(
+                                    _vm._s(
+                                      _vm.getRankingPoints[0].ranking.name +
+                                        " " +
+                                        _vm.getRankingPoints[0].ranking.year
+                                    )
+                                  )
+                                ]
+                              )
+                            ],
+                            1
                           )
                         ]
                       }

@@ -35,7 +35,7 @@ const actions = {
             ApiService.post("api/v1/admin/competition/create", competitionInfo)
                 .then((data) => {
                     resolve(data)
-                    toastr.success('Successfully created', '', {timeout: 1000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
+                    toastr.success('Successfully created', '', {timeout: 5000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
                 })
                 .catch(({response, status}) => {
                     console.log(response);
@@ -44,13 +44,13 @@ const actions = {
         });
     },
     updateCompetition(context, competitionInfo) {
-        console.log(competitionInfo)
+        // console.log(competitionInfo)
         ApiService.setHeader();
         return new Promise((resolve, reject) => {
             ApiService.put("api/v1/admin/competition/update", competitionInfo)
                 .then((data) => {
                     resolve(data);
-                    toastr.success('Successfully updated', '', {timeout: 1000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
+                    toastr.success('Successfully updated', '', {timeout: 5000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
                 })
                 .catch(({response, status}) => {
                     // console.log(response);
@@ -65,28 +65,55 @@ const actions = {
                 .then(({data}) => {
                     // console.log(data);
                     context.commit(type.SET_ALL_COMPETITION, data)
-                    toastr.success('Successfully deleted', '', {timeout: 1000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
+                    toastr.success('Successfully deleted', '', {timeout: 5000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
                 })
                 .catch(({ response }) => {
-                    
                 });
         });
     },
     addParticipantToCompetition(context, participantInfo) {
         ApiService.setHeader();
         return new Promise((resolve, reject) => {
-            ApiService.post("api/v1/admin/competition/participant/create", participantInfo)
+            ApiService.post("api/v1/admin/competition/participant/add", participantInfo)
                 .then((data) => {
                     resolve(data)
-                    toastr.success(data.data.message, '', {timeout: 1000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
+                    toastr.success(data.data.message, '', {timeout: 5000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
                 })
                 .catch(({response, status}) => {
                     console.log(response);
                     reject(response);
                 });
         });
-    }
+    },
+    registParticipantToCompetition(context, participantInfo) {
+        ApiService.setHeader();
+        return new Promise((resolve, reject) => {
+            ApiService.post("api/v1/admin/competition/participant/regist", participantInfo)
+                .then((data) => {
+                    resolve(data)
+                    toastr.success(data.data.message, '', {timeout: 5000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
+                })
+                .catch(({response, status}) => {
+                    console.log(response);
+                    reject(response);
+                });
+        });
+    },
+    changeStatus(context, statusInfo) {
+        ApiService.setHeader();
+        return new Promise((resolve, reject) => {
+            ApiService.put("api/v1/admin/competition/status/update", statusInfo)
+                .then(({data}) => {
+                    console.log(data);
+                    context.commit(type.SET_ALL_COMPETITION, data)
+                    toastr.success(data.message, '', {timeout: 5000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
+                })
+                .catch(({response, status}) => {
+                    // console.log(response);
+                    reject(response);
+                });
+        });
+    },
 };
-
 
 export default actions;

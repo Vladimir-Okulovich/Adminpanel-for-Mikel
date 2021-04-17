@@ -32,11 +32,7 @@ class ManageRankingController extends Controller
         foreach ($categories as $category) {
             $category->sex;
             foreach ($modalities as $modality) {
-                array_push($all_category_modality, (object)[
-                    'category' => $category->name,
-                    'sex' => $category->sex->name,
-                    'modality' => $modality->name,
-                ]);
+                array_push($all_category_modality, $category->name." ".$category->sex->name." ".$modality->name);
             }
         }
         return response()->json([
@@ -67,7 +63,7 @@ class ManageRankingController extends Controller
         ], 200);
     }
 
-    public function participantCreate(Request $request) {
+    public function addParticipantToCompetition(Request $request) {
 
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|between:1,100',
@@ -82,9 +78,9 @@ class ManageRankingController extends Controller
             return response()->json($validator->errors()->toJson(), 400);
         }
 
-        $participants = Participant::where('dni_ficha', $request->dni_ficha)->get();
+        $participant = Participant::where('dni_ficha', $request->dni_ficha)->get();
 
-        if (count($participants) == 0) {
+        if (count($participant) == 0) {
     
             $sex = Sex::where('name', $request->sex)->first();
             $club = Club::where('name', $request->club)->first();
@@ -92,7 +88,7 @@ class ManageRankingController extends Controller
             $participant->name = $request->name;
             $participant->surname = $request->surname;
             $participant->dni_ficha = $request->dni_ficha;
-            $participant->birthday = $request->birthday;
+            $participant->setDateAttribute($request->birthday);
             $participant->sex()->associate($sex);
             $participant->club()->associate($club);
             $participant->save();
@@ -103,7 +99,7 @@ class ManageRankingController extends Controller
                 return response()->json([
                     'message' => 'Any category doesnt include the participant',
                     'participant' => $participant
-                ], 200);
+                ], 400);
             }
 
             foreach ($categories as $category) {
@@ -120,39 +116,55 @@ class ManageRankingController extends Controller
             }
 
             return response()->json([
-                'message' => 'Success',
+                'message' => 'Successfully added a participant to the competition',
                 'participant' => $participant
             ], 200);
         } else {
-            $participant = $participants->first();
-            // var_dump($participant);
-            $categories = $this->getCategoryFromParticipant($participant);
-
-            if (count($categories) == 0) {
-                return response()->json([
-                    'message' => 'Any category doesnt include the participant',
-                    'participant' => $participant
-                ], 200);
-            }
-
-            foreach ($categories as $category) {
-                foreach ($request->modality as $modality_name) {
-                    $modality = Modality::where('name', $modality_name)->first();
-
-                    $competition_ranking_result = new Competition_ranking_result;
-                    $competition_ranking_result->competition_id = $request->competitionId;
-                    $competition_ranking_result->participant_id = $participant->id;
-                    $competition_ranking_result->modality_id = $modality->id;
-                    $competition_ranking_result->category_id = $category->id;
-                    $competition_ranking_result->save();
-                }
-            }
-            
             return response()->json([
-                'message' => 'Success',
+                'message' => 'Already exists such a participant',
                 'participant' => $participant
-            ], 200);
+            ], 201);
         }
+    }
+
+    public function registParticipantToCompetition(Request $request) {
+
+        $validator = Validator::make($request->all(), [
+            'modality' => 'required',
+        ]);
+
+        if($validator->fails()){
+            return response()->json($validator->errors()->toJson(), 400);
+        }
+
+        $participant = Participant::find($request->participantId);
+
+        $categories = $this->getCategoryFromParticipant($participant);
+
+        if (count($categories) == 0) {
+            return response()->json([
+                'message' => 'Any category doesnt include the participant',
+                'participant' => $participant
+            ], 400);
+        }
+
+        foreach ($categories as $category) {
+            foreach ($request->modality as $modality_name) {
+                $modality = Modality::where('name', $modality_name)->first();
+
+                $competition_ranking_result = new Competition_ranking_result;
+                $competition_ranking_result->competition_id = $request->competitionId;
+                $competition_ranking_result->participant_id = $request->participantId;
+                $competition_ranking_result->modality_id = $modality->id;
+                $competition_ranking_result->category_id = $category->id;
+                $competition_ranking_result->save();
+            }
+        }
+
+        return response()->json([
+            'message' => 'Successfully registed a participant to the competition',
+            'participant' => $participant
+        ], 200);
     }
 
     public function getCategoryFromParticipant($participant) {

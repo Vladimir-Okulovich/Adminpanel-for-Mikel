@@ -17,7 +17,7 @@ class CreateParticipantsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('surname');
-            $table->string('dni_ficha');
+            $table->string('dni_ficha')->unique();
             $table->date('birthday');
             $table->foreignId('sex_id')->constrained('sexes');
             $table->foreignId('club_id')->constrained('clubs');

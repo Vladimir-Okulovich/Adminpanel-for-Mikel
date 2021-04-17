@@ -1,4 +1,4 @@
-(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_contains_admin_participant_participant-edit_vue"],{
+(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_contains_admin_competition_competition-participant-add_vue"],{
 
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/page-header.vue?vue&type=script&lang=js&":
 /*!******************************************************************************************************************************************************************************************************************!*\
@@ -29,10 +29,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/contains/admin/participant/participant-edit.vue?vue&type=script&lang=js&":
-/*!***************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/contains/admin/participant/participant-edit.vue?vue&type=script&lang=js& ***!
-  \***************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/contains/admin/competition/competition-participant-add.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/contains/admin/competition/competition-participant-add.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************************************************************************************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -65,7 +65,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   page: {
-    title: "EDIT PARTICIPANT",
+    title: "ADD PARTICIPANT TO COMPETITION",
     meta: [{
       name: "description",
       content: _app_config__WEBPACK_IMPORTED_MODULE_6__.description
@@ -79,15 +79,15 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      title: "EDIT PARTICIPANT",
+      title: "ADD PARTICIPANT TO COMPETITION",
       items: [{
         text: "Administrator",
         href: "/admin"
       }, {
-        text: "Participant",
-        href: "/admin/participants"
+        text: "Competition",
+        href: "/admin/competitions"
       }, {
-        text: "Edit",
+        text: "Add Participant",
         active: true
       }],
       isError: false,
@@ -97,10 +97,12 @@ __webpack_require__.r(__webpack_exports__);
         surname: "",
         dni_ficha: "",
         birthday: "",
-        sex: "",
-        club: ""
+        sex: "Male",
+        club: "",
+        modality: []
       },
       sexOptions: ["Male", "Female"],
+      modalityOptions: ["Short Boat", "Long Ship"],
       typesubmit: false
     };
   },
@@ -123,15 +125,17 @@ __webpack_require__.r(__webpack_exports__);
       },
       club: {
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_9__.required
+      },
+      modality: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_9__.required
       }
     }
   },
   mounted: function mounted() {
     this.getClubOptions();
-    this.getParticipantById(this.$route.params.participantId);
   },
-  computed: (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_3__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_10__.mapGetters)(['clubOptions', 'getParticipant'])),
-  methods: (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_3__.default)((0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_3__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_10__.mapActions)(['updateParticipant', 'getParticipantById', 'getClubOptions'])), {}, {
+  computed: (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_3__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_10__.mapGetters)(['clubOptions'])),
+  methods: (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_3__.default)((0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_3__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_10__.mapActions)(['addParticipantToCompetition', 'getClubOptions'])), {}, {
     /**
      * Validation type submit
      */
@@ -139,29 +143,33 @@ __webpack_require__.r(__webpack_exports__);
     typeForm: function typeForm(e) {
       var _this = this;
 
-      // console.log(this.typeform.club)
       this.typesubmit = true;
       this.isError = false;
       this.Error = null; // stop here if form is invalid
 
       this.$v.$touch();
 
-      if (this.$v.typeform.name.$error || this.$v.typeform.surname.$error || this.$v.typeform.dni_ficha.$error || this.$v.typeform.birthday.$error || this.$v.typeform.sex.$error || this.$v.typeform.club.$error) {
+      if (this.$v.typeform.name.$error || this.$v.typeform.surname.$error || this.$v.typeform.dni_ficha.$error || this.$v.typeform.birthday.$error || this.$v.typeform.sex.$error || this.$v.typeform.club.$error || this.$v.typeform.modality.$error) {
         return;
       }
 
-      return this.updateParticipant({
-        id: this.getParticipant.id,
+      return this.addParticipantToCompetition({
+        competitionId: this.$route.params.competitionId,
         name: this.typeform.name,
         surname: this.typeform.surname,
         dni_ficha: this.typeform.dni_ficha,
         birthday: this.typeform.birthday,
         sex: this.typeform.sex,
-        club: this.typeform.club
+        club: this.typeform.club,
+        modality: this.typeform.modality
       }).then(function (res) {
-        _this.$router.push({
-          name: "Participants"
-        });
+        console.log(res);
+
+        if (res.status == 200) {
+          _this.$router.push({
+            name: "Competitions"
+          });
+        }
 
         _this.typesubmit = false;
       })["catch"](function (error) {
@@ -7318,16 +7326,16 @@ component.options.__file = "resources/js/components/page-header.vue"
 
 /***/ }),
 
-/***/ "./resources/js/contains/admin/participant/participant-edit.vue":
-/*!**********************************************************************!*\
-  !*** ./resources/js/contains/admin/participant/participant-edit.vue ***!
-  \**********************************************************************/
+/***/ "./resources/js/contains/admin/competition/competition-participant-add.vue":
+/*!*********************************************************************************!*\
+  !*** ./resources/js/contains/admin/competition/competition-participant-add.vue ***!
+  \*********************************************************************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _participant_edit_vue_vue_type_template_id_5b17b962___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./participant-edit.vue?vue&type=template&id=5b17b962& */ "./resources/js/contains/admin/participant/participant-edit.vue?vue&type=template&id=5b17b962&");
-/* harmony import */ var _participant_edit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./participant-edit.vue?vue&type=script&lang=js& */ "./resources/js/contains/admin/participant/participant-edit.vue?vue&type=script&lang=js&");
+/* harmony import */ var _competition_participant_add_vue_vue_type_template_id_63e47377___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./competition-participant-add.vue?vue&type=template&id=63e47377& */ "./resources/js/contains/admin/competition/competition-participant-add.vue?vue&type=template&id=63e47377&");
+/* harmony import */ var _competition_participant_add_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./competition-participant-add.vue?vue&type=script&lang=js& */ "./resources/js/contains/admin/competition/competition-participant-add.vue?vue&type=script&lang=js&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -7337,9 +7345,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 ;
 var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
-  _participant_edit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
-  _participant_edit_vue_vue_type_template_id_5b17b962___WEBPACK_IMPORTED_MODULE_0__.render,
-  _participant_edit_vue_vue_type_template_id_5b17b962___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  _competition_participant_add_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _competition_participant_add_vue_vue_type_template_id_63e47377___WEBPACK_IMPORTED_MODULE_0__.render,
+  _competition_participant_add_vue_vue_type_template_id_63e47377___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
   false,
   null,
   null,
@@ -7349,7 +7357,7 @@ var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/contains/admin/participant/participant-edit.vue"
+component.options.__file = "resources/js/contains/admin/competition/competition-participant-add.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
@@ -7477,16 +7485,16 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/contains/admin/participant/participant-edit.vue?vue&type=script&lang=js&":
-/*!***********************************************************************************************!*\
-  !*** ./resources/js/contains/admin/participant/participant-edit.vue?vue&type=script&lang=js& ***!
-  \***********************************************************************************************/
+/***/ "./resources/js/contains/admin/competition/competition-participant-add.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************!*\
+  !*** ./resources/js/contains/admin/competition/competition-participant-add.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_participant_edit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./participant-edit.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/contains/admin/participant/participant-edit.vue?vue&type=script&lang=js&");
- /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_participant_edit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_competition_participant_add_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./competition-participant-add.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/contains/admin/competition/competition-participant-add.vue?vue&type=script&lang=js&");
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_competition_participant_add_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
 
 /***/ }),
 
@@ -7589,19 +7597,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/contains/admin/participant/participant-edit.vue?vue&type=template&id=5b17b962&":
-/*!*****************************************************************************************************!*\
-  !*** ./resources/js/contains/admin/participant/participant-edit.vue?vue&type=template&id=5b17b962& ***!
-  \*****************************************************************************************************/
+/***/ "./resources/js/contains/admin/competition/competition-participant-add.vue?vue&type=template&id=63e47377&":
+/*!****************************************************************************************************************!*\
+  !*** ./resources/js/contains/admin/competition/competition-participant-add.vue?vue&type=template&id=63e47377& ***!
+  \****************************************************************************************************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": function() { return /* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_participant_edit_vue_vue_type_template_id_5b17b962___WEBPACK_IMPORTED_MODULE_0__.render; },
-/* harmony export */   "staticRenderFns": function() { return /* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_participant_edit_vue_vue_type_template_id_5b17b962___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns; }
+/* harmony export */   "render": function() { return /* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_competition_participant_add_vue_vue_type_template_id_63e47377___WEBPACK_IMPORTED_MODULE_0__.render; },
+/* harmony export */   "staticRenderFns": function() { return /* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_competition_participant_add_vue_vue_type_template_id_63e47377___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns; }
 /* harmony export */ });
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_participant_edit_vue_vue_type_template_id_5b17b962___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./participant-edit.vue?vue&type=template&id=5b17b962& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/contains/admin/participant/participant-edit.vue?vue&type=template&id=5b17b962&");
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_competition_participant_add_vue_vue_type_template_id_63e47377___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./competition-participant-add.vue?vue&type=template&id=63e47377& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/contains/admin/competition/competition-participant-add.vue?vue&type=template&id=63e47377&");
 
 
 /***/ }),
@@ -7749,10 +7757,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/contains/admin/participant/participant-edit.vue?vue&type=template&id=5b17b962&":
-/*!********************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/contains/admin/participant/participant-edit.vue?vue&type=template&id=5b17b962& ***!
-  \********************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/contains/admin/competition/competition-participant-add.vue?vue&type=template&id=63e47377&":
+/*!*******************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/contains/admin/competition/competition-participant-add.vue?vue&type=template&id=63e47377& ***!
+  \*******************************************************************************************************************************************************************************************************************************************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -7813,9 +7821,8 @@ var render = function() {
                           {
                             name: "model",
                             rawName: "v-model",
-                            value: (_vm.typeform.name =
-                              _vm.getParticipant.name),
-                            expression: "typeform.name=getParticipant.name"
+                            value: _vm.typeform.name,
+                            expression: "typeform.name"
                           }
                         ],
                         staticClass: "form-control",
@@ -7823,20 +7830,14 @@ var render = function() {
                           "is-invalid":
                             _vm.typesubmit && _vm.$v.typeform.name.$error
                         },
-                        attrs: { type: "text", name: "name" },
-                        domProps: {
-                          value: (_vm.typeform.name = _vm.getParticipant.name)
-                        },
+                        attrs: { type: "name", name: "name" },
+                        domProps: { value: _vm.typeform.name },
                         on: {
                           input: function($event) {
                             if ($event.target.composing) {
                               return
                             }
-                            _vm.$set(
-                              (_vm.typeform.name = _vm.getParticipant),
-                              "name",
-                              $event.target.value
-                            )
+                            _vm.$set(_vm.typeform, "name", $event.target.value)
                           }
                         }
                       }),
@@ -7858,10 +7859,8 @@ var render = function() {
                           {
                             name: "model",
                             rawName: "v-model",
-                            value: (_vm.typeform.surname =
-                              _vm.getParticipant.surname),
-                            expression:
-                              "typeform.surname=getParticipant.surname"
+                            value: _vm.typeform.surname,
+                            expression: "typeform.surname"
                           }
                         ],
                         staticClass: "form-control",
@@ -7869,18 +7868,15 @@ var render = function() {
                           "is-invalid":
                             _vm.typesubmit && _vm.$v.typeform.surname.$error
                         },
-                        attrs: { type: "text", name: "surname" },
-                        domProps: {
-                          value: (_vm.typeform.surname =
-                            _vm.getParticipant.surname)
-                        },
+                        attrs: { type: "name", name: "surname" },
+                        domProps: { value: _vm.typeform.surname },
                         on: {
                           input: function($event) {
                             if ($event.target.composing) {
                               return
                             }
                             _vm.$set(
-                              (_vm.typeform.surname = _vm.getParticipant),
+                              _vm.typeform,
                               "surname",
                               $event.target.value
                             )
@@ -7905,10 +7901,8 @@ var render = function() {
                           {
                             name: "model",
                             rawName: "v-model",
-                            value: (_vm.typeform.dni_ficha =
-                              _vm.getParticipant.dni_ficha),
-                            expression:
-                              "typeform.dni_ficha=getParticipant.dni_ficha"
+                            value: _vm.typeform.dni_ficha,
+                            expression: "typeform.dni_ficha"
                           }
                         ],
                         staticClass: "form-control",
@@ -7917,17 +7911,14 @@ var render = function() {
                             _vm.typesubmit && _vm.$v.typeform.dni_ficha.$error
                         },
                         attrs: { type: "text", name: "dni_ficha" },
-                        domProps: {
-                          value: (_vm.typeform.dni_ficha =
-                            _vm.getParticipant.dni_ficha)
-                        },
+                        domProps: { value: _vm.typeform.dni_ficha },
                         on: {
                           input: function($event) {
                             if ($event.target.composing) {
                               return
                             }
                             _vm.$set(
-                              (_vm.typeform.dni_ficha = _vm.getParticipant),
+                              _vm.typeform,
                               "dni_ficha",
                               $event.target.value
                             )
@@ -7965,17 +7956,11 @@ var render = function() {
                             placeholder: "DD-MM-YYYY"
                           },
                           model: {
-                            value: (_vm.typeform.birthday =
-                              _vm.getParticipant.birthday),
+                            value: _vm.typeform.birthday,
                             callback: function($$v) {
-                              _vm.$set(
-                                (_vm.typeform.birthday = _vm.getParticipant),
-                                "birthday",
-                                $$v
-                              )
+                              _vm.$set(_vm.typeform, "birthday", $$v)
                             },
-                            expression:
-                              "typeform.birthday=getParticipant.birthday"
+                            expression: "typeform.birthday"
                           }
                         }),
                         _vm._v(" "),
@@ -7994,6 +7979,7 @@ var render = function() {
                     _vm._v(" "),
                     _c(
                       "div",
+                      { staticClass: "mb-3" },
                       [
                         _c("label", [_vm._v("Sex")]),
                         _vm._v(" "),
@@ -8004,16 +7990,11 @@ var render = function() {
                           },
                           attrs: { options: _vm.sexOptions },
                           model: {
-                            value: (_vm.typeform.sex =
-                              _vm.getParticipant.sex.name),
+                            value: _vm.typeform.sex,
                             callback: function($$v) {
-                              _vm.$set(
-                                (_vm.typeform.sex = _vm.getParticipant.sex),
-                                "name",
-                                $$v
-                              )
+                              _vm.$set(_vm.typeform, "sex", $$v)
                             },
-                            expression: "typeform.sex=getParticipant.sex.name"
+                            expression: "typeform.sex"
                           }
                         }),
                         _vm._v(" "),
@@ -8030,10 +8011,9 @@ var render = function() {
                       1
                     ),
                     _vm._v(" "),
-                    _c("br"),
-                    _vm._v(" "),
                     _c(
                       "div",
+                      { staticClass: "mb-3" },
                       [
                         _c("label", [_vm._v("Club")]),
                         _vm._v(" "),
@@ -8044,22 +8024,53 @@ var render = function() {
                           },
                           attrs: { options: _vm.clubOptions },
                           model: {
-                            value: (_vm.typeform.club =
-                              _vm.getParticipant.club.name),
+                            value: _vm.typeform.club,
                             callback: function($$v) {
-                              _vm.$set(
-                                (_vm.typeform.club = _vm.getParticipant.club),
-                                "name",
-                                $$v
-                              )
+                              _vm.$set(_vm.typeform, "club", $$v)
                             },
-                            expression: "typeform.club=getParticipant.club.name"
+                            expression: "typeform.club"
                           }
                         }),
                         _vm._v(" "),
                         _vm.typesubmit && _vm.$v.typeform.club.$error
                           ? _c("div", { staticClass: "invalid-feedback" }, [
                               !_vm.$v.typeform.club.required
+                                ? _c("span", [
+                                    _vm._v("This value is required.")
+                                  ])
+                                : _vm._e()
+                            ])
+                          : _vm._e()
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      [
+                        _c("label", [_vm._v("Modality")]),
+                        _vm._v(" "),
+                        _c("multiselect", {
+                          class: {
+                            "is-invalid":
+                              _vm.typesubmit && _vm.$v.typeform.modality.$error
+                          },
+                          attrs: {
+                            options: _vm.modalityOptions,
+                            multiple: true
+                          },
+                          model: {
+                            value: _vm.typeform.modality,
+                            callback: function($$v) {
+                              _vm.$set(_vm.typeform, "modality", $$v)
+                            },
+                            expression: "typeform.modality"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _vm.typesubmit && _vm.$v.typeform.modality.$error
+                          ? _c("div", { staticClass: "invalid-feedback" }, [
+                              !_vm.$v.typeform.modality.required
                                 ? _c("span", [
                                     _vm._v("This value is required.")
                                   ])
@@ -8087,9 +8098,26 @@ var render = function() {
                             "router-link",
                             {
                               staticClass: "btn btn-secondary m-l-5 ml-1",
-                              attrs: { to: "/admin/participants" }
+                              attrs: {
+                                to: {
+                                  name: "CompetitionParticipantRegist",
+                                  params: {
+                                    competitionId: this.$route.params
+                                      .competitionId
+                                  }
+                                }
+                              }
                             },
                             [_vm._v("Cancel")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-warning m-l-5 ml-1",
+                              attrs: { type: "reset" }
+                            },
+                            [_vm._v("Reset")]
                           )
                         ],
                         1

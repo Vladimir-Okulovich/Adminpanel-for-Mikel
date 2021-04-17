@@ -82,10 +82,7 @@ __webpack_require__.r(__webpack_exports__);
       title: "ADD CATEGORY",
       items: [{
         text: "Administrator",
-        href: "/"
-      }, {
-        text: "Competition Data",
-        active: true
+        href: "/admin"
       }, {
         text: "Category",
         href: "/admin/categories"
@@ -191,8 +188,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _subcomponent_layout__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../subcomponent/layout */ "./resources/js/contains/admin/subcomponent/layout.vue");
 /* harmony import */ var _app_config__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/app.config */ "./resources/js/app.config.json");
 /* harmony import */ var _components_page_header__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/components/page-header */ "./resources/js/components/page-header.vue");
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.mjs");
-/* harmony import */ var _category_category_create_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../category/category-create.vue */ "./resources/js/contains/admin/category/category-create.vue");
+/* harmony import */ var vue_multiselect__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vue-multiselect */ "./node_modules/vue-multiselect/dist/vue-multiselect.min.js");
+/* harmony import */ var vue_multiselect__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(vue_multiselect__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.mjs");
+/* harmony import */ var _category_category_create_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../category/category-create.vue */ "./resources/js/contains/admin/category/category-create.vue");
+
 
 
 
@@ -211,14 +211,15 @@ __webpack_require__.r(__webpack_exports__);
   },
   components: {
     Layout: _subcomponent_layout__WEBPACK_IMPORTED_MODULE_3__.default,
-    PageHeader: _components_page_header__WEBPACK_IMPORTED_MODULE_5__.default
+    PageHeader: _components_page_header__WEBPACK_IMPORTED_MODULE_5__.default,
+    Multiselect: (vue_multiselect__WEBPACK_IMPORTED_MODULE_6___default())
   },
   data: function data() {
     return {
       title: "CATEGORIES AND MODALITIES",
       items: [{
         text: "Administrator",
-        href: "/"
+        href: "/admin"
       }, {
         text: "Manage Ranking",
         active: true
@@ -226,11 +227,7 @@ __webpack_require__.r(__webpack_exports__);
         text: "Categories and Modalities",
         active: true
       }],
-      categoryModality: {
-        category: "",
-        sex: "",
-        modality: ""
-      },
+      categoryModality: "",
       totalRows: 1,
       currentPage: 1,
       perPage: 50,
@@ -254,7 +251,7 @@ __webpack_require__.r(__webpack_exports__);
 
     };
   },
-  computed: (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)((0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_7__.mapGetters)(['getAllCategoryModality', 'getAllRankingData'])), {}, {
+  computed: (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)((0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_8__.mapGetters)(['getAllCategoryModality', 'getAllRankingData'])), {}, {
     /**
      * Total no. of records
      */
@@ -267,7 +264,7 @@ __webpack_require__.r(__webpack_exports__);
     this.totalRows = this.getAllRankingData.length;
     this.initCategoryModality();
   },
-  methods: (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)((0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_7__.mapActions)(['initCategoryModality', 'getAllRankingPoints'])), {}, {
+  methods: (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)((0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_8__.mapActions)(['initCategoryModality', 'getAllRankingPoints'])), {}, {
     /**
      * Search the table data with search input
      */
@@ -276,20 +273,13 @@ __webpack_require__.r(__webpack_exports__);
       this.totalRows = filteredItems.length;
       this.currentPage = 1;
     },
-    // rowClicked(item, index, event) {
-    //   this.getAllRankingData({
-    //       category: item.category,
-    //       sex: item.sex,
-    //       modality: item.modality,
-    //     });
-    // }
-    itemClicked: function itemClicked(item) {
-      this.categoryModality = item;
-      this.getAllRankingPoints({
-        category: item.category,
-        sex: item.sex,
-        modality: item.modality
-      });
+    categoryModalityHandler: function categoryModalityHandler() {
+      console.log(this.categoryModality); // this.categoryModality = item;
+      // this.getAllRankingPoints({
+      //     category: item.category,
+      //     sex: item.sex,
+      //     modality: item.modality,
+      //   });
     }
   })
 });
@@ -8348,55 +8338,33 @@ var render = function() {
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col-12" }, [
           _c("div", { staticClass: "card" }, [
-            _c("div", { staticClass: "card-body" }, [
-              _c("h4", { staticClass: "card-title mb-4" }, [
-                _vm._v("Categories and Modalities")
-              ]),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "row" },
-                _vm._l(_vm.getAllCategoryModality, function(
-                  category_modality,
-                  index
-                ) {
-                  return _c(
-                    "div",
-                    {
-                      key: index,
-                      staticClass: "col-lg-3 col-md-4 select-field"
-                    },
-                    [
-                      _c(
-                        "button",
-                        {
-                          staticClass: "btn btn-secondary",
-                          on: {
-                            click: function($event) {
-                              return _vm.itemClicked(category_modality)
-                            }
-                          }
-                        },
-                        [
-                          _vm._v(
-                            "\n                " +
-                              _vm._s(
-                                category_modality.category +
-                                  " " +
-                                  category_modality.sex +
-                                  " " +
-                                  category_modality.modality
-                              ) +
-                              "\n              "
-                          )
-                        ]
+            _c(
+              "div",
+              { staticClass: "card-body" },
+              [
+                _c("h4", { staticClass: "card-title mb-4" }, [
+                  _vm._v("Categories and Modalities")
+                ]),
+                _vm._v(" "),
+                _c("multiselect", {
+                  attrs: { options: _vm.getAllCategoryModality },
+                  on: { change: _vm.categoryModalityHandler },
+                  model: {
+                    value: (_vm.categoryModality =
+                      _vm.getAllCategoryModality[0]),
+                    callback: function($$v) {
+                      _vm.$set(
+                        (_vm.categoryModality = _vm.getAllCategoryModality),
+                        0,
+                        $$v
                       )
-                    ]
-                  )
-                }),
-                0
-              )
-            ])
+                    },
+                    expression: "categoryModality=getAllCategoryModality[0]"
+                  }
+                })
+              ],
+              1
+            )
           ]),
           _vm._v(" "),
           _c("div", [

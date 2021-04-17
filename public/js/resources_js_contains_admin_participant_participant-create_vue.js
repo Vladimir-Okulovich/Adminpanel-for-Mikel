@@ -82,7 +82,7 @@ __webpack_require__.r(__webpack_exports__);
       title: "ADD PARTICIPANT",
       items: [{
         text: "Administrator",
-        href: "/"
+        href: "/admin"
       }, {
         text: "Participant",
         href: "/admin/participants"
@@ -157,9 +157,11 @@ __webpack_require__.r(__webpack_exports__);
         club: this.typeform.club
       }).then(function (res) {
         // console.log(res)
-        _this.$router.push({
-          name: "Participants"
-        });
+        if (res.status == 200) {
+          _this.$router.push({
+            name: "Participants"
+          });
+        }
 
         _this.typesubmit = false;
       })["catch"](function (error) {
@@ -7939,11 +7941,11 @@ var render = function() {
                               _vm.typesubmit && _vm.$v.typeform.birthday.$error
                           },
                           attrs: {
-                            format: "YYYY-MM-DD",
+                            format: "DD-MM-YYYY",
                             "value-type": "format",
                             "first-day-of-week": 1,
                             lang: "en",
-                            placeholder: "Select date"
+                            placeholder: "DD-MM-YYYY"
                           },
                           model: {
                             value: _vm.typeform.birthday,

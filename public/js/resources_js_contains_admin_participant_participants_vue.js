@@ -70,9 +70,9 @@ __webpack_require__.r(__webpack_exports__);
       title: "PARTICIPANTS",
       items: [{
         text: "Administrator",
-        href: "/"
+        href: "/admin"
       }, {
-        text: "Manage Participants",
+        text: "Participants",
         active: true
       }],
       totalRows: 1,
@@ -7065,7 +7065,7 @@ var render = function() {
           _c("div", { staticClass: "card" }, [
             _c("div", { staticClass: "card-body" }, [
               _c("h4", { staticClass: "card-title" }, [
-                _vm._v("Participant Table")
+                _vm._v("Participants Table")
               ]),
               _vm._v(" "),
               _c("p", { staticClass: "card-title-desc" }),

@@ -34,7 +34,7 @@ export default {
       items: [
         {
           text: "Administrator",
-          href: "/"
+          href: "/admin"
         },
         {
           text: "Competition",
@@ -54,7 +54,7 @@ export default {
         place: "",
         date: "",
         time: "",
-        ranking_score: "No",
+        ranking_score: "Yes",
         status: "REGISTRATION OPEN",
         lycra: "",
         modality: "",
@@ -68,7 +68,7 @@ export default {
       statusOptions: [
         "CLOSED",
         "REGISTRATION OPEN",
-        "COMPETITION IN PROGRESS"
+        "COMPETICIÓN EN CURSO"
       ],
       modalityOptions: [
         "Short Boat",
@@ -120,7 +120,7 @@ export default {
      */
     // eslint-disable-next-line no-unused-vars
     typeForm(e) {
-      console.log(this.typeform.time)
+      console.log(this.typeform.date)
       this.typesubmit = true;
       this.isError = false;
       this.Error = null;
@@ -231,16 +231,22 @@ export default {
                       <span v-if="!$v.typeform.place.required">This value is required.</span>
                     </div>
                   </div>
+                  <div class="form-group">
+                    <label for="logo">Logo</label>
+                    <input type="file" class="form-control-file" id="logo" @change="selectFile" />
+                  </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
                   <div class="form-group mb-3">
                     <label>Date</label>
                     <br />
                     <date-picker
                       v-model="typeform.date"
-                      format="YYYY-MM-DD"
+                      format="DD-MM-YYYY"
                       value-type="format"
                       :first-day-of-week="1"
                       lang="en"
-                      placeholder="Select date"
+                      placeholder="dd-mm-yyyy"
                       :class="{ 'is-invalid': typesubmit && $v.typeform.date.$error }"
                     ></date-picker>
                     <div v-if="typesubmit && $v.typeform.date.$error" class="invalid-feedback">
@@ -261,8 +267,6 @@ export default {
                       <span v-if="!$v.typeform.time.required">This value is required.</span>
                     </div>
                   </div>
-                </div>
-                <div class="col-lg-6 col-md-12">
                   <div class="mb-3">
                     <label>Ranking_score</label>
                     <multiselect 
@@ -280,11 +284,11 @@ export default {
                       <select class="custom-select" v-model="typeform.status">
                         <option value="CLOSED" disabled>CLOSED</option>
                         <option value="REGISTRATION OPEN" selected>REGISTRATION OPEN</option>
-                        <option value="COMPETITION IN PROGRESS" disabled>COMPETITION IN PROGRESS</option>
+                        <option value="COMPETICIÓN EN CURSO" disabled>COMPETICIÓN EN CURSO</option>
                       </select>
                     </div>
                   </div>
-                  <div class="mb-3">
+                  <div class="mb-3 d-none">
                     <label>Category</label>
                     <multiselect 
                       v-model="typeform.category=categoryOptions" 
@@ -296,7 +300,7 @@ export default {
                       <span v-if="!$v.typeform.category.required">This value is required.</span>
                     </div>
                   </div>
-                  <div class="mb-3">
+                  <div class="mb-3 d-none">
                     <label>Modality</label>
                     <multiselect 
                       v-model="typeform.modality=modalityOptions"
@@ -319,10 +323,6 @@ export default {
                     <div v-if="typesubmit && $v.typeform.lycra.$error" class="invalid-feedback">
                       <span v-if="!$v.typeform.lycra.required">This value is required.</span>
                     </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="logo">Logo</label>
-                    <input type="file" class="form-control-file" id="logo" @change="selectFile" />
                   </div>
                   <div class="form-group mt-4 mb-0">
                     <div style="float: right;">

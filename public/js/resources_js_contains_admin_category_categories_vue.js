@@ -70,10 +70,7 @@ __webpack_require__.r(__webpack_exports__);
       title: "CATEGORIES",
       items: [{
         text: "Administrator",
-        href: "/"
-      }, {
-        text: "Competition Data",
-        active: true
+        href: "/admin"
       }, {
         text: "Categories",
         active: true
@@ -84,7 +81,7 @@ __webpack_require__.r(__webpack_exports__);
       pageOptions: [10, 25, 50, 100],
       filter: null,
       filterOn: [],
-      sortBy: "name",
+      sortBy: "",
       sortDesc: false,
       fields: [{
         key: "category",

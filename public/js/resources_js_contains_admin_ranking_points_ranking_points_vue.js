@@ -70,10 +70,7 @@ __webpack_require__.r(__webpack_exports__);
       title: "RANKINGS",
       items: [{
         text: "Administrator",
-        href: "/"
-      }, {
-        text: "Manage Ranking",
-        active: true
+        href: "/admin"
       }, {
         text: "Ranking Points",
         active: true

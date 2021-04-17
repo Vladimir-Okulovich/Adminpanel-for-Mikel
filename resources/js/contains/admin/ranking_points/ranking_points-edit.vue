@@ -22,14 +22,14 @@ export default {
       items: [
         {
           text: "Administrator",
-          href: "/"
-        },
-        {
-          text: "Manage Ranking",
-          active: true
+          href: "/admin"
         },
         {
           text: "Ranking Points",
+          href: "/admin/ranking_points"
+        },
+        {
+          text: "Ranking Position Points",
           active: true
         }
       ],
@@ -37,7 +37,6 @@ export default {
       sortBy: "position",
       sortDesc: false,
       fields: [
-        { key: "name", sortable: false },
         { key: "position", sortable: true },
         { key: "points", sortable: false },
       ],
@@ -58,23 +57,23 @@ export default {
   },
   mounted() {
     this.getRankingById(this.$route.params.rankingId);
-    this.totalRows = this.getAllRankingPoints.length;
-    this.initRankingPoints();
+    this.totalRows = this.getRankingPoints.length;
+    this.getRankingPointsById(this.$route.params.rankingId);
   },
   computed: {
     ...mapGetters([
       'getRanking',
-      'getAllRankingPoints'
+      'getRankingPoints'
     ]),
     rows() {
-      return this.getAllRankingPoints.length;
+      return this.getRankingPoints.length;
     }
   },
   methods: {
     ...mapActions([
       'getRankingById',
       'updateRanking',
-      'initRankingPoints',
+      'getRankingPointsById',
     ]),
     gstr(year) {
       return ToString(year);
@@ -171,14 +170,16 @@ export default {
           <!-- Table -->
           <div class="table-responsive table-dark mb-0">
             <b-table
-              :items="getAllRankingPoints"
+              :items="getRankingPoints"
               :fields="fields"
               responsive="sm"
               :sort-by.sync="sortBy"
               :sort-desc.sync="sortDesc"
             >
-              <template #cell(name)="row">
-                {{ row.item.ranking.name + " " + row.item.ranking.year }}
+              <template #thead-top="data">
+                <b-tr>
+                  <b-th variant="success" colspan="2" style="color: black;">{{ getRankingPoints[0].ranking.name + " " + getRankingPoints[0].ranking.year }}</b-th>
+                </b-tr>
               </template>
             </b-table>
           </div>

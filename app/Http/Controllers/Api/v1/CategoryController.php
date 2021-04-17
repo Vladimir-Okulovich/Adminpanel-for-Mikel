@@ -21,7 +21,7 @@ class CategoryController extends Controller
      */
     public function getAll()
     {
-        $categories = Category::all();
+        $categories = Category::orderBy('year1', 'asc')->get();
         foreach ($categories as $category) {
             $category->sex;
         }
@@ -124,7 +124,7 @@ class CategoryController extends Controller
         //delete Category
         $category = Category::find($categoryId);
         $category -> delete();
-        $categories = Category::all();
+        $categories = Category::orderBy('year1', 'asc')->get();
         foreach ($categories as $category) {
             $category->sex;
         }

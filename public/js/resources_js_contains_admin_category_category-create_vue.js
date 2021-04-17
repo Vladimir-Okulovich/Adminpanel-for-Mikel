@@ -82,10 +82,7 @@ __webpack_require__.r(__webpack_exports__);
       title: "ADD CATEGORY",
       items: [{
         text: "Administrator",
-        href: "/"
-      }, {
-        text: "Competition Data",
-        active: true
+        href: "/admin"
       }, {
         text: "Category",
         href: "/admin/categories"

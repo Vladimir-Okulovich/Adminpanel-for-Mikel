@@ -20,7 +20,7 @@ class ClubController extends Controller
      */
     public function getAll()
     {
-        $clubs = Club::all();
+        $clubs = Club::where('name', '!=', 'Independiente')->get();
         return response()->json([
             'message' => 'success',
             'clubs' => $clubs
@@ -118,7 +118,7 @@ class ClubController extends Controller
             ]);
         }
         $club -> delete();
-        $clubs = Club::all();
+        $clubs = Club::where('name', '!=', 'Independiente')->get();
         return response()->json([
             'message' => 'successfully deleted',
             'clubs' => $clubs

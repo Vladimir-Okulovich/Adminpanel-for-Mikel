@@ -2,34 +2,49 @@
 	import Layout from "../subcomponent/layout";
 	import appConfig from "@/app.config";
   import PageHeader from "@/components/page-header";
+  import Multiselect from "vue-multiselect";
 
   import { mapActions, mapGetters } from 'vuex';
 
 	export default {
 		page: {
-        title: "USERS",
+        title: "REGIST PARTICIPANT TO COMPETITION",
         meta: [{ name: "description", content: appConfig.description }]
     },
     components: {
       Layout,
-      PageHeader
+      PageHeader,
+      Multiselect
     },
     data() {
       return {
-        title: "USERS",
+        title: "REGIST PARTICIPANT TO COMPETITION",
         items: [
           {
             text: "Administrator",
             href: "/admin"
           },
           {
-            text: "Users",
-            active: true
-          }
+            text: "Competition",
+            href: "/admin/competitions"
+          },
+          {
+            text: "Regist Participant",
+            active: true,
+          },
         ],
+        modalityOptions: [
+          "Short Boat",
+          "Long Ship"
+        ],
+        modalities: [
+          "Short Boat",
+          "Long Ship"
+        ],
+        isRequiredModality: true,
         totalRows: 1,
         currentPage: 1,
-        perPage: 10,
+        perPage: 25,
         pageOptions: [10, 25, 50, 100],
         filter: null,
         filterOn: [],
@@ -37,33 +52,36 @@
         sortDesc: false,
         fields: [
           { key: "name", sortable: true },
-          { key: "email", sortable: false },
-          { key: "created_at", sortable: true },
-          { key: "actions", sortable: false }
+          { key: "surname", sortable: true },
+          { key: "sex", sortable: false },
+          { key: "birthday", sortable: true },
+          { key: "dni_ficha", sortable: false },
+          { key: "club", sortable: false },
+          { key: "actions", sortable: false },
         ],
-        deletingId: 0,
+        participantId: 0,
       }
     },
     computed: {
       ...mapGetters([
-        'getUsers'
+        'getParticipants'
       ]),
       /**
        * Total no. of records
        */
       rows() {
-        return this.getUsers.length;
+        return this.getParticipants.length;
       }
     },
     mounted() {
       // Set the initial number of items
-      this.totalRows = this.getUsers.length;
-      this.initUsers();
+      this.totalRows = this.getParticipants.length;
+      this.initParticipants();
     },
     methods: {
       ...mapActions([
-        'initUsers',
-        'deleteUser',
+        'initParticipants',
+        'registParticipantToCompetition',
       ]),
       /**
        * Search the table data with search input
@@ -73,13 +91,23 @@
         this.totalRows = filteredItems.length;
         this.currentPage = 1;
       },
-      setId(id) {
-        this.deletingId = id;
+      setParticipantId(id) {
+        this.participantId = id;
       },
-      realDelete() {
-        this.deleteUser(this.deletingId);
-        this.$bvModal.hide('delete-modal');
-      }
+      registerParticipantWithModality() {
+        // console.log(this.modalities.length)
+        if (this.modalities.length > 0) {
+          this.isRequiredModality = true;
+          this.registParticipantToCompetition({
+            competitionId: this.$route.params.competitionId,
+            participantId: this.participantId,
+            modality: this.modalities,
+          });
+          this.$bvModal.hide('delete-modal');
+        } else {
+          this.isRequiredModality = false;
+        }
+      },
     }
 	};
 </script>
@@ -87,10 +115,10 @@
   <Layout>
     <PageHeader :title="title" :items="items">
       <div class="float-right">
-        <router-link to="/admin/user/create"
+        <router-link :to="{ name: 'CompetitionParticipantAdd', params: { competitionId: this.$route.params.competitionId } }"
           class="btn btn-info btn-block d-inline-block"
         >
-          <i class="fas fa-plus mr-1"></i> ADD USER
+          <i class="fas fa-plus mr-1"></i> ADD PARTICIPANT
         </router-link>
       </div>
     </PageHeader>
@@ -99,7 +127,7 @@
       <div class="col-12">
         <div class="card">
           <div class="card-body">
-            <h4 class="card-title">User Table</h4>
+            <h4 class="card-title">Participants Table</h4>
             <p class="card-title-desc"></p>
             <div class="row mb-md-2">
               <div class="col-sm-12 col-md-6">
@@ -129,7 +157,7 @@
             <!-- Table -->
             <div class="table-responsive table-dark mb-0">
               <b-table
-                :items="getUsers"
+                :items="getParticipants"
                 :fields="fields"
                 responsive="sm"
                 :per-page="perPage"
@@ -140,12 +168,15 @@
                 :filter-included-fields="filterOn"
                 @filtered="onFiltered"
               >
+                <template #cell(sex)="row">
+                  {{ row.item.sex.name }}
+                </template>
+                <template #cell(club)="row">
+                  {{ row.item.club.name }}
+                </template>
                 <template #cell(actions)="row">
-                  <router-link :to="{ name: 'UserEdit', params: { userId: row.item.id }}" class="btn btn-sm btn-secondary mr-2">
-                    <i class="far fa-edit"></i>
-                  </router-link>
-                  <b-button size="sm" @click="setId(row.item.id)" v-b-modal.delete-modal>
-                    <i class="fas fa-trash"></i>
+                  <b-button size="sm" @click="setParticipantId(row.item.id)" v-b-modal.modality-modal>
+                    <i class="fas fa-user-plus"></i>
                   </b-button>
                 </template>
               </b-table>
@@ -166,16 +197,26 @@
     </div>
 
     <b-modal
-      id="delete-modal"
+      id="modality-modal"
       centered
-      title="Delete Item"
+      title="Select Modality"
       title-class="font-18"
       hide-footer
     >
-      <p>Are you sure you want to delete selected item?</p>
+      <div class="">
+        <label>Modality</label>
+        <multiselect 
+          v-model="modalities"
+          :options="modalityOptions"
+          :multiple="true"
+        ></multiselect>
+        <div class="invalid-feedback" :class="{'d-inline-block': !isRequiredModality}">
+          <span>This value is required.</span>
+        </div>
+      </div>
       <footer id="delete-modal___BV_modal_footer_" class="modal-footer">
-        <button type="button" class="btn btn-secondary" @click="$bvModal.hide('delete-modal')">Cancel</button>
-        <button type="button" class="btn btn-primary" @click="realDelete()">OK</button>
+        <button type="button" class="btn btn-secondary" @click="$bvModal.hide('modality-modal')">Cancel</button>
+        <button type="button" class="btn btn-primary" @click="registerParticipantWithModality()">Register</button>
       </footer>
     </b-modal>
   </Layout>

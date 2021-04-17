@@ -3,13 +3,13 @@ import JwtService from "@/common/jwt.service";
 import type from './type';
 
 const actions = {
-    initRankingPoints(context) {
+    getRankingPointsById(context, rankingId) {
         ApiService.setHeader();
         return new Promise((resolve) =>{
-            ApiService.get("api/v1/admin/all_ranking_points/")
+            ApiService.get("api/v1/admin/ranking_points/" + rankingId)
                 .then(({data}) => {
-                    console.log(data);
-                    context.commit(type.SET_ALL_RANKING_POINTS, data)
+                    // console.log(data);
+                    context.commit(type.SET_RANKING_POINTS, data)
                 })
                 .catch(({ response }) => {
                     // context.commit(type.AUTH_LOGOUT);
@@ -21,7 +21,7 @@ const actions = {
         return new Promise((resolve) =>{
             ApiService.get("api/v1/admin/rankings/")
                 .then(({data}) => {
-                    console.log(data);
+                    // console.log(data);
                     context.commit(type.SET_ALL_RANKINGS, data)
                 })
                 .catch(({ response }) => {
@@ -34,7 +34,7 @@ const actions = {
         return new Promise((resolve) =>{
             ApiService.get("api/v1/admin/ranking/" + rankingId)
                 .then(({data}) => {
-                    console.log(data);
+                    // console.log(data);
                     context.commit(type.SET_RANKING, data)
                 })
                 .catch(({ response }) => {

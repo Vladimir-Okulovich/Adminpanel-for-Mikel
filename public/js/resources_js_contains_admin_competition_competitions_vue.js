@@ -41,14 +41,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var core_js_modules_es_symbol_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_symbol_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es.symbol.description.js */ "./node_modules/core-js/modules/es.symbol.description.js");
 /* harmony import */ var core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var core_js_modules_es_function_name_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core-js/modules/es.function.name.js */ "./node_modules/core-js/modules/es.function.name.js");
-/* harmony import */ var core_js_modules_es_function_name_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_function_name_js__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
-/* harmony import */ var _subcomponent_layout__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../subcomponent/layout */ "./resources/js/contains/admin/subcomponent/layout.vue");
-/* harmony import */ var _app_config__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/app.config */ "./resources/js/app.config.json");
-/* harmony import */ var _components_page_header__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/components/page-header */ "./resources/js/components/page-header.vue");
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.mjs");
-
+/* harmony import */ var C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
+/* harmony import */ var _subcomponent_layout__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../subcomponent/layout */ "./resources/js/contains/admin/subcomponent/layout.vue");
+/* harmony import */ var _app_config__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/app.config */ "./resources/js/app.config.json");
+/* harmony import */ var _components_page_header__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/components/page-header */ "./resources/js/components/page-header.vue");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.mjs");
 
 
 
@@ -61,19 +58,19 @@ __webpack_require__.r(__webpack_exports__);
     title: "COMPETITIONS",
     meta: [{
       name: "description",
-      content: _app_config__WEBPACK_IMPORTED_MODULE_5__.description
+      content: _app_config__WEBPACK_IMPORTED_MODULE_4__.description
     }]
   },
   components: {
-    Layout: _subcomponent_layout__WEBPACK_IMPORTED_MODULE_4__.default,
-    PageHeader: _components_page_header__WEBPACK_IMPORTED_MODULE_6__.default
+    Layout: _subcomponent_layout__WEBPACK_IMPORTED_MODULE_3__.default,
+    PageHeader: _components_page_header__WEBPACK_IMPORTED_MODULE_5__.default
   },
   data: function data() {
     return {
       title: "COMPETITIONS",
       items: [{
         text: "Administrator",
-        href: "/"
+        href: "/admin"
       }, {
         text: "Competitions",
         active: true
@@ -114,7 +111,7 @@ __webpack_require__.r(__webpack_exports__);
       deletingId: 0
     };
   },
-  computed: (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_3__.default)((0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_3__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_7__.mapGetters)(['getCompetitions'])), {}, {
+  computed: (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)((0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_6__.mapGetters)(['getCompetitions'])), {}, {
     rows: function rows() {
       return this.getCompetitions.length;
     }
@@ -124,7 +121,7 @@ __webpack_require__.r(__webpack_exports__);
     this.totalRows = this.getCompetitions.length;
     this.initCompetitions();
   },
-  methods: (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_3__.default)((0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_3__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_7__.mapActions)(['initCompetitions', 'deleteCompetition'])), {}, {
+  methods: (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)((0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_6__.mapActions)(['initCompetitions', 'deleteCompetition', 'changeStatus'])), {}, {
     /**
      * Search the table data with search input
      */
@@ -139,22 +136,17 @@ __webpack_require__.r(__webpack_exports__);
     realDelete: function realDelete() {
       this.deleteCompetition(this.deletingId);
       this.$bvModal.hide('delete-modal');
-    },
-    rowClicked: function rowClicked(item, index, event) {
-      // console.log(item.status.name)
-      if (item.status.name == "REGISTRATION OPEN") {
-        this.$router.push({
-          name: "CompetitionParticipantCreate",
-          params: {
-            competitionId: item.id
-          }
-        });
-      } else if (item.status.name == "COMPETITION IN PROGRESS") {
-        alert("COMPETITION IN PROGRESS");
-      } else if (item.status.name == "CLOSED") {
-        alert("CLOSED");
-      }
-    }
+    } // rowClicked(item, index, event) {
+    //   // console.log(item.status.name)
+    //   if (item.status.name == "REGISTRATION OPEN") {
+    //     this.$router.push({name: "CompetitionParticipantCreate", params: { competitionId: item.id }});
+    //   } else if (item.status.name == "COMPETITION IN PROGRESS") {
+    //     alert("COMPETITION IN PROGRESS")
+    //   } else if (item.status.name == "CLOSED") {
+    //     alert("CLOSED")
+    //   }
+    // }
+
   })
 });
 
@@ -7248,8 +7240,7 @@ var render = function() {
                       "update:sort-desc": function($event) {
                         _vm.sortDesc = $event
                       },
-                      filtered: _vm.onFiltered,
-                      "row-clicked": _vm.rowClicked
+                      filtered: _vm.onFiltered
                     },
                     scopedSlots: _vm._u([
                       {
@@ -7290,10 +7281,66 @@ var render = function() {
                         key: "cell(status)",
                         fn: function(row) {
                           return [
-                            _vm._v(
-                              "\n                " +
-                                _vm._s(row.item.status.name) +
-                                "\n              "
+                            _c(
+                              "select",
+                              {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: row.item.status.name,
+                                    expression: "row.item.status.name"
+                                  }
+                                ],
+                                staticClass: "custom-select",
+                                on: {
+                                  change: [
+                                    function($event) {
+                                      var $$selectedVal = Array.prototype.filter
+                                        .call($event.target.options, function(
+                                          o
+                                        ) {
+                                          return o.selected
+                                        })
+                                        .map(function(o) {
+                                          var val =
+                                            "_value" in o ? o._value : o.value
+                                          return val
+                                        })
+                                      _vm.$set(
+                                        row.item.status,
+                                        "name",
+                                        $event.target.multiple
+                                          ? $$selectedVal
+                                          : $$selectedVal[0]
+                                      )
+                                    },
+                                    function($event) {
+                                      return _vm.changeStatus({
+                                        id: row.item.id,
+                                        status: row.item.status.name
+                                      })
+                                    }
+                                  ]
+                                }
+                              },
+                              [
+                                _c("option", { attrs: { value: "CLOSED" } }, [
+                                  _vm._v("CLOSED")
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "option",
+                                  { attrs: { value: "REGISTRATION OPEN" } },
+                                  [_vm._v("REGISTRATION OPEN")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "option",
+                                  { attrs: { value: "COMPETICIÓN EN CURSO" } },
+                                  [_vm._v("COMPETICIÓN EN CURSO")]
+                                )
+                              ]
                             )
                           ]
                         }
@@ -7302,19 +7349,87 @@ var render = function() {
                         key: "cell(actions)",
                         fn: function(row) {
                           return [
-                            _c(
-                              "router-link",
-                              {
-                                staticClass: "btn btn-sm btn-secondary mr-2",
-                                attrs: {
-                                  to: {
-                                    name: "CompetitionEdit",
-                                    params: { competitionId: row.item.id }
-                                  }
-                                }
-                              },
-                              [_c("i", { staticClass: "far fa-edit" })]
-                            ),
+                            row.item.status.id != 3
+                              ? _c(
+                                  "router-link",
+                                  {
+                                    directives: [
+                                      {
+                                        name: "b-tooltip",
+                                        rawName: "v-b-tooltip.hover.top",
+                                        value: "Edit",
+                                        expression: "'Edit'",
+                                        modifiers: { hover: true, top: true }
+                                      }
+                                    ],
+                                    staticClass:
+                                      "btn btn-sm btn-secondary mr-2",
+                                    attrs: {
+                                      to: {
+                                        name: "CompetitionEdit",
+                                        params: { competitionId: row.item.id }
+                                      }
+                                    }
+                                  },
+                                  [_c("i", { staticClass: "far fa-edit" })]
+                                )
+                              : _c(
+                                  "router-link",
+                                  {
+                                    directives: [
+                                      {
+                                        name: "b-tooltip",
+                                        rawName: "v-b-tooltip.hover.top",
+                                        value: "Trophy",
+                                        expression: "'Trophy'",
+                                        modifiers: { hover: true, top: true }
+                                      }
+                                    ],
+                                    staticClass:
+                                      "btn btn-sm btn-secondary mr-2",
+                                    attrs: {
+                                      to: {
+                                        name: "CompetitionEdit",
+                                        params: { competitionId: row.item.id }
+                                      }
+                                    }
+                                  },
+                                  [_c("i", { staticClass: "fas fa-trophy" })]
+                                ),
+                            _vm._v(" "),
+                            row.item.status.id == 3
+                              ? _c(
+                                  "router-link",
+                                  {
+                                    staticClass:
+                                      "btn btn-sm btn-secondary mr-2 disabled",
+                                    attrs: { to: "#" }
+                                  },
+                                  [_c("i", { staticClass: "fas fa-user-plus" })]
+                                )
+                              : _c(
+                                  "router-link",
+                                  {
+                                    directives: [
+                                      {
+                                        name: "b-tooltip",
+                                        rawName: "v-b-tooltip.hover.top",
+                                        value: "Add participant",
+                                        expression: "'Add participant'",
+                                        modifiers: { hover: true, top: true }
+                                      }
+                                    ],
+                                    staticClass:
+                                      "btn btn-sm btn-secondary mr-2",
+                                    attrs: {
+                                      to: {
+                                        name: "CompetitionParticipantRegist",
+                                        params: { competitionId: row.item.id }
+                                      }
+                                    }
+                                  },
+                                  [_c("i", { staticClass: "fas fa-user-plus" })]
+                                ),
                             _vm._v(" "),
                             _c(
                               "b-button",
@@ -7324,6 +7439,13 @@ var render = function() {
                                     name: "b-modal",
                                     rawName: "v-b-modal.delete-modal",
                                     modifiers: { "delete-modal": true }
+                                  },
+                                  {
+                                    name: "b-tooltip",
+                                    rawName: "v-b-tooltip.hover.top",
+                                    value: "Delete",
+                                    expression: "'Delete'",
+                                    modifiers: { hover: true, top: true }
                                   }
                                 ],
                                 attrs: { size: "sm" },

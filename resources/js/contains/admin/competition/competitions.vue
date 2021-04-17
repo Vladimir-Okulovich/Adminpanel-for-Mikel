@@ -20,7 +20,7 @@
         items: [
           {
             text: "Administrator",
-            href: "/"
+            href: "/admin"
           },
           {
             text: "Competitions",
@@ -64,7 +64,8 @@
     methods: {
       ...mapActions ([
         'initCompetitions',
-        'deleteCompetition'
+        'deleteCompetition',
+        'changeStatus',
       ]),
       /**
        * Search the table data with search input
@@ -81,16 +82,16 @@
         this.deleteCompetition(this.deletingId);
         this.$bvModal.hide('delete-modal');
       },
-      rowClicked(item, index, event) {
-        // console.log(item.status.name)
-        if (item.status.name == "REGISTRATION OPEN") {
-          this.$router.push({name: "CompetitionParticipantCreate", params: { competitionId: item.id }});
-        } else if (item.status.name == "COMPETITION IN PROGRESS") {
-          alert("COMPETITION IN PROGRESS")
-        } else if (item.status.name == "CLOSED") {
-          alert("CLOSED")
-        }
-      }
+      // rowClicked(item, index, event) {
+      //   // console.log(item.status.name)
+      //   if (item.status.name == "REGISTRATION OPEN") {
+      //     this.$router.push({name: "CompetitionParticipantCreate", params: { competitionId: item.id }});
+      //   } else if (item.status.name == "COMPETITION IN PROGRESS") {
+      //     alert("COMPETITION IN PROGRESS")
+      //   } else if (item.status.name == "CLOSED") {
+      //     alert("CLOSED")
+      //   }
+      // }
     }
   };
 </script>
@@ -150,7 +151,6 @@
                 :filter="filter"
                 :filter-included-fields="filterOn"
                 @filtered="onFiltered"
-                @row-clicked="rowClicked"
               >
                 <template #cell(competition_type)="row">
                   {{ row.item.competition_type.name }}
@@ -160,13 +160,26 @@
                   <span class="badge badge-warning" v-if="row.item.ranking_score=='No'">{{ row.item.ranking_score }}</span>
                 </template>
                 <template #cell(status)="row">
-                  {{ row.item.status.name }}
+                  <select class="custom-select" v-model="row.item.status.name" @change="changeStatus({id: row.item.id, status: row.item.status.name})">
+                    <option value="CLOSED">CLOSED</option>
+                    <option value="REGISTRATION OPEN">REGISTRATION OPEN</option>
+                    <option value="COMPETICIÓN EN CURSO">COMPETICIÓN EN CURSO</option>
+                  </select>
                 </template>
                 <template #cell(actions)="row">
-                  <router-link :to="{ name: 'CompetitionEdit', params: { competitionId: row.item.id }}" class="btn btn-sm btn-secondary mr-2">
+                  <router-link :to="{ name: 'CompetitionEdit', params: { competitionId: row.item.id } }" class="btn btn-sm btn-secondary mr-2" v-b-tooltip.hover.top="'Edit'" v-if="row.item.status.id != 3">
                     <i class="far fa-edit"></i>
                   </router-link>
-                  <b-button size="sm" @click="setId(row.item.id)" v-b-modal.delete-modal>
+                  <router-link :to="{ name: 'CompetitionEdit', params: { competitionId: row.item.id } }" class="btn btn-sm btn-secondary mr-2" v-b-tooltip.hover.top="'Trophy'" v-else>
+                    <i class="fas fa-trophy"></i>
+                  </router-link>
+                  <router-link :to="'#'" class="btn btn-sm btn-secondary mr-2 disabled" v-if="row.item.status.id == 3">
+                    <i class="fas fa-user-plus"></i>
+                  </router-link>
+                  <router-link :to="{ name: 'CompetitionParticipantRegist', params: { competitionId: row.item.id } }" class="btn btn-sm btn-secondary mr-2" v-b-tooltip.hover.top="'Add participant'" v-else>
+                    <i class="fas fa-user-plus"></i>
+                  </router-link>
+                  <b-button size="sm" @click="setId(row.item.id)" v-b-modal.delete-modal v-b-tooltip.hover.top="'Delete'">
                     <i class="fas fa-trash"></i>
                   </b-button>
                 </template>

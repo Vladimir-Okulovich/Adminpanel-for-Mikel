@@ -23,30 +23,26 @@ import {
 
 export default {
   page: {
-    title: "ADD PARTICIPANT",
+    title: "ADD PARTICIPANT TO COMPETITION",
     meta: [{ name: "description", content: appConfig.description }]
   },
   components: { DatePicker, Multiselect, Layout, PageHeader },
   data() {
     return {
-      title: "ADD PARTICIPANT",
+      title: "ADD PARTICIPANT TO COMPETITION",
       items: [
         {
           text: "Administrator",
-          href: "/"
+          href: "/admin"
         },
         {
           text: "Competition",
           href: "/admin/competitions"
         },
         {
-          text: "Participant",
-          href: "/admin/participants"
+          text: "Add Participant",
+          active: true,
         },
-        {
-          text: "Add",
-          active: true
-        }
       ],
       isError: false,
       Error: null,
@@ -119,8 +115,10 @@ export default {
             modality: this.typeform.modality,
           })
           .then((res) => {
-            // console.log(res)
-            this.$router.push({name: "Competitions"});
+            console.log(res)
+            if (res.status == 200) {
+              this.$router.push({name: "Competitions"});
+            }
             this.typesubmit = false;
           })
           .catch(error => {
@@ -193,11 +191,11 @@ export default {
                 <br />
                 <date-picker
                   v-model="typeform.birthday"
-                  format="YYYY-MM-DD"
+                  format="DD-MM-YYYY"
                   value-type="format"
                   :first-day-of-week="1"
                   lang="en"
-                  placeholder="Select date"
+                  placeholder="DD-MM-YYYY"
                   :class="{ 'is-invalid': typesubmit && $v.typeform.birthday.$error }"
                 ></date-picker>
                 <div v-if="typesubmit && $v.typeform.birthday.$error" class="invalid-feedback">
@@ -241,7 +239,7 @@ export default {
               <div class="form-group mt-5 mb-0">
                 <div>
                   <button type="submit" class="btn btn-primary">Submit</button>
-                  <router-link to="/admin/competitions" class="btn btn-secondary m-l-5 ml-1">Cancel</router-link>
+                  <router-link :to="{ name: 'CompetitionParticipantRegist', params: { competitionId: this.$route.params.competitionId } }" class="btn btn-secondary m-l-5 ml-1">Cancel</router-link>
                   <button type="reset" class="btn btn-warning m-l-5 ml-1">Reset</button>
                 </div>
               </div>

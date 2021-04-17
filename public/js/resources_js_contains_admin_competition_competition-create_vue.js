@@ -82,7 +82,7 @@ __webpack_require__.r(__webpack_exports__);
       title: "ADD COMPETITION",
       items: [{
         text: "Administrator",
-        href: "/"
+        href: "/admin"
       }, {
         text: "Competition",
         href: "/admin/competitions"
@@ -99,7 +99,7 @@ __webpack_require__.r(__webpack_exports__);
         place: "",
         date: "",
         time: "",
-        ranking_score: "No",
+        ranking_score: "Yes",
         status: "REGISTRATION OPEN",
         lycra: "",
         modality: "",
@@ -107,7 +107,7 @@ __webpack_require__.r(__webpack_exports__);
         logo: null
       },
       rankingScoreOptions: ["Yes", "No"],
-      statusOptions: ["CLOSED", "REGISTRATION OPEN", "COMPETITION IN PROGRESS"],
+      statusOptions: ["CLOSED", "REGISTRATION OPEN", "COMPETICIÓN EN CURSO"],
       modalityOptions: ["Short Boat", "Long Ship"],
       typesubmit: false
     };
@@ -165,7 +165,7 @@ __webpack_require__.r(__webpack_exports__);
     typeForm: function typeForm(e) {
       var _this = this;
 
-      console.log(this.typeform.time);
+      console.log(this.typeform.date);
       this.typesubmit = true;
       this.isError = false;
       this.Error = null; // stop here if form is invalid
@@ -8307,6 +8307,20 @@ var render = function() {
                             : _vm._e()
                         ]),
                         _vm._v(" "),
+                        _c("div", { staticClass: "form-group" }, [
+                          _c("label", { attrs: { for: "logo" } }, [
+                            _vm._v("Logo")
+                          ]),
+                          _vm._v(" "),
+                          _c("input", {
+                            staticClass: "form-control-file",
+                            attrs: { type: "file", id: "logo" },
+                            on: { change: _vm.selectFile }
+                          })
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-lg-6 col-md-12" }, [
                         _c(
                           "div",
                           { staticClass: "form-group mb-3" },
@@ -8321,11 +8335,11 @@ var render = function() {
                                   _vm.typesubmit && _vm.$v.typeform.date.$error
                               },
                               attrs: {
-                                format: "YYYY-MM-DD",
+                                format: "DD-MM-YYYY",
                                 "value-type": "format",
                                 "first-day-of-week": 1,
                                 lang: "en",
-                                placeholder: "Select date"
+                                placeholder: "dd-mm-yyyy"
                               },
                               model: {
                                 value: _vm.typeform.date,
@@ -8387,10 +8401,8 @@ var render = function() {
                               : _vm._e()
                           ],
                           1
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-lg-6 col-md-12" }, [
+                        ),
+                        _vm._v(" "),
                         _c(
                           "div",
                           { staticClass: "mb-3" },
@@ -8486,11 +8498,11 @@ var render = function() {
                                   "option",
                                   {
                                     attrs: {
-                                      value: "COMPETITION IN PROGRESS",
+                                      value: "COMPETICIÓN EN CURSO",
                                       disabled: ""
                                     }
                                   },
-                                  [_vm._v("COMPETITION IN PROGRESS")]
+                                  [_vm._v("COMPETICIÓN EN CURSO")]
                                 )
                               ]
                             )
@@ -8499,7 +8511,7 @@ var render = function() {
                         _vm._v(" "),
                         _c(
                           "div",
-                          { staticClass: "mb-3" },
+                          { staticClass: "mb-3 d-none" },
                           [
                             _c("label", [_vm._v("Category")]),
                             _vm._v(" "),
@@ -8542,7 +8554,7 @@ var render = function() {
                         _vm._v(" "),
                         _c(
                           "div",
-                          { staticClass: "mb-3" },
+                          { staticClass: "mb-3 d-none" },
                           [
                             _c("label", [_vm._v("Modality")]),
                             _vm._v(" "),
@@ -8619,18 +8631,6 @@ var render = function() {
                           ],
                           1
                         ),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "form-group" }, [
-                          _c("label", { attrs: { for: "logo" } }, [
-                            _vm._v("Logo")
-                          ]),
-                          _vm._v(" "),
-                          _c("input", {
-                            staticClass: "form-control-file",
-                            attrs: { type: "file", id: "logo" },
-                            on: { change: _vm.selectFile }
-                          })
-                        ]),
                         _vm._v(" "),
                         _c("div", { staticClass: "form-group mt-4 mb-0" }, [
                           _c(
