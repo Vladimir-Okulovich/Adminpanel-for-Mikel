@@ -41,6 +41,7 @@
           { key: "place", sortable: false },
           { key: "date", sortable: true },
           { key: "time", sortable: false },
+          { key: "organizer", sortable: true },
           { key: "ranking_score", sortable: true },
           { key: "status", sortable: true },
           { key: "actions", sortable: false }
@@ -167,16 +168,19 @@
                   </select>
                 </template>
                 <template #cell(actions)="row">
-                  <router-link :to="{ name: 'CompetitionEdit', params: { competitionId: row.item.id } }" class="btn btn-sm btn-secondary mr-2" v-b-tooltip.hover.top="'Edit'" v-if="row.item.status.id != 3">
+                  <router-link :to="{ name: 'CompetitionEdit', params: { competitionId: row.item.id } }" class="btn btn-sm btn-secondary mr-2" v-b-tooltip.hover.top="'Edit'" v-if="row.item.status.id == 2">
                     <i class="far fa-edit"></i>
                   </router-link>
-                  <router-link :to="{ name: 'CompetitionEdit', params: { competitionId: row.item.id } }" class="btn btn-sm btn-secondary mr-2" v-b-tooltip.hover.top="'Trophy'" v-else>
+                  <router-link to="#" class="btn btn-sm btn-secondary mr-2 disabled" v-else-if="row.item.status.id == 1">
+                    <i class="far fa-edit"></i>
+                  </router-link>
+                  <router-link :to="{ name: 'CompetitionLiveManagement', params: { competitionId: row.item.id } }" class="btn btn-sm btn-secondary mr-2" v-b-tooltip.hover.top="'Live Management'" v-else>
                     <i class="fas fa-trophy"></i>
                   </router-link>
-                  <router-link :to="'#'" class="btn btn-sm btn-secondary mr-2 disabled" v-if="row.item.status.id == 3">
+                  <router-link :to="{ name: 'CompetitionParticipantRegist', params: { competitionId: row.item.id } }" class="btn btn-sm btn-secondary mr-2" v-b-tooltip.hover.top="'Add participant'" v-if="row.item.status.id == 2">
                     <i class="fas fa-user-plus"></i>
                   </router-link>
-                  <router-link :to="{ name: 'CompetitionParticipantRegist', params: { competitionId: row.item.id } }" class="btn btn-sm btn-secondary mr-2" v-b-tooltip.hover.top="'Add participant'" v-else>
+                  <router-link to="#" class="btn btn-sm btn-secondary mr-2 disabled" v-else>
                     <i class="fas fa-user-plus"></i>
                   </router-link>
                   <b-button size="sm" @click="setId(row.item.id)" v-b-modal.delete-modal v-b-tooltip.hover.top="'Delete'">

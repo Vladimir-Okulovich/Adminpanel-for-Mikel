@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
             ClubSeeder::class,
             RankingSeeder::class,
             RankingPositionPointSeeder::class,
+            HeatConfigurationSeeder::class,
         ]);
     }
 }

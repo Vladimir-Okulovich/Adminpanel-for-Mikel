@@ -54,6 +54,7 @@ export default {
         place: "",
         date: "",
         time: "",
+        organizer: "",
         ranking_score: "",
         status: "",
         lycra: "",
@@ -85,6 +86,7 @@ export default {
       place: { required },
       date: { required },
       time: { required },
+      organizer: { required },
       ranking_score: { required },
       status: { required },
       lycra: { required },
@@ -142,6 +144,7 @@ export default {
             place: this.typeform.place,
             date: this.typeform.date,
             time: this.typeform.time,
+            organizer: this.typeform.organizer,
             ranking_score: this.typeform.ranking_score,
             status: this.typeform.status,
             lycra: this.typeform.lycra,
@@ -263,6 +266,20 @@ export default {
                     ></date-picker>
                     <div v-if="typesubmit && $v.typeform.time.$error" class="invalid-feedback">
                       <span v-if="!$v.typeform.time.required">This value is required.</span>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label>Organizer</label>
+                    <input
+                      v-model="typeform.organizer=getCompetition.organizer"
+                      type="text"
+                      class="form-control"
+                      placeholder="Organizer"
+                      name="organizer"
+                      :class="{ 'is-invalid': typesubmit && $v.typeform.organizer.$error }"
+                    />
+                    <div v-if="typesubmit && $v.typeform.organizer.$error" class="invalid-feedback">
+                      <span v-if="!$v.typeform.organizer.required">This value is required.</span>
                     </div>
                   </div>
                 </div>

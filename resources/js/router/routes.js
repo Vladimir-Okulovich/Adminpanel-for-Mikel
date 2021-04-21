@@ -249,6 +249,14 @@ export default [
             authRequired: true,
         },
     },
+    {
+        path: '/admin/competition/live-management/:competitionId',
+        name: 'CompetitionLiveManagement',
+        component: () => import('../contains/admin/competition/live-management'),
+        meta: {
+            authRequired: true,
+        },
+    },
 
     {
         path: '/admin/participants',

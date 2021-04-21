@@ -94,6 +94,7 @@ class CompetitionController extends Controller
             'place' => 'required|string',
             'date' => 'required',
             'time' => 'required',
+            'organizer' => 'required',
             'ranking_score' => 'required',
             'status' => 'required',
             'lycra' => 'required',
@@ -120,6 +121,7 @@ class CompetitionController extends Controller
         $competition->place = $request->place;
         $competition->setDateAttribute($request->date);
         $competition->time = $request->time;
+        $competition->organizer = $request->organizer;
         $competition->ranking_score = $request->ranking_score;
         $competition->competition_type()->associate($competition_type);
         $competition->status()->associate($status);
@@ -175,6 +177,7 @@ class CompetitionController extends Controller
             'place' => 'required|string',
             'date' => 'required',
             'time' => 'required',
+            'organizer' => 'required',
             'ranking_score' => 'required',
             'status' => 'required',
             'lycra' => 'required',
@@ -212,6 +215,7 @@ class CompetitionController extends Controller
         $competition->place = $request->place;
         $competition->setDateAttribute($request->date);
         $competition->time = $request->time;
+        $competition->organizer = $request->organizer;
         $competition->ranking_score = $request->ranking_score;
         $competition->competition_type_id = $competition_type->id;
         $competition->status_id = $status->id;
