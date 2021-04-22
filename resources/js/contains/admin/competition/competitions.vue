@@ -174,7 +174,7 @@
                   <router-link to="#" class="btn btn-sm btn-secondary mr-2 disabled" v-else-if="row.item.status.id == 1">
                     <i class="far fa-edit"></i>
                   </router-link>
-                  <router-link :to="{ name: 'CompetitionLiveManagement', params: { competitionId: row.item.id } }" class="btn btn-sm btn-secondary mr-2" v-b-tooltip.hover.top="'Live Management'" v-else>
+                  <router-link :to="{ name: 'DeterminedParticipants', params: { competitionId: row.item.id } }" class="btn btn-sm btn-secondary mr-2" v-b-tooltip.hover.top="'Live Management'" v-else>
                     <i class="fas fa-trophy"></i>
                   </router-link>
                   <router-link :to="{ name: 'CompetitionParticipantRegist', params: { competitionId: row.item.id } }" class="btn btn-sm btn-secondary mr-2" v-b-tooltip.hover.top="'Add participant'" v-if="row.item.status.id == 2">

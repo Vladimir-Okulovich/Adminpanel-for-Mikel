@@ -7402,7 +7402,7 @@ var render = function() {
                                       "btn btn-sm btn-secondary mr-2",
                                     attrs: {
                                       to: {
-                                        name: "CompetitionLiveManagement",
+                                        name: "DeterminedParticipants",
                                         params: { competitionId: row.item.id }
                                       }
                                     }

@@ -8,7 +8,7 @@ use App\Models\Club;
 use Illuminate\Support\Facades\DB;
 use App\Models\Modality;
 use App\Models\Participant;
-use App\Models\Competition_ranking_result;
+use App\Models\Com_cat_mod_participant;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Validator;
@@ -73,10 +73,10 @@ class ManageRankingController extends Controller
             $participant->sex;
             $participant->club;
 
-            $competition_ranking_result = Competition_ranking_result::where('participant_id', $participant->id)
+            $com_cat_mod_participant = Com_cat_mod_participant::where('participant_id', $participant->id)
                                                                     ->where('competition_id', $competitionId)
                                                                     ->get();
-            if (count($competition_ranking_result) > 0) {
+            if (count($com_cat_mod_participant) > 0) {
                 array_push($registered_participants, $participant);
             } else {
                 array_push($non_participants, $participant);
@@ -143,12 +143,12 @@ class ManageRankingController extends Controller
                 foreach ($request->modality as $modality_name) {
                     $modality = Modality::where('name', $modality_name)->first();
 
-                    $competition_ranking_result = new Competition_ranking_result;
-                    $competition_ranking_result->competition_id = $request->competitionId;
-                    $competition_ranking_result->participant_id = $participant->id;
-                    $competition_ranking_result->modality_id = $modality->id;
-                    $competition_ranking_result->category_id = $category->id;
-                    $competition_ranking_result->save();
+                    $com_cat_mod_participant = new Com_cat_mod_participant;
+                    $com_cat_mod_participant->competition_id = $request->competitionId;
+                    $com_cat_mod_participant->participant_id = $participant->id;
+                    $com_cat_mod_participant->modality_id = $modality->id;
+                    $com_cat_mod_participant->category_id = $category->id;
+                    $com_cat_mod_participant->save();
                 }
             }
 
@@ -191,12 +191,12 @@ class ManageRankingController extends Controller
             foreach ($request->modality as $modality_name) {
                 $modality = Modality::where('name', $modality_name)->first();
 
-                $competition_ranking_result = new Competition_ranking_result;
-                $competition_ranking_result->competition_id = $request->competitionId;
-                $competition_ranking_result->participant_id = $request->participantId;
-                $competition_ranking_result->modality_id = $modality->id;
-                $competition_ranking_result->category_id = $category->id;
-                $competition_ranking_result->save();
+                $com_cat_mod_participant = new Com_cat_mod_participant;
+                $com_cat_mod_participant->competition_id = $request->competitionId;
+                $com_cat_mod_participant->participant_id = $request->participantId;
+                $com_cat_mod_participant->modality_id = $modality->id;
+                $com_cat_mod_participant->category_id = $category->id;
+                $com_cat_mod_participant->save();
             }
         }
 
@@ -209,7 +209,7 @@ class ManageRankingController extends Controller
     }
 
     public function getModalityOfParticipant(Request $request) {
-        $modality_id_array = Competition_ranking_result::where('competition_id', $request->competitionId)
+        $modality_id_array = Com_cat_mod_participant::where('competition_id', $request->competitionId)
                                     ->where('participant_id', $request->participantId)
                                     ->pluck('modality_id');
         $modality_id = $modality_id_array->unique();
@@ -224,7 +224,7 @@ class ManageRankingController extends Controller
     }
 
     public function updateParticipantToCompetition(Request $request) {
-        $deleteRows = Competition_ranking_result::where('competition_id', $request->competitionId)
+        $deleteRows = Com_cat_mod_participant::where('competition_id', $request->competitionId)
                                     ->where('participant_id', $request->participantId)
                                     ->delete();
         
@@ -235,12 +235,12 @@ class ManageRankingController extends Controller
             foreach ($request->modality as $modality_name) {
                 $modality = Modality::where('name', $modality_name)->first();
 
-                $competition_ranking_result = new Competition_ranking_result;
-                $competition_ranking_result->competition_id = $request->competitionId;
-                $competition_ranking_result->participant_id = $request->participantId;
-                $competition_ranking_result->modality_id = $modality->id;
-                $competition_ranking_result->category_id = $category->id;
-                $competition_ranking_result->save();
+                $com_cat_mod_participant = new Com_cat_mod_participant;
+                $com_cat_mod_participant->competition_id = $request->competitionId;
+                $com_cat_mod_participant->participant_id = $request->participantId;
+                $com_cat_mod_participant->modality_id = $modality->id;
+                $com_cat_mod_participant->category_id = $category->id;
+                $com_cat_mod_participant->save();
             }
         }
 
@@ -253,7 +253,7 @@ class ManageRankingController extends Controller
     }
 
     public function unregistParticipantToCompetition(Request $request) {
-        $deleteRows = Competition_ranking_result::where('competition_id', $request->competitionId)
+        $deleteRows = Com_cat_mod_participant::where('competition_id', $request->competitionId)
                                     ->where('participant_id', $request->participantId)
                                     ->delete();
 

@@ -9,7 +9,7 @@ const actions = {
         return new Promise((resolve) =>{
             ApiService.get("api/v1/admin/manage_ranking/all_category_modality")
                 .then(({data}) => {
-                    console.log(data);
+                    // console.log(data);
                     context.commit(type.SET_ALL_CATEGORY_MODALITY, data)
                 })
                 .catch(({ response }) => {

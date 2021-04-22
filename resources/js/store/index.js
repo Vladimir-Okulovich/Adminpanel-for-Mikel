@@ -10,6 +10,7 @@ import clubModule from './club';
 import participantModule from './participant';
 import rankingPointsModule from './ranking_points';
 import manageRankingModule from './manage_ranking';
+import liveManagementModule from './live_management';
 import userModule from './user';
 
 Vue.use(Vuex);
@@ -26,6 +27,7 @@ export default new Vuex.Store({
     participant: participantModule,
     rankingPoints: rankingPointsModule,
     manageRanking: manageRankingModule,
+    liveManagement: liveManagementModule,
     user: userModule,
   },
 });

@@ -120,8 +120,14 @@ Route::group([ 'prefix' => 'v1', 'middleware' => 'api'], function(){
         Route::post('competition/participant/update', 'App\Http\Controllers\Api\v1\ManageRankingController@updateParticipantToCompetition');
         // /* Unregist a Participant to competition */
         Route::post('competition/participant/unregist', 'App\Http\Controllers\Api\v1\ManageRankingController@unregistParticipantToCompetition');
-         // /* Get Modality of Participant */
+        // /* Get Modality of Participant */
         Route::post('competition/modality/participant', 'App\Http\Controllers\Api\v1\ManageRankingController@getModalityOfParticipant');
+
+        // Live Competition Management
+        // /* Get Participants by category and modality */
+        Route::post('competition/category-modality/participants', 'App\Http\Controllers\Api\v1\LiveManagementController@getParticipantsByCompetitionCategoryModality');
+        // /* Unregist Participants by category and modality */
+        Route::post('competition/category-modality/participant/unregist', 'App\Http\Controllers\Api\v1\LiveManagementController@unregistParticipantToCompetitionCategoryModality');
 
         /* Get all participants details*/
         Route::get('participants', 'App\Http\Controllers\Api\v1\ParticipantController@getAll');

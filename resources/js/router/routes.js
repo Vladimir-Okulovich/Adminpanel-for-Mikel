@@ -249,10 +249,19 @@ export default [
             authRequired: true,
         },
     },
+
     {
-        path: '/admin/competition/live-management/:competitionId',
-        name: 'CompetitionLiveManagement',
-        component: () => import('../contains/admin/competition/live-management'),
+        path: '/admin/live-management/:competitionId/determined-participants',
+        name: 'DeterminedParticipants',
+        component: () => import('../contains/admin/live-management/determined-participants'),
+        meta: {
+            authRequired: true,
+        },
+    },
+    {
+        path: '/admin/live-management/:competitionId/category/:categoryId/modality/:modalityId',
+        name: 'CompetitionHeats',
+        component: () => import('../contains/admin/live-management/competition-heats'),
         meta: {
             authRequired: true,
         },
