@@ -22,7 +22,7 @@ class CreateRoundHeatsTable extends Migration
             $table->float('second_score')->default(0);
             $table->float('points')->default(0);
             $table->integer('position')->unsigned()->default(0);
-            $table->boolean('status')->default(0);
+            $table->integer('status')->default(2);
             $table->timestamps();
         });
     }

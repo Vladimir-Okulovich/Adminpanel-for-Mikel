@@ -266,6 +266,14 @@ export default [
             authRequired: true,
         },
     },
+    {
+        path: '/admin/live-management/:competitionId/category/:categoryId/modality/:modalityId/round/:round/heat/:heat',
+        name: 'CompetitionHeatDetails',
+        component: () => import('../contains/admin/live-management/heat-details'),
+        meta: {
+            authRequired: true,
+        },
+    },
 
     {
         path: '/admin/participants',

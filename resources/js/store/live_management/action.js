@@ -12,7 +12,7 @@ const actions = {
                     context.commit(type.SET_PARTICIPANTS_COMPETITION_CATEGORY_MODALITY, data)
                 })
                 .catch(({ response }) => {
-                    // context.commit(type.AUTH_LOGOUT);
+                    // console.log(response);
                 });
         });
     },
@@ -26,7 +26,57 @@ const actions = {
                     toastr.success(data.message, '', {timeout: 5000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
                 })
                 .catch(({ response }) => {
-                    // context.commit(type.AUTH_LOGOUT);
+                    // console.log(response);
+                });
+        });
+    },
+    createFirstCompetitionBoxes(context, data) {
+        ApiService.setHeader();
+        return new Promise((resolve) =>{
+            ApiService.post("api/v1/admin/live-management/competition-box/create", data)
+                .then((data) => {
+                    resolve(data);
+                })
+                .catch(({ response }) => {
+                    // console.log(response);
+                });
+        });
+    },
+    initCompetitionHeats(context, data) {
+        ApiService.setHeader();
+        return new Promise((resolve) =>{
+            ApiService.post("api/v1/admin/live-management/competition-heats", data)
+                .then(({data}) => {
+                    console.log(data);
+                    context.commit(type.GET_ALL_ROUND_HEATS, data)
+                })
+                .catch(({ response }) => {
+                    // console.log(response);
+                });
+        });
+    },
+    setProgressStatus(context, data) {
+        ApiService.setHeader();
+        return new Promise((resolve) =>{
+            ApiService.post("api/v1/admin/live-management/competition-heat/progress-status", data)
+                .then((data) => {
+                    resolve(data);
+                })
+                .catch(({ response }) => {
+                    // console.log(response);
+                });
+        });
+    },
+    initHeatDetails(context, data) {
+        ApiService.setHeader();
+        return new Promise((resolve) =>{
+            ApiService.post("api/v1/admin/live-management/competition-heat/heat-details", data)
+                .then(({data}) => {
+                    console.log(data);
+                    context.commit(type.GET_ROUND_HEAT_DETAILS, data)
+                })
+                .catch(({ response }) => {
+                    // console.log(response);
                 });
         });
     },

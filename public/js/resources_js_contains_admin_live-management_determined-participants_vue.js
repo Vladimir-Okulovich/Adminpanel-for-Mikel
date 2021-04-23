@@ -135,7 +135,7 @@ __webpack_require__.r(__webpack_exports__);
     this.totalRows = this.ParticipantsByCompetitionCategoryModality.length;
     this.initCategoryModality();
   },
-  methods: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)((0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_7__.mapActions)(['initCategoryModality', 'getParticipantsByCompetitionCategoryModality', 'unregistParticipantToCompetitionCategoryModality'])), {}, {
+  methods: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)((0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_7__.mapActions)(['initCategoryModality', 'getParticipantsByCompetitionCategoryModality', 'unregistParticipantToCompetitionCategoryModality', 'createFirstCompetitionBoxes'])), {}, {
     /**
      * Search the table data with search input
      */
@@ -163,6 +163,24 @@ __webpack_require__.r(__webpack_exports__);
           categoryModality: this.categoryModality
         });
       }
+    },
+    createCompetitionBox: function createCompetitionBox() {
+      var _this = this;
+
+      this.createFirstCompetitionBoxes({
+        competitionId: this.$route.params.competitionId,
+        categoryId: this.categoryId,
+        modalityId: this.modalityId
+      }).then(function () {
+        _this.$router.push({
+          name: 'CompetitionHeats',
+          params: {
+            competitionId: _this.$route.params.competitionId,
+            categoryId: _this.categoryId,
+            modalityId: _this.modalityId
+          }
+        });
+      });
     }
   })
 });
@@ -7130,30 +7148,16 @@ var render = function() {
     "Layout",
     [
       _c("PageHeader", { attrs: { title: _vm.title, items: _vm.items } }, [
-        _c(
-          "div",
-          { staticClass: "float-right" },
-          [
-            _c(
-              "router-link",
-              {
-                staticClass: "btn btn-info btn-block d-inline-block",
-                attrs: {
-                  to: {
-                    name: "CompetitionHeats",
-                    params: {
-                      competitionId: this.$route.params.competitionId,
-                      categoryId: _vm.categoryId,
-                      modalityId: _vm.modalityId
-                    }
-                  }
-                }
-              },
-              [_vm._v("\n        Create Competition Box\n      ")]
-            )
-          ],
-          1
-        )
+        _c("div", { staticClass: "float-right" }, [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-info btn-block d-inline-block",
+              on: { click: _vm.createCompetitionBox }
+            },
+            [_vm._v("\n        Create Competition Box\n      ")]
+          )
+        ])
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "row" }, [

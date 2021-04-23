@@ -66,12 +66,49 @@ __webpack_require__.r(__webpack_exports__);
     PageHeader: _components_page_header__WEBPACK_IMPORTED_MODULE_5__.default
   },
   data: function data() {
-    return {};
+    return {
+      competitionId: 0,
+      categoryId: 0,
+      modalityId: 0
+    };
   },
   watch: {},
-  computed: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_6__.mapGetters)([])),
-  mounted: function mounted() {},
-  methods: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_6__.mapActions)([]))
+  computed: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_6__.mapGetters)(['all_round_heats', 'lycraColorOptions'])),
+  mounted: function mounted() {
+    this.competitionId = this.$route.params.competitionId;
+    this.categoryId = this.$route.params.categoryId;
+    this.modalityId = this.$route.params.modalityId;
+    this.initCompetitionHeats({
+      competitionId: this.competitionId,
+      categoryId: this.categoryId,
+      modalityId: this.modalityId
+    });
+    this.getLycraOptions();
+  },
+  methods: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)((0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_6__.mapActions)(['initCompetitionHeats', 'getLycraOptions', 'setProgressStatus'])), {}, {
+    heatDetailsGo: function heatDetailsGo(round, heat) {
+      var _this = this;
+
+      this.setProgressStatus({
+        competitionId: this.competitionId,
+        categoryId: this.categoryId,
+        modalityId: this.modalityId,
+        round: round,
+        heat: heat
+      }).then(function () {
+        _this.$router.push({
+          name: 'CompetitionHeatDetails',
+          params: {
+            competitionId: _this.competitionId,
+            categoryId: _this.categoryId,
+            modalityId: _this.modalityId,
+            round: round,
+            heat: heat
+          }
+        });
+      });
+    }
+  })
 });
 
 /***/ }),
@@ -6973,120 +7010,237 @@ var render = function() {
   return _c(
     "Layout",
     [
-      _c("div", { staticClass: "row" }, [
-        _c("h3", { staticClass: "my-4 col-12" }, [_vm._v("FIRST ROUND")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-lg-4 col-md-6 col-sm-6" }, [
-          _c("div", { staticClass: "table-responsive mb-0" }, [
-            _c("table", { staticClass: "table table-bordered" }, [
-              _c("thead", [
-                _c("tr", [
-                  _c("th", { attrs: { colspan: "4" } }, [
-                    _vm._v("ROUND 1 HEAT 1")
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("tr", [
-                  _c("th"),
-                  _vm._v(" "),
-                  _c("th", [_vm._v("Participant")]),
-                  _vm._v(" "),
-                  _c("th", [_vm._v("Points")]),
-                  _vm._v(" "),
-                  _c("th", [_vm._v("Position")])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("tbody", [
-                _c("tr", [
-                  _c("th", { attrs: { scope: "row" } }, [_vm._v("1")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("Mark")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("1")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("1")])
-                ]),
-                _vm._v(" "),
-                _c("tr", [
-                  _c("th", { attrs: { scope: "row" } }, [_vm._v("2")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("Jacob")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("1")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("1")])
-                ]),
-                _vm._v(" "),
-                _c("tr", [
-                  _c("th", { attrs: { scope: "row" } }, [_vm._v("3")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("Larry")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("1")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("1")])
-                ])
-              ])
-            ])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
       _c(
-        "b-modal",
-        {
-          attrs: {
-            id: "delete-modal",
-            centered: "",
-            title: "Delete Item",
-            "title-class": "font-18",
-            "hide-footer": ""
-          }
-        },
+        "div",
+        { staticClass: "d-flex justify-content-center pt-4" },
         [
-          _c("p", [_vm._v("Do you really want to delete this participant?")]),
+          _c("b-img", {
+            attrs: { src: "/images/logo.png", height: "127", alt: "logo" }
+          }),
           _vm._v(" "),
           _c(
-            "footer",
+            "div",
             {
-              staticClass: "modal-footer",
-              attrs: { id: "delete-modal___BV_modal_footer_" }
+              staticClass: "w-50",
+              staticStyle: { border: "1px solid #64676f" }
             },
             [
               _c(
-                "button",
+                "h4",
                 {
-                  staticClass: "btn btn-secondary",
-                  attrs: { type: "button" },
-                  on: {
-                    click: function($event) {
-                      return _vm.$bvModal.hide("delete-modal")
-                    }
+                  staticClass: "mb-0 text-center",
+                  staticStyle: {
+                    "border-bottom": "1px solid #64676f",
+                    padding: "5px 20px"
                   }
                 },
-                [_vm._v("Cancel")]
+                [
+                  _vm._v(
+                    _vm._s(
+                      _vm.all_round_heats[0][0][0].com_cat_mod_participant
+                        .competition.title
+                    )
+                  )
+                ]
               ),
               _vm._v(" "),
               _c(
-                "button",
+                "p",
                 {
-                  staticClass: "btn btn-primary",
-                  attrs: { type: "button" },
-                  on: {
-                    click: function($event) {
-                      return _vm.realDelete()
-                    }
+                  staticClass: "mb-0",
+                  staticStyle: {
+                    "border-bottom": "1px solid #64676f",
+                    padding: "3px 20px"
                   }
                 },
-                [_vm._v("OK")]
+                [
+                  _vm._v(
+                    _vm._s(
+                      _vm.all_round_heats[0][0][0].com_cat_mod_participant
+                        .competition.description
+                    )
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "p",
+                {
+                  staticClass: "mb-0",
+                  staticStyle: {
+                    "border-bottom": "1px solid #64676f",
+                    padding: "3px 20px"
+                  }
+                },
+                [
+                  _vm._v(
+                    "\n        Lekua, data eta ordua:\n        " +
+                      _vm._s(
+                        _vm.all_round_heats[0][0][0].com_cat_mod_participant
+                          .competition.place
+                      ) +
+                      "\n        " +
+                      _vm._s(
+                        _vm.all_round_heats[0][0][0].com_cat_mod_participant
+                          .competition.date
+                      ) +
+                      "\n        " +
+                      _vm._s(
+                        _vm.all_round_heats[0][0][0].com_cat_mod_participant
+                          .competition.time
+                      ) +
+                      "\n      "
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "p",
+                { staticClass: "mb-0", staticStyle: { padding: "3px 20px" } },
+                [
+                  _vm._v(
+                    "Antolatzailea: " +
+                      _vm._s(
+                        _vm.all_round_heats[0][0][0].com_cat_mod_participant
+                          .competition.organizer
+                      )
+                  )
+                ]
               )
             ]
           )
-        ]
-      )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "text-center w-100 mt-4" }, [
+        _c(
+          "h4",
+          { staticStyle: { background: "#32394e", padding: "10px 0" } },
+          [
+            _vm._v(
+              "\n      " +
+                _vm._s(
+                  _vm.all_round_heats[0][0][0].com_cat_mod_participant.category
+                    .name
+                ) +
+                "\n      " +
+                _vm._s(
+                  _vm.all_round_heats[0][0][0].com_cat_mod_participant.category
+                    .sex.name
+                ) +
+                "\n      " +
+                _vm._s(
+                  _vm.all_round_heats[0][0][0].com_cat_mod_participant.modality
+                    .name
+                ) +
+                "\n    "
+            )
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _vm._l(_vm.all_round_heats, function(round, round_index) {
+        return _c(
+          "div",
+          { key: round_index, staticClass: "row" },
+          [
+            _c("h4", { staticClass: "my-4 col-12" }, [
+              _vm._v("ROUND " + _vm._s(round_index + 1))
+            ]),
+            _vm._v(" "),
+            _vm._l(round, function(heat, heat_index) {
+              return _c(
+                "div",
+                { key: heat_index, staticClass: "col-lg-4 col-md-6 col-sm-6" },
+                [
+                  _c("div", { staticClass: "table-responsive mb-0" }, [
+                    _c("table", { staticClass: "table table-bordered" }, [
+                      _c("thead", [
+                        _c("tr", [
+                          _c(
+                            "th",
+                            {
+                              staticStyle: {
+                                color: "black",
+                                background: "#b8e6e2",
+                                cursor: "pointer"
+                              },
+                              attrs: { colspan: "4" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.heatDetailsGo(
+                                    round_index + 1,
+                                    heat_index + 1
+                                  )
+                                }
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "\n                ROUND " +
+                                  _vm._s(round_index + 1) +
+                                  " HEAT " +
+                                  _vm._s(heat_index + 1) +
+                                  "\n              "
+                              )
+                            ]
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("tr", { staticClass: "thead-light" }, [
+                          _c("th"),
+                          _vm._v(" "),
+                          _c("th", [_vm._v("Participant")]),
+                          _vm._v(" "),
+                          _c("th", [_vm._v("Points")]),
+                          _vm._v(" "),
+                          _c("th", [_vm._v("Position")])
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "tbody",
+                        _vm._l(heat, function(round_heat, round_heat_index) {
+                          return _c("tr", { key: round_heat_index }, [
+                            _c("th", {
+                              style: {
+                                background:
+                                  _vm.lycraColorOptions[round_heat_index]
+                              },
+                              attrs: { scope: "row" }
+                            }),
+                            _vm._v(" "),
+                            _c("td", [
+                              _vm._v(
+                                _vm._s(
+                                  round_heat.com_cat_mod_participant.participant
+                                    .name +
+                                    " " +
+                                    round_heat.com_cat_mod_participant
+                                      .participant.surname
+                                )
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v(_vm._s(round_heat.points))]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v(_vm._s(round_heat.position))])
+                          ])
+                        }),
+                        0
+                      )
+                    ])
+                  ])
+                ]
+              )
+            })
+          ],
+          2
+        )
+      })
     ],
-    1
+    2
   )
 }
 var staticRenderFns = []

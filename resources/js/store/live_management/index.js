@@ -7,6 +7,8 @@ const defaultState = {
   participants_competition_category_modality: [],
   category_id: 0,
   modality_id: 0,
+  all_round_heats: [],
+  round_heats: [],
 };
 
 export default {

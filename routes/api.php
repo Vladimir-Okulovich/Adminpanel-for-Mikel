@@ -128,6 +128,14 @@ Route::group([ 'prefix' => 'v1', 'middleware' => 'api'], function(){
         Route::post('competition/category-modality/participants', 'App\Http\Controllers\Api\v1\LiveManagementController@getParticipantsByCompetitionCategoryModality');
         // /* Unregist Participants by category and modality */
         Route::post('competition/category-modality/participant/unregist', 'App\Http\Controllers\Api\v1\LiveManagementController@unregistParticipantToCompetitionCategoryModality');
+        // /* Get Participants by category and modality */
+        Route::post('live-management/competition-box/create', 'App\Http\Controllers\Api\v1\LiveManagementController@createFirstCompetitionBoxes');
+        // /* Get Competition Heats */
+        Route::post('live-management/competition-heats', 'App\Http\Controllers\Api\v1\LiveManagementController@initCompetitionHeats');
+        // /* Set Heat Status */
+        Route::post('live-management/competition-heat/progress-status', 'App\Http\Controllers\Api\v1\LiveManagementController@setProgressStatus');
+        // /* Get Competition Heat Details */
+        Route::post('live-management/competition-heat/heat-details', 'App\Http\Controllers\Api\v1\LiveManagementController@initHeatDetails');
 
         /* Get all participants details*/
         Route::get('participants', 'App\Http\Controllers\Api\v1\ParticipantController@getAll');

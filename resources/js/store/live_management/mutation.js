@@ -7,5 +7,11 @@ const mutations = {
     state.category_id = data.category_id;
     state.modality_id = data.modality_id;
   },
+  [type.GET_ALL_ROUND_HEATS] (state, data) {
+    state.all_round_heats = data.all_round_heats;
+  },
+  [type.GET_ROUND_HEAT_DETAILS] (state, data) {
+    state.round_heats = data.round_heats;
+  },
 };
 export default mutations;

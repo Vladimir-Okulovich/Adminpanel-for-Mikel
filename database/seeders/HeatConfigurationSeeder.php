@@ -15,7 +15,7 @@ class HeatConfigurationSeeder extends Seeder
     public function run()
     {
         //
-        DB::table('heat_configuration')->insert([[
+        DB::table('heat_configurations')->insert([[
             'participant_number' => 1,
             'assign_array' => json_encode([1]),
         ],[

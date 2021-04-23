@@ -88,6 +88,7 @@
         'initCategoryModality',
         'getParticipantsByCompetitionCategoryModality',
         'unregistParticipantToCompetitionCategoryModality',
+        'createFirstCompetitionBoxes',
       ]),
       /**
        * Search the table data with search input
@@ -117,6 +118,16 @@
           });
         }
       },
+      createCompetitionBox() {
+        this.createFirstCompetitionBoxes({
+          competitionId: this.$route.params.competitionId,
+          categoryId: this.categoryId,
+          modalityId: this.modalityId,
+        })
+        .then(() => {
+          this.$router.push({ name: 'CompetitionHeats', params: { competitionId: this.$route.params.competitionId, categoryId: this.categoryId, modalityId: this.modalityId } })
+        })
+      },
     }
 	};
 </script>
@@ -124,11 +135,11 @@
   <Layout>
     <PageHeader :title="title" :items="items">
       <div class="float-right">
-        <router-link :to="{ name: 'CompetitionHeats', params: { competitionId: this.$route.params.competitionId, categoryId: categoryId, modalityId: modalityId } }"
+        <button @click="createCompetitionBox"
           class="btn btn-info btn-block d-inline-block"
         >
           Create Competition Box
-        </router-link>
+        </button>
       </div>
     </PageHeader>
 

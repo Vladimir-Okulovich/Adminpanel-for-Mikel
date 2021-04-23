@@ -5,6 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Participant;
+use App\Models\Competition;
+use App\Models\Category;
+use App\Models\Modality;
 use App\Models\Round_heat;
 use App\Models\Heat_score;
 
@@ -22,6 +25,18 @@ class Com_cat_mod_participant extends Model
     public function participant()
     {
         return $this->belongsTo(Participant::class);
+    }
+    public function competition()
+    {
+        return $this->belongsTo(Competition::class);
+    }
+    public function modality()
+    {
+        return $this->belongsTo(Modality::class);
+    }
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
     }
     public function round_heats()
     {
