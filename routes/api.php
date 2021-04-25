@@ -165,6 +165,11 @@ Route::group([ 'prefix' => 'v1', 'middleware' => 'api'], function(){
         Route::post('manage_ranking/all_ranking_data', 'App\Http\Controllers\Api\v1\ManageRankingController@getAllRankingData');
     });
 
+    Route::group([ 'prefix' => 'judge' ], function() {
+        Route::get('/', 'App\Http\Controllers\Api\v1\JudgeController@index');
+        Route::post('/store', 'App\Http\Controllers\Api\v1\JudgeController@storeHeatResults');
+    });
+
     Route::group(['middleware' => ['jwt.auth']], function() {
 
 

@@ -12,6 +12,7 @@ const mutations = {
   },
   [type.GET_ROUND_HEAT_DETAILS] (state, data) {
     state.round_heats = data.round_heats;
+    state.heat_scores = data.heat_scores;
   },
 };
 export default mutations;

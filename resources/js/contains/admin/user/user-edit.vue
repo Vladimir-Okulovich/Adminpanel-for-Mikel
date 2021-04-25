@@ -3,6 +3,8 @@ import Layout from "../subcomponent/layout";
 import PageHeader from "@/components/page-header";
 import appConfig from "@/app.config";
 
+import Multiselect from "vue-multiselect";
+
 import { mapActions, mapGetters } from 'vuex';
 
 import {
@@ -23,7 +25,7 @@ export default {
     title: "EDIT USER",
     meta: [{ name: "description", content: appConfig.description }]
   },
-  components: { Layout, PageHeader },
+  components: { Layout, PageHeader, Multiselect },
   data() {
     return {
       title: "EDIT USER",
@@ -41,6 +43,11 @@ export default {
           active: true
         }
       ],
+      roleOptions: [
+        "Admin",
+        "Judge",
+        "User",
+      ],
       isError: false,
       Error: null,
       typeform: {
@@ -48,6 +55,7 @@ export default {
         email: "",
         password: "",
         confirmPassword: "",
+        roles: "",
       },
       typesubmit: false,
     };
@@ -58,6 +66,7 @@ export default {
       password: {},
       confirmPassword: { sameAsPassword: sameAs("password") },
       email: { required, email },
+      roles: { required },
     }
   },
   mounted() {
@@ -83,7 +92,7 @@ export default {
       this.Error = null;
       // stop here if form is invalid
       this.$v.$touch();
-      if (this.$v.typeform.name.$error || this.$v.typeform.email.$error || this.$v.typeform.confirmPassword.$error) {
+      if (this.$v.typeform.name.$error || this.$v.typeform.email.$error || this.$v.typeform.confirmPassword.$error || this.$v.typeform.roles.$error) {
         return ;
       }
       return (
@@ -92,7 +101,8 @@ export default {
             name: this.typeform.name,
             email: this.typeform.email,
             password: this.typeform.password,
-            password_confirmation: this.typeform.confirmPassword
+            password_confirmation: this.typeform.confirmPassword,
+            roles: this.typeform.roles,
           })
           .then((res) => {
             this.$router.push({name: "Users"});
@@ -196,6 +206,18 @@ export default {
                       v-else-if="!$v.typeform.confirmPassword.sameAsPassword"
                     >This value should be the same.</span>
                   </div>
+                </div>
+              </div>
+              <div>
+                <label>Roles</label>
+                <multiselect 
+                  v-model="typeform.roles=getUser.roleNames"
+                  :options="roleOptions"
+                  :multiple="true"
+                  :class="{ 'is-invalid': typesubmit && $v.typeform.roles.$error }"
+                ></multiselect>
+                <div v-if="typesubmit && $v.typeform.roles.$error" class="invalid-feedback">
+                  <span v-if="!$v.typeform.roles.required">This value is required.</span>
                 </div>
               </div>
               

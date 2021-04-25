@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\v1;
 
 use App\Models\User;
+use App\Models\Role;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Validator;
@@ -21,6 +22,9 @@ class UserController extends Controller
     public function getAll()
     {
         $users = User::all();
+        foreach ($users as $user) {
+            $user->roles;
+        }
         return response()->json([
             'message' => 'success',
             'users' => $users
@@ -36,6 +40,11 @@ class UserController extends Controller
     public function getById(Request $request, $userId)
     {
         $user = User::find($userId);
+        $roleNames = [];
+        foreach ($user->roles as $role) {
+            array_push($roleNames, $role->name);
+        }
+        $user->roleNames = $roleNames;
         return response()->json([
             'message' => 'success',    
             'user' => $user,
@@ -52,6 +61,7 @@ class UserController extends Controller
             'name' => 'required|string|between:2,100',
             'email' => 'required|string|email|max:100|unique:users',
             'password' => 'required|string|confirmed|min:6',
+            'roles' => 'required',
         ]);
 
         if($validator->fails()){
@@ -62,6 +72,14 @@ class UserController extends Controller
                     $validator->validated(),
                     ['password' => bcrypt($request->password)]
                 ));
+        
+        $roles = Role::whereIn('name', $request->roles)->get();
+        $roleIds = [];
+        foreach ($roles as $role) {
+            array_push($roleIds, $role->id);
+        }
+        $user->roles()->attach($roleIds);
+
         return response()->json([
             'message' => 'User successfully registered',
             'user' => $user
@@ -95,6 +113,14 @@ class UserController extends Controller
                 'email' => $request->email,
             ]);
         }
+
+        $roles = Role::whereIn('name', $request->roles)->get();
+        $roleIds = [];
+        foreach ($roles as $role) {
+            array_push($roleIds, $role->id);
+        }
+        $user->roles()->sync($roleIds);
+
         return response()->json([
             'message' => 'User successfully updated',
             'user' => $user
@@ -113,6 +139,9 @@ class UserController extends Controller
         $user = User::find($userId);
         $user -> delete();
         $users = User::all();
+        foreach ($users as $user) {
+            $user->roles;
+        }
         return response()->json([
             'message' => 'successfully deleted',
             'users' => $users

@@ -1,0 +1,158 @@
+<script>
+	import Layout from "./subcomponent/layout";
+	import appConfig from "@/app.config";
+
+  import { mapActions, mapGetters } from 'vuex';
+
+	export default {
+		page: {
+        title: "Competition Heats",
+        meta: [{ name: "description", content: appConfig.description }]
+    },
+    components: {
+      Layout,
+    },
+    data() {
+      return {
+
+      }
+    },
+    watch: {
+      
+    },
+    computed: {
+      ...mapGetters([
+        'judge_round_heats',
+        'judge_heat_scores',
+      ]),
+    },
+    mounted() {
+      this.initJudge();
+    },
+    methods: {
+      ...mapActions([
+        'initJudge',
+        'storeHeatResults',
+      ]),
+      // window.location.reload()
+      saveResults() {
+        this.storeHeatResults({
+          judge_heat_scores: this.judge_heat_scores,
+        });
+      },
+      refresh() {
+        window.location.reload();
+      }
+    }
+	};
+</script>
+<template>
+  <Layout>
+    <div v-if="judge_round_heats.length > 0">
+      <div class="d-flex justify-content-center pt-4">
+        <b-img
+          :src="'/images/logo.png'"
+          height="127"
+          alt="logo"
+        ></b-img>
+        <div class="w-50" style="border: 1px solid #64676f;">
+          <h4 class="mb-0 text-center" style="border-bottom: 1px solid #64676f;padding: 5px 20px;">{{ judge_round_heats[0].com_cat_mod_participant.competition.title }}</h4>
+          <p class="mb-0" style="border-bottom: 1px solid #64676f;padding: 3px 20px;">{{ judge_round_heats[0].com_cat_mod_participant.competition.description }}</p>
+          <p class="mb-0" style="border-bottom: 1px solid #64676f;padding: 3px 20px;">
+            Lekua, data eta ordua:
+            {{ judge_round_heats[0].com_cat_mod_participant.competition.place }}
+            {{ judge_round_heats[0].com_cat_mod_participant.competition.date }}
+            {{ judge_round_heats[0].com_cat_mod_participant.competition.time }}
+          </p>
+          <p class="mb-0" style="padding: 3px 20px;">Antolatzailea: {{ judge_round_heats[0].com_cat_mod_participant.competition.organizer }}</p>
+        </div>
+      </div>
+
+      <div class="text-center w-100 mt-4">
+        <h4 class="mb-0" style="background: #4a5471;padding: 10px 0;">
+          {{ judge_round_heats[0].com_cat_mod_participant.category.name }}
+          {{ judge_round_heats[0].com_cat_mod_participant.category.sex.name }}
+          {{ judge_round_heats[0].com_cat_mod_participant.modality.name }}
+        </h4>
+      </div>
+      <div class="text-center w-100">
+        <h4 class="mb-0" style="background: #4a5471;padding: 10px 0;">
+          Round {{ judge_round_heats[0].round }} Heat {{ judge_round_heats[0].heat }}
+        </h4>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <div class="table-responsive mb-0">
+            <table class="table table-bordered text-center">
+              <thead class="thead-light">
+                <tr>
+                  <th rowspan="2" style="width: 15%;">PARTICIPANT</th>
+                  <th colspan="10">WAVES</th>
+                </tr>
+                <tr>
+                  <th v-for="n in 10" :key="n">{{ n }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="(judge_heat_score, index) in judge_heat_scores" :key="index">
+                  <td :style="{ background: judge_heat_score.round_heat.lycra.color, }"></td>
+                  <td><input v-model="judge_heat_score.wave_1" type="number" step="0.1" class="custom-input" /></td>
+                  <td><input v-model="judge_heat_score.wave_2" type="number" step="0.1" class="custom-input" /></td>
+                  <td><input v-model="judge_heat_score.wave_3" type="number" step="0.1" class="custom-input" /></td>
+                  <td><input v-model="judge_heat_score.wave_4" type="number" step="0.1" class="custom-input" /></td>
+                  <td><input v-model="judge_heat_score.wave_5" type="number" step="0.1" class="custom-input" /></td>
+                  <td><input v-model="judge_heat_score.wave_6" type="number" step="0.1" class="custom-input" /></td>
+                  <td><input v-model="judge_heat_score.wave_7" type="number" step="0.1" class="custom-input" /></td>
+                  <td><input v-model="judge_heat_score.wave_8" type="number" step="0.1" class="custom-input" /></td>
+                  <td><input v-model="judge_heat_score.wave_9" type="number" step="0.1" class="custom-input" /></td>
+                  <td><input v-model="judge_heat_score.wave_10" type="number" step="0.1" class="custom-input" /></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div>
+        <button @click="saveResults"
+          class="btn btn-info mt-4"
+          style="width: 10%;float: right;"
+        >
+          Save
+        </button>
+      </div>
+    </div>
+
+    <div v-else>
+      <div class="text-right">
+        <button @click="refresh"
+          class="btn btn-info mt-4"
+          style="width: 10%;"
+        >
+          Refresh
+        </button>
+      </div>
+      <div class="text-center mt-5">
+        <h3>NO HAY MANGAS ACTIVAS. ACTUALICE EN UNOS MOMENTOS</h3>
+      </div>
+    </div>
+  </Layout>
+</template>
+
+<style>
+  .custom-input {
+    background: transparent;
+    border: 0;
+    color: #a8b2bc;
+    text-align: center;
+    max-width: 50px;
+  }
+  .custom-input:focus {
+    outline: none;
+  }
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+</style>

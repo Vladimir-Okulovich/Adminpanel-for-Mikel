@@ -73,7 +73,7 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   watch: {},
-  computed: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_6__.mapGetters)(['all_round_heats', 'lycraColorOptions'])),
+  computed: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_6__.mapGetters)(['all_round_heats'])),
   mounted: function mounted() {
     this.competitionId = this.$route.params.competitionId;
     this.categoryId = this.$route.params.categoryId;
@@ -83,9 +83,8 @@ __webpack_require__.r(__webpack_exports__);
       categoryId: this.categoryId,
       modalityId: this.modalityId
     });
-    this.getLycraOptions();
   },
-  methods: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)((0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_6__.mapActions)(['initCompetitionHeats', 'getLycraOptions', 'setProgressStatus'])), {}, {
+  methods: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)((0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_6__.mapActions)(['initCompetitionHeats', 'setProgressStatus'])), {}, {
     heatDetailsGo: function heatDetailsGo(round, heat) {
       var _this = this;
 
@@ -7204,10 +7203,7 @@ var render = function() {
                         _vm._l(heat, function(round_heat, round_heat_index) {
                           return _c("tr", { key: round_heat_index }, [
                             _c("th", {
-                              style: {
-                                background:
-                                  _vm.lycraColorOptions[round_heat_index]
-                              },
+                              style: { background: round_heat.lycra.color },
                               attrs: { scope: "row" }
                             }),
                             _vm._v(" "),

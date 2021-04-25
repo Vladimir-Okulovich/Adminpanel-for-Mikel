@@ -75,7 +75,7 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   watch: {},
-  computed: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_6__.mapGetters)(['round_heats', 'lycraColorOptions'])),
+  computed: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_6__.mapGetters)(['round_heats', 'heat_scores'])),
   mounted: function mounted() {
     this.competitionId = this.$route.params.competitionId;
     this.categoryId = this.$route.params.categoryId;
@@ -89,9 +89,8 @@ __webpack_require__.r(__webpack_exports__);
       round: this.round,
       heat: this.heat
     });
-    this.getLycraOptions();
   },
-  methods: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_6__.mapActions)(['initHeatDetails', 'getLycraOptions']))
+  methods: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_6__.mapActions)(['initHeatDetails']))
 });
 
 /***/ }),
@@ -2433,6 +2432,27 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
 ___CSS_LOADER_EXPORT___.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* .currency li {\n  cursor: pointer;\n}\n.currency .active {\n  color: white;\n} */\n", ""]);
+// Exports
+/* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/contains/admin/live-management/heat-details.vue?vue&type=style&index=0&lang=css&":
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/contains/admin/live-management/heat-details.vue?vue&type=style&index=0&lang=css& ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, "\n.custom-input {\n  background: transparent;\n  border: 0;\n  color: #a8b2bc;\n  text-align: center;\n  max-width: 50px;\n}\n.custom-input:focus {\n  outline: none;\n}\ninput::-webkit-outer-spin-button,\ninput::-webkit-inner-spin-button {\n  -webkit-appearance: none;\n  margin: 0;\n}\n", ""]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
@@ -6444,6 +6464,33 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/contains/admin/live-management/heat-details.vue?vue&type=style&index=0&lang=css&":
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/contains/admin/live-management/heat-details.vue?vue&type=style&index=0&lang=css& ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_heat_details_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src/index.js??clonedRuleSet-9[0].rules[0].use[2]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./heat-details.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/contains/admin/live-management/heat-details.vue?vue&type=style&index=0&lang=css&");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_heat_details_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_1__.default, options);
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_heat_details_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/contains/admin/subcomponent/layout.vue?vue&type=style&index=0&lang=css&":
 /*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/contains/admin/subcomponent/layout.vue?vue&type=style&index=0&lang=css& ***!
@@ -6553,15 +6600,17 @@ component.options.__file = "resources/js/components/page-header.vue"
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _heat_details_vue_vue_type_template_id_18fd751c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./heat-details.vue?vue&type=template&id=18fd751c& */ "./resources/js/contains/admin/live-management/heat-details.vue?vue&type=template&id=18fd751c&");
 /* harmony import */ var _heat_details_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./heat-details.vue?vue&type=script&lang=js& */ "./resources/js/contains/admin/live-management/heat-details.vue?vue&type=script&lang=js&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _heat_details_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./heat-details.vue?vue&type=style&index=0&lang=css& */ "./resources/js/contains/admin/live-management/heat-details.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
+;
 
 
 /* normalize component */
-;
-var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
+
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__.default)(
   _heat_details_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
   _heat_details_vue_vue_type_template_id_18fd751c___WEBPACK_IMPORTED_MODULE_0__.render,
   _heat_details_vue_vue_type_template_id_18fd751c___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
@@ -6763,6 +6812,19 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_footer_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader/dist/cjs.js!../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src/index.js??clonedRuleSet-9[0].rules[0].use[2]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./footer.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/footer.vue?vue&type=style&index=0&lang=css&");
+
+
+/***/ }),
+
+/***/ "./resources/js/contains/admin/live-management/heat-details.vue?vue&type=style&index=0&lang=css&":
+/*!*******************************************************************************************************!*\
+  !*** ./resources/js/contains/admin/live-management/heat-details.vue?vue&type=style&index=0&lang=css& ***!
+  \*******************************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_heat_details_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/style-loader/dist/cjs.js!../../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src/index.js??clonedRuleSet-9[0].rules[0].use[2]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./heat-details.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/contains/admin/live-management/heat-details.vue?vue&type=style&index=0&lang=css&");
 
 
 /***/ }),
@@ -7111,7 +7173,7 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "row" }, [
+    _c("div", { staticClass: "row mt-4" }, [
       _c("div", { staticClass: "col-lg-6 col-md-9 col-sm-12" }, [
         _c("div", { staticClass: "table-responsive mb-0" }, [
           _c("table", { staticClass: "table table-bordered" }, [
@@ -7136,9 +7198,7 @@ var render = function() {
               _vm._l(_vm.round_heats, function(round_heat, round_heat_index) {
                 return _c("tr", { key: round_heat_index }, [
                   _c("th", {
-                    style: {
-                      background: _vm.lycraColorOptions[round_heat_index]
-                    },
+                    style: { background: round_heat.lycra.color },
                     attrs: { scope: "row" }
                   }),
                   _vm._v(" "),
@@ -7167,58 +7227,342 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "col-12" }, [
+      _c("div", { staticClass: "col-12 mt-4" }, [
         _c("div", { staticClass: "table-responsive mb-0" }, [
-          _c("table", { staticClass: "table table-bordered" }, [
-            _c("thead", [
-              _c("tr", { staticClass: "thead-light" }, [
-                _c("th", [_vm._v("LYCRA")]),
+          _c(
+            "table",
+            { staticClass: "table table-bordered table-sm text-center" },
+            [
+              _c("thead", { staticClass: "thead-light" }, [
+                _c("tr", [
+                  _c(
+                    "th",
+                    { staticStyle: { width: "15%" }, attrs: { rowspan: "2" } },
+                    [_vm._v("PARTICIPANT")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "th",
+                    { staticStyle: { width: "15%" }, attrs: { rowspan: "2" } },
+                    [_vm._v("JUDGE")]
+                  ),
+                  _vm._v(" "),
+                  _c("th", { attrs: { colspan: "10" } }, [_vm._v("WAVES")])
+                ]),
                 _vm._v(" "),
-                _c("th", [_vm._v("PARTICIPANT")]),
-                _vm._v(" "),
-                _c("th", [_vm._v("POSITION")]),
-                _vm._v(" "),
-                _c("th", [_vm._v("1st Best Wave")]),
-                _vm._v(" "),
-                _c("th", [_vm._v("2nd Best Wave")]),
-                _vm._v(" "),
-                _c("th", [_vm._v("SUM")])
-              ])
-            ]),
-            _vm._v(" "),
-            _c(
-              "tbody",
-              _vm._l(_vm.round_heats, function(round_heat, round_heat_index) {
-                return _c("tr", { key: round_heat_index }, [
-                  _c("th", {
-                    style: {
-                      background: _vm.lycraColorOptions[round_heat_index]
-                    },
-                    attrs: { scope: "row" }
+                _c(
+                  "tr",
+                  _vm._l(10, function(n) {
+                    return _c("th", { key: n }, [_vm._v(_vm._s(n))])
                   }),
-                  _vm._v(" "),
-                  _c("td", [
-                    _vm._v(
-                      _vm._s(
-                        round_heat.com_cat_mod_participant.participant.name +
-                          " " +
-                          round_heat.com_cat_mod_participant.participant.surname
-                      )
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(round_heat.position))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(round_heat.first_score))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(round_heat.second_score))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(round_heat.points))])
-                ])
-              }),
-              0
-            )
-          ])
+                  0
+                )
+              ]),
+              _vm._v(" "),
+              _vm._l(_vm.heat_scores, function(heat_score, index_1) {
+                return _c(
+                  "tbody",
+                  { key: index_1 },
+                  _vm._l(heat_score, function(heat_score_row, index_2) {
+                    return _c("tr", { key: index_2 }, [
+                      index_2 == 0
+                        ? _c("td", {
+                            style: {
+                              background: heat_score_row.round_heat.lycra.color
+                            },
+                            attrs: { rowspan: "4" }
+                          })
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(heat_score_row.judge_id))]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: heat_score_row.wave_1,
+                              expression: "heat_score_row.wave_1"
+                            }
+                          ],
+                          staticClass: "custom-input",
+                          attrs: { type: "number", step: "0.1" },
+                          domProps: { value: heat_score_row.wave_1 },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                heat_score_row,
+                                "wave_1",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: heat_score_row.wave_2,
+                              expression: "heat_score_row.wave_2"
+                            }
+                          ],
+                          staticClass: "custom-input",
+                          attrs: { type: "number", step: "0.1" },
+                          domProps: { value: heat_score_row.wave_2 },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                heat_score_row,
+                                "wave_2",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: heat_score_row.wave_3,
+                              expression: "heat_score_row.wave_3"
+                            }
+                          ],
+                          staticClass: "custom-input",
+                          attrs: { type: "number", step: "0.1" },
+                          domProps: { value: heat_score_row.wave_3 },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                heat_score_row,
+                                "wave_3",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: heat_score_row.wave_4,
+                              expression: "heat_score_row.wave_4"
+                            }
+                          ],
+                          staticClass: "custom-input",
+                          attrs: { type: "number", step: "0.1" },
+                          domProps: { value: heat_score_row.wave_4 },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                heat_score_row,
+                                "wave_4",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: heat_score_row.wave_5,
+                              expression: "heat_score_row.wave_5"
+                            }
+                          ],
+                          staticClass: "custom-input",
+                          attrs: { type: "number", step: "0.1" },
+                          domProps: { value: heat_score_row.wave_5 },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                heat_score_row,
+                                "wave_5",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: heat_score_row.wave_6,
+                              expression: "heat_score_row.wave_6"
+                            }
+                          ],
+                          staticClass: "custom-input",
+                          attrs: { type: "number", step: "0.1" },
+                          domProps: { value: heat_score_row.wave_6 },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                heat_score_row,
+                                "wave_6",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: heat_score_row.wave_7,
+                              expression: "heat_score_row.wave_7"
+                            }
+                          ],
+                          staticClass: "custom-input",
+                          attrs: { type: "number", step: "0.1" },
+                          domProps: { value: heat_score_row.wave_7 },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                heat_score_row,
+                                "wave_7",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: heat_score_row.wave_8,
+                              expression: "heat_score_row.wave_8"
+                            }
+                          ],
+                          staticClass: "custom-input",
+                          attrs: { type: "number", step: "0.1" },
+                          domProps: { value: heat_score_row.wave_8 },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                heat_score_row,
+                                "wave_8",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: heat_score_row.wave_9,
+                              expression: "heat_score_row.wave_9"
+                            }
+                          ],
+                          staticClass: "custom-input",
+                          attrs: { type: "number", step: "0.1" },
+                          domProps: { value: heat_score_row.wave_9 },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                heat_score_row,
+                                "wave_9",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: heat_score_row.wave_10,
+                              expression: "heat_score_row.wave_10"
+                            }
+                          ],
+                          staticClass: "custom-input",
+                          attrs: { type: "number", step: "0.1" },
+                          domProps: { value: heat_score_row.wave_10 },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                heat_score_row,
+                                "wave_10",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ])
+                    ])
+                  }),
+                  0
+                )
+              })
+            ],
+            2
+          )
         ])
       ])
     ])

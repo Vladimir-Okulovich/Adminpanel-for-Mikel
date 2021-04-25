@@ -16,6 +16,7 @@ class CreateRoundHeatsTable extends Migration
         Schema::create('round_heats', function (Blueprint $table) {
             $table->id();
             $table->foreignId('com_cat_mod_participant_id')->constrained('com_cat_mod_participants')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('lycra_id')->constrained('lycras');
             $table->integer('round')->unsigned();
             $table->integer('heat')->unsigned();
             $table->float('first_score')->default(0);

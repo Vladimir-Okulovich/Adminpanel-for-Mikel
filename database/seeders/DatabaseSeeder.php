@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
             RankingSeeder::class,
             RankingPositionPointSeeder::class,
             HeatConfigurationSeeder::class,
+            RoleSeeder::class,
         ]);
     }
 }

@@ -1,14 +1,14 @@
 import store from '../store'
 
 export default [
-    // {
-    //     path: '/',
-    //     meta: {
-    //         // authRequired: true,
-    //     },
-    //     name: 'home',
-    //     component: () => import('../contains/dashboard/home'),
-    // },
+    {
+        path: '/',
+        meta: {
+            // authRequired: true,
+        },
+        name: 'home',
+        component: () => import('../contains/dashboard/home'),
+    },
     {
         path: '/login',
         name: 'login',
@@ -76,14 +76,14 @@ export default [
         },
     },
 
-    // {
-    //     path: '/admin',
-    //     name: 'Admin',
-    //     component: () => import('../contains/admin/dashboard'),
-    //     meta: {
-    //         authRequired: true,
-    //     },
-    // },
+    {
+        path: '/judge',
+        name: 'Judge',
+        component: () => import('../contains/judge'),
+        meta: {
+            authRequired: true,
+        },
+    },
     {
         path: '/admin/users',
         name: 'Users',

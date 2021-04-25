@@ -27,7 +27,6 @@
     computed: {
       ...mapGetters([
         'all_round_heats',
-        'lycraColorOptions',
       ]),
     },
     mounted() {
@@ -39,12 +38,10 @@
         categoryId: this.categoryId,
         modalityId: this.modalityId,
       });
-      this.getLycraOptions();
     },
     methods: {
       ...mapActions([
         'initCompetitionHeats',
-        'getLycraOptions',
         'setProgressStatus'
       ]),
       heatDetailsGo(round, heat) {
@@ -111,7 +108,7 @@
             </thead>
             <tbody>
               <tr v-for="(round_heat, round_heat_index) in heat" :key="round_heat_index">
-                <th scope="row" v-bind:style="{ background: lycraColorOptions[round_heat_index] }"></th>
+                <th scope="row" v-bind:style="{ background: round_heat.lycra.color }"></th>
                 <td>{{ round_heat.com_cat_mod_participant.participant.name+' '+round_heat.com_cat_mod_participant.participant.surname }}</td>
                 <td>{{ round_heat.points }}</td>
                 <td>{{ round_heat.position }}</td>

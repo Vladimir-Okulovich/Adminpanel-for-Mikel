@@ -12,6 +12,7 @@ use App\Models\Heat_configuration;
 use App\Models\Com_cat_mod_participant;
 use App\Models\Heat_score;
 use App\Models\Round_heat;
+use App\Models\Role;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Validator;
@@ -94,6 +95,7 @@ class LiveManagementController extends Controller
                     $round_heat->round = 1;
                     $round_heat->heat = $index + 1;
                     $round_heat->com_cat_mod_participant_id = $com_cat_mod_participants[$s]->id;
+                    $round_heat->lycra_id = $i;
                     $round_heat->save();
                     $s++;
                 }
@@ -124,6 +126,7 @@ class LiveManagementController extends Controller
                             $round_heat->com_cat_mod_participant->competition;
                             $round_heat->com_cat_mod_participant->category->sex;
                             $round_heat->com_cat_mod_participant->modality;
+                            $round_heat->lycra;
                             array_push($array_heats, $round_heat);
                         }
                     } else {
@@ -166,15 +169,65 @@ class LiveManagementController extends Controller
         $round_heats = Round_heat::whereIn('com_cat_mod_participant_id', $com_cat_mod_participant_ids)
                                 ->where('round', $request->round)
                                 ->where('heat', $request->heat)->get();
+        $heat_scores = [];
+        $judge_role = Role::where('name', 'Judge')->first();
         foreach ($round_heats as $round_heat) {
             $round_heat->com_cat_mod_participant->participant;
             $round_heat->com_cat_mod_participant->competition;
             $round_heat->com_cat_mod_participant->category->sex;
             $round_heat->com_cat_mod_participant->modality;
+            $round_heat->lycra;
+
+            $temps = Heat_score::where('round_heat_id', $round_heat->id)->get();
+            if (count($temps) == 0) {
+                foreach ($judge_role->users as $judge) {
+                    $heat_score = new Heat_score;
+                    $heat_score->round_heat_id = $round_heat->id;
+                    $heat_score->judge_id = $judge->id;
+                    $heat_score->save();
+                }
+            }
+            $average =  [
+                'round_heat_id' => 0,
+                'judge_id' => 'Average',
+                'wave_1' => 0,
+                'wave_2' => 0,
+                'wave_3' => 0,
+                'wave_4' => 0,
+                'wave_5' => 0,
+                'wave_6' => 0,
+                'wave_7' => 0,
+                'wave_8' => 0,
+                'wave_9' => 0,
+                'wave_10' => 0,
+            ];
+            $temps = Heat_score::where('round_heat_id', $round_heat->id)->orderBy('judge_id')->get();
+            foreach ($temps as $temp) {
+                $temp->round_heat->com_cat_mod_participant->participant;
+                $temp->round_heat->com_cat_mod_participant->competition;
+                $temp->round_heat->com_cat_mod_participant->category->sex;
+                $temp->round_heat->com_cat_mod_participant->modality;
+                $temp->round_heat->lycra;
+
+                $average['round_heat_id'] = $temp->round_heat_id;
+                $average['wave_1'] = $average['wave_1'] + $temp->wave_1/3;
+                $average['wave_2'] = $average['wave_2'] + $temp->wave_2/3;
+                $average['wave_3'] = $average['wave_3'] + $temp->wave_3/3;
+                $average['wave_4'] = $average['wave_4'] + $temp->wave_4/3;
+                $average['wave_5'] = $average['wave_5'] + $temp->wave_5/3;
+                $average['wave_6'] = $average['wave_6'] + $temp->wave_6/3;
+                $average['wave_7'] = $average['wave_7'] + $temp->wave_7/3;
+                $average['wave_8'] = $average['wave_8'] + $temp->wave_8/3;
+                $average['wave_9'] = $average['wave_9'] + $temp->wave_9/3;
+                $average['wave_10'] = $average['wave_10'] + $temp->wave_10/3;
+            }
+            // array_push($temps, $average);
+            array_push($heat_scores, $temps);
         }
         return response()->json([
             'message' => 'success',
             'round_heats' => $round_heats,
+            'heat_scores' => $heat_scores,
         ], 200);
     }
 }

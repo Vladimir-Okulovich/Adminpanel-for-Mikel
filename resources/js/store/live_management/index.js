@@ -9,6 +9,7 @@ const defaultState = {
   modality_id: 0,
   all_round_heats: [],
   round_heats: [],
+  heat_scores: [],
 };
 
 export default {

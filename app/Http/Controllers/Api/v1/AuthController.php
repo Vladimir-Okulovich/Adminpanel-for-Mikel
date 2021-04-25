@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\Role;
 use Validator;
 use App\Http\Controllers\Controller;
 
@@ -61,6 +62,7 @@ class AuthController extends Controller
                     $validator->validated(),
                     ['password' => bcrypt($request->password)]
                 ));
+        $user->roles()->attach([3]);
         return response()->json([
             'message' => 'User successfully registered',
             'user' => $user

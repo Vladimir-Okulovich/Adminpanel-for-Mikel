@@ -14,6 +14,9 @@ const getters = {
     round_heats(state) {
         return state.round_heats;
     },
+    heat_scores(state) {
+        return state.heat_scores;
+    }
   };
   
   export default getters;

@@ -12,6 +12,7 @@ class Round_heat extends Model
 
     protected $fillable = [
         'com_cat_mod_participant_id',
+        'lycra_id',
         'round',
         'heat',
         'first_score',
@@ -24,5 +25,9 @@ class Round_heat extends Model
     public function com_cat_mod_participant()
     {
         return $this->belongsTo(Com_cat_mod_participant::class);
+    }
+    public function lycra()
+    {
+        return $this->belongsTo(Lycra::class);
     }
 }
