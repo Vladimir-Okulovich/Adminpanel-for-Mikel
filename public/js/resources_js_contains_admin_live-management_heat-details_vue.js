@@ -90,7 +90,23 @@ __webpack_require__.r(__webpack_exports__);
       heat: this.heat
     });
   },
-  methods: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_6__.mapActions)(['initHeatDetails']))
+  methods: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)((0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_6__.mapActions)(['initHeatDetails', 'storeFinalHeatResults'])), {}, {
+    saveResults: function saveResults() {
+      var _this = this;
+
+      this.storeFinalHeatResults({
+        heat_scores: this.heat_scores
+      }).then(function () {
+        _this.$router.go(-1);
+      });
+    },
+    refresh: function refresh() {
+      window.location.reload();
+    } // back() {
+    //   this.$router.go(-1);
+    // },
+
+  })
 });
 
 /***/ }),
@@ -7276,285 +7292,305 @@ var render = function() {
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(heat_score_row.judge_id))]),
                       _vm._v(" "),
-                      _c("td", [
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: heat_score_row.wave_1,
-                              expression: "heat_score_row.wave_1"
-                            }
-                          ],
-                          staticClass: "custom-input",
-                          attrs: { type: "number", step: "0.1" },
-                          domProps: { value: heat_score_row.wave_1 },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
+                      heat_score_row.judge_id != "Average"
+                        ? _c("td", [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: heat_score_row.wave_1,
+                                  expression: "heat_score_row.wave_1"
+                                }
+                              ],
+                              staticClass: "custom-input",
+                              attrs: { type: "number", step: "0.1" },
+                              domProps: { value: heat_score_row.wave_1 },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    heat_score_row,
+                                    "wave_1",
+                                    $event.target.value
+                                  )
+                                }
                               }
-                              _vm.$set(
-                                heat_score_row,
-                                "wave_1",
-                                $event.target.value
-                              )
-                            }
-                          }
-                        })
-                      ]),
+                            })
+                          ])
+                        : _c("td", [_vm._v(_vm._s(heat_score_row.wave_1))]),
                       _vm._v(" "),
-                      _c("td", [
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: heat_score_row.wave_2,
-                              expression: "heat_score_row.wave_2"
-                            }
-                          ],
-                          staticClass: "custom-input",
-                          attrs: { type: "number", step: "0.1" },
-                          domProps: { value: heat_score_row.wave_2 },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
+                      heat_score_row.judge_id != "Average"
+                        ? _c("td", [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: heat_score_row.wave_2,
+                                  expression: "heat_score_row.wave_2"
+                                }
+                              ],
+                              staticClass: "custom-input",
+                              attrs: { type: "number", step: "0.1" },
+                              domProps: { value: heat_score_row.wave_2 },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    heat_score_row,
+                                    "wave_2",
+                                    $event.target.value
+                                  )
+                                }
                               }
-                              _vm.$set(
-                                heat_score_row,
-                                "wave_2",
-                                $event.target.value
-                              )
-                            }
-                          }
-                        })
-                      ]),
+                            })
+                          ])
+                        : _c("td", [_vm._v(_vm._s(heat_score_row.wave_2))]),
                       _vm._v(" "),
-                      _c("td", [
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: heat_score_row.wave_3,
-                              expression: "heat_score_row.wave_3"
-                            }
-                          ],
-                          staticClass: "custom-input",
-                          attrs: { type: "number", step: "0.1" },
-                          domProps: { value: heat_score_row.wave_3 },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
+                      heat_score_row.judge_id != "Average"
+                        ? _c("td", [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: heat_score_row.wave_3,
+                                  expression: "heat_score_row.wave_3"
+                                }
+                              ],
+                              staticClass: "custom-input",
+                              attrs: { type: "number", step: "0.1" },
+                              domProps: { value: heat_score_row.wave_3 },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    heat_score_row,
+                                    "wave_3",
+                                    $event.target.value
+                                  )
+                                }
                               }
-                              _vm.$set(
-                                heat_score_row,
-                                "wave_3",
-                                $event.target.value
-                              )
-                            }
-                          }
-                        })
-                      ]),
+                            })
+                          ])
+                        : _c("td", [_vm._v(_vm._s(heat_score_row.wave_3))]),
                       _vm._v(" "),
-                      _c("td", [
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: heat_score_row.wave_4,
-                              expression: "heat_score_row.wave_4"
-                            }
-                          ],
-                          staticClass: "custom-input",
-                          attrs: { type: "number", step: "0.1" },
-                          domProps: { value: heat_score_row.wave_4 },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
+                      heat_score_row.judge_id != "Average"
+                        ? _c("td", [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: heat_score_row.wave_4,
+                                  expression: "heat_score_row.wave_4"
+                                }
+                              ],
+                              staticClass: "custom-input",
+                              attrs: { type: "number", step: "0.1" },
+                              domProps: { value: heat_score_row.wave_4 },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    heat_score_row,
+                                    "wave_4",
+                                    $event.target.value
+                                  )
+                                }
                               }
-                              _vm.$set(
-                                heat_score_row,
-                                "wave_4",
-                                $event.target.value
-                              )
-                            }
-                          }
-                        })
-                      ]),
+                            })
+                          ])
+                        : _c("td", [_vm._v(_vm._s(heat_score_row.wave_4))]),
                       _vm._v(" "),
-                      _c("td", [
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: heat_score_row.wave_5,
-                              expression: "heat_score_row.wave_5"
-                            }
-                          ],
-                          staticClass: "custom-input",
-                          attrs: { type: "number", step: "0.1" },
-                          domProps: { value: heat_score_row.wave_5 },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
+                      heat_score_row.judge_id != "Average"
+                        ? _c("td", [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: heat_score_row.wave_5,
+                                  expression: "heat_score_row.wave_5"
+                                }
+                              ],
+                              staticClass: "custom-input",
+                              attrs: { type: "number", step: "0.1" },
+                              domProps: { value: heat_score_row.wave_5 },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    heat_score_row,
+                                    "wave_5",
+                                    $event.target.value
+                                  )
+                                }
                               }
-                              _vm.$set(
-                                heat_score_row,
-                                "wave_5",
-                                $event.target.value
-                              )
-                            }
-                          }
-                        })
-                      ]),
+                            })
+                          ])
+                        : _c("td", [_vm._v(_vm._s(heat_score_row.wave_5))]),
                       _vm._v(" "),
-                      _c("td", [
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: heat_score_row.wave_6,
-                              expression: "heat_score_row.wave_6"
-                            }
-                          ],
-                          staticClass: "custom-input",
-                          attrs: { type: "number", step: "0.1" },
-                          domProps: { value: heat_score_row.wave_6 },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
+                      heat_score_row.judge_id != "Average"
+                        ? _c("td", [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: heat_score_row.wave_6,
+                                  expression: "heat_score_row.wave_6"
+                                }
+                              ],
+                              staticClass: "custom-input",
+                              attrs: { type: "number", step: "0.1" },
+                              domProps: { value: heat_score_row.wave_6 },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    heat_score_row,
+                                    "wave_6",
+                                    $event.target.value
+                                  )
+                                }
                               }
-                              _vm.$set(
-                                heat_score_row,
-                                "wave_6",
-                                $event.target.value
-                              )
-                            }
-                          }
-                        })
-                      ]),
+                            })
+                          ])
+                        : _c("td", [_vm._v(_vm._s(heat_score_row.wave_6))]),
                       _vm._v(" "),
-                      _c("td", [
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: heat_score_row.wave_7,
-                              expression: "heat_score_row.wave_7"
-                            }
-                          ],
-                          staticClass: "custom-input",
-                          attrs: { type: "number", step: "0.1" },
-                          domProps: { value: heat_score_row.wave_7 },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
+                      heat_score_row.judge_id != "Average"
+                        ? _c("td", [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: heat_score_row.wave_7,
+                                  expression: "heat_score_row.wave_7"
+                                }
+                              ],
+                              staticClass: "custom-input",
+                              attrs: { type: "number", step: "0.1" },
+                              domProps: { value: heat_score_row.wave_7 },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    heat_score_row,
+                                    "wave_7",
+                                    $event.target.value
+                                  )
+                                }
                               }
-                              _vm.$set(
-                                heat_score_row,
-                                "wave_7",
-                                $event.target.value
-                              )
-                            }
-                          }
-                        })
-                      ]),
+                            })
+                          ])
+                        : _c("td", [_vm._v(_vm._s(heat_score_row.wave_7))]),
                       _vm._v(" "),
-                      _c("td", [
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: heat_score_row.wave_8,
-                              expression: "heat_score_row.wave_8"
-                            }
-                          ],
-                          staticClass: "custom-input",
-                          attrs: { type: "number", step: "0.1" },
-                          domProps: { value: heat_score_row.wave_8 },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
+                      heat_score_row.judge_id != "Average"
+                        ? _c("td", [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: heat_score_row.wave_8,
+                                  expression: "heat_score_row.wave_8"
+                                }
+                              ],
+                              staticClass: "custom-input",
+                              attrs: { type: "number", step: "0.1" },
+                              domProps: { value: heat_score_row.wave_8 },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    heat_score_row,
+                                    "wave_8",
+                                    $event.target.value
+                                  )
+                                }
                               }
-                              _vm.$set(
-                                heat_score_row,
-                                "wave_8",
-                                $event.target.value
-                              )
-                            }
-                          }
-                        })
-                      ]),
+                            })
+                          ])
+                        : _c("td", [_vm._v(_vm._s(heat_score_row.wave_8))]),
                       _vm._v(" "),
-                      _c("td", [
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: heat_score_row.wave_9,
-                              expression: "heat_score_row.wave_9"
-                            }
-                          ],
-                          staticClass: "custom-input",
-                          attrs: { type: "number", step: "0.1" },
-                          domProps: { value: heat_score_row.wave_9 },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
+                      heat_score_row.judge_id != "Average"
+                        ? _c("td", [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: heat_score_row.wave_9,
+                                  expression: "heat_score_row.wave_9"
+                                }
+                              ],
+                              staticClass: "custom-input",
+                              attrs: { type: "number", step: "0.1" },
+                              domProps: { value: heat_score_row.wave_9 },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    heat_score_row,
+                                    "wave_9",
+                                    $event.target.value
+                                  )
+                                }
                               }
-                              _vm.$set(
-                                heat_score_row,
-                                "wave_9",
-                                $event.target.value
-                              )
-                            }
-                          }
-                        })
-                      ]),
+                            })
+                          ])
+                        : _c("td", [_vm._v(_vm._s(heat_score_row.wave_9))]),
                       _vm._v(" "),
-                      _c("td", [
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: heat_score_row.wave_10,
-                              expression: "heat_score_row.wave_10"
-                            }
-                          ],
-                          staticClass: "custom-input",
-                          attrs: { type: "number", step: "0.1" },
-                          domProps: { value: heat_score_row.wave_10 },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
+                      heat_score_row.judge_id != "Average"
+                        ? _c("td", [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: heat_score_row.wave_10,
+                                  expression: "heat_score_row.wave_10"
+                                }
+                              ],
+                              staticClass: "custom-input",
+                              attrs: { type: "number", step: "0.1" },
+                              domProps: { value: heat_score_row.wave_10 },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    heat_score_row,
+                                    "wave_10",
+                                    $event.target.value
+                                  )
+                                }
                               }
-                              _vm.$set(
-                                heat_score_row,
-                                "wave_10",
-                                $event.target.value
-                              )
-                            }
-                          }
-                        })
-                      ])
+                            })
+                          ])
+                        : _c("td", [_vm._v(_vm._s(heat_score_row.wave_10))])
                     ])
                   }),
                   0
@@ -7562,6 +7598,28 @@ var render = function() {
               })
             ],
             2
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "text-right my-4" }, [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-info mr-3",
+              staticStyle: { width: "10%" },
+              on: { click: _vm.saveResults }
+            },
+            [_vm._v("\n          Save\n        ")]
+          ),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-warning",
+              staticStyle: { width: "10%" },
+              on: { click: _vm.refresh }
+            },
+            [_vm._v("\n          Refresh\n        ")]
           )
         ])
       ])

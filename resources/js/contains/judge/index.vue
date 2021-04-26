@@ -126,7 +126,7 @@
     <div v-else>
       <div class="text-right">
         <button @click="refresh"
-          class="btn btn-info mt-4"
+          class="btn btn-warning mt-4"
           style="width: 10%;"
         >
           Refresh

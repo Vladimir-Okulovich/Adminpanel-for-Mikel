@@ -1621,7 +1621,7 @@ var render = function() {
             _c(
               "button",
               {
-                staticClass: "btn btn-info mt-4",
+                staticClass: "btn btn-warning mt-4",
                 staticStyle: { width: "10%" },
                 on: { click: _vm.refresh }
               },

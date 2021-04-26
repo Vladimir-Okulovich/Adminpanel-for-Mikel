@@ -45,18 +45,18 @@ class JudgeController extends Controller
     public function storeHeatResults(Request $request) {
         $judge_heat_scores = $request->judge_heat_scores;
         foreach ($judge_heat_scores as $judge_heat_score) {
-            Heat_score::find($judge_heat_score->id)
+            Heat_score::find($judge_heat_score['id'])
                 ->update([
-                    'wave_1' => $judge_heat_score->wave_1,
-                    'wave_2' => $judge_heat_score->wave_2,
-                    'wave_3' => $judge_heat_score->wave_3,
-                    'wave_4' => $judge_heat_score->wave_4,
-                    'wave_5' => $judge_heat_score->wave_5,
-                    'wave_6' => $judge_heat_score->wave_6,
-                    'wave_7' => $judge_heat_score->wave_7,
-                    'wave_8' => $judge_heat_score->wave_8,
-                    'wave_9' => $judge_heat_score->wave_9,
-                    'wave_10' => $judge_heat_score->wave_10,
+                    'wave_1' => $judge_heat_score['wave_1'],
+                    'wave_2' => $judge_heat_score['wave_2'],
+                    'wave_3' => $judge_heat_score['wave_3'],
+                    'wave_4' => $judge_heat_score['wave_4'],
+                    'wave_5' => $judge_heat_score['wave_5'],
+                    'wave_6' => $judge_heat_score['wave_6'],
+                    'wave_7' => $judge_heat_score['wave_7'],
+                    'wave_8' => $judge_heat_score['wave_8'],
+                    'wave_9' => $judge_heat_score['wave_9'],
+                    'wave_10' => $judge_heat_score['wave_10'],
                 ]);
         }
 

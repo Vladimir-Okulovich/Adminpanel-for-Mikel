@@ -7219,7 +7219,11 @@ var render = function() {
                               )
                             ]),
                             _vm._v(" "),
-                            _c("td", [_vm._v(_vm._s(round_heat.points))]),
+                            _c("td", [
+                              _vm._v(
+                                _vm._s(parseFloat(round_heat.points).toFixed(2))
+                              )
+                            ]),
                             _vm._v(" "),
                             _c("td", [_vm._v(_vm._s(round_heat.position))])
                           ])
