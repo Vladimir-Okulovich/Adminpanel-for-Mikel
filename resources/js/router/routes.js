@@ -1,14 +1,14 @@
 import store from '../store'
 
 export default [
-    // {
-    //     path: '/',
-    //     meta: {
-    //         // authRequired: true,
-    //     },
-    //     name: 'home',
-    //     component: () => import('../contains/dashboard/home'),
-    // },
+    {
+        path: '/',
+        meta: {
+            // authRequired: true,
+        },
+        name: 'home',
+        component: () => import('../contains/dashboard/home'),
+    },
     {
         path: '/login',
         name: 'login',
@@ -76,14 +76,14 @@ export default [
         },
     },
 
-    // {
-    //     path: '/admin',
-    //     name: 'Admin',
-    //     component: () => import('../contains/admin/dashboard'),
-    //     meta: {
-    //         authRequired: true,
-    //     },
-    // },
+    {
+        path: '/judge',
+        name: 'Judge',
+        component: () => import('../contains/judge'),
+        meta: {
+            authRequired: true,
+        },
+    },
     {
         path: '/admin/users',
         name: 'Users',
@@ -245,6 +245,31 @@ export default [
         path: '/admin/competition/participant/add/:competitionId',
         name: 'CompetitionParticipantAdd',
         component: () => import('../contains/admin/competition/competition-participant-add'),
+        meta: {
+            authRequired: true,
+        },
+    },
+
+    {
+        path: '/admin/live-management/:competitionId/determined-participants',
+        name: 'DeterminedParticipants',
+        component: () => import('../contains/admin/live-management/determined-participants'),
+        meta: {
+            authRequired: true,
+        },
+    },
+    {
+        path: '/admin/live-management/:competitionId/category/:categoryId/modality/:modalityId',
+        name: 'CompetitionHeats',
+        component: () => import('../contains/admin/live-management/competition-heats'),
+        meta: {
+            authRequired: true,
+        },
+    },
+    {
+        path: '/admin/live-management/:competitionId/category/:categoryId/modality/:modalityId/round/:round/heat/:heat',
+        name: 'CompetitionHeatDetails',
+        component: () => import('../contains/admin/live-management/heat-details'),
         meta: {
             authRequired: true,
         },

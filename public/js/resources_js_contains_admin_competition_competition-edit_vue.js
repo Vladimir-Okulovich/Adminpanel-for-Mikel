@@ -99,6 +99,7 @@ __webpack_require__.r(__webpack_exports__);
         place: "",
         date: "",
         time: "",
+        organizer: "",
         ranking_score: "",
         status: "",
         lycra: "",
@@ -130,6 +131,9 @@ __webpack_require__.r(__webpack_exports__);
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_9__.required
       },
       time: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_9__.required
+      },
+      organizer: {
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_9__.required
       },
       ranking_score: {
@@ -188,6 +192,7 @@ __webpack_require__.r(__webpack_exports__);
         place: this.typeform.place,
         date: this.typeform.date,
         time: this.typeform.time,
+        organizer: this.typeform.organizer,
         ranking_score: this.typeform.ranking_score,
         status: this.typeform.status,
         lycra: this.typeform.lycra,
@@ -8420,7 +8425,61 @@ var render = function() {
                               : _vm._e()
                           ],
                           1
-                        )
+                        ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "form-group" }, [
+                          _c("label", [_vm._v("Organizer")]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: (_vm.typeform.organizer =
+                                  _vm.getCompetition.organizer),
+                                expression:
+                                  "typeform.organizer=getCompetition.organizer"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid":
+                                _vm.typesubmit &&
+                                _vm.$v.typeform.organizer.$error
+                            },
+                            attrs: {
+                              type: "text",
+                              placeholder: "Organizer",
+                              name: "organizer"
+                            },
+                            domProps: {
+                              value: (_vm.typeform.organizer =
+                                _vm.getCompetition.organizer)
+                            },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  (_vm.typeform.organizer = _vm.getCompetition),
+                                  "organizer",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _vm.typesubmit && _vm.$v.typeform.organizer.$error
+                            ? _c("div", { staticClass: "invalid-feedback" }, [
+                                !_vm.$v.typeform.organizer.required
+                                  ? _c("span", [
+                                      _vm._v("This value is required.")
+                                    ])
+                                  : _vm._e()
+                              ])
+                            : _vm._e()
+                        ])
                       ]),
                       _vm._v(" "),
                       _c("div", { staticClass: "col-lg-6 col-md-12" }, [

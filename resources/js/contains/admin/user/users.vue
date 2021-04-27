@@ -38,6 +38,7 @@
         fields: [
           { key: "name", sortable: true },
           { key: "email", sortable: false },
+          { key: "roles", sortable: false },
           { key: "created_at", sortable: true },
           { key: "actions", sortable: false }
         ],
@@ -140,6 +141,11 @@
                 :filter-included-fields="filterOn"
                 @filtered="onFiltered"
               >
+                <template #cell(roles)="row">
+                  <span class="badge badge-success" style="font-size: 85%;" v-for="(role, index) in row.item.roles" :key="index">
+                    {{ role.name }}
+                  </span>
+                </template>
                 <template #cell(actions)="row">
                   <router-link :to="{ name: 'UserEdit', params: { userId: row.item.id }}" class="btn btn-sm btn-secondary mr-2">
                     <i class="far fa-edit"></i>

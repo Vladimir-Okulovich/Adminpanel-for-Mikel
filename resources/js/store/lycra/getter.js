@@ -8,6 +8,9 @@ const getters = {
     getLycra(state) {
         return state.lycra;
     },
+    lycraColorOptions(state) {
+        return state.lycraColorOptions;
+    }
   };
   
   export default getters;

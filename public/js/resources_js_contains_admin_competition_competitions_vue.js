@@ -99,6 +99,9 @@ __webpack_require__.r(__webpack_exports__);
         key: "time",
         sortable: false
       }, {
+        key: "organizer",
+        sortable: true
+      }, {
         key: "ranking_score",
         sortable: true
       }, {
@@ -7349,7 +7352,7 @@ var render = function() {
                         key: "cell(actions)",
                         fn: function(row) {
                           return [
-                            row.item.status.id != 3
+                            row.item.status.id == 2
                               ? _c(
                                   "router-link",
                                   {
@@ -7373,31 +7376,7 @@ var render = function() {
                                   },
                                   [_c("i", { staticClass: "far fa-edit" })]
                                 )
-                              : _c(
-                                  "router-link",
-                                  {
-                                    directives: [
-                                      {
-                                        name: "b-tooltip",
-                                        rawName: "v-b-tooltip.hover.top",
-                                        value: "Trophy",
-                                        expression: "'Trophy'",
-                                        modifiers: { hover: true, top: true }
-                                      }
-                                    ],
-                                    staticClass:
-                                      "btn btn-sm btn-secondary mr-2",
-                                    attrs: {
-                                      to: {
-                                        name: "CompetitionEdit",
-                                        params: { competitionId: row.item.id }
-                                      }
-                                    }
-                                  },
-                                  [_c("i", { staticClass: "fas fa-trophy" })]
-                                ),
-                            _vm._v(" "),
-                            row.item.status.id == 3
+                              : row.item.status.id == 1
                               ? _c(
                                   "router-link",
                                   {
@@ -7405,9 +7384,34 @@ var render = function() {
                                       "btn btn-sm btn-secondary mr-2 disabled",
                                     attrs: { to: "#" }
                                   },
-                                  [_c("i", { staticClass: "fas fa-user-plus" })]
+                                  [_c("i", { staticClass: "far fa-edit" })]
                                 )
                               : _c(
+                                  "router-link",
+                                  {
+                                    directives: [
+                                      {
+                                        name: "b-tooltip",
+                                        rawName: "v-b-tooltip.hover.top",
+                                        value: "Live Management",
+                                        expression: "'Live Management'",
+                                        modifiers: { hover: true, top: true }
+                                      }
+                                    ],
+                                    staticClass:
+                                      "btn btn-sm btn-secondary mr-2",
+                                    attrs: {
+                                      to: {
+                                        name: "DeterminedParticipants",
+                                        params: { competitionId: row.item.id }
+                                      }
+                                    }
+                                  },
+                                  [_c("i", { staticClass: "fas fa-trophy" })]
+                                ),
+                            _vm._v(" "),
+                            row.item.status.id == 2
+                              ? _c(
                                   "router-link",
                                   {
                                     directives: [
@@ -7427,6 +7431,15 @@ var render = function() {
                                         params: { competitionId: row.item.id }
                                       }
                                     }
+                                  },
+                                  [_c("i", { staticClass: "fas fa-user-plus" })]
+                                )
+                              : _c(
+                                  "router-link",
+                                  {
+                                    staticClass:
+                                      "btn btn-sm btn-secondary mr-2 disabled",
+                                    attrs: { to: "#" }
                                   },
                                   [_c("i", { staticClass: "fas fa-user-plus" })]
                                 ),

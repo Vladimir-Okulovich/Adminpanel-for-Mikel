@@ -292,6 +292,9 @@ __webpack_require__.r(__webpack_exports__);
         key: "email",
         sortable: false
       }, {
+        key: "roles",
+        sortable: false
+      }, {
         key: "created_at",
         sortable: true
       }, {
@@ -7618,6 +7621,28 @@ var render = function() {
                       filtered: _vm.onFiltered
                     },
                     scopedSlots: _vm._u([
+                      {
+                        key: "cell(roles)",
+                        fn: function(row) {
+                          return _vm._l(row.item.roles, function(role, index) {
+                            return _c(
+                              "span",
+                              {
+                                key: index,
+                                staticClass: "badge badge-success",
+                                staticStyle: { "font-size": "85%" }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                  " +
+                                    _vm._s(role.name) +
+                                    "\n                "
+                                )
+                              ]
+                            )
+                          })
+                        }
+                      },
                       {
                         key: "cell(actions)",
                         fn: function(row) {

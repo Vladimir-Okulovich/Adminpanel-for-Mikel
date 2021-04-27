@@ -7,6 +7,7 @@ const mutations = {
   },
   [type.SET_LYCRA_OPTIONS] (state, data) {
     state.lycraOptions = data.lycras;
+    state.lycraColorOptions = data.lycraColors;
   },
   [type.SET_LYCRA] (state, data) {
     state.lycra = data.lycra;

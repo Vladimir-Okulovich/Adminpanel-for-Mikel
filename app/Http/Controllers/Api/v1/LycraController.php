@@ -111,13 +111,16 @@ class LycraController extends Controller
     public function getLycraOptions()
     {
         $lycraOptions = collect([]);
-        $lycras = Lycra::all();
+        $lycraColorOptions = collect([]);
+        $lycras = Lycra::orderBy('id')->get();
         foreach ($lycras as $lycra) {
             $lycraOptions->push($lycra->name);
+            $lycraColorOptions->push($lycra->color);
         }
         return response()->json([
             'message' => 'success',
             'lycras' => $lycraOptions,
+            'lycraColors' => $lycraColorOptions,
         ], 200);
     }
 }

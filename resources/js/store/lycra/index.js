@@ -6,6 +6,7 @@ import JwtService from "@/common/jwt.service"
 const defaultState = {
   lycras: [],
   lycraOptions: [],
+  lycraColorOptions: [],
   lycra: {}
 };
 

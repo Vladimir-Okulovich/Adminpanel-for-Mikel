@@ -120,8 +120,22 @@ Route::group([ 'prefix' => 'v1', 'middleware' => 'api'], function(){
         Route::post('competition/participant/update', 'App\Http\Controllers\Api\v1\ManageRankingController@updateParticipantToCompetition');
         // /* Unregist a Participant to competition */
         Route::post('competition/participant/unregist', 'App\Http\Controllers\Api\v1\ManageRankingController@unregistParticipantToCompetition');
-         // /* Get Modality of Participant */
+        // /* Get Modality of Participant */
         Route::post('competition/modality/participant', 'App\Http\Controllers\Api\v1\ManageRankingController@getModalityOfParticipant');
+
+        // Live Competition Management
+        // /* Get Participants by category and modality */
+        Route::post('competition/category-modality/participants', 'App\Http\Controllers\Api\v1\LiveManagementController@getParticipantsByCompetitionCategoryModality');
+        // /* Unregist Participants by category and modality */
+        Route::post('competition/category-modality/participant/unregist', 'App\Http\Controllers\Api\v1\LiveManagementController@unregistParticipantToCompetitionCategoryModality');
+        // /* Get Participants by category and modality */
+        Route::post('live-management/competition-box/create', 'App\Http\Controllers\Api\v1\LiveManagementController@createFirstCompetitionBoxes');
+        // /* Get Competition Heats */
+        Route::post('live-management/competition-heats', 'App\Http\Controllers\Api\v1\LiveManagementController@initCompetitionHeats');
+        // /* Set Heat Status */
+        Route::post('live-management/competition-heat/progress-status', 'App\Http\Controllers\Api\v1\LiveManagementController@setProgressStatus');
+        // /* Get Competition Heat Details */
+        Route::post('live-management/competition-heat/heat-details', 'App\Http\Controllers\Api\v1\LiveManagementController@initHeatDetails');
 
         /* Get all participants details*/
         Route::get('participants', 'App\Http\Controllers\Api\v1\ParticipantController@getAll');
@@ -149,6 +163,11 @@ Route::group([ 'prefix' => 'v1', 'middleware' => 'api'], function(){
         Route::get('manage_ranking/all_category_modality', 'App\Http\Controllers\Api\v1\ManageRankingController@getAllCategoryModality');
         /* Get all all_ranking_data details*/
         Route::post('manage_ranking/all_ranking_data', 'App\Http\Controllers\Api\v1\ManageRankingController@getAllRankingData');
+    });
+
+    Route::group([ 'prefix' => 'judge' ], function() {
+        Route::get('/', 'App\Http\Controllers\Api\v1\JudgeController@index');
+        Route::post('/store', 'App\Http\Controllers\Api\v1\JudgeController@storeHeatResults');
     });
 
     Route::group(['middleware' => ['jwt.auth']], function() {
