@@ -24,7 +24,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   page: {
-    title: "Competition Heats",
+    title: "Judge",
     meta: [{
       name: "description",
       content: _app_config__WEBPACK_IMPORTED_MODULE_4__.description
@@ -636,7 +636,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.main-content[data-v-e7a3265c] {\n  margin-right: 70px;\n}\n.page-content[data-v-e7a3265c] {\n  padding: 0 24px 60px 24px !important;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.main-content[data-v-e7a3265c] {\n  margin-right: 70px;\n}\n.page-content[data-v-e7a3265c] {\n  padding: 0 24px 60px 24px !important;\n}\n.footer[data-v-e7a3265c] {\n  left: 0;\n}\n", ""]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 

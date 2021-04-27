@@ -6,7 +6,7 @@
 
 	export default {
 		page: {
-        title: "Competition Heats",
+        title: "Judge",
         meta: [{ name: "description", content: appConfig.description }]
     },
     components: {

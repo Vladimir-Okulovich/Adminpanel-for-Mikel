@@ -151,14 +151,30 @@ class LiveManagementController extends Controller
         $com_cat_mod_participant_ids = Com_cat_mod_participant::select('id')->where('competition_id', $request->competitionId)
                                                             ->where('category_id', $request->categoryId)
                                                             ->where('modality_id', $request->modalityId)->get();
+        $active_round_heats = Round_heat::whereIn('com_cat_mod_participant_id', $com_cat_mod_participant_ids)
+                                    ->where('status', 3)->get();
         $affected = Round_heat::whereIn('com_cat_mod_participant_id', $com_cat_mod_participant_ids)
-                                ->where('round', $request->round)
-                                ->where('heat', $request->heat)
-                                ->update(['status' => 3]);
-        return response()->json([
-            'message' => 'success',
-            'affected' => $affected,
-        ], 200);
+                            ->where('round', $request->round)
+                            ->where('heat', $request->heat)->get();
+
+        if (count($active_round_heats) != 0) {
+            if ($affected[0]->status == 3) {
+                return response()->json([
+                    'message' => 'success',
+                ], 200);
+            } else {
+                return response()->json([
+                    'message' => 'failed',
+                ], 200);
+            }
+        } else {
+            foreach ($affected as $temp) {
+                $temp->update(['status' => 3]);
+            }
+            return response()->json([
+                'message' => 'success',
+            ], 200);
+        }
     }
 
     public function initHeatDetails(Request $request)
@@ -170,9 +186,14 @@ class LiveManagementController extends Controller
                                 ->where('round', $request->round)
                                 ->where('heat', $request->heat)->get();
         $heat_scores = [];
-        $points = [];
         $judge_role = Role::where('name', 'Judge')->first();
         foreach ($round_heats as $round_heat) {
+            $round_heat->com_cat_mod_participant->participant;
+            $round_heat->com_cat_mod_participant->competition;
+            $round_heat->com_cat_mod_participant->category->sex;
+            $round_heat->com_cat_mod_participant->modality;
+            $round_heat->lycra;
+
             $temps = Heat_score::where('round_heat_id', $round_heat->id)->get();
             if (count($temps) == 0) {
                 foreach ($judge_role->users as $judge) {
@@ -220,30 +241,8 @@ class LiveManagementController extends Controller
             }
             array_push($heat_scores_temp, $average);
             array_push($heat_scores, $heat_scores_temp);
-
-            $ret = $this->sortAverage($average);
-            array_push($points, number_format($ret['first_score'] + $ret['second_score'], 2));
-            $round_heat->update([
-                'first_score' => $ret['first_score'],
-                'second_score' => $ret['second_score'],
-                'points' => number_format($ret['first_score'] + $ret['second_score'], 2),
-            ]);
         }
-        rsort($points);
-        foreach ($round_heats as $round_heat) {
-            foreach ($points as $index => $point) {
-                if ($round_heat->points == $point) {
-                    $round_heat->update([
-                        'position' => $index + 1,
-                    ]);
-                }
-            }
-            $round_heat->com_cat_mod_participant->participant;
-            $round_heat->com_cat_mod_participant->competition;
-            $round_heat->com_cat_mod_participant->category->sex;
-            $round_heat->com_cat_mod_participant->modality;
-            $round_heat->lycra;
-        }
+        
         return response()->json([
             'message' => 'success',
             'round_heats' => $round_heats,
@@ -266,6 +265,7 @@ class LiveManagementController extends Controller
 
     public function storeFinalHeatResults(Request $request)
     {
+        $points = [];
         foreach ($request->heat_scores as $heat_scores) {
             $round_heat = Round_heat::find($heat_scores[0]['round_heat_id']);
             $round_heat->update([
@@ -288,7 +288,53 @@ class LiveManagementController extends Controller
                     ]);
                 }
             }
+
+            $average =  [
+                'wave_1' => 0,
+                'wave_2' => 0,
+                'wave_3' => 0,
+                'wave_4' => 0,
+                'wave_5' => 0,
+                'wave_6' => 0,
+                'wave_7' => 0,
+                'wave_8' => 0,
+                'wave_9' => 0,
+                'wave_10' => 0,
+            ];
+            $temps = Heat_score::where('round_heat_id', $round_heat->id)->orderBy('judge_id')->get();
+            foreach ($temps as $temp) {
+                $average['wave_1'] = number_format($average['wave_1'] + $temp->wave_1/3, 2);
+                $average['wave_2'] = number_format($average['wave_2'] + $temp->wave_2/3, 2);
+                $average['wave_3'] = number_format($average['wave_3'] + $temp->wave_3/3, 2);
+                $average['wave_4'] = number_format($average['wave_4'] + $temp->wave_4/3, 2);
+                $average['wave_5'] = number_format($average['wave_5'] + $temp->wave_5/3, 2);
+                $average['wave_6'] = number_format($average['wave_6'] + $temp->wave_6/3, 2);
+                $average['wave_7'] = number_format($average['wave_7'] + $temp->wave_7/3, 2);
+                $average['wave_8'] = number_format($average['wave_8'] + $temp->wave_8/3, 2);
+                $average['wave_9'] = number_format($average['wave_9'] + $temp->wave_9/3, 2);
+                $average['wave_10'] = number_format($average['wave_10'] + $temp->wave_10/3, 2);
+            }
+            $ret = $this->sortAverage($average);
+            $round_heat->update([
+                'first_score' => number_format($ret['first_score'], 2),
+                'second_score' => number_format($ret['second_score'], 2),
+                'points' => number_format($ret['first_score'] + $ret['second_score'], 2),
+            ]);
+            array_push($points, $round_heat->points);
         }
+        rsort($points);
+        foreach ($request->heat_scores as $heat_scores) {
+            $round_heat = Round_heat::find($heat_scores[0]['round_heat_id']);
+            foreach ($points as $index => $point) {
+                if ($round_heat->points == $point) {
+                    $round_heat->update([
+                        'position' => $index + 1,
+                    ]);
+                    break;
+                }
+            }
+        }
+
         $round_heat = Round_heat::find($request->heat_scores[0][0]['round_heat_id']);
         $current_round = $round_heat->round;
         $round_heat->com_cat_mod_participant;
@@ -328,6 +374,7 @@ class LiveManagementController extends Controller
 
         return response()->json([
             'message' => 'success',
+            'data' => $points,
         ], 200);
     }
 }

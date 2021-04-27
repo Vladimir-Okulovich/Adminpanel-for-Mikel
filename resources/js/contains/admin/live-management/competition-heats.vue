@@ -52,8 +52,13 @@
           round: round,
           heat: heat,
         })
-        .then(() => {
-          this.$router.push({ name: 'CompetitionHeatDetails', params: {competitionId: this.competitionId, categoryId: this.categoryId, modalityId: this.modalityId, round: round, heat: heat} })
+        .then((res) => {
+          console.log(res.data)
+          if (res.data.message == "success") {
+            this.$router.push({ name: 'CompetitionHeatDetails', params: {competitionId: this.competitionId, categoryId: this.categoryId, modalityId: this.modalityId, round: round, heat: heat} })
+          } else {
+            this.$toastr.warning('No more boxes could be active until the active one goes to FINISH STATE', '', {timeout: 5000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
+          }
         }) 
       },
     }
@@ -89,14 +94,26 @@
     </div>
 
     <div class="row" v-for="(round, round_index) in all_round_heats" :key="round_index">
-      <h4 class="my-4 col-12">ROUND {{ round_index+1 }}</h4>
+      <h4 class="my-4 col-12" v-if="round.length == 1">FINAL</h4>
+      <h4 class="my-4 col-12" v-else-if="round.length == 2">SEMI FINALS</h4>
+      <h4 class="my-4 col-12" v-else-if="round.length == 3">QUARTER FINALS</h4>
+      <h4 class="my-4 col-12" v-else>ROUND {{ round_index+1 }}</h4>
       <div class="col-lg-4 col-md-6 col-sm-6" v-for="(heat, heat_index) in round" :key="heat_index">
         <div class="table-responsive mb-0">
           <table class="table table-bordered">
             <thead>
               <tr>
-                <th colspan="4" style="color: black;background: #b8e6e2;cursor: pointer;" @click="heatDetailsGo(round_index+1, heat_index+1)">
-                  ROUND {{ round_index+1 }} HEAT {{ heat_index+1 }}
+                <th colspan="4" v-if="round.length == 1" style="color: black;background: #b8e6e2;cursor: pointer;" @click="heatDetailsGo(round_index+1, heat_index+1)">
+                  Final Heat
+                </th>
+                <th colspan="4" v-else-if="round.length == 2" style="color: black;background: #b8e6e2;cursor: pointer;" @click="heatDetailsGo(round_index+1, heat_index+1)">
+                  Semi Finals Heat {{ heat_index+1 }}
+                </th>
+                <th colspan="4" v-else-if="round.length == 3" style="color: black;background: #b8e6e2;cursor: pointer;" @click="heatDetailsGo(round_index+1, heat_index+1)">
+                  Quarter Finals Heat {{ heat_index+1 }}
+                </th>
+                <th colspan="4" v-else style="color: black;background: #b8e6e2;cursor: pointer;" @click="heatDetailsGo(round_index+1, heat_index+1)">
+                  Round {{ round_index+1 }} Heat {{ heat_index+1 }}
                 </th>
               </tr>
               <tr class="thead-light">

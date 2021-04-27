@@ -55,7 +55,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   page: {
-    title: "Competition Heats",
+    title: "Heat Details",
     meta: [{
       name: "description",
       content: _app_config__WEBPACK_IMPORTED_MODULE_4__.description
@@ -92,20 +92,16 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)((0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_6__.mapActions)(['initHeatDetails', 'storeFinalHeatResults'])), {}, {
     saveResults: function saveResults() {
-      var _this = this;
-
       this.storeFinalHeatResults({
         heat_scores: this.heat_scores
-      }).then(function () {
-        _this.$router.go(-1);
       });
     },
     refresh: function refresh() {
       window.location.reload();
-    } // back() {
-    //   this.$router.go(-1);
-    // },
-
+    },
+    back: function back() {
+      this.$router.go(-1);
+    }
   })
 });
 
@@ -7230,11 +7226,21 @@ var render = function() {
                   _vm._v(" "),
                   _c("td", [_vm._v(_vm._s(round_heat.position))]),
                   _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(round_heat.first_score))]),
+                  _c("td", [
+                    _vm._v(
+                      _vm._s(parseFloat(round_heat.first_score).toFixed(2))
+                    )
+                  ]),
                   _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(round_heat.second_score))]),
+                  _c("td", [
+                    _vm._v(
+                      _vm._s(parseFloat(round_heat.second_score).toFixed(2))
+                    )
+                  ]),
                   _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(round_heat.points))])
+                  _c("td", [
+                    _vm._v(_vm._s(parseFloat(round_heat.points).toFixed(2)))
+                  ])
                 ])
               }),
               0
@@ -7602,6 +7608,16 @@ var render = function() {
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "text-right my-4" }, [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-secondary mr-3",
+              staticStyle: { width: "10%" },
+              on: { click: _vm.back }
+            },
+            [_vm._v("\n          Back\n        ")]
+          ),
+          _vm._v(" "),
           _c(
             "button",
             {

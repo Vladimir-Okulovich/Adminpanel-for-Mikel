@@ -2,7 +2,7 @@ import store from '../store'
 
 export default [
     {
-        path: '/',
+        path: '/competition/:competitionId/category/:categoryId/modality/:modalityId',
         meta: {
             // authRequired: true,
         },
@@ -84,6 +84,7 @@ export default [
             authRequired: true,
         },
     },
+
     {
         path: '/admin/users',
         name: 'Users',
@@ -259,7 +260,7 @@ export default [
         },
     },
     {
-        path: '/admin/live-management/:competitionId/category/:categoryId/modality/:modalityId',
+        path: '/admin/live-management/competition/:competitionId/category/:categoryId/modality/:modalityId',
         name: 'CompetitionHeats',
         component: () => import('../contains/admin/live-management/competition-heats'),
         meta: {

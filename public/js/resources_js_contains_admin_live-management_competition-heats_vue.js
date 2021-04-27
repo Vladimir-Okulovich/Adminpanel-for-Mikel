@@ -94,17 +94,28 @@ __webpack_require__.r(__webpack_exports__);
         modalityId: this.modalityId,
         round: round,
         heat: heat
-      }).then(function () {
-        _this.$router.push({
-          name: 'CompetitionHeatDetails',
-          params: {
-            competitionId: _this.competitionId,
-            categoryId: _this.categoryId,
-            modalityId: _this.modalityId,
-            round: round,
-            heat: heat
-          }
-        });
+      }).then(function (res) {
+        console.log(res.data);
+
+        if (res.data.message == "success") {
+          _this.$router.push({
+            name: 'CompetitionHeatDetails',
+            params: {
+              competitionId: _this.competitionId,
+              categoryId: _this.categoryId,
+              modalityId: _this.modalityId,
+              round: round,
+              heat: heat
+            }
+          });
+        } else {
+          _this.$toastr.warning('No more boxes could be active until the active one goes to FINISH STATE', '', {
+            timeout: 5000,
+            closeButton: true,
+            closeMethod: 'fadeOut',
+            closeDuration: 300
+          });
+        }
       });
     }
   })
@@ -7144,9 +7155,19 @@ var render = function() {
           "div",
           { key: round_index, staticClass: "row" },
           [
-            _c("h4", { staticClass: "my-4 col-12" }, [
-              _vm._v("ROUND " + _vm._s(round_index + 1))
-            ]),
+            round.length == 1
+              ? _c("h4", { staticClass: "my-4 col-12" }, [_vm._v("FINAL")])
+              : round.length == 2
+              ? _c("h4", { staticClass: "my-4 col-12" }, [
+                  _vm._v("SEMI FINALS")
+                ])
+              : round.length == 3
+              ? _c("h4", { staticClass: "my-4 col-12" }, [
+                  _vm._v("QUARTER FINALS")
+                ])
+              : _c("h4", { staticClass: "my-4 col-12" }, [
+                  _vm._v("ROUND " + _vm._s(round_index + 1))
+                ]),
             _vm._v(" "),
             _vm._l(round, function(heat, heat_index) {
               return _c(
@@ -7157,34 +7178,113 @@ var render = function() {
                     _c("table", { staticClass: "table table-bordered" }, [
                       _c("thead", [
                         _c("tr", [
-                          _c(
-                            "th",
-                            {
-                              staticStyle: {
-                                color: "black",
-                                background: "#b8e6e2",
-                                cursor: "pointer"
-                              },
-                              attrs: { colspan: "4" },
-                              on: {
-                                click: function($event) {
-                                  return _vm.heatDetailsGo(
-                                    round_index + 1,
-                                    heat_index + 1
+                          round.length == 1
+                            ? _c(
+                                "th",
+                                {
+                                  staticStyle: {
+                                    color: "black",
+                                    background: "#b8e6e2",
+                                    cursor: "pointer"
+                                  },
+                                  attrs: { colspan: "4" },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.heatDetailsGo(
+                                        round_index + 1,
+                                        heat_index + 1
+                                      )
+                                    }
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                Final Heat\n              "
                                   )
-                                }
-                              }
-                            },
-                            [
-                              _vm._v(
-                                "\n                ROUND " +
-                                  _vm._s(round_index + 1) +
-                                  " HEAT " +
-                                  _vm._s(heat_index + 1) +
-                                  "\n              "
+                                ]
                               )
-                            ]
-                          )
+                            : round.length == 2
+                            ? _c(
+                                "th",
+                                {
+                                  staticStyle: {
+                                    color: "black",
+                                    background: "#b8e6e2",
+                                    cursor: "pointer"
+                                  },
+                                  attrs: { colspan: "4" },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.heatDetailsGo(
+                                        round_index + 1,
+                                        heat_index + 1
+                                      )
+                                    }
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                Semi Finals Heat " +
+                                      _vm._s(heat_index + 1) +
+                                      "\n              "
+                                  )
+                                ]
+                              )
+                            : round.length == 3
+                            ? _c(
+                                "th",
+                                {
+                                  staticStyle: {
+                                    color: "black",
+                                    background: "#b8e6e2",
+                                    cursor: "pointer"
+                                  },
+                                  attrs: { colspan: "4" },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.heatDetailsGo(
+                                        round_index + 1,
+                                        heat_index + 1
+                                      )
+                                    }
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                Quarter Finals Heat " +
+                                      _vm._s(heat_index + 1) +
+                                      "\n              "
+                                  )
+                                ]
+                              )
+                            : _c(
+                                "th",
+                                {
+                                  staticStyle: {
+                                    color: "black",
+                                    background: "#b8e6e2",
+                                    cursor: "pointer"
+                                  },
+                                  attrs: { colspan: "4" },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.heatDetailsGo(
+                                        round_index + 1,
+                                        heat_index + 1
+                                      )
+                                    }
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                Round " +
+                                      _vm._s(round_index + 1) +
+                                      " Heat " +
+                                      _vm._s(heat_index + 1) +
+                                      "\n              "
+                                  )
+                                ]
+                              )
                         ]),
                         _vm._v(" "),
                         _c("tr", { staticClass: "thead-light" }, [

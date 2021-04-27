@@ -40,4 +40,7 @@ export default {
   .page-content {
     padding: 0 24px 60px 24px !important;
   }
+  .footer {
+    left: 0;
+  }
 </style>
