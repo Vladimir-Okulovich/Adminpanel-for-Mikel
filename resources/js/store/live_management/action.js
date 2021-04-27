@@ -93,6 +93,20 @@ const actions = {
                 });
         });
     },
+
+    initHomeCompetitionHeats(context, data) {
+        ApiService.setHeader();
+        return new Promise((resolve) =>{
+            ApiService.post("api/v1/competition-heats", data)
+                .then(({data}) => {
+                    console.log(data);
+                    context.commit(type.GET_ALL_HOME_ROUND_HEATS, data)
+                })
+                .catch(({ response }) => {
+                    // console.log(response);
+                });
+        });
+    },
 };
 
 export default actions;

@@ -34,6 +34,9 @@ Route::group([ 'prefix' => 'v1', 'middleware' => 'api'], function(){
     // Get auth user
     Route::get('token/validate', 'App\Http\Controllers\Api\v1\AuthController@auth');
 
+    // /* Get Competition Heats */
+    Route::post('competition-heats', 'App\Http\Controllers\Api\v1\LiveManagementController@initCompetitionHeats');
+
     //Admin actions
     Route::group([ 'prefix' => 'admin' ], function(){
         /* Get all users details*/

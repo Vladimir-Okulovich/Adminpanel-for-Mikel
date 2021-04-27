@@ -8488,20 +8488,6 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "router-link",
-                { staticClass: "dropdown-item", attrs: { to: "#" } },
-                [
-                  _c("i", {
-                    staticClass:
-                      "mdi mdi-account-circle font-size-17 align-middle mr-1"
-                  }),
-                  _vm._v(" Profile\n        ")
-                ]
-              ),
-              _vm._v(" "),
-              _c("div", { staticClass: "dropdown-divider" }),
-              _vm._v(" "),
-              _c(
-                "router-link",
                 {
                   staticClass: "dropdown-item text-danger",
                   attrs: { to: "/logout" }

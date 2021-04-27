@@ -16,7 +16,11 @@ const getters = {
     },
     heat_scores(state) {
         return state.heat_scores;
-    }
+    },
+
+    all_home_round_heats(state) {
+        return state.all_home_round_heats;
+    },
   };
   
   export default getters;

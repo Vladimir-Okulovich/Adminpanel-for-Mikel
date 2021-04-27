@@ -1,13 +1,13 @@
 <script>
 import router from "@/router";
 
-import Topbar from "./topbar";
-import Footer from "@/components/footer";
+// import Topbar from "./topbar";
+// import Footer from "@/components/footer";
 
 export default {
   components: {
-    Topbar,
-    Footer
+    // Topbar,
+    // Footer
   },
   created() {
     document.body.setAttribute("data-sidebar", "dark");
@@ -23,13 +23,13 @@ export default {
 
 <template>
   <div id="layout-wrapper">
-    <Topbar />
+    <!-- <Topbar /> -->
     <div class="main-content">
       <div class="page-content">
         <slot />
       </div>
     </div>
-    <Footer />
+    <!-- <Footer /> -->
   </div>
 </template>
 
