@@ -4,9 +4,8 @@ export default [
     {
         path: '/competition/:competitionId/category/:categoryId/modality/:modalityId',
         meta: {
-            // authRequired: true,
         },
-        name: 'home',
+        name: 'Home',
         component: () => import('../contains/dashboard/home'),
     },
     {
@@ -18,7 +17,13 @@ export default [
                 // If the user is already logged in
                 if (store.getters['isAuthenticated']) {
                     // Redirect to the home page instead
-                    next({ name: 'Users' })
+                    if (store.getters['currentRole'] == 'Admin') {
+                        next({ name: 'Users' })
+                    } else if (store.getters['currentRole'] == 'Judge') {
+                        next({ name: 'Judge' })
+                    } else {
+                        next({ name: 'Home' })
+                    }
                 } else {
                     // Continue to the login page
                     next()
@@ -35,7 +40,13 @@ export default [
                 // If the user is already logged in
                 if (store.getters['isAuthenticated']) {
                     // Redirect to the home page instead
-                    next({ name: 'Users' })
+                    if (store.getters['currentRole'] == 'Admin') {
+                        next({ name: 'Users' })
+                    } else if (store.getters['currentRole'] == 'Judge') {
+                        next({ name: 'Judge' })
+                    } else {
+                        next({ name: 'Home' })
+                    }
                 } else {
                     // Continue to the login page
                     next()
@@ -52,7 +63,13 @@ export default [
                 // If the user is already logged in
                 if (store.getters['isAuthenticated']) {
                     // Redirect to the home page instead
-                    next({ name: 'USers' })
+                    if (store.getters['currentRole'] == 'Admin') {
+                        next({ name: 'Users' })
+                    } else if (store.getters['currentRole'] == 'Judge') {
+                        next({ name: 'Judge' })
+                    } else {
+                        next({ name: 'Home' })
+                    }
                 } else {
                     // Continue to the login page
                     next()
@@ -81,7 +98,13 @@ export default [
         name: 'Judge',
         component: () => import('../contains/judge'),
         meta: {
-            authRequired: true,
+            beforeResolve(routeTo, routeFrom, next) {
+                if (store.getters['currentRole'] == 'Judge') {
+                    next()
+                } else {
+                    next({ name: 'login' })
+                }
+            },
         },
     },
 
@@ -90,7 +113,13 @@ export default [
         name: 'Users',
         component: () => import('../contains/admin/user/users'),
         meta: {
-            authRequired: true,
+            beforeResolve(routeTo, routeFrom, next) {
+                if (store.getters['currentRole'] == 'Admin') {
+                    next()
+                } else {
+                    next({ name: 'login' })
+                }
+            },
         },
     },
     {
@@ -98,7 +127,13 @@ export default [
         name: 'UserCreate',
         component: () => import('../contains/admin/user/user-create'),
         meta: {
-            authRequired: true,
+            beforeResolve(routeTo, routeFrom, next) {
+                if (store.getters['currentRole'] == 'Admin') {
+                    next()
+                } else {
+                    next({ name: 'login' })
+                }
+            },
         },
     },
     {
@@ -106,7 +141,13 @@ export default [
         name: 'UserEdit',
         component: () => import('../contains/admin/user/user-edit'),
         meta: {
-            authRequired: true,
+            beforeResolve(routeTo, routeFrom, next) {
+                if (store.getters['currentRole'] == 'Admin') {
+                    next()
+                } else {
+                    next({ name: 'login' })
+                }
+            },
         },
     },
 
@@ -115,7 +156,13 @@ export default [
         name: 'Categories',
         component: () => import('../contains/admin/category/categories'),
         meta: {
-            authRequired: true,
+            beforeResolve(routeTo, routeFrom, next) {
+                if (store.getters['currentRole'] == 'Admin') {
+                    next()
+                } else {
+                    next({ name: 'login' })
+                }
+            },
         },
     },
     {
@@ -123,7 +170,13 @@ export default [
         name: 'CategoryCreate',
         component: () => import('../contains/admin/category/category-create'),
         meta: {
-            authRequired: true,
+            beforeResolve(routeTo, routeFrom, next) {
+                if (store.getters['currentRole'] == 'Admin') {
+                    next()
+                } else {
+                    next({ name: 'login' })
+                }
+            },
         },
     },
     {
@@ -131,7 +184,13 @@ export default [
         name: 'CategoryEdit',
         component: () => import('../contains/admin/category/category-edit'),
         meta: {
-            authRequired: true,
+            beforeResolve(routeTo, routeFrom, next) {
+                if (store.getters['currentRole'] == 'Admin') {
+                    next()
+                } else {
+                    next({ name: 'login' })
+                }
+            },
         },
     },
 
@@ -140,7 +199,13 @@ export default [
         name: 'Lycras',
         component: () => import('../contains/admin/lycra/lycras'),
         meta: {
-            authRequired: true,
+            beforeResolve(routeTo, routeFrom, next) {
+                if (store.getters['currentRole'] == 'Admin') {
+                    next()
+                } else {
+                    next({ name: 'login' })
+                }
+            },
         },
     },
     {
@@ -148,7 +213,13 @@ export default [
         name: 'LycraCreate',
         component: () => import('../contains/admin/lycra/lycra-create'),
         meta: {
-            authRequired: true,
+            beforeResolve(routeTo, routeFrom, next) {
+                if (store.getters['currentRole'] == 'Admin') {
+                    next()
+                } else {
+                    next({ name: 'login' })
+                }
+            },
         },
     },
     {
@@ -156,7 +227,13 @@ export default [
         name: 'LycraEdit',
         component: () => import('../contains/admin/lycra/lycra-edit'),
         meta: {
-            authRequired: true,
+            beforeResolve(routeTo, routeFrom, next) {
+                if (store.getters['currentRole'] == 'Admin') {
+                    next()
+                } else {
+                    next({ name: 'login' })
+                }
+            },
         },
     },
 
@@ -165,7 +242,13 @@ export default [
         name: 'Clubs',
         component: () => import('../contains/admin/club/clubs'),
         meta: {
-            authRequired: true,
+            beforeResolve(routeTo, routeFrom, next) {
+                if (store.getters['currentRole'] == 'Admin') {
+                    next()
+                } else {
+                    next({ name: 'login' })
+                }
+            },
         },
     },
     {
@@ -173,7 +256,13 @@ export default [
         name: 'ClubCreate',
         component: () => import('../contains/admin/club/club-create'),
         meta: {
-            authRequired: true,
+            beforeResolve(routeTo, routeFrom, next) {
+                if (store.getters['currentRole'] == 'Admin') {
+                    next()
+                } else {
+                    next({ name: 'login' })
+                }
+            },
         },
     },
     {
@@ -181,7 +270,13 @@ export default [
         name: 'ClubEdit',
         component: () => import('../contains/admin/club/club-edit'),
         meta: {
-            authRequired: true,
+            beforeResolve(routeTo, routeFrom, next) {
+                if (store.getters['currentRole'] == 'Admin') {
+                    next()
+                } else {
+                    next({ name: 'login' })
+                }
+            },
         },
     },
 
@@ -190,7 +285,13 @@ export default [
         name: 'CompetitionTypes',
         component: () => import('../contains/admin/competition_type/competition_types'),
         meta: {
-            authRequired: true,
+            beforeResolve(routeTo, routeFrom, next) {
+                if (store.getters['currentRole'] == 'Admin') {
+                    next()
+                } else {
+                    next({ name: 'login' })
+                }
+            },
         },
     },
     {
@@ -198,7 +299,13 @@ export default [
         name: 'CompetitionTypeCreate',
         component: () => import('../contains/admin/competition_type/competition_type-create'),
         meta: {
-            authRequired: true,
+            beforeResolve(routeTo, routeFrom, next) {
+                if (store.getters['currentRole'] == 'Admin') {
+                    next()
+                } else {
+                    next({ name: 'login' })
+                }
+            },
         },
     },
     {
@@ -206,7 +313,13 @@ export default [
         name: 'CompetitionTypeEdit',
         component: () => import('../contains/admin/competition_type/competition_type-edit'),
         meta: {
-            authRequired: true,
+            beforeResolve(routeTo, routeFrom, next) {
+                if (store.getters['currentRole'] == 'Admin') {
+                    next()
+                } else {
+                    next({ name: 'login' })
+                }
+            },
         },
     },
 
@@ -215,7 +328,13 @@ export default [
         name: 'Competitions',
         component: () => import('../contains/admin/competition/competitions'),
         meta: {
-            authRequired: true,
+            beforeResolve(routeTo, routeFrom, next) {
+                if (store.getters['currentRole'] == 'Admin') {
+                    next()
+                } else {
+                    next({ name: 'login' })
+                }
+            },
         },
     },
     {
@@ -223,7 +342,13 @@ export default [
         name: 'CompetitionCreate',
         component: () => import('../contains/admin/competition/competition-create'),
         meta: {
-            authRequired: true,
+            beforeResolve(routeTo, routeFrom, next) {
+                if (store.getters['currentRole'] == 'Admin') {
+                    next()
+                } else {
+                    next({ name: 'login' })
+                }
+            },
         },
     },
     {
@@ -231,7 +356,13 @@ export default [
         name: 'CompetitionEdit',
         component: () => import('../contains/admin/competition/competition-edit'),
         meta: {
-            authRequired: true,
+            beforeResolve(routeTo, routeFrom, next) {
+                if (store.getters['currentRole'] == 'Admin') {
+                    next()
+                } else {
+                    next({ name: 'login' })
+                }
+            },
         },
     },
     {
@@ -239,7 +370,13 @@ export default [
         name: 'CompetitionParticipantRegist',
         component: () => import('../contains/admin/competition/competition-participant-regist'),
         meta: {
-            authRequired: true,
+            beforeResolve(routeTo, routeFrom, next) {
+                if (store.getters['currentRole'] == 'Admin') {
+                    next()
+                } else {
+                    next({ name: 'login' })
+                }
+            },
         },
     },
     {
@@ -247,7 +384,13 @@ export default [
         name: 'CompetitionParticipantAdd',
         component: () => import('../contains/admin/competition/competition-participant-add'),
         meta: {
-            authRequired: true,
+            beforeResolve(routeTo, routeFrom, next) {
+                if (store.getters['currentRole'] == 'Admin') {
+                    next()
+                } else {
+                    next({ name: 'login' })
+                }
+            },
         },
     },
 
@@ -256,7 +399,13 @@ export default [
         name: 'DeterminedParticipants',
         component: () => import('../contains/admin/live-management/determined-participants'),
         meta: {
-            authRequired: true,
+            beforeResolve(routeTo, routeFrom, next) {
+                if (store.getters['currentRole'] == 'Admin') {
+                    next()
+                } else {
+                    next({ name: 'login' })
+                }
+            },
         },
     },
     {
@@ -264,7 +413,13 @@ export default [
         name: 'CompetitionHeats',
         component: () => import('../contains/admin/live-management/competition-heats'),
         meta: {
-            authRequired: true,
+            beforeResolve(routeTo, routeFrom, next) {
+                if (store.getters['currentRole'] == 'Admin') {
+                    next()
+                } else {
+                    next({ name: 'login' })
+                }
+            },
         },
     },
     {
@@ -272,7 +427,13 @@ export default [
         name: 'CompetitionHeatDetails',
         component: () => import('../contains/admin/live-management/heat-details'),
         meta: {
-            authRequired: true,
+            beforeResolve(routeTo, routeFrom, next) {
+                if (store.getters['currentRole'] == 'Admin') {
+                    next()
+                } else {
+                    next({ name: 'login' })
+                }
+            },
         },
     },
 
@@ -281,7 +442,13 @@ export default [
         name: 'Participants',
         component: () => import('../contains/admin/participant/participants'),
         meta: {
-            authRequired: true,
+            beforeResolve(routeTo, routeFrom, next) {
+                if (store.getters['currentRole'] == 'Admin') {
+                    next()
+                } else {
+                    next({ name: 'login' })
+                }
+            },
         },
     },
     {
@@ -289,7 +456,13 @@ export default [
         name: 'ParticipantCreate',
         component: () => import('../contains/admin/participant/participant-create'),
         meta: {
-            authRequired: true,
+            beforeResolve(routeTo, routeFrom, next) {
+                if (store.getters['currentRole'] == 'Admin') {
+                    next()
+                } else {
+                    next({ name: 'login' })
+                }
+            },
         },
     },
     {
@@ -297,7 +470,13 @@ export default [
         name: 'ParticipantEdit',
         component: () => import('../contains/admin/participant/participant-edit'),
         meta: {
-            authRequired: true,
+            beforeResolve(routeTo, routeFrom, next) {
+                if (store.getters['currentRole'] == 'Admin') {
+                    next()
+                } else {
+                    next({ name: 'login' })
+                }
+            },
         },
     },
 
@@ -306,7 +485,13 @@ export default [
         name: 'RankingPoints',
         component: () => import('../contains/admin/ranking_points/ranking_points'),
         meta: {
-            authRequired: true,
+            beforeResolve(routeTo, routeFrom, next) {
+                if (store.getters['currentRole'] == 'Admin') {
+                    next()
+                } else {
+                    next({ name: 'login' })
+                }
+            },
         },
     },
     // {
@@ -314,7 +499,7 @@ export default [
     //     name: 'RankingPointsCreate',
     //     component: () => import('../contains/admin/ranking_points/ranking_points-create'),
     //     meta: {
-    //         authRequired: true,
+    //         
     //     },
     // },
     {
@@ -322,7 +507,13 @@ export default [
         name: 'RankingPointsEdit',
         component: () => import('../contains/admin/ranking_points/ranking_points-edit'),
         meta: {
-            authRequired: true,
+            beforeResolve(routeTo, routeFrom, next) {
+                if (store.getters['currentRole'] == 'Admin') {
+                    next()
+                } else {
+                    next({ name: 'login' })
+                }
+            },
         },
     },
     {
@@ -330,7 +521,13 @@ export default [
         name: 'CategoryModality',
         component: () => import('../contains/admin/manage_ranking/category-modality'),
         meta: {
-            authRequired: true,
+            beforeResolve(routeTo, routeFrom, next) {
+                if (store.getters['currentRole'] == 'Admin') {
+                    next()
+                } else {
+                    next({ name: 'login' })
+                }
+            },
         },
     },
 ]

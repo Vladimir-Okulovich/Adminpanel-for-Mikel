@@ -36,10 +36,8 @@ router.beforeEach((routeTo, routeFrom, next) => {
   // Check if auth is required on this route
   // (including nested routes).
   const authRequired = routeTo.matched.some((route) => route.meta.authRequired)
-
   // If auth isn't required for the route, just continue.
   if (!authRequired) return next()
-
   // If auth is required and the user is logged in...
   if (store.getters['isAuthenticated']) {
     // Validate the local user token...

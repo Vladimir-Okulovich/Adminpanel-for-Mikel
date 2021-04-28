@@ -38,7 +38,7 @@ Route::group([ 'prefix' => 'v1', 'middleware' => 'api'], function(){
     Route::post('competition-heats', 'App\Http\Controllers\Api\v1\LiveManagementController@initCompetitionHeats');
 
     //Admin actions
-    Route::group([ 'prefix' => 'admin' ], function(){
+    Route::group([ 'prefix' => 'admin', 'middleware' => 'isadmin' ], function(){
         /* Get all users details*/
         Route::get('users', 'App\Http\Controllers\Api\v1\UserController@getAll');
         // /* Add a user */
@@ -170,7 +170,7 @@ Route::group([ 'prefix' => 'v1', 'middleware' => 'api'], function(){
         Route::post('manage_ranking/all_ranking_data', 'App\Http\Controllers\Api\v1\ManageRankingController@getAllRankingData');
     });
 
-    Route::group([ 'prefix' => 'judge' ], function() {
+    Route::group([ 'prefix' => 'judge', 'middleware' => 'isjudge' ], function() {
         Route::get('/', 'App\Http\Controllers\Api\v1\JudgeController@index');
         Route::post('/store', 'App\Http\Controllers\Api\v1\JudgeController@storeHeatResults');
     });

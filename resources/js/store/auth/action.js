@@ -8,9 +8,19 @@ const actions = {
             ApiService.post("api/v1/user/login", credentials)
                 .then(({data}) => {
                     context.commit(type.AUTH_CLEAR_ERRORS);
-                    console.log(data);
+                    // console.log(data);
+                    var role = null;
+                    data.user.roles.forEach(function(currentRole) {
+                        if (currentRole.name == 'Admin') {
+                            role = 'Admin';
+                        } else if (currentRole.name == 'Judge') {
+                            role = 'Judge';
+                        } else {
+                            role = 'User';
+                        }
+                    });
                     context.commit(
-                        type.AUTH_SET_USER, {userId: data.user.id, token: data.access_token}
+                        type.AUTH_SET_USER, {userId: data.user.id, userRole: role, token: data.access_token}
                     );
                     resolve(data);
                 })

@@ -1,6 +1,6 @@
 <script>
 import appConfig from "@/app.config";
-import {mapActions} from 'vuex'
+import {mapActions, mapGetters} from 'vuex'
 /**
  * Login component
  */
@@ -19,6 +19,11 @@ export default {
       isAuthError: false
     };
   },
+  computed: {
+    ...mapGetters([
+      'currentRole',
+    ]),
+  },
   methods: {
     ...mapActions([
       'login'
@@ -35,7 +40,14 @@ export default {
             password: this.password
           })
           .then((res) => {
-            this.$router.push({name: "Users"});
+            // console.log(this.currentRole)
+            if (this.currentRole == 'Admin') {
+              this.$router.push({name: "Users"});
+            } else if (this.currentRole == 'Judge') {
+              this.$router.push({name: "Judge"});
+            } else {
+              this.$router.push({name: "Home"});
+            }
             this.tryingToLogIn = false;
             this.isAuthError = false;
           })
