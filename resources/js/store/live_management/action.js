@@ -80,6 +80,19 @@ const actions = {
                 });
         });
     },
+    storeFinalHeatResults(context, data) {
+        ApiService.setHeader();
+        return new Promise((resolve) =>{
+            ApiService.post("api/v1/admin/live-management/competition-heat/heat-details/store", data)
+                .then((data) => {
+                    toastr.success('Successfuly stored', '', {timeout: 5000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
+                    resolve(data);
+                })
+                .catch(({ response }) => {
+                    // console.log(response);
+                });
+        });
+    },
 };
 
 export default actions;

@@ -6,7 +6,7 @@
 
 	export default {
 		page: {
-        title: "Competition Heats",
+        title: "Judge",
         meta: [{ name: "description", content: appConfig.description }]
     },
     components: {
@@ -126,7 +126,7 @@
     <div v-else>
       <div class="text-right">
         <button @click="refresh"
-          class="btn btn-info mt-4"
+          class="btn btn-warning mt-4"
           style="width: 10%;"
         >
           Refresh

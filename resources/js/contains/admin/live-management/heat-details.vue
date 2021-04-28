@@ -7,7 +7,7 @@
 
 	export default {
 		page: {
-        title: "Competition Heats",
+        title: "Heat Details",
         meta: [{ name: "description", content: appConfig.description }]
     },
     components: {
@@ -49,9 +49,20 @@
     methods: {
       ...mapActions([
         'initHeatDetails',
+        'storeFinalHeatResults',
       ]),
-      // this.$router.go(-1)
-      // window.location.reload()
+      
+      saveResults() {
+        this.storeFinalHeatResults({
+          heat_scores: this.heat_scores,
+        });
+      },
+      refresh() {
+        window.location.reload();
+      },
+      back() {
+        this.$router.go(-1);
+      },
     }
 	};
 </script>
@@ -104,9 +115,9 @@
                 <th scope="row" v-bind:style="{ background: round_heat.lycra.color }"></th>
                 <td>{{ round_heat.com_cat_mod_participant.participant.name+' '+round_heat.com_cat_mod_participant.participant.surname }}</td>
                 <td>{{ round_heat.position }}</td>
-                <td>{{ round_heat.first_score }}</td>
-                <td>{{ round_heat.second_score }}</td>
-                <td>{{ round_heat.points }}</td>
+                <td>{{ parseFloat(round_heat.first_score).toFixed(2) }}</td>
+                <td>{{ parseFloat(round_heat.second_score).toFixed(2) }}</td>
+                <td>{{ parseFloat(round_heat.points).toFixed(2) }}</td>
               </tr>
             </tbody>
           </table>
@@ -130,19 +141,50 @@
               <tr v-for="(heat_score_row, index_2) in heat_score" :key="index_2">
                 <td rowspan="4" :style="{background: heat_score_row.round_heat.lycra.color}" v-if="index_2==0"></td>
                 <td>{{ heat_score_row.judge_id }}</td>
-                <td><input v-model="heat_score_row.wave_1" type="number" step="0.1" class="custom-input" /></td>
-                <td><input v-model="heat_score_row.wave_2" type="number" step="0.1" class="custom-input" /></td>
-                <td><input v-model="heat_score_row.wave_3" type="number" step="0.1" class="custom-input" /></td>
-                <td><input v-model="heat_score_row.wave_4" type="number" step="0.1" class="custom-input" /></td>
-                <td><input v-model="heat_score_row.wave_5" type="number" step="0.1" class="custom-input" /></td>
-                <td><input v-model="heat_score_row.wave_6" type="number" step="0.1" class="custom-input" /></td>
-                <td><input v-model="heat_score_row.wave_7" type="number" step="0.1" class="custom-input" /></td>
-                <td><input v-model="heat_score_row.wave_8" type="number" step="0.1" class="custom-input" /></td>
-                <td><input v-model="heat_score_row.wave_9" type="number" step="0.1" class="custom-input" /></td>
-                <td><input v-model="heat_score_row.wave_10" type="number" step="0.1" class="custom-input" /></td>
+                <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_1" type="number" step="0.1" class="custom-input" /></td>
+                <td v-else>{{heat_score_row.wave_1}}</td>
+                <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_2" type="number" step="0.1" class="custom-input" /></td>
+                <td v-else>{{heat_score_row.wave_2}}</td>
+                <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_3" type="number" step="0.1" class="custom-input" /></td>
+                <td v-else>{{heat_score_row.wave_3}}</td>
+                <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_4" type="number" step="0.1" class="custom-input" /></td>
+                <td v-else>{{heat_score_row.wave_4}}</td>
+                <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_5" type="number" step="0.1" class="custom-input" /></td>
+                <td v-else>{{heat_score_row.wave_5}}</td>
+                <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_6" type="number" step="0.1" class="custom-input" /></td>
+                <td v-else>{{heat_score_row.wave_6}}</td>
+                <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_7" type="number" step="0.1" class="custom-input" /></td>
+                <td v-else>{{heat_score_row.wave_7}}</td>
+                <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_8" type="number" step="0.1" class="custom-input" /></td>
+                <td v-else>{{heat_score_row.wave_8}}</td>
+                <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_9" type="number" step="0.1" class="custom-input" /></td>
+                <td v-else>{{heat_score_row.wave_9}}</td>
+                <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_10" type="number" step="0.1" class="custom-input" /></td>
+                <td v-else>{{heat_score_row.wave_10}}</td>
               </tr>
             </tbody>
           </table>
+        </div>
+
+        <div class="text-right my-4">
+          <button @click="back"
+            class="btn btn-secondary mr-3"
+            style="width: 10%;"
+          >
+            Back
+          </button>
+          <button @click="saveResults"
+            class="btn btn-info mr-3"
+            style="width: 10%;"
+          >
+            Save
+          </button>
+          <button @click="refresh"
+            class="btn btn-warning"
+            style="width: 10%;"
+          >
+            Refresh
+          </button>
         </div>
       </div>
     </div>

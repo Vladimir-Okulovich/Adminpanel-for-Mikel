@@ -136,6 +136,8 @@ Route::group([ 'prefix' => 'v1', 'middleware' => 'api'], function(){
         Route::post('live-management/competition-heat/progress-status', 'App\Http\Controllers\Api\v1\LiveManagementController@setProgressStatus');
         // /* Get Competition Heat Details */
         Route::post('live-management/competition-heat/heat-details', 'App\Http\Controllers\Api\v1\LiveManagementController@initHeatDetails');
+        // /* Store Competition Heat Details */
+        Route::post('live-management/competition-heat/heat-details/store', 'App\Http\Controllers\Api\v1\LiveManagementController@storeFinalHeatResults');
 
         /* Get all participants details*/
         Route::get('participants', 'App\Http\Controllers\Api\v1\ParticipantController@getAll');
