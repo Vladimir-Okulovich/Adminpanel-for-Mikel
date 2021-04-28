@@ -346,6 +346,8 @@ class LiveManagementController extends Controller
                                                             ->where('modality_id', $current_modality)->get();
         $round_heats = Round_heat::whereIn('com_cat_mod_participant_id', $com_cat_mod_participant_ids)
                                 ->where('round', $current_round)->get();
+        // $next_round_heats = Round_heat::whereIn('com_cat_mod_participant_id', $com_cat_mod_participant_ids)
+        //                             ->where('round', $current_round+1)->get();
         $isCreatingNew = true;
         $new_round_heats = [];
         foreach ($round_heats as $round_heat) {
