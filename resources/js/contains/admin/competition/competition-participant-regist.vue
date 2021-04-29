@@ -77,17 +77,17 @@
       /**
        * Total no. of records
        */
-      rows_1() {
+      rows_2() {
         return this.getRegisteredParticipants.length;
       },
-      rows_2() {
+      rows_1() {
         return this.getNonRegisteredParticipants.length;
       },
     },
     mounted() {
       // Set the initial number of items
-      this.totalRows_1 = this.getRegisteredParticipants.length;
-      this.totalRows_2 = this.getNonRegisteredParticipants.length;
+      this.totalRows_2 = this.getRegisteredParticipants.length;
+      this.totalRows_1 = this.getNonRegisteredParticipants.length;
       this.initParticipantsForCompetition(this.$route.params.competitionId);
     },
     methods: {

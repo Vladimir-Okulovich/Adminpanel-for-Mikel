@@ -1,4 +1,7 @@
 const getters = {
+    categoryModalityWithPart(state) {
+        return state.category_modality_with_part;
+    },
     ParticipantsByCompetitionCategoryModality(state) {
         return state.participants_competition_category_modality;
     },

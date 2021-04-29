@@ -28,6 +28,28 @@ class LiveManagementController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function getCategoryModalityWithPart($competitionId)
+    {
+        $category_modality_with_part = [];
+        $categories = Category::all();
+        $modalities = Modality::all();
+        foreach ($categories as $category) {
+            $category->sex;
+            foreach ($modalities as $modality) {
+                $temps = Com_cat_mod_participant::where('competition_id', $competitionId)
+                                        ->where('category_id', $category->id)
+                                        ->where('modality_id', $modality->id)->get();
+                if (count($temps) > 0) {
+                    array_push($category_modality_with_part, $category->name." ".$category->sex->name." ".$modality->name);
+                }
+            }
+        }
+        return response()->json([
+            'message' => 'success',
+            'category_modality_with_part' => $category_modality_with_part
+        ], 200);
+    }
+
     public function getParticipantsByCompetitionCategoryModality(Request $request)
     {
         $participants = [];

@@ -3,6 +3,19 @@ import JwtService from "@/common/jwt.service";
 import type from './type';
 
 const actions = {
+    getCategoryModalityWithPart(context, competitionId) {
+        ApiService.setHeader();
+        return new Promise((resolve) =>{
+            ApiService.get("api/v1/admin/competition/category-modality-participant/"  + competitionId)
+                .then(({data}) => {
+                    console.log(data);
+                    context.commit(type.GET_CATEGORY_MODALITY_WITH_PART, data)
+                })
+                .catch(({ response }) => {
+                    // context.commit(type.AUTH_LOGOUT);
+                });
+        });
+    },
     getParticipantsByCompetitionCategoryModality(context, data) {
         ApiService.setHeader();
         return new Promise((resolve) =>{
