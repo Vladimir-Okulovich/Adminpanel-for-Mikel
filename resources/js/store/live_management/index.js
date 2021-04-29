@@ -4,6 +4,7 @@ import getters from './getter'
 import JwtService from "@/common/jwt.service"
 
 const defaultState = {
+  category_modality_with_part: [],
   participants_competition_category_modality: [],
   category_id: 0,
   modality_id: 0,

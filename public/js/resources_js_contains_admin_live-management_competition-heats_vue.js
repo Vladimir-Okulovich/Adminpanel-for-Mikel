@@ -95,8 +95,7 @@ __webpack_require__.r(__webpack_exports__);
         round: round,
         heat: heat
       }).then(function (res) {
-        console.log(res.data);
-
+        // console.log(res.data)
         if (res.data.message == "success") {
           _this.$router.push({
             name: 'CompetitionHeatDetails',
@@ -7071,7 +7070,10 @@ var render = function() {
             _vm._l(round, function(heat, heat_index) {
               return _c(
                 "div",
-                { key: heat_index, staticClass: "col-lg-4 col-md-6 col-sm-6" },
+                {
+                  key: heat_index,
+                  staticClass: "col-lg-4 col-md-6 col-sm-6 mb-3"
+                },
                 [
                   _c("div", { staticClass: "table-responsive mb-0" }, [
                     _c("table", { staticClass: "table table-bordered" }, [

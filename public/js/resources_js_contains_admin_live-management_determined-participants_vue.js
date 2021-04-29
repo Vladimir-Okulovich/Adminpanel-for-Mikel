@@ -98,6 +98,9 @@ __webpack_require__.r(__webpack_exports__);
         key: "surname",
         sortable: true
       }, {
+        key: "dni_ficha",
+        sortable: true
+      }, {
         key: "birthday",
         sortable: true
       }, {
@@ -111,31 +114,31 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   watch: {
-    getAllCategoryModality: function getAllCategoryModality() {
-      this.categoryModality = this.getAllCategoryModality[0];
+    categoryModalityWithPart: function categoryModalityWithPart() {
+      this.categoryModality = this.categoryModalityWithPart[0];
       this.getParticipantsByCompetitionCategoryModality({
         competitionId: this.$route.params.competitionId,
         categoryModality: this.categoryModality
       });
     }
   },
-  computed: (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)((0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_7__.mapGetters)(['getAllCategoryModality', 'ParticipantsByCompetitionCategoryModality', 'categoryId', 'modalityId'])), {}, {
+  computed: (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)((0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_7__.mapGetters)(['categoryModalityWithPart', 'ParticipantsByCompetitionCategoryModality', 'categoryId', 'modalityId'])), {}, {
     /**
      * Total no. of records
      */
     rows: function rows() {
       return this.ParticipantsByCompetitionCategoryModality.length;
     } // categoryModality: function () {
-    //   return this.getAllCategoryModality[0]
+    //   return this.categoryModalityWithPart[0]
     // },
 
   }),
   mounted: function mounted() {
     // Set the initial number of items
     this.totalRows = this.ParticipantsByCompetitionCategoryModality.length;
-    this.initCategoryModality();
+    this.getCategoryModalityWithPart(this.$route.params.competitionId);
   },
-  methods: (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)((0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_7__.mapActions)(['initCategoryModality', 'getParticipantsByCompetitionCategoryModality', 'unregistParticipantToCompetitionCategoryModality', 'createFirstCompetitionBoxes'])), {}, {
+  methods: (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)((0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_7__.mapActions)(['getCategoryModalityWithPart', 'getParticipantsByCompetitionCategoryModality', 'unregistParticipantToCompetitionCategoryModality', 'createFirstCompetitionBoxes'])), {}, {
     /**
      * Search the table data with search input
      */
@@ -7060,7 +7063,7 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-lg-6 col-md-12" }, [
+        _c("div", { staticClass: "col-12" }, [
           _c("div", { staticClass: "card" }, [
             _c(
               "div",
@@ -7071,7 +7074,7 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("multiselect", {
-                  attrs: { options: _vm.getAllCategoryModality },
+                  attrs: { options: _vm.categoryModalityWithPart },
                   on: { input: _vm.categoryModalityHandler },
                   model: {
                     value: _vm.categoryModality,
@@ -7087,7 +7090,7 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "col-lg-6 col-md-12" }, [
+        _c("div", { staticClass: "col-12" }, [
           _c("div", { staticClass: "card" }, [
             _c("div", { staticClass: "card-body" }, [
               _c("h4", { staticClass: "card-title mb-4" }, [

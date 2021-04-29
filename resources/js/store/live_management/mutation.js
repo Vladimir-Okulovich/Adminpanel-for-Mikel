@@ -2,6 +2,9 @@ import type from './type'
 import JwtService from '@/common/jwt.service'
 
 const mutations = {
+  [type.GET_CATEGORY_MODALITY_WITH_PART] (state, data) {
+    state.category_modality_with_part = data.category_modality_with_part;
+  },
   [type.SET_PARTICIPANTS_COMPETITION_CATEGORY_MODALITY] (state, data) {
     state.participants_competition_category_modality = data.participants_competition_category_modality;
     state.category_id = data.category_id;

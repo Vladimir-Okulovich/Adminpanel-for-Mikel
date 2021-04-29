@@ -53,7 +53,7 @@
           heat: heat,
         })
         .then((res) => {
-          console.log(res.data)
+          // console.log(res.data)
           if (res.data.message == "success") {
             this.$router.push({ name: 'CompetitionHeatDetails', params: {competitionId: this.competitionId, categoryId: this.categoryId, modalityId: this.modalityId, round: round, heat: heat} })
           } else {
@@ -98,7 +98,7 @@
       <h4 class="my-4 col-12" v-else-if="round.length == 2">SEMI FINALS</h4>
       <h4 class="my-4 col-12" v-else-if="round.length == 3">QUARTER FINALS</h4>
       <h4 class="my-4 col-12" v-else>ROUND {{ round_index+1 }}</h4>
-      <div class="col-lg-4 col-md-6 col-sm-6" v-for="(heat, heat_index) in round" :key="heat_index">
+      <div class="col-lg-4 col-md-6 col-sm-6 mb-3" v-for="(heat, heat_index) in round" :key="heat_index">
         <div class="table-responsive mb-0">
           <table class="table table-bordered">
             <thead>

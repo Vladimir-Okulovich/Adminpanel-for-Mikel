@@ -127,6 +127,8 @@ Route::group([ 'prefix' => 'v1', 'middleware' => 'api'], function(){
         Route::post('competition/modality/participant', 'App\Http\Controllers\Api\v1\ManageRankingController@getModalityOfParticipant');
 
         // Live Competition Management
+        // /* Get category and modality with part*/
+        Route::get('competition/category-modality-participant/{competitionId}', 'App\Http\Controllers\Api\v1\LiveManagementController@getCategoryModalityWithPart');
         // /* Get Participants by category and modality */
         Route::post('competition/category-modality/participants', 'App\Http\Controllers\Api\v1\LiveManagementController@getParticipantsByCompetitionCategoryModality');
         // /* Unregist Participants by category and modality */

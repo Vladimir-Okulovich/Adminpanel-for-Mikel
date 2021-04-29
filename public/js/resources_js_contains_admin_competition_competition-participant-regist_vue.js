@@ -125,17 +125,17 @@ __webpack_require__.r(__webpack_exports__);
     /**
      * Total no. of records
      */
-    rows_1: function rows_1() {
+    rows_2: function rows_2() {
       return this.getRegisteredParticipants.length;
     },
-    rows_2: function rows_2() {
+    rows_1: function rows_1() {
       return this.getNonRegisteredParticipants.length;
     }
   }),
   mounted: function mounted() {
     // Set the initial number of items
-    this.totalRows_1 = this.getRegisteredParticipants.length;
-    this.totalRows_2 = this.getNonRegisteredParticipants.length;
+    this.totalRows_2 = this.getRegisteredParticipants.length;
+    this.totalRows_1 = this.getNonRegisteredParticipants.length;
     this.initParticipantsForCompetition(this.$route.params.competitionId);
   },
   methods: (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)((0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_7__.mapActions)(['initParticipantsForCompetition', 'registParticipantToCompetition', 'updateParticipantToCompetition', 'unregistParticipantToCompetition', 'getModalityOfParticipant'])), {}, {

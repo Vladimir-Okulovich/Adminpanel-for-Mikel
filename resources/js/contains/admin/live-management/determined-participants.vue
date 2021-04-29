@@ -45,6 +45,7 @@
         fields: [
           { key: "name", sortable: true },
           { key: "surname", sortable: true },
+          { key: "dni_ficha", sortable: true },
           { key: "birthday", sortable: true },
           { key: "club", sortable: false },
           { key: "actions", sortable: false },
@@ -53,8 +54,8 @@
       }
     },
     watch: {
-      getAllCategoryModality: function () {
-        this.categoryModality = this.getAllCategoryModality[0];
+      categoryModalityWithPart: function () {
+        this.categoryModality = this.categoryModalityWithPart[0];
         this.getParticipantsByCompetitionCategoryModality({
           competitionId: this.$route.params.competitionId,
           categoryModality: this.categoryModality,
@@ -63,7 +64,7 @@
     },
     computed: {
       ...mapGetters([
-        'getAllCategoryModality',
+        'categoryModalityWithPart',
         'ParticipantsByCompetitionCategoryModality',
         'categoryId',
         'modalityId',
@@ -75,17 +76,17 @@
         return this.ParticipantsByCompetitionCategoryModality.length;
       },
       // categoryModality: function () {
-      //   return this.getAllCategoryModality[0]
+      //   return this.categoryModalityWithPart[0]
       // },
     },
     mounted() {
       // Set the initial number of items
       this.totalRows = this.ParticipantsByCompetitionCategoryModality.length;
-      this.initCategoryModality();
+      this.getCategoryModalityWithPart(this.$route.params.competitionId);
     },
     methods: {
       ...mapActions([
-        'initCategoryModality',
+        'getCategoryModalityWithPart',
         'getParticipantsByCompetitionCategoryModality',
         'unregistParticipantToCompetitionCategoryModality',
         'createFirstCompetitionBoxes',
@@ -144,20 +145,20 @@
     </PageHeader>
 
     <div class="row">
-      <div class="col-lg-6 col-md-12">
+      <div class="col-12">
         <div class="card">
           <div class="card-body">
             <h4 class="card-title mb-4">Categories and Modalities</h4>
             <multiselect 
               v-model="categoryModality"
-              :options="getAllCategoryModality"
+              :options="categoryModalityWithPart"
               @input="categoryModalityHandler"
             ></multiselect>
           </div>
         </div>
       </div>
 
-      <div class="col-lg-6 col-md-12">
+      <div class="col-12">
         <div class="card">
           <div class="card-body">
             <h4 class="card-title mb-4">Participants Table</h4>
