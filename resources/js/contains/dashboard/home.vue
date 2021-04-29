@@ -24,14 +24,14 @@
     },
     computed: {
       ...mapGetters([
-        'all_round_heats',
+        'all_home_round_heats',
       ]),
     },
     mounted() {
       this.competitionId = this.$route.params.competitionId;
       this.categoryId = this.$route.params.categoryId;
       this.modalityId = this.$route.params.modalityId;
-      this.initCompetitionHeats({
+      this.initHomeCompetitionHeats({
         competitionId: this.competitionId,
         categoryId: this.categoryId,
         modalityId: this.modalityId,
@@ -39,7 +39,7 @@
     },
     methods: {
       ...mapActions([
-        'initCompetitionHeats',
+        'initHomeCompetitionHeats',
       ]),
       refresh() {
         window.location.reload();
@@ -49,22 +49,22 @@
 </script>
 <template>
   <Layout>
-    <div class="d-flex pt-4" style="position: relative;">
+    <div class="d-flex" style="position: relative;">
       <b-img
         :src="'/images/logo.png'"
         height="127"
         alt="logo"
       ></b-img>
       <div class="w-50" style="border: 1px solid #64676f;">
-        <h4 class="mb-0 text-center" style="border-bottom: 1px solid #64676f;padding: 5px 20px;">{{ all_round_heats[0][0][0].com_cat_mod_participant.competition.title }}</h4>
-        <p class="mb-0" style="border-bottom: 1px solid #64676f;padding: 3px 20px;">{{ all_round_heats[0][0][0].com_cat_mod_participant.competition.description }}</p>
+        <h4 class="mb-0 text-center" style="border-bottom: 1px solid #64676f;padding: 5px 20px;">{{ all_home_round_heats[0][0][0].com_cat_mod_participant.competition.title }}</h4>
+        <p class="mb-0" style="border-bottom: 1px solid #64676f;padding: 3px 20px;">{{ all_home_round_heats[0][0][0].com_cat_mod_participant.competition.description }}</p>
         <p class="mb-0" style="border-bottom: 1px solid #64676f;padding: 3px 20px;">
           Lekua, data eta ordua:
-          {{ all_round_heats[0][0][0].com_cat_mod_participant.competition.place }}
-          {{ all_round_heats[0][0][0].com_cat_mod_participant.competition.date }}
-          {{ all_round_heats[0][0][0].com_cat_mod_participant.competition.time }}
+          {{ all_home_round_heats[0][0][0].com_cat_mod_participant.competition.place }}
+          {{ all_home_round_heats[0][0][0].com_cat_mod_participant.competition.date }}
+          {{ all_home_round_heats[0][0][0].com_cat_mod_participant.competition.time }}
         </p>
-        <p class="mb-0" style="padding: 3px 20px;">Antolatzailea: {{ all_round_heats[0][0][0].com_cat_mod_participant.competition.organizer }}</p>
+        <p class="mb-0" style="padding: 3px 20px;">Antolatzailea: {{ all_home_round_heats[0][0][0].com_cat_mod_participant.competition.organizer }}</p>
       </div>
       <button @click="refresh"
         class="btn btn-warning"
@@ -76,13 +76,13 @@
 
     <div class="text-center w-100 mt-4">
       <h4 style="background: #32394e;padding: 10px 0;">
-        {{ all_round_heats[0][0][0].com_cat_mod_participant.category.name }}
-        {{ all_round_heats[0][0][0].com_cat_mod_participant.category.sex.name }}
-        {{ all_round_heats[0][0][0].com_cat_mod_participant.modality.name }}
+        {{ all_home_round_heats[0][0][0].com_cat_mod_participant.category.name }}
+        {{ all_home_round_heats[0][0][0].com_cat_mod_participant.category.sex.name }}
+        {{ all_home_round_heats[0][0][0].com_cat_mod_participant.modality.name }}
       </h4>
     </div>
 
-    <div class="row" v-for="(round, round_index) in all_round_heats" :key="round_index">
+    <div class="row" v-for="(round, round_index) in all_home_round_heats" :key="round_index">
       <h4 class="my-4 col-12" v-if="round.length == 1">FINAL</h4>
       <h4 class="my-4 col-12" v-else-if="round.length == 2">SEMI FINALS</h4>
       <h4 class="my-4 col-12" v-else-if="round.length == 3">QUARTER FINALS</h4>

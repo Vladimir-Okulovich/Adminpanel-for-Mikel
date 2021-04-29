@@ -10,6 +10,7 @@ const defaultState = {
       register: []
   },
   userId: null,
+  userRole: JwtService.getRole()? JwtService.getRole() : null,
   isAuthenticated: JwtService.getToken()? true : false,
 };
 

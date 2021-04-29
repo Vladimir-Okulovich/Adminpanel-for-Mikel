@@ -220,7 +220,4 @@
   </Layout>
 </template>
 <style>
-  tbody tr {
-    cursor: pointer;
-  }
 </style>

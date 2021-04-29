@@ -15,16 +15,19 @@ const mutations = {
   [type.AUTH_SET_USER] (state, data) {
       state.isAuthenticated = true;
       state.userId = data.userId;
+      state.userRole = data.userRole;
       state.token = data.token;
       state.errors = {
           login: [],
           register: []
       };
-      console.log(data.token);
+    //   console.log(data.token);
       JwtService.setToken(data.token);
+      JwtService.setRole(data.userRole);
   },
   [type.AUTH_LOGOUT] (state, payload) {
       JwtService.unsetToken();
+      JwtService.unsetRole();
   },
   [type.AUTH_RESET_STATE] (state, payload) {
     state.isAuthenticated = false;

@@ -42,6 +42,7 @@ __webpack_require__.r(__webpack_exports__);
       isAuthError: false
     };
   },
+  computed: (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_4__.mapGetters)(['currentRole'])),
   methods: (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)((0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_4__.mapActions)(['login'])), {}, {
     // Try to log the user in with the username
     // and password they provided.
@@ -55,9 +56,20 @@ __webpack_require__.r(__webpack_exports__);
         email: this.email,
         password: this.password
       }).then(function (res) {
-        _this.$router.push({
-          name: "Users"
-        });
+        // console.log(this.currentRole)
+        if (_this.currentRole == 'Admin') {
+          _this.$router.push({
+            name: "Users"
+          });
+        } else if (_this.currentRole == 'Judge') {
+          _this.$router.push({
+            name: "Judge"
+          });
+        } else {
+          _this.$router.push({
+            name: "Home"
+          });
+        }
 
         _this.tryingToLogIn = false;
         _this.isAuthError = false;
