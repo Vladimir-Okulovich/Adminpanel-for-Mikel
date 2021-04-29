@@ -7225,7 +7225,13 @@ var render = function() {
                               }
                             })
                           ])
-                        : _c("td", [_vm._v(_vm._s(heat_score_row.wave_1))]),
+                        : _c("td", [
+                            _vm._v(
+                              _vm._s(
+                                parseFloat(heat_score_row.wave_1).toFixed(2)
+                              )
+                            )
+                          ]),
                       _vm._v(" "),
                       heat_score_row.judge_id != "Average"
                         ? _c("td", [
@@ -7255,7 +7261,13 @@ var render = function() {
                               }
                             })
                           ])
-                        : _c("td", [_vm._v(_vm._s(heat_score_row.wave_2))]),
+                        : _c("td", [
+                            _vm._v(
+                              _vm._s(
+                                parseFloat(heat_score_row.wave_2).toFixed(2)
+                              )
+                            )
+                          ]),
                       _vm._v(" "),
                       heat_score_row.judge_id != "Average"
                         ? _c("td", [
@@ -7285,7 +7297,13 @@ var render = function() {
                               }
                             })
                           ])
-                        : _c("td", [_vm._v(_vm._s(heat_score_row.wave_3))]),
+                        : _c("td", [
+                            _vm._v(
+                              _vm._s(
+                                parseFloat(heat_score_row.wave_3).toFixed(2)
+                              )
+                            )
+                          ]),
                       _vm._v(" "),
                       heat_score_row.judge_id != "Average"
                         ? _c("td", [
@@ -7315,7 +7333,13 @@ var render = function() {
                               }
                             })
                           ])
-                        : _c("td", [_vm._v(_vm._s(heat_score_row.wave_4))]),
+                        : _c("td", [
+                            _vm._v(
+                              _vm._s(
+                                parseFloat(heat_score_row.wave_4).toFixed(2)
+                              )
+                            )
+                          ]),
                       _vm._v(" "),
                       heat_score_row.judge_id != "Average"
                         ? _c("td", [
@@ -7345,7 +7369,13 @@ var render = function() {
                               }
                             })
                           ])
-                        : _c("td", [_vm._v(_vm._s(heat_score_row.wave_5))]),
+                        : _c("td", [
+                            _vm._v(
+                              _vm._s(
+                                parseFloat(heat_score_row.wave_5).toFixed(2)
+                              )
+                            )
+                          ]),
                       _vm._v(" "),
                       heat_score_row.judge_id != "Average"
                         ? _c("td", [
@@ -7375,7 +7405,13 @@ var render = function() {
                               }
                             })
                           ])
-                        : _c("td", [_vm._v(_vm._s(heat_score_row.wave_6))]),
+                        : _c("td", [
+                            _vm._v(
+                              _vm._s(
+                                parseFloat(heat_score_row.wave_6).toFixed(2)
+                              )
+                            )
+                          ]),
                       _vm._v(" "),
                       heat_score_row.judge_id != "Average"
                         ? _c("td", [
@@ -7405,7 +7441,13 @@ var render = function() {
                               }
                             })
                           ])
-                        : _c("td", [_vm._v(_vm._s(heat_score_row.wave_7))]),
+                        : _c("td", [
+                            _vm._v(
+                              _vm._s(
+                                parseFloat(heat_score_row.wave_7).toFixed(2)
+                              )
+                            )
+                          ]),
                       _vm._v(" "),
                       heat_score_row.judge_id != "Average"
                         ? _c("td", [
@@ -7435,7 +7477,13 @@ var render = function() {
                               }
                             })
                           ])
-                        : _c("td", [_vm._v(_vm._s(heat_score_row.wave_8))]),
+                        : _c("td", [
+                            _vm._v(
+                              _vm._s(
+                                parseFloat(heat_score_row.wave_8).toFixed(2)
+                              )
+                            )
+                          ]),
                       _vm._v(" "),
                       heat_score_row.judge_id != "Average"
                         ? _c("td", [
@@ -7465,7 +7513,13 @@ var render = function() {
                               }
                             })
                           ])
-                        : _c("td", [_vm._v(_vm._s(heat_score_row.wave_9))]),
+                        : _c("td", [
+                            _vm._v(
+                              _vm._s(
+                                parseFloat(heat_score_row.wave_9).toFixed(2)
+                              )
+                            )
+                          ]),
                       _vm._v(" "),
                       heat_score_row.judge_id != "Average"
                         ? _c("td", [
@@ -7495,7 +7549,13 @@ var render = function() {
                               }
                             })
                           ])
-                        : _c("td", [_vm._v(_vm._s(heat_score_row.wave_10))])
+                        : _c("td", [
+                            _vm._v(
+                              _vm._s(
+                                parseFloat(heat_score_row.wave_10).toFixed(2)
+                              )
+                            )
+                          ])
                     ])
                   }),
                   0

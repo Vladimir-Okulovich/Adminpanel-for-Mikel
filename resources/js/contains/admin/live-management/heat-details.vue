@@ -142,25 +142,25 @@
                 <td rowspan="4" :style="{background: heat_score_row.round_heat.lycra.color}" v-if="index_2==0"></td>
                 <td>{{ heat_score_row.judge_id }}</td>
                 <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_1" type="number" step="0.1" class="custom-input" /></td>
-                <td v-else>{{heat_score_row.wave_1}}</td>
+                <td v-else>{{ parseFloat(heat_score_row.wave_1).toFixed(2) }}</td>
                 <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_2" type="number" step="0.1" class="custom-input" /></td>
-                <td v-else>{{heat_score_row.wave_2}}</td>
+                <td v-else>{{ parseFloat(heat_score_row.wave_2).toFixed(2) }}</td>
                 <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_3" type="number" step="0.1" class="custom-input" /></td>
-                <td v-else>{{heat_score_row.wave_3}}</td>
+                <td v-else>{{ parseFloat(heat_score_row.wave_3).toFixed(2) }}</td>
                 <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_4" type="number" step="0.1" class="custom-input" /></td>
-                <td v-else>{{heat_score_row.wave_4}}</td>
+                <td v-else>{{ parseFloat(heat_score_row.wave_4).toFixed(2) }}</td>
                 <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_5" type="number" step="0.1" class="custom-input" /></td>
-                <td v-else>{{heat_score_row.wave_5}}</td>
+                <td v-else>{{ parseFloat(heat_score_row.wave_5).toFixed(2) }}</td>
                 <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_6" type="number" step="0.1" class="custom-input" /></td>
-                <td v-else>{{heat_score_row.wave_6}}</td>
+                <td v-else>{{ parseFloat(heat_score_row.wave_6).toFixed(2) }}</td>
                 <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_7" type="number" step="0.1" class="custom-input" /></td>
-                <td v-else>{{heat_score_row.wave_7}}</td>
+                <td v-else>{{ parseFloat(heat_score_row.wave_7).toFixed(2) }}</td>
                 <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_8" type="number" step="0.1" class="custom-input" /></td>
-                <td v-else>{{heat_score_row.wave_8}}</td>
+                <td v-else>{{ parseFloat(heat_score_row.wave_8).toFixed(2) }}</td>
                 <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_9" type="number" step="0.1" class="custom-input" /></td>
-                <td v-else>{{heat_score_row.wave_9}}</td>
+                <td v-else>{{ parseFloat(heat_score_row.wave_9).toFixed(2) }}</td>
                 <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_10" type="number" step="0.1" class="custom-input" /></td>
-                <td v-else>{{heat_score_row.wave_10}}</td>
+                <td v-else>{{ parseFloat(heat_score_row.wave_10).toFixed(2) }}</td>
               </tr>
             </tbody>
           </table>
