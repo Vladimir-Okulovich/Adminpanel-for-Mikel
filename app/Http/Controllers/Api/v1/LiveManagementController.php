@@ -249,16 +249,16 @@ class LiveManagementController extends Controller
                 $temp->round_heat->lycra;
 
                 $average['round_heat_id'] = $temp->round_heat_id;
-                $average['wave_1'] = number_format($average['wave_1'] + $temp->wave_1/3, 2);
-                $average['wave_2'] = number_format($average['wave_2'] + $temp->wave_2/3, 2);
-                $average['wave_3'] = number_format($average['wave_3'] + $temp->wave_3/3, 2);
-                $average['wave_4'] = number_format($average['wave_4'] + $temp->wave_4/3, 2);
-                $average['wave_5'] = number_format($average['wave_5'] + $temp->wave_5/3, 2);
-                $average['wave_6'] = number_format($average['wave_6'] + $temp->wave_6/3, 2);
-                $average['wave_7'] = number_format($average['wave_7'] + $temp->wave_7/3, 2);
-                $average['wave_8'] = number_format($average['wave_8'] + $temp->wave_8/3, 2);
-                $average['wave_9'] = number_format($average['wave_9'] + $temp->wave_9/3, 2);
-                $average['wave_10'] = number_format($average['wave_10'] + $temp->wave_10/3, 2);
+                $average['wave_1'] = $average['wave_1'] + $temp->wave_1/3;
+                $average['wave_2'] = $average['wave_2'] + $temp->wave_2/3;
+                $average['wave_3'] = $average['wave_3'] + $temp->wave_3/3;
+                $average['wave_4'] = $average['wave_4'] + $temp->wave_4/3;
+                $average['wave_5'] = $average['wave_5'] + $temp->wave_5/3;
+                $average['wave_6'] = $average['wave_6'] + $temp->wave_6/3;
+                $average['wave_7'] = $average['wave_7'] + $temp->wave_7/3;
+                $average['wave_8'] = $average['wave_8'] + $temp->wave_8/3;
+                $average['wave_9'] = $average['wave_9'] + $temp->wave_9/3;
+                $average['wave_10'] = $average['wave_10'] + $temp->wave_10/3;
                 array_push($heat_scores_temp, $temp);
             }
             array_push($heat_scores_temp, $average);
@@ -325,22 +325,24 @@ class LiveManagementController extends Controller
             ];
             $temps = Heat_score::where('round_heat_id', $round_heat->id)->orderBy('judge_id')->get();
             foreach ($temps as $temp) {
-                $average['wave_1'] = number_format($average['wave_1'] + $temp->wave_1/3, 2);
-                $average['wave_2'] = number_format($average['wave_2'] + $temp->wave_2/3, 2);
-                $average['wave_3'] = number_format($average['wave_3'] + $temp->wave_3/3, 2);
-                $average['wave_4'] = number_format($average['wave_4'] + $temp->wave_4/3, 2);
-                $average['wave_5'] = number_format($average['wave_5'] + $temp->wave_5/3, 2);
-                $average['wave_6'] = number_format($average['wave_6'] + $temp->wave_6/3, 2);
-                $average['wave_7'] = number_format($average['wave_7'] + $temp->wave_7/3, 2);
-                $average['wave_8'] = number_format($average['wave_8'] + $temp->wave_8/3, 2);
-                $average['wave_9'] = number_format($average['wave_9'] + $temp->wave_9/3, 2);
-                $average['wave_10'] = number_format($average['wave_10'] + $temp->wave_10/3, 2);
+                $average['wave_1'] = $average['wave_1'] + $temp->wave_1/3;
+                $average['wave_2'] = $average['wave_2'] + $temp->wave_2/3;
+                $average['wave_3'] = $average['wave_3'] + $temp->wave_3/3;
+                $average['wave_4'] = $average['wave_4'] + $temp->wave_4/3;
+                $average['wave_5'] = $average['wave_5'] + $temp->wave_5/3;
+                $average['wave_6'] = $average['wave_6'] + $temp->wave_6/3;
+                $average['wave_7'] = $average['wave_7'] + $temp->wave_7/3;
+                $average['wave_8'] = $average['wave_8'] + $temp->wave_8/3;
+                $average['wave_9'] = $average['wave_9'] + $temp->wave_9/3;
+                $average['wave_10'] = $average['wave_10'] + $temp->wave_10/3;
             }
             $ret = $this->sortAverage($average);
+            $first_score = floatval(number_format($ret['first_score'], 2, '.', ''));
+            $second_score = floatval(number_format($ret['second_score'], 2, '.', ''));
             $round_heat->update([
-                'first_score' => number_format($ret['first_score'], 2),
-                'second_score' => number_format($ret['second_score'], 2),
-                'points' => number_format($ret['first_score'] + $ret['second_score'], 2),
+                'first_score' => $first_score,
+                'second_score' => $second_score,
+                'points' => $first_score + $second_score,
             ]);
             array_push($points, $round_heat->points);
         }
