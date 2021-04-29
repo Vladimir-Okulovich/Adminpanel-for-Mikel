@@ -90,13 +90,13 @@ class CategorySeeder extends Seeder
             'year2' => 1971
         ], [
             'sex_id' => 2,
-            'name' => 'Master', 
+            'name' => 'GRANDGRANDMaster', 
             'description' => 'Categoria GRANDGRANDMaster Masculina',
             'year1' => 1920,
             'year2' => 1961
         ], [
             'sex_id' => 1,
-            'name' => 'Master', 
+            'name' => 'GRANDGRANDMaster', 
             'description' => 'Categoria GRANDGRANDMaster Femenino',
             'year1' => 1920,
             'year2' => 1961
