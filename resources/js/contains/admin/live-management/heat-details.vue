@@ -51,18 +51,32 @@
         'initHeatDetails',
         'storeFinalHeatResults',
       ]),
-      
+
+      averageHandler() {
+        console.log(this.heat_scores)
+        this.heat_scores.forEach(function(heat_score) {
+          for (var i = 1; i < 11; i++) {
+            heat_score[3]['wave_'+i] = 0;
+            for (var j = 0; j < 3; j++) {
+              heat_score[3]['wave_'+i] += heat_score[j]['wave_'+i]/3; 
+            }
+          }
+        })
+      },
       saveResults() {
         this.storeFinalHeatResults({
           heat_scores: this.heat_scores,
+        })
+        .then(() => {
+          this.$router.go(-1);
         });
       },
-      refresh() {
-        window.location.reload();
-      },
-      back() {
-        this.$router.go(-1);
-      },
+      // refresh() {
+      //   window.location.reload();
+      // },
+      // back() {
+      //   this.$router.go(-1);
+      // },
     }
 	};
 </script>
@@ -140,50 +154,39 @@
             <tbody v-for="(heat_score, index_1) in heat_scores" :key="index_1">
               <tr v-for="(heat_score_row, index_2) in heat_score" :key="index_2">
                 <td rowspan="4" :style="{background: heat_score_row.round_heat.lycra.color}" v-if="index_2==0"></td>
-                <td>{{ heat_score_row.judge_id }}</td>
-                <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_1" type="number" step="0.1" class="custom-input" /></td>
-                <td v-else>{{ parseFloat(heat_score_row.wave_1).toFixed(2) }}</td>
-                <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_2" type="number" step="0.1" class="custom-input" /></td>
-                <td v-else>{{ parseFloat(heat_score_row.wave_2).toFixed(2) }}</td>
-                <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_3" type="number" step="0.1" class="custom-input" /></td>
-                <td v-else>{{ parseFloat(heat_score_row.wave_3).toFixed(2) }}</td>
-                <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_4" type="number" step="0.1" class="custom-input" /></td>
-                <td v-else>{{ parseFloat(heat_score_row.wave_4).toFixed(2) }}</td>
-                <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_5" type="number" step="0.1" class="custom-input" /></td>
-                <td v-else>{{ parseFloat(heat_score_row.wave_5).toFixed(2) }}</td>
-                <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_6" type="number" step="0.1" class="custom-input" /></td>
-                <td v-else>{{ parseFloat(heat_score_row.wave_6).toFixed(2) }}</td>
-                <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_7" type="number" step="0.1" class="custom-input" /></td>
-                <td v-else>{{ parseFloat(heat_score_row.wave_7).toFixed(2) }}</td>
-                <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_8" type="number" step="0.1" class="custom-input" /></td>
-                <td v-else>{{ parseFloat(heat_score_row.wave_8).toFixed(2) }}</td>
-                <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_9" type="number" step="0.1" class="custom-input" /></td>
-                <td v-else>{{ parseFloat(heat_score_row.wave_9).toFixed(2) }}</td>
-                <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_10" type="number" step="0.1" class="custom-input" /></td>
-                <td v-else>{{ parseFloat(heat_score_row.wave_10).toFixed(2) }}</td>
+                <td v-if="heat_score_row.judge_id != 'Average'">{{ heat_score_row.judge_id }}</td>
+                <td v-else style="background: #0c101d;">{{ heat_score_row.judge_id }}</td>
+                <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_1" v-on:change="averageHandler" type="number" step="0.1" class="custom-input" /></td>
+                <td v-else style="background: #0c101d;">{{ parseFloat(heat_score_row.wave_1).toFixed(2) }}</td>
+                <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_2" v-on:change="averageHandler" type="number" step="0.1" class="custom-input" /></td>
+                <td v-else style="background: #0c101d;">{{ parseFloat(heat_score_row.wave_2).toFixed(2) }}</td>
+                <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_3" v-on:change="averageHandler" type="number" step="0.1" class="custom-input" /></td>
+                <td v-else style="background: #0c101d;">{{ parseFloat(heat_score_row.wave_3).toFixed(2) }}</td>
+                <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_4" v-on:change="averageHandler" type="number" step="0.1" class="custom-input" /></td>
+                <td v-else style="background: #0c101d;">{{ parseFloat(heat_score_row.wave_4).toFixed(2) }}</td>
+                <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_5" v-on:change="averageHandler" type="number" step="0.1" class="custom-input" /></td>
+                <td v-else style="background: #0c101d;">{{ parseFloat(heat_score_row.wave_5).toFixed(2) }}</td>
+                <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_6" v-on:change="averageHandler" type="number" step="0.1" class="custom-input" /></td>
+                <td v-else style="background: #0c101d;">{{ parseFloat(heat_score_row.wave_6).toFixed(2) }}</td>
+                <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_7" v-on:change="averageHandler" type="number" step="0.1" class="custom-input" /></td>
+                <td v-else style="background: #0c101d;">{{ parseFloat(heat_score_row.wave_7).toFixed(2) }}</td>
+                <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_8" v-on:change="averageHandler" type="number" step="0.1" class="custom-input" /></td>
+                <td v-else style="background: #0c101d;">{{ parseFloat(heat_score_row.wave_8).toFixed(2) }}</td>
+                <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_9" v-on:change="averageHandler" type="number" step="0.1" class="custom-input" /></td>
+                <td v-else style="background: #0c101d;">{{ parseFloat(heat_score_row.wave_9).toFixed(2) }}</td>
+                <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_10" v-on:change="averageHandler" type="number" step="0.1" class="custom-input" /></td>
+                <td v-else style="background: #0c101d;">{{ parseFloat(heat_score_row.wave_10).toFixed(2) }}</td>
               </tr>
             </tbody>
           </table>
         </div>
 
         <div class="text-right my-4">
-          <button @click="back"
-            class="btn btn-secondary mr-3"
-            style="width: 10%;"
-          >
-            Back
-          </button>
           <button @click="saveResults"
-            class="btn btn-info mr-3"
+            class="btn btn-info"
             style="width: 10%;"
           >
-            Save
-          </button>
-          <button @click="refresh"
-            class="btn btn-warning"
-            style="width: 10%;"
-          >
-            Refresh
+            Terminar Manga
           </button>
         </div>
       </div>

@@ -122,7 +122,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     }
   },
-  computed: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)((0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_7__.mapGetters)(['categoryModalityWithPart', 'ParticipantsByCompetitionCategoryModality', 'categoryId', 'modalityId'])), {}, {
+  computed: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)((0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_7__.mapGetters)(['categoryModalityWithPart', 'ParticipantsByCompetitionCategoryModality', 'categoryId', 'modalityId', 'categoryStatus'])), {}, {
     /**
      * Total no. of records
      */
@@ -7051,14 +7051,23 @@ var render = function() {
     [
       _c("PageHeader", { attrs: { title: _vm.title, items: _vm.items } }, [
         _c("div", { staticClass: "float-right" }, [
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-info btn-block d-inline-block",
-              on: { click: _vm.createCompetitionBox }
-            },
-            [_vm._v("\n        Create Competition Box\n      ")]
-          )
+          !_vm.categoryStatus
+            ? _c(
+                "button",
+                {
+                  staticClass: "btn btn-info btn-block d-inline-block",
+                  on: { click: _vm.createCompetitionBox }
+                },
+                [_vm._v("\n        Create Competition Box\n      ")]
+              )
+            : _c(
+                "button",
+                {
+                  staticClass: "btn btn-info btn-block d-inline-block",
+                  on: { click: _vm.createCompetitionBox }
+                },
+                [_vm._v("\n        Acceder al cuadro de competición\n      ")]
+              )
         ])
       ]),
       _vm._v(" "),

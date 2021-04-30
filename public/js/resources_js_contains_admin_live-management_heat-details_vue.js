@@ -41,11 +41,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var core_js_modules_es_symbol_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_symbol_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es.symbol.description.js */ "./node_modules/core-js/modules/es.symbol.description.js");
 /* harmony import */ var core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
-/* harmony import */ var _subcomponent_layout__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../subcomponent/layout */ "./resources/js/contains/admin/subcomponent/layout.vue");
-/* harmony import */ var _app_config__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/app.config */ "./resources/js/app.config.json");
-/* harmony import */ var _components_page_header__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/components/page-header */ "./resources/js/components/page-header.vue");
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.mjs");
+/* harmony import */ var core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core-js/modules/es.array.for-each.js */ "./node_modules/core-js/modules/es.array.for-each.js");
+/* harmony import */ var core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each.js */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
+/* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
+/* harmony import */ var _subcomponent_layout__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../subcomponent/layout */ "./resources/js/contains/admin/subcomponent/layout.vue");
+/* harmony import */ var _app_config__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/app.config */ "./resources/js/app.config.json");
+/* harmony import */ var _components_page_header__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @/components/page-header */ "./resources/js/components/page-header.vue");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.mjs");
+
+
 
 
 
@@ -58,12 +64,12 @@ __webpack_require__.r(__webpack_exports__);
     title: "Heat Details",
     meta: [{
       name: "description",
-      content: _app_config__WEBPACK_IMPORTED_MODULE_4__.description
+      content: _app_config__WEBPACK_IMPORTED_MODULE_6__.description
     }]
   },
   components: {
-    Layout: _subcomponent_layout__WEBPACK_IMPORTED_MODULE_3__.default,
-    PageHeader: _components_page_header__WEBPACK_IMPORTED_MODULE_5__.default
+    Layout: _subcomponent_layout__WEBPACK_IMPORTED_MODULE_5__.default,
+    PageHeader: _components_page_header__WEBPACK_IMPORTED_MODULE_7__.default
   },
   data: function data() {
     return {
@@ -75,7 +81,7 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   watch: {},
-  computed: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_6__.mapGetters)(['round_heats', 'heat_scores'])),
+  computed: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_4__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_8__.mapGetters)(['round_heats', 'heat_scores'])),
   mounted: function mounted() {
     this.competitionId = this.$route.params.competitionId;
     this.categoryId = this.$route.params.categoryId;
@@ -90,18 +96,34 @@ __webpack_require__.r(__webpack_exports__);
       heat: this.heat
     });
   },
-  methods: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)((0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_6__.mapActions)(['initHeatDetails', 'storeFinalHeatResults'])), {}, {
-    saveResults: function saveResults() {
-      this.storeFinalHeatResults({
-        heat_scores: this.heat_scores
+  methods: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_4__.default)((0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_4__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_8__.mapActions)(['initHeatDetails', 'storeFinalHeatResults'])), {}, {
+    averageHandler: function averageHandler() {
+      console.log(this.heat_scores);
+      this.heat_scores.forEach(function (heat_score) {
+        for (var i = 1; i < 11; i++) {
+          heat_score[3]['wave_' + i] = 0;
+
+          for (var j = 0; j < 3; j++) {
+            heat_score[3]['wave_' + i] += heat_score[j]['wave_' + i] / 3;
+          }
+        }
       });
     },
-    refresh: function refresh() {
-      window.location.reload();
-    },
-    back: function back() {
-      this.$router.go(-1);
-    }
+    saveResults: function saveResults() {
+      var _this = this;
+
+      this.storeFinalHeatResults({
+        heat_scores: this.heat_scores
+      }).then(function () {
+        _this.$router.go(-1);
+      });
+    } // refresh() {
+    //   window.location.reload();
+    // },
+    // back() {
+    //   this.$router.go(-1);
+    // },
+
   })
 });
 
@@ -7195,7 +7217,11 @@ var render = function() {
                           })
                         : _vm._e(),
                       _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(heat_score_row.judge_id))]),
+                      heat_score_row.judge_id != "Average"
+                        ? _c("td", [_vm._v(_vm._s(heat_score_row.judge_id))])
+                        : _c("td", { staticStyle: { background: "#0c101d" } }, [
+                            _vm._v(_vm._s(heat_score_row.judge_id))
+                          ]),
                       _vm._v(" "),
                       heat_score_row.judge_id != "Average"
                         ? _c("td", [
@@ -7212,6 +7238,7 @@ var render = function() {
                               attrs: { type: "number", step: "0.1" },
                               domProps: { value: heat_score_row.wave_1 },
                               on: {
+                                change: _vm.averageHandler,
                                 input: function($event) {
                                   if ($event.target.composing) {
                                     return
@@ -7225,7 +7252,7 @@ var render = function() {
                               }
                             })
                           ])
-                        : _c("td", [
+                        : _c("td", { staticStyle: { background: "#0c101d" } }, [
                             _vm._v(
                               _vm._s(
                                 parseFloat(heat_score_row.wave_1).toFixed(2)
@@ -7248,6 +7275,7 @@ var render = function() {
                               attrs: { type: "number", step: "0.1" },
                               domProps: { value: heat_score_row.wave_2 },
                               on: {
+                                change: _vm.averageHandler,
                                 input: function($event) {
                                   if ($event.target.composing) {
                                     return
@@ -7261,7 +7289,7 @@ var render = function() {
                               }
                             })
                           ])
-                        : _c("td", [
+                        : _c("td", { staticStyle: { background: "#0c101d" } }, [
                             _vm._v(
                               _vm._s(
                                 parseFloat(heat_score_row.wave_2).toFixed(2)
@@ -7284,6 +7312,7 @@ var render = function() {
                               attrs: { type: "number", step: "0.1" },
                               domProps: { value: heat_score_row.wave_3 },
                               on: {
+                                change: _vm.averageHandler,
                                 input: function($event) {
                                   if ($event.target.composing) {
                                     return
@@ -7297,7 +7326,7 @@ var render = function() {
                               }
                             })
                           ])
-                        : _c("td", [
+                        : _c("td", { staticStyle: { background: "#0c101d" } }, [
                             _vm._v(
                               _vm._s(
                                 parseFloat(heat_score_row.wave_3).toFixed(2)
@@ -7320,6 +7349,7 @@ var render = function() {
                               attrs: { type: "number", step: "0.1" },
                               domProps: { value: heat_score_row.wave_4 },
                               on: {
+                                change: _vm.averageHandler,
                                 input: function($event) {
                                   if ($event.target.composing) {
                                     return
@@ -7333,7 +7363,7 @@ var render = function() {
                               }
                             })
                           ])
-                        : _c("td", [
+                        : _c("td", { staticStyle: { background: "#0c101d" } }, [
                             _vm._v(
                               _vm._s(
                                 parseFloat(heat_score_row.wave_4).toFixed(2)
@@ -7356,6 +7386,7 @@ var render = function() {
                               attrs: { type: "number", step: "0.1" },
                               domProps: { value: heat_score_row.wave_5 },
                               on: {
+                                change: _vm.averageHandler,
                                 input: function($event) {
                                   if ($event.target.composing) {
                                     return
@@ -7369,7 +7400,7 @@ var render = function() {
                               }
                             })
                           ])
-                        : _c("td", [
+                        : _c("td", { staticStyle: { background: "#0c101d" } }, [
                             _vm._v(
                               _vm._s(
                                 parseFloat(heat_score_row.wave_5).toFixed(2)
@@ -7392,6 +7423,7 @@ var render = function() {
                               attrs: { type: "number", step: "0.1" },
                               domProps: { value: heat_score_row.wave_6 },
                               on: {
+                                change: _vm.averageHandler,
                                 input: function($event) {
                                   if ($event.target.composing) {
                                     return
@@ -7405,7 +7437,7 @@ var render = function() {
                               }
                             })
                           ])
-                        : _c("td", [
+                        : _c("td", { staticStyle: { background: "#0c101d" } }, [
                             _vm._v(
                               _vm._s(
                                 parseFloat(heat_score_row.wave_6).toFixed(2)
@@ -7428,6 +7460,7 @@ var render = function() {
                               attrs: { type: "number", step: "0.1" },
                               domProps: { value: heat_score_row.wave_7 },
                               on: {
+                                change: _vm.averageHandler,
                                 input: function($event) {
                                   if ($event.target.composing) {
                                     return
@@ -7441,7 +7474,7 @@ var render = function() {
                               }
                             })
                           ])
-                        : _c("td", [
+                        : _c("td", { staticStyle: { background: "#0c101d" } }, [
                             _vm._v(
                               _vm._s(
                                 parseFloat(heat_score_row.wave_7).toFixed(2)
@@ -7464,6 +7497,7 @@ var render = function() {
                               attrs: { type: "number", step: "0.1" },
                               domProps: { value: heat_score_row.wave_8 },
                               on: {
+                                change: _vm.averageHandler,
                                 input: function($event) {
                                   if ($event.target.composing) {
                                     return
@@ -7477,7 +7511,7 @@ var render = function() {
                               }
                             })
                           ])
-                        : _c("td", [
+                        : _c("td", { staticStyle: { background: "#0c101d" } }, [
                             _vm._v(
                               _vm._s(
                                 parseFloat(heat_score_row.wave_8).toFixed(2)
@@ -7500,6 +7534,7 @@ var render = function() {
                               attrs: { type: "number", step: "0.1" },
                               domProps: { value: heat_score_row.wave_9 },
                               on: {
+                                change: _vm.averageHandler,
                                 input: function($event) {
                                   if ($event.target.composing) {
                                     return
@@ -7513,7 +7548,7 @@ var render = function() {
                               }
                             })
                           ])
-                        : _c("td", [
+                        : _c("td", { staticStyle: { background: "#0c101d" } }, [
                             _vm._v(
                               _vm._s(
                                 parseFloat(heat_score_row.wave_9).toFixed(2)
@@ -7536,6 +7571,7 @@ var render = function() {
                               attrs: { type: "number", step: "0.1" },
                               domProps: { value: heat_score_row.wave_10 },
                               on: {
+                                change: _vm.averageHandler,
                                 input: function($event) {
                                   if ($event.target.composing) {
                                     return
@@ -7549,7 +7585,7 @@ var render = function() {
                               }
                             })
                           ])
-                        : _c("td", [
+                        : _c("td", { staticStyle: { background: "#0c101d" } }, [
                             _vm._v(
                               _vm._s(
                                 parseFloat(heat_score_row.wave_10).toFixed(2)
@@ -7570,31 +7606,11 @@ var render = function() {
           _c(
             "button",
             {
-              staticClass: "btn btn-secondary mr-3",
-              staticStyle: { width: "10%" },
-              on: { click: _vm.back }
-            },
-            [_vm._v("\n          Back\n        ")]
-          ),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-info mr-3",
+              staticClass: "btn btn-info",
               staticStyle: { width: "10%" },
               on: { click: _vm.saveResults }
             },
-            [_vm._v("\n          Save\n        ")]
-          ),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-warning",
-              staticStyle: { width: "10%" },
-              on: { click: _vm.refresh }
-            },
-            [_vm._v("\n          Refresh\n        ")]
+            [_vm._v("\n          Terminar Manga\n        ")]
           )
         ])
       ])

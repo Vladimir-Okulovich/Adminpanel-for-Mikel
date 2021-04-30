@@ -68,6 +68,7 @@
         'ParticipantsByCompetitionCategoryModality',
         'categoryId',
         'modalityId',
+        'categoryStatus'
       ]),
       /**
        * Total no. of records
@@ -136,10 +137,15 @@
   <Layout>
     <PageHeader :title="title" :items="items">
       <div class="float-right">
-        <button @click="createCompetitionBox"
+        <button v-if="!categoryStatus" @click="createCompetitionBox"
           class="btn btn-info btn-block d-inline-block"
         >
           Create Competition Box
+        </button>
+        <button v-else @click="createCompetitionBox"
+          class="btn btn-info btn-block d-inline-block"
+        >
+          Acceder al cuadro de competición
         </button>
       </div>
     </PageHeader>

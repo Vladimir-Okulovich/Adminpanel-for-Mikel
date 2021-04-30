@@ -35,7 +35,7 @@ class HeatConfigurationSeeder extends Seeder
             'assign_array' => json_encode([3,3]),
         ],[
             'participant_number' => 7,
-            'assign_array' => json_encode([3,4]),
+            'assign_array' => json_encode([4,3]),
         ],[
             'participant_number' => 8,
             'assign_array' => json_encode([4,4]),
@@ -44,22 +44,22 @@ class HeatConfigurationSeeder extends Seeder
             'assign_array' => json_encode([3,3,3]),
         ],[
             'participant_number' => 10,
-            'assign_array' => json_encode([3,3,4]),
+            'assign_array' => json_encode([4,3,3]),
         ],[
             'participant_number' => 11,
-            'assign_array' => json_encode([3,4,4]),
+            'assign_array' => json_encode([4,4,3]),
         ],[
             'participant_number' => 12,
             'assign_array' => json_encode([4,4,4]),
         ],[
             'participant_number' => 13,
-            'assign_array' => json_encode([3,3,3,4]),
+            'assign_array' => json_encode([4,3,3,3]),
         ],[
             'participant_number' => 14,
-            'assign_array' => json_encode([3,3,4,4]),
+            'assign_array' => json_encode([4,4,3,3]),
         ],[
             'participant_number' => 15,
-            'assign_array' => json_encode([3,4,4,4]),
+            'assign_array' => json_encode([4,4,4,3]),
         ],[
             'participant_number' => 16,
             'assign_array' => json_encode([4,4,4,4]),
@@ -71,19 +71,19 @@ class HeatConfigurationSeeder extends Seeder
             'assign_array' => json_encode([3,3,3,3,3,3]),
         ],[
             'participant_number' => 19,
-            'assign_array' => json_encode([3,3,3,3,3,4]),
+            'assign_array' => json_encode([4,3,3,3,3,3]),
         ],[
             'participant_number' => 20,
-            'assign_array' => json_encode([3,3,3,3,4,4]),
+            'assign_array' => json_encode([4,4,3,3,3,3]),
         ],[
             'participant_number' => 21,
-            'assign_array' => json_encode([3,3,3,4,4,4]),
+            'assign_array' => json_encode([4,4,4,3,3,3]),
         ],[
             'participant_number' => 22,
-            'assign_array' => json_encode([3,3,4,4,4,4]),
+            'assign_array' => json_encode([4,4,4,4,3,3]),
         ],[
             'participant_number' => 23,
-            'assign_array' => json_encode([3,4,4,4,4,4]),
+            'assign_array' => json_encode([4,4,4,4,4,3]),
         ],[
             'participant_number' => 24,
             'assign_array' => json_encode([4,4,4,4,4,4]),

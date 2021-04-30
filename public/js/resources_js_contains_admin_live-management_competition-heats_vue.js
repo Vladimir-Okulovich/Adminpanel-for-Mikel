@@ -116,6 +116,9 @@ __webpack_require__.r(__webpack_exports__);
           });
         }
       });
+    },
+    back: function back() {
+      this.$router.go(-1);
     }
   })
 });
@@ -2358,6 +2361,27 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
 ___CSS_LOADER_EXPORT___.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* .currency li {\n  cursor: pointer;\n}\n.currency .active {\n  color: white;\n} */\n", ""]);
+// Exports
+/* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/contains/admin/live-management/competition-heats.vue?vue&type=style&index=0&lang=css&":
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/contains/admin/live-management/competition-heats.vue?vue&type=style&index=0&lang=css& ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, "\nthead tr.active {\r\n  background: #4f8a85 !important;\n}\ntbody tr.classified {\r\n  background: #0c101d;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
@@ -6369,6 +6393,33 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/contains/admin/live-management/competition-heats.vue?vue&type=style&index=0&lang=css&":
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/contains/admin/live-management/competition-heats.vue?vue&type=style&index=0&lang=css& ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_competition_heats_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src/index.js??clonedRuleSet-9[0].rules[0].use[2]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./competition-heats.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/contains/admin/live-management/competition-heats.vue?vue&type=style&index=0&lang=css&");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_competition_heats_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_1__.default, options);
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_competition_heats_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/contains/admin/subcomponent/layout.vue?vue&type=style&index=0&lang=css&":
 /*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/contains/admin/subcomponent/layout.vue?vue&type=style&index=0&lang=css& ***!
@@ -6478,15 +6529,17 @@ component.options.__file = "resources/js/components/page-header.vue"
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _competition_heats_vue_vue_type_template_id_6b57db90___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./competition-heats.vue?vue&type=template&id=6b57db90& */ "./resources/js/contains/admin/live-management/competition-heats.vue?vue&type=template&id=6b57db90&");
 /* harmony import */ var _competition_heats_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./competition-heats.vue?vue&type=script&lang=js& */ "./resources/js/contains/admin/live-management/competition-heats.vue?vue&type=script&lang=js&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _competition_heats_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./competition-heats.vue?vue&type=style&index=0&lang=css& */ "./resources/js/contains/admin/live-management/competition-heats.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
+;
 
 
 /* normalize component */
-;
-var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
+
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__.default)(
   _competition_heats_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
   _competition_heats_vue_vue_type_template_id_6b57db90___WEBPACK_IMPORTED_MODULE_0__.render,
   _competition_heats_vue_vue_type_template_id_6b57db90___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
@@ -6688,6 +6741,19 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_footer_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader/dist/cjs.js!../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src/index.js??clonedRuleSet-9[0].rules[0].use[2]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./footer.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/footer.vue?vue&type=style&index=0&lang=css&");
+
+
+/***/ }),
+
+/***/ "./resources/js/contains/admin/live-management/competition-heats.vue?vue&type=style&index=0&lang=css&":
+/*!************************************************************************************************************!*\
+  !*** ./resources/js/contains/admin/live-management/competition-heats.vue?vue&type=style&index=0&lang=css& ***!
+  \************************************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_competition_heats_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/style-loader/dist/cjs.js!../../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src/index.js??clonedRuleSet-9[0].rules[0].use[2]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./competition-heats.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/contains/admin/live-management/competition-heats.vue?vue&type=style&index=0&lang=css&");
 
 
 /***/ }),
@@ -6920,7 +6986,7 @@ var render = function() {
     [
       _c(
         "div",
-        { staticClass: "d-flex justify-content-center pt-4" },
+        { staticClass: "d-flex pt-4" },
         [
           _c("b-img", {
             attrs: { src: "/images/logo.png", height: "127", alt: "logo" }
@@ -7016,6 +7082,20 @@ var render = function() {
                 ]
               )
             ]
+          ),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-secondary",
+              staticStyle: {
+                width: "10%",
+                position: "absolute",
+                right: "24px"
+              },
+              on: { click: _vm.back }
+            },
+            [_vm._v("\n      Back\n    ")]
           )
         ],
         1
@@ -7078,115 +7158,106 @@ var render = function() {
                   _c("div", { staticClass: "table-responsive mb-0" }, [
                     _c("table", { staticClass: "table table-bordered" }, [
                       _c("thead", [
-                        _c("tr", [
-                          round.length == 1
-                            ? _c(
-                                "th",
-                                {
-                                  staticStyle: {
-                                    color: "black",
-                                    background: "#b8e6e2",
-                                    cursor: "pointer"
-                                  },
-                                  attrs: { colspan: "4" },
-                                  on: {
-                                    click: function($event) {
-                                      return _vm.heatDetailsGo(
-                                        round_index + 1,
-                                        heat_index + 1
-                                      )
+                        _c(
+                          "tr",
+                          {
+                            class: { active: heat[0].status == 3 },
+                            staticStyle: {
+                              color: "black",
+                              background: "#b8e6e2",
+                              cursor: "pointer"
+                            }
+                          },
+                          [
+                            round.length == 1
+                              ? _c(
+                                  "th",
+                                  {
+                                    attrs: { colspan: "4" },
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.heatDetailsGo(
+                                          round_index + 1,
+                                          heat_index + 1
+                                        )
+                                      }
                                     }
-                                  }
-                                },
-                                [
-                                  _vm._v(
-                                    "\n                Final Heat\n              "
-                                  )
-                                ]
-                              )
-                            : round.length == 2
-                            ? _c(
-                                "th",
-                                {
-                                  staticStyle: {
-                                    color: "black",
-                                    background: "#b8e6e2",
-                                    cursor: "pointer"
                                   },
-                                  attrs: { colspan: "4" },
-                                  on: {
-                                    click: function($event) {
-                                      return _vm.heatDetailsGo(
-                                        round_index + 1,
-                                        heat_index + 1
-                                      )
+                                  [
+                                    _vm._v(
+                                      "\n                Final Heat\n              "
+                                    )
+                                  ]
+                                )
+                              : round.length == 2
+                              ? _c(
+                                  "th",
+                                  {
+                                    attrs: { colspan: "4" },
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.heatDetailsGo(
+                                          round_index + 1,
+                                          heat_index + 1
+                                        )
+                                      }
                                     }
-                                  }
-                                },
-                                [
-                                  _vm._v(
-                                    "\n                Semi Finals Heat " +
-                                      _vm._s(heat_index + 1) +
-                                      "\n              "
-                                  )
-                                ]
-                              )
-                            : round.length == 3
-                            ? _c(
-                                "th",
-                                {
-                                  staticStyle: {
-                                    color: "black",
-                                    background: "#b8e6e2",
-                                    cursor: "pointer"
                                   },
-                                  attrs: { colspan: "4" },
-                                  on: {
-                                    click: function($event) {
-                                      return _vm.heatDetailsGo(
-                                        round_index + 1,
-                                        heat_index + 1
-                                      )
+                                  [
+                                    _vm._v(
+                                      "\n                Semi Finals Heat " +
+                                        _vm._s(heat_index + 1) +
+                                        "\n              "
+                                    )
+                                  ]
+                                )
+                              : round.length == 3
+                              ? _c(
+                                  "th",
+                                  {
+                                    attrs: { colspan: "4" },
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.heatDetailsGo(
+                                          round_index + 1,
+                                          heat_index + 1
+                                        )
+                                      }
                                     }
-                                  }
-                                },
-                                [
-                                  _vm._v(
-                                    "\n                Quarter Finals Heat " +
-                                      _vm._s(heat_index + 1) +
-                                      "\n              "
-                                  )
-                                ]
-                              )
-                            : _c(
-                                "th",
-                                {
-                                  staticStyle: {
-                                    color: "black",
-                                    background: "#b8e6e2",
-                                    cursor: "pointer"
                                   },
-                                  attrs: { colspan: "4" },
-                                  on: {
-                                    click: function($event) {
-                                      return _vm.heatDetailsGo(
-                                        round_index + 1,
-                                        heat_index + 1
-                                      )
+                                  [
+                                    _vm._v(
+                                      "\n                Quarter Finals Heat " +
+                                        _vm._s(heat_index + 1) +
+                                        "\n              "
+                                    )
+                                  ]
+                                )
+                              : _c(
+                                  "th",
+                                  {
+                                    attrs: { colspan: "4" },
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.heatDetailsGo(
+                                          round_index + 1,
+                                          heat_index + 1
+                                        )
+                                      }
                                     }
-                                  }
-                                },
-                                [
-                                  _vm._v(
-                                    "\n                Round " +
-                                      _vm._s(round_index + 1) +
-                                      " Heat " +
-                                      _vm._s(heat_index + 1) +
-                                      "\n              "
-                                  )
-                                ]
-                              )
-                        ]),
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                Round " +
+                                        _vm._s(round_index + 1) +
+                                        " Heat " +
+                                        _vm._s(heat_index + 1) +
+                                        "\n              "
+                                    )
+                                  ]
+                                )
+                          ]
+                        ),
                         _vm._v(" "),
                         _c("tr", { staticClass: "thead-light" }, [
                           _c("th"),
@@ -7202,32 +7273,45 @@ var render = function() {
                       _c(
                         "tbody",
                         _vm._l(heat, function(round_heat, round_heat_index) {
-                          return _c("tr", { key: round_heat_index }, [
-                            _c("th", {
-                              style: { background: round_heat.lycra.color },
-                              attrs: { scope: "row" }
-                            }),
-                            _vm._v(" "),
-                            _c("td", [
-                              _vm._v(
-                                _vm._s(
-                                  round_heat.com_cat_mod_participant.participant
-                                    .name +
-                                    " " +
+                          return _c(
+                            "tr",
+                            {
+                              key: round_heat_index,
+                              class: {
+                                classified:
+                                  round_heat.position == 1 ||
+                                  round_heat.position == 2
+                              }
+                            },
+                            [
+                              _c("th", {
+                                style: { background: round_heat.lycra.color },
+                                attrs: { scope: "row" }
+                              }),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(
+                                  _vm._s(
                                     round_heat.com_cat_mod_participant
-                                      .participant.surname
+                                      .participant.name +
+                                      " " +
+                                      round_heat.com_cat_mod_participant
+                                        .participant.surname
+                                  )
                                 )
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("td", [
-                              _vm._v(
-                                _vm._s(parseFloat(round_heat.points).toFixed(2))
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("td", [_vm._v(_vm._s(round_heat.position))])
-                          ])
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(
+                                  _vm._s(
+                                    parseFloat(round_heat.points).toFixed(2)
+                                  )
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v(_vm._s(round_heat.position))])
+                            ]
+                          )
                         }),
                         0
                       )
