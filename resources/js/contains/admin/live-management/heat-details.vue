@@ -53,7 +53,7 @@
       ]),
 
       averageHandler() {
-        console.log(this.heat_scores)
+        // console.log(this.heat_scores)
         this.heat_scores.forEach(function(heat_score) {
           for (var i = 1; i < 11; i++) {
             heat_score[3]['wave_'+i] = 0;
@@ -184,7 +184,6 @@
         <div class="text-right my-4">
           <button @click="saveResults"
             class="btn btn-info"
-            style="width: 10%;"
           >
             Terminar Manga
           </button>

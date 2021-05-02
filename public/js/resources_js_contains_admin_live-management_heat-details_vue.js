@@ -98,7 +98,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_4__.default)((0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_4__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_8__.mapActions)(['initHeatDetails', 'storeFinalHeatResults'])), {}, {
     averageHandler: function averageHandler() {
-      console.log(this.heat_scores);
+      // console.log(this.heat_scores)
       this.heat_scores.forEach(function (heat_score) {
         for (var i = 1; i < 11; i++) {
           heat_score[3]['wave_' + i] = 0;
@@ -7605,11 +7605,7 @@ var render = function() {
         _c("div", { staticClass: "text-right my-4" }, [
           _c(
             "button",
-            {
-              staticClass: "btn btn-info",
-              staticStyle: { width: "10%" },
-              on: { click: _vm.saveResults }
-            },
+            { staticClass: "btn btn-info", on: { click: _vm.saveResults } },
             [_vm._v("\n          Terminar Manga\n        ")]
           )
         ])
