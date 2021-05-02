@@ -149,7 +149,7 @@
 
 <style>
 thead tr.active {
-  background: #4f8a85 !important;
+  background: #f78080 !important;
 }
 tbody tr.classified {
   background: #0c101d;

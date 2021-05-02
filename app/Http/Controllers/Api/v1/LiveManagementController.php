@@ -356,19 +356,17 @@ class LiveManagementController extends Controller
                 'second_score' => $second_score,
                 'points' => $first_score + $second_score,
             ]);
-            array_push($points, $round_heat->points);
+            // array_push($points, $round_heat->points);
+            $points["$round_heat->id"] = $round_heat->points;
         }
-        rsort($points);
-        foreach ($request->heat_scores as $heat_scores) {
-            $round_heat = Round_heat::find($heat_scores[0]['round_heat_id']);
-            foreach ($points as $index => $point) {
-                if ($round_heat->points == $point) {
-                    $round_heat->update([
-                        'position' => $index + 1,
-                    ]);
-                    break;
-                }
-            }
+        arsort($points);
+        $index = 1;
+        foreach ($points as $key => $point) {
+            $round_heat = Round_heat::find($key);
+            $round_heat->update([
+                'position' => $index,
+            ]);
+            $index++;
         }
 
         $round_heat = Round_heat::find($request->heat_scores[0][0]['round_heat_id']);
@@ -394,25 +392,125 @@ class LiveManagementController extends Controller
                 array_push($new_round_heats, $round_heat);
             }
         }
-        if ($isCreatingNew && (count($new_round_heats) > 0) && (count($new_round_heats) == 0)) {
+        if ($isCreatingNew && (count($new_round_heats) > 0) && (count($next_round_heats) == 0)) {
             $heat_configuration = Heat_configuration::where('participant_number', count($new_round_heats))->first();
-            $s = 0;
-            foreach ($heat_configuration->assign_array as $index => $heat_items) {
-                for ($i = 1; $i <= $heat_items; $i++) {
-                    $round_heat = new Round_heat;
-                    $round_heat->round = $current_round + 1;
-                    $round_heat->heat = $index + 1;
-                    $round_heat->com_cat_mod_participant_id = $new_round_heats[$s]->com_cat_mod_participant_id;
-                    $round_heat->lycra_id = $i;
-                    $round_heat->save();
-                    $s++;
-                }
+            $heat_number = count($heat_configuration->assign_array);
+            switch (count($new_round_heats)) {
+                case 6:
+                    foreach ($heat_configuration->assign_array as $index => $heat_items) {
+                        for ($i = 1; $i <= $heat_items; $i++) {
+                            $round_heat = new Round_heat;
+                            $round_heat->round = $current_round + 1;
+                            $round_heat->heat = $index + 1;
+                            if ($index == 0) {
+                                if ($this->getFirstSecondParticipant($new_round_heats, $heat_number*($i-1)+1, 1) != null) {
+                                    $round_heat->com_cat_mod_participant_id = $this->getFirstSecondParticipant($new_round_heats, $heat_number*($i-1)+1, 1)
+                                                                                ->com_cat_mod_participant_id;
+                                } else {
+                                    $round_heat->com_cat_mod_participant_id = $this->getFirstSecondParticipant($new_round_heats, 2, 2)
+                                                                                ->com_cat_mod_participant_id;
+                                }
+                            } else {
+                                if ($this->getFirstSecondParticipant($new_round_heats, $heat_number*($i-1)+1, 2) != null) {
+                                    $round_heat->com_cat_mod_participant_id = $this->getFirstSecondParticipant($new_round_heats, $heat_number*($i-1)+1, 2)
+                                                                                ->com_cat_mod_participant_id;
+                                } else {
+                                    $round_heat->com_cat_mod_participant_id = $this->getFirstSecondParticipant($new_round_heats, 2, 1)
+                                                                                ->com_cat_mod_participant_id;
+                                }
+                            }
+                            
+                            $round_heat->lycra_id = $i;
+                            $round_heat->save();
+                        }
+                    }
+                    break;
+                case 12:
+                    $prev_heat = 1;
+                    $lycra_id = 1;
+                    for ($i = 1; $i <= count($new_round_heats); $i++) {
+                        $position = ($i % 2 == 0) ? 2 : 1;
+                        $round_heat = new Round_heat;
+                        $round_heat->round = $current_round + 1;
+                        $round_heat->heat = ($i % $heat_number == 0) ? $heat_number : $i % $heat_number;
+                        $round_heat->com_cat_mod_participant_id = $this->getFirstSecondParticipant($new_round_heats, $prev_heat, $position)
+                                                                    ->com_cat_mod_participant_id;
+                        $round_heat->lycra_id = $lycra_id;
+                        $round_heat->save();
+                        if ($i % 2 == 0) {
+                            $prev_heat++;
+                        }
+                        if ($i % $heat_number == 0) {
+                            $lycra_id++;
+                        }
+                    }
+                    break;
+                case 20:
+                    $lycra_id = 1;
+                    $prev_heat_number = count($new_round_heats)/2;
+                    $position = 1;
+                    $prev_heat = 1;
+                    for ($i = 1; $i <= count($new_round_heats); $i++) {
+                        $round_heat = new Round_heat;
+                        $round_heat->round = $current_round + 1;
+                        $round_heat->heat = ($i % $heat_number == 0) ? $heat_number : $i % $heat_number;
+                        $round_heat->com_cat_mod_participant_id = $this->getFirstSecondParticipant($new_round_heats, $prev_heat, $position)
+                                                                    ->com_cat_mod_participant_id;
+                        $round_heat->lycra_id = $lycra_id;
+                        $round_heat->save();
+                        $prev_heat++;
+                        if ($i == $prev_heat_number) {
+                            $prev_heat = 1;
+                            $position++;
+                        }
+                        if ($i % $heat_number == 0) {
+                            $lycra_id++;
+                        }
+                    }
+                    break;
+                default:
+                    $lycra_id = 1;
+                    for ($i = 1; $i <= count($new_round_heats)/2; $i++) {
+                        $round_heat = new Round_heat;
+                        $round_heat->round = $current_round + 1;
+                        $round_heat->heat = ($i % $heat_number == 0) ? $heat_number : $i % $heat_number;
+                        $round_heat->com_cat_mod_participant_id = $this->getFirstSecondParticipant($new_round_heats, $i, 1)
+                                                                    ->com_cat_mod_participant_id;
+                        $round_heat->lycra_id = $lycra_id;
+                        $round_heat->save();
+                        if ($i % $heat_number == 0) {
+                            $lycra_id++;
+                        }
+                    }
+                    $lycra_id = 2;
+                    for ($i = count($new_round_heats)/2; $i >= 1; $i--) {
+                        if ($i % $heat_number == 0) {
+                            $lycra_id++;
+                        }
+                        $round_heat = new Round_heat;
+                        $round_heat->round = $current_round + 1;
+                        $round_heat->heat = ($i % $heat_number == 0) ? $heat_number : $i % $heat_number;
+                        $round_heat->com_cat_mod_participant_id = $this->getFirstSecondParticipant($new_round_heats, $i, 2)
+                                                                    ->com_cat_mod_participant_id;
+                        $round_heat->lycra_id = $lycra_id;
+                        $round_heat->save();
+                    }
             }
-        } 
+        }
 
         return response()->json([
             'message' => 'success',
             'data' => $points,
         ], 200);
+    }
+
+    public function getFirstSecondParticipant($round_heats, $prev_heat, $position)
+    {
+        foreach ($round_heats as $round_heat) {
+            if (($round_heat->heat == $prev_heat) && ($round_heat->position == $position)) {
+                return $round_heat;
+            }
+        }
+        return null;
     }
 }
