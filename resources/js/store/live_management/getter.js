@@ -8,6 +8,9 @@ const getters = {
     categoryId(state) {
         return state.category_id;
     },
+    categoryStatus(state) {
+        return state.category_status;
+    },
     modalityId(state) {
         return state.modality_id;
     },

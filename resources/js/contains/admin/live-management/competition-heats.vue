@@ -61,12 +61,15 @@
           }
         }) 
       },
+      back() {
+        this.$router.go(-1);
+      },
     }
 	};
 </script>
 <template>
   <Layout>
-    <div class="d-flex justify-content-center pt-4">
+    <div class="d-flex pt-4">
       <b-img
         :src="'/images/logo.png'"
         height="127"
@@ -83,6 +86,12 @@
         </p>
         <p class="mb-0" style="padding: 3px 20px;">Antolatzailea: {{ all_round_heats[0][0][0].com_cat_mod_participant.competition.organizer }}</p>
       </div>
+      <button @click="back"
+        class="btn btn-secondary"
+        style="width: 10%;position: absolute;right: 24px;"
+      >
+        Back
+      </button>
     </div>
 
     <div class="text-center w-100 mt-4">
@@ -102,17 +111,17 @@
         <div class="table-responsive mb-0">
           <table class="table table-bordered">
             <thead>
-              <tr>
-                <th colspan="4" v-if="round.length == 1" style="color: black;background: #b8e6e2;cursor: pointer;" @click="heatDetailsGo(round_index+1, heat_index+1)">
+              <tr style="color: black;background: #b8e6e2;cursor: pointer;" :class="{active: heat[0].status==3}">
+                <th colspan="4" v-if="round.length == 1" @click="heatDetailsGo(round_index+1, heat_index+1)">
                   Final Heat
                 </th>
-                <th colspan="4" v-else-if="round.length == 2" style="color: black;background: #b8e6e2;cursor: pointer;" @click="heatDetailsGo(round_index+1, heat_index+1)">
+                <th colspan="4" v-else-if="round.length == 2" @click="heatDetailsGo(round_index+1, heat_index+1)">
                   Semi Finals Heat {{ heat_index+1 }}
                 </th>
-                <th colspan="4" v-else-if="round.length == 3" style="color: black;background: #b8e6e2;cursor: pointer;" @click="heatDetailsGo(round_index+1, heat_index+1)">
+                <th colspan="4" v-else-if="round.length == 3" @click="heatDetailsGo(round_index+1, heat_index+1)">
                   Quarter Finals Heat {{ heat_index+1 }}
                 </th>
-                <th colspan="4" v-else style="color: black;background: #b8e6e2;cursor: pointer;" @click="heatDetailsGo(round_index+1, heat_index+1)">
+                <th colspan="4" v-else @click="heatDetailsGo(round_index+1, heat_index+1)">
                   Round {{ round_index+1 }} Heat {{ heat_index+1 }}
                 </th>
               </tr>
@@ -124,7 +133,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="(round_heat, round_heat_index) in heat" :key="round_heat_index">
+              <tr :class="{classified: round_heat.position==1 || round_heat.position==2}" v-for="(round_heat, round_heat_index) in heat" :key="round_heat_index">
                 <th scope="row" v-bind:style="{ background: round_heat.lycra.color }"></th>
                 <td>{{ round_heat.com_cat_mod_participant.participant.name+' '+round_heat.com_cat_mod_participant.participant.surname }}</td>
                 <td>{{ parseFloat(round_heat.points).toFixed(2) }}</td>
@@ -139,4 +148,10 @@
 </template>
 
 <style>
+thead tr.active {
+  background: #4f8a85 !important;
+}
+tbody tr.classified {
+  background: #0c101d;
+}
 </style>

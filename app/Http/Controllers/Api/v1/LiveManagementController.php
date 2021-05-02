@@ -66,11 +66,22 @@ class LiveManagementController extends Controller
             $participant->sex;
             array_push($participants, $participant);
         }
+
+        $com_cat_mod_participant_ids = Com_cat_mod_participant::select('id')->where('competition_id', $request->competitionId)
+                                                            ->where('category_id', $category->id)
+                                                            ->where('modality_id', $modality->id)->get();
+        $round_heats = Round_heat::whereIn('com_cat_mod_participant_id', $com_cat_mod_participant_ids)->where('round', 1)->get();
+        $status = false;
+        if (count($round_heats) > 0) {
+            $status = true;
+        }
+        
         return response()->json([
             'message' => 'success',
             'participants_competition_category_modality' => $participants,
             'category_id' => $category->id,
-            'modality_id' => $modality->id
+            'modality_id' => $modality->id,
+            'status' => $status,
         ], 200);
     }
 
@@ -90,6 +101,7 @@ class LiveManagementController extends Controller
         $temps = Com_cat_mod_participant::where('competition_id', $request->competitionId)
                                         ->where('category_id', $category->id)
                                         ->where('modality_id', $modality->id)->get();
+        
         foreach ($temps as $temp) {
             $participant = Participant::find($temp->participant_id);
             $participant->club;
@@ -370,8 +382,8 @@ class LiveManagementController extends Controller
                                                             ->where('modality_id', $current_modality)->get();
         $round_heats = Round_heat::whereIn('com_cat_mod_participant_id', $com_cat_mod_participant_ids)
                                 ->where('round', $current_round)->get();
-        // $next_round_heats = Round_heat::whereIn('com_cat_mod_participant_id', $com_cat_mod_participant_ids)
-        //                             ->where('round', $current_round+1)->get();
+        $next_round_heats = Round_heat::whereIn('com_cat_mod_participant_id', $com_cat_mod_participant_ids)
+                                    ->where('round', $current_round+1)->get();
         $isCreatingNew = true;
         $new_round_heats = [];
         foreach ($round_heats as $round_heat) {
@@ -382,7 +394,7 @@ class LiveManagementController extends Controller
                 array_push($new_round_heats, $round_heat);
             }
         }
-        if ($isCreatingNew && (count($new_round_heats) > 0)) {
+        if ($isCreatingNew && (count($new_round_heats) > 0) && (count($new_round_heats) == 0)) {
             $heat_configuration = Heat_configuration::where('participant_number', count($new_round_heats))->first();
             $s = 0;
             foreach ($heat_configuration->assign_array as $index => $heat_items) {
