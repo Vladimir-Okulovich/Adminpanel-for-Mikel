@@ -23,30 +23,30 @@ import {
 
 export default {
   page: {
-    title: "ADD CATEGORY",
-    meta: [{ name: "description", content: appConfig.description }]
+    title: "CREAR CATEGORÍA",
+    meta: [{ name: "descripción", content: appConfig.description }]
   },
   components: { DatePicker, Multiselect, Layout, PageHeader },
   data() {
     return {
-      title: "ADD CATEGORY",
+      title: "CREAR CATEGORÍA",
       items: [
         {
-          text: "Administrator",
+          text: "Home",
           href: "/admin"
         },
         {
-          text: "Category",
+          text: "Listado Categorías",
           href: "/admin/categories"
         },
         {
-          text: "Add",
+          text: "Crear Categoría",
           active: true
         }
       ],
       sexOptions: [
-        "Female",
-        "Male"
+        "Femenino",
+        "Masculino"
       ],
       minValue: true,
       isError: false,
@@ -132,21 +132,21 @@ export default {
             >{{ Error }}</b-alert>
             <form action="#" @submit.prevent="typeForm">
               <div class="form-group">
-                <label>Name</label>
+                <label>Nombre</label>
                 <input
                   v-model="typeform.name"
                   type="text"
                   class="form-control"
-                  placeholder="Name"
+                  placeholder="Nombre"
                   name="name"
                   :class="{ 'is-invalid': typesubmit && $v.typeform.name.$error }"
                 />
                 <div v-if="typesubmit && $v.typeform.name.$error" class="invalid-feedback">
-                  <span v-if="!$v.typeform.name.required">This value is required.</span>
+                  <span v-if="!$v.typeform.name.required">Este campo es obligatorio.</span>
                 </div>
               </div>
               <div class="form-group">
-                <label>Description</label>
+                <label>Descripción</label>
                 <div>
                   <textarea
                     v-model="typeform.description"
@@ -156,12 +156,12 @@ export default {
                     :class="{ 'is-invalid': typesubmit && $v.typeform.description.$error }"
                   ></textarea>
                   <div v-if="typesubmit && $v.typeform.description.$error" class="invalid-feedback">
-                    <span v-if="!$v.typeform.description.required">This value is required.</span>
+                    <span v-if="!$v.typeform.description.required">Este campo es obligatorio.</span>
                   </div>
                 </div>
               </div>
               <div class="form-group">
-                <label>Year1</label>
+                <label>Año 1</label>
                 <br />
                 <date-picker
                   v-model="typeform.year1"
@@ -172,11 +172,11 @@ export default {
                   :class="{ 'is-invalid': typesubmit && $v.typeform.year1.$error }"
                 ></date-picker>
                 <div v-if="typesubmit && $v.typeform.year1.$error" class="invalid-feedback">
-                  <span v-if="!$v.typeform.year1.required">This value is required.</span>
+                  <span v-if="!$v.typeform.year1.required">Este campo es obligatorio.</span>
                 </div>
               </div>
               <div class="form-group">
-                <label>Year2</label>
+                <label>Año 2</label>
                 <br />
                 <date-picker
                   v-model="typeform.year2"
@@ -187,28 +187,28 @@ export default {
                   :class="{ 'is-invalid': typesubmit && ($v.typeform.year2.$error || !minValue) }"
                 ></date-picker>
                 <div v-if="typesubmit && ($v.typeform.year2.$error || !minValue)" class="invalid-feedback">
-                  <span v-if="!$v.typeform.year2.required">This value is required.</span>
+                  <span v-if="!$v.typeform.year2.required">Este campo es obligatorio.</span>
                   <span
                       v-if="!minValue"
-                    >This value should be greater than Year1.</span>
+                    >Este valor debe ser mayor que Año 1.</span>
                 </div>
               </div>
               <div class="mb-3">
-                <label>Sex</label>
+                <label>Sexo</label>
                 <multiselect 
                   v-model="typeform.sex" 
                   :options="sexOptions"
                   :class="{ 'is-invalid': typesubmit && $v.typeform.sex.$error }"
                 ></multiselect>
                 <div v-if="typesubmit && $v.typeform.sex.$error" class="invalid-feedback">
-                  <span v-if="!$v.typeform.sex.required">This value is required.</span>
+                  <span v-if="!$v.typeform.sex.required">Este campo es obligatorio.</span>
                 </div>
               </div>
               <div class="form-group mt-5 mb-0">
                 <div>
-                  <button type="submit" class="btn btn-primary">Submit</button>
-                  <router-link to="/admin/categories" class="btn btn-secondary m-l-5 ml-1">Cancel</router-link>
-                  <button type="reset" class="btn btn-warning m-l-5 ml-1">Reset</button>
+                  <button type="submit" class="btn btn-primary">Guardar</button>
+                  <router-link to="/admin/categories" class="btn btn-secondary m-l-5 ml-1">Cancelar</router-link>
+                  <button type="reset" class="btn btn-warning m-l-5 ml-1">Vaciar</button>
                 </div>
               </div>
             </form>

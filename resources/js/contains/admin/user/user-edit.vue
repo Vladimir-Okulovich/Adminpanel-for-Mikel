@@ -22,13 +22,13 @@ import {
 
 export default {
   page: {
-    title: "EDIT USER",
+    title: "EDITAR USUARIO",
     meta: [{ name: "description", content: appConfig.description }]
   },
   components: { Layout, PageHeader, Multiselect },
   data() {
     return {
-      title: "EDIT USER",
+      title: "EDITAR USUARIO",
       items: [
         {
           text: "Administrator",
@@ -135,17 +135,17 @@ export default {
             >{{ Error }}</b-alert>
             <form action="#" @submit.prevent="typeForm">
               <div class="form-group">
-                <label>Name</label>
+                <label>Nombre</label>
                 <input
                   v-model="typeform.name=getUser.name"
                   type="text"
                   class="form-control"
-                  placeholder="Name"
+                  placeholder="Nombre"
                   name="name"
                   :class="{ 'is-invalid': typesubmit && $v.typeform.name.$error }"
                 />
                 <div v-if="typesubmit && $v.typeform.name.$error" class="invalid-feedback">
-                  <span v-if="!$v.typeform.name.required">This value is required.</span>
+                  <span v-if="!$v.typeform.name.required">Este Campo es obligatorio.</span>
                 </div>
               </div>
 
@@ -161,14 +161,14 @@ export default {
                     placeholder="Enter a valid email"
                   />
                   <div v-if="typesubmit && $v.typeform.email.$error" class="invalid-feedback">
-                    <span v-if="!$v.typeform.email.required">This value is required.</span>
-                    <span v-if="!$v.typeform.email.email">This value should be a valid email.</span>
+                    <span v-if="!$v.typeform.email.required">Este Campo es obligatorio.</span>
+                    <span v-if="!$v.typeform.email.email">Debe ser un e-mail válido..</span>
                   </div>
                 </div>
               </div>
 
               <div class="form-group">
-                <label>Password</label>
+                <label>Contraseña</label>
                 <div>
                   <input
                     v-model="typeform.password"
@@ -179,15 +179,15 @@ export default {
                     placeholder="Password"
                   />
                   <div v-if="typesubmit && $v.typeform.password.$error" class="invalid-feedback">
-                    <span v-if="!$v.typeform.password.required">This value is required.</span>
+                    <span v-if="!$v.typeform.password.required">Este Campo es obligatorio.</span>
                     <span
                       v-if="!$v.typeform.password.minLength"
-                    >Password must be at least 6 characters.</span>
+                    >La contraseña debe tener al menos 6 cracteres.</span>
                   </div>
                 </div>
               </div>
               <div class="form-group">
-                <label>Confirm Password</label>
+                <label>Confirmar Contraseña</label>
                 <div>
                   <input
                     v-model="typeform.confirmPassword"
@@ -201,15 +201,15 @@ export default {
                     v-if="typesubmit && $v.typeform.confirmPassword.$error"
                     class="invalid-feedback"
                   >
-                    <span v-if="!$v.typeform.confirmPassword.required">This value is required.</span>
+                    <span v-if="!$v.typeform.confirmPassword.required">Este Campo es obligatorio.</span>
                     <span
                       v-else-if="!$v.typeform.confirmPassword.sameAsPassword"
-                    >This value should be the same.</span>
+                    >La confirmación de contraseña es erroena.</span>
                   </div>
                 </div>
               </div>
               <div>
-                <label>Roles</label>
+                <label>Tipo</label>
                 <multiselect 
                   v-model="typeform.roles=getUser.roleNames"
                   :options="roleOptions"
@@ -217,14 +217,14 @@ export default {
                   :class="{ 'is-invalid': typesubmit && $v.typeform.roles.$error }"
                 ></multiselect>
                 <div v-if="typesubmit && $v.typeform.roles.$error" class="invalid-feedback">
-                  <span v-if="!$v.typeform.roles.required">This value is required.</span>
+                  <span v-if="!$v.typeform.roles.required">Este Campo es obligatorio.</span>
                 </div>
               </div>
               
               <div class="form-group mt-5 mb-0">
                 <div>
-                  <button type="submit" class="btn btn-primary">Save</button>
-                  <router-link to="/admin/users" class="btn btn-secondary m-l-5 ml-1">Cancel</router-link>
+                  <button type="submit" class="btn btn-primary">Guardar</button>
+                  <router-link to="/admin/users" class="btn btn-secondary m-l-5 ml-1">Cancelar</router-link>
                 </div>
               </div>
             </form>

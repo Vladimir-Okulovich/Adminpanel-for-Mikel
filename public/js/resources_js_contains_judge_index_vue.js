@@ -37,7 +37,7 @@ __webpack_require__.r(__webpack_exports__);
     return {};
   },
   watch: {},
-  computed: (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_5__.mapGetters)(['judge_round_heats', 'judge_heat_scores'])),
+  computed: (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_5__.mapGetters)(['judge_round_heats', 'judge_heat_scores', 'isFirst'])),
   mounted: function mounted() {
     this.initJudge();
   },
@@ -1259,9 +1259,9 @@ var render = function() {
               },
               [
                 _vm._v(
-                  "\n        Round " +
+                  "\n        Ronda " +
                     _vm._s(_vm.judge_round_heats[0].round) +
-                    " Heat " +
+                    " Manga " +
                     _vm._s(_vm.judge_round_heats[0].heat) +
                     "\n      "
                 )
@@ -1284,12 +1284,10 @@ var render = function() {
                             staticStyle: { width: "15%" },
                             attrs: { rowspan: "2" }
                           },
-                          [_vm._v("PARTICIPANT")]
+                          [_vm._v("PARTICIPANTE")]
                         ),
                         _vm._v(" "),
-                        _c("th", { attrs: { colspan: "10" } }, [
-                          _vm._v("WAVES")
-                        ])
+                        _c("th", { attrs: { colspan: "10" } }, [_vm._v("OLAS")])
                       ]),
                       _vm._v(" "),
                       _c(
@@ -1612,7 +1610,7 @@ var render = function() {
                 staticStyle: { width: "10%", float: "right" },
                 on: { click: _vm.saveResults }
               },
-              [_vm._v("\n        Save\n      ")]
+              [_vm._v("\n        Guardar\n      ")]
             )
           ])
         ])
@@ -1625,14 +1623,20 @@ var render = function() {
                 staticStyle: { width: "10%" },
                 on: { click: _vm.refresh }
               },
-              [_vm._v("\n        Refresh\n      ")]
+              [_vm._v("\n        Actualizar\n      ")]
             )
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "text-center mt-5" }, [
-            _c("h3", [
-              _vm._v("NO HAY MANGAS ACTIVAS. ACTUALICE EN UNOS MOMENTOS")
-            ])
+            _vm.isFirst
+              ? _c("h3", [
+                  _vm._v("NO HAY MANGAS ACTIVAS. ACTUALICE CON EL BOTÓN.")
+                ])
+              : _c("h3", [
+                  _vm._v(
+                    "ESPERE A QUE SE ACTIVE LA SIGUIENTE MANGA Y ACTUALICE ESTA PANTALLA."
+                  )
+                ])
           ])
         ])
   ])

@@ -6,6 +6,7 @@ import JwtService from "@/common/jwt.service"
 const defaultState = {
   judge_round_heats: [],
   judge_heat_scores: [],
+  isFirst: true,
 };
 
 export default {

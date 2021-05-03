@@ -7485,7 +7485,7 @@ var render = function() {
               attrs: { id: "side-menu" }
             },
             [
-              _c("li", { staticClass: "menu-title" }, [_vm._v("Main")]),
+              _c("li", { staticClass: "menu-title" }, [_vm._v("Principal")]),
               _vm._v(" "),
               _c("li", [
                 _c(
@@ -7497,7 +7497,7 @@ var render = function() {
                   [
                     _c("i", { staticClass: "ti-save" }),
                     _vm._v(" "),
-                    _c("span", [_vm._v("Competitions Data")])
+                    _c("span", [_vm._v("Opciones de Gesíón")])
                   ]
                 ),
                 _vm._v(" "),
@@ -7517,7 +7517,7 @@ var render = function() {
                             staticClass: "side-nav-link",
                             attrs: { tag: "a", to: "/admin/users" }
                           },
-                          [_c("span", [_vm._v("Users")])]
+                          [_c("span", [_vm._v("Usuarios y Jueces")])]
                         )
                       ],
                       1
@@ -7532,7 +7532,7 @@ var render = function() {
                             staticClass: "side-nav-link",
                             attrs: { tag: "a", to: "/admin/categories" }
                           },
-                          [_c("span", [_vm._v("Categories")])]
+                          [_c("span", [_vm._v("Categorías")])]
                         )
                       ],
                       1
@@ -7547,7 +7547,7 @@ var render = function() {
                             staticClass: "side-nav-link",
                             attrs: { tag: "a", to: "/admin/competition_types" }
                           },
-                          [_c("span", [_vm._v("Competition Types")])]
+                          [_c("span", [_vm._v("Tipos de Competition")])]
                         )
                       ],
                       1
@@ -7598,7 +7598,7 @@ var render = function() {
                     [
                       _c("i", { staticClass: "ti-crown" }),
                       _vm._v(" "),
-                      _c("span", [_vm._v("Competitions")])
+                      _c("span", [_vm._v("Competiciones")])
                     ]
                   )
                 ],
@@ -7617,7 +7617,7 @@ var render = function() {
                     [
                       _c("i", { staticClass: "ti-user" }),
                       _vm._v(" "),
-                      _c("span", [_vm._v("Manage Participants")])
+                      _c("span", [_vm._v("Federados")])
                     ]
                   )
                 ],
@@ -7634,7 +7634,7 @@ var render = function() {
                   [
                     _c("i", { staticClass: "ti-list-ol" }),
                     _vm._v(" "),
-                    _c("span", [_vm._v("Manage Ranking")])
+                    _c("span", [_vm._v("Ranking")])
                   ]
                 ),
                 _vm._v(" "),
@@ -7654,7 +7654,7 @@ var render = function() {
                             staticClass: "side-nav-link",
                             attrs: { tag: "a", to: "/admin/ranking_points" }
                           },
-                          [_c("span", [_vm._v("Ranking Points")])]
+                          [_c("span", [_vm._v("Puntos Ranking")])]
                         )
                       ],
                       1
@@ -7669,7 +7669,7 @@ var render = function() {
                             staticClass: "side-nav-link",
                             attrs: { tag: "a", to: "/admin/category-modality" }
                           },
-                          [_c("span", [_vm._v("Manage Ranking")])]
+                          [_c("span", [_vm._v("Gestión Ranking")])]
                         )
                       ],
                       1
@@ -7842,7 +7842,7 @@ var render = function() {
                     staticClass:
                       "bx bx-power-off font-size-17 align-middle mr-1 text-danger"
                   }),
-                  _vm._v(" Logout\n        ")
+                  _vm._v(" Cerrar Sesión\n        ")
                 ]
               )
             ],

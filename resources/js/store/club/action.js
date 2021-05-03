@@ -35,7 +35,7 @@ const actions = {
             ApiService.post("api/v1/admin/club/create", clubInfo)
                 .then((data) => {
                     resolve(data);
-                    toastr.success('Successfully created', '', {timeout: 1000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
+                    toastr.success('Creado Correctamente', '', {timeout: 1000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
                 })
                 .catch(({response, status}) => {
                     console.log(response);
@@ -49,7 +49,7 @@ const actions = {
             ApiService.put("api/v1/admin/club/update", clubInfo)
                 .then((data) => {
                     resolve(data);
-                    toastr.success('Successfully updated', '', {timeout: 1000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
+                    toastr.success('Actualizado Correctamente', '', {timeout: 1000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
                 })
                 .catch(({response, status}) => {
                     console.log(response);
@@ -64,7 +64,7 @@ const actions = {
                 .then(({data}) => {
                     // console.log(data);
                     context.commit(type.SET_ALL_CLUBS, data)
-                    toastr.success('Successfully deleted', '', {timeout: 1000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
+                    toastr.success('Eliminado Correctamente', '', {timeout: 1000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
                 })
                 .catch(({ response }) => {
                     // context.commit(type.AUTH_LOGOUT);

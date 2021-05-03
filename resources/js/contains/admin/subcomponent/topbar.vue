@@ -100,7 +100,7 @@ export default {
           </router-link>
           <div class="dropdown-divider"></div> -->
           <router-link class="dropdown-item text-danger" to="/logout">
-            <i class="bx bx-power-off font-size-17 align-middle mr-1 text-danger"></i> Logout
+            <i class="bx bx-power-off font-size-17 align-middle mr-1 text-danger"></i> Cerrar Sesión
           </router-link>
         </b-dropdown>
 

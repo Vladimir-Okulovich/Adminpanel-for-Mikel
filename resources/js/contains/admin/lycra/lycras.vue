@@ -19,11 +19,11 @@
         title: "LYCRAS",
         items: [
           {
-            text: "Administrator",
+            text: "Home",
             href: "/admin"
           },
           {
-            text: "Lycras",
+            text: "Listado de Lycras",
             active: true
           }
         ],
@@ -36,9 +36,9 @@
         sortBy: "color",
         sortDesc: false,
         fields: [
-          { key: "name", sortable: true },
-          { key: "color", sortable: true },
-          { key: "actions", sortable: false }
+          { label: "Nombre", key: "name", sortable: true },
+          { label: "Color",  key: "color", sortable: true },
+          { label: "Acciones", key: "actions", sortable: false }
         ],
         deletingId: 0,
       }
@@ -89,7 +89,7 @@
         <router-link to="/admin/lycra/create"
           class="btn btn-info btn-block d-inline-block"
         >
-          <i class="fas fa-plus mr-1"></i> ADD LYCRA
+          <i class="fas fa-plus mr-1"></i> CREAR LYCRA
         </router-link>
       </div>
     </PageHeader>
@@ -98,14 +98,14 @@
       <div class="col-12">
         <div class="card">
           <div class="card-body">
-            <h4 class="card-title">Lycra Table</h4>
+            <h4 class="card-title">Listado de  Lycras</h4>
             <p class="card-title-desc"></p>
             <div class="row mb-md-2">
               <div class="col-sm-12 col-md-6">
                 <div id="tickets-table_length" class="dataTables_length">
                   <label class="d-inline-flex align-items-center">
-                    Show
-                    <b-form-select v-model="perPage" size="sm" :options="pageOptions"></b-form-select>entries
+                    Mostrar
+                    <b-form-select v-model="perPage" size="sm" :options="pageOptions"></b-form-select>registros
                   </label>
                 </div>
               </div>
@@ -113,11 +113,11 @@
               <div class="col-sm-12 col-md-6">
                 <div id="tickets-table_filter" class="dataTables_filter text-md-right">
                   <label class="d-inline-flex align-items-center">
-                    Search:
+                    Buscar:
                     <b-form-input
                       v-model="filter"
                       type="search"
-                      placeholder="Search..."
+                      placeholder="Buscar..."
                       class="form-control form-control-sm ml-2"
                     ></b-form-input>
                   </label>
@@ -175,13 +175,13 @@
     <b-modal
       id="delete-modal"
       centered
-      title="Delete Item"
+      title="Eliminar Lycra"
       title-class="font-18"
       hide-footer
     >
-      <p>Are you sure you want to delete selected item?</p>
+      <p>¿Está seguro de eliminar esta Lycra?</p>
       <footer id="delete-modal___BV_modal_footer_" class="modal-footer">
-        <button type="button" class="btn btn-secondary" @click="$bvModal.hide('delete-modal')">Cancel</button>
+        <button type="button" class="btn btn-secondary" @click="$bvModal.hide('delete-modal')">Cancelar</button>
         <button type="button" class="btn btn-primary" @click="realDelete()">OK</button>
       </footer>
     </b-modal>

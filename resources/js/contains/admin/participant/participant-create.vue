@@ -23,24 +23,24 @@ import {
 
 export default {
   page: {
-    title: "ADD PARTICIPANT",
+    title: "CREAR FICHA",
     meta: [{ name: "description", content: appConfig.description }]
   },
   components: { DatePicker, Multiselect, Layout, PageHeader },
   data() {
     return {
-      title: "ADD PARTICIPANT",
+      title: "CREAR FICHA",
       items: [
         {
-          text: "Administrator",
+          text: "Home",
           href: "/admin"
         },
         {
-          text: "Participant",
+          text: "Listado Federados",
           href: "/admin/participants"
         },
         {
-          text: "Add",
+          text: "Crear Ficha",
           active: true
         }
       ],
@@ -51,12 +51,12 @@ export default {
         surname: "",
         dni_ficha: "",
         birthday: "",
-        sex: "Male",
+        sex: "",
         club: "",
       },
       sexOptions: [
-        "Male",
-        "Female"
+        "Masculino",
+        "Femenino"
       ],
       typesubmit: false,
     };
@@ -140,7 +140,7 @@ export default {
             >{{ Error }}</b-alert>
             <form action="#" @submit.prevent="typeForm">
               <div class="form-group">
-                <label>Name</label>
+                <label>Nombre</label>
                 <input
                   v-model="typeform.name"
                   type="name"
@@ -149,11 +149,11 @@ export default {
                   :class="{ 'is-invalid': typesubmit && $v.typeform.name.$error }"
                 />
                 <div v-if="typesubmit && $v.typeform.name.$error" class="invalid-feedback">
-                  <span v-if="!$v.typeform.name.required">This value is required.</span>
+                  <span v-if="!$v.typeform.name.required">Este Campo es Obligatorio.</span>
                 </div>
               </div>
               <div class="form-group">
-                <label>Surname</label>
+                <label>Apellidos</label>
                 <input
                   v-model="typeform.surname"
                   type="name"
@@ -162,7 +162,7 @@ export default {
                   :class="{ 'is-invalid': typesubmit && $v.typeform.surname.$error }"
                 />
                 <div v-if="typesubmit && $v.typeform.surname.$error" class="invalid-feedback">
-                  <span v-if="!$v.typeform.surname.required">This value is required.</span>
+                  <span v-if="!$v.typeform.surname.required">Este Campo es Obligatorio.</span>
                 </div>
               </div>
               <div class="form-group">
@@ -175,11 +175,11 @@ export default {
                   :class="{ 'is-invalid': typesubmit && $v.typeform.dni_ficha.$error }"
                 />
                 <div v-if="typesubmit && $v.typeform.dni_ficha.$error" class="invalid-feedback">
-                  <span v-if="!$v.typeform.dni_ficha.required">This value is required.</span>
+                  <span v-if="!$v.typeform.dni_ficha.required">Este Campo es Obligatorio.</span>
                 </div>
               </div>
               <div class="form-group mb-3">
-                <label>Birthday</label>
+                <label>Fecha Nacimiento</label>
                 <br />
                 <date-picker
                   v-model="typeform.birthday"
@@ -191,18 +191,18 @@ export default {
                   :class="{ 'is-invalid': typesubmit && $v.typeform.birthday.$error }"
                 ></date-picker>
                 <div v-if="typesubmit && $v.typeform.birthday.$error" class="invalid-feedback">
-                  <span v-if="!$v.typeform.birthday.required">This value is required.</span>
+                  <span v-if="!$v.typeform.birthday.required">Este Campo es Obligatorio.</span>
                 </div>
               </div>
               <div>
-                <label>Sex</label>
+                <label>Sexo</label>
                 <multiselect 
                   v-model="typeform.sex" 
                   :options="sexOptions"
                   :class="{ 'is-invalid': typesubmit && $v.typeform.sex.$error }"
                 ></multiselect>
                 <div v-if="typesubmit && $v.typeform.sex.$error" class="invalid-feedback">
-                  <span v-if="!$v.typeform.sex.required">This value is required.</span>
+                  <span v-if="!$v.typeform.sex.required">Este Campo es Obligatorio.</span>
                 </div>
               </div>
               <br />
@@ -214,14 +214,14 @@ export default {
                   :class="{ 'is-invalid': typesubmit && $v.typeform.club.$error }"  
                 ></multiselect>
                 <div v-if="typesubmit && $v.typeform.club.$error" class="invalid-feedback">
-                  <span v-if="!$v.typeform.club.required">This value is required.</span>
+                  <span v-if="!$v.typeform.club.required">Este Campo es Obligatorio.</span>
                 </div>
               </div>
               <div class="form-group mt-5 mb-0">
                 <div>
-                  <button type="submit" class="btn btn-primary">Submit</button>
-                  <router-link to="/admin/participants" class="btn btn-secondary m-l-5 ml-1">Cancel</router-link>
-                  <button type="reset" class="btn btn-warning m-l-5 ml-1">Reset</button>
+                  <button type="submit" class="btn btn-primary">Guardar</button>
+                  <router-link to="/admin/participants" class="btn btn-secondary m-l-5 ml-1">Cancelar</router-link>
+                  <button type="reset" class="btn btn-warning m-l-5 ml-1">Vaciar</button>
                 </div>
               </div>
             </form>

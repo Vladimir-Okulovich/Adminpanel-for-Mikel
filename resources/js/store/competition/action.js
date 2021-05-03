@@ -36,7 +36,7 @@ const actions = {
             ApiService.post("api/v1/admin/competition/create", competitionInfo)
                 .then((data) => {
                     resolve(data)
-                    toastr.success('Successfully created', '', {timeout: 5000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
+                    toastr.success('Creada Correctamente', '', {timeout: 5000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
                 })
                 .catch(({response, status}) => {
                     console.log(response);
@@ -51,7 +51,7 @@ const actions = {
             ApiService.put("api/v1/admin/competition/update", competitionInfo)
                 .then((data) => {
                     resolve(data);
-                    toastr.success('Successfully updated', '', {timeout: 5000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
+                    toastr.success('Actualizada Correctamente', '', {timeout: 5000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
                 })
                 .catch(({response, status}) => {
                     // console.log(response);
@@ -66,7 +66,7 @@ const actions = {
                 .then(({data}) => {
                     // console.log(data);
                     context.commit(type.SET_ALL_COMPETITION, data)
-                    toastr.success('Successfully deleted', '', {timeout: 5000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
+                    toastr.success('Eliminada Correctamente', '', {timeout: 5000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
                 })
                 .catch(({ response }) => {
                 });

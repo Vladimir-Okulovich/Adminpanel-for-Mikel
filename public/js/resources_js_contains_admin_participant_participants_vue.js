@@ -55,7 +55,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   page: {
-    title: "PARTICIPANTS",
+    title: "FEDERADOS",
     meta: [{
       name: "description",
       content: _app_config__WEBPACK_IMPORTED_MODULE_4__.description
@@ -67,12 +67,12 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      title: "PARTICIPANTS",
+      title: "FEDERADOS",
       items: [{
-        text: "Administrator",
+        text: "Home",
         href: "/admin"
       }, {
-        text: "Participants",
+        text: "Listado Federados",
         active: true
       }],
       totalRows: 1,
@@ -84,24 +84,31 @@ __webpack_require__.r(__webpack_exports__);
       sortBy: "name",
       sortDesc: false,
       fields: [{
+        label: "Nombre",
         key: "name",
         sortable: true
       }, {
+        label: "Apellidos",
         key: "surname",
         sortable: true
       }, {
+        label: "Sexo",
         key: "sex",
         sortable: false
       }, {
+        label: "Fecha Nacimiento",
         key: "birthday",
-        sortable: true
-      }, {
-        key: "dni_ficha",
         sortable: false
       }, {
+        label: "DNI Ficha",
+        key: "dni_ficha",
+        sortable: true
+      }, {
+        label: "Club",
         key: "club",
         sortable: false
       }, {
+        label: "Acciones",
         key: "actions",
         sortable: false
       }],
@@ -6951,7 +6958,7 @@ var render = function() {
               },
               [
                 _c("i", { staticClass: "fas fa-plus mr-1" }),
-                _vm._v(" ADD PARTICIPANT\n      ")
+                _vm._v(" Añadir Ficha\n      ")
               ]
             )
           ],
@@ -6964,7 +6971,7 @@ var render = function() {
           _c("div", { staticClass: "card" }, [
             _c("div", { staticClass: "card-body" }, [
               _c("h4", { staticClass: "card-title" }, [
-                _vm._v("Participants Table")
+                _vm._v("Listado Federados")
               ]),
               _vm._v(" "),
               _c("p", { staticClass: "card-title-desc" }),
@@ -6983,7 +6990,7 @@ var render = function() {
                         { staticClass: "d-inline-flex align-items-center" },
                         [
                           _vm._v(
-                            "\n                  Show\n                  "
+                            "\n                  Mostrar\n                  "
                           ),
                           _c("b-form-select", {
                             attrs: { size: "sm", options: _vm.pageOptions },
@@ -6995,7 +7002,7 @@ var render = function() {
                               expression: "perPage"
                             }
                           }),
-                          _vm._v("entries\n                ")
+                          _vm._v("registros\n                ")
                         ],
                         1
                       )
@@ -7016,11 +7023,11 @@ var render = function() {
                         { staticClass: "d-inline-flex align-items-center" },
                         [
                           _vm._v(
-                            "\n                  Search:\n                  "
+                            "\n                  Buscar:\n                  "
                           ),
                           _c("b-form-input", {
                             staticClass: "form-control form-control-sm ml-2",
-                            attrs: { type: "search", placeholder: "Search..." },
+                            attrs: { type: "search", placeholder: "Buscar..." },
                             model: {
                               value: _vm.filter,
                               callback: function($$v) {
@@ -7189,7 +7196,7 @@ var render = function() {
           }
         },
         [
-          _c("p", [_vm._v("Are you sure you want to delete selected item?")]),
+          _c("p", [_vm._v("¿Está segro de eliminar este registro?")]),
           _vm._v(" "),
           _c(
             "footer",
@@ -7209,7 +7216,7 @@ var render = function() {
                     }
                   }
                 },
-                [_vm._v("Cancel")]
+                [_vm._v("Cancelar")]
               ),
               _vm._v(" "),
               _c(
@@ -7309,7 +7316,7 @@ var render = function() {
               attrs: { id: "side-menu" }
             },
             [
-              _c("li", { staticClass: "menu-title" }, [_vm._v("Main")]),
+              _c("li", { staticClass: "menu-title" }, [_vm._v("Principal")]),
               _vm._v(" "),
               _c("li", [
                 _c(
@@ -7321,7 +7328,7 @@ var render = function() {
                   [
                     _c("i", { staticClass: "ti-save" }),
                     _vm._v(" "),
-                    _c("span", [_vm._v("Competitions Data")])
+                    _c("span", [_vm._v("Opciones de Gesíón")])
                   ]
                 ),
                 _vm._v(" "),
@@ -7341,7 +7348,7 @@ var render = function() {
                             staticClass: "side-nav-link",
                             attrs: { tag: "a", to: "/admin/users" }
                           },
-                          [_c("span", [_vm._v("Users")])]
+                          [_c("span", [_vm._v("Usuarios y Jueces")])]
                         )
                       ],
                       1
@@ -7356,7 +7363,7 @@ var render = function() {
                             staticClass: "side-nav-link",
                             attrs: { tag: "a", to: "/admin/categories" }
                           },
-                          [_c("span", [_vm._v("Categories")])]
+                          [_c("span", [_vm._v("Categorías")])]
                         )
                       ],
                       1
@@ -7371,7 +7378,7 @@ var render = function() {
                             staticClass: "side-nav-link",
                             attrs: { tag: "a", to: "/admin/competition_types" }
                           },
-                          [_c("span", [_vm._v("Competition Types")])]
+                          [_c("span", [_vm._v("Tipos de Competition")])]
                         )
                       ],
                       1
@@ -7422,7 +7429,7 @@ var render = function() {
                     [
                       _c("i", { staticClass: "ti-crown" }),
                       _vm._v(" "),
-                      _c("span", [_vm._v("Competitions")])
+                      _c("span", [_vm._v("Competiciones")])
                     ]
                   )
                 ],
@@ -7441,7 +7448,7 @@ var render = function() {
                     [
                       _c("i", { staticClass: "ti-user" }),
                       _vm._v(" "),
-                      _c("span", [_vm._v("Manage Participants")])
+                      _c("span", [_vm._v("Federados")])
                     ]
                   )
                 ],
@@ -7458,7 +7465,7 @@ var render = function() {
                   [
                     _c("i", { staticClass: "ti-list-ol" }),
                     _vm._v(" "),
-                    _c("span", [_vm._v("Manage Ranking")])
+                    _c("span", [_vm._v("Ranking")])
                   ]
                 ),
                 _vm._v(" "),
@@ -7478,7 +7485,7 @@ var render = function() {
                             staticClass: "side-nav-link",
                             attrs: { tag: "a", to: "/admin/ranking_points" }
                           },
-                          [_c("span", [_vm._v("Ranking Points")])]
+                          [_c("span", [_vm._v("Puntos Ranking")])]
                         )
                       ],
                       1
@@ -7493,7 +7500,7 @@ var render = function() {
                             staticClass: "side-nav-link",
                             attrs: { tag: "a", to: "/admin/category-modality" }
                           },
-                          [_c("span", [_vm._v("Manage Ranking")])]
+                          [_c("span", [_vm._v("Gestión Ranking")])]
                         )
                       ],
                       1
@@ -7666,7 +7673,7 @@ var render = function() {
                     staticClass:
                       "bx bx-power-off font-size-17 align-middle mr-1 text-danger"
                   }),
-                  _vm._v(" Logout\n        ")
+                  _vm._v(" Cerrar Sesión\n        ")
                 ]
               )
             ],

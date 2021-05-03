@@ -8,7 +8,7 @@
 
 	export default {
 		page: {
-        title: "Live Competition Management",
+        title: "Gestión de Competitición",
         meta: [{ name: "description", content: appConfig.description }]
     },
     components: {
@@ -18,14 +18,14 @@
     },
     data() {
       return {
-        title: "LIVE COMPETITION MANAGEMENT",
+        title: "GESTION DE COMPETICIÓN",
         items: [
           {
-            text: "Administrator",
+            text: "Home",
             href: "/admin"
           },
           {
-            text: "Competition",
+            text: "Gestión de Competición",
             href: "/admin/competition"
           },
           {

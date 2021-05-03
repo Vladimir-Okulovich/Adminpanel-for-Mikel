@@ -20,24 +20,24 @@ import {
 
 export default {
   page: {
-    title: "EDIT CLUB",
+    title: "EDITAR DATOS CLUB",
     meta: [{ name: "description", content: appConfig.description }]
   },
   components: { Layout, PageHeader },
   data() {
     return {
-      title: "EDIT CLUB",
+      title: "EDITAR DATOS CLUB",
       items: [
         {
-          text: "Administrator",
+          text: "HOME",
           href: "/admin"
         },
         {
-          text: "Club",
+          text: "Listado de Clubs",
           href: "/admin/clubs"
         },
         {
-          text: "Edit",
+          text: "Editar Datos Club",
           active: true
         }
       ],
@@ -116,7 +116,7 @@ export default {
             >{{ Error }}</b-alert>
             <form action="#" @submit.prevent="typeForm">
               <div class="form-group">
-                <label>Name</label>
+                <label>Nombre</label>
                 <input
                   v-model="typeform.name=getClub.name"
                   type="name"
@@ -125,13 +125,13 @@ export default {
                   :class="{ 'is-invalid': typesubmit && $v.typeform.name.$error }"
                 />
                 <div v-if="typesubmit && $v.typeform.name.$error" class="invalid-feedback">
-                  <span v-if="!$v.typeform.name.required">This value is required.</span>
+                  <span v-if="!$v.typeform.name.required">Este campos es obligatorio.</span>
                 </div>
               </div>             
               <div class="form-group mt-5 mb-0">
                 <div>
-                  <button type="submit" class="btn btn-primary">Save</button>
-                  <router-link to="/admin/clubs" class="btn btn-secondary m-l-5 ml-1">Cancel</router-link>
+                  <button type="submit" class="btn btn-primary">Guardar</button>
+                  <router-link to="/admin/clubs" class="btn btn-secondary m-l-5 ml-1">Cancelar</router-link>
                 </div>
               </div>
             </form>

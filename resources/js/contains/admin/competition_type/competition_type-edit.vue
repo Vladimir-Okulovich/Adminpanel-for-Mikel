@@ -29,15 +29,15 @@ export default {
       title: "EDIT COMPETITION TYPE",
       items: [
         {
-          text: "Administrator",
+          text: "Home",
           href: "/admin"
         },
         {
-          text: "Competition Type",
+          text: "Listado Tipos Competición",
           href: "/admin/competition_types"
         },
         {
-          text: "Edit",
+          text: "Editar Tipo Competición",
           active: true
         }
       ],
@@ -119,7 +119,7 @@ export default {
             >{{ Error }}</b-alert>
             <form action="#" @submit.prevent="typeForm">
               <div class="form-group">
-                <label>Name</label>
+                <label>Nombre</label>
                 <input
                   v-model="typeform.name=getCompetitionType.name"
                   type="text"
@@ -129,11 +129,11 @@ export default {
                   :class="{ 'is-invalid': typesubmit && $v.typeform.name.$error }"
                 />
                 <div v-if="typesubmit && $v.typeform.name.$error" class="invalid-feedback">
-                  <span v-if="!$v.typeform.name.required">This value is required.</span>
+                  <span v-if="!$v.typeform.name.required">Este Campo es Obligatorio.</span>
                 </div>
               </div>
               <div class="form-group">
-                <label>Description</label>
+                <label>Descripción</label>
                 <div>
                   <textarea
                     v-model="typeform.description=getCompetitionType.description"
@@ -143,14 +143,14 @@ export default {
                     :class="{ 'is-invalid': typesubmit && $v.typeform.description.$error }"
                   ></textarea>
                   <div v-if="typesubmit && $v.typeform.description.$error" class="invalid-feedback">
-                    <span v-if="!$v.typeform.description.required">This value is required.</span>
+                    <span v-if="!$v.typeform.description.required">Este Campo es Obligatorio.</span>
                   </div>
                 </div>
               </div>              
               <div class="form-group mt-5 mb-0">
                 <div>
-                  <button type="submit" class="btn btn-primary">Save</button>
-                  <router-link to="/admin/competition_types" class="btn btn-secondary m-l-5 ml-1">Cancel</router-link>
+                  <button type="submit" class="btn btn-primary">Guardar</button>
+                  <router-link to="/admin/competition_types" class="btn btn-secondary m-l-5 ml-1">Cancelar</router-link>
                 </div>
               </div>
             </form>
