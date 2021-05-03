@@ -56,7 +56,7 @@ class LiveManagementController extends Controller
         $str = explode(" ", $request->categoryModality);
         $sex = Sex::where('name', $str[1])->first();
         $category = Category::where('name', $str[0])->where('sex_id', $sex->id)->first();
-        $modality = Modality::where('name', $str[2].' '.$str[3])->first();
+        $modality = Modality::where('name', $str[2])->first();
         $temps = Com_cat_mod_participant::where('competition_id', $request->competitionId)
                                         ->where('category_id', $category->id)
                                         ->where('modality_id', $modality->id)->get();

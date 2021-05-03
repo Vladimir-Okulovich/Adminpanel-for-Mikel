@@ -24,6 +24,7 @@
       ...mapGetters([
         'judge_round_heats',
         'judge_heat_scores',
+        'isActiveStatus',
       ]),
     },
     mounted() {
@@ -48,7 +49,7 @@
 </script>
 <template>
   <Layout>
-    <div v-if="judge_round_heats.length > 0">
+    <div v-if="isActiveStatus == 1">
       <div class="d-flex justify-content-center pt-4">
         <b-img
           :src="'/images/logo.png'"
@@ -77,7 +78,7 @@
       </div>
       <div class="text-center w-100">
         <h4 class="mb-0" style="background: #4a5471;padding: 10px 0;">
-          Round {{ judge_round_heats[0].round }} Heat {{ judge_round_heats[0].heat }}
+          Ronda {{ judge_round_heats[0].round }} Manga {{ judge_round_heats[0].heat }}
         </h4>
       </div>
 
@@ -87,8 +88,8 @@
             <table class="table table-bordered text-center">
               <thead class="thead-light">
                 <tr>
-                  <th rowspan="2" style="width: 15%;">PARTICIPANT</th>
-                  <th colspan="10">WAVES</th>
+                  <th rowspan="2" style="width: 15%;">PARTICIPANTE</th>
+                  <th colspan="10">OLAS</th>
                 </tr>
                 <tr>
                   <th v-for="n in 10" :key="n">{{ n }}</th>
@@ -118,7 +119,7 @@
           class="btn btn-info mt-4"
           style="width: 10%;float: right;"
         >
-          Save
+          Guardar
         </button>
       </div>
     </div>
@@ -129,11 +130,12 @@
           class="btn btn-warning mt-4"
           style="width: 10%;"
         >
-          Refresh
+          Actualizar
         </button>
       </div>
       <div class="text-center mt-5">
-        <h3>NO HAY MANGAS ACTIVAS. ACTUALICE EN UNOS MOMENTOS</h3>
+        <h3 v-if="isActiveStatus == 3">NO HAY MANGAS ACTIVAS. ACTUALICE CON EL BOTÓN.</h3>
+        <h3 v-if="isActiveStatus == 2">ESPERE A QUE SE ACTIVE LA SIGUIENTE MANGA Y ACTUALICE ESTA PANTALLA.</h3>
       </div>
     </div>
   </Layout>

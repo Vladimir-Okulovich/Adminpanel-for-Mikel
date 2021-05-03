@@ -127,9 +127,9 @@
               </tr>
               <tr class="thead-light">
                 <th></th>
-                <th>Participant</th>
-                <th>Points</th>
-                <th>Position</th>
+                <th>Participante</th>
+                <th>Puntos</th>
+                <th>Posición</th>
               </tr>
             </thead>
             <tbody>

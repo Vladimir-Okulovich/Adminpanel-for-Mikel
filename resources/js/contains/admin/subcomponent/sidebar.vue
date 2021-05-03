@@ -87,26 +87,26 @@
           <div id="sidebar-menu">
             <!-- Left Menu Start -->
             <ul class="metismenu list-unstyled" id="side-menu">
-              <li class="menu-title">Main</li>
+              <li class="menu-title">Principal</li>
               <li>
                 <a href="javascript: void(0);" class="has-arrow">
                   <i class="ti-save"></i>
-                  <span>Competitions Data</span>
+                  <span>Opciones de Gesíón</span>
                 </a>
                 <ul class="sub-menu" aria-expanded="false">
                   <li>
                     <router-link tag="a" to="/admin/users" class="side-nav-link">
-                      <span>Users</span>
+                      <span>Usuarios y Jueces</span>
                     </router-link>
                   </li>
                   <li>
                     <router-link tag="a" to="/admin/categories" class="side-nav-link">
-                      <span>Categories</span>
+                      <span>Categorías</span>
                     </router-link>
                   </li>
                   <li>
                     <router-link tag="a" to="/admin/competition_types" class="side-nav-link">
-                      <span>Competition Types</span>
+                      <span>Tipos de Competition</span>
                     </router-link>
                   </li>
                   <li>
@@ -124,29 +124,29 @@
               <li>
                 <router-link tag="a" to="/admin/competitions" class="side-nav-link">
                   <i class="ti-crown"></i>
-                  <span>Competitions</span>
+                  <span>Competiciones</span>
                 </router-link>
               </li>
               <li>
                 <router-link tag="a" to="/admin/participants" class="side-nav-link">
                   <i class="ti-user"></i>
-                  <span>Manage Participants</span>
+                  <span>Federados</span>
                 </router-link>
               </li>
               <li>
                 <a href="javascript: void(0);" class="has-arrow">
                   <i class="ti-list-ol"></i>
-                  <span>Manage Ranking</span>
+                  <span>Ranking</span>
                 </a>
                 <ul class="sub-menu" aria-expanded="false">
                   <li>
                     <router-link tag="a" to="/admin/ranking_points" class="side-nav-link">
-                      <span>Ranking Points</span>
+                      <span>Puntos Ranking</span>
                     </router-link>
                   </li>
                   <li>
                     <router-link tag="a" to="/admin/category-modality" class="side-nav-link">
-                      <span>Manage Ranking</span>
+                      <span>Gestión Ranking</span>
                     </router-link>
                   </li>
                 </ul>

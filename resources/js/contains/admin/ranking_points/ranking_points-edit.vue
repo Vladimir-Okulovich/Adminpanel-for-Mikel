@@ -37,8 +37,8 @@ export default {
       sortBy: "position",
       sortDesc: false,
       fields: [
-        { key: "position", sortable: true },
-        { key: "points", sortable: false },
+        { label: "Posición", key: "position", sortable: true },
+        { label: "Puntos", key: "points", sortable: false },
       ],
       isError: false,
       Error: null,
@@ -129,7 +129,7 @@ export default {
             >{{ Error }}</b-alert>
             <form action="#" @submit.prevent="typeForm">
               <div class="form-group">
-                <label>Name</label>
+                <label>Nombre</label>
                 <input
                   v-model="typeform.name=getRanking.name"
                   type="text"
@@ -143,7 +143,7 @@ export default {
                 </div>
               </div>
               <div class="form-group">
-                <label>Year</label>
+                <label>año</label>
                 <br />
                 <date-picker
                   v-model="typeform.year=getRanking.year"
@@ -159,8 +159,8 @@ export default {
               </div>
               <div class="form-group mt-5 mb-0">
                 <div>
-                  <button type="submit" class="btn btn-primary">Save</button>
-                  <router-link to="/admin/ranking_points" class="btn btn-secondary m-l-5 ml-1">Cancel</router-link>
+                  <button type="submit" class="btn btn-primary">Guardar</button>
+                  <router-link to="/admin/ranking_points" class="btn btn-secondary m-l-5 ml-1">Cancelar</router-link>
                 </div>
               </div>
             </form>

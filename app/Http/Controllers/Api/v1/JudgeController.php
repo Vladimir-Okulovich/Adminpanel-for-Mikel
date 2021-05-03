@@ -61,11 +61,8 @@ class JudgeController extends Controller
         }
 
         // $judge_heat_scores = [];
-        $round_heats = [];
         return response()->json([
             'message' => 'success',
-            'judge_round_heats' => $round_heats,
-            'judge_heat_scores' => $judge_heat_scores,
         ], 200);
     }
 }

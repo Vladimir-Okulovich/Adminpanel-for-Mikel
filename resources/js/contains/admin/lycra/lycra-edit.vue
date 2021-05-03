@@ -20,7 +20,7 @@ import {
 
 export default {
   page: {
-    title: "EDIT LYCRA",
+    title: "EDITAR LYCRA",
     meta: [{ name: "description", content: appConfig.description }]
   },
   components: { Layout, PageHeader },
@@ -29,15 +29,15 @@ export default {
       title: "EDIT LYCRA",
       items: [
         {
-          text: "Administrator",
+          text: "Home",
           href: "/admin"
         },
         {
-          text: "Lycra",
+          text: "Listado Lycraa",
           href: "/admin/lycras"
         },
         {
-          text: "Edit",
+          text: "Editar Lycra",
           active: true
         }
       ],
@@ -119,7 +119,7 @@ export default {
             >{{ Error }}</b-alert>
             <form action="#" @submit.prevent="typeForm">
               <div class="form-group">
-                <label>Name</label>
+                <label>Nombre</label>
                 <input
                   v-model="typeform.name=getLycra.name"
                   type="text"
@@ -129,7 +129,7 @@ export default {
                   :class="{ 'is-invalid': typesubmit && $v.typeform.name.$error }"
                 />
                 <div v-if="typesubmit && $v.typeform.name.$error" class="invalid-feedback">
-                  <span v-if="!$v.typeform.name.required">This value is required.</span>
+                  <span v-if="!$v.typeform.name.required">Este Campo es Obligatorio.</span>
                 </div>
               </div>
               <div class="form-group">
@@ -142,13 +142,13 @@ export default {
                   :class="{ 'is-invalid': typesubmit && $v.typeform.color.$error }"
                 />
                 <div v-if="typesubmit && $v.typeform.color.$error" class="invalid-feedback">
-                  <span v-if="!$v.typeform.color.required">This value is required.</span>
+                  <span v-if="!$v.typeform.color.required">Este Campo es Obligatorio.</span>
                 </div>
               </div>             
               <div class="form-group mt-5 mb-0">
                 <div>
-                  <button type="submit" class="btn btn-primary">Save</button>
-                  <router-link to="/admin/lycras" class="btn btn-secondary m-l-5 ml-1">Cancel</router-link>
+                  <button type="submit" class="btn btn-primary">Guardar</button>
+                  <router-link to="/admin/lycras" class="btn btn-secondary m-l-5 ml-1">Cancelar</router-link>
                 </div>
               </div>
             </form>

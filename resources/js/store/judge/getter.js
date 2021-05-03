@@ -4,7 +4,10 @@ const getters = {
     },
     judge_heat_scores(state) {
         return state.judge_heat_scores;
-    }
+    },
+    isActiveStatus(state) {
+    	return state.isActiveStatus;
+    },
 };
 
 export default getters;

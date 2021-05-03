@@ -21,8 +21,8 @@ const actions = {
         return new Promise((resolve) =>{
             ApiService.post("api/v1/judge/store", data)
                 .then(({data}) => {
-                    toastr.success('Puntuación de Manga salvada. Espere a que se active al siguiente manga', '', {timeout: 5000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
-                    context.commit(type.GET_JUDGE_ROUND_HEATS, data)
+                    toastr.success('Puntuación de Manga salvada. Espere a que se active la siguiente manga', '', {timeout: 5000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
+                    context.commit(type.SET_ISACTIVESTATUS, data)
                 })
                 .catch(({ response }) => {
                     // console.log(response);

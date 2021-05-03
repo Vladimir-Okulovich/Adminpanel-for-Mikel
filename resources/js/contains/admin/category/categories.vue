@@ -7,7 +7,7 @@
 
 	export default {
 		page: {
-        title: "CATEGORIES",
+        title: "CATEGORIAS",
         meta: [{ name: "description", content: appConfig.description }]
     },
     components: {
@@ -16,14 +16,14 @@
     },
     data() {
       return {
-        title: "CATEGORIES",
+        title: "CATEGORIAS",
         items: [
           {
-            text: "Administrator",
+            text: "Home",
             href: "/admin"
           },
           {
-            text: "Categories",
+            text: "Categorias",
             active: true
           }
         ],
@@ -36,10 +36,10 @@
         sortBy: "",
         sortDesc: false,
         fields: [
-          { key: "category", sortable: true },
-          { key: "age", sortable: true },
-          { key: "description", sortable: false },
-          { key: "actions", sortable: false }
+          { label: "Categoria", key: "category", sortable: false },
+          { label: "Edad", key: "age", sortable: false },
+          { label: "Descripcion", key: "description", sortable: false },
+          { label: "Acciones", key: "actions", sortable: false }
         ],
         deletingId: 0,
       }
@@ -95,7 +95,7 @@
         <router-link to="/admin/category/create"
           class="btn btn-info btn-block d-inline-block"
         >
-          <i class="fas fa-plus mr-1"></i> ADD CATEGORY
+          <i class="fas fa-plus mr-1"></i> Añadir Categoría
         </router-link>
       </div>
     </PageHeader>
@@ -104,14 +104,14 @@
       <div class="col-12">
         <div class="card">
           <div class="card-body">
-            <h4 class="card-title">Category Table</h4>
+            <h4 class="card-title">Tabla de Categorías</h4>
             <p class="card-title-desc"></p>
             <div class="row mb-md-2">
               <div class="col-sm-12 col-md-6">
                 <div id="tickets-table_length" class="dataTables_length">
                   <label class="d-inline-flex align-items-center">
-                    Show
-                    <b-form-select v-model="perPage" size="sm" :options="pageOptions"></b-form-select>entries
+                    Mostrar
+                    <b-form-select v-model="perPage" size="sm" :options="pageOptions"></b-form-select>registros
                   </label>
                 </div>
               </div>
@@ -119,11 +119,11 @@
               <div class="col-sm-12 col-md-6">
                 <div id="tickets-table_filter" class="dataTables_filter text-md-right">
                   <label class="d-inline-flex align-items-center">
-                    Search:
+                    Buscar:
                     <b-form-input
                       v-model="filter"
                       type="search"
-                      placeholder="Search..."
+                      placeholder="Buscar..."
                       class="form-control form-control-sm ml-2"
                     ></b-form-input>
                   </label>
@@ -152,7 +152,7 @@
                   {{ row.item.description | truncate(50) }}
                 </template>
                 <template #cell(age)="row">
-                  {{age(row.item.year2)}}~{{age(row.item.year1)}} years
+                  de {{age(row.item.year2)}} a {{age(row.item.year1)}} años
                 </template>
                 <template #cell(actions)="row">
                   <router-link :to="{ name: 'CategoryEdit', params: { categoryId: row.item.id }}" class="btn btn-sm btn-secondary mr-2">
@@ -182,13 +182,13 @@
     <b-modal
       id="delete-modal"
       centered
-      title="Delete Item"
+      title="Borrar Categoría"
       title-class="font-18"
       hide-footer
     >
-      <p>Are you sure you want to delete selected item?</p>
+      <p>¿Está seguro de eliminar este registro?</p>
       <footer id="delete-modal___BV_modal_footer_" class="modal-footer">
-        <button type="button" class="btn btn-secondary" @click="$bvModal.hide('delete-modal')">Cancel</button>
+        <button type="button" class="btn btn-secondary" @click="$bvModal.hide('delete-modal')">Cancelar</button>
         <button type="button" class="btn btn-primary" @click="realDelete()">OK</button>
       </footer>
     </b-modal>

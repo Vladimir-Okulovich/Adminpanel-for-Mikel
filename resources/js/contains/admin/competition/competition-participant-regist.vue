@@ -58,12 +58,12 @@
           edit: true,
         },
         modalityOptions: [
-          "Short Boat",
-          "Long Ship",
+          "Corto",
+          "Largo",
         ],
         register_modalities: [
-          "Short Boat",
-          "Long Ship",
+          "Corto",
+          "Largo",
         ],
         edit_modalities: [],
         participantId: 0,

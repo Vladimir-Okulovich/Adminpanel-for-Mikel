@@ -60,7 +60,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   page: {
-    title: "EDIT LYCRA",
+    title: "EDITAR LYCRA",
     meta: [{
       name: "description",
       content: _app_config__WEBPACK_IMPORTED_MODULE_6__.description
@@ -74,13 +74,13 @@ __webpack_require__.r(__webpack_exports__);
     return {
       title: "EDIT LYCRA",
       items: [{
-        text: "Administrator",
+        text: "Home",
         href: "/admin"
       }, {
-        text: "Lycra",
+        text: "Listado Lycraa",
         href: "/admin/lycras"
       }, {
-        text: "Edit",
+        text: "Editar Lycra",
         active: true
       }],
       isError: false,
@@ -6979,7 +6979,7 @@ var render = function() {
                   },
                   [
                     _c("div", { staticClass: "form-group" }, [
-                      _c("label", [_vm._v("Name")]),
+                      _c("label", [_vm._v("Nombre")]),
                       _vm._v(" "),
                       _c("input", {
                         directives: [
@@ -7020,7 +7020,9 @@ var render = function() {
                       _vm.typesubmit && _vm.$v.typeform.name.$error
                         ? _c("div", { staticClass: "invalid-feedback" }, [
                             !_vm.$v.typeform.name.required
-                              ? _c("span", [_vm._v("This value is required.")])
+                              ? _c("span", [
+                                  _vm._v("Este Campo es Obligatorio.")
+                                ])
                               : _vm._e()
                           ])
                         : _vm._e()
@@ -7064,7 +7066,9 @@ var render = function() {
                       _vm.typesubmit && _vm.$v.typeform.color.$error
                         ? _c("div", { staticClass: "invalid-feedback" }, [
                             !_vm.$v.typeform.color.required
-                              ? _c("span", [_vm._v("This value is required.")])
+                              ? _c("span", [
+                                  _vm._v("Este Campo es Obligatorio.")
+                                ])
                               : _vm._e()
                           ])
                         : _vm._e()
@@ -7080,7 +7084,7 @@ var render = function() {
                               staticClass: "btn btn-primary",
                               attrs: { type: "submit" }
                             },
-                            [_vm._v("Save")]
+                            [_vm._v("Guardar")]
                           ),
                           _vm._v(" "),
                           _c(
@@ -7089,7 +7093,7 @@ var render = function() {
                               staticClass: "btn btn-secondary m-l-5 ml-1",
                               attrs: { to: "/admin/lycras" }
                             },
-                            [_vm._v("Cancel")]
+                            [_vm._v("Cancelar")]
                           )
                         ],
                         1
@@ -7183,7 +7187,7 @@ var render = function() {
               attrs: { id: "side-menu" }
             },
             [
-              _c("li", { staticClass: "menu-title" }, [_vm._v("Main")]),
+              _c("li", { staticClass: "menu-title" }, [_vm._v("Principal")]),
               _vm._v(" "),
               _c("li", [
                 _c(
@@ -7195,7 +7199,7 @@ var render = function() {
                   [
                     _c("i", { staticClass: "ti-save" }),
                     _vm._v(" "),
-                    _c("span", [_vm._v("Competitions Data")])
+                    _c("span", [_vm._v("Opciones de Gesíón")])
                   ]
                 ),
                 _vm._v(" "),
@@ -7215,7 +7219,7 @@ var render = function() {
                             staticClass: "side-nav-link",
                             attrs: { tag: "a", to: "/admin/users" }
                           },
-                          [_c("span", [_vm._v("Users")])]
+                          [_c("span", [_vm._v("Usuarios y Jueces")])]
                         )
                       ],
                       1
@@ -7230,7 +7234,7 @@ var render = function() {
                             staticClass: "side-nav-link",
                             attrs: { tag: "a", to: "/admin/categories" }
                           },
-                          [_c("span", [_vm._v("Categories")])]
+                          [_c("span", [_vm._v("Categorías")])]
                         )
                       ],
                       1
@@ -7245,7 +7249,7 @@ var render = function() {
                             staticClass: "side-nav-link",
                             attrs: { tag: "a", to: "/admin/competition_types" }
                           },
-                          [_c("span", [_vm._v("Competition Types")])]
+                          [_c("span", [_vm._v("Tipos de Competition")])]
                         )
                       ],
                       1
@@ -7296,7 +7300,7 @@ var render = function() {
                     [
                       _c("i", { staticClass: "ti-crown" }),
                       _vm._v(" "),
-                      _c("span", [_vm._v("Competitions")])
+                      _c("span", [_vm._v("Competiciones")])
                     ]
                   )
                 ],
@@ -7315,7 +7319,7 @@ var render = function() {
                     [
                       _c("i", { staticClass: "ti-user" }),
                       _vm._v(" "),
-                      _c("span", [_vm._v("Manage Participants")])
+                      _c("span", [_vm._v("Federados")])
                     ]
                   )
                 ],
@@ -7332,7 +7336,7 @@ var render = function() {
                   [
                     _c("i", { staticClass: "ti-list-ol" }),
                     _vm._v(" "),
-                    _c("span", [_vm._v("Manage Ranking")])
+                    _c("span", [_vm._v("Ranking")])
                   ]
                 ),
                 _vm._v(" "),
@@ -7352,7 +7356,7 @@ var render = function() {
                             staticClass: "side-nav-link",
                             attrs: { tag: "a", to: "/admin/ranking_points" }
                           },
-                          [_c("span", [_vm._v("Ranking Points")])]
+                          [_c("span", [_vm._v("Puntos Ranking")])]
                         )
                       ],
                       1
@@ -7367,7 +7371,7 @@ var render = function() {
                             staticClass: "side-nav-link",
                             attrs: { tag: "a", to: "/admin/category-modality" }
                           },
-                          [_c("span", [_vm._v("Manage Ranking")])]
+                          [_c("span", [_vm._v("Gestión Ranking")])]
                         )
                       ],
                       1
@@ -7540,7 +7544,7 @@ var render = function() {
                     staticClass:
                       "bx bx-power-off font-size-17 align-middle mr-1 text-danger"
                   }),
-                  _vm._v(" Logout\n        ")
+                  _vm._v(" Cerrar Sesión\n        ")
                 ]
               )
             ],

@@ -72,8 +72,8 @@ export default {
         "COMPETICIÓN EN CURSO"
       ],
       modalityOptions: [
-        "Short Boat",
-        "Long Ship"
+        "Corto",
+        "Largo",
       ],
       typesubmit: false,
     };
