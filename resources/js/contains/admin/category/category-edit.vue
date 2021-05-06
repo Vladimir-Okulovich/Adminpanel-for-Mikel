@@ -40,7 +40,7 @@ export default {
           href: "/admin/categories"
         },
         {
-          text: "Editar",
+          text: "Modificar Categoria",
           active: true
         }
       ],

@@ -7,7 +7,7 @@
 
   export default {
     page: {
-        title: "COMPETITIONS",
+        title: "LISTADO COMPETICIONES",
         meta: [{ name: "description", content: appConfig.description }]
     },
     components: {
@@ -16,14 +16,14 @@
     },
     data() {
       return {
-        title: "COMPETITIONS",
+        title: "LISTADO COMPETICIONES",
         items: [
           {
-            text: "Administrator",
+            text: "Home",
             href: "/admin"
           },
           {
-            text: "Competitions",
+            text: "Lsitado Competiciones",
             active: true
           }
         ],
@@ -36,15 +36,15 @@
         sortBy: "date",
         sortDesc: true,
         fields: [
-          { key: "title", sortable: true },
-          { key: "competition_type", sortable: true },
-          { key: "place", sortable: false },
-          { key: "date", sortable: true },
-          { key: "time", sortable: false },
-          { key: "organizer", sortable: true },
-          { key: "ranking_score", sortable: true },
-          { key: "status", sortable: true },
-          { key: "actions", sortable: false }
+          { label: "Título", key: "title", sortable: true },
+          { label: "Tipo Competición",  key: "competition_type", sortable: true },
+          { label: "Lugar", key: "place", sortable: false },
+          { label: "Fecha", key: "date", sortable: false },
+          { label: "Hora", key: "time", sortable: false },
+          { label: "Organizador", key: "organizer", sortable: true },
+          { label: "Puntúa Ranking", key: "ranking_score", sortable: true },
+          { label: "Estado", key: "status", sortable: true },
+          { label: "Acciones", key: "actions", sortable: false }
         ],
         deletingId: 0,
       }
@@ -103,7 +103,7 @@
         <router-link to="/admin/competition/create"
           class="btn btn-info btn-block d-inline-block"
         >
-          <i class="fas fa-plus mr-1"></i> ADD COMPETITION
+          <i class="fas fa-plus mr-1"></i> CREAR COMPETICIÓN
         </router-link>
       </div>
     </PageHeader>
@@ -112,14 +112,14 @@
       <div class="col-12">
         <div class="card">
           <div class="card-body">
-            <h4 class="card-title">Competition Table</h4>
+            <h4 class="card-title">Listado Competiciones</h4>
             <p class="card-title-desc"></p>
             <div class="row mb-md-2">
               <div class="col-sm-12 col-md-6">
                 <div id="tickets-table_length" class="dataTables_length">
                   <label class="d-inline-flex align-items-center">
-                    Show
-                    <b-form-select v-model="perPage" size="sm" :options="pageOptions"></b-form-select>entries
+                    Mostrar
+                    <b-form-select v-model="perPage" size="sm" :options="pageOptions"></b-form-select>registros
                   </label>
                 </div>
               </div>
@@ -127,11 +127,11 @@
               <div class="col-sm-12 col-md-6">
                 <div id="tickets-table_filter" class="dataTables_filter text-md-right">
                   <label class="d-inline-flex align-items-center">
-                    Search:
+                    Buscar:
                     <b-form-input
                       v-model="filter"
                       type="search"
-                      placeholder="Search..."
+                      placeholder="Buscar..."
                       class="form-control form-control-sm ml-2"
                     ></b-form-input>
                   </label>
@@ -157,14 +157,14 @@
                   {{ row.item.competition_type.name }}
                 </template>
                 <template #cell(ranking_score)="row">
-                  <span class="badge badge-info" v-if="row.item.ranking_score=='Yes'">{{ row.item.ranking_score }}</span>
+                  <span class="badge badge-info" v-if="row.item.ranking_score=='Si'">{{ row.item.ranking_score }}</span>
                   <span class="badge badge-warning" v-if="row.item.ranking_score=='No'">{{ row.item.ranking_score }}</span>
                 </template>
                 <template #cell(status)="row">
                   <select class="custom-select" v-model="row.item.status.name" @change="changeStatus({id: row.item.id, status: row.item.status.name})">
-                    <option value="CLOSED">CLOSED</option>
-                    <option value="REGISTRATION OPEN">REGISTRATION OPEN</option>
-                    <option value="COMPETICIÓN EN CURSO">COMPETICIÓN EN CURSO</option>
+                    <option value="CERRADA">CERRADA</option>
+                    <option value="REGISTRO ABIERTO">REGISTRO ABIERTO</option>
+                    <option value="EN CURSO">EN CURSO</option>
                   </select>
                 </template>
                 <template #cell(actions)="row">
@@ -207,13 +207,13 @@
     <b-modal
       id="delete-modal"
       centered
-      title="Delete Item"
+      title="Eliminar Competición"
       title-class="font-18"
       hide-footer
     >
-      <p>Are you sure you want to delete selected item?</p>
+      <p>¿Está seguro de eliminar esta competición?</p>
       <footer id="delete-modal___BV_modal_footer_" class="modal-footer">
-        <button type="button" class="btn btn-secondary" @click="$bvModal.hide('delete-modal')">Cancel</button>
+        <button type="button" class="btn btn-secondary" @click="$bvModal.hide('delete-modal')">Cancelar</button>
         <button type="button" class="btn btn-primary" @click="realDelete()">OK</button>
       </footer>
     </b-modal>

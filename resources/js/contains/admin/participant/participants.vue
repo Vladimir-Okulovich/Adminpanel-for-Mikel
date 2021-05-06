@@ -177,11 +177,11 @@
     <b-modal
       id="delete-modal"
       centered
-      title="Delete Item"
+      title="Eliminar Ficha"
       title-class="font-18"
       hide-footer
     >
-      <p>¿Está segro de eliminar este registro?</p>
+      <p>¿Está segro de eliminar esta ficha?</p>
       <footer id="delete-modal___BV_modal_footer_" class="modal-footer">
         <button type="button" class="btn btn-secondary" @click="$bvModal.hide('delete-modal')">Cancelar</button>
         <button type="button" class="btn btn-primary" @click="realDelete()">OK</button>

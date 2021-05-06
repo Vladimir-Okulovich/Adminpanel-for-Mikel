@@ -8,7 +8,7 @@
 
 	export default {
 		page: {
-        title: "REGIST PARTICIPANT TO COMPETITION",
+        title: "AÑADIR PARTICIPANTES A COMPETICION",
         meta: [{ name: "description", content: appConfig.description }]
     },
     components: {
@@ -18,18 +18,18 @@
     },
     data() {
       return {
-        title: "REGIST PARTICIPANT TO COMPETITION",
+        title: "AÑADIR PARTICIPANTES A COMPETICION",
         items: [
           {
-            text: "Administrator",
+            text: "Home",
             href: "/admin"
           },
           {
-            text: "Competition",
+            text: "Listado Competiciones",
             href: "/admin/competitions"
           },
           {
-            text: "Regist Participant",
+            text: "Añadir Participantes a Competición",
             active: true,
           },
         ],
@@ -42,11 +42,11 @@
         sortBy: "surname",
         sortDesc: false,
         fields: [
-          { key: "name", sortable: true },
-          { key: "surname", sortable: true },
-          { key: "birthday", sortable: true },
-          { key: "club", sortable: false },
-          { key: "actions", sortable: false },
+          { label: "Nombre", key: "name", sortable: true },
+          { label: "Apellidos", key: "surname", sortable: true },
+          { label: "Fecha Nac.", key: "birthday", sortable: false },
+          { label: "Club", key: "club", sortable: true },
+          { label: "Acciones", key: "actions", sortable: false },
         ],
         totalRows_2: 1,
         currentPage_2: 1,
@@ -170,7 +170,7 @@
         <router-link :to="{ name: 'CompetitionParticipantAdd', params: { competitionId: this.$route.params.competitionId } }"
           class="btn btn-info btn-block d-inline-block"
         >
-          <i class="fas fa-plus mr-1"></i> ADD PARTICIPANT
+          <i class="fas fa-plus mr-1"></i> AÑADIR PARTICIPANTES
         </router-link>
       </div>
     </PageHeader>
@@ -179,14 +179,14 @@
       <div class="col-lg-6 col-md-12">
         <div class="card">
           <div class="card-body">
-            <h4 class="card-title">Non-Registered Participants Table</h4>
+            <h4 class="card-title">No Regitrados en la Competición</h4>
             <p class="card-title-desc"></p>
             <div class="row mb-md-2">
               <div class="col-sm-12 col-md-6">
                 <div id="tickets-table_length" class="dataTables_length">
                   <label class="d-inline-flex align-items-center">
-                    Show
-                    <b-form-select v-model="perPage_1" size="sm" :options="pageOptions"></b-form-select>entries
+                    Mostrar
+                    <b-form-select v-model="perPage_1" size="sm" :options="pageOptions"></b-form-select>registros
                   </label>
                 </div>
               </div>
@@ -194,11 +194,11 @@
               <div class="col-sm-12 col-md-6">
                 <div id="tickets-table_filter" class="dataTables_filter text-md-right">
                   <label class="d-inline-flex align-items-center">
-                    Search:
+                    Buscar:
                     <b-form-input
                       v-model="filter_1"
                       type="search"
-                      placeholder="Search..."
+                      placeholder="Buscar..."
                       class="form-control form-control-sm ml-2"
                     ></b-form-input>
                   </label>
@@ -250,14 +250,14 @@
       <div class="col-lg-6 col-md-12">
         <div class="card">
           <div class="card-body">
-            <h4 class="card-title">Registered Participants Table</h4>
+            <h4 class="card-title">Registrados en la Competición</h4>
             <p class="card-title-desc"></p>
             <div class="row mb-md-2">
               <div class="col-sm-12 col-md-6">
                 <div id="tickets-table_length" class="dataTables_length">
                   <label class="d-inline-flex align-items-center">
-                    Show
-                    <b-form-select v-model="perPage_2" size="sm" :options="pageOptions"></b-form-select>entries
+                    Mostrar
+                    <b-form-select v-model="perPage_2" size="sm" :options="pageOptions"></b-form-select>registros
                   </label>
                 </div>
               </div>
@@ -265,11 +265,11 @@
               <div class="col-sm-12 col-md-6">
                 <div id="tickets-table_filter" class="dataTables_filter text-md-right">
                   <label class="d-inline-flex align-items-center">
-                    Search:
+                    Buscar:
                     <b-form-input
                       v-model="filter_2"
                       type="search"
-                      placeholder="Search..."
+                      placeholder="Buscar..."
                       class="form-control form-control-sm ml-2"
                     ></b-form-input>
                   </label>
@@ -330,19 +330,19 @@
       hide-footer
     >
       <div class="">
-        <label>Modality</label>
+        <label>Modalidad</label>
         <multiselect 
           v-model="register_modalities"
           :options="modalityOptions"
           :multiple="true"
         ></multiselect>
         <div class="invalid-feedback" :class="{ 'd-inline-block': !isRequiredModality.register }">
-          <span>This value is required.</span>
+          <span>Este Campo es Obligatorio.</span>
         </div>
       </div>
       <footer class="modal-footer">
-        <button type="button" class="btn btn-secondary" @click="$bvModal.hide('register-modality-modal')">Cancel</button>
-        <button type="button" class="btn btn-primary" @click="registerParticipantWithModality()">Register</button>
+        <button type="button" class="btn btn-secondary" @click="$bvModal.hide('register-modality-modal')">Cancelar</button>
+        <button type="button" class="btn btn-primary" @click="registerParticipantWithModality()">Guardar</button>
       </footer>
     </b-modal>
 
@@ -354,19 +354,19 @@
       hide-footer
     >
       <div class="">
-        <label>Modality</label>
+        <label>Modalidad</label>
         <multiselect 
           v-model="edit_modalities"
           :options="modalityOptions"
           :multiple="true"
         ></multiselect>
         <div class="invalid-feedback" :class="{ 'd-inline-block': !isRequiredModality.edit }">
-          <span>This value is required.</span>
+          <span>Este Campo es Obligatorio.</span>
         </div>
       </div>
       <footer class="modal-footer">
-        <button type="button" class="btn btn-secondary" @click="$bvModal.hide('edit-modality-modal')">Cancel</button>
-        <button type="button" class="btn btn-primary" @click="editParticipantWithModality()">Update</button>
+        <button type="button" class="btn btn-secondary" @click="$bvModal.hide('edit-modality-modal')">Cancelar</button>
+        <button type="button" class="btn btn-primary" @click="editParticipantWithModality()">Guardar</button>
       </footer>
     </b-modal>
 
@@ -377,10 +377,10 @@
       title-class="font-18"
       hide-footer
     >
-      <p>Are you sure you want to unregister selected participant?</p>
+      <p>¿Está seguro de eliminar este aprticipante de la competición?</p>
       <footer class="modal-footer">
-        <button type="button" class="btn btn-secondary" @click="$bvModal.hide('unregister-modality-modal')">Cancel</button>
-        <button type="button" class="btn btn-primary" @click="unregisterParticipant()">Unregister</button>
+        <button type="button" class="btn btn-secondary" @click="$bvModal.hide('unregister-modality-modal')">Cancelar</button>
+        <button type="button" class="btn btn-primary" @click="unregisterParticipant()">Eliminar</button>
       </footer>
     </b-modal>
   </Layout>

@@ -41,7 +41,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var core_js_modules_es_symbol_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_symbol_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es.symbol.description.js */ "./node_modules/core-js/modules/es.symbol.description.js");
 /* harmony import */ var core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
+/* harmony import */ var C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
 /* harmony import */ var _subcomponent_layout__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../subcomponent/layout */ "./resources/js/contains/admin/subcomponent/layout.vue");
 /* harmony import */ var _components_page_header__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/components/page-header */ "./resources/js/components/page-header.vue");
 /* harmony import */ var _app_config__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/app.config */ "./resources/js/app.config.json");
@@ -64,7 +64,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   page: {
-    title: "EDIT COMPETITION",
+    title: "MODIFICAR COMPETICIÓN",
     meta: [{
       name: "description",
       content: _app_config__WEBPACK_IMPORTED_MODULE_5__.description
@@ -79,15 +79,15 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      title: "EDIT COMPETITION",
+      title: "MODIFICAR COMPETICIÓN",
       items: [{
-        text: "Administrator",
+        text: "Home",
         href: "/admin"
       }, {
-        text: "Competition",
+        text: "Listado Competiciones",
         href: "/admin/competitions"
       }, {
-        text: "Edit",
+        text: "Modificar Competición",
         active: true
       }],
       isError: false,
@@ -101,14 +101,14 @@ __webpack_require__.r(__webpack_exports__);
         time: "",
         organizer: "",
         ranking_score: "",
-        status: "",
+        status: "Si",
         lycra: "",
         modality: "",
         category: "",
         logo: null
       },
-      rankingScoreOptions: ["Yes", "No"],
-      statusOptions: ["CLOSED", "REGISTRATION OPEN", "COMPETICIÓN EN CURSO"],
+      rankingScoreOptions: ["Si", "No"],
+      statusOptions: ["CERRADA", "REGISTRO ABIERTO", "EN CURSO"],
       modalityOptions: ["Corto", "Largo"],
       typesubmit: false
     };
@@ -153,14 +153,14 @@ __webpack_require__.r(__webpack_exports__);
       }
     }
   },
-  computed: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_10__.mapGetters)(['typeOptions', 'categoryOptions', 'lycraOptions', 'getCompetition'])),
+  computed: (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_10__.mapGetters)(['typeOptions', 'categoryOptions', 'lycraOptions', 'getCompetition'])),
   mounted: function mounted() {
     this.getTypeOptions();
     this.getLycraOptions();
     this.getCategoryOptions();
     this.getCompetitionById(this.$route.params.competitionId);
   },
-  methods: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)((0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_10__.mapActions)(['updateCompetition', 'getCompetitionById', 'getTypeOptions', 'getLycraOptions', 'getCategoryOptions'])), {}, {
+  methods: (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)((0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_10__.mapActions)(['updateCompetition', 'getCompetitionById', 'getTypeOptions', 'getLycraOptions', 'getCategoryOptions'])), {}, {
     selectFile: function selectFile(event) {
       // `files` is always an array because the file input may be in multiple mode
       this.typeform.logo = event.target.files[0]; // console.log(this.typeform.logo)
@@ -276,7 +276,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
+/* harmony import */ var C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
 /* harmony import */ var simplebar_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! simplebar-vue */ "./node_modules/simplebar-vue/dist/simplebar-vue.esm.js");
 /* harmony import */ var metismenujs_dist_metismenujs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! metismenujs/dist/metismenujs */ "./node_modules/metismenujs/dist/metismenujs.js");
 /* harmony import */ var metismenujs_dist_metismenujs__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(metismenujs_dist_metismenujs__WEBPACK_IMPORTED_MODULE_2__);
@@ -339,7 +339,7 @@ __webpack_require__.r(__webpack_exports__);
       }
     }
   },
-  methods: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__.default)((0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__.default)({}, _state_helpers__WEBPACK_IMPORTED_MODULE_3__.layoutMethods), {}, {
+  methods: (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__.default)((0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__.default)({}, _state_helpers__WEBPACK_IMPORTED_MODULE_3__.layoutMethods), {}, {
     changeLayout: function changeLayout(layout) {
       this.changeLayoutType({
         layoutType: layout
@@ -432,16 +432,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "authMethods": function() { return /* binding */ authMethods; },
 /* harmony export */   "layoutMethods": function() { return /* binding */ layoutMethods; }
 /* harmony export */ });
-/* harmony import */ var E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
+/* harmony import */ var C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.mjs");
 
 
-var authComputed = (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__.default)((0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapState)('auth', {
+var authComputed = (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__.default)((0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapState)('auth', {
   currentUser: function currentUser(state) {
     return state.currentUser;
   }
 })), (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapGetters)('auth', ['loggedIn']));
-var layoutComputed = (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapState)('layout', {
+var layoutComputed = (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapState)('layout', {
   layoutType: function layoutType(state) {
     return state.layoutType;
   },
@@ -8032,7 +8032,7 @@ var render = function() {
                     _c("div", { staticClass: "row" }, [
                       _c("div", { staticClass: "col-lg-6 col-md-12" }, [
                         _c("div", { staticClass: "form-group" }, [
-                          _c("label", [_vm._v("Title")]),
+                          _c("label", [_vm._v("Título")]),
                           _vm._v(" "),
                           _c("input", {
                             directives: [
@@ -8077,7 +8077,7 @@ var render = function() {
                             ? _c("div", { staticClass: "invalid-feedback" }, [
                                 !_vm.$v.typeform.title.required
                                   ? _c("span", [
-                                      _vm._v("This value is required.")
+                                      _vm._v("Este Campo es Obligatorio.")
                                     ])
                                   : _vm._e()
                               ])
@@ -8088,7 +8088,7 @@ var render = function() {
                           "div",
                           { staticClass: "mb-3" },
                           [
-                            _c("label", [_vm._v("Competition Type")]),
+                            _c("label", [_vm._v("Tipo Competición")]),
                             _vm._v(" "),
                             _c("multiselect", {
                               class: {
@@ -8118,7 +8118,7 @@ var render = function() {
                               ? _c("div", { staticClass: "invalid-feedback" }, [
                                   !_vm.$v.typeform.competition_type.required
                                     ? _c("span", [
-                                        _vm._v("This value is required.")
+                                        _vm._v("Este Campo es Obligatorio.")
                                       ])
                                     : _vm._e()
                                 ])
@@ -8128,7 +8128,7 @@ var render = function() {
                         ),
                         _vm._v(" "),
                         _c("div", { staticClass: "form-group" }, [
-                          _c("label", [_vm._v("Description")]),
+                          _c("label", [_vm._v("Descripción")]),
                           _vm._v(" "),
                           _c("div", [
                             _c("textarea", {
@@ -8173,7 +8173,7 @@ var render = function() {
                               ? _c("div", { staticClass: "invalid-feedback" }, [
                                   !_vm.$v.typeform.description.required
                                     ? _c("span", [
-                                        _vm._v("This value is required.")
+                                        _vm._v("Este Campo es Obligatorio.")
                                       ])
                                     : _vm._e()
                                 ])
@@ -8182,7 +8182,7 @@ var render = function() {
                         ]),
                         _vm._v(" "),
                         _c("div", { staticClass: "form-group" }, [
-                          _c("label", [_vm._v("Place")]),
+                          _c("label", [_vm._v("Lugar")]),
                           _vm._v(" "),
                           _c("input", {
                             directives: [
@@ -8227,7 +8227,7 @@ var render = function() {
                             ? _c("div", { staticClass: "invalid-feedback" }, [
                                 !_vm.$v.typeform.place.required
                                   ? _c("span", [
-                                      _vm._v("This value is required.")
+                                      _vm._v("Este Campo es Obligatorio.")
                                     ])
                                   : _vm._e()
                               ])
@@ -8238,7 +8238,7 @@ var render = function() {
                           "div",
                           { staticClass: "form-group mb-3" },
                           [
-                            _c("label", [_vm._v("Date")]),
+                            _c("label", [_vm._v("Fecha")]),
                             _vm._v(" "),
                             _c("br"),
                             _vm._v(" "),
@@ -8272,7 +8272,7 @@ var render = function() {
                               ? _c("div", { staticClass: "invalid-feedback" }, [
                                   !_vm.$v.typeform.date.required
                                     ? _c("span", [
-                                        _vm._v("This value is required.")
+                                        _vm._v("Este Campo es Obligatorio.")
                                       ])
                                     : _vm._e()
                                 ])
@@ -8285,7 +8285,7 @@ var render = function() {
                           "div",
                           { staticClass: "form-group mb-3" },
                           [
-                            _c("label", [_vm._v("Time")]),
+                            _c("label", [_vm._v("Hora")]),
                             _vm._v(" "),
                             _c("br"),
                             _vm._v(" "),
@@ -8317,7 +8317,7 @@ var render = function() {
                               ? _c("div", { staticClass: "invalid-feedback" }, [
                                   !_vm.$v.typeform.time.required
                                     ? _c("span", [
-                                        _vm._v("This value is required.")
+                                        _vm._v("Este Campo es Obligatorio.")
                                       ])
                                     : _vm._e()
                                 ])
@@ -8327,7 +8327,7 @@ var render = function() {
                         ),
                         _vm._v(" "),
                         _c("div", { staticClass: "form-group" }, [
-                          _c("label", [_vm._v("Organizer")]),
+                          _c("label", [_vm._v("Organizador")]),
                           _vm._v(" "),
                           _c("input", {
                             directives: [
@@ -8373,7 +8373,7 @@ var render = function() {
                             ? _c("div", { staticClass: "invalid-feedback" }, [
                                 !_vm.$v.typeform.organizer.required
                                   ? _c("span", [
-                                      _vm._v("This value is required.")
+                                      _vm._v("Este Campo es Obligatorio.")
                                     ])
                                   : _vm._e()
                               ])
@@ -8386,7 +8386,7 @@ var render = function() {
                           "div",
                           { staticClass: "mb-3" },
                           [
-                            _c("label", [_vm._v("Ranking_score")]),
+                            _c("label", [_vm._v("Puntúa Ranking")]),
                             _vm._v(" "),
                             _c("multiselect", {
                               class: {
@@ -8416,7 +8416,7 @@ var render = function() {
                               ? _c("div", { staticClass: "invalid-feedback" }, [
                                   !_vm.$v.typeform.ranking_score.required
                                     ? _c("span", [
-                                        _vm._v("This value is required.")
+                                        _vm._v("Este Campo es Obligatorio.")
                                       ])
                                     : _vm._e()
                                 ])
@@ -8429,7 +8429,7 @@ var render = function() {
                           "div",
                           { staticClass: "form-group" },
                           [
-                            _c("label", [_vm._v("Status")]),
+                            _c("label", [_vm._v("Estado")]),
                             _vm._v(" "),
                             _c("multiselect", {
                               class: {
@@ -8458,7 +8458,7 @@ var render = function() {
                               ? _c("div", { staticClass: "invalid-feedback" }, [
                                   !_vm.$v.typeform.status.required
                                     ? _c("span", [
-                                        _vm._v("This value is required.")
+                                        _vm._v("Este Campo es Obligatorio.")
                                       ])
                                     : _vm._e()
                                 ])
@@ -8471,7 +8471,7 @@ var render = function() {
                           "div",
                           { staticClass: "mb-3" },
                           [
-                            _c("label", [_vm._v("Category")]),
+                            _c("label", [_vm._v("Categoría")]),
                             _vm._v(" "),
                             _c("multiselect", {
                               class: {
@@ -8503,7 +8503,7 @@ var render = function() {
                               ? _c("div", { staticClass: "invalid-feedback" }, [
                                   !_vm.$v.typeform.category.required
                                     ? _c("span", [
-                                        _vm._v("This value is required.")
+                                        _vm._v("Este Campo es Obligatorio.")
                                       ])
                                     : _vm._e()
                                 ])
@@ -8516,7 +8516,7 @@ var render = function() {
                           "div",
                           { staticClass: "mb-3" },
                           [
-                            _c("label", [_vm._v("Modality")]),
+                            _c("label", [_vm._v("Modalidad")]),
                             _vm._v(" "),
                             _c("multiselect", {
                               class: {
@@ -8548,7 +8548,7 @@ var render = function() {
                               ? _c("div", { staticClass: "invalid-feedback" }, [
                                   !_vm.$v.typeform.modality.required
                                     ? _c("span", [
-                                        _vm._v("This value is required.")
+                                        _vm._v("Este Campo es Obligatorio.")
                                       ])
                                     : _vm._e()
                                 ])
@@ -8591,7 +8591,7 @@ var render = function() {
                               ? _c("div", { staticClass: "invalid-feedback" }, [
                                   !_vm.$v.typeform.lycra.required
                                     ? _c("span", [
-                                        _vm._v("This value is required.")
+                                        _vm._v("Este Campo es Obligatorio.")
                                       ])
                                     : _vm._e()
                                 ])
@@ -8623,7 +8623,7 @@ var render = function() {
                                   staticClass: "btn btn-primary",
                                   attrs: { type: "submit" }
                                 },
-                                [_vm._v("Submit")]
+                                [_vm._v("Guardar")]
                               ),
                               _vm._v(" "),
                               _c(
@@ -8632,7 +8632,7 @@ var render = function() {
                                   staticClass: "btn btn-secondary m-l-5 ml-1",
                                   attrs: { to: "/admin/competitions" }
                                 },
-                                [_vm._v("Cancel")]
+                                [_vm._v("Cancelar")]
                               ),
                               _vm._v(" "),
                               _c(
@@ -8641,7 +8641,7 @@ var render = function() {
                                   staticClass: "btn btn-warning m-l-5 ml-1",
                                   attrs: { type: "reset" }
                                 },
-                                [_vm._v("Reset")]
+                                [_vm._v("Vaciar")]
                               )
                             ],
                             1

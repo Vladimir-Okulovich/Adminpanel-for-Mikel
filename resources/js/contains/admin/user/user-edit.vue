@@ -31,15 +31,15 @@ export default {
       title: "EDITAR USUARIO",
       items: [
         {
-          text: "Administrator",
+          text: "Home",
           href: "/admin"
         },
         {
-          text: "User",
+          text: "Listado Usuario",
           href: "/admin/users"
         },
         {
-          text: "Edit",
+          text: "Modificar Datos Usuario",
           active: true
         }
       ],
@@ -176,7 +176,7 @@ export default {
                     name="password"
                     class="form-control"
                     :class="{ 'is-invalid': typesubmit && $v.typeform.password.$error }"
-                    placeholder="Password"
+                    placeholder="Contraseña"
                   />
                   <div v-if="typesubmit && $v.typeform.password.$error" class="invalid-feedback">
                     <span v-if="!$v.typeform.password.required">Este Campo es obligatorio.</span>
@@ -195,7 +195,7 @@ export default {
                     name="confirmPassword"
                     class="form-control"
                     :class="{ 'is-invalid': typesubmit && $v.typeform.confirmPassword.$error }"
-                    placeholder="Confirm Password"
+                    placeholder="Confirmar Contraseña"
                   />
                   <div
                     v-if="typesubmit && $v.typeform.confirmPassword.$error"

@@ -8,7 +8,7 @@
 
 	export default {
 		page: {
-        title: "Gestión de Competitición",
+        title: "CREAR CUADRO COMPETICIÓN",
         meta: [{ name: "description", content: appConfig.description }]
     },
     components: {
@@ -18,18 +18,18 @@
     },
     data() {
       return {
-        title: "GESTION DE COMPETICIÓN",
+        title: "CREAR CUADRO COMPETICIÓN",
         items: [
           {
             text: "Home",
             href: "/admin"
           },
           {
-            text: "Gestión de Competición",
+            text: "Listado Competiciones",
             href: "/admin/competition"
           },
           {
-            text: "Live Management",
+            text: "Crear Cuadro de Competición",
             active: true
           }
         ],
@@ -43,12 +43,12 @@
         sortBy: "",
         sortDesc: false,
         fields: [
-          { key: "name", sortable: true },
-          { key: "surname", sortable: true },
-          { key: "dni_ficha", sortable: true },
-          { key: "birthday", sortable: true },
-          { key: "club", sortable: false },
-          { key: "actions", sortable: false },
+          { label: "Nombre", key: "name", sortable: true },
+          { label: "Título", key: "surname", sortable: true },
+          { label: "DNI Ficha", key: "dni_ficha", sortable: true },
+          { label: "Fecha Nac.", key: "birthday", sortable: true },
+          { label: "Club", key: "club", sortable: false },
+          { label: "Acciones", key: "actions", sortable: false },
         ],
         deletingId: 0,
       }
@@ -140,7 +140,7 @@
         <button v-if="!categoryStatus" @click="createCompetitionBox"
           class="btn btn-info btn-block d-inline-block"
         >
-          Create Competition Box
+          Crear Cuadro Competición
         </button>
         <button v-else @click="createCompetitionBox"
           class="btn btn-info btn-block d-inline-block"
@@ -154,7 +154,7 @@
       <div class="col-12">
         <div class="card">
           <div class="card-body">
-            <h4 class="card-title mb-4">Categories and Modalities</h4>
+            <h4 class="card-title mb-4">Selección Categorias</h4>
             <multiselect 
               v-model="categoryModality"
               :options="categoryModalityWithPart"
@@ -167,13 +167,13 @@
       <div class="col-12">
         <div class="card">
           <div class="card-body">
-            <h4 class="card-title mb-4">Participants Table</h4>
+            <h4 class="card-title mb-4">Listado Participantes</h4>
             <div class="row mb-md-2">
               <div class="col-sm-12 col-md-6">
                 <div id="tickets-table_length" class="dataTables_length">
                   <label class="d-inline-flex align-items-center">
-                    Show
-                    <b-form-select v-model="perPage" size="sm" :options="pageOptions"></b-form-select>entries
+                    Mostrar
+                    <b-form-select v-model="perPage" size="sm" :options="pageOptions"></b-form-select>resgistros
                   </label>
                 </div>
               </div>
@@ -181,11 +181,11 @@
               <div class="col-sm-12 col-md-6">
                 <div id="tickets-table_filter" class="dataTables_filter text-md-right">
                   <label class="d-inline-flex align-items-center">
-                    Search:
+                    Buscar:
                     <b-form-input
                       v-model="filter"
                       type="search"
-                      placeholder="Search..."
+                      placeholder="Buscar..."
                       class="form-control form-control-sm ml-2"
                     ></b-form-input>
                   </label>
@@ -238,9 +238,9 @@
       title-class="font-18"
       hide-footer
     >
-      <p>Do you really want to delete this participant?</p>
+      <p>¿Está seguro de eliminar este aprticipante de la competición?</p>
       <footer id="delete-modal___BV_modal_footer_" class="modal-footer">
-        <button type="button" class="btn btn-secondary" @click="$bvModal.hide('delete-modal')">Cancel</button>
+        <button type="button" class="btn btn-secondary" @click="$bvModal.hide('delete-modal')">Cancelar</button>
         <button type="button" class="btn btn-primary" @click="realDelete()">OK</button>
       </footer>
     </b-modal>
