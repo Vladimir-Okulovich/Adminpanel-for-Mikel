@@ -23,7 +23,7 @@ const ApiService = {
     get(resource, slug = "") {
         return axios.get(`${API_URL}/${resource}/${slug}`).catch(error => {
             throw new Error(`[RWV] ApiService ${error}`);
-        });     
+        });
     },
 
     post(resource, params) {
