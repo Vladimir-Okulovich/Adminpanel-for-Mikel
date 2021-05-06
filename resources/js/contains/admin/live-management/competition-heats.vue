@@ -79,7 +79,6 @@
         <h4 class="mb-0 text-center" style="border-bottom: 1px solid #64676f;padding: 5px 20px;">{{ all_round_heats[0][0][0].com_cat_mod_participant.competition.title }}</h4>
         <p class="mb-0" style="border-bottom: 1px solid #64676f;padding: 3px 20px;">{{ all_round_heats[0][0][0].com_cat_mod_participant.competition.description }}</p>
         <p class="mb-0" style="border-bottom: 1px solid #64676f;padding: 3px 20px;">
-          Lekua, data eta ordua:
           {{ all_round_heats[0][0][0].com_cat_mod_participant.competition.place }}
           {{ all_round_heats[0][0][0].com_cat_mod_participant.competition.date }}
           {{ all_round_heats[0][0][0].com_cat_mod_participant.competition.time }}
@@ -90,7 +89,7 @@
         class="btn btn-secondary"
         style="width: 10%;position: absolute;right: 24px;"
       >
-        Back
+        Volver
       </button>
     </div>
 
@@ -104,25 +103,25 @@
 
     <div class="row" v-for="(round, round_index) in all_round_heats" :key="round_index">
       <h4 class="my-4 col-12" v-if="round.length == 1">FINAL</h4>
-      <h4 class="my-4 col-12" v-else-if="round.length == 2">SEMI FINALS</h4>
-      <h4 class="my-4 col-12" v-else-if="round.length == 3">QUARTER FINALS</h4>
-      <h4 class="my-4 col-12" v-else>ROUND {{ round_index+1 }}</h4>
+      <h4 class="my-4 col-12" v-else-if="round.length == 2">SEMI FINAL</h4>
+      <h4 class="my-4 col-12" v-else-if="round.length == 3">CUARTOS DE FINAL</h4>
+      <h4 class="my-4 col-12" v-else>RONDA {{ round_index+1 }}</h4>
       <div class="col-lg-4 col-md-6 col-sm-6 mb-3" v-for="(heat, heat_index) in round" :key="heat_index">
         <div class="table-responsive mb-0">
           <table class="table table-bordered">
             <thead>
               <tr style="color: black;background: #b8e6e2;cursor: pointer;" :class="{active: heat[0].status==3}">
                 <th colspan="4" v-if="round.length == 1" @click="heatDetailsGo(round_index+1, heat_index+1)">
-                  Final Heat
+                  Manga Final
                 </th>
                 <th colspan="4" v-else-if="round.length == 2" @click="heatDetailsGo(round_index+1, heat_index+1)">
-                  Semi Finals Heat {{ heat_index+1 }}
+                  Manga Semi Finals {{ heat_index+1 }}
                 </th>
                 <th colspan="4" v-else-if="round.length == 3" @click="heatDetailsGo(round_index+1, heat_index+1)">
-                  Quarter Finals Heat {{ heat_index+1 }}
+                 Manga Cuartos de Final  {{ heat_index+1 }}
                 </th>
                 <th colspan="4" v-else @click="heatDetailsGo(round_index+1, heat_index+1)">
-                  Round {{ round_index+1 }} Heat {{ heat_index+1 }}
+                  Ronda {{ round_index+1 }} Manga {{ heat_index+1 }}
                 </th>
               </tr>
               <tr class="thead-light">

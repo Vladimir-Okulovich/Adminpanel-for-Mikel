@@ -24,24 +24,24 @@ import {
 
 export default {
   page: {
-    title: "EDIT COMPETITION",
+    title: "MODIFICAR COMPETICIÓN",
     meta: [{ name: "description", content: appConfig.description }]
   },
   components: { DatePicker, Multiselect, Switches, Layout, PageHeader },
   data() {
     return {
-      title: "EDIT COMPETITION",
+      title: "MODIFICAR COMPETICIÓN",
       items: [
         {
-          text: "Administrator",
+          text: "Home",
           href: "/admin"
         },
         {
-          text: "Competition",
+          text: "Listado Competiciones",
           href: "/admin/competitions"
         },
         {
-          text: "Edit",
+          text: "Modificar Competición",
           active: true
         }
       ],
@@ -56,20 +56,20 @@ export default {
         time: "",
         organizer: "",
         ranking_score: "",
-        status: "",
+        status: "Si",
         lycra: "",
         modality: "",
         category: "",
         logo: null,
       },
       rankingScoreOptions: [
-        "Yes",
+        "Si",
         "No"
       ],
       statusOptions: [
-        "CLOSED",
-        "REGISTRATION OPEN",
-        "COMPETICIÓN EN CURSO"
+        "CERRADA",
+        "REGISTRO ABIERTO",
+        "EN CURSO"
       ],
       modalityOptions: [
         "Corto",
@@ -185,7 +185,7 @@ export default {
               <div class="row">
                 <div class="col-lg-6 col-md-12">
                   <div class="form-group">
-                    <label>Title</label>
+                    <label>Título</label>
                     <input
                       v-model="typeform.title=getCompetition.title"
                       type="text"
@@ -195,22 +195,22 @@ export default {
                       :class="{ 'is-invalid': typesubmit && $v.typeform.title.$error }"
                     />
                     <div v-if="typesubmit && $v.typeform.title.$error" class="invalid-feedback">
-                      <span v-if="!$v.typeform.title.required">This value is required.</span>
+                      <span v-if="!$v.typeform.title.required">Este Campo es Obligatorio.</span>
                     </div>
                   </div>
                   <div class="mb-3">
-                    <label>Competition Type</label>
+                    <label>Tipo Competición</label>
                     <multiselect 
                       v-model="typeform.competition_type=getCompetition.competition_type.name" 
                       :options="typeOptions"
                       :class="{ 'is-invalid': typesubmit && $v.typeform.competition_type.$error }"
                     ></multiselect>
                     <div v-if="typesubmit && $v.typeform.competition_type.$error" class="invalid-feedback">
-                      <span v-if="!$v.typeform.competition_type.required">This value is required.</span>
+                      <span v-if="!$v.typeform.competition_type.required">Este Campo es Obligatorio.</span>
                     </div>
                   </div>
                   <div class="form-group">
-                    <label>Description</label>
+                    <label>Descripción</label>
                     <div>
                       <textarea
                         v-model="typeform.description=getCompetition.description"
@@ -220,12 +220,12 @@ export default {
                         :class="{ 'is-invalid': typesubmit && $v.typeform.description.$error }"
                       ></textarea>
                       <div v-if="typesubmit && $v.typeform.description.$error" class="invalid-feedback">
-                        <span v-if="!$v.typeform.description.required">This value is required.</span>
+                        <span v-if="!$v.typeform.description.required">Este Campo es Obligatorio.</span>
                       </div>
                     </div>
                   </div>
                   <div class="form-group">
-                    <label>Place</label>
+                    <label>Lugar</label>
                     <input
                       v-model="typeform.place=getCompetition.place"
                       type="text"
@@ -235,11 +235,11 @@ export default {
                       :class="{ 'is-invalid': typesubmit && $v.typeform.place.$error }"
                     />
                     <div v-if="typesubmit && $v.typeform.place.$error" class="invalid-feedback">
-                      <span v-if="!$v.typeform.place.required">This value is required.</span>
+                      <span v-if="!$v.typeform.place.required">Este Campo es Obligatorio.</span>
                     </div>
                   </div>
                   <div class="form-group mb-3">
-                    <label>Date</label>
+                    <label>Fecha</label>
                     <br />
                     <date-picker
                       v-model="typeform.date=getCompetition.date"
@@ -251,11 +251,11 @@ export default {
                       :class="{ 'is-invalid': typesubmit && $v.typeform.date.$error }"
                     ></date-picker>
                     <div v-if="typesubmit && $v.typeform.date.$error" class="invalid-feedback">
-                      <span v-if="!$v.typeform.date.required">This value is required.</span>
+                      <span v-if="!$v.typeform.date.required">Este Campo es Obligatorio.</span>
                     </div>
                   </div>
                   <div class="form-group mb-3">
-                    <label>Time</label>
+                    <label>Hora</label>
                     <br />
                     <date-picker
                       v-model="typeform.time=getCompetition.time"
@@ -265,11 +265,11 @@ export default {
                       :class="{ 'is-invalid': typesubmit && $v.typeform.time.$error }"
                     ></date-picker>
                     <div v-if="typesubmit && $v.typeform.time.$error" class="invalid-feedback">
-                      <span v-if="!$v.typeform.time.required">This value is required.</span>
+                      <span v-if="!$v.typeform.time.required">Este Campo es Obligatorio.</span>
                     </div>
                   </div>
                   <div class="form-group">
-                    <label>Organizer</label>
+                    <label>Organizador</label>
                     <input
                       v-model="typeform.organizer=getCompetition.organizer"
                       type="text"
@@ -279,35 +279,35 @@ export default {
                       :class="{ 'is-invalid': typesubmit && $v.typeform.organizer.$error }"
                     />
                     <div v-if="typesubmit && $v.typeform.organizer.$error" class="invalid-feedback">
-                      <span v-if="!$v.typeform.organizer.required">This value is required.</span>
+                      <span v-if="!$v.typeform.organizer.required">Este Campo es Obligatorio.</span>
                     </div>
                   </div>
                 </div>
                 <div class="col-lg-6 col-md-12">
                   <div class="mb-3">
-                    <label>Ranking_score</label>
+                    <label>Puntúa Ranking</label>
                     <multiselect 
                       v-model="typeform.ranking_score=getCompetition.ranking_score" 
                       :options="rankingScoreOptions"
                       :class="{ 'is-invalid': typesubmit && $v.typeform.ranking_score.$error }"
                     ></multiselect>
                     <div v-if="typesubmit && $v.typeform.ranking_score.$error" class="invalid-feedback">
-                      <span v-if="!$v.typeform.ranking_score.required">This value is required.</span>
+                      <span v-if="!$v.typeform.ranking_score.required">Este Campo es Obligatorio.</span>
                     </div>
                   </div>
                   <div class="form-group">
-                    <label>Status</label>
+                    <label>Estado</label>
                     <multiselect 
                       v-model="typeform.status=getCompetition.status.name"
                       :options="statusOptions"
                       :class="{ 'is-invalid': typesubmit && $v.typeform.status.$error }"
                     ></multiselect>
                     <div v-if="typesubmit && $v.typeform.status.$error" class="invalid-feedback">
-                      <span v-if="!$v.typeform.status.required">This value is required.</span>
+                      <span v-if="!$v.typeform.status.required">Este Campo es Obligatorio.</span>
                     </div>
                   </div>
                   <div class="mb-3">
-                    <label>Category</label>
+                    <label>Categoría</label>
                     <multiselect 
                       v-model="typeform.category=getCompetition.categoryNames" 
                       :options="categoryOptions"
@@ -315,11 +315,11 @@ export default {
                       :class="{ 'is-invalid': typesubmit && $v.typeform.category.$error }"
                     ></multiselect>
                     <div v-if="typesubmit && $v.typeform.category.$error" class="invalid-feedback">
-                      <span v-if="!$v.typeform.category.required">This value is required.</span>
+                      <span v-if="!$v.typeform.category.required">Este Campo es Obligatorio.</span>
                     </div>
                   </div>
                   <div class="mb-3">
-                    <label>Modality</label>
+                    <label>Modalidad</label>
                     <multiselect 
                       v-model="typeform.modality=getCompetition.modalityNames" 
                       :options="modalityOptions"
@@ -327,7 +327,7 @@ export default {
                       :class="{ 'is-invalid': typesubmit && $v.typeform.modality.$error }"
                     ></multiselect>
                     <div v-if="typesubmit && $v.typeform.modality.$error" class="invalid-feedback">
-                      <span v-if="!$v.typeform.modality.required">This value is required.</span>
+                      <span v-if="!$v.typeform.modality.required">Este Campo es Obligatorio.</span>
                     </div>
                   </div>
                   <div class="mb-3">
@@ -339,7 +339,7 @@ export default {
                       :class="{ 'is-invalid': typesubmit && $v.typeform.lycra.$error }"
                     ></multiselect>
                     <div v-if="typesubmit && $v.typeform.lycra.$error" class="invalid-feedback">
-                      <span v-if="!$v.typeform.lycra.required">This value is required.</span>
+                      <span v-if="!$v.typeform.lycra.required">Este Campo es Obligatorio.</span>
                     </div>
                   </div>
                   <div class="form-group">
@@ -348,9 +348,9 @@ export default {
                   </div>
                   <div class="form-group mt-4 mb-0">
                     <div style="float: right;">
-                      <button type="submit" class="btn btn-primary">Submit</button>
-                      <router-link to="/admin/competitions" class="btn btn-secondary m-l-5 ml-1">Cancel</router-link>
-                      <button type="reset" class="btn btn-warning m-l-5 ml-1">Reset</button>
+                      <button type="submit" class="btn btn-primary">Guardar</button>
+                      <router-link to="/admin/competitions" class="btn btn-secondary m-l-5 ml-1">Cancelar</router-link>
+                      <button type="reset" class="btn btn-warning m-l-5 ml-1">Vaciar</button>
                     </div>
                   </div>
                 </div>

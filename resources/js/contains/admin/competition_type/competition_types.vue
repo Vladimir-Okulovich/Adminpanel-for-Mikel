@@ -7,7 +7,7 @@
 
 	export default {
 		page: {
-        title: "COMPETITION TYPES",
+        title: "LISTADO TIPOS COMPETICIÓN",
         meta: [{ name: "description", content: appConfig.description }]
     },
     components: {
@@ -16,14 +16,14 @@
     },
     data() {
       return {
-        title: "COMPETITION TYPES",
+        title: "LISTADO TIPOS COMPETICIÓN",
         items: [
           {
             text: "Home",
             href: "/admin"
           },
           {
-            text: "Listado Tipos de Competicion",
+            text: "Listado Tipos  Competición",
             active: true
           }
         ],
@@ -98,7 +98,7 @@
       <div class="col-12">
         <div class="card">
           <div class="card-body">
-            <h4 class="card-title">Listado Tipos de Competition</h4>
+            <h4 class="card-title">Listado Tipos  Competición</h4>
             <p class="card-title-desc"></p>
             <div class="row mb-md-2">
               <div class="col-sm-12 col-md-6">
@@ -170,11 +170,11 @@
     <b-modal
       id="delete-modal"
       centered
-      title="Delete Item"
+      title="Edfliminar Tipo Competición"
       title-class="font-18"
       hide-footer
     >
-      <p>¿Está seguro de eliminar este registro?</p>
+      <p>¿Está seguro de eliminar este tipo de competición?</p>
       <footer id="delete-modal___BV_modal_footer_" class="modal-footer">
         <button type="button" class="btn btn-secondary" @click="$bvModal.hide('delete-modal')">Cancelar</button>
         <button type="button" class="btn btn-primary" @click="realDelete()">OK</button>

@@ -166,7 +166,7 @@
     <b-modal
       id="delete-modal"
       centered
-      title="Delete Item"
+      title="Eliminar Club"
       title-class="font-18"
       hide-footer
     >

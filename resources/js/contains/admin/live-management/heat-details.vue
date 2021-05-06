@@ -7,7 +7,7 @@
 
 	export default {
 		page: {
-        title: "Heat Details",
+        title: "Datos Manga",
         meta: [{ name: "description", content: appConfig.description }]
     },
     components: {
@@ -92,7 +92,6 @@
         <h4 class="mb-0 text-center" style="border-bottom: 1px solid #64676f;padding: 5px 20px;">{{ round_heats[0].com_cat_mod_participant.competition.title }}</h4>
         <p class="mb-0" style="border-bottom: 1px solid #64676f;padding: 3px 20px;">{{ round_heats[0].com_cat_mod_participant.competition.description }}</p>
         <p class="mb-0" style="border-bottom: 1px solid #64676f;padding: 3px 20px;">
-          Lekua, data eta ordua:
           {{ round_heats[0].com_cat_mod_participant.competition.place }}
           {{ round_heats[0].com_cat_mod_participant.competition.date }}
           {{ round_heats[0].com_cat_mod_participant.competition.time }}
@@ -116,12 +115,12 @@
           <table class="table table-bordered">
             <thead>
               <tr class="thead-light">
-                <th>LYCRA</th>
-                <th>PARTICIPANT</th>
-                <th>POSITION</th>
-                <th>1st Best Wave</th>
-                <th>2nd Best Wave</th>
-                <th>SUM</th>
+                <th>Lycra</th>
+                <th>Participante</th>
+                <th>Posición</th>
+                <th>1ª Mejor Ola</th>
+                <th>2ª Mejor Ola</th>
+                <th>Suma</th>
               </tr>
             </thead>
             <tbody>
@@ -143,9 +142,9 @@
           <table class="table table-bordered table-sm text-center">
             <thead class="thead-light">
               <tr>
-                <th rowspan="2" style="width: 15%;">PARTICIPANT</th>
-                <th rowspan="2" style="width: 15%;">JUDGE</th>
-                <th colspan="10">WAVES</th>
+                <th rowspan="2" style="width: 15%;">PARTICIPANTE</th>
+                <th rowspan="2" style="width: 15%;">JUEZ</th>
+                <th colspan="10">OLAS</th>
               </tr>
               <tr>
                 <th v-for="n in 10" :key="n">{{ n }}</th>

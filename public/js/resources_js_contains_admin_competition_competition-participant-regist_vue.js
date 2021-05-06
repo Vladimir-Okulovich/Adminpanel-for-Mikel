@@ -41,7 +41,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var core_js_modules_es_symbol_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_symbol_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es.symbol.description.js */ "./node_modules/core-js/modules/es.symbol.description.js");
 /* harmony import */ var core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
+/* harmony import */ var C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
 /* harmony import */ var _subcomponent_layout__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../subcomponent/layout */ "./resources/js/contains/admin/subcomponent/layout.vue");
 /* harmony import */ var _app_config__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/app.config */ "./resources/js/app.config.json");
 /* harmony import */ var _components_page_header__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/components/page-header */ "./resources/js/components/page-header.vue");
@@ -58,7 +58,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   page: {
-    title: "REGIST PARTICIPANT TO COMPETITION",
+    title: "AÑADIR PARTICIPANTES A COMPETICION",
     meta: [{
       name: "description",
       content: _app_config__WEBPACK_IMPORTED_MODULE_4__.description
@@ -71,15 +71,15 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      title: "REGIST PARTICIPANT TO COMPETITION",
+      title: "AÑADIR PARTICIPANTES A COMPETICION",
       items: [{
-        text: "Administrator",
+        text: "Home",
         href: "/admin"
       }, {
-        text: "Competition",
+        text: "Listado Competiciones",
         href: "/admin/competitions"
       }, {
-        text: "Regist Participant",
+        text: "Añadir Participantes a Competición",
         active: true
       }],
       totalRows_1: 1,
@@ -91,18 +91,23 @@ __webpack_require__.r(__webpack_exports__);
       sortBy: "surname",
       sortDesc: false,
       fields: [{
+        label: "Nombre",
         key: "name",
         sortable: true
       }, {
+        label: "Apellidos",
         key: "surname",
         sortable: true
       }, {
+        label: "Fecha Nac.",
         key: "birthday",
-        sortable: true
-      }, {
-        key: "club",
         sortable: false
       }, {
+        label: "Club",
+        key: "club",
+        sortable: true
+      }, {
+        label: "Acciones",
         key: "actions",
         sortable: false
       }],
@@ -121,7 +126,7 @@ __webpack_require__.r(__webpack_exports__);
       participantId: 0
     };
   },
-  computed: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)((0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_7__.mapGetters)(['getRegisteredParticipants', 'getNonRegisteredParticipants'])), {}, {
+  computed: (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)((0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_7__.mapGetters)(['getRegisteredParticipants', 'getNonRegisteredParticipants'])), {}, {
     /**
      * Total no. of records
      */
@@ -138,7 +143,7 @@ __webpack_require__.r(__webpack_exports__);
     this.totalRows_1 = this.getNonRegisteredParticipants.length;
     this.initParticipantsForCompetition(this.$route.params.competitionId);
   },
-  methods: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)((0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_7__.mapActions)(['initParticipantsForCompetition', 'registParticipantToCompetition', 'updateParticipantToCompetition', 'unregistParticipantToCompetition', 'getModalityOfParticipant'])), {}, {
+  methods: (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)((0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_7__.mapActions)(['initParticipantsForCompetition', 'registParticipantToCompetition', 'updateParticipantToCompetition', 'unregistParticipantToCompetition', 'getModalityOfParticipant'])), {}, {
     /**
      * Search the table data with search input
      */
@@ -267,7 +272,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
+/* harmony import */ var C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
 /* harmony import */ var simplebar_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! simplebar-vue */ "./node_modules/simplebar-vue/dist/simplebar-vue.esm.js");
 /* harmony import */ var metismenujs_dist_metismenujs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! metismenujs/dist/metismenujs */ "./node_modules/metismenujs/dist/metismenujs.js");
 /* harmony import */ var metismenujs_dist_metismenujs__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(metismenujs_dist_metismenujs__WEBPACK_IMPORTED_MODULE_2__);
@@ -330,7 +335,7 @@ __webpack_require__.r(__webpack_exports__);
       }
     }
   },
-  methods: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__.default)((0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__.default)({}, _state_helpers__WEBPACK_IMPORTED_MODULE_3__.layoutMethods), {}, {
+  methods: (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__.default)((0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__.default)({}, _state_helpers__WEBPACK_IMPORTED_MODULE_3__.layoutMethods), {}, {
     changeLayout: function changeLayout(layout) {
       this.changeLayoutType({
         layoutType: layout
@@ -423,16 +428,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "authMethods": function() { return /* binding */ authMethods; },
 /* harmony export */   "layoutMethods": function() { return /* binding */ layoutMethods; }
 /* harmony export */ });
-/* harmony import */ var E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
+/* harmony import */ var C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.mjs");
 
 
-var authComputed = (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__.default)((0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapState)('auth', {
+var authComputed = (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__.default)((0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapState)('auth', {
   currentUser: function currentUser(state) {
     return state.currentUser;
   }
 })), (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapGetters)('auth', ['loggedIn']));
-var layoutComputed = (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapState)('layout', {
+var layoutComputed = (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapState)('layout', {
   layoutType: function layoutType(state) {
     return state.layoutType;
   },
@@ -7021,7 +7026,7 @@ var render = function() {
               },
               [
                 _c("i", { staticClass: "fas fa-plus mr-1" }),
-                _vm._v(" ADD PARTICIPANT\n      ")
+                _vm._v(" AÑADIR PARTICIPANTES\n      ")
               ]
             )
           ],
@@ -7034,7 +7039,7 @@ var render = function() {
           _c("div", { staticClass: "card" }, [
             _c("div", { staticClass: "card-body" }, [
               _c("h4", { staticClass: "card-title" }, [
-                _vm._v("Non-Registered Participants Table")
+                _vm._v("No Regitrados en la Competición")
               ]),
               _vm._v(" "),
               _c("p", { staticClass: "card-title-desc" }),
@@ -7053,7 +7058,7 @@ var render = function() {
                         { staticClass: "d-inline-flex align-items-center" },
                         [
                           _vm._v(
-                            "\n                  Show\n                  "
+                            "\n                  Mostrar\n                  "
                           ),
                           _c("b-form-select", {
                             attrs: { size: "sm", options: _vm.pageOptions },
@@ -7065,7 +7070,7 @@ var render = function() {
                               expression: "perPage_1"
                             }
                           }),
-                          _vm._v("entries\n                ")
+                          _vm._v("registros\n                ")
                         ],
                         1
                       )
@@ -7086,11 +7091,11 @@ var render = function() {
                         { staticClass: "d-inline-flex align-items-center" },
                         [
                           _vm._v(
-                            "\n                  Search:\n                  "
+                            "\n                  Buscar:\n                  "
                           ),
                           _c("b-form-input", {
                             staticClass: "form-control form-control-sm ml-2",
-                            attrs: { type: "search", placeholder: "Search..." },
+                            attrs: { type: "search", placeholder: "Buscar..." },
                             model: {
                               value: _vm.filter_1,
                               callback: function($$v) {
@@ -7239,7 +7244,7 @@ var render = function() {
           _c("div", { staticClass: "card" }, [
             _c("div", { staticClass: "card-body" }, [
               _c("h4", { staticClass: "card-title" }, [
-                _vm._v("Registered Participants Table")
+                _vm._v("Registrados en la Competición")
               ]),
               _vm._v(" "),
               _c("p", { staticClass: "card-title-desc" }),
@@ -7258,7 +7263,7 @@ var render = function() {
                         { staticClass: "d-inline-flex align-items-center" },
                         [
                           _vm._v(
-                            "\n                  Show\n                  "
+                            "\n                  Mostrar\n                  "
                           ),
                           _c("b-form-select", {
                             attrs: { size: "sm", options: _vm.pageOptions },
@@ -7270,7 +7275,7 @@ var render = function() {
                               expression: "perPage_2"
                             }
                           }),
-                          _vm._v("entries\n                ")
+                          _vm._v("registros\n                ")
                         ],
                         1
                       )
@@ -7291,11 +7296,11 @@ var render = function() {
                         { staticClass: "d-inline-flex align-items-center" },
                         [
                           _vm._v(
-                            "\n                  Search:\n                  "
+                            "\n                  Buscar:\n                  "
                           ),
                           _c("b-form-input", {
                             staticClass: "form-control form-control-sm ml-2",
-                            attrs: { type: "search", placeholder: "Search..." },
+                            attrs: { type: "search", placeholder: "Buscar..." },
                             model: {
                               value: _vm.filter_2,
                               callback: function($$v) {
@@ -7479,7 +7484,7 @@ var render = function() {
             "div",
             {},
             [
-              _c("label", [_vm._v("Modality")]),
+              _c("label", [_vm._v("Modalidad")]),
               _vm._v(" "),
               _c("multiselect", {
                 attrs: { options: _vm.modalityOptions, multiple: true },
@@ -7498,7 +7503,7 @@ var render = function() {
                   staticClass: "invalid-feedback",
                   class: { "d-inline-block": !_vm.isRequiredModality.register }
                 },
-                [_c("span", [_vm._v("This value is required.")])]
+                [_c("span", [_vm._v("Este Campo es Obligatorio.")])]
               )
             ],
             1
@@ -7516,7 +7521,7 @@ var render = function() {
                   }
                 }
               },
-              [_vm._v("Cancel")]
+              [_vm._v("Cancelar")]
             ),
             _vm._v(" "),
             _c(
@@ -7530,7 +7535,7 @@ var render = function() {
                   }
                 }
               },
-              [_vm._v("Register")]
+              [_vm._v("Guardar")]
             )
           ])
         ]
@@ -7552,7 +7557,7 @@ var render = function() {
             "div",
             {},
             [
-              _c("label", [_vm._v("Modality")]),
+              _c("label", [_vm._v("Modalidad")]),
               _vm._v(" "),
               _c("multiselect", {
                 attrs: { options: _vm.modalityOptions, multiple: true },
@@ -7571,7 +7576,7 @@ var render = function() {
                   staticClass: "invalid-feedback",
                   class: { "d-inline-block": !_vm.isRequiredModality.edit }
                 },
-                [_c("span", [_vm._v("This value is required.")])]
+                [_c("span", [_vm._v("Este Campo es Obligatorio.")])]
               )
             ],
             1
@@ -7589,7 +7594,7 @@ var render = function() {
                   }
                 }
               },
-              [_vm._v("Cancel")]
+              [_vm._v("Cancelar")]
             ),
             _vm._v(" "),
             _c(
@@ -7603,7 +7608,7 @@ var render = function() {
                   }
                 }
               },
-              [_vm._v("Update")]
+              [_vm._v("Guardar")]
             )
           ])
         ]
@@ -7622,7 +7627,9 @@ var render = function() {
         },
         [
           _c("p", [
-            _vm._v("Are you sure you want to unregister selected participant?")
+            _vm._v(
+              "¿Está seguro de eliminar este aprticipante de la competición?"
+            )
           ]),
           _vm._v(" "),
           _c("footer", { staticClass: "modal-footer" }, [
@@ -7637,7 +7644,7 @@ var render = function() {
                   }
                 }
               },
-              [_vm._v("Cancel")]
+              [_vm._v("Cancelar")]
             ),
             _vm._v(" "),
             _c(
@@ -7651,7 +7658,7 @@ var render = function() {
                   }
                 }
               },
-              [_vm._v("Unregister")]
+              [_vm._v("Eliminar")]
             )
           ])
         ]

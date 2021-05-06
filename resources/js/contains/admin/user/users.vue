@@ -7,7 +7,7 @@
 
 	export default {
 		page: {
-        title: "USUARIOS",
+        title: "LISTADO USUARIOS",
         meta: [{ name: "description", content: appConfig.description }]
     },
     components: {
@@ -16,14 +16,14 @@
     },
     data() {
       return {
-        title: "USUARIOS",
+        title: "LISTADO USUARIOS",
         items: [
           {
             text: "Home",
             href: "/admin"
           },
           {
-            text: "Gestión de Usuarios",
+            text: "Listado Usuarios",
             active: true
           }
         ],

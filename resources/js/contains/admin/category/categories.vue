@@ -7,7 +7,7 @@
 
 	export default {
 		page: {
-        title: "CATEGORIAS",
+        title: "CATEGORÍAS",
         meta: [{ name: "description", content: appConfig.description }]
     },
     components: {
@@ -16,14 +16,14 @@
     },
     data() {
       return {
-        title: "CATEGORIAS",
+        title: "CATEGORÍAS",
         items: [
           {
             text: "Home",
             href: "/admin"
           },
           {
-            text: "Categorias",
+            text: "Listado Categorias",
             active: true
           }
         ],
