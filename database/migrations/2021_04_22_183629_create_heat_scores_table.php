@@ -27,6 +27,7 @@ class CreateHeatScoresTable extends Migration
             $table->float('wave_8', 8, 1)->default(0);
             $table->float('wave_9', 8, 1)->default(0);
             $table->float('wave_10', 8, 1)->default(0);
+            $table->integer('penal')->default(0);
             $table->timestamps();
         });
     }

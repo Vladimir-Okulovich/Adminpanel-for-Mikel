@@ -33,12 +33,18 @@ const JwtService = {
     setCurrentCompetition(competition) {
         window.localStorage.setItem(CURRENT_COMPETITION, competition);
     },
+    unsetCurrentCompetition() {
+        window.localStorage.removeItem(CURRENT_COMPETITION);
+    },
 
     getCurrentCategory() {
         return window.localStorage.getItem(CURRENT_CATEGORY)
     },
     setCurrentCategory(category) {
         window.localStorage.setItem(CURRENT_CATEGORY, category);
+    },
+    unsetCurrentCategory() {
+        window.localStorage.removeItem(CURRENT_CATEGORY);
     },
 
     getCurrentModality() {
@@ -47,6 +53,9 @@ const JwtService = {
     setCurrentModality(modality) {
         window.localStorage.setItem(CURRENT_MODALITY, modality);
     },
+    unsetCurrentModality() {
+        window.localStorage.removeItem(CURRENT_MODALITY);
+    },
 
     getCurrentRound() {
         return window.localStorage.getItem(CURRENT_ROUND)
@@ -54,12 +63,18 @@ const JwtService = {
     setCurrentRound(round) {
         window.localStorage.setItem(CURRENT_ROUND, round);
     },
+    unsetCurrentRound() {
+        window.localStorage.removeItem(CURRENT_ROUND);
+    },
 
     getCurrentHeat() {
         return window.localStorage.getItem(CURRENT_HEAT)
     },
     setCurrentHeat(heat) {
         window.localStorage.setItem(CURRENT_HEAT, heat);
+    },
+    unsetCurrentHeat() {
+        window.localStorage.removeItem(CURRENT_HEAT);
     },
 }
 

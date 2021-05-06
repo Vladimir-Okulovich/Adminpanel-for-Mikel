@@ -385,3 +385,10 @@
     </b-modal>
   </Layout>
 </template>
+<style scoped>
+  @media (max-width: 1024px) {
+    .table button {
+      margin-bottom: 3px;
+    }
+  }
+</style>

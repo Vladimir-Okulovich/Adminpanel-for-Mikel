@@ -299,7 +299,6 @@ class LiveManagementController extends Controller
 
     public function storeFinalHeatResults(Request $request)
     {
-        $points = [];
         foreach ($request->heat_scores as $heat_scores) {
             $round_heat = Round_heat::find($heat_scores[0]['round_heat_id']);
             $round_heat->update([
@@ -354,10 +353,33 @@ class LiveManagementController extends Controller
             $round_heat->update([
                 'first_score' => $first_score,
                 'second_score' => $second_score,
-                'points' => $first_score + $second_score,
             ]);
-            // array_push($points, $round_heat->points);
-            $points["$round_heat->id"] = $round_heat->points;
+        }
+        $points = [];
+        foreach ($request->round_heats as $temp) {
+            $round_heat = Round_heat::find($temp["id"]);
+            $first_score = $round_heat->first_score;
+            $second_score = $round_heat->second_score;
+            if ($temp["penal"] == 1) {
+                $round_heat->update([
+                    'penal' => $temp["penal"],
+                    'draw' => $temp["draw"],
+                    'points' => $first_score/2 + $second_score + $temp["draw"]/100,
+                ]);
+            } else {
+                $round_heat->update([
+                    'penal' => $temp["penal"],
+                    'draw' => $temp["draw"],
+                    'points' => $first_score + $second_score + $temp["draw"]/100,
+                ]);
+            }
+            if ($temp["penal"] == 2) {
+                $round_heat->update([
+                    'position' => 4,
+                ]);
+            } else {
+                $points["$round_heat->id"] = $round_heat->points;
+            }
         }
         arsort($points);
         $index = 1;

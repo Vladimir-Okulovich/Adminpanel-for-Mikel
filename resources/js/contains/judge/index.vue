@@ -88,15 +88,16 @@
             <table class="table table-bordered text-center">
               <thead class="thead-light">
                 <tr>
-                  <th rowspan="2" style="width: 15%;">PARTICIPANTE</th>
+                  <th rowspan="2">PARTICIPANTE</th>
                   <th colspan="10">OLAS</th>
+                  <th rowspan="2">Pena</th>
                 </tr>
                 <tr>
                   <th v-for="n in 10" :key="n">{{ n }}</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr v-for="(judge_heat_score, index) in judge_heat_scores" :key="index">
+              <tbody v-for="(judge_heat_score, index) in judge_heat_scores" :key="index">
+                <tr>
                   <td :style="{ background: judge_heat_score.round_heat.lycra.color, }"></td>
                   <td><input v-model="judge_heat_score.wave_1" type="number" step="0.1" class="custom-input" /></td>
                   <td><input v-model="judge_heat_score.wave_2" type="number" step="0.1" class="custom-input" /></td>
@@ -108,6 +109,9 @@
                   <td><input v-model="judge_heat_score.wave_8" type="number" step="0.1" class="custom-input" /></td>
                   <td><input v-model="judge_heat_score.wave_9" type="number" step="0.1" class="custom-input" /></td>
                   <td><input v-model="judge_heat_score.wave_10" type="number" step="0.1" class="custom-input" /></td>
+                  <td><input v-model="judge_heat_score.penal" type="number" step="1" min="0" max="2" class="custom-input" /></td>
+                </tr>
+                <tr style="height: 22px;">
                 </tr>
               </tbody>
             </table>
@@ -117,7 +121,7 @@
       <div>
         <button @click="saveResults"
           class="btn btn-info mt-4"
-          style="width: 10%;float: right;"
+          style="float: right;"
         >
           Guardar
         </button>
@@ -128,7 +132,6 @@
       <div class="text-right">
         <button @click="refresh"
           class="btn btn-warning mt-4"
-          style="width: 10%;"
         >
           Actualizar
         </button>
@@ -147,7 +150,7 @@
     border: 0;
     color: #a8b2bc;
     text-align: center;
-    max-width: 50px;
+    max-width: 40px;
   }
   .custom-input:focus {
     outline: none;
@@ -156,5 +159,11 @@
   input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
+  }
+  .table th {
+    padding: 10px 0;
+  }
+  .table td {
+    padding: 10px 0;
   }
 </style>

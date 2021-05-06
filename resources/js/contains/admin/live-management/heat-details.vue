@@ -66,6 +66,7 @@
       saveResults() {
         this.storeFinalHeatResults({
           heat_scores: this.heat_scores,
+          round_heats: this.round_heats,
         })
         .then(() => {
           this.$router.go(-1);
@@ -110,7 +111,7 @@
     </div>
 
     <div class="row mt-4">
-      <div class="col-lg-6 col-md-9 col-sm-12">
+      <div class="col-lg-8 col-md-9 col-sm-12">
         <div class="table-responsive mb-0">
           <table class="table table-bordered">
             <thead>
@@ -120,7 +121,9 @@
                 <th>Posición</th>
                 <th>1ª Mejor Ola</th>
                 <th>2ª Mejor Ola</th>
+                <th>Pena</th>
                 <th>Suma</th>
+                <th>Draw</th>
               </tr>
             </thead>
             <tbody>
@@ -130,7 +133,9 @@
                 <td>{{ round_heat.position }}</td>
                 <td>{{ parseFloat(round_heat.first_score).toFixed(2) }}</td>
                 <td>{{ parseFloat(round_heat.second_score).toFixed(2) }}</td>
+                <td><input v-model="round_heat.penal" type="number" step="1" min="0" max="2" class="custom-input" /></td>
                 <td>{{ parseFloat(round_heat.points).toFixed(2) }}</td>
+                <td><input v-model="round_heat.draw" type="number" step="1" min="0" class="custom-input" /></td>
               </tr>
             </tbody>
           </table>
@@ -142,9 +147,10 @@
           <table class="table table-bordered table-sm text-center">
             <thead class="thead-light">
               <tr>
-                <th rowspan="2" style="width: 15%;">PARTICIPANTE</th>
-                <th rowspan="2" style="width: 15%;">JUEZ</th>
+                <th rowspan="2">PARTICIPANTE</th>
+                <th rowspan="2">JUEZ</th>
                 <th colspan="10">OLAS</th>
+                <th rowspan="2">Pena</th>
               </tr>
               <tr>
                 <th v-for="n in 10" :key="n">{{ n }}</th>
@@ -175,6 +181,8 @@
                 <td v-else style="background: #0c101d;">{{ parseFloat(heat_score_row.wave_9).toFixed(2) }}</td>
                 <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_10" v-on:change="averageHandler" type="number" step="0.1" class="custom-input" /></td>
                 <td v-else style="background: #0c101d;">{{ parseFloat(heat_score_row.wave_10).toFixed(2) }}</td>
+                <td v-if="heat_score_row.judge_id != 'Average'">{{ heat_score_row.penal }}</td>
+                <td v-else style="background: #0c101d;"></td>
               </tr>
             </tbody>
           </table>
@@ -192,13 +200,13 @@
   </Layout>
 </template>
 
-<style>
+<style scoped>
   .custom-input {
     background: transparent;
     border: 0;
     color: #a8b2bc;
     text-align: center;
-    max-width: 50px;
+    max-width: 40px;
   }
   .custom-input:focus {
     outline: none;

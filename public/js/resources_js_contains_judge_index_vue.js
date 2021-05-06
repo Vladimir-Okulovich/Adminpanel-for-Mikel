@@ -12,7 +12,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var core_js_modules_es_symbol_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_symbol_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es.symbol.description.js */ "./node_modules/core-js/modules/es.symbol.description.js");
 /* harmony import */ var core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
+/* harmony import */ var E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
 /* harmony import */ var _subcomponent_layout__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./subcomponent/layout */ "./resources/js/contains/judge/subcomponent/layout.vue");
 /* harmony import */ var _app_config__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/app.config */ "./resources/js/app.config.json");
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.mjs");
@@ -37,11 +37,11 @@ __webpack_require__.r(__webpack_exports__);
     return {};
   },
   watch: {},
-  computed: (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_5__.mapGetters)(['judge_round_heats', 'judge_heat_scores', 'isActiveStatus'])),
+  computed: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_5__.mapGetters)(['judge_round_heats', 'judge_heat_scores', 'isActiveStatus'])),
   mounted: function mounted() {
     this.initJudge();
   },
-  methods: (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)((0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_5__.mapActions)(['initJudge', 'storeHeatResults'])), {}, {
+  methods: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)((0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_5__.mapActions)(['initJudge', 'storeHeatResults'])), {}, {
     // window.location.reload()
     saveResults: function saveResults() {
       this.storeHeatResults({
@@ -615,7 +615,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.custom-input {\n  background: transparent;\n  border: 0;\n  color: #a8b2bc;\n  text-align: center;\n  max-width: 50px;\n}\n.custom-input:focus {\n  outline: none;\n}\ninput::-webkit-outer-spin-button,\ninput::-webkit-inner-spin-button {\n  -webkit-appearance: none;\n  margin: 0;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.custom-input {\n  background: transparent;\n  border: 0;\n  color: #a8b2bc;\n  text-align: center;\n  max-width: 40px;\n}\n.custom-input:focus {\n  outline: none;\n}\ninput::-webkit-outer-spin-button,\ninput::-webkit-inner-spin-button {\n  -webkit-appearance: none;\n  margin: 0;\n}\n.table th {\n  padding: 10px 0;\n}\n.table td {\n  padding: 10px 0;\n}\n", ""]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
@@ -1278,16 +1278,15 @@ var render = function() {
                   [
                     _c("thead", { staticClass: "thead-light" }, [
                       _c("tr", [
-                        _c(
-                          "th",
-                          {
-                            staticStyle: { width: "15%" },
-                            attrs: { rowspan: "2" }
-                          },
-                          [_vm._v("PARTICIPANTE")]
-                        ),
+                        _c("th", { attrs: { rowspan: "2" } }, [
+                          _vm._v("PARTICIPANTE")
+                        ]),
                         _vm._v(" "),
-                        _c("th", { attrs: { colspan: "10" } }, [_vm._v("OLAS")])
+                        _c("th", { attrs: { colspan: "10" } }, [
+                          _vm._v("OLAS")
+                        ]),
+                        _vm._v(" "),
+                        _c("th", { attrs: { rowspan: "2" } }, [_vm._v("Pena")])
                       ]),
                       _vm._v(" "),
                       _c(
@@ -1299,13 +1298,12 @@ var render = function() {
                       )
                     ]),
                     _vm._v(" "),
-                    _c(
-                      "tbody",
-                      _vm._l(_vm.judge_heat_scores, function(
-                        judge_heat_score,
-                        index
-                      ) {
-                        return _c("tr", { key: index }, [
+                    _vm._l(_vm.judge_heat_scores, function(
+                      judge_heat_score,
+                      index
+                    ) {
+                      return _c("tbody", { key: index }, [
+                        _c("tr", [
                           _c("td", {
                             style: {
                               background:
@@ -1591,12 +1589,47 @@ var render = function() {
                                 }
                               }
                             })
+                          ]),
+                          _vm._v(" "),
+                          _c("td", [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: judge_heat_score.penal,
+                                  expression: "judge_heat_score.penal"
+                                }
+                              ],
+                              staticClass: "custom-input",
+                              attrs: {
+                                type: "number",
+                                step: "1",
+                                min: "0",
+                                max: "2"
+                              },
+                              domProps: { value: judge_heat_score.penal },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    judge_heat_score,
+                                    "penal",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            })
                           ])
-                        ])
-                      }),
-                      0
-                    )
-                  ]
+                        ]),
+                        _vm._v(" "),
+                        _c("tr", { staticStyle: { height: "22px" } })
+                      ])
+                    })
+                  ],
+                  2
                 )
               ])
             ])
@@ -1607,7 +1640,7 @@ var render = function() {
               "button",
               {
                 staticClass: "btn btn-info mt-4",
-                staticStyle: { width: "10%", float: "right" },
+                staticStyle: { float: "right" },
                 on: { click: _vm.saveResults }
               },
               [_vm._v("\n        Guardar\n      ")]
@@ -1620,7 +1653,6 @@ var render = function() {
               "button",
               {
                 staticClass: "btn btn-warning mt-4",
-                staticStyle: { width: "10%" },
                 on: { click: _vm.refresh }
               },
               [_vm._v("\n        Actualizar\n      ")]

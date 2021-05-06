@@ -57,6 +57,7 @@ class JudgeController extends Controller
                     'wave_8' => $judge_heat_score['wave_8'],
                     'wave_9' => $judge_heat_score['wave_9'],
                     'wave_10' => $judge_heat_score['wave_10'],
+                    'penal' => $judge_heat_score['penal'],
                 ]);
         }
 

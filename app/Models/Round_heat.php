@@ -20,6 +20,8 @@ class Round_heat extends Model
         'points',
         'position',
         'status',
+        'penal',
+        'draw',
     ];
 
     public function com_cat_mod_participant()

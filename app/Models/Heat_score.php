@@ -24,6 +24,7 @@ class Heat_score extends Model
         'wave_8',
         'wave_9',
         'wave_10',
+        'penal',
     ];
 
     public function round_heat()

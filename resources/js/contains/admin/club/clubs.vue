@@ -139,7 +139,7 @@
                 @filtered="onFiltered"
               >
                 <template #cell(actions)="row">
-                  <router-link :to="{ name: 'ClubEdit', params: { clubId: row.item.id }}" class="btn btn-sm btn-secondary mr-2" v-if="row.item.id != 1">
+                  <router-link :to="{ name: 'ClubEdit', params: { clubId: row.item.id }}" class="btn btn-sm btn-secondary" v-if="row.item.id != 1">
                     <i class="far fa-edit"></i>
                   </router-link>
                   <b-button size="sm" @click="setId(row.item.id)" v-b-modal.delete-modal v-if="row.item.id != 1">

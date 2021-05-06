@@ -146,7 +146,7 @@
                   </span>
                 </template>
                 <template #cell(actions)="row">
-                  <router-link :to="{ name: 'UserEdit', params: { userId: row.item.id }}" class="btn btn-sm btn-secondary mr-2">
+                  <router-link :to="{ name: 'UserEdit', params: { userId: row.item.id }}" class="btn btn-sm btn-secondary">
                     <i class="far fa-edit"></i>
                   </router-link>
                   <b-button size="sm" @click="setId(row.item.id)" v-b-modal.delete-modal>
