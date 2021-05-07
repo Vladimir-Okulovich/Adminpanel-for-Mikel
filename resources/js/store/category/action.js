@@ -64,7 +64,7 @@ const actions = {
                 .then(({data}) => {
                     // console.log(data);
                     context.commit(type.SET_ALL_CATEGORIES, data)
-                    toastr.success('Elimsinado Correctamente', '', {timeout: 1000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
+                    toastr.success('Eliminado Correctamente', '', {timeout: 1000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
                 })
                 .catch(({ response }) => {
                     // context.commit(type.AUTH_LOGOUT);

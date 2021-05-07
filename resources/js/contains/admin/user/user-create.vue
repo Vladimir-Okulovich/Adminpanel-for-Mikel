@@ -35,7 +35,7 @@ export default {
           href: "/admin"
         },
         {
-          text: "Gestión de Usuarios",
+          text: "Listado Usuarios",
           href: "/admin/users"
         },
         {

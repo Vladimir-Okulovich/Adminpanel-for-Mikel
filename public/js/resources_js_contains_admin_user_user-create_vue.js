@@ -283,7 +283,7 @@ __webpack_require__.r(__webpack_exports__);
         text: "Home",
         href: "/admin"
       }, {
-        text: "Gestión de Usuarios",
+        text: "Listado Usuarios",
         href: "/admin/users"
       }, {
         text: "Crear Usuario",

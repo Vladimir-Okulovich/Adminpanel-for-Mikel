@@ -35,7 +35,7 @@ const actions = {
             ApiService.post("api/v1/admin/user/create", userInfo)
                 .then((data) => {
                     resolve(data);
-                    toastr.success('Successfully created', 'Hello', {timeout: 1000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
+                    toastr.success('Creado Correctamente', {timeout: 1000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
                 })
                 .catch(({response, status}) => {
                     console.log(response);
@@ -55,7 +55,7 @@ const actions = {
             ApiService.put("api/v1/admin/user/update", userInfo)
                 .then((data) => {
                     resolve(data);
-                    toastr.success('Successfully updated', 'Hello', {timeout: 1000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
+                    toastr.success('Actualizado Correctamente', {timeout: 1000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
                 })
                 .catch(({response, status}) => {
                     console.log(response);
@@ -75,7 +75,7 @@ const actions = {
             ApiService.delete("api/v1/admin/user/delete/" + userId)
                 .then(({data}) => {
                     context.commit(type.SET_ALL_USERS, data)
-                    toastr.success('Successfully deleted', 'Hello', {timeout: 1000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
+                    toastr.success('Eliminado Correctamente', {timeout: 1000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
                 })
                 .catch(({ response }) => {
                     // context.commit(type.AUTH_LOGOUT);

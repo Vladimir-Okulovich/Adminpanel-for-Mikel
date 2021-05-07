@@ -106,7 +106,7 @@
         {{ round_heats[0].com_cat_mod_participant.category.name }}
         {{ round_heats[0].com_cat_mod_participant.category.sex.name }}
         {{ round_heats[0].com_cat_mod_participant.modality.name }}
-        <span style="font-size: 16px;">(Round {{ round }} Heat {{ heat }})</span>
+        <span style="font-size: 16px;">(Ronda {{ round }} Manga {{ heat }})</span>
       </h4>
     </div>
 
@@ -122,8 +122,8 @@
                 <th>1ª Mejor Ola</th>
                 <th>2ª Mejor Ola</th>
                 <th>Pena</th>
+                <th>Desempate</th>
                 <th>Suma</th>
-                <th>Draw</th>
               </tr>
             </thead>
             <tbody>
@@ -134,11 +134,23 @@
                 <td>{{ parseFloat(round_heat.first_score).toFixed(2) }}</td>
                 <td>{{ parseFloat(round_heat.second_score).toFixed(2) }}</td>
                 <td><input v-model="round_heat.penal" type="number" step="1" min="0" max="2" class="custom-input" /></td>
-                <td>{{ parseFloat(round_heat.points).toFixed(2) }}</td>
                 <td><input v-model="round_heat.draw" type="number" step="1" min="0" class="custom-input" /></td>
+                <td>{{ parseFloat(round_heat.points).toFixed(2) }}</td>
               </tr>
             </tbody>
           </table>
+           <div class="text-right my-4">
+            <button @click="saveResults"
+              class="btn btn-info"
+            >
+              Guardar Datos
+            </button>
+            <button @click="saveResults"
+              class="btn btn-info"
+            >
+             Terminar Manga
+            </button>
+          </div>
         </div>
       </div>
 
@@ -189,6 +201,11 @@
         </div>
 
         <div class="text-right my-4">
+          <button @click="saveResults"
+              class="btn btn-info"
+            >
+              Guardar Datos
+            </button>
           <button @click="saveResults"
             class="btn btn-info"
           >

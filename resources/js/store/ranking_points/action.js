@@ -48,7 +48,7 @@ const actions = {
             ApiService.put("api/v1/admin/ranking/update", rankingInfo)
                 .then((data) => {
                     resolve(data);
-                    toastr.success('Successfully updated', '', {timeout: 1000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
+                    toastr.success('Actualizado Correctamente', '', {timeout: 1000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
                 })
                 .catch(({response, status}) => {
                     console.log(response);

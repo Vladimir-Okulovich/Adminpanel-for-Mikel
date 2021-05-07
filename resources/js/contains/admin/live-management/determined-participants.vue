@@ -44,11 +44,10 @@
         sortDesc: false,
         fields: [
           { label: "Nombre", key: "name", sortable: true },
-          { label: "Título", key: "surname", sortable: true },
-          { label: "DNI Ficha", key: "dni_ficha", sortable: true },
-          { label: "Fecha Nac.", key: "birthday", sortable: true },
-          { label: "Club", key: "club", sortable: false },
-          { label: "Acciones", key: "actions", sortable: false },
+          { label: "Apellidos", key: "surname", sortable: true },
+          { label: "DNI Ficha", key: "dni_ficha", sortable: false },
+          { label: "Fecha Nac.", key: "birthday", sortable: false },
+          { label: "Club", key: "club", sortable: true },
         ],
         deletingId: 0,
       }
@@ -210,11 +209,7 @@
                 <template #cell(club)="row">
                   {{ row.item.club.name }}
                 </template>
-                <template #cell(actions)="row">
-                  <b-button size="sm" @click="setParticipantId(row.item.id)" v-b-modal.delete-modal>
-                    <i class="fas fa-user-minus"></i>
-                  </b-button>
-                </template>
+               
               </b-table>
             </div>
             <div class="row">
@@ -231,19 +226,7 @@
         </div>
       </div>
     </div>
-    <b-modal
-      id="delete-modal"
-      centered
-      title="Delete Item"
-      title-class="font-18"
-      hide-footer
-    >
-      <p>¿Está seguro de eliminar este aprticipante de la competición?</p>
-      <footer id="delete-modal___BV_modal_footer_" class="modal-footer">
-        <button type="button" class="btn btn-secondary" @click="$bvModal.hide('delete-modal')">Cancelar</button>
-        <button type="button" class="btn btn-primary" @click="realDelete()">OK</button>
-      </footer>
-    </b-modal>
+   
   </Layout>
 </template>
 

@@ -112,13 +112,13 @@
             <thead>
               <tr style="color: black;background: #b8e6e2;cursor: pointer;" :class="{active: heat[0].status==3}">
                 <th colspan="4" v-if="round.length == 1" @click="heatDetailsGo(round_index+1, heat_index+1)">
-                  Manga Final
+                  Final
                 </th>
                 <th colspan="4" v-else-if="round.length == 2" @click="heatDetailsGo(round_index+1, heat_index+1)">
-                  Manga Semi Finals {{ heat_index+1 }}
+                  Semi Finals Manga {{ heat_index+1 }}
                 </th>
                 <th colspan="4" v-else-if="round.length == 3" @click="heatDetailsGo(round_index+1, heat_index+1)">
-                 Manga Cuartos de Final  {{ heat_index+1 }}
+                 Cuartos de Final Manga {{ heat_index+1 }}
                 </th>
                 <th colspan="4" v-else @click="heatDetailsGo(round_index+1, heat_index+1)">
                   Ronda {{ round_index+1 }} Manga {{ heat_index+1 }}
