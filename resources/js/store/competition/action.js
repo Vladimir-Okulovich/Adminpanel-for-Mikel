@@ -137,7 +137,7 @@ const actions = {
                 .then(({data}) => {
                     // console.log(data)
                     context.commit(type.SET_REGISTERED_AND_NON_PARTICIPANTS, data);
-                    toastr.success(data.message, '', {timeout: 5000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
+                    toastr.success('Successfully updated a participant to a competition', '', {timeout: 5000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
                 })
                 .catch(({response, status}) => {
                     console.log(response);
@@ -152,7 +152,7 @@ const actions = {
                 .then(({data}) => {
                     console.log(data)
                     context.commit(type.SET_REGISTERED_AND_NON_PARTICIPANTS, data);
-                    toastr.success(data.message, '', {timeout: 5000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
+                    toastr.success('Successfully unregistered a participant to a competition', '', {timeout: 5000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
                 })
                 .catch(({response, status}) => {
                     console.log(response);
@@ -167,7 +167,7 @@ const actions = {
                 .then(({data}) => {
                     console.log(data);
                     context.commit(type.SET_ALL_COMPETITION, data)
-                    toastr.success(data.message, '', {timeout: 5000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
+                    toastr.success("Competition's Status successfully updated", '', {timeout: 5000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
                 })
                 .catch(({response, status}) => {
                     // console.log(response);

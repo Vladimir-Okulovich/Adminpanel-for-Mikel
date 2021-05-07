@@ -70,11 +70,16 @@ class LiveManagementController extends Controller
         $com_cat_mod_participant_ids = Com_cat_mod_participant::select('id')->where('competition_id', $request->competitionId)
                                                             ->where('category_id', $category->id)
                                                             ->where('modality_id', $modality->id)->get();
-        $round_heats = Round_heat::whereIn('com_cat_mod_participant_id', $com_cat_mod_participant_ids)->where('round', 1)->get();
-        $status = false;
+        $round_heats = Round_heat::whereIn('com_cat_mod_participant_id', $com_cat_mod_participant_ids)->get();
+        $status = 0;
         if (count($round_heats) > 0) {
-            $status = true;
-        }
+            $status = 2;
+            foreach ($round_heats as $round_heat) {
+                if ($round_heat->status != 1) {
+                    $status = 1;
+                }
+            }
+        } 
         
         return response()->json([
             'message' => 'success',
@@ -90,7 +95,7 @@ class LiveManagementController extends Controller
         $str = explode(" ", $request->categoryModality);
         $sex = Sex::where('name', $str[1])->first();
         $category = Category::where('name', $str[0])->where('sex_id', $sex->id)->first();
-        $modality = Modality::where('name', $str[2].' '.$str[3])->first();
+        $modality = Modality::where('name', $str[2])->first();
 
         $deleteRows = Com_cat_mod_participant::where('competition_id', $request->competitionId)
                                     ->where('participant_id', $request->participantId)
@@ -109,7 +114,7 @@ class LiveManagementController extends Controller
             array_push($participants, $participant);
         }
         return response()->json([
-            'message' => 'Successfully unregistered a participant to a competition',
+            'message' => 'success',
             'participants_competition_category_modality' => $participants
         ], 200);
     }
@@ -259,6 +264,7 @@ class LiveManagementController extends Controller
                 $temp->round_heat->com_cat_mod_participant->category->sex;
                 $temp->round_heat->com_cat_mod_participant->modality;
                 $temp->round_heat->lycra;
+                $temp->judge;
 
                 $average['round_heat_id'] = $temp->round_heat_id;
                 $average['wave_1'] = $average['wave_1'] + $temp->wave_1/3;
@@ -301,9 +307,12 @@ class LiveManagementController extends Controller
     {
         foreach ($request->heat_scores as $heat_scores) {
             $round_heat = Round_heat::find($heat_scores[0]['round_heat_id']);
-            $round_heat->update([
-                'status' => 1,
-            ]);
+            if ($request->status == "close") {
+                $round_heat->update([
+                    'status' => 1,
+                ]);
+            }
+            
             foreach ($heat_scores as $heat_score) {
                 if ($heat_score['judge_id'] != "Average") {
                     $temp = Heat_score::find($heat_score['id']);

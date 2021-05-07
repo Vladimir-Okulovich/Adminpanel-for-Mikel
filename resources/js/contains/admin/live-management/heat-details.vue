@@ -67,17 +67,22 @@
         this.storeFinalHeatResults({
           heat_scores: this.heat_scores,
           round_heats: this.round_heats,
+          status: "save",
+        })
+        .then(() => {
+          window.location.reload();
+        });
+      },
+      closeResults() {
+        this.storeFinalHeatResults({
+          heat_scores: this.heat_scores,
+          round_heats: this.round_heats,
+          status: "close",
         })
         .then(() => {
           this.$router.go(-1);
         });
-      },
-      // refresh() {
-      //   window.location.reload();
-      // },
-      // back() {
-      //   this.$router.go(-1);
-      // },
+      }
     }
 	};
 </script>
@@ -134,18 +139,18 @@
                 <td>{{ parseFloat(round_heat.first_score).toFixed(2) }}</td>
                 <td>{{ parseFloat(round_heat.second_score).toFixed(2) }}</td>
                 <td><input v-model="round_heat.penal" type="number" step="1" min="0" max="2" class="custom-input" /></td>
-                <td><input v-model="round_heat.draw" type="number" step="1" min="0" class="custom-input" /></td>
+                <td><input v-model="round_heat.draw" type="number" step="1" min="0" max="2" class="custom-input" /></td>
                 <td>{{ parseFloat(round_heat.points).toFixed(2) }}</td>
               </tr>
             </tbody>
           </table>
-           <div class="text-right my-4">
+          <div class="text-right my-4">
             <button @click="saveResults"
-              class="btn btn-info"
+              class="btn btn-orange mr-2"
             >
               Guardar Datos
             </button>
-            <button @click="saveResults"
+            <button @click="closeResults"
               class="btn btn-info"
             >
              Terminar Manga
@@ -171,7 +176,7 @@
             <tbody v-for="(heat_score, index_1) in heat_scores" :key="index_1">
               <tr v-for="(heat_score_row, index_2) in heat_score" :key="index_2">
                 <td rowspan="4" :style="{background: heat_score_row.round_heat.lycra.color}" v-if="index_2==0"></td>
-                <td v-if="heat_score_row.judge_id != 'Average'">{{ heat_score_row.judge_id }}</td>
+                <td v-if="heat_score_row.judge_id != 'Average'">{{ heat_score_row.judge.name }}</td>
                 <td v-else style="background: #0c101d;">{{ heat_score_row.judge_id }}</td>
                 <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_1" v-on:change="averageHandler" type="number" step="0.1" class="custom-input" /></td>
                 <td v-else style="background: #0c101d;">{{ parseFloat(heat_score_row.wave_1).toFixed(2) }}</td>
@@ -202,11 +207,11 @@
 
         <div class="text-right my-4">
           <button @click="saveResults"
-              class="btn btn-info"
+              class="btn btn-orange mr-2"
             >
               Guardar Datos
             </button>
-          <button @click="saveResults"
+          <button @click="closeResults"
             class="btn btn-info"
           >
             Terminar Manga

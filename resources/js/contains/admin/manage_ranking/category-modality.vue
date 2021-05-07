@@ -110,7 +110,8 @@ import categoryCreateVue from '../category/category-create.vue';
           <div class="card-body">
             <h4 class="card-title mb-4">Categories and Modalities</h4>
             <multiselect 
-              v-model="categoryModality=getAllCategoryModality[0]" 
+              v-model="categoryModality=getAllCategoryModality[0]"
+              deselect-label=""
               :options="getAllCategoryModality"
               @change="categoryModalityHandler"
             ></multiselect>

@@ -90,6 +90,11 @@ __webpack_require__.r(__webpack_exports__);
         text: "Crear",
         active: true
       }],
+      lang: {
+        formatLocale: {
+          firstDayOfWeek: 1
+        }
+      },
       isError: false,
       Error: null,
       typeform: {
@@ -8087,7 +8092,10 @@ var render = function() {
                                   _vm.typesubmit &&
                                   _vm.$v.typeform.competition_type.$error
                               },
-                              attrs: { options: _vm.typeOptions },
+                              attrs: {
+                                "deselect-label": "",
+                                options: _vm.typeOptions
+                              },
                               model: {
                                 value: _vm.typeform.competition_type,
                                 callback: function($$v) {
@@ -8241,8 +8249,7 @@ var render = function() {
                               attrs: {
                                 format: "DD-MM-YYYY",
                                 "value-type": "format",
-                                "first-day-of-week": 1,
-                                lang: "en",
+                                lang: _vm.lang,
                                 placeholder: "dd-mm-yyyy"
                               },
                               model: {
@@ -8368,7 +8375,10 @@ var render = function() {
                                   _vm.typesubmit &&
                                   _vm.$v.typeform.ranking_score.$error
                               },
-                              attrs: { options: _vm.rankingScoreOptions },
+                              attrs: {
+                                "deselect-label": "",
+                                options: _vm.rankingScoreOptions
+                              },
                               model: {
                                 value: _vm.typeform.ranking_score,
                                 callback: function($$v) {

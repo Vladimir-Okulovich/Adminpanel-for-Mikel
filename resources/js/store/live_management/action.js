@@ -36,7 +36,7 @@ const actions = {
                 .then(({data}) => {
                     // console.log(data);
                     context.commit(type.SET_PARTICIPANTS_COMPETITION_CATEGORY_MODALITY, data)
-                    toastr.success(data.message, '', {timeout: 5000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
+                    toastr.success('Successfully unregistered a participant to a competition', '', {timeout: 5000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
                 })
                 .catch(({ response }) => {
                     // console.log(response);

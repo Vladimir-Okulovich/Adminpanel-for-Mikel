@@ -134,7 +134,7 @@ class ManageRankingController extends Controller
             if (count($categories) == 0) {
                 // $participant->delete();
                 return response()->json([
-                    'message' => 'Any category doesnt include the participant',
+                    'message' => 'Any category does not include the participant',
                     'participant' => $participant
                 ], 400);
             }
@@ -182,7 +182,7 @@ class ManageRankingController extends Controller
 
         if (count($categories) == 0) {
             return response()->json([
-                'message' => 'Any category doesnt include the participant',
+                'message' => 'Any category does not include the participant',
                 'participant' => $participant
             ], 400);
         }
@@ -246,7 +246,7 @@ class ManageRankingController extends Controller
 
         $result = $this->getRegisteredAndNonParticipants($request->competitionId);
         return response()->json([
-            'message' => 'Successfully updated a participant to a competition',
+            'message' => 'success',
             'registered_participants' => $result->registered_participants,
             'non_participants' => $result->non_participants,
         ], 200);
@@ -259,7 +259,7 @@ class ManageRankingController extends Controller
 
         $result = $this->getRegisteredAndNonParticipants($request->competitionId);
         return response()->json([
-            'message' => 'Successfully unregistered a participant to a competition',
+            'message' => 'success',
             'registered_participants' => $result->registered_participants,
             'non_participants' => $result->non_participants,
         ], 200);

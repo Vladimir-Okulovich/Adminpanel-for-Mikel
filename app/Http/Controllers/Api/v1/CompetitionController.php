@@ -277,7 +277,7 @@ class CompetitionController extends Controller
             $competition->status;
         }
         return response()->json([
-            'message' => "Competition's Status successfully updated",
+            'message' => "success",
             'competitions' => $competitions
         ], 201);
     }

@@ -136,15 +136,20 @@
   <Layout>
     <PageHeader :title="title" :items="items">
       <div class="float-right">
-        <button v-if="!categoryStatus" @click="createCompetitionBox"
+        <button v-if="categoryStatus == 0" @click="createCompetitionBox"
           class="btn btn-info btn-block d-inline-block"
         >
           Crear Cuadro Competición
         </button>
-        <button v-else @click="createCompetitionBox"
-          class="btn btn-info btn-block d-inline-block"
+        <button v-else-if="categoryStatus == 1" @click="createCompetitionBox"
+          class="btn btn-success btn-block d-inline-block"
         >
           Acceder al cuadro de competición
+        </button>
+        <button v-else @click="createCompetitionBox"
+          class="btn btn-danger btn-block d-inline-block"
+        >
+          Ver Cuadro finalizado
         </button>
       </div>
     </PageHeader>
@@ -156,6 +161,7 @@
             <h4 class="card-title mb-4">Selección Categorias</h4>
             <multiselect 
               v-model="categoryModality"
+              deselect-label=""
               :options="categoryModalityWithPart"
               @input="categoryModalityHandler"
             ></multiselect>
@@ -209,7 +215,7 @@
                 <template #cell(club)="row">
                   {{ row.item.club.name }}
                 </template>
-               
+
               </b-table>
             </div>
             <div class="row">

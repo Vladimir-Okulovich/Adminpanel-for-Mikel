@@ -44,6 +44,11 @@ export default {
           active: true
         }
       ],
+      lang: {
+        formatLocale: {
+          firstDayOfWeek: 1,
+        },
+      },
       isError: false,
       Error: null,
       typeform: {
@@ -187,8 +192,7 @@ export default {
                   v-model="typeform.birthday=getParticipant.birthday"
                   format="DD-MM-YYYY"
                   value-type="format"
-                  :first-day-of-week="1"
-                  lang="en"
+                  :lang="lang"
                   placeholder="DD-MM-YYYY"
                   :class="{ 'is-invalid': typesubmit && $v.typeform.birthday.$error }"
                 ></date-picker>
@@ -200,6 +204,7 @@ export default {
                 <label>Sexo</label>
                 <multiselect 
                   v-model="typeform.sex=getParticipant.sex.name" 
+                  deselect-label=""
                   :options="sexOptions"
                   :class="{ 'is-invalid': typesubmit && $v.typeform.sex.$error }"
                 ></multiselect>
@@ -212,6 +217,7 @@ export default {
                 <label>Club</label>
                 <multiselect 
                   v-model="typeform.club=getParticipant.club.name"
+                  deselect-label=""
                   :options="clubOptions"
                   :class="{ 'is-invalid': typesubmit && $v.typeform.club.$error }"  
                 ></multiselect>

@@ -45,6 +45,11 @@ export default {
           active: true
         }
       ],
+      lang: {
+        formatLocale: {
+          firstDayOfWeek: 1,
+        },
+      },
       isError: false,
       Error: null,
       typeform: {
@@ -198,6 +203,7 @@ export default {
                     <label>Tipo Competición</label>
                     <multiselect 
                       v-model="typeform.competition_type" 
+                      deselect-label=""
                       :options="typeOptions"
                       :class="{ 'is-invalid': typesubmit && $v.typeform.competition_type.$error }"
                     ></multiselect>
@@ -247,8 +253,7 @@ export default {
                       v-model="typeform.date"
                       format="DD-MM-YYYY"
                       value-type="format"
-                      :first-day-of-week="1"
-                      lang="en"
+                      :lang="lang"
                       placeholder="dd-mm-yyyy"
                       :class="{ 'is-invalid': typesubmit && $v.typeform.date.$error }"
                     ></date-picker>
@@ -288,6 +293,7 @@ export default {
                     <label>Puntúa Ranking</label>
                     <multiselect 
                       v-model="typeform.ranking_score" 
+                      deselect-label=""
                       :options="rankingScoreOptions"
                       :class="{ 'is-invalid': typesubmit && $v.typeform.ranking_score.$error }"
                     ></multiselect>
