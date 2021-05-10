@@ -52,6 +52,14 @@
         'storeFinalHeatResults',
       ]),
 
+      drawHandler() {
+        this.round_heats.forEach(function(round_heat) {
+          if (round_heat.draw > 2) {
+            round_heat.draw = 2;
+          }
+          round_heat.points = round_heat.first_score + round_heat.second_score + round_heat.draw/100;
+        })
+      },
       averageHandler() {
         // console.log(this.heat_scores)
         this.heat_scores.forEach(function(heat_score) {
@@ -139,7 +147,7 @@
                 <td>{{ parseFloat(round_heat.first_score).toFixed(2) }}</td>
                 <td>{{ parseFloat(round_heat.second_score).toFixed(2) }}</td>
                 <td><input v-model="round_heat.penal" type="number" step="1" min="0" max="2" class="custom-input" /></td>
-                <td><input v-model="round_heat.draw" type="number" step="1" min="0" max="2" class="custom-input" /></td>
+                <td><input v-model="round_heat.draw" v-on:change="drawHandler" type="number" step="1" min="0" max="2" class="custom-input" /></td>
                 <td>{{ parseFloat(round_heat.points).toFixed(2) }}</td>
               </tr>
             </tbody>

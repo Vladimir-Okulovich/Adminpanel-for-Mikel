@@ -2,8 +2,11 @@ const getters = {
     getAllCategoryModality(state) {
         return state.all_category_modality;
     },
-    getAllRankingData(state) {
-        return state.all_ranking_data;
+    categoryRankingPoints(state) {
+        return state.category_ranking_points;
+    },
+    competitionNumber(state) {
+        return state.competition_number;
     },
   };
   

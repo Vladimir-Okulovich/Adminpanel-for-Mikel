@@ -169,7 +169,7 @@ Route::group([ 'prefix' => 'v1', 'middleware' => 'api'], function(){
         /* Get all all_category_modality details*/
         Route::get('manage_ranking/all_category_modality', 'App\Http\Controllers\Api\v1\ManageRankingController@getAllCategoryModality');
         /* Get all all_ranking_data details*/
-        Route::post('manage_ranking/all_ranking_data', 'App\Http\Controllers\Api\v1\ManageRankingController@getAllRankingData');
+        Route::post('manage_ranking/category_ranking_points', 'App\Http\Controllers\Api\v1\ManageRankingController@getCategoryRankingPoints');
     });
 
     Route::group([ 'prefix' => 'judge', 'middleware' => 'isjudge' ], function() {

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Com_cat_mod_participant;
+use App\Models\Lycra;
 
 class Round_heat extends Model
 {

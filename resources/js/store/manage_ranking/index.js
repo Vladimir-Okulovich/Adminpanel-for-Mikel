@@ -5,7 +5,8 @@ import JwtService from "@/common/jwt.service"
 
 const defaultState = {
   all_category_modality: [],
-  all_ranking_data: [],
+  category_ranking_points: [],
+  competition_number: 0,
 };
 
 export default {

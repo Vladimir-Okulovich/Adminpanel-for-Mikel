@@ -7117,7 +7117,9 @@ var render = function() {
           _c("div", { staticClass: "card" }, [
             _c("div", { staticClass: "card-body" }, [
               _c("h4", { staticClass: "card-title mb-4" }, [
-                _vm._v("Listado Participantes")
+                _vm._v(
+                  "Listado Participantes (" + _vm._s(_vm.categoryModality) + ")"
+                )
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "row mb-md-2" }, [
@@ -7537,7 +7539,10 @@ var render = function() {
                           "router-link",
                           {
                             staticClass: "side-nav-link",
-                            attrs: { tag: "a", to: "/admin/category-modality" }
+                            attrs: {
+                              tag: "a",
+                              to: { name: "CategoryRankingMenu" }
+                            }
                           },
                           [_c("span", [_vm._v("Gestión Ranking")])]
                         )

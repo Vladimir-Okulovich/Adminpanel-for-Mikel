@@ -7165,7 +7165,10 @@ var render = function() {
                           "router-link",
                           {
                             staticClass: "side-nav-link",
-                            attrs: { tag: "a", to: "/admin/category-modality" }
+                            attrs: {
+                              tag: "a",
+                              to: { name: "CategoryRankingMenu" }
+                            }
                           },
                           [_c("span", [_vm._v("Gestión Ranking")])]
                         )

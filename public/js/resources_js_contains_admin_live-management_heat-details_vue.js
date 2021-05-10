@@ -97,6 +97,15 @@ __webpack_require__.r(__webpack_exports__);
     });
   },
   methods: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_4__.default)((0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_4__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_8__.mapActions)(['initHeatDetails', 'storeFinalHeatResults'])), {}, {
+    drawHandler: function drawHandler() {
+      this.round_heats.forEach(function (round_heat) {
+        if (round_heat.draw > 2) {
+          round_heat.draw = 2;
+        }
+
+        round_heat.points = round_heat.first_score + round_heat.second_score + round_heat.draw / 100;
+      });
+    },
     averageHandler: function averageHandler() {
       // console.log(this.heat_scores)
       this.heat_scores.forEach(function (heat_score) {
@@ -7206,6 +7215,7 @@ var render = function() {
                       attrs: { type: "number", step: "1", min: "0", max: "2" },
                       domProps: { value: round_heat.draw },
                       on: {
+                        change: _vm.drawHandler,
                         input: function($event) {
                           if ($event.target.composing) {
                             return
@@ -7954,7 +7964,10 @@ var render = function() {
                           "router-link",
                           {
                             staticClass: "side-nav-link",
-                            attrs: { tag: "a", to: "/admin/category-modality" }
+                            attrs: {
+                              tag: "a",
+                              to: { name: "CategoryRankingMenu" }
+                            }
                           },
                           [_c("span", [_vm._v("Gestión Ranking")])]
                         )

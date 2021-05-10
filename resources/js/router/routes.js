@@ -517,9 +517,9 @@ export default [
         },
     },
     {
-        path: '/admin/category-modality',
-        name: 'CategoryModality',
-        component: () => import('../contains/admin/manage_ranking/category-modality'),
+        path: '/admin/category-ranking-menu',
+        name: 'CategoryRankingMenu',
+        component: () => import('../contains/admin/manage_ranking/category-ranking-menu'),
         meta: {
             beforeResolve(routeTo, routeFrom, next) {
                 if (store.getters['currentRole'] == 'Admin') {

@@ -8,7 +8,10 @@ use App\Models\Club;
 use Illuminate\Support\Facades\DB;
 use App\Models\Modality;
 use App\Models\Participant;
+use App\Models\Competition;
 use App\Models\Com_cat_mod_participant;
+use App\Models\Ranking_position_point;
+use App\Models\Manage_ranking_point;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Validator;
@@ -41,25 +44,64 @@ class ManageRankingController extends Controller
         ], 200);
     }
 
-    public function getAllRankingData(Request $request) {
-        $all_ranking_data = [];
+    public function getCategoryRankingPoints(Request $request) {
+        $str = explode(" ", $request->categoryModality);
+        $sex = Sex::where('name', $str[1])->first();
+        $category = Category::where('name', $str[0])->where('sex_id', $sex->id)->first();
+        $modality = Modality::where('name', $str[2])->first();
 
-        $modality = Modality::where('name', $request->modality)->first();
-        $sex = Sex::where('name', $request->sex)->first();
-        $category = Category::where('name', $request->category)->where('sex_id', $sex->id)->first();
-        $category->competitions;
-        foreach ($category->competitions as $competition) {
-            $temp = DB::table('modality_competition')->where('competition_id', $competition->id)->where('modality_id', $modality->id)->get();
-            // array_push($all_ranking_data, $competition);
-            if (count($temp) == 0) {
-                echo("false");
-            } else {
-                echo("true");
+        $category_ranking_points = [];
+        $participant_ids = Manage_ranking_point::select('participant_id')
+                                                ->where('category_id', $category->id)
+                                                ->where('modality_id', $modality->id)->distinct()->get();
+        $competition_ids = Manage_ranking_point::select('competition_id')
+                                                ->where('category_id', $category->id)
+                                                ->where('modality_id', $modality->id)->distinct()->get();
+        foreach ($participant_ids as $index => $participant_id) {
+            $category_ranking_point = [];
+            $temp = [];
+            $category_ranking_point["position"] = $index + 1;
+            $participant = Participant::find($participant_id->participant_id);
+            $category_ranking_point["participant"] = $participant->name.' '.$participant->surname;
+            $points = [];
+            foreach ($competition_ids as $competition_id) {
+                $competition = Competition::find($competition_id->competition_id);
+                $manage_ranking_point = Manage_ranking_point::where('competition_id', $competition_id->competition_id)
+                                                            ->where('category_id', $category->id)
+                                                            ->where('modality_id', $modality->id)
+                                                            ->where('participant_id', $participant_id->participant_id)->get();
+                if (count($manage_ranking_point) > 0) {
+                    $category_ranking_point["$competition->title"] = $manage_ranking_point[0]->ranking_points;
+                } else {
+                    $category_ranking_point["$competition->title"] = 0;
+                }
+                array_push($points, $category_ranking_point["$competition->title"]);
             }
+            array_push($points, 0);
+            array_push($points, 0);
+            rsort($points);
+            $category_ranking_point["3_best_sum"] = $points[0] + $points[1] + $points[2];
+            $category_ranking_point["best_result"] = $points[0];
+            $category_ranking_point["2nd_best"] = $points[1];
+            $category_ranking_point["3rd_best"] = $points[2];
+
+            $temp["position"] = $category_ranking_point["position"];
+            $temp["participant"] = $category_ranking_point["participant"];
+            $temp["3_best_sum"] = $category_ranking_point["3_best_sum"];
+            foreach ($competition_ids as $competition_id) {
+                $competition = Competition::find($competition_id->competition_id);
+                $temp["$competition->title"] = $category_ranking_point["$competition->title"];
+            }
+            $temp["best_result"] = $category_ranking_point["best_result"];
+            $temp["2nd_best"] = $category_ranking_point["2nd_best"];
+            $temp["3rd_best"] = $category_ranking_point["3rd_best"];
+            
+            array_push($category_ranking_points, $temp);
         }
         return response()->json([
             'message' => 'success',
-            'all_ranking_data' => $temp
+            'category_ranking_points' => $category_ranking_points,
+            'competition_number' => count($competition_ids),
         ], 200);
     }
 

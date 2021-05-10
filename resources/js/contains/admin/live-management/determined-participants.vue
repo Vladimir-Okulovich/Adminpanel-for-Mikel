@@ -172,7 +172,7 @@
       <div class="col-12">
         <div class="card">
           <div class="card-body">
-            <h4 class="card-title mb-4">Listado Participantes</h4>
+            <h4 class="card-title mb-4">Listado Participantes ({{ categoryModality }})</h4>
             <div class="row mb-md-2">
               <div class="col-sm-12 col-md-6">
                 <div id="tickets-table_length" class="dataTables_length">
