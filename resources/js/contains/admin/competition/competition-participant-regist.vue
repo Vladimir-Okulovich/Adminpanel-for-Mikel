@@ -325,7 +325,7 @@
     <b-modal
       id="register-modality-modal"
       centered
-      title="Select Modality"
+      title="Elegir Modalidad"
       title-class="font-18"
       hide-footer
     >
@@ -373,7 +373,7 @@
     <b-modal
       id="unregister-modality-modal"
       centered
-      title="Unregister Participant"
+      title="Eliminar Participante"
       title-class="font-18"
       hide-footer
     >

@@ -7537,7 +7537,7 @@ var render = function() {
           attrs: {
             id: "register-modality-modal",
             centered: "",
-            title: "Select Modality",
+            title: "Elegir Modalidad",
             "title-class": "font-18",
             "hide-footer": ""
           }
@@ -7683,7 +7683,7 @@ var render = function() {
           attrs: {
             id: "unregister-modality-modal",
             centered: "",
-            title: "Unregister Participant",
+            title: "Eliminar Participante",
             "title-class": "font-18",
             "hide-footer": ""
           }

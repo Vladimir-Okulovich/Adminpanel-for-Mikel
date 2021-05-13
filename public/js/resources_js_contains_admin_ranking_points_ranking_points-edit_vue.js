@@ -62,7 +62,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   page: {
-    title: "RANKING POINTS",
+    title: "PUNTOS RANKINGS",
     meta: [{
       name: "description",
       content: _app_config__WEBPACK_IMPORTED_MODULE_6__.description
@@ -75,15 +75,15 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      title: "RANKING POINTS",
+      title: "PUNTOS RANKINGS",
       items: [{
-        text: "Administrator",
+        text: "Home",
         href: "/admin"
       }, {
-        text: "Ranking Points",
+        text: "Listado Rankings",
         href: "/admin/ranking_points"
       }, {
-        text: "Ranking Position Points",
+        text: "Modificar Ranking",
         active: true
       }],
       totalRows: 1,
@@ -7719,7 +7719,7 @@ var render = function() {
                         },
                         attrs: {
                           type: "text",
-                          placeholder: "Name",
+                          placeholder: "Nombre",
                           name: "name"
                         },
                         domProps: {
@@ -7742,7 +7742,9 @@ var render = function() {
                       _vm.typesubmit && _vm.$v.typeform.name.$error
                         ? _c("div", { staticClass: "invalid-feedback" }, [
                             !_vm.$v.typeform.name.required
-                              ? _c("span", [_vm._v("This value is required.")])
+                              ? _c("span", [
+                                  _vm._v("Este Campo es Obligatorio.")
+                                ])
                               : _vm._e()
                           ])
                         : _vm._e()
@@ -7752,7 +7754,7 @@ var render = function() {
                       "div",
                       { staticClass: "form-group" },
                       [
-                        _c("label", [_vm._v("año")]),
+                        _c("label", [_vm._v("Año")]),
                         _vm._v(" "),
                         _c("br"),
                         _vm._v(" "),
@@ -7765,7 +7767,7 @@ var render = function() {
                             type: "year",
                             "value-type": "format",
                             lang: "en",
-                            placeholder: "Year"
+                            placeholder: "año"
                           },
                           model: {
                             value: (_vm.typeform.year = _vm.getRanking.year),
@@ -7784,7 +7786,7 @@ var render = function() {
                           ? _c("div", { staticClass: "invalid-feedback" }, [
                               !_vm.$v.typeform.year.required
                                 ? _c("span", [
-                                    _vm._v("This value is required.")
+                                    _vm._v("Este Campo es Obligatorio.")
                                   ])
                                 : _vm._e()
                             ])

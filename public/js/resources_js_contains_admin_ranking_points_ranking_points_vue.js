@@ -55,7 +55,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   page: {
-    title: "RANKINGS",
+    title: "LISTADO RANKINGS",
     meta: [{
       name: "description",
       content: _app_config__WEBPACK_IMPORTED_MODULE_4__.description
@@ -67,12 +67,12 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      title: "RANKINGS",
+      title: "LISTADO RANKINGS",
       items: [{
-        text: "Administrator",
+        text: "Home",
         href: "/admin"
       }, {
-        text: "Ranking Points",
+        text: "Listado Rankings",
         active: true
       }],
       totalRows: 1,
@@ -84,9 +84,11 @@ __webpack_require__.r(__webpack_exports__);
       sortBy: "name",
       sortDesc: false,
       fields: [{
+        label: "Nombre",
         key: "name",
         sortable: false
       }, {
+        label: "Acciones",
         key: "actions",
         sortable: false
       }]
@@ -6922,7 +6924,7 @@ var render = function() {
           _c("div", { staticClass: "card" }, [
             _c("div", { staticClass: "card-body" }, [
               _c("h4", { staticClass: "card-title" }, [
-                _vm._v("Rankings Table")
+                _vm._v("Listado Rankings")
               ]),
               _vm._v(" "),
               _c("p", { staticClass: "card-title-desc" }),
@@ -6941,7 +6943,7 @@ var render = function() {
                         { staticClass: "d-inline-flex align-items-center" },
                         [
                           _vm._v(
-                            "\n                  Show\n                  "
+                            "\n                  Mostrar\n                  "
                           ),
                           _c("b-form-select", {
                             attrs: { size: "sm", options: _vm.pageOptions },
@@ -6953,7 +6955,7 @@ var render = function() {
                               expression: "perPage"
                             }
                           }),
-                          _vm._v("entries\n                ")
+                          _vm._v("registros\n                ")
                         ],
                         1
                       )
@@ -6974,11 +6976,11 @@ var render = function() {
                         { staticClass: "d-inline-flex align-items-center" },
                         [
                           _vm._v(
-                            "\n                  Search:\n                  "
+                            "\n                  Buscar:\n                  "
                           ),
                           _c("b-form-input", {
                             staticClass: "form-control form-control-sm ml-2",
-                            attrs: { type: "search", placeholder: "Search..." },
+                            attrs: { type: "search", placeholder: "Buscar..." },
                             model: {
                               value: _vm.filter,
                               callback: function($$v) {

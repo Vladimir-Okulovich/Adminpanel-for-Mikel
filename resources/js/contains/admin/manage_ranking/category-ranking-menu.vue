@@ -9,7 +9,7 @@ import categoryCreateVue from '../category/category-create.vue';
 
 	export default {
 		page: {
-        title: "CATEGORIES AND MODALITIES",
+        title: "CLASIFICACIONES RANKING",
         meta: [{ name: "description", content: appConfig.description }]
     },
     components: {
@@ -19,18 +19,14 @@ import categoryCreateVue from '../category/category-create.vue';
     },
     data() {
       return {
-        title: "CATEGORIES AND MODALITIES",
+        title: "CLASIFICACIONES RANKING",
         items: [
           {
-            text: "Administrator",
+            text: "Home",
             href: "/admin"
           },
           {
-            text: "Manage Ranking",
-            active: true
-          },
-          {
-            text: "Categories and Modalities",
+            text: "Clasificaciones Ranking",
             active: true
           }
         ],
@@ -113,7 +109,7 @@ import categoryCreateVue from '../category/category-create.vue';
       <div class="col-12">
         <div class="card">
           <div class="card-body">
-            <h4 class="card-title mb-4">Categories and Modalities</h4>
+            <h4 class="card-title mb-4">Seleccionar Categoría</h4>
             <multiselect 
               v-model="categoryModality"
               deselect-label=""
@@ -124,13 +120,13 @@ import categoryCreateVue from '../category/category-create.vue';
         </div>
 
         <div>
-          <h4 class="card-title mb-4">Manage Ranking Table</h4>
+          <h4 class="card-title mb-4">Ranking Caetgoría "{{ categoryModality }}"</h4>
           <div class="row mb-md-2">
             <div class="col-sm-12 col-md-6">
               <div id="tickets-table_length" class="dataTables_length">
                 <label class="d-inline-flex align-items-center">
-                  Show
-                  <b-form-select v-model="perPage" size="sm" :options="pageOptions"></b-form-select>entries
+                  Mostrar 
+                  <b-form-select v-model="perPage" size="sm" :options="pageOptions"></b-form-select> registros
                 </label>
               </div>
             </div>
@@ -138,11 +134,11 @@ import categoryCreateVue from '../category/category-create.vue';
             <div class="col-sm-12 col-md-6">
               <div id="tickets-table_filter" class="dataTables_filter text-md-right">
                 <label class="d-inline-flex align-items-center">
-                  Search:
+                  Buscar:
                   <b-form-input
                     v-model="filter"
                     type="search"
-                    placeholder="Search..."
+                    placeholder="Buscar..."
                     class="form-control form-control-sm ml-2"
                   ></b-form-input>
                 </label>
@@ -170,7 +166,13 @@ import categoryCreateVue from '../category/category-create.vue';
                 <b-tr>
                   <b-th variant="secondary" colspan="3" style="color: black;text-align: center;">RANKING 2021</b-th>
                   <b-th variant="primary" :colspan="competitionNumber" style="color: black;text-align: center;">POINTS OBTAINED ON EACH RANKING COMPETITION</b-th>
+				  <b-th variant="primary" :colspan="competitionNumber" style="color: black;text-align: center;">PTOS. COMPETICIONES</b-th>
+                  <b-th colspan="3"><span class="sr-only">TRES MEJORES</span></b-th>
+<<<<<<< .mine
                   <b-th colspan="3"><span class="sr-only">THREE BSET RESULTS</span></b-th>
+=======
+                  <b-th colspan="3"><span class="sr-only">TRES MEJORES</span></b-th>
+>>>>>>> .theirs
                 </b-tr>
               </template>
             </b-table>

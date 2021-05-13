@@ -12,24 +12,24 @@ import {
 
 export default {
   page: {
-    title: "RANKING POINTS",
+    title: "PUNTOS RANKINGS",
     meta: [{ name: "description", content: appConfig.description }]
   },
   components: { DatePicker, Layout, PageHeader },
   data() {
     return {
-      title: "RANKING POINTS",
+      title: "PUNTOS RANKINGS",
       items: [
         {
-          text: "Administrator",
+          text: "Home",
           href: "/admin"
         },
         {
-          text: "Ranking Points",
+          text: "Listado Rankings",
           href: "/admin/ranking_points"
         },
         {
-          text: "Ranking Position Points",
+          text: "Modificar Ranking",
           active: true
         }
       ],
@@ -134,27 +134,27 @@ export default {
                   v-model="typeform.name=getRanking.name"
                   type="text"
                   class="form-control"
-                  placeholder="Name"
+                  placeholder="Nombre"
                   name="name"
                   :class="{ 'is-invalid': typesubmit && $v.typeform.name.$error }"
                 />
                 <div v-if="typesubmit && $v.typeform.name.$error" class="invalid-feedback">
-                  <span v-if="!$v.typeform.name.required">This value is required.</span>
+                  <span v-if="!$v.typeform.name.required">Este Campo es Obligatorio.</span>
                 </div>
               </div>
               <div class="form-group">
-                <label>año</label>
+                <label>Año</label>
                 <br />
                 <date-picker
                   v-model="typeform.year=getRanking.year"
                   type="year"
                   value-type="format"
                   lang="en"
-                  placeholder="Year"
+                  placeholder="año"
                   :class="{ 'is-invalid': typesubmit && $v.typeform.year.$error }"
                 ></date-picker>
                 <div v-if="typesubmit && $v.typeform.year.$error" class="invalid-feedback">
-                  <span v-if="!$v.typeform.year.required">This value is required.</span>
+                  <span v-if="!$v.typeform.year.required">Este Campo es Obligatorio.</span>
                 </div>
               </div>
               <div class="form-group mt-5 mb-0">

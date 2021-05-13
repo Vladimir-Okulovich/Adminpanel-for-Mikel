@@ -203,7 +203,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   page: {
-    title: "CATEGORIES AND MODALITIES",
+    title: "CLASIFICACIONES RANKING",
     meta: [{
       name: "description",
       content: _app_config__WEBPACK_IMPORTED_MODULE_4__.description
@@ -216,15 +216,12 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      title: "CATEGORIES AND MODALITIES",
+      title: "CLASIFICACIONES RANKING",
       items: [{
-        text: "Administrator",
+        text: "Home",
         href: "/admin"
       }, {
-        text: "Manage Ranking",
-        active: true
-      }, {
-        text: "Categories and Modalities",
+        text: "Clasificaciones Ranking",
         active: true
       }],
       categoryModality: "",
@@ -8249,7 +8246,7 @@ var render = function() {
               { staticClass: "card-body" },
               [
                 _c("h4", { staticClass: "card-title mb-4" }, [
-                  _vm._v("Categories and Modalities")
+                  _vm._v("Seleccionar Categoría")
                 ]),
                 _vm._v(" "),
                 _c("multiselect", {
@@ -8273,7 +8270,7 @@ var render = function() {
           _vm._v(" "),
           _c("div", [
             _c("h4", { staticClass: "card-title mb-4" }, [
-              _vm._v("Manage Ranking Table")
+              _vm._v('Ranking Caetgoría "' + _vm._s(_vm.categoryModality) + '"')
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "row mb-md-2" }, [
@@ -8289,7 +8286,9 @@ var render = function() {
                       "label",
                       { staticClass: "d-inline-flex align-items-center" },
                       [
-                        _vm._v("\n                Show\n                "),
+                        _vm._v(
+                          "\n                  Mostrar \n                  "
+                        ),
                         _c("b-form-select", {
                           attrs: { size: "sm", options: _vm.pageOptions },
                           model: {
@@ -8300,7 +8299,7 @@ var render = function() {
                             expression: "perPage"
                           }
                         }),
-                        _vm._v("entries\n              ")
+                        _vm._v(" registros\n                ")
                       ],
                       1
                     )
@@ -8320,10 +8319,12 @@ var render = function() {
                       "label",
                       { staticClass: "d-inline-flex align-items-center" },
                       [
-                        _vm._v("\n                Search:\n                "),
+                        _vm._v(
+                          "\n                  Buscar:\n                  "
+                        ),
                         _c("b-form-input", {
                           staticClass: "form-control form-control-sm ml-2",
-                          attrs: { type: "search", placeholder: "Search..." },
+                          attrs: { type: "search", placeholder: "Buscar..." },
                           model: {
                             value: _vm.filter,
                             callback: function($$v) {
@@ -8428,11 +8429,39 @@ var render = function() {
                                 ]
                               ),
                               _vm._v(" "),
+                              _c(
+                                "b-th",
+                                {
+                                  staticStyle: {
+                                    color: "black",
+                                    "text-align": "center"
+                                  },
+                                  attrs: {
+                                    variant: "primary",
+                                    colspan: _vm.competitionNumber
+                                  }
+                                },
+                                [_vm._v("PTOS. COMPETICIONES")]
+                              ),
+                              _vm._v(" "),
+                              _c("b-th", { attrs: { colspan: "3" } }, [
+                                _c("span", { staticClass: "sr-only" }, [
+                                  _vm._v("TRES MEJORES")
+                                ])
+                              ]),
+                              _vm._v("\n<<<<<<< .mine\n                  "),
                               _c("b-th", { attrs: { colspan: "3" } }, [
                                 _c("span", { staticClass: "sr-only" }, [
                                   _vm._v("THREE BSET RESULTS")
                                 ])
-                              ])
+                              ]),
+                              _vm._v("\n=======\n                  "),
+                              _c("b-th", { attrs: { colspan: "3" } }, [
+                                _c("span", { staticClass: "sr-only" }, [
+                                  _vm._v("TRES MEJORES")
+                                ])
+                              ]),
+                              _vm._v("\n>>>>>>> .theirs\n                ")
                             ],
                             1
                           )
