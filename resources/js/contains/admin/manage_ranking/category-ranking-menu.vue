@@ -165,14 +165,8 @@ import categoryCreateVue from '../category/category-create.vue';
                 </b-tr>
                 <b-tr>
                   <b-th variant="secondary" colspan="3" style="color: black;text-align: center;">RANKING 2021</b-th>
-                  <b-th variant="primary" :colspan="competitionNumber" style="color: black;text-align: center;">POINTS OBTAINED ON EACH RANKING COMPETITION</b-th>
-				  <b-th variant="primary" :colspan="competitionNumber" style="color: black;text-align: center;">PTOS. COMPETICIONES</b-th>
+				          <b-th variant="primary" :colspan="competitionNumber" style="color: black;text-align: center;">PTOS. COMPETICIONES</b-th>
                   <b-th colspan="3"><span class="sr-only">TRES MEJORES</span></b-th>
-<<<<<<< .mine
-                  <b-th colspan="3"><span class="sr-only">THREE BSET RESULTS</span></b-th>
-=======
-                  <b-th colspan="3"><span class="sr-only">TRES MEJORES</span></b-th>
->>>>>>> .theirs
                 </b-tr>
               </template>
             </b-table>

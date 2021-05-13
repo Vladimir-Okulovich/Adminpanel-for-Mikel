@@ -8422,25 +8422,6 @@ var render = function() {
                                     colspan: _vm.competitionNumber
                                   }
                                 },
-                                [
-                                  _vm._v(
-                                    "POINTS OBTAINED ON EACH RANKING COMPETITION"
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "b-th",
-                                {
-                                  staticStyle: {
-                                    color: "black",
-                                    "text-align": "center"
-                                  },
-                                  attrs: {
-                                    variant: "primary",
-                                    colspan: _vm.competitionNumber
-                                  }
-                                },
                                 [_vm._v("PTOS. COMPETICIONES")]
                               ),
                               _vm._v(" "),
@@ -8448,20 +8429,7 @@ var render = function() {
                                 _c("span", { staticClass: "sr-only" }, [
                                   _vm._v("TRES MEJORES")
                                 ])
-                              ]),
-                              _vm._v("\n<<<<<<< .mine\n                  "),
-                              _c("b-th", { attrs: { colspan: "3" } }, [
-                                _c("span", { staticClass: "sr-only" }, [
-                                  _vm._v("THREE BSET RESULTS")
-                                ])
-                              ]),
-                              _vm._v("\n=======\n                  "),
-                              _c("b-th", { attrs: { colspan: "3" } }, [
-                                _c("span", { staticClass: "sr-only" }, [
-                                  _vm._v("TRES MEJORES")
-                                ])
-                              ]),
-                              _vm._v("\n>>>>>>> .theirs\n                ")
+                              ])
                             ],
                             1
                           )
