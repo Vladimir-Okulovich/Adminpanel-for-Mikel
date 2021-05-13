@@ -7,7 +7,7 @@
 
 	export default {
 		page: {
-        title: "RANKINGS",
+        title: "LISTADO RANKINGS",
         meta: [{ name: "description", content: appConfig.description }]
     },
     components: {
@@ -16,14 +16,14 @@
     },
     data() {
       return {
-        title: "RANKINGS",
+        title: "LISTADO RANKINGS",
         items: [
           {
-            text: "Administrator",
+            text: "Home",
             href: "/admin"
           },
           {
-            text: "Ranking Points",
+            text: "Listado Rankings",
             active: true
           }
         ],
@@ -36,8 +36,8 @@
         sortBy: "name",
         sortDesc: false,
         fields: [
-          { key: "name", sortable: false },
-          { key: "actions", sortable: false }
+          { label: "Nombre", key: "name", sortable: false },
+          { label: "Acciones", key: "actions", sortable: false }
         ],
       }
     },
@@ -81,14 +81,14 @@
       <div class="col-12">
         <div class="card">
           <div class="card-body">
-            <h4 class="card-title">Rankings Table</h4>
+            <h4 class="card-title">Listado Rankings</h4>
             <p class="card-title-desc"></p>
             <div class="row mb-md-2">
               <div class="col-sm-12 col-md-6">
                 <div id="tickets-table_length" class="dataTables_length">
                   <label class="d-inline-flex align-items-center">
-                    Show
-                    <b-form-select v-model="perPage" size="sm" :options="pageOptions"></b-form-select>entries
+                    Mostrar
+                    <b-form-select v-model="perPage" size="sm" :options="pageOptions"></b-form-select>registros
                   </label>
                 </div>
               </div>
@@ -96,11 +96,11 @@
               <div class="col-sm-12 col-md-6">
                 <div id="tickets-table_filter" class="dataTables_filter text-md-right">
                   <label class="d-inline-flex align-items-center">
-                    Search:
+                    Buscar:
                     <b-form-input
                       v-model="filter"
                       type="search"
-                      placeholder="Search..."
+                      placeholder="Buscar..."
                       class="form-control form-control-sm ml-2"
                     ></b-form-input>
                   </label>
