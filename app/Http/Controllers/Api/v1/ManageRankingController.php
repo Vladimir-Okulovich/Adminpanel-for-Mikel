@@ -50,17 +50,16 @@ class ManageRankingController extends Controller
         $category = Category::where('name', $str[0])->where('sex_id', $sex->id)->first();
         $modality = Modality::where('name', $str[2])->first();
 
-        $category_ranking_points = [];
+        $category_ranking_points_temp = [];
         $participant_ids = Manage_ranking_point::select('participant_id')
                                                 ->where('category_id', $category->id)
                                                 ->where('modality_id', $modality->id)->distinct()->get();
         $competition_ids = Manage_ranking_point::select('competition_id')
                                                 ->where('category_id', $category->id)
                                                 ->where('modality_id', $modality->id)->distinct()->get();
-        foreach ($participant_ids as $index => $participant_id) {
+        foreach ($participant_ids as $participant_id) {
             $category_ranking_point = [];
             $temp = [];
-            $category_ranking_point["position"] = $index + 1;
             $participant = Participant::find($participant_id->participant_id);
             $category_ranking_point["participant"] = $participant->name.' '.$participant->surname;
             $points = [];
@@ -84,8 +83,14 @@ class ManageRankingController extends Controller
             $category_ranking_point["best_result"] = $points[0];
             $category_ranking_point["2nd_best"] = $points[1];
             $category_ranking_point["3rd_best"] = $points[2];
-
-            $temp["position"] = $category_ranking_point["position"];
+            array_push($category_ranking_points_temp, $category_ranking_point);
+        }
+        usort($category_ranking_points_temp, function($a, $b) {
+            return $b['3_best_sum'] - $a['3_best_sum'];
+        });
+        $category_ranking_points = [];
+        foreach ($category_ranking_points_temp as $index => $category_ranking_point) {
+            $temp["position"] = $index + 1;
             $temp["participant"] = $category_ranking_point["participant"];
             $temp["3_best_sum"] = $category_ranking_point["3_best_sum"];
             foreach ($competition_ids as $competition_id) {
@@ -98,6 +103,7 @@ class ManageRankingController extends Controller
             
             array_push($category_ranking_points, $temp);
         }
+
         return response()->json([
             'message' => 'success',
             'category_ranking_points' => $category_ranking_points,

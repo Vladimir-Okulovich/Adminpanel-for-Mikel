@@ -165,11 +165,11 @@ import categoryCreateVue from '../category/category-create.vue';
             >
               <template #thead-top="data">
                 <b-tr>
-                  <b-th variant="success" colspan="11" style="color: black;text-align: center;">{{ categoryModality }}</b-th>
+                  <b-th variant="success" colspan="11" style="color: black;text-align: center;font-size: 18px;">{{ categoryModality }}</b-th>
                 </b-tr>
                 <b-tr>
                   <b-th variant="secondary" colspan="3" style="color: black;text-align: center;">RANKING 2021</b-th>
-                  <b-th variant="primary" :colspan="{competitionNumber}" style="color: black;text-align: center;">POINTS OBTAINED ON EACH RANKING COMPETITION</b-th>
+                  <b-th variant="primary" :colspan="competitionNumber" style="color: black;text-align: center;">POINTS OBTAINED ON EACH RANKING COMPETITION</b-th>
                   <b-th colspan="3"><span class="sr-only">THREE BSET RESULTS</span></b-th>
                 </b-tr>
               </template>

@@ -8383,7 +8383,8 @@ var render = function() {
                                 {
                                   staticStyle: {
                                     color: "black",
-                                    "text-align": "center"
+                                    "text-align": "center",
+                                    "font-size": "18px"
                                   },
                                   attrs: { variant: "success", colspan: "11" }
                                 },
@@ -8417,9 +8418,7 @@ var render = function() {
                                   },
                                   attrs: {
                                     variant: "primary",
-                                    colspan: {
-                                      competitionNumber: _vm.competitionNumber
-                                    }
+                                    colspan: _vm.competitionNumber
                                   }
                                 },
                                 [
