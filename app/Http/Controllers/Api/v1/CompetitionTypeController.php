@@ -61,7 +61,7 @@ class CompetitionTypeController extends Controller
             $validator->validated(),
         ));
         return response()->json([
-            'message' => 'competition_type successfully registered',
+            'message' => 'Tipo Competición Creado Correctamente',
             'competition_type' => $competition_type
         ], 201);
     }
@@ -85,7 +85,7 @@ class CompetitionTypeController extends Controller
             'description' => $request->description,
         ]);
         return response()->json([
-            'message' => 'competition_type successfully updated',
+            'message' => 'Tipo Competición Actualizado Correctamente',
             'competition_type' => $competition_type
         ], 201);
     }
@@ -103,7 +103,7 @@ class CompetitionTypeController extends Controller
         $competition_type -> delete();
         $competition_types = Competition_type::all();
         return response()->json([
-            'message' => 'successfully deleted',
+            'message' => 'Tipo Competición Eliminado Correctamente',
             'competition_types' => $competition_types
         ], 200);
     }

@@ -170,7 +170,7 @@
         <router-link :to="{ name: 'CompetitionParticipantAdd', params: { competitionId: this.$route.params.competitionId } }"
           class="btn btn-info btn-block d-inline-block"
         >
-          <i class="fas fa-plus mr-1"></i> AÑADIR PARTICIPANTES
+          <i class="fas fa-plus mr-1"></i> NUEVO PARTICIPANTE
         </router-link>
       </div>
     </PageHeader>

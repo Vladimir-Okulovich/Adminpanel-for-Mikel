@@ -7899,7 +7899,7 @@ var render = function() {
                           ? _c("div", { staticClass: "invalid-feedback" }, [
                               !_vm.$v.typeform.sex.required
                                 ? _c("span", [
-                                    _vm._v("This value is required.")
+                                    _vm._v("Este Campo es Obligatorio.")
                                   ])
                                 : _vm._e()
                             ])

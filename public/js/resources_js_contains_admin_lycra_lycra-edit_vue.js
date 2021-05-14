@@ -77,7 +77,7 @@ __webpack_require__.r(__webpack_exports__);
         text: "Home",
         href: "/admin"
       }, {
-        text: "Listado Lycraa",
+        text: "Listado Lycras",
         href: "/admin/lycras"
       }, {
         text: "Editar Lycra",

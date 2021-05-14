@@ -61,7 +61,7 @@ class ManageRankingController extends Controller
             $category_ranking_point = [];
             $temp = [];
             $participant = Participant::find($participant_id->participant_id);
-            $category_ranking_point["participant"] = $participant->name.' '.$participant->surname;
+            $category_ranking_point["participante"] = $participant->name.' '.$participant->surname;
             $points = [];
             foreach ($competition_ids as $competition_id) {
                 $competition = Competition::find($competition_id->competition_id);
@@ -79,27 +79,27 @@ class ManageRankingController extends Controller
             array_push($points, 0);
             array_push($points, 0);
             rsort($points);
-            $category_ranking_point["3_best_sum"] = $points[0] + $points[1] + $points[2];
-            $category_ranking_point["best_result"] = $points[0];
-            $category_ranking_point["2nd_best"] = $points[1];
-            $category_ranking_point["3rd_best"] = $points[2];
+            $category_ranking_point["suma_3_mejores"] = $points[0] + $points[1] + $points[2];
+            $category_ranking_point["mejor_resultado"] = $points[0];
+            $category_ranking_point["2o_mejor"] = $points[1];
+            $category_ranking_point["3er_mejor"] = $points[2];
             array_push($category_ranking_points_temp, $category_ranking_point);
         }
         usort($category_ranking_points_temp, function($a, $b) {
-            return $b['3_best_sum'] - $a['3_best_sum'];
+            return $b['suma_3_mejores'] - $a['suma_3_mejores'];
         });
         $category_ranking_points = [];
         foreach ($category_ranking_points_temp as $index => $category_ranking_point) {
-            $temp["position"] = $index + 1;
-            $temp["participant"] = $category_ranking_point["participant"];
-            $temp["3_best_sum"] = $category_ranking_point["3_best_sum"];
+            $temp["posicion"] = $index + 1;
+            $temp["participante"] = $category_ranking_point["participante"];
+            $temp["suma_3_mejores"] = $category_ranking_point["suma_3_mejores"];
             foreach ($competition_ids as $competition_id) {
                 $competition = Competition::find($competition_id->competition_id);
                 $temp["$competition->title"] = $category_ranking_point["$competition->title"];
             }
-            $temp["best_result"] = $category_ranking_point["best_result"];
-            $temp["2nd_best"] = $category_ranking_point["2nd_best"];
-            $temp["3rd_best"] = $category_ranking_point["3rd_best"];
+            $temp["mejor_resultado"] = $category_ranking_point["mejor_resultado"];
+            $temp["2o_mejor"] = $category_ranking_point["2o_mejor"];
+            $temp["3er_mejor"] = $category_ranking_point["3er_mejor"];
             
             array_push($category_ranking_points, $temp);
         }
@@ -182,7 +182,7 @@ class ManageRankingController extends Controller
             if (count($categories) == 0) {
                 // $participant->delete();
                 return response()->json([
-                    'message' => 'Any category does not include the participant',
+                    'message' => 'No se incluye al participante',
                     'participant' => $participant
                 ], 400);
             }
@@ -202,13 +202,13 @@ class ManageRankingController extends Controller
 
             $result = $this->getRegisteredAndNonParticipants($request->competitionId);
             return response()->json([
-                'message' => 'Successfully added a participant to a competition',
+                'message' => 'Participante añadido correctamente',
                 'registered_participants' => $result->registered_participants,
                 'non_participants' => $result->non_participants,
             ], 200);
         } else {
             return response()->json([
-                'message' => 'Already exists such a participant',
+                'message' => 'El participante selccionado ya está registrado,',
                 'participant' => $participant
             ], 201);
         }
@@ -230,7 +230,7 @@ class ManageRankingController extends Controller
 
         if (count($categories) == 0) {
             return response()->json([
-                'message' => 'Any category does not include the participant',
+                'message' => 'No se incluye al participante',
                 'participant' => $participant
             ], 400);
         }
@@ -250,7 +250,7 @@ class ManageRankingController extends Controller
 
         $result = $this->getRegisteredAndNonParticipants($request->competitionId);
         return response()->json([
-            'message' => 'Successfully registered a participant to a competition',
+            'message' => 'Participante añadido correctamente',
             'registered_participants' => $result->registered_participants,
             'non_participants' => $result->non_participants,
         ], 200);

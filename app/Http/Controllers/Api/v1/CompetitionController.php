@@ -155,7 +155,7 @@ class CompetitionController extends Controller
         $competition->categories()->attach($categoryIds);
 
         return response()->json([
-            'message' => 'Competition successfully registered',
+            'message' => 'Competición Creada Correctamente',
             'competition' => $competition
         ], 201);
     }
@@ -249,7 +249,7 @@ class CompetitionController extends Controller
         $competition->lycras()->sync($lycraIds);
 
         return response()->json([
-            'message' => 'Competition successfully updated',
+            'message' => 'Competición Actualizada Correctamente',
             'competition' => $competition
         ], 201);
     }
@@ -300,7 +300,7 @@ class CompetitionController extends Controller
             $competition->status;
         }
         return response()->json([
-            'message' => 'successfully deleted',
+            'message' => 'Competición Eliminada Correctamente',
             'competitions' => $competitions
         ], 200);
     }

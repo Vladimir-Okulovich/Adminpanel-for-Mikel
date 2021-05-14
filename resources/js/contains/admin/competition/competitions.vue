@@ -23,7 +23,7 @@
             href: "/admin"
           },
           {
-            text: "Lsitado Competiciones",
+            text: "Listado Competiciones",
             active: true
           }
         ],
@@ -174,16 +174,16 @@
                   <router-link to="#" class="btn btn-sm btn-secondary disabled" v-else-if="row.item.status.id == 1">
                     <i class="far fa-edit"></i>
                   </router-link>
-                  <router-link :to="{ name: 'DeterminedParticipants', params: { competitionId: row.item.id } }" class="btn btn-sm btn-secondary" v-b-tooltip.hover.top="'Live Management'" v-else>
+                  <router-link :to="{ name: 'DeterminedParticipants', params: { competitionId: row.item.id } }" class="btn btn-sm btn-secondary" v-b-tooltip.hover.top="'Empezar Competición'" v-else>
                     <i class="fas fa-trophy"></i>
                   </router-link>
-                  <router-link :to="{ name: 'CompetitionParticipantRegist', params: { competitionId: row.item.id } }" class="btn btn-sm btn-secondary" v-b-tooltip.hover.top="'Add participant'" v-if="row.item.status.id == 2">
+                  <router-link :to="{ name: 'CompetitionParticipantRegist', params: { competitionId: row.item.id } }" class="btn btn-sm btn-secondary" v-b-tooltip.hover.top="'Añadir Participantes'" v-if="row.item.status.id == 2">
                     <i class="fas fa-user-plus"></i>
                   </router-link>
                   <router-link to="#" class="btn btn-sm btn-secondary disabled" v-else>
                     <i class="fas fa-user-plus"></i>
                   </router-link>
-                  <b-button size="sm" @click="setId(row.item.id)" v-b-modal.delete-modal v-b-tooltip.hover.top="'Delete'">
+                  <b-button size="sm" @click="setId(row.item.id)" v-b-modal.delete-modal v-b-tooltip.hover.top="'Eliminar'">
                     <i class="fas fa-trash"></i>
                   </b-button>
                 </template>

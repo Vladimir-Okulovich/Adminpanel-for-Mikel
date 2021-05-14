@@ -206,7 +206,7 @@ export default {
                   :class="{ 'is-invalid': typesubmit && $v.typeform.sex.$error }"
                 ></multiselect>
                 <div v-if="typesubmit && $v.typeform.sex.$error" class="invalid-feedback">
-                  <span v-if="!$v.typeform.sex.required">This value is required.</span>
+                  <span v-if="!$v.typeform.sex.required">Este Campo es Obligatorio.</span>
                 </div>
               </div>
               <div class="mb-3">
