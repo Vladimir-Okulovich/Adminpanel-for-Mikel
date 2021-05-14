@@ -81,7 +81,7 @@ class UserController extends Controller
         $user->roles()->attach($roleIds);
 
         return response()->json([
-            'message' => 'User successfully registered',
+            'message' => 'Usuario Creado Correctamente',
             'user' => $user
         ], 201);
     }
@@ -122,7 +122,7 @@ class UserController extends Controller
         $user->roles()->sync($roleIds);
 
         return response()->json([
-            'message' => 'User successfully updated',
+            'message' => 'Usuario Actualizado Correctamente',
             'user' => $user
         ], 201);
     }
@@ -143,7 +143,7 @@ class UserController extends Controller
             $user->roles;
         }
         return response()->json([
-            'message' => 'successfully deleted',
+            'message' => 'Usuario Eliminado Correctamente',
             'users' => $users
         ], 200);
     }

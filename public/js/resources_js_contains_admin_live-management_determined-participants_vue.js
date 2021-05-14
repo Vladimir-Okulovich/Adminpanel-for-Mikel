@@ -58,7 +58,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   page: {
-    title: "CREAR CUADRO COMPETICIÓN",
+    title: "CUADROS DE COMPETICIÓN",
     meta: [{
       name: "description",
       content: _app_config__WEBPACK_IMPORTED_MODULE_4__.description
@@ -71,13 +71,13 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      title: "CREAR CUADRO COMPETICIÓN",
+      title: "CUADROS DE COMPETICIÓN",
       items: [{
         text: "Home",
         href: "/admin"
       }, {
         text: "Listado Competiciones",
-        href: "/admin/competition"
+        href: "/admin/competitions"
       }, {
         text: "Crear Cuadro de Competición",
         active: true

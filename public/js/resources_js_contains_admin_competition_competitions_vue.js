@@ -72,7 +72,7 @@ __webpack_require__.r(__webpack_exports__);
         text: "Home",
         href: "/admin"
       }, {
-        text: "Lsitado Competiciones",
+        text: "Listado Competiciones",
         active: true
       }],
       totalRows: 1,
@@ -7298,8 +7298,8 @@ var render = function() {
                                       {
                                         name: "b-tooltip",
                                         rawName: "v-b-tooltip.hover.top",
-                                        value: "Live Management",
-                                        expression: "'Live Management'",
+                                        value: "Empezar Competición",
+                                        expression: "'Empezar Competición'",
                                         modifiers: { hover: true, top: true }
                                       }
                                     ],
@@ -7322,8 +7322,8 @@ var render = function() {
                                       {
                                         name: "b-tooltip",
                                         rawName: "v-b-tooltip.hover.top",
-                                        value: "Add participant",
-                                        expression: "'Add participant'",
+                                        value: "Añadir Participantes",
+                                        expression: "'Añadir Participantes'",
                                         modifiers: { hover: true, top: true }
                                       }
                                     ],
@@ -7359,8 +7359,8 @@ var render = function() {
                                   {
                                     name: "b-tooltip",
                                     rawName: "v-b-tooltip.hover.top",
-                                    value: "Delete",
-                                    expression: "'Delete'",
+                                    value: "Eliminar",
+                                    expression: "'Eliminar'",
                                     modifiers: { hover: true, top: true }
                                   }
                                 ],

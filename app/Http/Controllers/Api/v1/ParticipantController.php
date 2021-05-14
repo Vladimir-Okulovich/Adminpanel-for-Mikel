@@ -73,7 +73,7 @@ class ParticipantController extends Controller
         $participant = Participant::where('dni_ficha', $request->dni_ficha)->get();
         if (count($participant) != 0) {
             return response()->json([
-                'message' => 'Already exists such DNI_FICHA',
+                'message' => 'Ya existe un federado con ese DNI',
                 'participant' => $participant
             ], 201);
         }
@@ -90,7 +90,7 @@ class ParticipantController extends Controller
         $participant->save();
 
         return response()->json([
-            'message' => 'Participant successfully registered',
+            'message' => 'Participante añadido correctamente',
             'participant' => $participant
         ], 200);
     }
@@ -130,7 +130,7 @@ class ParticipantController extends Controller
         $participant->save();
 
         return response()->json([
-            'message' => 'Participant successfully updated',
+            'message' => 'Participante modificado correctamente',
             'participant' => $participant
         ], 201);
     }

@@ -33,7 +33,7 @@ export default {
           href: "/admin"
         },
         {
-          text: "Listado Lycraa",
+          text: "Listado Lycras",
           href: "/admin/lycras"
         },
         {

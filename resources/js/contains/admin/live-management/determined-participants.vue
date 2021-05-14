@@ -8,7 +8,7 @@
 
 	export default {
 		page: {
-        title: "CREAR CUADRO COMPETICIÓN",
+        title: "CUADROS DE COMPETICIÓN",
         meta: [{ name: "description", content: appConfig.description }]
     },
     components: {
@@ -18,7 +18,7 @@
     },
     data() {
       return {
-        title: "CREAR CUADRO COMPETICIÓN",
+        title: "CUADROS DE COMPETICIÓN",
         items: [
           {
             text: "Home",
@@ -26,7 +26,7 @@
           },
           {
             text: "Listado Competiciones",
-            href: "/admin/competition"
+            href: "/admin/competitions"
           },
           {
             text: "Crear Cuadro de Competición",

@@ -120,7 +120,7 @@ import categoryCreateVue from '../category/category-create.vue';
         </div>
 
         <div>
-          <h4 class="card-title mb-4">Ranking Caetgoría "{{ categoryModality }}"</h4>
+          <h4 class="card-title mb-4">Ranking Categoría "{{ categoryModality }}"</h4>
           <div class="row mb-md-2">
             <div class="col-sm-12 col-md-6">
               <div id="tickets-table_length" class="dataTables_length">
@@ -161,11 +161,11 @@ import categoryCreateVue from '../category/category-create.vue';
             >
               <template #thead-top="data">
                 <b-tr>
-                  <b-th variant="success" colspan="11" style="color: black;text-align: center;font-size: 18px;">{{ categoryModality }}</b-th>
+                  <b-th variant="success" :colspan="competitionNumber+6" style="color: black;text-align: center;font-size: 18px;">{{ categoryModality }}</b-th>
                 </b-tr>
                 <b-tr>
                   <b-th variant="secondary" colspan="3" style="color: black;text-align: center;">RANKING 2021</b-th>
-				          <b-th variant="primary" :colspan="competitionNumber" style="color: black;text-align: center;">PTOS. COMPETICIONES</b-th>
+				          <b-th variant="primary" :colspan="competitionNumber" style="color: black;text-align: center;">COMPETICIONES PUNTUABLES</b-th>
                   <b-th colspan="3"><span class="sr-only">TRES MEJORES</span></b-th>
                 </b-tr>
               </template>
