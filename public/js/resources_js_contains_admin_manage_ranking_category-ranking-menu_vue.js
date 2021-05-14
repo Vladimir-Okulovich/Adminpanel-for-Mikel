@@ -8387,7 +8387,10 @@ var render = function() {
                                     "text-align": "center",
                                     "font-size": "18px"
                                   },
-                                  attrs: { variant: "success", colspan: "11" }
+                                  attrs: {
+                                    variant: "success",
+                                    colspan: _vm.competitionNumber + 6
+                                  }
                                 },
                                 [_vm._v(_vm._s(_vm.categoryModality))]
                               )

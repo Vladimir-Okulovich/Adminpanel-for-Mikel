@@ -98,6 +98,11 @@ export default {
       category: { required },
     }
   },
+  watch: {
+    lycraOptions: function () {
+      this.typeform.lycra = this.lycraOptions;
+    },
+  },
   computed: {
     ...mapGetters([
       'typeOptions',
