@@ -7,6 +7,7 @@ const defaultState = {
   category_modality_with_part: [],
   participants_competition_category_modality: [],
   category_id: 0,
+  competition: {},
   category_status: 0,
   modality_id: 0,
   all_round_heats: [],

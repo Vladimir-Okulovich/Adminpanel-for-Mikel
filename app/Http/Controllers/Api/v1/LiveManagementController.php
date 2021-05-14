@@ -7,6 +7,7 @@ use App\Models\Sex;
 use App\Models\Club;
 use Illuminate\Support\Facades\DB;
 use App\Models\Modality;
+use App\Models\Competition;
 use App\Models\Participant;
 use App\Models\Heat_configuration;
 use App\Models\Com_cat_mod_participant;
@@ -41,7 +42,7 @@ class LiveManagementController extends Controller
                 $temps = Com_cat_mod_participant::where('competition_id', $competitionId)
                                         ->where('category_id', $category->id)
                                         ->where('modality_id', $modality->id)->get();
-                if (count($temps) > 0) {
+                if (count($temps) > 1) {
                     array_push($category_modality_with_part, $category->name." ".$category->sex->name." ".$modality->name);
                 }
             }
@@ -59,6 +60,7 @@ class LiveManagementController extends Controller
         $sex = Sex::where('name', $str[1])->first();
         $category = Category::where('name', $str[0])->where('sex_id', $sex->id)->first();
         $modality = Modality::where('name', $str[2])->first();
+        $competition = Competition::find($request->competitionId);
         $temps = Com_cat_mod_participant::where('competition_id', $request->competitionId)
                                         ->where('category_id', $category->id)
                                         ->where('modality_id', $modality->id)->get();
@@ -88,6 +90,7 @@ class LiveManagementController extends Controller
             'participants_competition_category_modality' => $participants,
             'category_id' => $category->id,
             'modality_id' => $modality->id,
+            'competition' => $competition,
             'status' => $status,
         ], 200);
     }
@@ -126,23 +129,80 @@ class LiveManagementController extends Controller
         $com_cat_mod_participants = Com_cat_mod_participant::where('competition_id', $request->competitionId)
                                                             ->where('category_id', $request->categoryId)
                                                             ->where('modality_id', $request->modalityId)->get();
+        
         $round_heats = Round_heat::where('com_cat_mod_participant_id', $com_cat_mod_participants[0]->id)->where('round', 1)->get();
         if (count($round_heats) == 0) {
-            $heat_configuration = Heat_configuration::where('participant_number', count($com_cat_mod_participants))->first();
-            $s = 0;
-            foreach ($heat_configuration->assign_array as $index => $heat_items) {
-                for ($i = 1; $i <= $heat_items; $i++) {
-                    $round_heat = new Round_heat;
-                    $round_heat->round = 1;
-                    $round_heat->heat = $index + 1;
-                    $round_heat->com_cat_mod_participant_id = $com_cat_mod_participants[$s]->id;
-                    $round_heat->lycra_id = $i;
-                    $round_heat->save();
-                    $s++;
+            $all_participant_ids = Manage_ranking_point::select('participant_id')
+                                                ->where('category_id', $request->categoryId)
+                                                ->where('modality_id', $request->modalityId)->distinct()->get();
+            $competition_ids = Manage_ranking_point::select('competition_id')
+                                                ->where('category_id', $request->categoryId)
+                                                ->where('modality_id', $request->modalityId)->distinct()->get();
+        
+            $points = [];
+            foreach ($all_participant_ids as $participant_id) {
+                $points_temp = [];
+                foreach ($competition_ids as $competition_id) {
+                    $manage_ranking_point = Manage_ranking_point::where('competition_id', $competition_id->competition_id)
+                                                                ->where('category_id', $request->categoryId)
+                                                                ->where('modality_id', $request->modalityId)
+                                                                ->where('participant_id', $participant_id->participant_id)->get();
+                    if (count($manage_ranking_point) > 0) {
+                        $temp = $manage_ranking_point[0]->ranking_points;
+                    } else {
+                        $temp = 0;
+                    }
+                    array_push($points_temp, $temp);
+                }
+                array_push($points_temp, 0);
+                array_push($points_temp, 0);
+                rsort($points_temp);
+                array_push($points, ["id" => $participant_id->participant_id, "points" => $points_temp[0] + $points_temp[1] + $points_temp[2]]);
+            }
+            usort($points, function($a, $b) {
+                return $b["points"] - $a["points"];
+            });
+            
+            $sort_com_cat_mod_participants = [];
+            foreach ($com_cat_mod_participants as $com_cat_mod_participant) {
+                $com_cat_mod_participant->ranking = 0;
+            }
+            foreach ($points as $index => $point) {
+                foreach ($com_cat_mod_participants as $com_cat_mod_participant) {
+                    $com_cat_mod_participant->flag = 0;
+                    if ($point["id"] == $com_cat_mod_participant->participant_id) {
+                        $com_cat_mod_participant->ranking = $index + 1;
+                        array_push($sort_com_cat_mod_participants, $com_cat_mod_participant);
+                        break;
+                    }
                 }
             }
+            foreach ($com_cat_mod_participants as $com_cat_mod_participant) {
+                if ($com_cat_mod_participant->ranking == 0) {
+                    array_push($sort_com_cat_mod_participants, $com_cat_mod_participant);
+                }
+            }
+            
+            $heat_configuration = Heat_configuration::where('participant_number', count($com_cat_mod_participants))->first();
+            $heat_number = count($heat_configuration->assign_array);
+            $lycra_id = 1;
+            foreach ($sort_com_cat_mod_participants as $index => $com_cat_mod_participant) {
+                $i = $index + 1;
+                $round_heat = new Round_heat;
+                $round_heat->round = 1;
+                $round_heat->heat = ($i % $heat_number == 0) ? $heat_number : $i % $heat_number;
+                $round_heat->com_cat_mod_participant_id = $com_cat_mod_participant->id;
+                $round_heat->lycra_id = $lycra_id;
+                $round_heat->ranking = $com_cat_mod_participant->ranking;
+                $round_heat->save();
+                if ($i % $heat_number == 0) {
+                    $lycra_id++;
+                }
+            }
+
             return response()->json([
                 'message' => 'success',
+                'points' => $points
             ], 200);
         }
     }
@@ -427,7 +487,9 @@ class LiveManagementController extends Controller
         $new_round_heats = [];
         $old_round_heats = [];
         $round_heats_number = count($round_heats);
-        if ($round_heats_number < 6) {
+        $ranking_score = Competition::find($current_competition)->ranking_score;
+        // Manage Ranking in Final Heat
+        if (($round_heats_number < 6) && ($ranking_score == 'Si')) {
             $old_round_heats = $round_heats;
             $manage_ranking_points = Manage_ranking_point::where('competition_id', $current_competition)
                                                         ->where('category_id', $current_category)
@@ -462,37 +524,39 @@ class LiveManagementController extends Controller
         }
         if ($isCreatingNew && (count($new_round_heats) > 0) && (count($next_round_heats) == 0)) {
             // Manage Ranking
-            $old_points = [];
-            $penal_number = 0;
-            foreach ($old_round_heats as $old_round_heat) {
-                $manage_ranking_point = new Manage_ranking_point;
-                $manage_ranking_point->competition_id = $current_competition;
-                $manage_ranking_point->category_id = $current_category;
-                $manage_ranking_point->modality_id = $current_modality;
-                $manage_ranking_point->participant_id = $old_round_heat->com_cat_mod_participant->participant_id;
-                $manage_ranking_point->save();
+            if ($ranking_score == 'Si') {
+                $old_points = [];
+                $penal_number = 0;
+                foreach ($old_round_heats as $old_round_heat) {
+                    $manage_ranking_point = new Manage_ranking_point;
+                    $manage_ranking_point->competition_id = $current_competition;
+                    $manage_ranking_point->category_id = $current_category;
+                    $manage_ranking_point->modality_id = $current_modality;
+                    $manage_ranking_point->participant_id = $old_round_heat->com_cat_mod_participant->participant_id;
+                    $manage_ranking_point->save();
 
-                if ($old_round_heat->penal ==2) {
-                    $ranking_position_point = Ranking_position_point::where('position', $round_heats_number-$penal_number)->first();
+                    if ($old_round_heat->penal ==2) {
+                        $ranking_position_point = Ranking_position_point::where('position', $round_heats_number-$penal_number)->first();
+                        $manage_ranking_point->update([
+                            'ranking' => $round_heats_number-$penal_number,
+                            'ranking_points' => $ranking_position_point->points,
+                        ]);
+                        $penal_number++;
+                    } else {
+                        $old_points["$manage_ranking_point->id"] = $old_round_heat->points;
+                    }
+                }
+                arsort($old_points);
+                $index = 1;
+                foreach ($old_points as $key => $old_point) {
+                    $manage_ranking_point = Manage_ranking_point::find($key);
+                    $ranking_position_point = Ranking_position_point::where('position', $index + count($new_round_heats))->first();
                     $manage_ranking_point->update([
-                        'ranking' => $round_heats_number-$penal_number,
+                        'ranking' => $index + count($new_round_heats),
                         'ranking_points' => $ranking_position_point->points,
                     ]);
-                    $penal_number++;
-                } else {
-                    $old_points["$manage_ranking_point->id"] = $old_round_heat->points;
+                    $index++;
                 }
-            }
-            arsort($old_points);
-            $index = 1;
-            foreach ($old_points as $key => $old_point) {
-                $manage_ranking_point = Manage_ranking_point::find($key);
-                $ranking_position_point = Ranking_position_point::where('position', $index + count($new_round_heats))->first();
-                $manage_ranking_point->update([
-                    'ranking' => $index + count($new_round_heats),
-                    'ranking_points' => $ranking_position_point->points,
-                ]);
-                $index++;
             }
             // Create New Round_heat
             $heat_configuration = Heat_configuration::where('participant_number', count($new_round_heats))->first();

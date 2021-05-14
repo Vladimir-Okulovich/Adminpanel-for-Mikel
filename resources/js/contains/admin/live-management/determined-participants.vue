@@ -60,6 +60,9 @@
           categoryModality: this.categoryModality,
         });
       },
+      competition: function () {
+        this.title = "CUADROS DE COMPETICIÓN" + " (" + this.competition.title + ")";
+      },
     },
     computed: {
       ...mapGetters([
@@ -67,6 +70,7 @@
         'ParticipantsByCompetitionCategoryModality',
         'categoryId',
         'modalityId',
+        'competition',
         'categoryStatus'
       ]),
       /**
@@ -75,9 +79,6 @@
       rows() {
         return this.ParticipantsByCompetitionCategoryModality.length;
       },
-      // categoryModality: function () {
-      //   return this.categoryModalityWithPart[0]
-      // },
     },
     mounted() {
       // Set the initial number of items
@@ -125,9 +126,12 @@
           categoryId: this.categoryId,
           modalityId: this.modalityId,
         })
-        .then(() => {
+        .then((res) => {
           this.$router.push({ name: 'CompetitionHeats', params: { competitionId: this.$route.params.competitionId, categoryId: this.categoryId, modalityId: this.modalityId } })
         })
+      },
+      back() {
+        this.$router.go(-1);
       },
     }
 	};
@@ -135,7 +139,7 @@
 <template>
   <Layout>
     <PageHeader :title="title" :items="items">
-      <div class="float-right">
+      <div class="float-right d-flex">
         <button v-if="categoryStatus == 0" @click="createCompetitionBox"
           class="btn btn-info btn-block d-inline-block"
         >
@@ -150,6 +154,11 @@
           class="btn btn-danger btn-block d-inline-block"
         >
           Ver Cuadro finalizado
+        </button>
+        <button @click="back"
+          class="btn btn-secondary ml-lg-4 ml-3"
+        >
+          Volver
         </button>
       </div>
     </PageHeader>
@@ -172,7 +181,7 @@
       <div class="col-12">
         <div class="card">
           <div class="card-body">
-            <h4 class="card-title mb-4">Listado Participantes ({{ categoryModality }})</h4>
+            <h4 class="card-title mb-4">Listado Participantes ({{ competition.title + " " + categoryModality }})</h4>
             <div class="row mb-md-2">
               <div class="col-sm-12 col-md-6">
                 <div id="tickets-table_length" class="dataTables_length">
@@ -229,6 +238,31 @@
               </div>
             </div>
           </div>
+        </div>
+      </div>
+
+      <div class="col-12 mb-4">
+        <div class="float-right d-flex">
+          <button v-if="categoryStatus == 0" @click="createCompetitionBox"
+            class="btn btn-info btn-block d-inline-block"
+          >
+            Crear Cuadro Competición
+          </button>
+          <button v-else-if="categoryStatus == 1" @click="createCompetitionBox"
+            class="btn btn-success btn-block d-inline-block"
+          >
+            Acceder al cuadro de competición
+          </button>
+          <button v-else @click="createCompetitionBox"
+            class="btn btn-danger btn-block d-inline-block"
+          >
+            Ver Cuadro finalizado
+          </button>
+          <button @click="back"
+            class="btn btn-secondary ml-lg-4 ml-3"
+          >
+            Volver
+          </button>
         </div>
       </div>
     </div>

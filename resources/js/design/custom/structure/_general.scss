@@ -15,6 +15,56 @@
         }
     }
 }
+.ranking-table {
+    thead {
+        tr {
+            background: #a8aff1;
+            color: black;
+            th[aria-colindex="1"] {
+                background: #535667;
+            }
+            th[aria-colindex="2"] {
+                background: #535667;
+            }
+            th[aria-colindex="3"] {
+                background: #535667;
+            }
+            th[aria-colindex]:nth-last-child(1) {
+                background: #f785b9;
+            }
+            th[aria-colindex]:nth-last-child(2) {
+                background: #f785b9;
+            }
+            th[aria-colindex]:nth-last-child(3) {
+                background: #f785b9;
+            }
+        }
+    }
+    tbody {
+        tr {
+            background: #d3d6f3;
+            color: black;
+            td[aria-colindex="1"] {
+                background: #c8cbd1;
+            }
+            td[aria-colindex="2"] {
+                background: #c8cbd1;
+            }
+            td[aria-colindex="3"] {
+                background: #c8cbd1;
+            }
+            td[aria-colindex]:nth-last-child(1) {
+                background: #f9c9df;
+            }
+            td[aria-colindex]:nth-last-child(2) {
+                background: #f9c9df;
+            }
+            td[aria-colindex]:nth-last-child(3) {
+                background: #f9c9df;
+            }
+        }
+    }
+}
 .table i {
     width: 12px;
 }

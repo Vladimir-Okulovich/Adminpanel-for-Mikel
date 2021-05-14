@@ -14,6 +14,9 @@ const getters = {
     modalityId(state) {
         return state.modality_id;
     },
+    competition(state) {
+        return state.competition;
+    },
     all_round_heats(state) {
         return state.all_round_heats;
     },

@@ -2399,7 +2399,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.custom-input[data-v-18fd751c] {\n  background: transparent;\n  border: 0;\n  color: #a8b2bc;\n  text-align: center;\n  max-width: 40px;\n}\n.custom-input[data-v-18fd751c]:focus {\n  outline: none;\n}\ninput[data-v-18fd751c]::-webkit-outer-spin-button,\ninput[data-v-18fd751c]::-webkit-inner-spin-button {\n  -webkit-appearance: none;\n  margin: 0;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.custom-input[data-v-18fd751c] {\n  background: transparent;\n  border: 0;\n  color: #a8b2bc;\n  text-align: center;\n  max-width: 40px;\n}\n.custom-input[data-v-18fd751c]:focus {\n  outline: none;\n}\ninput[data-v-18fd751c]::-webkit-outer-spin-button,\ninput[data-v-18fd751c]::-webkit-inner-spin-button {\n  -webkit-appearance: none;\n  margin: 0;\n}\ninput[type=number][data-v-18fd751c] {\n  -moz-appearance: textfield;\n}\n", ""]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 

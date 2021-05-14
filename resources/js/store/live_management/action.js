@@ -21,7 +21,7 @@ const actions = {
         return new Promise((resolve) =>{
             ApiService.post("api/v1/admin/competition/category-modality/participants", data)
                 .then(({data}) => {
-                    // console.log(data);
+                    console.log(data);
                     context.commit(type.SET_PARTICIPANTS_COMPETITION_CATEGORY_MODALITY, data)
                 })
                 .catch(({ response }) => {

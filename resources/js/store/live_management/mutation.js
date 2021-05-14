@@ -9,6 +9,7 @@ const mutations = {
     state.participants_competition_category_modality = data.participants_competition_category_modality;
     state.category_id = data.category_id;
     state.modality_id = data.modality_id;
+    state.competition = {...data.competition};
     state.category_status = data.status;
   },
   [type.GET_ALL_ROUND_HEATS] (state, data) {

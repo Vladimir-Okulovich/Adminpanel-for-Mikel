@@ -122,18 +122,18 @@ __webpack_require__.r(__webpack_exports__);
         competitionId: this.$route.params.competitionId,
         categoryModality: this.categoryModality
       });
+    },
+    competition: function competition() {
+      this.title = "CUADROS DE COMPETICIÓN" + " (" + this.competition.title + ")";
     }
   },
-  computed: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)((0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_7__.mapGetters)(['categoryModalityWithPart', 'ParticipantsByCompetitionCategoryModality', 'categoryId', 'modalityId', 'categoryStatus'])), {}, {
+  computed: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)((0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_7__.mapGetters)(['categoryModalityWithPart', 'ParticipantsByCompetitionCategoryModality', 'categoryId', 'modalityId', 'competition', 'categoryStatus'])), {}, {
     /**
      * Total no. of records
      */
     rows: function rows() {
       return this.ParticipantsByCompetitionCategoryModality.length;
-    } // categoryModality: function () {
-    //   return this.categoryModalityWithPart[0]
-    // },
-
+    }
   }),
   mounted: function mounted() {
     // Set the initial number of items
@@ -176,7 +176,7 @@ __webpack_require__.r(__webpack_exports__);
         competitionId: this.$route.params.competitionId,
         categoryId: this.categoryId,
         modalityId: this.modalityId
-      }).then(function () {
+      }).then(function (res) {
         _this.$router.push({
           name: 'CompetitionHeats',
           params: {
@@ -186,6 +186,9 @@ __webpack_require__.r(__webpack_exports__);
           }
         });
       });
+    },
+    back: function back() {
+      this.$router.go(-1);
     }
   })
 });
@@ -7052,7 +7055,7 @@ var render = function() {
     "Layout",
     [
       _c("PageHeader", { attrs: { title: _vm.title, items: _vm.items } }, [
-        _c("div", { staticClass: "float-right" }, [
+        _c("div", { staticClass: "float-right d-flex" }, [
           _vm.categoryStatus == 0
             ? _c(
                 "button",
@@ -7078,7 +7081,16 @@ var render = function() {
                   on: { click: _vm.createCompetitionBox }
                 },
                 [_vm._v("\n        Ver Cuadro finalizado\n      ")]
-              )
+              ),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-secondary ml-lg-4 ml-3",
+              on: { click: _vm.back }
+            },
+            [_vm._v("\n        Volver\n      ")]
+          )
         ])
       ]),
       _vm._v(" "),
@@ -7118,7 +7130,9 @@ var render = function() {
             _c("div", { staticClass: "card-body" }, [
               _c("h4", { staticClass: "card-title mb-4" }, [
                 _vm._v(
-                  "Listado Participantes (" + _vm._s(_vm.categoryModality) + ")"
+                  "Listado Participantes (" +
+                    _vm._s(_vm.competition.title + " " + _vm.categoryModality) +
+                    ")"
                 )
               ]),
               _vm._v(" "),
@@ -7274,6 +7288,50 @@ var render = function() {
                 ])
               ])
             ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-12 mb-4" }, [
+          _c("div", { staticClass: "float-right d-flex" }, [
+            _vm.categoryStatus == 0
+              ? _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-info btn-block d-inline-block",
+                    on: { click: _vm.createCompetitionBox }
+                  },
+                  [_vm._v("\n          Crear Cuadro Competición\n        ")]
+                )
+              : _vm.categoryStatus == 1
+              ? _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-success btn-block d-inline-block",
+                    on: { click: _vm.createCompetitionBox }
+                  },
+                  [
+                    _vm._v(
+                      "\n          Acceder al cuadro de competición\n        "
+                    )
+                  ]
+                )
+              : _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-danger btn-block d-inline-block",
+                    on: { click: _vm.createCompetitionBox }
+                  },
+                  [_vm._v("\n          Ver Cuadro finalizado\n        ")]
+                ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-secondary ml-lg-4 ml-3",
+                on: { click: _vm.back }
+              },
+              [_vm._v("\n          Volver\n        ")]
+            )
           ])
         ])
       ])

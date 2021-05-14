@@ -26,6 +26,7 @@ class CreateRoundHeatsTable extends Migration
             $table->integer('penal')->default(0);
             $table->integer('draw')->default(0);
             $table->integer('status')->default(2);
+            $table->integer('ranking')->default(0);
             $table->timestamps();
         });
     }

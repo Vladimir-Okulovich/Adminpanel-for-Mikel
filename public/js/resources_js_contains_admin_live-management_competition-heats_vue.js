@@ -7287,17 +7287,32 @@ var render = function() {
                                 attrs: { scope: "row" }
                               }),
                               _vm._v(" "),
-                              _c("td", [
-                                _vm._v(
-                                  _vm._s(
-                                    round_heat.com_cat_mod_participant
-                                      .participant.name +
-                                      " " +
-                                      round_heat.com_cat_mod_participant
-                                        .participant.surname
-                                  )
-                                )
-                              ]),
+                              round_heat.ranking > 0
+                                ? _c("td", [
+                                    _vm._v(
+                                      _vm._s(
+                                        round_heat.com_cat_mod_participant
+                                          .participant.name +
+                                          " " +
+                                          round_heat.com_cat_mod_participant
+                                            .participant.surname +
+                                          " (" +
+                                          round_heat.ranking +
+                                          ")"
+                                      )
+                                    )
+                                  ])
+                                : _c("td", [
+                                    _vm._v(
+                                      _vm._s(
+                                        round_heat.com_cat_mod_participant
+                                          .participant.name +
+                                          " " +
+                                          round_heat.com_cat_mod_participant
+                                            .participant.surname
+                                      )
+                                    )
+                                  ]),
                               _vm._v(" "),
                               _c("td", [
                                 _vm._v(

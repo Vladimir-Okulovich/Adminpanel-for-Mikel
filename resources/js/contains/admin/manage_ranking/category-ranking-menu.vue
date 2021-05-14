@@ -147,7 +147,7 @@ import categoryCreateVue from '../category/category-create.vue';
             <!-- End search -->
           </div>
           <!-- Table -->
-          <div class="table-responsive table-dark mb-0">
+          <div class="table-responsive table-dark ranking-table mb-0">
             <b-table
               :items="categoryRankingPoints"
               responsive="sm"
@@ -166,7 +166,7 @@ import categoryCreateVue from '../category/category-create.vue';
                 <b-tr>
                   <b-th variant="secondary" colspan="3" style="color: black;text-align: center;">RANKING 2021</b-th>
 				          <b-th variant="primary" :colspan="competitionNumber" style="color: black;text-align: center;">COMPETICIONES PUNTUABLES</b-th>
-                  <b-th colspan="3"><span class="sr-only">TRES MEJORES</span></b-th>
+                  <b-th variant="pink" colspan="3" style="color: black;text-align: center;">TRES MEJORES</b-th>
                 </b-tr>
               </template>
             </b-table>
@@ -187,9 +187,6 @@ import categoryCreateVue from '../category/category-create.vue';
   </Layout>
 </template>
 
-<style>
-  .select-field {
-    text-align: center;
-    padding-bottom: 15px;
-  }
+<style scoped>
+
 </style>

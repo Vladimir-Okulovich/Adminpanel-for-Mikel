@@ -134,7 +134,8 @@
             <tbody>
               <tr :class="{classified: round_heat.position==1 || round_heat.position==2}" v-for="(round_heat, round_heat_index) in heat" :key="round_heat_index">
                 <th scope="row" v-bind:style="{ background: round_heat.lycra.color }"></th>
-                <td>{{ round_heat.com_cat_mod_participant.participant.name+' '+round_heat.com_cat_mod_participant.participant.surname }}</td>
+                <td v-if="round_heat.ranking > 0">{{ round_heat.com_cat_mod_participant.participant.name+' '+round_heat.com_cat_mod_participant.participant.surname+' ('+round_heat.ranking+')' }}</td>
+                <td v-else>{{ round_heat.com_cat_mod_participant.participant.name+' '+round_heat.com_cat_mod_participant.participant.surname }}</td>
                 <td>{{ parseFloat(round_heat.points).toFixed(2) }}</td>
                 <td>{{ round_heat.position }}</td>
               </tr>

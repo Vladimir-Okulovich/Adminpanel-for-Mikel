@@ -65,6 +65,7 @@ class ManageRankingController extends Controller
             $points = [];
             foreach ($competition_ids as $competition_id) {
                 $competition = Competition::find($competition_id->competition_id);
+                $competition->title = (strlen($competition->title) > 15) ? substr($competition->title,0,15).'...' : $competition->title;
                 $manage_ranking_point = Manage_ranking_point::where('competition_id', $competition_id->competition_id)
                                                             ->where('category_id', $category->id)
                                                             ->where('modality_id', $modality->id)
@@ -95,6 +96,7 @@ class ManageRankingController extends Controller
             $temp["suma_3_mejores"] = $category_ranking_point["suma_3_mejores"];
             foreach ($competition_ids as $competition_id) {
                 $competition = Competition::find($competition_id->competition_id);
+                $competition->title = (strlen($competition->title) > 15) ? substr($competition->title,0,15).'...' : $competition->title;
                 $temp["$competition->title"] = $category_ranking_point["$competition->title"];
             }
             $temp["mejor_resultado"] = $category_ranking_point["mejor_resultado"];
