@@ -821,7 +821,7 @@ var render = function() {
                         _c("div", { staticClass: "col-12 mt-4" }, [
                           _c("p", { staticClass: "mb-0" }, [
                             _vm._v(
-                              "\n                      By registering you agree to the Veltrix\n                      "
+                              "\n                      By registering you agree to the Competition\n                      "
                             ),
                             _c(
                               "a",
@@ -864,10 +864,10 @@ var render = function() {
               _vm._v(
                 "\n            ©" +
                   _vm._s(new Date().getFullYear()) +
-                  " Veltrix. Crafted with\n            "
+                  " \n            "
               ),
               _c("i", { staticClass: "mdi mdi-heart text-danger" }),
-              _vm._v(" by Themesbrand\n          ")
+              _vm._v(" by Competition Organizer\n          ")
             ])
           ])
         ])

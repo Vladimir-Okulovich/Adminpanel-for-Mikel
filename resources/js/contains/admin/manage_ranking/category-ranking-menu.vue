@@ -147,7 +147,7 @@ import categoryCreateVue from '../category/category-create.vue';
             <!-- End search -->
           </div>
           <!-- Table -->
-          <div class="table-responsive table-dark ranking-table mb-0">
+          <div class="table-responsive table-bordered table-dark ranking-table mb-0">
             <b-table
               :items="categoryRankingPoints"
               responsive="sm"

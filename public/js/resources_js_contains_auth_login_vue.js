@@ -809,10 +809,10 @@ var render = function() {
               _vm._v(
                 "\n            ©\n            " +
                   _vm._s(new Date().getFullYear()) +
-                  " Veltrix. Crafted with\n            "
+                  " \n            "
               ),
               _c("i", { staticClass: "mdi mdi-heart text-danger" }),
-              _vm._v(" by Themesbrand\n          ")
+              _vm._v(" by Competition Organizer\n          ")
             ])
           ])
         ])
