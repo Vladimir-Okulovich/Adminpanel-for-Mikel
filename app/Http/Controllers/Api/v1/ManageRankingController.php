@@ -81,9 +81,9 @@ class ManageRankingController extends Controller
             array_push($points, 0);
             rsort($points);
             $category_ranking_point["suma_3_mejores"] = $points[0] + $points[1] + $points[2];
-            $category_ranking_point["mejor_resultado"] = $points[0];
-            $category_ranking_point["2o_mejor"] = $points[1];
-            $category_ranking_point["3er_mejor"] = $points[2];
+            $category_ranking_point["1º"] = $points[0];
+            $category_ranking_point["2º"] = $points[1];
+            $category_ranking_point["3º"] = $points[2];
             array_push($category_ranking_points_temp, $category_ranking_point);
         }
         usort($category_ranking_points_temp, function($a, $b) {
@@ -91,7 +91,7 @@ class ManageRankingController extends Controller
         });
         $category_ranking_points = [];
         foreach ($category_ranking_points_temp as $index => $category_ranking_point) {
-            $temp["posicion"] = $index + 1;
+            $temp["posicion"] = ($index + 1)."º";
             $temp["participante"] = $category_ranking_point["participante"];
             $temp["suma_3_mejores"] = $category_ranking_point["suma_3_mejores"];
             foreach ($competition_ids as $competition_id) {
@@ -99,9 +99,9 @@ class ManageRankingController extends Controller
                 $competition->title = (strlen($competition->title) > 15) ? substr($competition->title,0,15).'...' : $competition->title;
                 $temp["$competition->title"] = $category_ranking_point["$competition->title"];
             }
-            $temp["mejor_resultado"] = $category_ranking_point["mejor_resultado"];
-            $temp["2o_mejor"] = $category_ranking_point["2o_mejor"];
-            $temp["3er_mejor"] = $category_ranking_point["3er_mejor"];
+            $temp["1º"] = $category_ranking_point["1º"];
+            $temp["2º"] = $category_ranking_point["2º"];
+            $temp["3º"] = $category_ranking_point["3º"];
             
             array_push($category_ranking_points, $temp);
         }

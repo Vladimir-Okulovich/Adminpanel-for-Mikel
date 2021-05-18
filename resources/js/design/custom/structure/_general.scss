@@ -18,49 +18,55 @@
 .ranking-table {
     thead {
         tr {
-            background: #a8aff1;
+            background: #eaf981;/*Amraillo cabecera*/
             color: black;
             th[aria-colindex="1"] {
-                background: #535667;
+                background: #3dfc58;/*verde columnas izquierda*/
             }
             th[aria-colindex="2"] {
-                background: #535667;
+                background: #3dfc58;/*verde columnas izquierda*/
             }
             th[aria-colindex="3"] {
-                background: #535667;
+                background: #3dfc58;/*verde columnas izquierda*/
             }
             th[aria-colindex]:nth-last-child(1) {
-                background: #f785b9;
+                background: #d6d7d6;/*Azul cabecera*/
+                color: grey;
             }
             th[aria-colindex]:nth-last-child(2) {
-                background: #f785b9;
+                background: #d6d7d6;/*Azul cabecera*/
+                color: grey;
             }
             th[aria-colindex]:nth-last-child(3) {
-                background: #f785b9;
+                background: #d6d7d6;/*Azul cabecera*/
+                color: grey;
             }
         }
     }
     tbody {
         tr {
-            background: #d3d6f3;
+            background: #feffbc;/*amarillo puntos*/
             color: black;
             td[aria-colindex="1"] {
-                background: #c8cbd1;
+                background: #d6d7d6;/*gris puntos*/
             }
             td[aria-colindex="2"] {
-                background: #c8cbd1;
+                background: #d6d7d6;/*gris puntos*/
             }
             td[aria-colindex="3"] {
-                background: #c8cbd1;
+                background: #d6d7d6;/*gris puntos*/
             }
             td[aria-colindex]:nth-last-child(1) {
-                background: #f9c9df;
+                background: #d6d7d6;/*gris puntos 3 mejores*/
+                color: grey;
             }
             td[aria-colindex]:nth-last-child(2) {
-                background: #f9c9df;
+                background: #d6d7d6;/*gris puntos 3 mejores*/
+                color: grey;
             }
             td[aria-colindex]:nth-last-child(3) {
-                background: #f9c9df;
+                background: #d6d7d6;/*gris puntos 3 mejores*/
+                color: grey;
             }
         }
     }

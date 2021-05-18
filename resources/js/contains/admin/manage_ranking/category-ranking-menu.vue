@@ -147,7 +147,7 @@ import categoryCreateVue from '../category/category-create.vue';
             <!-- End search -->
           </div>
           <!-- Table -->
-          <div class="table-responsive table-dark ranking-table mb-0">
+          <div class="table-responsive table-bordered table-dark ranking-table mb-0">
             <b-table
               :items="categoryRankingPoints"
               responsive="sm"
@@ -164,7 +164,7 @@ import categoryCreateVue from '../category/category-create.vue';
                   <b-th variant="success" :colspan="competitionNumber+6" style="color: black;text-align: center;font-size: 18px;">{{ categoryModality }}</b-th>
                 </b-tr>
                 <b-tr>
-                  <b-th variant="secondary" colspan="3" style="color: black;text-align: center;">RANKING 2021</b-th>
+                  <b-th  colspan="3" style="background: white;color: black;text-align: center;">RANKING 2021</b-th>
 				          <b-th variant="primary" :colspan="competitionNumber" style="color: black;text-align: center;">COMPETICIONES PUNTUABLES</b-th>
                   <b-th variant="pink" colspan="3" style="color: black;text-align: center;">TRES MEJORES</b-th>
                 </b-tr>

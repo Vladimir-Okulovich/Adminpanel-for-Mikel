@@ -45,7 +45,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each.js */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
 /* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
+/* harmony import */ var C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
 /* harmony import */ var _subcomponent_layout__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../subcomponent/layout */ "./resources/js/contains/admin/subcomponent/layout.vue");
 /* harmony import */ var _app_config__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/app.config */ "./resources/js/app.config.json");
 /* harmony import */ var _components_page_header__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @/components/page-header */ "./resources/js/components/page-header.vue");
@@ -81,7 +81,7 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   watch: {},
-  computed: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_4__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_8__.mapGetters)(['round_heats', 'heat_scores'])),
+  computed: (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_4__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_8__.mapGetters)(['round_heats', 'heat_scores'])),
   mounted: function mounted() {
     this.competitionId = this.$route.params.competitionId;
     this.categoryId = this.$route.params.categoryId;
@@ -96,7 +96,7 @@ __webpack_require__.r(__webpack_exports__);
       heat: this.heat
     });
   },
-  methods: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_4__.default)((0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_4__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_8__.mapActions)(['initHeatDetails', 'storeFinalHeatResults'])), {}, {
+  methods: (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_4__.default)((0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_4__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_8__.mapActions)(['initHeatDetails', 'storeFinalHeatResults'])), {}, {
     drawHandler: function drawHandler() {
       this.round_heats.forEach(function (round_heat) {
         if (round_heat.draw > 2) {
@@ -203,7 +203,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
+/* harmony import */ var C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
 /* harmony import */ var simplebar_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! simplebar-vue */ "./node_modules/simplebar-vue/dist/simplebar-vue.esm.js");
 /* harmony import */ var metismenujs_dist_metismenujs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! metismenujs/dist/metismenujs */ "./node_modules/metismenujs/dist/metismenujs.js");
 /* harmony import */ var metismenujs_dist_metismenujs__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(metismenujs_dist_metismenujs__WEBPACK_IMPORTED_MODULE_2__);
@@ -266,7 +266,7 @@ __webpack_require__.r(__webpack_exports__);
       }
     }
   },
-  methods: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__.default)((0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__.default)({}, _state_helpers__WEBPACK_IMPORTED_MODULE_3__.layoutMethods), {}, {
+  methods: (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__.default)((0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__.default)({}, _state_helpers__WEBPACK_IMPORTED_MODULE_3__.layoutMethods), {}, {
     changeLayout: function changeLayout(layout) {
       this.changeLayoutType({
         layoutType: layout
@@ -359,16 +359,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "authMethods": function() { return /* binding */ authMethods; },
 /* harmony export */   "layoutMethods": function() { return /* binding */ layoutMethods; }
 /* harmony export */ });
-/* harmony import */ var E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
+/* harmony import */ var C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.mjs");
 
 
-var authComputed = (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__.default)((0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapState)('auth', {
+var authComputed = (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__.default)((0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapState)('auth', {
   currentUser: function currentUser(state) {
     return state.currentUser;
   }
 })), (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapGetters)('auth', ['loggedIn']));
-var layoutComputed = (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapState)('layout', {
+var layoutComputed = (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapState)('layout', {
   layoutType: function layoutType(state) {
     return state.layoutType;
   },
