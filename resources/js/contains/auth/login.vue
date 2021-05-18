@@ -5,7 +5,7 @@ import {mapActions, mapGetters} from 'vuex'
  * Login component
  */
 export default {
- page: {
+  page: {
     title: "Login",
     meta: [{ name: "description", content: appConfig.description }]
   },
@@ -144,10 +144,10 @@ export default {
             </p>
             <p class="mb-0">
               ©
-              {{new Date().getFullYear()}} Veltrix. Crafted with
+              {{new Date().getFullYear()}} 
               <i
                 class="mdi mdi-heart text-danger"
-              ></i> by Themesbrand
+              ></i> by Competition Organizer
             </p>
           </div>
         </div>

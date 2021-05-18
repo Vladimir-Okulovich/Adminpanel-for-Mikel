@@ -59,7 +59,7 @@ const actions = {
                     resolve(data);
                 })
                 .catch(({response, status}) => {
-                console.log(response);
+                    // console.log(response);
                     if(status === 422) {
                         context.commit(
                             type.AUTH_SET_ERROR,

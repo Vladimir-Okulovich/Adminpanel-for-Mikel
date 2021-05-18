@@ -121,7 +121,7 @@ export default {
                   <div class="form-group mt-2 mb-0 row">
                     <div class="col-12 mt-4">
                       <p class="mb-0">
-                        By registering you agree to the Veltrix
+                        By registering you agree to the Competition
                         <a
                           href="#"
                           class="text-primary"
@@ -141,10 +141,10 @@ export default {
               <router-link tag="a" to="/login" class="font-weight-medium text-primary">Login</router-link>
             </p>
             <p>
-              ©{{new Date().getFullYear()}} Veltrix. Crafted with
+              ©{{new Date().getFullYear()}} 
               <i
                 class="mdi mdi-heart text-danger"
-              ></i> by Themesbrand
+              ></i> by Competition Organizer
             </p>
           </div>
         </div>
