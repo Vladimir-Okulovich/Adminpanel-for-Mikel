@@ -8,7 +8,7 @@ const actions = {
             ApiService.post("api/v1/user/login", credentials)
                 .then(({data}) => {
                     context.commit(type.AUTH_CLEAR_ERRORS);
-                    // console.log(data);
+                    console.log(data);
                     var role = null;
                     data.user.roles.forEach(function(currentRole) {
                         if (currentRole.name == 'Admin') {
@@ -24,10 +24,11 @@ const actions = {
                     );
                     resolve(data);
                 })
-                .catch((error) => {
+                .catch((response) => {
+                    console.log(response);
                     context.commit(
-                        type.AUTH_SET_USER,
-                        {target: 'login', message: error}
+                        type.AUTH_SET_ERROR,
+                        {target: 'login', message: response.data}
                     );
                     reject(response);
                 });

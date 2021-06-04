@@ -40,7 +40,7 @@ export default {
             password: this.password
           })
           .then((res) => {
-            // console.log(this.currentRole)
+            console.log(this.currentRole)
             if (this.currentRole == 'Admin') {
               this.$router.push({name: "Users"});
             } else if (this.currentRole == 'Judge') {
