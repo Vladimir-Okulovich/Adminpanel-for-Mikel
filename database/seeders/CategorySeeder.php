@@ -18,86 +18,86 @@ class CategorySeeder extends Seeder
         DB::table('categories')->insert([[
             'sex_id' => 2,
             'name' => 'Open', 
-            'description' => 'Categoria Open Masculina',
+            'description' => 'Participan mayores de 14 años.',
             'year1' => 1920,
             'year2' => 2007
         ], [
             'sex_id' => 1,
             'name' => 'Open', 
-            'description' => 'Categoria Open Femenino',
+            'description' => 'Participan mayores de 14 años.',
             'year1' => 1920,
             'year2' => 2007
         ], [
             'sex_id' => 2,
             'name' => 'Cadete', 
-            'description' => 'Categoria Cadete Masculina',
+            'description' => 'Participantes entre 14 y 16 años.',
             'year1' => 2005,
             'year2' => 2007
             
         ], [
             'sex_id' => 1,
             'name' => 'Cadete', 
-            'description' => 'Categoria Cadete Femenino',
+            'description' => 'Participantes entre 14 y 16 años.',
             'year1' => 2005,
             'year2' => 2007
         ], [
             'sex_id' => 2,
             'name' => 'Junior', 
-            'description' => 'Categoria Junior Masculina',
+            'description' => 'Participantes entre 17 y 18 años.',
             'year1' => 2003,
             'year2' => 2004
         ], [
             'sex_id' => 1,
             'name' => 'Junior', 
-            'description' => 'Categoria Junior Femenino',
+            'description' => 'Participantes entre 17 y 18 años.',
             'year1' => 2003,
             'year2' => 2004
         ], [
             'sex_id' => 2,
             'name' => 'Senior', 
-            'description' => 'Categoria Senior Masculina',
+            'description' => 'Participantes entre 19 y 39 años.',
             'year1' => 1982,
             'year2' => 2002
         ], [
             'sex_id' => 1,
             'name' => 'Senior', 
-            'description' => 'Categoria Senior Femenino',
+            'description' => 'Participantes entre 19 y 39 años.',
             'year1' => 1982,
             'year2' => 2002
         ], [
             'sex_id' => 2,
             'name' => 'Master', 
-            'description' => 'Categoria Master Masculina',
+            'description' => 'Participantes entre 40 y 49 años.',
             'year1' => 1972,
             'year2' => 1981
         ], [
             'sex_id' => 1,
             'name' => 'Master', 
-            'description' => 'Categoria Master Femenino',
+            'description' => 'Participantes entre 40 y 49 años.',
             'year1' => 1972,
             'year2' => 1981
         ], [
             'sex_id' => 2,
-            'name' => 'GRANDMaster', 
-            'description' => 'Categoria GRANDMaster Masculina',
+            'name' => 'GRAND_Master', 
+            'description' => 'Participantes entre 50 y 59 años.',
             'year1' => 1962,
             'year2' => 1971
         ], [
             'sex_id' => 1,
-            'name' => 'GRANDMaster', 
-            'description' => 'Categoria GRANDMaster Femenino',
+            'name' => 'GRAND_Master', 
+            'description' => 'Participantes entre 50 y 59 años.',
             'year1' => 1962,
             'year2' => 1971
         ], [
             'sex_id' => 2,
-            'name' => 'GRANDGRANDMaster', 
-            'description' => 'Categoria GRANDGRANDMaster Masculina',
+            'name' => 'GRAND_GRAND_Master', 
+            'description' => 'Participan mayores de 60 años.',
             'year1' => 1920,
             'year2' => 1961
         ], [
             'sex_id' => 1,
-            'name' => 'GRANDGRANDMaster', 
-            'description' => 'Categoria GRANDGRANDMaster Femenino',
+            'name' => 'GRAND_GRAND_Master', 
+            'description' => 'Participan mayores de 60 años.',
             'year1' => 1920,
             'year2' => 1961
         ]]);

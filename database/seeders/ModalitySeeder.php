@@ -16,9 +16,9 @@ class ModalitySeeder extends Seeder
     {
         //
         DB::table('modalities')->insert([[
-            'name' => 'Short Boat'
+            'name' => 'Corto'
         ], [
-            'name' => 'Long Ship'
+            'name' => 'Largo'
         ]]);
     }
 }

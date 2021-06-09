@@ -16,9 +16,9 @@ class SexSeeder extends Seeder
     {
         //
         DB::table('sexes')->insert([[
-            'name' => 'Female'
+            'name' => 'Femenino'
         ], [
-            'name' => 'Male'
+            'name' => 'Masculino'
         ]]);
     }
 }
