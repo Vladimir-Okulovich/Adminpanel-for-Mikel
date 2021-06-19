@@ -1,5 +1,4 @@
 <script>
-import { authMethods } from "@/state/helpers";
 import appConfig from "@/app.config";
 
 /**
@@ -22,7 +21,6 @@ export default {
     };
   },
   methods: {
-    ...authMethods,
     // Try to register the user in with the email, username
     // and password they provided.
     tryToRegisterIn() {

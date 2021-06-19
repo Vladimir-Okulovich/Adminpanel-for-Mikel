@@ -2,8 +2,6 @@
     import simplebar from "simplebar-vue";
     import MetisMenu from "metismenujs/dist/metismenujs";
     
-    import { layoutMethods } from "@/state/helpers";
-    
     /**
      * Sidebar component
      */
@@ -54,7 +52,6 @@
         }
       },
       methods: {
-        ...layoutMethods,
         changeLayout(layout) {
           this.changeLayoutType({ layoutType: layout });
         },

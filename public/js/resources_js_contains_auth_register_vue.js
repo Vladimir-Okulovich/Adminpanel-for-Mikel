@@ -12,11 +12,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var core_js_modules_es_symbol_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_symbol_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es.symbol.description.js */ "./node_modules/core-js/modules/es.symbol.description.js");
 /* harmony import */ var core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
-/* harmony import */ var _state_helpers__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/state/helpers */ "./resources/js/state/helpers.js");
-/* harmony import */ var _app_config__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/app.config */ "./resources/js/app.config.json");
-
-
+/* harmony import */ var _app_config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/app.config */ "./resources/js/app.config.json");
 
 
 
@@ -29,7 +25,7 @@ __webpack_require__.r(__webpack_exports__);
     title: "Register",
     meta: [{
       name: "description",
-      content: _app_config__WEBPACK_IMPORTED_MODULE_4__.description
+      content: _app_config__WEBPACK_IMPORTED_MODULE_2__.description
     }]
   },
   data: function data() {
@@ -43,7 +39,7 @@ __webpack_require__.r(__webpack_exports__);
       registerSuccess: false
     };
   },
-  methods: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)((0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, _state_helpers__WEBPACK_IMPORTED_MODULE_3__.authMethods), {}, {
+  methods: {
     // Try to register the user in with the email, username
     // and password they provided.
     tryToRegisterIn: function tryToRegisterIn() {
@@ -73,44 +69,8 @@ __webpack_require__.r(__webpack_exports__);
         _this.isRegisterError = true;
       });
     }
-  })
+  }
 });
-
-/***/ }),
-
-/***/ "./resources/js/state/helpers.js":
-/*!***************************************!*\
-  !*** ./resources/js/state/helpers.js ***!
-  \***************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "authComputed": function() { return /* binding */ authComputed; },
-/* harmony export */   "layoutComputed": function() { return /* binding */ layoutComputed; },
-/* harmony export */   "authMethods": function() { return /* binding */ authMethods; },
-/* harmony export */   "layoutMethods": function() { return /* binding */ layoutMethods; }
-/* harmony export */ });
-/* harmony import */ var E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.mjs");
-
-
-var authComputed = (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__.default)((0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapState)('auth', {
-  currentUser: function currentUser(state) {
-    return state.currentUser;
-  }
-})), (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapGetters)('auth', ['loggedIn']));
-var layoutComputed = (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapState)('layout', {
-  layoutType: function layoutType(state) {
-    return state.layoutType;
-  },
-  layoutWidth: function layoutWidth(state) {
-    return state.layoutWidth;
-  }
-}));
-var authMethods = (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapActions)('auth', ['logIn', 'logOut', 'register', 'resetPassword']);
-var layoutMethods = (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapActions)('layout', ['changeLayoutType', 'changeLayoutWidth']);
 
 /***/ }),
 
@@ -904,46 +864,6 @@ var staticRenderFns = [
   }
 ]
 render._withStripped = true
-
-
-
-/***/ }),
-
-/***/ "./node_modules/vuex/dist/vuex.mjs":
-/*!*****************************************!*\
-  !*** ./node_modules/vuex/dist/vuex.mjs ***!
-  \*****************************************/
-/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": function() { return /* reexport default export from named module */ _dist_vuex_common_js__WEBPACK_IMPORTED_MODULE_0__; },
-/* harmony export */   "Store": function() { return /* binding */ Store; },
-/* harmony export */   "install": function() { return /* binding */ install; },
-/* harmony export */   "version": function() { return /* binding */ version; },
-/* harmony export */   "mapState": function() { return /* binding */ mapState; },
-/* harmony export */   "mapMutations": function() { return /* binding */ mapMutations; },
-/* harmony export */   "mapGetters": function() { return /* binding */ mapGetters; },
-/* harmony export */   "mapActions": function() { return /* binding */ mapActions; },
-/* harmony export */   "createNamespacedHelpers": function() { return /* binding */ createNamespacedHelpers; },
-/* harmony export */   "createLogger": function() { return /* binding */ createLogger; }
-/* harmony export */ });
-/* harmony import */ var _dist_vuex_common_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../dist/vuex.common.js */ "./node_modules/vuex/dist/vuex.common.js");
-
-
-const {
-  Store,
-  install,
-  version,
-  mapState,
-  mapMutations,
-  mapGetters,
-  mapActions,
-  createNamespacedHelpers,
-  createLogger
-} = _dist_vuex_common_js__WEBPACK_IMPORTED_MODULE_0__
-
 
 
 
