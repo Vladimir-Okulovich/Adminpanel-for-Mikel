@@ -48,6 +48,15 @@ __webpack_require__.r(__webpack_exports__);
         judge_heat_scores: this.judge_heat_scores
       });
     },
+    closeResults: function closeResults() {
+      var _this = this;
+
+      this.storeHeatResults({
+        judge_heat_scores: this.judge_heat_scores
+      }).then(function (res) {
+        _this.refresh();
+      });
+    },
     refresh: function refresh() {
       window.location.reload();
     }

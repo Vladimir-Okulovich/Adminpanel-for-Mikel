@@ -30,7 +30,7 @@ export default {
       items: [
         {
           text: "HOME",
-          href: "/admin"
+          href: "/admin/competitions"
         },
         {
           text: "Listado de Clubs",

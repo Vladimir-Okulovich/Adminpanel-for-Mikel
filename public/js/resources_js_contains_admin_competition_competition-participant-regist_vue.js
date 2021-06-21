@@ -74,7 +74,7 @@ __webpack_require__.r(__webpack_exports__);
       title: "AÑADIR PARTICIPANTES A COMPETICION",
       items: [{
         text: "Home",
-        href: "/admin"
+        href: "/admin/competitions"
       }, {
         text: "Listado Competiciones",
         href: "/admin/competitions"
@@ -241,7 +241,10 @@ __webpack_require__.r(__webpack_exports__);
         participantId: this.participantId
       });
       this.$bvModal.hide('unregister-modality-modal');
-    }
+    } // back() {
+    //   this.$router.go(-1);
+    // },
+
   })
 });
 
@@ -7069,7 +7072,7 @@ var render = function() {
       _c("PageHeader", { attrs: { title: _vm.title, items: _vm.items } }, [
         _c(
           "div",
-          { staticClass: "float-right" },
+          { staticClass: "float-right d-flex" },
           [
             _c(
               "router-link",
@@ -7086,6 +7089,15 @@ var render = function() {
                 _c("i", { staticClass: "fas fa-plus mr-1" }),
                 _vm._v(" NUEVO PARTICIPANTE\n      ")
               ]
+            ),
+            _vm._v(" "),
+            _c(
+              "router-link",
+              {
+                staticClass: "btn btn-secondary ml-lg-4 ml-3",
+                attrs: { to: { name: "Competitions" } }
+              },
+              [_vm._v("\n        Volver\n      ")]
             )
           ],
           1

@@ -75,7 +75,7 @@ __webpack_require__.r(__webpack_exports__);
       title: "EDIT LYCRA",
       items: [{
         text: "Home",
-        href: "/admin"
+        href: "/admin/competitions"
       }, {
         text: "Listado Lycras",
         href: "/admin/lycras"

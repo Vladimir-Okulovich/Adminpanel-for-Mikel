@@ -75,7 +75,7 @@ __webpack_require__.r(__webpack_exports__);
       title: "EDIT COMPETITION TYPE",
       items: [{
         text: "Home",
-        href: "/admin"
+        href: "/admin/competitions"
       }, {
         text: "Listado Tipos Competición",
         href: "/admin/competition_types"

@@ -82,7 +82,7 @@ __webpack_require__.r(__webpack_exports__);
       title: "AÑADIR PARTICIPANTE A COMPETICION",
       items: [{
         text: "Home",
-        href: "/admin"
+        href: "/admin/competitions"
       }, {
         text: "Listado Competiciones",
         href: "/admin/competitions"

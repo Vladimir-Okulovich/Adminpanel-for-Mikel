@@ -82,7 +82,7 @@ __webpack_require__.r(__webpack_exports__);
       title: "CREAR FICHA",
       items: [{
         text: "Home",
-        href: "/admin"
+        href: "/admin/competitions"
       }, {
         text: "Listado Federados",
         href: "/admin/participants"

@@ -22,7 +22,7 @@
         items: [
           {
             text: "Home",
-            href: "/admin"
+            href: "/admin/competitions"
           },
           {
             text: "Listado Competiciones",

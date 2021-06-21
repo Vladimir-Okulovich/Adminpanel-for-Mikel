@@ -277,7 +277,7 @@ __webpack_require__.r(__webpack_exports__);
       title: "CREAR USUARIO",
       items: [{
         text: "Home",
-        href: "/admin"
+        href: "/admin/competitions"
       }, {
         text: "Listado Usuarios",
         href: "/admin/users"

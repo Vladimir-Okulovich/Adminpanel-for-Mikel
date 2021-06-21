@@ -75,7 +75,7 @@ __webpack_require__.r(__webpack_exports__);
       title: "CREAR CLUB",
       items: [{
         text: "Home",
-        href: "/admin"
+        href: "/admin/competitions"
       }, {
         text: "Listado de Clubs",
         href: "/admin/clubs"

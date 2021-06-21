@@ -74,7 +74,7 @@ __webpack_require__.r(__webpack_exports__);
       title: "CUADROS DE COMPETICIÓN",
       items: [{
         text: "Home",
-        href: "/admin"
+        href: "/admin/competitions"
       }, {
         text: "Listado Competiciones",
         href: "/admin/competitions"

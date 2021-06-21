@@ -34,7 +34,7 @@ export default {
       items: [
         {
           text: "Home",
-          href: "/admin"
+          href: "/admin/competitions"
         },
         {
           text: "Listado Competiciones",
@@ -67,6 +67,7 @@ export default {
         category: "",
         logo: null,
       },
+      url: '/images/default.jpg',
       rankingScoreOptions: [
         "Si",
         "No"
@@ -107,6 +108,25 @@ export default {
       'getCompetition',
     ]),
   },
+  watch: {
+    getCompetition: function () {
+      this.typeform.title = this.getCompetition.title
+      this.typeform.competition_type = this.getCompetition.competition_type.name
+      this.typeform.description = this.getCompetition.description
+      this.typeform.place = this.getCompetition.place
+      this.typeform.date = this.getCompetition.date
+      this.typeform.time = this.getCompetition.time
+      this.typeform.organizer = this.getCompetition.organizer
+      this.typeform.ranking_score = this.getCompetition.ranking_score
+      this.typeform.status = this.getCompetition.status.name
+      this.typeform.lycra = this.getCompetition.lycraNames
+      this.typeform.modality = this.getCompetition.modalityNames
+      this.typeform.category = this.getCompetition.categoryNames
+      if (this.getCompetition.logo != null) {
+        this.url = this.getCompetition.logo
+      }
+    },
+  },
   mounted() {
     this.getTypeOptions();
     this.getLycraOptions();
@@ -124,7 +144,8 @@ export default {
     selectFile(event) {
       // `files` is always an array because the file input may be in multiple mode
       this.typeform.logo = event.target.files[0];
-      // console.log(this.typeform.logo)
+      console.log(this.typeform.logo)
+      this.url = URL.createObjectURL(this.typeform.logo);
     },
     /**
      * Validation type submit
@@ -192,7 +213,7 @@ export default {
                   <div class="form-group">
                     <label>Título</label>
                     <input
-                      v-model="typeform.title=getCompetition.title"
+                      v-model="typeform.title"
                       type="text"
                       class="form-control"
                       placeholder="Competition Title"
@@ -206,7 +227,7 @@ export default {
                   <div class="mb-3">
                     <label>Tipo Competición</label>
                     <multiselect 
-                      v-model="typeform.competition_type=getCompetition.competition_type.name" 
+                      v-model="typeform.competition_type" 
                       deselect-label=""
                       :options="typeOptions"
                       :class="{ 'is-invalid': typesubmit && $v.typeform.competition_type.$error }"
@@ -219,7 +240,7 @@ export default {
                     <label>Descripción</label>
                     <div>
                       <textarea
-                        v-model="typeform.description=getCompetition.description"
+                        v-model="typeform.description"
                         class="form-control"
                         name="description"
                         :style="{ 'min-height': '100px' }"
@@ -233,7 +254,7 @@ export default {
                   <div class="form-group">
                     <label>Lugar</label>
                     <input
-                      v-model="typeform.place=getCompetition.place"
+                      v-model="typeform.place"
                       type="text"
                       class="form-control"
                       placeholder="Competition Place"
@@ -248,7 +269,7 @@ export default {
                     <label>Fecha</label>
                     <br />
                     <date-picker
-                      v-model="typeform.date=getCompetition.date"
+                      v-model="typeform.date"
                       format="DD-MM-YYYY"
                       value-type="format"
                       :lang="lang"
@@ -263,7 +284,7 @@ export default {
                     <label>Hora</label>
                     <br />
                     <date-picker
-                      v-model="typeform.time=getCompetition.time"
+                      v-model="typeform.time"
                       type="time"
                       placeholder="hh:mm:ss"
                       value-type="format"
@@ -276,7 +297,7 @@ export default {
                   <div class="form-group">
                     <label>Organizador</label>
                     <input
-                      v-model="typeform.organizer=getCompetition.organizer"
+                      v-model="typeform.organizer"
                       type="text"
                       class="form-control"
                       placeholder="Organizer"
@@ -287,12 +308,10 @@ export default {
                       <span v-if="!$v.typeform.organizer.required">Este Campo es Obligatorio.</span>
                     </div>
                   </div>
-                </div>
-                <div class="col-lg-6 col-md-12">
                   <div class="mb-3">
                     <label>Puntúa Ranking</label>
                     <multiselect 
-                      v-model="typeform.ranking_score=getCompetition.ranking_score" 
+                      v-model="typeform.ranking_score" 
                       deselect-label=""
                       :options="rankingScoreOptions"
                       :class="{ 'is-invalid': typesubmit && $v.typeform.ranking_score.$error }"
@@ -301,10 +320,12 @@ export default {
                       <span v-if="!$v.typeform.ranking_score.required">Este Campo es Obligatorio.</span>
                     </div>
                   </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
                   <div class="form-group">
                     <label>Estado</label>
                     <multiselect 
-                      v-model="typeform.status=getCompetition.status.name"
+                      v-model="typeform.status"
                       deselect-label=""
                       :options="statusOptions"
                       :class="{ 'is-invalid': typesubmit && $v.typeform.status.$error }"
@@ -316,7 +337,7 @@ export default {
                   <div class="mb-3">
                     <label>Categoría</label>
                     <multiselect 
-                      v-model="typeform.category=getCompetition.categoryNames" 
+                      v-model="typeform.category" 
                       :options="categoryOptions"
                       :multiple="true"
                       :class="{ 'is-invalid': typesubmit && $v.typeform.category.$error }"
@@ -328,7 +349,7 @@ export default {
                   <div class="mb-3">
                     <label>Modalidad</label>
                     <multiselect 
-                      v-model="typeform.modality=getCompetition.modalityNames" 
+                      v-model="typeform.modality" 
                       :options="modalityOptions"
                       :multiple="true"
                       :class="{ 'is-invalid': typesubmit && $v.typeform.modality.$error }"
@@ -340,7 +361,7 @@ export default {
                   <div class="mb-3">
                     <label>Lycra</label>
                     <multiselect 
-                      v-model="typeform.lycra=getCompetition.lycraNames" 
+                      v-model="typeform.lycra" 
                       :options="lycraOptions"
                       :multiple="true"
                       :class="{ 'is-invalid': typesubmit && $v.typeform.lycra.$error }"
@@ -349,11 +370,16 @@ export default {
                       <span v-if="!$v.typeform.lycra.required">Este Campo es Obligatorio.</span>
                     </div>
                   </div>
-                  <div class="form-group">
-                    <label for="logo">Logo</label>
-                    <input type="file" class="form-control-file" id="logo" @change="selectFile" />
+                  <div class="d-flex justify-content-between">
+                    <div class="form-group">
+                      <label for="logo">Logo</label>
+                      <input type="file" class="form-control-file" id="logo" @change="selectFile" />
+                    </div>
+                    <div class="p-2" style="max-width: 270px;">
+                      <img class="circle-logo" :src="url">
+                    </div>
                   </div>
-                  <div class="form-group mt-4 mb-0">
+                  <div class="form-group mt-5 mb-0">
                     <div style="float: right;">
                       <button type="submit" class="btn btn-primary">Guardar</button>
                       <router-link to="/admin/competitions" class="btn btn-secondary m-l-5 ml-1">Cancelar</router-link>
@@ -369,3 +395,11 @@ export default {
     </div>
   </Layout>
 </template>
+<style>
+  .circle-logo {
+    /* border-radius: 50%; */
+    overflow: hidden;
+    width: 100%;
+    object-fit: cover;
+  }
+</style>

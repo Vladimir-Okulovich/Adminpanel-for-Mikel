@@ -41,6 +41,14 @@
           judge_heat_scores: this.judge_heat_scores,
         });
       },
+      closeResults() {
+        this.storeHeatResults({
+          judge_heat_scores: this.judge_heat_scores,
+        })
+        .then((res) => {
+          this.refresh();
+        })
+      },
       refresh() {
         window.location.reload();
       }

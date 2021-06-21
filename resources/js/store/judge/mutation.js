@@ -30,8 +30,8 @@ const mutations = {
     state.judge_round_heats = data.judge_round_heats;
     state.judge_heat_scores = data.judge_heat_scores;
   },
-  [type.SET_ISACTIVESTATUS] (state, data) {
-    state.isActiveStatus = 2;
-  },
+  // [type.SET_ISACTIVESTATUS] (state, data) {
+  //   state.isActiveStatus = 2;
+  // },
 };
 export default mutations;

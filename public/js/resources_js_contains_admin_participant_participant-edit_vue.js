@@ -82,7 +82,7 @@ __webpack_require__.r(__webpack_exports__);
       title: "MODIFICAR DATOS",
       items: [{
         text: "Home",
-        href: "/admin"
+        href: "/admin/competitions"
       }, {
         text: "Listado Participantes",
         href: "/admin/participants"

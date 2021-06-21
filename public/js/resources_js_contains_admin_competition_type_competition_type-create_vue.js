@@ -75,7 +75,7 @@ __webpack_require__.r(__webpack_exports__);
       title: "ADD COMPETITION TYPE",
       items: [{
         text: "Home",
-        href: "/admin"
+        href: "/admin/competitions"
       }, {
         text: "Listado Tipos COmpetición",
         href: "/admin/competition_types"

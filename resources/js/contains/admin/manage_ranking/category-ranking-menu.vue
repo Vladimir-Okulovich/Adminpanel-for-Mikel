@@ -23,7 +23,7 @@ import categoryCreateVue from '../category/category-create.vue';
         items: [
           {
             text: "Home",
-            href: "/admin"
+            href: "/admin/competitions"
           },
           {
             text: "Clasificaciones Ranking",

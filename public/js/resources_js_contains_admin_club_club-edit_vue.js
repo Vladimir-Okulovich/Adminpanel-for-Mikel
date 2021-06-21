@@ -75,7 +75,7 @@ __webpack_require__.r(__webpack_exports__);
       title: "EDITAR DATOS CLUB",
       items: [{
         text: "HOME",
-        href: "/admin"
+        href: "/admin/competitions"
       }, {
         text: "Listado de Clubs",
         href: "/admin/clubs"

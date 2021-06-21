@@ -22,7 +22,7 @@
         items: [
           {
             text: "Home",
-            href: "/admin"
+            href: "/admin/competitions"
           },
           {
             text: "Listado Competiciones",
@@ -190,18 +190,26 @@
           participantId: this.participantId,
         });
         this.$bvModal.hide('unregister-modality-modal');
-      }
+      },
+      // back() {
+      //   this.$router.go(-1);
+      // },
     }
 	};
 </script>
 <template>
   <Layout>
     <PageHeader :title="title" :items="items">
-      <div class="float-right">
+      <div class="float-right d-flex">
         <router-link :to="{ name: 'CompetitionParticipantAdd', params: { competitionId: this.$route.params.competitionId } }"
           class="btn btn-info btn-block d-inline-block"
         >
           <i class="fas fa-plus mr-1"></i> NUEVO PARTICIPANTE
+        </router-link>
+        <router-link :to="{ name: 'Competitions'}"
+          class="btn btn-secondary ml-lg-4 ml-3"
+        >
+          Volver
         </router-link>
       </div>
     </PageHeader>

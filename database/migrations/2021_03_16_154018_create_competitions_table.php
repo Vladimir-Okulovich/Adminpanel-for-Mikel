@@ -23,6 +23,7 @@ class CreateCompetitionsTable extends Migration
             $table->time('time');
             $table->string('organizer');
             $table->string('ranking_score');
+            $table->json('lycras');
             $table->string('logo')->nullable();
             $table->foreignId('status_id')->constrained('statuses');
             $table->timestamps();

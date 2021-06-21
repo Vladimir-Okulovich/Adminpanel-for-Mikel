@@ -185,19 +185,16 @@ class LiveManagementController extends Controller
             
             $heat_configuration = Heat_configuration::where('participant_number', count($com_cat_mod_participants))->first();
             $heat_number = count($heat_configuration->assign_array);
-            $lycra_id = 1;
+            $lycras = Competition::find($request->competitionId)->lycras;
             foreach ($sort_com_cat_mod_participants as $index => $com_cat_mod_participant) {
                 $i = $index + 1;
                 $round_heat = new Round_heat;
                 $round_heat->round = 1;
                 $round_heat->heat = ($i % $heat_number == 0) ? $heat_number : $i % $heat_number;
                 $round_heat->com_cat_mod_participant_id = $com_cat_mod_participant->id;
-                $round_heat->lycra_id = $lycra_id;
+                $round_heat->lycra_id = $lycras[floor($index / $heat_number)];
                 $round_heat->ranking = $com_cat_mod_participant->ranking;
                 $round_heat->save();
-                if ($i % $heat_number == 0) {
-                    $lycra_id++;
-                }
             }
 
             return response()->json([
@@ -559,6 +556,7 @@ class LiveManagementController extends Controller
                 }
             }
             // Create New Round_heat
+            $lycras = Competition::find($current_competition)->lycras;
             $heat_configuration = Heat_configuration::where('participant_number', count($new_round_heats))->first();
             $heat_number = count($heat_configuration->assign_array);
             switch (count($new_round_heats)) {
@@ -586,7 +584,7 @@ class LiveManagementController extends Controller
                                 }
                             }
                             
-                            $round_heat->lycra_id = $i;
+                            $round_heat->lycra_id = $lycras[$i-1];
                             $round_heat->save();
                         }
                     }
@@ -601,7 +599,7 @@ class LiveManagementController extends Controller
                         $round_heat->heat = ($i % $heat_number == 0) ? $heat_number : $i % $heat_number;
                         $round_heat->com_cat_mod_participant_id = $this->getFirstSecondParticipant($new_round_heats, $prev_heat, $position)
                                                                     ->com_cat_mod_participant_id;
-                        $round_heat->lycra_id = $lycra_id;
+                        $round_heat->lycra_id = $lycras[$lycra_id-1];
                         $round_heat->save();
                         if ($i % 2 == 0) {
                             $prev_heat++;
@@ -622,7 +620,7 @@ class LiveManagementController extends Controller
                         $round_heat->heat = ($i % $heat_number == 0) ? $heat_number : $i % $heat_number;
                         $round_heat->com_cat_mod_participant_id = $this->getFirstSecondParticipant($new_round_heats, $prev_heat, $position)
                                                                     ->com_cat_mod_participant_id;
-                        $round_heat->lycra_id = $lycra_id;
+                        $round_heat->lycra_id = $lycras[$lycra_id-1];
                         $round_heat->save();
                         $prev_heat++;
                         if ($i == $prev_heat_number) {
@@ -642,7 +640,7 @@ class LiveManagementController extends Controller
                         $round_heat->heat = ($i % $heat_number == 0) ? $heat_number : $i % $heat_number;
                         $round_heat->com_cat_mod_participant_id = $this->getFirstSecondParticipant($new_round_heats, $i, 1)
                                                                     ->com_cat_mod_participant_id;
-                        $round_heat->lycra_id = $lycra_id;
+                        $round_heat->lycra_id = $lycras[$lycra_id-1];
                         $round_heat->save();
                         if ($i % $heat_number == 0) {
                             $lycra_id++;
@@ -658,7 +656,7 @@ class LiveManagementController extends Controller
                         $round_heat->heat = ($i % $heat_number == 0) ? $heat_number : $i % $heat_number;
                         $round_heat->com_cat_mod_participant_id = $this->getFirstSecondParticipant($new_round_heats, $i, 2)
                                                                     ->com_cat_mod_participant_id;
-                        $round_heat->lycra_id = $lycra_id;
+                        $round_heat->lycra_id = $lycras[$lycra_id-1];
                         $round_heat->save();
                     }
             }

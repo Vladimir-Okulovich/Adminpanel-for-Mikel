@@ -2,6 +2,7 @@ import ApiService from "@/api/api.service";
 import JwtService from "@/common/jwt.service"
 import type from './type'
 import router from '../../router/index'
+import axios from "axios";
 
 const actions = {
     initCompetitions(context) {
@@ -43,6 +44,24 @@ const actions = {
                     reject(response);
                 });
         });
+        // const config = {
+        //     headers: {
+        //         'X-Requested-With': 'XMLHttpRequest',
+        //         "Authorization":`Bearer ${JwtService.getToken()}`,
+        //         'content-type': 'multipart/form-data'
+        //     }
+        // }
+        // return new Promise((resolve, reject) => {
+        //     axios.post('http://localhost:8000/api/v1/admin/competition/create', competitionInfo, config)
+        //         .then((res) => {
+        //             resolve(res)
+        //             toastr.success('Creada Correctamente', '', {timeout: 5000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
+        //         })
+        //         .catch(({response, status}) => {
+        //             console.log(response);
+        //             reject(response);
+        //         });
+        // });
     },
     updateCompetition(context, competitionInfo) {
         // console.log(competitionInfo)

@@ -70,7 +70,7 @@ __webpack_require__.r(__webpack_exports__);
       title: "FEDERADOS",
       items: [{
         text: "Home",
-        href: "/admin"
+        href: "/admin/competitions"
       }, {
         text: "Listado Federados",
         active: true
