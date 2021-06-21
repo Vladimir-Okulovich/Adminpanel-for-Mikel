@@ -833,7 +833,7 @@ var staticRenderFns = [
         ]),
         _vm._v(" "),
         _c("p", { staticClass: "text-white-50" }, [
-          _vm._v("Sign in to continue to Veltrix.")
+          _vm._v("Sign in to continue.")
         ]),
         _vm._v(" "),
         _c("a", { staticClass: "logo logo-admin", attrs: { href: "/" } }, [

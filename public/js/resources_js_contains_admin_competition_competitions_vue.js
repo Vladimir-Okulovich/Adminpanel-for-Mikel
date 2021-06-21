@@ -98,23 +98,23 @@ __webpack_require__.r(__webpack_exports__);
       }, {
         label: "Fecha",
         key: "date",
-        sortable: false
+        sortable: true
       }, {
         label: "Hora",
         key: "time",
-        sortable: false
+        sortable: true
       }, {
         label: "Organizador",
         key: "organizer",
-        sortable: true
+        sortable: false
       }, {
         label: "Puntúa Ranking",
         key: "ranking_score",
-        sortable: true
+        sortable: false
       }, {
         label: "Estado",
         key: "status",
-        sortable: true
+        sortable: false
       }, {
         label: "Acciones",
         key: "actions",

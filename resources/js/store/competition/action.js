@@ -117,7 +117,20 @@ const actions = {
                 });
         });
     },
-    getModalityOfParticipant(context, participantInfo) {
+    getParticipantCategoryOptions(context, participantId) {
+        ApiService.setHeader();
+        return new Promise((resolve, reject) => {
+            ApiService.get("api/v1/admin/competition/category/participant/" + participantId)
+                .then((res) => {
+                    resolve(res);
+                })
+                .catch(({response, status}) => {
+                    console.log(response);
+                    reject(response);
+                });
+        });
+    },
+    getModAndCatOfParticipant(context, participantInfo) {
         ApiService.setHeader();
         return new Promise((resolve, reject) => {
             ApiService.post("api/v1/admin/competition/modality/participant", participantInfo)

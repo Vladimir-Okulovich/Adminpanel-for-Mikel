@@ -7195,7 +7195,13 @@ var render = function() {
             )
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "text-right my-4" }, [
+          _c("div", { staticClass: "d-flex justify-content-between my-4" }, [
+            _c(
+              "button",
+              { staticClass: "btn btn-info", on: { click: _vm.closeResults } },
+              [_vm._v("\n           Terminar Manga\n          ")]
+            ),
+            _vm._v(" "),
             _c(
               "button",
               {
@@ -7203,12 +7209,6 @@ var render = function() {
                 on: { click: _vm.saveResults }
               },
               [_vm._v("\n            Guardar Datos\n          ")]
-            ),
-            _vm._v(" "),
-            _c(
-              "button",
-              { staticClass: "btn btn-info", on: { click: _vm.closeResults } },
-              [_vm._v("\n           Terminar Manga\n          ")]
             )
           ])
         ])
@@ -7275,7 +7275,12 @@ var render = function() {
                                 }
                               ],
                               staticClass: "custom-input",
-                              attrs: { type: "number", step: "0.1" },
+                              attrs: {
+                                type: "number",
+                                min: "0",
+                                max: "10",
+                                step: "0.1"
+                              },
                               domProps: { value: heat_score_row.wave_1 },
                               on: {
                                 change: _vm.averageHandler,
@@ -7312,7 +7317,12 @@ var render = function() {
                                 }
                               ],
                               staticClass: "custom-input",
-                              attrs: { type: "number", step: "0.1" },
+                              attrs: {
+                                type: "number",
+                                min: "0",
+                                max: "10",
+                                step: "0.1"
+                              },
                               domProps: { value: heat_score_row.wave_2 },
                               on: {
                                 change: _vm.averageHandler,
@@ -7349,7 +7359,12 @@ var render = function() {
                                 }
                               ],
                               staticClass: "custom-input",
-                              attrs: { type: "number", step: "0.1" },
+                              attrs: {
+                                type: "number",
+                                min: "0",
+                                max: "10",
+                                step: "0.1"
+                              },
                               domProps: { value: heat_score_row.wave_3 },
                               on: {
                                 change: _vm.averageHandler,
@@ -7386,7 +7401,12 @@ var render = function() {
                                 }
                               ],
                               staticClass: "custom-input",
-                              attrs: { type: "number", step: "0.1" },
+                              attrs: {
+                                type: "number",
+                                min: "0",
+                                max: "10",
+                                step: "0.1"
+                              },
                               domProps: { value: heat_score_row.wave_4 },
                               on: {
                                 change: _vm.averageHandler,
@@ -7423,7 +7443,12 @@ var render = function() {
                                 }
                               ],
                               staticClass: "custom-input",
-                              attrs: { type: "number", step: "0.1" },
+                              attrs: {
+                                type: "number",
+                                min: "0",
+                                max: "10",
+                                step: "0.1"
+                              },
                               domProps: { value: heat_score_row.wave_5 },
                               on: {
                                 change: _vm.averageHandler,
@@ -7460,7 +7485,12 @@ var render = function() {
                                 }
                               ],
                               staticClass: "custom-input",
-                              attrs: { type: "number", step: "0.1" },
+                              attrs: {
+                                type: "number",
+                                min: "0",
+                                max: "10",
+                                step: "0.1"
+                              },
                               domProps: { value: heat_score_row.wave_6 },
                               on: {
                                 change: _vm.averageHandler,
@@ -7497,7 +7527,12 @@ var render = function() {
                                 }
                               ],
                               staticClass: "custom-input",
-                              attrs: { type: "number", step: "0.1" },
+                              attrs: {
+                                type: "number",
+                                min: "0",
+                                max: "10",
+                                step: "0.1"
+                              },
                               domProps: { value: heat_score_row.wave_7 },
                               on: {
                                 change: _vm.averageHandler,
@@ -7534,7 +7569,12 @@ var render = function() {
                                 }
                               ],
                               staticClass: "custom-input",
-                              attrs: { type: "number", step: "0.1" },
+                              attrs: {
+                                type: "number",
+                                min: "0",
+                                max: "10",
+                                step: "0.1"
+                              },
                               domProps: { value: heat_score_row.wave_8 },
                               on: {
                                 change: _vm.averageHandler,
@@ -7571,7 +7611,12 @@ var render = function() {
                                 }
                               ],
                               staticClass: "custom-input",
-                              attrs: { type: "number", step: "0.1" },
+                              attrs: {
+                                type: "number",
+                                min: "0",
+                                max: "10",
+                                step: "0.1"
+                              },
                               domProps: { value: heat_score_row.wave_9 },
                               on: {
                                 change: _vm.averageHandler,
@@ -7608,7 +7653,12 @@ var render = function() {
                                 }
                               ],
                               staticClass: "custom-input",
-                              attrs: { type: "number", step: "0.1" },
+                              attrs: {
+                                type: "number",
+                                min: "0",
+                                max: "10",
+                                step: "0.1"
+                              },
                               domProps: { value: heat_score_row.wave_10 },
                               on: {
                                 change: _vm.averageHandler,
@@ -7646,20 +7696,20 @@ var render = function() {
           )
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "text-right my-4" }, [
+        _c("div", { staticClass: "d-flex justify-content-between my-4" }, [
+          _c(
+            "button",
+            { staticClass: "btn btn-info", on: { click: _vm.closeResults } },
+            [_vm._v("\n          Terminar Manga\n        ")]
+          ),
+          _vm._v(" "),
           _c(
             "button",
             {
               staticClass: "btn btn-orange mr-2",
               on: { click: _vm.saveResults }
             },
-            [_vm._v("\n            Guardar Datos\n          ")]
-          ),
-          _vm._v(" "),
-          _c(
-            "button",
-            { staticClass: "btn btn-info", on: { click: _vm.closeResults } },
-            [_vm._v("\n          Terminar Manga\n        ")]
+            [_vm._v("\n          Guardar Datos\n        ")]
           )
         ])
       ])

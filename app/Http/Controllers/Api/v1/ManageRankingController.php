@@ -150,7 +150,6 @@ class ManageRankingController extends Controller
     }
 
     public function addParticipantToCompetition(Request $request) {
-
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|between:1,100',
             'surname' => 'required|string',
@@ -217,9 +216,9 @@ class ManageRankingController extends Controller
     }
 
     public function registParticipantToCompetition(Request $request) {
-
         $validator = Validator::make($request->all(), [
             'modality' => 'required',
+            'category' => 'required',
         ]);
 
         if($validator->fails()){
@@ -227,20 +226,10 @@ class ManageRankingController extends Controller
         }
 
         $participant = Participant::find($request->participantId);
-
-        $categories = $this->getCategoryFromParticipant($participant);
-
-        if (count($categories) == 0) {
-            return response()->json([
-                'message' => 'No se incluye al participante',
-                'participant' => $participant
-            ], 400);
-        }
-
-        foreach ($categories as $category) {
+        foreach ($request->category as $category_name) {
+            $category = Category::where('name', $category_name)->where('sex_id', $participant->sex_id)->first();
             foreach ($request->modality as $modality_name) {
                 $modality = Modality::where('name', $modality_name)->first();
-
                 $com_cat_mod_participant = new Com_cat_mod_participant;
                 $com_cat_mod_participant->competition_id = $request->competitionId;
                 $com_cat_mod_participant->participant_id = $request->participantId;
@@ -258,33 +247,68 @@ class ManageRankingController extends Controller
         ], 200);
     }
 
-    public function getModalityOfParticipant(Request $request) {
+    public function getParticipantCategoryOptions($participantId) {
+        $participant = Participant::find($participantId);
+        $categories = $this->getCategoryFromParticipant($participant);
+        $participant_category_options = [];
+        foreach ($categories as $category) {
+            array_push($participant_category_options, $category->name);
+        }
+        return response()->json([
+            'message' => 'Success',
+            'participant_category_options' => $participant_category_options,
+        ], 200);
+    }
+
+    public function getModAndCatOfParticipant(Request $request) {
         $modality_id_array = Com_cat_mod_participant::where('competition_id', $request->competitionId)
                                     ->where('participant_id', $request->participantId)
                                     ->pluck('modality_id');
         $modality_id = $modality_id_array->unique();
         $modality_id->all();
-
         $modality_participant = Modality::whereIn('id', $modality_id)->pluck('name');
+
+        $category_id_array = Com_cat_mod_participant::where('competition_id', $request->competitionId)
+                                    ->where('participant_id', $request->participantId)
+                                    ->pluck('category_id');
+        $category_id = $category_id_array->unique();
+        $category_id->all();
+        $category_participant = Category::whereIn('id', $category_id)->pluck('name');
+
+        $participant = Participant::find($request->participantId);
+        $categories = $this->getCategoryFromParticipant($participant);
+        $participant_category_options = [];
+        foreach ($categories as $category) {
+            array_push($participant_category_options, $category->name);
+        }
 
         return response()->json([
             'message' => 'Success',
             'modality_participant' => $modality_participant,
+            'category_participant' => $category_participant,
+            'participant_category_options' => $participant_category_options,
         ], 200);
     }
 
     public function updateParticipantToCompetition(Request $request) {
+        $validator = Validator::make($request->all(), [
+            'modality' => 'required',
+            'category' => 'required',
+        ]);
+
+        if($validator->fails()){
+            return response()->json($validator->errors()->toJson(), 400);
+        }
+
         $deleteRows = Com_cat_mod_participant::where('competition_id', $request->competitionId)
                                     ->where('participant_id', $request->participantId)
                                     ->delete();
         
         $participant = Participant::find($request->participantId);
-        $categories = $this->getCategoryFromParticipant($participant);
-
-        foreach ($categories as $category) {
+        foreach ($request->category as $category_name) {
+            $category = Category::where('name', $category_name)->where('sex_id', $participant->sex_id)->first();
             foreach ($request->modality as $modality_name) {
                 $modality = Modality::where('name', $modality_name)->first();
-
                 $com_cat_mod_participant = new Com_cat_mod_participant;
                 $com_cat_mod_participant->competition_id = $request->competitionId;
                 $com_cat_mod_participant->participant_id = $request->participantId;

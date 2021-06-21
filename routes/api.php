@@ -124,7 +124,9 @@ Route::group([ 'prefix' => 'v1', 'middleware' => 'api'], function(){
         // /* Unregist a Participant to competition */
         Route::post('competition/participant/unregist', 'App\Http\Controllers\Api\v1\ManageRankingController@unregistParticipantToCompetition');
         // /* Get Modality of Participant */
-        Route::post('competition/modality/participant', 'App\Http\Controllers\Api\v1\ManageRankingController@getModalityOfParticipant');
+        Route::post('competition/modality/participant', 'App\Http\Controllers\Api\v1\ManageRankingController@getModAndCatOfParticipant');
+        // /* Get Category of Participant */
+        Route::get('competition/category/participant/{participantId}', 'App\Http\Controllers\Api\v1\ManageRankingController@getParticipantCategoryOptions');
 
         // Live Competition Management
         // /* Get category and modality with part*/

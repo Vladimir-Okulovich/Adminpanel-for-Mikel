@@ -1322,7 +1322,12 @@ var render = function() {
                                 }
                               ],
                               staticClass: "custom-input",
-                              attrs: { type: "number", step: "0.1" },
+                              attrs: {
+                                type: "number",
+                                min: "0",
+                                max: "10",
+                                step: "0.1"
+                              },
                               domProps: { value: judge_heat_score.wave_1 },
                               on: {
                                 input: function($event) {
@@ -1350,7 +1355,12 @@ var render = function() {
                                 }
                               ],
                               staticClass: "custom-input",
-                              attrs: { type: "number", step: "0.1" },
+                              attrs: {
+                                type: "number",
+                                min: "0",
+                                max: "10",
+                                step: "0.1"
+                              },
                               domProps: { value: judge_heat_score.wave_2 },
                               on: {
                                 input: function($event) {
@@ -1378,7 +1388,12 @@ var render = function() {
                                 }
                               ],
                               staticClass: "custom-input",
-                              attrs: { type: "number", step: "0.1" },
+                              attrs: {
+                                type: "number",
+                                min: "0",
+                                max: "10",
+                                step: "0.1"
+                              },
                               domProps: { value: judge_heat_score.wave_3 },
                               on: {
                                 input: function($event) {
@@ -1406,7 +1421,12 @@ var render = function() {
                                 }
                               ],
                               staticClass: "custom-input",
-                              attrs: { type: "number", step: "0.1" },
+                              attrs: {
+                                type: "number",
+                                min: "0",
+                                max: "10",
+                                step: "0.1"
+                              },
                               domProps: { value: judge_heat_score.wave_4 },
                               on: {
                                 input: function($event) {
@@ -1434,7 +1454,12 @@ var render = function() {
                                 }
                               ],
                               staticClass: "custom-input",
-                              attrs: { type: "number", step: "0.1" },
+                              attrs: {
+                                type: "number",
+                                min: "0",
+                                max: "10",
+                                step: "0.1"
+                              },
                               domProps: { value: judge_heat_score.wave_5 },
                               on: {
                                 input: function($event) {
@@ -1462,7 +1487,12 @@ var render = function() {
                                 }
                               ],
                               staticClass: "custom-input",
-                              attrs: { type: "number", step: "0.1" },
+                              attrs: {
+                                type: "number",
+                                min: "0",
+                                max: "10",
+                                step: "0.1"
+                              },
                               domProps: { value: judge_heat_score.wave_6 },
                               on: {
                                 input: function($event) {
@@ -1490,7 +1520,12 @@ var render = function() {
                                 }
                               ],
                               staticClass: "custom-input",
-                              attrs: { type: "number", step: "0.1" },
+                              attrs: {
+                                type: "number",
+                                min: "0",
+                                max: "10",
+                                step: "0.1"
+                              },
                               domProps: { value: judge_heat_score.wave_7 },
                               on: {
                                 input: function($event) {
@@ -1518,7 +1553,12 @@ var render = function() {
                                 }
                               ],
                               staticClass: "custom-input",
-                              attrs: { type: "number", step: "0.1" },
+                              attrs: {
+                                type: "number",
+                                min: "0",
+                                max: "10",
+                                step: "0.1"
+                              },
                               domProps: { value: judge_heat_score.wave_8 },
                               on: {
                                 input: function($event) {
@@ -1546,7 +1586,12 @@ var render = function() {
                                 }
                               ],
                               staticClass: "custom-input",
-                              attrs: { type: "number", step: "0.1" },
+                              attrs: {
+                                type: "number",
+                                min: "0",
+                                max: "10",
+                                step: "0.1"
+                              },
                               domProps: { value: judge_heat_score.wave_9 },
                               on: {
                                 input: function($event) {
@@ -1574,7 +1619,12 @@ var render = function() {
                                 }
                               ],
                               staticClass: "custom-input",
-                              attrs: { type: "number", step: "0.1" },
+                              attrs: {
+                                type: "number",
+                                min: "0",
+                                max: "10",
+                                step: "0.1"
+                              },
                               domProps: { value: judge_heat_score.wave_10 },
                               on: {
                                 input: function($event) {
@@ -1635,12 +1685,17 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
-          _c("div", [
+          _c("div", { staticClass: "d-flex justify-content-between mt-4" }, [
+            _c(
+              "button",
+              { staticClass: "btn btn-info", on: { click: _vm.closeResults } },
+              [_vm._v("\n        Terminar\n      ")]
+            ),
+            _vm._v(" "),
             _c(
               "button",
               {
-                staticClass: "btn btn-info mt-4",
-                staticStyle: { float: "right" },
+                staticClass: "btn btn-orange mr-2",
                 on: { click: _vm.saveResults }
               },
               [_vm._v("\n        Guardar\n      ")]
