@@ -104,6 +104,7 @@
         'unregistParticipantToCompetitionCategoryModality',
         'createFirstCompetitionBoxes',
         'getModAndCatOfParticipant',
+        'getAvailableCategories',
         'updateParticipantToCompetition',
       ]),
       /**
@@ -141,6 +142,20 @@
           this.edit_modalities = res.data.modality_participant;
           this.availableCategoryOptions = res.data.available_category_options;
         })
+      },
+      editModalityHandler() {
+        // console.log(this.edit_modalities)
+        if (this.edit_modalities.length > 0) {
+          this.getAvailableCategories({
+            competitionId: this.$route.params.competitionId,
+            participantId: this.participantId,
+            modality: this.edit_modalities,
+          })
+          .then((res) => {
+            console.log(res)
+            this.availableCategoryOptions = res.data.available_category_options;
+          })
+        }
       },
       editParticipantWithModAndCat() {
         if (this.edit_modalities.length == 0) {
@@ -350,6 +365,7 @@
           v-model="edit_modalities"
           :options="modalityOptions"
           :multiple="true"
+          @input="editModalityHandler"
         ></multiselect>
         <div class="invalid-feedback" :class="{ 'd-inline-block': !isRequired.modality }">
           <span>Este Campo es Obligatorio.</span>
