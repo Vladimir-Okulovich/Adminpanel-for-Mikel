@@ -126,7 +126,7 @@ Route::group([ 'prefix' => 'v1', 'middleware' => 'api'], function(){
         // /* Get Modality of Participant */
         Route::post('competition/modality/participant', 'App\Http\Controllers\Api\v1\ManageRankingController@getModAndCatOfParticipant');
         // /* Get Available Categories of Participant */
-        Route::post('competition/modality/participant/available-cat', 'App\Http\Controllers\Api\v1\ManageRankingController@getAvailableCategories');
+        Route::post('competition/modality/participant-available-cat', 'App\Http\Controllers\Api\v1\ManageRankingController@getAvailableCategories');
         // /* Get Category of Participant */
         Route::get('competition/category/participant/{participantId}', 'App\Http\Controllers\Api\v1\ManageRankingController@getParticipantCategoryOptions');
 

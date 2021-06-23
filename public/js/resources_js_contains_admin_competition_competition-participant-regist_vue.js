@@ -170,6 +170,8 @@ __webpack_require__.r(__webpack_exports__);
     getParticipantCategoryOptionsIcon: function getParticipantCategoryOptionsIcon(id) {
       var _this = this;
 
+      this.isRequiredModality.register = true;
+      this.isRequiredCategory.register = true;
       this.setParticipantId(id);
       this.getParticipantCategoryOptions(id).then(function (res) {
         _this.register_categories = res.data.participant_category_options;
@@ -179,8 +181,8 @@ __webpack_require__.r(__webpack_exports__);
     getModAndCatOfParticipantIcon: function getModAndCatOfParticipantIcon(id) {
       var _this2 = this;
 
-      this.isRequired.modality = true;
-      this.isRequired.category = true;
+      this.isRequiredModality.edit = true;
+      this.isRequiredCategory.edit = true;
       this.setParticipantId(id);
       this.getModAndCatOfParticipant({
         competitionId: this.$route.params.competitionId,
