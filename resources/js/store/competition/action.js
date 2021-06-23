@@ -165,7 +165,7 @@ const actions = {
     getAvailableCategories(context, data) {
         ApiService.setHeader();
         return new Promise((resolve, reject) => {
-            ApiService.post("api/v1/admin/competition/modality/participant/available-cat", data)
+            ApiService.post("api/v1/admin/competition/modality/participant-available-cat", data)
                 .then((res) => {
                     resolve(res);
                 })

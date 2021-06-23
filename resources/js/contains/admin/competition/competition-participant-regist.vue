@@ -123,6 +123,8 @@
         this.participantId = id;
       },
       getParticipantCategoryOptionsIcon(id) {
+        this.isRequiredModality.register = true;
+        this.isRequiredCategory.register = true;
         this.setParticipantId(id);
         this.getParticipantCategoryOptions(id)
         .then((res) => {
@@ -131,8 +133,8 @@
         })
       },
       getModAndCatOfParticipantIcon(id) {
-        this.isRequired.modality = true;
-        this.isRequired.category = true;
+        this.isRequiredModality.edit = true;
+        this.isRequiredCategory.edit = true;
         this.setParticipantId(id);
         this.getModAndCatOfParticipant({
           competitionId: this.$route.params.competitionId,
