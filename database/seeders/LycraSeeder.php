@@ -16,19 +16,19 @@ class LycraSeeder extends Seeder
     {
         //
         DB::table('lycras')->insert([[
-            'name' => 'Rojo',
+            'name' => 'Gorri',
             'color' => '#ff0000',
         ],[
-            'name' => 'Amarillo',
+            'name' => 'Hopri',
             'color' => '#ffff00',
         ],[
-            'name' => 'Azul',
+            'name' => 'Urdin',
             'color' => '#0048ff',
         ],[
-            'name' => 'Blanco',
+            'name' => 'Txuri',
             'color' => '#ffffff',
         ],[
-            'name' => 'Negro',
+            'name' => 'Beltz',
             'color' => '#000000',
         ],]);
     }

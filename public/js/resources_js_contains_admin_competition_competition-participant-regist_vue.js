@@ -41,7 +41,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var core_js_modules_es_symbol_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_symbol_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es.symbol.description.js */ "./node_modules/core-js/modules/es.symbol.description.js");
 /* harmony import */ var core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
+/* harmony import */ var C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
 /* harmony import */ var _subcomponent_layout__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../subcomponent/layout */ "./resources/js/contains/admin/subcomponent/layout.vue");
 /* harmony import */ var _app_config__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/app.config */ "./resources/js/app.config.json");
 /* harmony import */ var _components_page_header__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/components/page-header */ "./resources/js/components/page-header.vue");
@@ -74,7 +74,7 @@ __webpack_require__.r(__webpack_exports__);
       title: "AÑADIR PARTICIPANTES A COMPETICION",
       items: [{
         text: "Home",
-        href: "/admin"
+        href: "/admin/competitions"
       }, {
         text: "Listado Competiciones",
         href: "/admin/competitions"
@@ -123,10 +123,17 @@ __webpack_require__.r(__webpack_exports__);
       modalityOptions: ["Corto", "Largo"],
       register_modalities: ["Corto", "Largo"],
       edit_modalities: [],
+      isRequiredCategory: {
+        register: true,
+        edit: true
+      },
+      participantCategoryOptions: [],
+      register_categories: [],
+      edit_categories: [],
       participantId: 0
     };
   },
-  computed: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)((0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_7__.mapGetters)(['getRegisteredParticipants', 'getNonRegisteredParticipants'])), {}, {
+  computed: (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)((0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_7__.mapGetters)(['getRegisteredParticipants', 'getNonRegisteredParticipants'])), {}, {
     /**
      * Total no. of records
      */
@@ -143,7 +150,7 @@ __webpack_require__.r(__webpack_exports__);
     this.totalRows_1 = this.getNonRegisteredParticipants.length;
     this.initParticipantsForCompetition(this.$route.params.competitionId);
   },
-  methods: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)((0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_7__.mapActions)(['initParticipantsForCompetition', 'registParticipantToCompetition', 'updateParticipantToCompetition', 'unregistParticipantToCompetition', 'getModalityOfParticipant'])), {}, {
+  methods: (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)((0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_7__.mapActions)(['initParticipantsForCompetition', 'registParticipantToCompetition', 'updateParticipantToCompetition', 'unregistParticipantToCompetition', 'getModAndCatOfParticipant', 'getParticipantCategoryOptions'])), {}, {
     /**
      * Search the table data with search input
      */
@@ -160,45 +167,73 @@ __webpack_require__.r(__webpack_exports__);
     setParticipantId: function setParticipantId(id) {
       this.participantId = id;
     },
-    getModalityOfParticipantIcon: function getModalityOfParticipantIcon(id) {
+    getParticipantCategoryOptionsIcon: function getParticipantCategoryOptionsIcon(id) {
       var _this = this;
 
       this.setParticipantId(id);
-      this.getModalityOfParticipant({
+      this.getParticipantCategoryOptions(id).then(function (res) {
+        _this.register_categories = res.data.participant_category_options;
+        _this.participantCategoryOptions = res.data.participant_category_options;
+      });
+    },
+    getModAndCatOfParticipantIcon: function getModAndCatOfParticipantIcon(id) {
+      var _this2 = this;
+
+      this.setParticipantId(id);
+      this.getModAndCatOfParticipant({
         competitionId: this.$route.params.competitionId,
         participantId: id
       }).then(function (res) {
         // console.log(res)
-        _this.edit_modalities = res.data.modality_participant;
+        _this2.edit_categories = res.data.category_participant;
+        _this2.edit_modalities = res.data.modality_participant;
+        _this2.participantCategoryOptions = res.data.participant_category_options;
       });
     },
-    registerParticipantWithModality: function registerParticipantWithModality() {
-      // console.log(this.modalities.length)
-      if (this.register_modalities.length > 0) {
-        this.isRequiredModality.register = true;
-        this.registParticipantToCompetition({
-          competitionId: this.$route.params.competitionId,
-          participantId: this.participantId,
-          modality: this.register_modalities
-        });
-        this.$bvModal.hide('register-modality-modal');
-      } else {
+    registerParticipantWithModAndCat: function registerParticipantWithModAndCat() {
+      if (this.register_modalities.length == 0) {
         this.isRequiredModality.register = false;
+        return;
       }
+
+      this.isRequiredModality.register = true;
+
+      if (this.register_categories.length == 0) {
+        this.isRequiredCategory.register = false;
+        return;
+      }
+
+      this.isRequiredCategory.register = true;
+      this.registParticipantToCompetition({
+        competitionId: this.$route.params.competitionId,
+        participantId: this.participantId,
+        modality: this.register_modalities,
+        category: this.register_categories
+      });
+      this.$bvModal.hide('register-modality-modal');
+      this.register_modalities = ["Corto", "Largo"];
     },
-    editParticipantWithModality: function editParticipantWithModality() {
-      // console.log(this.modalities.length)
-      if (this.edit_modalities.length > 0) {
-        this.isRequiredModality.edit = true;
-        this.updateParticipantToCompetition({
-          competitionId: this.$route.params.competitionId,
-          participantId: this.participantId,
-          modality: this.edit_modalities
-        });
-        this.$bvModal.hide('edit-modality-modal');
-      } else {
+    editParticipantWithModAndCat: function editParticipantWithModAndCat() {
+      if (this.edit_modalities.length == 0) {
         this.isRequiredModality.edit = false;
+        return;
       }
+
+      this.isRequiredModality.edit = true;
+
+      if (this.edit_categories.length == 0) {
+        this.isRequiredCategory.edit = false;
+        return;
+      }
+
+      this.isRequiredCategory.edit = true;
+      this.updateParticipantToCompetition({
+        competitionId: this.$route.params.competitionId,
+        participantId: this.participantId,
+        modality: this.edit_modalities,
+        category: this.edit_categories
+      });
+      this.$bvModal.hide('edit-modality-modal');
     },
     unregisterParticipant: function unregisterParticipant() {
       this.unregistParticipantToCompetition({
@@ -206,7 +241,10 @@ __webpack_require__.r(__webpack_exports__);
         participantId: this.participantId
       });
       this.$bvModal.hide('unregister-modality-modal');
-    }
+    } // back() {
+    //   this.$router.go(-1);
+    // },
+
   })
 });
 
@@ -272,13 +310,9 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
-/* harmony import */ var simplebar_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! simplebar-vue */ "./node_modules/simplebar-vue/dist/simplebar-vue.esm.js");
-/* harmony import */ var metismenujs_dist_metismenujs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! metismenujs/dist/metismenujs */ "./node_modules/metismenujs/dist/metismenujs.js");
-/* harmony import */ var metismenujs_dist_metismenujs__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(metismenujs_dist_metismenujs__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _state_helpers__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/state/helpers */ "./resources/js/state/helpers.js");
-
-
+/* harmony import */ var simplebar_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! simplebar-vue */ "./node_modules/simplebar-vue/dist/simplebar-vue.esm.js");
+/* harmony import */ var metismenujs_dist_metismenujs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! metismenujs/dist/metismenujs */ "./node_modules/metismenujs/dist/metismenujs.js");
+/* harmony import */ var metismenujs_dist_metismenujs__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(metismenujs_dist_metismenujs__WEBPACK_IMPORTED_MODULE_1__);
 
 
 /**
@@ -287,11 +321,11 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    simplebar: simplebar_vue__WEBPACK_IMPORTED_MODULE_1__.default
+    simplebar: simplebar_vue__WEBPACK_IMPORTED_MODULE_0__.default
   },
   mounted: function mounted() {
     // eslint-disable-next-line no-unused-vars
-    var menuRef = new (metismenujs_dist_metismenujs__WEBPACK_IMPORTED_MODULE_2___default())("#side-menu");
+    var menuRef = new (metismenujs_dist_metismenujs__WEBPACK_IMPORTED_MODULE_1___default())("#side-menu");
     var links = document.getElementsByClassName("side-nav-link");
     var matchingMenuItem = null;
 
@@ -335,7 +369,7 @@ __webpack_require__.r(__webpack_exports__);
       }
     }
   },
-  methods: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__.default)((0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__.default)({}, _state_helpers__WEBPACK_IMPORTED_MODULE_3__.layoutMethods), {}, {
+  methods: {
     changeLayout: function changeLayout(layout) {
       this.changeLayoutType({
         layoutType: layout
@@ -358,7 +392,7 @@ __webpack_require__.r(__webpack_exports__);
       document.body.classList.add("vertical-collpsed");
       document.body.setAttribute("data-keep-enlarged", "true");
     }
-  })
+  }
 });
 
 /***/ }),
@@ -411,42 +445,6 @@ __webpack_require__.r(__webpack_exports__);
     }
   }
 });
-
-/***/ }),
-
-/***/ "./resources/js/state/helpers.js":
-/*!***************************************!*\
-  !*** ./resources/js/state/helpers.js ***!
-  \***************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "authComputed": function() { return /* binding */ authComputed; },
-/* harmony export */   "layoutComputed": function() { return /* binding */ layoutComputed; },
-/* harmony export */   "authMethods": function() { return /* binding */ authMethods; },
-/* harmony export */   "layoutMethods": function() { return /* binding */ layoutMethods; }
-/* harmony export */ });
-/* harmony import */ var E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.mjs");
-
-
-var authComputed = (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__.default)((0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapState)('auth', {
-  currentUser: function currentUser(state) {
-    return state.currentUser;
-  }
-})), (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapGetters)('auth', ['loggedIn']));
-var layoutComputed = (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapState)('layout', {
-  layoutType: function layoutType(state) {
-    return state.layoutType;
-  },
-  layoutWidth: function layoutWidth(state) {
-    return state.layoutWidth;
-  }
-}));
-var authMethods = (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapActions)('auth', ['logIn', 'logOut', 'register', 'resetPassword']);
-var layoutMethods = (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapActions)('layout', ['changeLayoutType', 'changeLayoutWidth']);
 
 /***/ }),
 
@@ -7074,7 +7072,7 @@ var render = function() {
       _c("PageHeader", { attrs: { title: _vm.title, items: _vm.items } }, [
         _c(
           "div",
-          { staticClass: "float-right" },
+          { staticClass: "float-right d-flex" },
           [
             _c(
               "router-link",
@@ -7091,6 +7089,15 @@ var render = function() {
                 _c("i", { staticClass: "fas fa-plus mr-1" }),
                 _vm._v(" NUEVO PARTICIPANTE\n      ")
               ]
+            ),
+            _vm._v(" "),
+            _c(
+              "router-link",
+              {
+                staticClass: "btn btn-secondary ml-lg-4 ml-3",
+                attrs: { to: { name: "Competitions" } }
+              },
+              [_vm._v("\n        Volver\n      ")]
             )
           ],
           1
@@ -7251,7 +7258,9 @@ var render = function() {
                                 attrs: { size: "sm" },
                                 on: {
                                   click: function($event) {
-                                    return _vm.setParticipantId(row.item.id)
+                                    return _vm.getParticipantCategoryOptionsIcon(
+                                      row.item.id
+                                    )
                                   }
                                 }
                               },
@@ -7453,7 +7462,7 @@ var render = function() {
                                 attrs: { size: "sm" },
                                 on: {
                                   click: function($event) {
-                                    return _vm.getModalityOfParticipantIcon(
+                                    return _vm.getModAndCatOfParticipantIcon(
                                       row.item.id
                                     )
                                   }
@@ -7572,6 +7581,38 @@ var render = function() {
             1
           ),
           _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "mb-2" },
+            [
+              _c("label", [_vm._v("Categoría")]),
+              _vm._v(" "),
+              _c("multiselect", {
+                attrs: {
+                  options: _vm.participantCategoryOptions,
+                  multiple: true
+                },
+                model: {
+                  value: _vm.register_categories,
+                  callback: function($$v) {
+                    _vm.register_categories = $$v
+                  },
+                  expression: "register_categories"
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "invalid-feedback",
+                  class: { "d-inline-block": !_vm.isRequiredCategory.register }
+                },
+                [_c("span", [_vm._v("Este Campo es Obligatorio.")])]
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
           _c("footer", { staticClass: "modal-footer" }, [
             _c(
               "button",
@@ -7594,7 +7635,7 @@ var render = function() {
                 attrs: { type: "button" },
                 on: {
                   click: function($event) {
-                    return _vm.registerParticipantWithModality()
+                    return _vm.registerParticipantWithModAndCat()
                   }
                 }
               },
@@ -7645,6 +7686,38 @@ var render = function() {
             1
           ),
           _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "mb-2" },
+            [
+              _c("label", [_vm._v("Categoría")]),
+              _vm._v(" "),
+              _c("multiselect", {
+                attrs: {
+                  options: _vm.participantCategoryOptions,
+                  multiple: true
+                },
+                model: {
+                  value: _vm.edit_categories,
+                  callback: function($$v) {
+                    _vm.edit_categories = $$v
+                  },
+                  expression: "edit_categories"
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "invalid-feedback",
+                  class: { "d-inline-block": !_vm.isRequiredCategory.edit }
+                },
+                [_c("span", [_vm._v("Este Campo es Obligatorio.")])]
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
           _c("footer", { staticClass: "modal-footer" }, [
             _c(
               "button",
@@ -7667,7 +7740,7 @@ var render = function() {
                 attrs: { type: "button" },
                 on: {
                   click: function($event) {
-                    return _vm.editParticipantWithModality()
+                    return _vm.editParticipantWithModAndCat()
                   }
                 }
               },

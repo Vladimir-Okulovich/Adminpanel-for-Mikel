@@ -1,5 +1,4 @@
 <script>
-import { authMethods } from "@/state/helpers";
 import appConfig from "@/app.config";
 
 /**
@@ -22,7 +21,6 @@ export default {
     };
   },
   methods: {
-    ...authMethods,
     // Try to register the user in with the email, username
     // and password they provided.
     tryToRegisterIn() {
@@ -67,7 +65,7 @@ export default {
             <div class="bg-primary">
               <div class="text-primary text-center p-4">
                 <h5 class="text-white font-size-20">Free Register</h5>
-                <p class="text-white-50">Get your free Veltrix account now.</p>
+                <p class="text-white-50">Get your account now.</p>
                 <a href="/" class="logo logo-admin">
                   <img src="@/assets/images/logo-sm.png" height="24" alt="logo" />
                 </a>

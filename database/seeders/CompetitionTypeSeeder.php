@@ -17,13 +17,13 @@ class CompetitionTypeSeeder extends Seeder
         //
         DB::table('competition_types')->insert([[
             'name' => 'Cto. Euskadi',
-            'description' => 'If the Cup Ranking scores with more points'
+            'description' => 'Si el Ranking de la Copa puntúa con más puntos'
         ], [
             'name' => 'Cto.Bizkaia and Cto. Guipúzcoa',
-            'description' => 'does not score a cup'
+            'description' => 'no anota una copa'
         ], [
             'name' => 'Cup',
-            'description' => 'If you score Cup Ranking'
+            'description' => 'Si logras el Ranking de la Copa'
         ]]);
     }
 }

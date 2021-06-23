@@ -16,11 +16,11 @@ class StatusSeeder extends Seeder
     {
         //
         DB::table('statuses')->insert([[
-            'name' => 'CLOSED'
+            'name' => 'CERRADA'
         ], [
-            'name' => 'REGISTRATION OPEN'
+            'name' => 'REGISTRO ABIERTO'
         ], [
-            'name' => 'COMPETICIÓN EN CURSO'
+            'name' => 'EN CURSO'
         ]]);
     }
 }

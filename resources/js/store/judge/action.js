@@ -20,9 +20,9 @@ const actions = {
         ApiService.setHeader();
         return new Promise((resolve) =>{
             ApiService.post("api/v1/judge/store", data)
-                .then(({data}) => {
+                .then((res) => {
                     toastr.success('Puntuación de Manga salvada. Espere a que se active la siguiente manga', '', {timeout: 5000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
-                    context.commit(type.SET_ISACTIVESTATUS, data)
+                    resolve(res)
                 })
                 .catch(({ response }) => {
                     // console.log(response);

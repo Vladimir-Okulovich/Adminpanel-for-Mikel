@@ -45,7 +45,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each.js */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
 /* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
+/* harmony import */ var C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
 /* harmony import */ var _subcomponent_layout__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../subcomponent/layout */ "./resources/js/contains/admin/subcomponent/layout.vue");
 /* harmony import */ var _app_config__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/app.config */ "./resources/js/app.config.json");
 /* harmony import */ var _components_page_header__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @/components/page-header */ "./resources/js/components/page-header.vue");
@@ -81,7 +81,7 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   watch: {},
-  computed: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_4__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_8__.mapGetters)(['round_heats', 'heat_scores'])),
+  computed: (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_4__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_8__.mapGetters)(['round_heats', 'heat_scores'])),
   mounted: function mounted() {
     this.competitionId = this.$route.params.competitionId;
     this.categoryId = this.$route.params.categoryId;
@@ -96,7 +96,7 @@ __webpack_require__.r(__webpack_exports__);
       heat: this.heat
     });
   },
-  methods: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_4__.default)((0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_4__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_8__.mapActions)(['initHeatDetails', 'storeFinalHeatResults'])), {}, {
+  methods: (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_4__.default)((0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_4__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_8__.mapActions)(['initHeatDetails', 'storeFinalHeatResults'])), {}, {
     drawHandler: function drawHandler() {
       this.round_heats.forEach(function (round_heat) {
         if (round_heat.draw > 2) {
@@ -203,13 +203,9 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
-/* harmony import */ var simplebar_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! simplebar-vue */ "./node_modules/simplebar-vue/dist/simplebar-vue.esm.js");
-/* harmony import */ var metismenujs_dist_metismenujs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! metismenujs/dist/metismenujs */ "./node_modules/metismenujs/dist/metismenujs.js");
-/* harmony import */ var metismenujs_dist_metismenujs__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(metismenujs_dist_metismenujs__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _state_helpers__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/state/helpers */ "./resources/js/state/helpers.js");
-
-
+/* harmony import */ var simplebar_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! simplebar-vue */ "./node_modules/simplebar-vue/dist/simplebar-vue.esm.js");
+/* harmony import */ var metismenujs_dist_metismenujs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! metismenujs/dist/metismenujs */ "./node_modules/metismenujs/dist/metismenujs.js");
+/* harmony import */ var metismenujs_dist_metismenujs__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(metismenujs_dist_metismenujs__WEBPACK_IMPORTED_MODULE_1__);
 
 
 /**
@@ -218,11 +214,11 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    simplebar: simplebar_vue__WEBPACK_IMPORTED_MODULE_1__.default
+    simplebar: simplebar_vue__WEBPACK_IMPORTED_MODULE_0__.default
   },
   mounted: function mounted() {
     // eslint-disable-next-line no-unused-vars
-    var menuRef = new (metismenujs_dist_metismenujs__WEBPACK_IMPORTED_MODULE_2___default())("#side-menu");
+    var menuRef = new (metismenujs_dist_metismenujs__WEBPACK_IMPORTED_MODULE_1___default())("#side-menu");
     var links = document.getElementsByClassName("side-nav-link");
     var matchingMenuItem = null;
 
@@ -266,7 +262,7 @@ __webpack_require__.r(__webpack_exports__);
       }
     }
   },
-  methods: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__.default)((0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__.default)({}, _state_helpers__WEBPACK_IMPORTED_MODULE_3__.layoutMethods), {}, {
+  methods: {
     changeLayout: function changeLayout(layout) {
       this.changeLayoutType({
         layoutType: layout
@@ -289,7 +285,7 @@ __webpack_require__.r(__webpack_exports__);
       document.body.classList.add("vertical-collpsed");
       document.body.setAttribute("data-keep-enlarged", "true");
     }
-  })
+  }
 });
 
 /***/ }),
@@ -342,42 +338,6 @@ __webpack_require__.r(__webpack_exports__);
     }
   }
 });
-
-/***/ }),
-
-/***/ "./resources/js/state/helpers.js":
-/*!***************************************!*\
-  !*** ./resources/js/state/helpers.js ***!
-  \***************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "authComputed": function() { return /* binding */ authComputed; },
-/* harmony export */   "layoutComputed": function() { return /* binding */ layoutComputed; },
-/* harmony export */   "authMethods": function() { return /* binding */ authMethods; },
-/* harmony export */   "layoutMethods": function() { return /* binding */ layoutMethods; }
-/* harmony export */ });
-/* harmony import */ var E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.mjs");
-
-
-var authComputed = (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__.default)((0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapState)('auth', {
-  currentUser: function currentUser(state) {
-    return state.currentUser;
-  }
-})), (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapGetters)('auth', ['loggedIn']));
-var layoutComputed = (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapState)('layout', {
-  layoutType: function layoutType(state) {
-    return state.layoutType;
-  },
-  layoutWidth: function layoutWidth(state) {
-    return state.layoutWidth;
-  }
-}));
-var authMethods = (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapActions)('auth', ['logIn', 'logOut', 'register', 'resetPassword']);
-var layoutMethods = (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapActions)('layout', ['changeLayoutType', 'changeLayoutWidth']);
 
 /***/ }),
 
@@ -7235,7 +7195,13 @@ var render = function() {
             )
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "text-right my-4" }, [
+          _c("div", { staticClass: "d-flex justify-content-between my-4" }, [
+            _c(
+              "button",
+              { staticClass: "btn btn-info", on: { click: _vm.closeResults } },
+              [_vm._v("\n           Terminar Manga\n          ")]
+            ),
+            _vm._v(" "),
             _c(
               "button",
               {
@@ -7243,12 +7209,6 @@ var render = function() {
                 on: { click: _vm.saveResults }
               },
               [_vm._v("\n            Guardar Datos\n          ")]
-            ),
-            _vm._v(" "),
-            _c(
-              "button",
-              { staticClass: "btn btn-info", on: { click: _vm.closeResults } },
-              [_vm._v("\n           Terminar Manga\n          ")]
             )
           ])
         ])
@@ -7315,7 +7275,12 @@ var render = function() {
                                 }
                               ],
                               staticClass: "custom-input",
-                              attrs: { type: "number", step: "0.1" },
+                              attrs: {
+                                type: "number",
+                                min: "0",
+                                max: "10",
+                                step: "0.1"
+                              },
                               domProps: { value: heat_score_row.wave_1 },
                               on: {
                                 change: _vm.averageHandler,
@@ -7352,7 +7317,12 @@ var render = function() {
                                 }
                               ],
                               staticClass: "custom-input",
-                              attrs: { type: "number", step: "0.1" },
+                              attrs: {
+                                type: "number",
+                                min: "0",
+                                max: "10",
+                                step: "0.1"
+                              },
                               domProps: { value: heat_score_row.wave_2 },
                               on: {
                                 change: _vm.averageHandler,
@@ -7389,7 +7359,12 @@ var render = function() {
                                 }
                               ],
                               staticClass: "custom-input",
-                              attrs: { type: "number", step: "0.1" },
+                              attrs: {
+                                type: "number",
+                                min: "0",
+                                max: "10",
+                                step: "0.1"
+                              },
                               domProps: { value: heat_score_row.wave_3 },
                               on: {
                                 change: _vm.averageHandler,
@@ -7426,7 +7401,12 @@ var render = function() {
                                 }
                               ],
                               staticClass: "custom-input",
-                              attrs: { type: "number", step: "0.1" },
+                              attrs: {
+                                type: "number",
+                                min: "0",
+                                max: "10",
+                                step: "0.1"
+                              },
                               domProps: { value: heat_score_row.wave_4 },
                               on: {
                                 change: _vm.averageHandler,
@@ -7463,7 +7443,12 @@ var render = function() {
                                 }
                               ],
                               staticClass: "custom-input",
-                              attrs: { type: "number", step: "0.1" },
+                              attrs: {
+                                type: "number",
+                                min: "0",
+                                max: "10",
+                                step: "0.1"
+                              },
                               domProps: { value: heat_score_row.wave_5 },
                               on: {
                                 change: _vm.averageHandler,
@@ -7500,7 +7485,12 @@ var render = function() {
                                 }
                               ],
                               staticClass: "custom-input",
-                              attrs: { type: "number", step: "0.1" },
+                              attrs: {
+                                type: "number",
+                                min: "0",
+                                max: "10",
+                                step: "0.1"
+                              },
                               domProps: { value: heat_score_row.wave_6 },
                               on: {
                                 change: _vm.averageHandler,
@@ -7537,7 +7527,12 @@ var render = function() {
                                 }
                               ],
                               staticClass: "custom-input",
-                              attrs: { type: "number", step: "0.1" },
+                              attrs: {
+                                type: "number",
+                                min: "0",
+                                max: "10",
+                                step: "0.1"
+                              },
                               domProps: { value: heat_score_row.wave_7 },
                               on: {
                                 change: _vm.averageHandler,
@@ -7574,7 +7569,12 @@ var render = function() {
                                 }
                               ],
                               staticClass: "custom-input",
-                              attrs: { type: "number", step: "0.1" },
+                              attrs: {
+                                type: "number",
+                                min: "0",
+                                max: "10",
+                                step: "0.1"
+                              },
                               domProps: { value: heat_score_row.wave_8 },
                               on: {
                                 change: _vm.averageHandler,
@@ -7611,7 +7611,12 @@ var render = function() {
                                 }
                               ],
                               staticClass: "custom-input",
-                              attrs: { type: "number", step: "0.1" },
+                              attrs: {
+                                type: "number",
+                                min: "0",
+                                max: "10",
+                                step: "0.1"
+                              },
                               domProps: { value: heat_score_row.wave_9 },
                               on: {
                                 change: _vm.averageHandler,
@@ -7648,7 +7653,12 @@ var render = function() {
                                 }
                               ],
                               staticClass: "custom-input",
-                              attrs: { type: "number", step: "0.1" },
+                              attrs: {
+                                type: "number",
+                                min: "0",
+                                max: "10",
+                                step: "0.1"
+                              },
                               domProps: { value: heat_score_row.wave_10 },
                               on: {
                                 change: _vm.averageHandler,
@@ -7686,20 +7696,20 @@ var render = function() {
           )
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "text-right my-4" }, [
+        _c("div", { staticClass: "d-flex justify-content-between my-4" }, [
+          _c(
+            "button",
+            { staticClass: "btn btn-info", on: { click: _vm.closeResults } },
+            [_vm._v("\n          Terminar Manga\n        ")]
+          ),
+          _vm._v(" "),
           _c(
             "button",
             {
               staticClass: "btn btn-orange mr-2",
               on: { click: _vm.saveResults }
             },
-            [_vm._v("\n            Guardar Datos\n          ")]
-          ),
-          _vm._v(" "),
-          _c(
-            "button",
-            { staticClass: "btn btn-info", on: { click: _vm.closeResults } },
-            [_vm._v("\n          Terminar Manga\n        ")]
+            [_vm._v("\n          Guardar Datos\n        ")]
           )
         ])
       ])

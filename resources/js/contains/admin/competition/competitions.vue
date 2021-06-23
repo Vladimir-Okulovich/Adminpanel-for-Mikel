@@ -20,7 +20,7 @@
         items: [
           {
             text: "Home",
-            href: "/admin"
+            href: "/admin/competitions"
           },
           {
             text: "Listado Competiciones",
@@ -39,11 +39,11 @@
           { label: "Título", key: "title", sortable: true },
           { label: "Tipo Competición",  key: "competition_type", sortable: true },
           { label: "Lugar", key: "place", sortable: false },
-          { label: "Fecha", key: "date", sortable: false },
-          { label: "Hora", key: "time", sortable: false },
-          { label: "Organizador", key: "organizer", sortable: true },
-          { label: "Puntúa Ranking", key: "ranking_score", sortable: true },
-          { label: "Estado", key: "status", sortable: true },
+          { label: "Fecha", key: "date", sortable: true },
+          { label: "Hora", key: "time", sortable: true },
+          { label: "Organizador", key: "organizer", sortable: false },
+          { label: "Puntúa Ranking", key: "ranking_score", sortable: false },
+          { label: "Estado", key: "status", sortable: false },
           { label: "Acciones", key: "actions", sortable: false }
         ],
         deletingId: 0,

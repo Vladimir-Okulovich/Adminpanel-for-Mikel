@@ -34,7 +34,7 @@ export default {
       items: [
         {
           text: "Home",
-          href: "/admin"
+          href: "/admin/competitions"
         },
         {
           text: "Listado Competiciones",
@@ -63,10 +63,14 @@ export default {
         ranking_score: "Si",
         status: "REGISTRO ABIERTO",
         lycra: "",
-        modality: "",
+        modality: [
+          "Corto",
+          "Largo",
+        ],
         category: "",
         logo: null,
       },
+      url: '/images/default.jpg',
       rankingScoreOptions: [
         "Si",
         "No"
@@ -102,6 +106,9 @@ export default {
     lycraOptions: function () {
       this.typeform.lycra = this.lycraOptions;
     },
+    categoryOptions: function () {
+      this.typeform.category = this.categoryOptions;
+    },
   },
   computed: {
     ...mapGetters([
@@ -125,14 +132,15 @@ export default {
     selectFile(event) {
       // `files` is always an array because the file input may be in multiple mode
       this.typeform.logo = event.target.files[0];
-      // console.log(this.typeform.logo)
+      console.log(this.typeform.logo)
+      this.url = URL.createObjectURL(this.typeform.logo);
     },
     /**
      * Validation type submit
      */
     // eslint-disable-next-line no-unused-vars
     typeForm(e) {
-      console.log(this.typeform.date)
+      // console.log(this.typeform.date)
       this.typesubmit = true;
       this.isError = false;
       this.Error = null;
@@ -245,12 +253,6 @@ export default {
                       <span v-if="!$v.typeform.place.required">Este Campo es Obligatorio.</span>
                     </div>
                   </div>
-                  <div class="form-group">
-                    <label for="logo">Logo</label>
-                    <input type="file" class="form-control-file" id="logo" @change="selectFile" />
-                  </div>
-                </div>
-                <div class="col-lg-6 col-md-12">
                   <div class="form-group mb-3">
                     <label>Fecha</label>
                     <br />
@@ -280,6 +282,8 @@ export default {
                       <span v-if="!$v.typeform.time.required">Este Campo es Obligatorio.</span>
                     </div>
                   </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
                   <div class="form-group">
                     <label>Organizador</label>
                     <input
@@ -292,6 +296,30 @@ export default {
                     />
                     <div v-if="typesubmit && $v.typeform.organizer.$error" class="invalid-feedback">
                       <span v-if="!$v.typeform.organizer.required">Este Campo es Obligatorio.</span>
+                    </div>
+                  </div>
+                  <div class="mb-3 d-none">
+                    <label>Categoría</label>
+                    <multiselect 
+                      v-model="typeform.category" 
+                      :options="categoryOptions"
+                      :multiple="true"
+                      :class="{ 'is-invalid': typesubmit && $v.typeform.category.$error }"
+                    ></multiselect>
+                    <div v-if="typesubmit && $v.typeform.category.$error" class="invalid-feedback">
+                      <span v-if="!$v.typeform.category.required">Este Campo es Obligatorio.</span>
+                    </div>
+                  </div>
+                  <div class="mb-3 d-none">
+                    <label>Modalidad</label>
+                    <multiselect 
+                      v-model="typeform.modality" 
+                      :options="modalityOptions"
+                      :multiple="true"
+                      :class="{ 'is-invalid': typesubmit && $v.typeform.modality.$error }"
+                    ></multiselect>
+                    <div v-if="typesubmit && $v.typeform.modality.$error" class="invalid-feedback">
+                      <span v-if="!$v.typeform.modality.required">Este Campo es Obligatorio.</span>
                     </div>
                   </div>
                   <div class="mb-3">
@@ -316,30 +344,6 @@ export default {
                       </select>
                     </div>
                   </div>
-                  <div class="mb-3 d-none">
-                    <label>Categoría</label>
-                    <multiselect 
-                      v-model="typeform.category=categoryOptions" 
-                      :options="categoryOptions"
-                      :multiple="true"
-                      :class="{ 'is-invalid': typesubmit && $v.typeform.category.$error }"
-                    ></multiselect>
-                    <div v-if="typesubmit && $v.typeform.category.$error" class="invalid-feedback">
-                      <span v-if="!$v.typeform.category.required">Este Campo es Obligatorio.</span>
-                    </div>
-                  </div>
-                  <div class="mb-3 d-none">
-                    <label>Modalidad</label>
-                    <multiselect 
-                      v-model="typeform.modality=modalityOptions"
-                      :options="modalityOptions"
-                      :multiple="true"
-                      :class="{ 'is-invalid': typesubmit && $v.typeform.modality.$error }"
-                    ></multiselect>
-                    <div v-if="typesubmit && $v.typeform.modality.$error" class="invalid-feedback">
-                      <span v-if="!$v.typeform.modality.required">Este Campo es Obligatorio.</span>
-                    </div>
-                  </div>
                   <div class="mb-3">
                     <label>Lycra</label>
                     <multiselect 
@@ -352,7 +356,16 @@ export default {
                       <span v-if="!$v.typeform.lycra.required">Este Campo es Obligatorio.</span>
                     </div>
                   </div>
-                  <div class="form-group mt-4 mb-0">
+                  <div class="d-flex justify-content-between">
+                    <div class="form-group">
+                      <label for="logo">Logo</label>
+                      <input type="file" class="form-control-file" id="logo" @change="selectFile" />
+                    </div>
+                    <div class="p-2" style="max-width: 270px;">
+                      <img class="circle-logo" :src="url">
+                    </div>
+                  </div>
+                  <div class="form-group mt-5 mb-0">
                     <div style="float: right;">
                       <button type="submit" class="btn btn-primary">Guardar</button>
                       <router-link to="/admin/competitions" class="btn btn-secondary m-l-5 ml-1">Cancelar</router-link>
@@ -368,3 +381,11 @@ export default {
     </div>
   </Layout>
 </template>
+<style>
+  .circle-logo {
+    /* border-radius: 50%; */
+    overflow: hidden;
+    width: 100%;
+    object-fit: cover;
+  }
+</style>

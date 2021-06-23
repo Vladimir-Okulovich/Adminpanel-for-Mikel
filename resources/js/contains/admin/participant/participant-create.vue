@@ -33,7 +33,7 @@ export default {
       items: [
         {
           text: "Home",
-          href: "/admin"
+          href: "/admin/competitions"
         },
         {
           text: "Listado Federados",
@@ -112,7 +112,7 @@ export default {
             club: this.typeform.club,
           })
           .then((res) => {
-            console.log(res)
+            // console.log(res)
             if (res.status == 200) {
               this.$router.push({name: "Participants"});
             }

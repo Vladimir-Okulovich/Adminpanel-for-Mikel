@@ -13,9 +13,4 @@ class Lycra extends Model
         'color',
         'name',
     ];
-
-    public function competitions()
-    {
-        return $this->belongsToMany(Competition::class, 'lycra_competition');
-    }
 }

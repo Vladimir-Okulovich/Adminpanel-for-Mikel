@@ -23,12 +23,14 @@ class Competition extends Model
         'date',
         'time',
         'ranking_score',
+        'lycras',
         'competition_type_id',
         'status_id',
     ];
 
     protected $casts = [
         'date' => 'datetime:d-m-Y', // Change your format
+        'lycras' => 'array',
     ];
 
     public function setDateAttribute($value)
@@ -50,11 +52,6 @@ class Competition extends Model
     public function status()
     {
         return $this->belongsTo(Status::class);
-    }
-
-    public function lycras()
-    {
-        return $this->belongsToMany(Lycra::class, 'lycra_competition');
     }
 
     public function modalities()

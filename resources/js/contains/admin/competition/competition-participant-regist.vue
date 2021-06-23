@@ -22,7 +22,7 @@
         items: [
           {
             text: "Home",
-            href: "/admin"
+            href: "/admin/competitions"
           },
           {
             text: "Listado Competiciones",
@@ -66,6 +66,13 @@
           "Largo",
         ],
         edit_modalities: [],
+        isRequiredCategory: {
+          register: true,
+          edit: true,
+        },
+        participantCategoryOptions: [],
+        register_categories: [],
+        edit_categories: [],
         participantId: 0,
       }
     },
@@ -96,7 +103,8 @@
         'registParticipantToCompetition',
         'updateParticipantToCompetition',
         'unregistParticipantToCompetition',
-        'getModalityOfParticipant',
+        'getModAndCatOfParticipant',
+        'getParticipantCategoryOptions',
       ]),
       /**
        * Search the table data with search input
@@ -114,44 +122,67 @@
       setParticipantId(id) {
         this.participantId = id;
       },
-      getModalityOfParticipantIcon(id) {
+      getParticipantCategoryOptionsIcon(id) {
         this.setParticipantId(id);
-        this.getModalityOfParticipant({
+        this.getParticipantCategoryOptions(id)
+        .then((res) => {
+          this.register_categories = res.data.participant_category_options;
+          this.participantCategoryOptions = res.data.participant_category_options;
+        })
+      },
+      getModAndCatOfParticipantIcon(id) {
+        this.setParticipantId(id);
+        this.getModAndCatOfParticipant({
           competitionId: this.$route.params.competitionId,
           participantId: id,
         })
         .then((res) => {
           // console.log(res)
+          this.edit_categories = res.data.category_participant;
           this.edit_modalities = res.data.modality_participant;
+          this.participantCategoryOptions = res.data.participant_category_options;
         })
       },
-      registerParticipantWithModality() {
-        // console.log(this.modalities.length)
-        if (this.register_modalities.length > 0) {
-          this.isRequiredModality.register = true;
-          this.registParticipantToCompetition({
-            competitionId: this.$route.params.competitionId,
-            participantId: this.participantId,
-            modality: this.register_modalities,
-          });
-          this.$bvModal.hide('register-modality-modal');
-        } else {
+      registerParticipantWithModAndCat() {
+        if (this.register_modalities.length == 0) {
           this.isRequiredModality.register = false;
+          return
         }
+        this.isRequiredModality.register = true;
+        if (this.register_categories.length == 0) {
+          this.isRequiredCategory.register = false;
+          return
+        }
+        this.isRequiredCategory.register = true;
+
+        this.registParticipantToCompetition({
+          competitionId: this.$route.params.competitionId,
+          participantId: this.participantId,
+          modality: this.register_modalities,
+          category: this.register_categories,
+        });
+        this.$bvModal.hide('register-modality-modal');
+        this.register_modalities = ["Corto", "Largo"];
       },
-      editParticipantWithModality() {
-        // console.log(this.modalities.length)
-        if (this.edit_modalities.length > 0) {
-          this.isRequiredModality.edit = true;
-          this.updateParticipantToCompetition({
-            competitionId: this.$route.params.competitionId,
-            participantId: this.participantId,
-            modality: this.edit_modalities,
-          });
-          this.$bvModal.hide('edit-modality-modal');
-        } else {
+      editParticipantWithModAndCat() {
+        if (this.edit_modalities.length == 0) {
           this.isRequiredModality.edit = false;
+          return
         }
+        this.isRequiredModality.edit = true;
+        if (this.edit_categories.length == 0) {
+          this.isRequiredCategory.edit = false;
+          return
+        }
+        this.isRequiredCategory.edit = true;
+
+        this.updateParticipantToCompetition({
+          competitionId: this.$route.params.competitionId,
+          participantId: this.participantId,
+          modality: this.edit_modalities,
+          category: this.edit_categories,
+        });
+        this.$bvModal.hide('edit-modality-modal');
       },
       unregisterParticipant() {
         this.unregistParticipantToCompetition({
@@ -159,18 +190,26 @@
           participantId: this.participantId,
         });
         this.$bvModal.hide('unregister-modality-modal');
-      }
+      },
+      // back() {
+      //   this.$router.go(-1);
+      // },
     }
 	};
 </script>
 <template>
   <Layout>
     <PageHeader :title="title" :items="items">
-      <div class="float-right">
+      <div class="float-right d-flex">
         <router-link :to="{ name: 'CompetitionParticipantAdd', params: { competitionId: this.$route.params.competitionId } }"
           class="btn btn-info btn-block d-inline-block"
         >
           <i class="fas fa-plus mr-1"></i> NUEVO PARTICIPANTE
+        </router-link>
+        <router-link :to="{ name: 'Competitions'}"
+          class="btn btn-secondary ml-lg-4 ml-3"
+        >
+          Volver
         </router-link>
       </div>
     </PageHeader>
@@ -227,7 +266,7 @@
                   {{ row.item.club.name }}
                 </template>
                 <template #cell(actions)="row">
-                  <b-button size="sm" @click="setParticipantId(row.item.id)" v-b-modal.register-modality-modal>
+                  <b-button size="sm" @click="getParticipantCategoryOptionsIcon(row.item.id)" v-b-modal.register-modality-modal>
                     <i class="fas fa-user-plus"></i>
                   </b-button>
                 </template>
@@ -298,7 +337,7 @@
                   {{ row.item.club.name }}
                 </template>
                 <template #cell(actions)="row">
-                  <b-button size="sm" @click="getModalityOfParticipantIcon(row.item.id)" v-b-modal.edit-modality-modal>
+                  <b-button size="sm" @click="getModAndCatOfParticipantIcon(row.item.id)" v-b-modal.edit-modality-modal>
                     <i class="fas fa-user-edit"></i>
                   </b-button>
                   <b-button size="sm" @click="setParticipantId(row.item.id)" v-b-modal.unregister-modality-modal>
@@ -340,9 +379,20 @@
           <span>Este Campo es Obligatorio.</span>
         </div>
       </div>
+      <div class="mb-2">
+        <label>Categoría</label>
+        <multiselect 
+          v-model="register_categories"
+          :options="participantCategoryOptions"
+          :multiple="true"
+        ></multiselect>
+        <div class="invalid-feedback" :class="{ 'd-inline-block': !isRequiredCategory.register }">
+          <span>Este Campo es Obligatorio.</span>
+        </div>
+      </div>
       <footer class="modal-footer">
         <button type="button" class="btn btn-secondary" @click="$bvModal.hide('register-modality-modal')">Cancelar</button>
-        <button type="button" class="btn btn-primary" @click="registerParticipantWithModality()">Guardar</button>
+        <button type="button" class="btn btn-primary" @click="registerParticipantWithModAndCat()">Guardar</button>
       </footer>
     </b-modal>
 
@@ -364,9 +414,20 @@
           <span>Este Campo es Obligatorio.</span>
         </div>
       </div>
+      <div class="mb-2">
+        <label>Categoría</label>
+        <multiselect 
+          v-model="edit_categories"
+          :options="participantCategoryOptions"
+          :multiple="true"
+        ></multiselect>
+        <div class="invalid-feedback" :class="{ 'd-inline-block': !isRequiredCategory.edit }">
+          <span>Este Campo es Obligatorio.</span>
+        </div>
+      </div>
       <footer class="modal-footer">
         <button type="button" class="btn btn-secondary" @click="$bvModal.hide('edit-modality-modal')">Cancelar</button>
-        <button type="button" class="btn btn-primary" @click="editParticipantWithModality()">Guardar</button>
+        <button type="button" class="btn btn-primary" @click="editParticipantWithModAndCat()">Guardar</button>
       </footer>
     </b-modal>
 

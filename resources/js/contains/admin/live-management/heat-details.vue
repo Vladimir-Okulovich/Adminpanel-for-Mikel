@@ -152,16 +152,16 @@
               </tr>
             </tbody>
           </table>
-          <div class="text-right my-4">
-            <button @click="saveResults"
-              class="btn btn-orange mr-2"
-            >
-              Guardar Datos
-            </button>
+          <div class="d-flex justify-content-between my-4">
             <button @click="closeResults"
               class="btn btn-info"
             >
              Terminar Manga
+            </button>
+            <button @click="saveResults"
+              class="btn btn-orange mr-2"
+            >
+              Guardar Datos
             </button>
           </div>
         </div>
@@ -186,25 +186,25 @@
                 <td rowspan="4" :style="{background: heat_score_row.round_heat.lycra.color}" v-if="index_2==0"></td>
                 <td v-if="heat_score_row.judge_id != 'Average'">{{ heat_score_row.judge.name }}</td>
                 <td v-else style="background: #0c101d;">{{ heat_score_row.judge_id }}</td>
-                <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_1" v-on:change="averageHandler" type="number" step="0.1" class="custom-input" /></td>
+                <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_1" v-on:change="averageHandler" type="number" min="0" max="10" step="0.1" class="custom-input" /></td>
                 <td v-else style="background: #0c101d;">{{ parseFloat(heat_score_row.wave_1).toFixed(2) }}</td>
-                <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_2" v-on:change="averageHandler" type="number" step="0.1" class="custom-input" /></td>
+                <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_2" v-on:change="averageHandler" type="number" min="0" max="10" step="0.1" class="custom-input" /></td>
                 <td v-else style="background: #0c101d;">{{ parseFloat(heat_score_row.wave_2).toFixed(2) }}</td>
-                <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_3" v-on:change="averageHandler" type="number" step="0.1" class="custom-input" /></td>
+                <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_3" v-on:change="averageHandler" type="number" min="0" max="10" step="0.1" class="custom-input" /></td>
                 <td v-else style="background: #0c101d;">{{ parseFloat(heat_score_row.wave_3).toFixed(2) }}</td>
-                <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_4" v-on:change="averageHandler" type="number" step="0.1" class="custom-input" /></td>
+                <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_4" v-on:change="averageHandler" type="number" min="0" max="10" step="0.1" class="custom-input" /></td>
                 <td v-else style="background: #0c101d;">{{ parseFloat(heat_score_row.wave_4).toFixed(2) }}</td>
-                <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_5" v-on:change="averageHandler" type="number" step="0.1" class="custom-input" /></td>
+                <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_5" v-on:change="averageHandler" type="number" min="0" max="10" step="0.1" class="custom-input" /></td>
                 <td v-else style="background: #0c101d;">{{ parseFloat(heat_score_row.wave_5).toFixed(2) }}</td>
-                <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_6" v-on:change="averageHandler" type="number" step="0.1" class="custom-input" /></td>
+                <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_6" v-on:change="averageHandler" type="number" min="0" max="10" step="0.1" class="custom-input" /></td>
                 <td v-else style="background: #0c101d;">{{ parseFloat(heat_score_row.wave_6).toFixed(2) }}</td>
-                <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_7" v-on:change="averageHandler" type="number" step="0.1" class="custom-input" /></td>
+                <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_7" v-on:change="averageHandler" type="number" min="0" max="10" step="0.1" class="custom-input" /></td>
                 <td v-else style="background: #0c101d;">{{ parseFloat(heat_score_row.wave_7).toFixed(2) }}</td>
-                <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_8" v-on:change="averageHandler" type="number" step="0.1" class="custom-input" /></td>
+                <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_8" v-on:change="averageHandler" type="number" min="0" max="10" step="0.1" class="custom-input" /></td>
                 <td v-else style="background: #0c101d;">{{ parseFloat(heat_score_row.wave_8).toFixed(2) }}</td>
-                <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_9" v-on:change="averageHandler" type="number" step="0.1" class="custom-input" /></td>
+                <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_9" v-on:change="averageHandler" type="number" min="0" max="10" step="0.1" class="custom-input" /></td>
                 <td v-else style="background: #0c101d;">{{ parseFloat(heat_score_row.wave_9).toFixed(2) }}</td>
-                <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_10" v-on:change="averageHandler" type="number" step="0.1" class="custom-input" /></td>
+                <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_10" v-on:change="averageHandler" type="number" min="0" max="10" step="0.1" class="custom-input" /></td>
                 <td v-else style="background: #0c101d;">{{ parseFloat(heat_score_row.wave_10).toFixed(2) }}</td>
                 <td v-if="heat_score_row.judge_id != 'Average'">{{ heat_score_row.penal }}</td>
                 <td v-else style="background: #0c101d;"></td>
@@ -213,16 +213,16 @@
           </table>
         </div>
 
-        <div class="text-right my-4">
-          <button @click="saveResults"
-              class="btn btn-orange mr-2"
-            >
-              Guardar Datos
-            </button>
+        <div class="d-flex justify-content-between my-4">
           <button @click="closeResults"
             class="btn btn-info"
           >
             Terminar Manga
+          </button>
+          <button @click="saveResults"
+            class="btn btn-orange mr-2"
+          >
+            Guardar Datos
           </button>
         </div>
       </div>

@@ -67,9 +67,10 @@ class CompetitionController extends Controller
         }
         $competition->modalityNames = $modalityNames;
 
-        $lycraNames = collect([]);
-        foreach ($competition->lycras as $lycra) {
-            $lycraNames->push($lycra->name);
+        $lycraNames = [];
+        foreach ($competition->lycras as $lycra_id) {
+            $lycra = Lycra::find($lycra_id);
+            array_push($lycraNames, $lycra->name);
         }
         $competition->lycraNames = $lycraNames;
 
@@ -114,6 +115,11 @@ class CompetitionController extends Controller
 
         $competition_type = Competition_type::where('name', $request->competition_type)->first();
         $status = Status::where('name', $request->status)->first();
+        $lycra_ids = [];
+        foreach ($request->lycra as $lycra_name) {
+            $lycra = Lycra::where('name', $lycra_name)->first();
+            array_push($lycra_ids, $lycra->id);
+        }
 
         $competition = new Competition;
         $competition->title = $request->title;
@@ -123,17 +129,11 @@ class CompetitionController extends Controller
         $competition->time = $request->time;
         $competition->organizer = $request->organizer;
         $competition->ranking_score = $request->ranking_score;
+        $competition->lycras = $lycra_ids;
         $competition->competition_type()->associate($competition_type);
         $competition->status()->associate($status);
         // $competition->logo = $result;
         $competition->save();
-
-        $lycras = Lycra::whereIn('name', $request->lycra)->get();
-        $lycraIds = collect([]);
-        foreach ($lycras as $lycra) {
-            $lycraIds->push($lycra->id);
-        }
-        $competition->lycras()->attach($lycraIds);
 
         $modalities = Modality::whereIn('name', $request->modality)->get();
         $modalityIds = collect([]);
@@ -197,19 +197,13 @@ class CompetitionController extends Controller
 
         $competition_type = Competition_type::where('name', $request->competition_type)->first();
         $status = Status::where('name', $request->status)->first();
+        $lycra_ids = [];
+        foreach ($request->lycra as $lycra_name) {
+            $lycra = Lycra::where('name', $lycra_name)->first();
+            array_push($lycra_ids, $lycra->id);
+        }
 
         $competition = Competition::find($request->id);
-        // $competition -> update([
-        //     'title' => $request->title,
-        //     'description' => $request->description,
-        //     'place' => $request->place,
-        //     'date' => Carbon::createFromFormat('d-m-Y', $request->date)->format('Y-m-d'),
-        //     'time' => $request->time,
-        //     'ranking_score' => $request->ranking_score,
-        //     'competition_type_id' => $competition_type->id,
-        //     'status_id' => $status->id,
-        //     'logo' => $result,
-        // ]);
         $competition->title = $request->title;
         $competition->description = $request->description;
         $competition->place = $request->place;
@@ -217,9 +211,10 @@ class CompetitionController extends Controller
         $competition->time = $request->time;
         $competition->organizer = $request->organizer;
         $competition->ranking_score = $request->ranking_score;
+        $competition->lycras = $lycra_ids;
         $competition->competition_type_id = $competition_type->id;
         $competition->status_id = $status->id;
-        // $competition->logo = $result;
+        $competition->logo = $result;
         $competition->save();
 
         $modalities = Modality::whereIn('name', $request->modality)->get();
@@ -240,13 +235,6 @@ class CompetitionController extends Controller
             $categoryIds->push($category->id);
         }
         $competition->categories()->sync($categoryIds);
-
-        $lycras = Lycra::whereIn('name', $request->lycra)->get();
-        $lycraIds = collect([]);
-        foreach ($lycras as $lycra) {
-            $lycraIds->push($lycra->id);
-        }
-        $competition->lycras()->sync($lycraIds);
 
         return response()->json([
             'message' => 'Competición Actualizada Correctamente',
