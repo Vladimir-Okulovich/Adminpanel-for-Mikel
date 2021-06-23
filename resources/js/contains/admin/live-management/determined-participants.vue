@@ -128,6 +128,8 @@
         }
       },
       getModAndCatOfParticipantIcon(id) {
+        this.isRequired.modality = true;
+        this.isRequired.category = true;
         this.setParticipantId(id);
         this.getModAndCatOfParticipant({
           competitionId: this.$route.params.competitionId,
@@ -137,7 +139,7 @@
           // console.log(res)
           this.edit_categories = res.data.category_participant;
           this.edit_modalities = res.data.modality_participant;
-          this.availableCategoryOptions = res.data.participant_category_options;
+          this.availableCategoryOptions = res.data.available_category_options;
         })
       },
       editParticipantWithModAndCat() {
@@ -145,13 +147,10 @@
           this.isRequired.modality = false;
           return
         }
-        this.isRequired.modality = true;
         if (this.edit_categories.length == 0) {
           this.isRequired.category = false;
           return
         }
-        this.isRequired.category = true;
-
         this.updateParticipantToCompetition({
           competitionId: this.$route.params.competitionId,
           participantId: this.participantId,
@@ -159,6 +158,8 @@
           category: this.edit_categories,
         });
         this.$bvModal.hide('edit-modal');
+        this.isRequired.modality = true;
+        this.isRequired.category = true;
       },
       unregisterParticipant() {
         this.unregistParticipantToCompetitionCategoryModality({
@@ -243,7 +244,7 @@
       <div class="col-12">
         <div class="card">
           <div class="card-body">
-            <h4 class="card-title mb-4">Listado Participantes ({{ competition.title + " " + categoryModality }})</h4>
+            <h4 class="card-title mb-4">Listado Participantes ({{ competition.title + " " + categoryModality.label }})</h4>
             <div class="row mb-md-2">
               <div class="col-sm-12 col-md-6">
                 <div id="tickets-table_length" class="dataTables_length">

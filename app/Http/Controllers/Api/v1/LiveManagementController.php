@@ -562,6 +562,7 @@ class LiveManagementController extends Controller
                                                         ->where('participant_id', $old_round_heats[0]->com_cat_mod_participant->participant_id)
                                                         ->get();
             if (count($manage_ranking_points) == 0) {
+                $ranking_id = (Competition::find($current_competition)->competition_type_id == 1) ? 1 : 2;
                 foreach ($old_round_heats as $old_round_heat) {
                     $manage_ranking_point = new Manage_ranking_point;
                     $manage_ranking_point->competition_id = $current_competition;
@@ -569,7 +570,8 @@ class LiveManagementController extends Controller
                     $manage_ranking_point->modality_id = $current_modality;
                     $manage_ranking_point->participant_id = $old_round_heat->com_cat_mod_participant->participant_id;
                     $manage_ranking_point->ranking = $old_round_heat->position;
-                    $ranking_position_point = Ranking_position_point::where('position', $old_round_heat->position)->first();
+                    $ranking_position_point = Ranking_position_point::where('position', $old_round_heat->position)
+                                                                    ->where('ranking_id', $ranking_id)->first();
                     $manage_ranking_point->ranking_points = $ranking_position_point->points;
                     $manage_ranking_point->save();
                 }
@@ -592,6 +594,7 @@ class LiveManagementController extends Controller
             if ($ranking_score == 'Si') {
                 $old_points = [];
                 $penal_number = 0;
+                $ranking_id = (Competition::find($current_competition)->competition_type_id == 1) ? 1 : 2;
                 foreach ($old_round_heats as $old_round_heat) {
                     $manage_ranking_point = new Manage_ranking_point;
                     $manage_ranking_point->competition_id = $current_competition;
@@ -601,7 +604,8 @@ class LiveManagementController extends Controller
                     $manage_ranking_point->save();
 
                     if ($old_round_heat->penal ==2) {
-                        $ranking_position_point = Ranking_position_point::where('position', $round_heats_number-$penal_number)->first();
+                        $ranking_position_point = Ranking_position_point::where('position', $round_heats_number-$penal_number)
+                                                                        ->where('ranking_id', $ranking_id)->first();
                         $manage_ranking_point->update([
                             'ranking' => $round_heats_number-$penal_number,
                             'ranking_points' => $ranking_position_point->points,
@@ -615,7 +619,8 @@ class LiveManagementController extends Controller
                 $index = 1;
                 foreach ($old_points as $key => $old_point) {
                     $manage_ranking_point = Manage_ranking_point::find($key);
-                    $ranking_position_point = Ranking_position_point::where('position', $index + count($new_round_heats))->first();
+                    $ranking_position_point = Ranking_position_point::where('position', $index + count($new_round_heats))
+                                                                    ->where('ranking_id', $ranking_id)->first();
                     $manage_ranking_point->update([
                         'ranking' => $index + count($new_round_heats),
                         'ranking_points' => $ranking_position_point->points,

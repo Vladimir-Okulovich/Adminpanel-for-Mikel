@@ -131,6 +131,8 @@
         })
       },
       getModAndCatOfParticipantIcon(id) {
+        this.isRequired.modality = true;
+        this.isRequired.category = true;
         this.setParticipantId(id);
         this.getModAndCatOfParticipant({
           competitionId: this.$route.params.competitionId,

@@ -10,6 +10,7 @@ use App\Models\Modality;
 use App\Models\Participant;
 use App\Models\Competition;
 use App\Models\Com_cat_mod_participant;
+use App\Models\Round_heat;
 use App\Models\Ranking_position_point;
 use App\Models\Manage_ranking_point;
 use Illuminate\Http\Request;
@@ -281,13 +282,24 @@ class ManageRankingController extends Controller
         foreach ($categories as $category) {
             array_push($participant_category_options, $category->name);
         }
+        $available_category_options = [];
+        $categories = Category::where('sex_id', $participant->sex_id)->whereNotIn('name', ['Junior', 'Cadete'])->get();
+        foreach ($categories as $category) {
+            $com_cat_mod_participant_ids = Com_cat_mod_participant::select('id')->where('competition_id', $request->competitionId)
+                                        ->where('category_id', $category->id)
+                                        ->whereIn('modality_id', $modality_id)->get();
+            $round_heats = Round_heat::whereIn('com_cat_mod_participant_id', $com_cat_mod_participant_ids)->get();
+            if (count($round_heats) == 0) {
+                array_push($available_category_options, $category->name);
+            }
+        }
 
         return response()->json([
             'message' => 'Success',
             'modality_participant' => $modality_participant,
             'category_participant' => $category_participant,
             'participant_category_options' => $participant_category_options,
-            // 'available_category_options' => $available_category_options,
+            'available_category_options' => $available_category_options,
         ], 200);
     }
 

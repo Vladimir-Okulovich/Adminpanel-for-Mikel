@@ -176,6 +176,8 @@ __webpack_require__.r(__webpack_exports__);
     getModAndCatOfParticipantIcon: function getModAndCatOfParticipantIcon(id) {
       var _this = this;
 
+      this.isRequired.modality = true;
+      this.isRequired.category = true;
       this.setParticipantId(id);
       this.getModAndCatOfParticipant({
         competitionId: this.$route.params.competitionId,
@@ -184,7 +186,7 @@ __webpack_require__.r(__webpack_exports__);
         // console.log(res)
         _this.edit_categories = res.data.category_participant;
         _this.edit_modalities = res.data.modality_participant;
-        _this.availableCategoryOptions = res.data.participant_category_options;
+        _this.availableCategoryOptions = res.data.available_category_options;
       });
     },
     editParticipantWithModAndCat: function editParticipantWithModAndCat() {
@@ -193,14 +195,11 @@ __webpack_require__.r(__webpack_exports__);
         return;
       }
 
-      this.isRequired.modality = true;
-
       if (this.edit_categories.length == 0) {
         this.isRequired.category = false;
         return;
       }
 
-      this.isRequired.category = true;
       this.updateParticipantToCompetition({
         competitionId: this.$route.params.competitionId,
         participantId: this.participantId,
@@ -208,6 +207,8 @@ __webpack_require__.r(__webpack_exports__);
         category: this.edit_categories
       });
       this.$bvModal.hide('edit-modal');
+      this.isRequired.modality = true;
+      this.isRequired.category = true;
     },
     unregisterParticipant: function unregisterParticipant() {
       this.unregistParticipantToCompetitionCategoryModality({
@@ -7153,7 +7154,9 @@ var render = function() {
               _c("h4", { staticClass: "card-title mb-4" }, [
                 _vm._v(
                   "Listado Participantes (" +
-                    _vm._s(_vm.competition.title + " " + _vm.categoryModality) +
+                    _vm._s(
+                      _vm.competition.title + " " + _vm.categoryModality.label
+                    ) +
                     ")"
                 )
               ]),

@@ -179,6 +179,8 @@ __webpack_require__.r(__webpack_exports__);
     getModAndCatOfParticipantIcon: function getModAndCatOfParticipantIcon(id) {
       var _this2 = this;
 
+      this.isRequired.modality = true;
+      this.isRequired.category = true;
       this.setParticipantId(id);
       this.getModAndCatOfParticipant({
         competitionId: this.$route.params.competitionId,
