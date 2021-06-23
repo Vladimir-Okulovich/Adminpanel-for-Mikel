@@ -287,6 +287,7 @@ class ManageRankingController extends Controller
             'modality_participant' => $modality_participant,
             'category_participant' => $category_participant,
             'participant_category_options' => $participant_category_options,
+            // 'available_category_options' => $available_category_options,
         ], 200);
     }
 

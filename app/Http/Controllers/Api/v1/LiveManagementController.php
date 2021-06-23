@@ -43,7 +43,34 @@ class LiveManagementController extends Controller
                                         ->where('category_id', $category->id)
                                         ->where('modality_id', $modality->id)->get();
                 if (count($temps) > 1) {
-                    array_push($category_modality_with_part, $category->name." ".$category->sex->name." ".$modality->name);
+                    $option = [
+                        "label" => '',
+                        "status" => '',
+                    ];
+                    $option["label"] = $category->name." ".$category->sex->name." ".$modality->name;
+                    if (count($temps) == 2) {
+                        $option["status"] = 'deactive';
+                        array_push($category_modality_with_part, $option);
+                    } else {
+                        $com_cat_mod_participant_ids = Com_cat_mod_participant::select('id')->where('competition_id', $competitionId)
+                                                            ->where('category_id', $category->id)
+                                                            ->where('modality_id', $modality->id)->get();
+                        $round_heats = Round_heat::whereIn('com_cat_mod_participant_id', $com_cat_mod_participant_ids)->get();
+                        $isActive = false;
+                        foreach ($round_heats as $round_heat) {
+                            if ($round_heat->status == 3) {
+                                $isActive = true;
+                                break;
+                            }
+                        }
+                        if ($isActive) {
+                            $option["status"] = 'active';
+                            array_push($category_modality_with_part, $option);
+                        } else {
+                            $option["status"] = '';
+                            array_push($category_modality_with_part, $option);
+                        }
+                    }
                 }
             }
         }

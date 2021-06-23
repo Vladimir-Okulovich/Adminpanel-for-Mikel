@@ -117,7 +117,7 @@ __webpack_require__.r(__webpack_exports__);
         sortable: false
       }],
       modalityOptions: ["Corto", "Largo"],
-      participantCategoryOptions: [],
+      availableCategoryOptions: [],
       isRequired: {
         modality: true,
         category: true
@@ -132,7 +132,7 @@ __webpack_require__.r(__webpack_exports__);
       this.categoryModality = this.categoryModalityWithPart[0];
       this.getParticipantsByCompetitionCategoryModality({
         competitionId: this.$route.params.competitionId,
-        categoryModality: this.categoryModality
+        categoryModality: this.categoryModality.label
       });
     },
     competition: function competition() {
@@ -169,7 +169,7 @@ __webpack_require__.r(__webpack_exports__);
       if (this.categoryModality != null) {
         this.getParticipantsByCompetitionCategoryModality({
           competitionId: this.$route.params.competitionId,
-          categoryModality: this.categoryModality
+          categoryModality: this.categoryModality.label
         });
       }
     },
@@ -184,7 +184,7 @@ __webpack_require__.r(__webpack_exports__);
         // console.log(res)
         _this.edit_categories = res.data.category_participant;
         _this.edit_modalities = res.data.modality_participant;
-        _this.participantCategoryOptions = res.data.participant_category_options;
+        _this.availableCategoryOptions = res.data.participant_category_options;
       });
     },
     editParticipantWithModAndCat: function editParticipantWithModAndCat() {
@@ -213,7 +213,7 @@ __webpack_require__.r(__webpack_exports__);
       this.unregistParticipantToCompetitionCategoryModality({
         competitionId: this.$route.params.competitionId,
         participantId: this.participantId,
-        categoryModality: this.categoryModality
+        categoryModality: this.categoryModality.label
       });
       this.$bvModal.hide('unregister-modal');
     },
@@ -237,6 +237,18 @@ __webpack_require__.r(__webpack_exports__);
     },
     back: function back() {
       this.$router.go(-1);
+    },
+    labelWithStatus: function labelWithStatus(_ref) {
+      var label = _ref.label,
+          status = _ref.status;
+
+      if (status == 'deactive') {
+        return "".concat(label.toUpperCase());
+      } else if (status == 'active') {
+        return "".concat(label, "(Active)");
+      }
+
+      return "".concat(label);
     }
   })
 });
@@ -7116,6 +7128,8 @@ var render = function() {
                 _c("multiselect", {
                   attrs: {
                     "deselect-label": "",
+                    label: "label",
+                    "custom-label": _vm.labelWithStatus,
                     options: _vm.categoryModalityWithPart
                   },
                   on: { input: _vm.categoryModalityHandler },
@@ -7260,27 +7274,33 @@ var render = function() {
                         key: "cell(actions)",
                         fn: function(row) {
                           return [
-                            _c(
-                              "b-button",
-                              {
-                                directives: [
+                            _vm.ParticipantsByCompetitionCategoryModality
+                              .length == 2
+                              ? _c(
+                                  "b-button",
                                   {
-                                    name: "b-modal",
-                                    rawName: "v-b-modal.edit-modal",
-                                    modifiers: { "edit-modal": true }
-                                  }
-                                ],
-                                attrs: { size: "sm" },
-                                on: {
-                                  click: function($event) {
-                                    return _vm.getModAndCatOfParticipantIcon(
-                                      row.item.id
-                                    )
-                                  }
-                                }
-                              },
-                              [_c("i", { staticClass: "fas fa-user-edit" })]
-                            ),
+                                    directives: [
+                                      {
+                                        name: "b-modal",
+                                        rawName: "v-b-modal.edit-modal",
+                                        modifiers: { "edit-modal": true }
+                                      }
+                                    ],
+                                    attrs: {
+                                      size: "sm",
+                                      disabled: _vm.categoryStatus != 0
+                                    },
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.getModAndCatOfParticipantIcon(
+                                          row.item.id
+                                        )
+                                      }
+                                    }
+                                  },
+                                  [_c("i", { staticClass: "fas fa-user-edit" })]
+                                )
+                              : _vm._e(),
                             _vm._v(" "),
                             _c(
                               "b-button",
@@ -7292,7 +7312,10 @@ var render = function() {
                                     modifiers: { "unregister-modal": true }
                                   }
                                 ],
-                                attrs: { size: "sm" },
+                                attrs: {
+                                  size: "sm",
+                                  disabled: _vm.categoryStatus != 0
+                                },
                                 on: {
                                   click: function($event) {
                                     return _vm.setParticipantId(row.item.id)
@@ -7441,7 +7464,7 @@ var render = function() {
               _vm._v(" "),
               _c("multiselect", {
                 attrs: {
-                  options: _vm.participantCategoryOptions,
+                  options: _vm.availableCategoryOptions,
                   multiple: true
                 },
                 model: {

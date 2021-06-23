@@ -8,7 +8,7 @@ const actions = {
         return new Promise((resolve) =>{
             ApiService.get("api/v1/admin/competition/category-modality-participant/"  + competitionId)
                 .then(({data}) => {
-                    console.log(data);
+                    // console.log(data);
                     context.commit(type.GET_CATEGORY_MODALITY_WITH_PART, data)
                 })
                 .catch(({ response }) => {
@@ -21,7 +21,7 @@ const actions = {
         return new Promise((resolve) =>{
             ApiService.post("api/v1/admin/competition/category-modality/participants", data)
                 .then(({data}) => {
-                    console.log(data);
+                    // console.log(data);
                     context.commit(type.SET_PARTICIPANTS_COMPETITION_CATEGORY_MODALITY, data)
                 })
                 .catch(({ response }) => {
@@ -34,8 +34,8 @@ const actions = {
         return new Promise((resolve) =>{
             ApiService.post("api/v1/admin/competition/category-modality/participant/unregist", data)
                 .then(({data}) => {
-                    // console.log(data);
-                    context.commit(type.SET_PARTICIPANTS_COMPETITION_CATEGORY_MODALITY, data)
+                    // console.log(data.status);
+                    context.commit(type.SET_PARTICIPANTS_AFTER_UNREGIST, data)
                     toastr.success('Participante eliminado Correctamenteamente', '', {timeout: 5000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
                 })
                 .catch(({ response }) => {
@@ -60,7 +60,7 @@ const actions = {
         return new Promise((resolve) =>{
             ApiService.post("api/v1/admin/live-management/competition-heats", data)
                 .then(({data}) => {
-                    console.log(data);
+                    // console.log(data);
                     context.commit(type.GET_ALL_ROUND_HEATS, data)
                 })
                 .catch(({ response }) => {

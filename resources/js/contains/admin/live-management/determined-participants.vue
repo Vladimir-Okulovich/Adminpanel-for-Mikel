@@ -54,7 +54,7 @@
           "Corto",
           "Largo",
         ],
-        participantCategoryOptions: [],
+        availableCategoryOptions: [],
         isRequired: {
           modality: true,
           category: true,
@@ -69,7 +69,7 @@
         this.categoryModality = this.categoryModalityWithPart[0];
         this.getParticipantsByCompetitionCategoryModality({
           competitionId: this.$route.params.competitionId,
-          categoryModality: this.categoryModality,
+          categoryModality: this.categoryModality.label,
         });
       },
       competition: function () {
@@ -123,7 +123,7 @@
         if (this.categoryModality != null) {
           this.getParticipantsByCompetitionCategoryModality({
             competitionId: this.$route.params.competitionId,
-            categoryModality: this.categoryModality,
+            categoryModality: this.categoryModality.label,
           });
         }
       },
@@ -137,7 +137,7 @@
           // console.log(res)
           this.edit_categories = res.data.category_participant;
           this.edit_modalities = res.data.modality_participant;
-          this.participantCategoryOptions = res.data.participant_category_options;
+          this.availableCategoryOptions = res.data.participant_category_options;
         })
       },
       editParticipantWithModAndCat() {
@@ -164,7 +164,7 @@
         this.unregistParticipantToCompetitionCategoryModality({
           competitionId: this.$route.params.competitionId,
           participantId: this.participantId,
-          categoryModality: this.categoryModality,
+          categoryModality: this.categoryModality.label,
         });
         this.$bvModal.hide('unregister-modal');
       },
@@ -180,6 +180,14 @@
       },
       back() {
         this.$router.go(-1);
+      },
+      labelWithStatus ({ label, status }) {
+        if (status == 'deactive') {
+          return `${label.toUpperCase()}`
+        } else if (status == 'active') {
+          return `${label}(Active)`
+        }
+        return `${label}`
       },
     }
 	};
@@ -219,9 +227,15 @@
             <multiselect 
               v-model="categoryModality"
               deselect-label=""
+              label="label"
+              :custom-label="labelWithStatus"
               :options="categoryModalityWithPart"
               @input="categoryModalityHandler"
-            ></multiselect>
+            >
+              <!-- <template slot="singleLabel" slot-scope="{ option }">
+                <span style="color: red;">{{ option.label }}</span>
+              </template> -->
+            </multiselect>
           </div>
         </div>
       </div>
@@ -273,10 +287,10 @@
                   {{ row.item.club.name }}
                 </template>
                 <template #cell(actions)="row">
-                  <b-button size="sm" @click="getModAndCatOfParticipantIcon(row.item.id)" v-b-modal.edit-modal>
+                  <b-button size="sm" v-if="ParticipantsByCompetitionCategoryModality.length==2" :disabled="categoryStatus != 0" @click="getModAndCatOfParticipantIcon(row.item.id)" v-b-modal.edit-modal>
                     <i class="fas fa-user-edit"></i>
                   </b-button>
-                  <b-button size="sm" @click="setParticipantId(row.item.id)" v-b-modal.unregister-modal>
+                  <b-button size="sm" :disabled="categoryStatus != 0" @click="setParticipantId(row.item.id)" v-b-modal.unregister-modal>
                     <i class="fas fa-user-minus"></i>
                   </b-button>
                 </template>
@@ -344,7 +358,7 @@
         <label>Categoría</label>
         <multiselect 
           v-model="edit_categories"
-          :options="participantCategoryOptions"
+          :options="availableCategoryOptions"
           :multiple="true"
         ></multiselect>
         <div class="invalid-feedback" :class="{ 'd-inline-block': !isRequired.category }">
