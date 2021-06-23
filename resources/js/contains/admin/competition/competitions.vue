@@ -163,7 +163,7 @@
                 <template #cell(status)="row">
                   <select class="custom-select" v-model="row.item.status.name" @change="changeStatus({id: row.item.id, status: row.item.status.name})">
                     <option value="CERRADA">CERRADA</option>
-                    <option value="REGISTRO ABIERTO">REGISTRO ABIERTO</option>
+                    <option value="REGISTRO ABIERTO" :disabled="!row.item.isOpening">REGISTRO ABIERTO</option>
                     <option value="EN CURSO">EN CURSO</option>
                   </select>
                 </template>

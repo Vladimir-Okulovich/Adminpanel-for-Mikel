@@ -143,7 +143,7 @@
                   </li>
                   <li>
                     <router-link tag="a" :to="{name: 'CategoryRankingMenu'}" class="side-nav-link">
-                      <span>Gestión Ranking</span>
+                      <span>Ranking Anual</span>
                     </router-link>
                   </li>
                 </ul>

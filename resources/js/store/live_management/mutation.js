@@ -12,6 +12,9 @@ const mutations = {
     state.competition = {...data.competition};
     state.category_status = data.status;
   },
+  [type.SET_PARTICIPANTS_AFTER_UNREGIST] (state, data) {
+    state.participants_competition_category_modality = data.participants_competition_category_modality;
+  },
   [type.GET_ALL_ROUND_HEATS] (state, data) {
     state.all_round_heats = data.all_round_heats;
   },

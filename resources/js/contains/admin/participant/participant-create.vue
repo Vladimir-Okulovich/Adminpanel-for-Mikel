@@ -4,6 +4,7 @@ import PageHeader from "@/components/page-header";
 import appConfig from "@/app.config";
 
 import DatePicker from "vue2-datepicker";
+import 'vue2-datepicker/locale/es';
 import Multiselect from "vue-multiselect";
 
 import { mapActions, mapGetters } from 'vuex';
@@ -48,6 +49,7 @@ export default {
         formatLocale: {
           firstDayOfWeek: 1,
         },
+        es: 'es'
       },
       isError: false,
       Error: null,

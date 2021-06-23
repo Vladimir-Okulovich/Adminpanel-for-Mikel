@@ -80,7 +80,25 @@ __webpack_require__.r(__webpack_exports__);
       heat: 0
     };
   },
-  watch: {},
+  watch: {
+    heat_scores: function heat_scores() {
+      this.heat_scores.forEach(function (heat_score) {
+        for (var i = 1; i < 11; i++) {
+          var sum = 0;
+          var divider = 0;
+
+          for (var j = 0; j < 3; j++) {
+            if (heat_score[j]['wave_' + i] > 0) {
+              sum += heat_score[j]['wave_' + i] / 1;
+              divider++;
+            }
+          }
+
+          heat_score[3]['wave_' + i] = sum / (divider == 0 ? 1 : divider);
+        }
+      });
+    }
+  },
   computed: (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_4__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_8__.mapGetters)(['round_heats', 'heat_scores'])),
   mounted: function mounted() {
     this.competitionId = this.$route.params.competitionId;
@@ -97,6 +115,19 @@ __webpack_require__.r(__webpack_exports__);
     });
   },
   methods: (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_4__.default)((0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_4__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_8__.mapActions)(['initHeatDetails', 'storeFinalHeatResults'])), {}, {
+    penalHandler: function penalHandler() {
+      this.round_heats.forEach(function (round_heat) {
+        if (round_heat.penal > 2) {
+          round_heat.penal = 2;
+        }
+
+        if (round_heat.penal == 2) {
+          round_heat.first_score = 0;
+          round_heat.second_score = 0;
+          round_heat.points = 0;
+        }
+      });
+    },
     drawHandler: function drawHandler() {
       this.round_heats.forEach(function (round_heat) {
         if (round_heat.draw > 2) {
@@ -110,11 +141,17 @@ __webpack_require__.r(__webpack_exports__);
       // console.log(this.heat_scores)
       this.heat_scores.forEach(function (heat_score) {
         for (var i = 1; i < 11; i++) {
-          heat_score[3]['wave_' + i] = 0;
+          var sum = 0;
+          var divider = 0;
 
           for (var j = 0; j < 3; j++) {
-            heat_score[3]['wave_' + i] += heat_score[j]['wave_' + i] / 3;
+            if (heat_score[j]['wave_' + i] > 0) {
+              sum += heat_score[j]['wave_' + i] / 1;
+              divider++;
+            }
           }
+
+          heat_score[3]['wave_' + i] = sum / (divider == 0 ? 1 : divider);
         }
       });
     },
@@ -137,6 +174,9 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function () {
         _this.$router.go(-1);
       });
+    },
+    back: function back() {
+      this.$router.go(-1);
     }
   })
 });
@@ -2359,7 +2399,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.custom-input[data-v-18fd751c] {\n  background: transparent;\n  border: 0;\n  color: #a8b2bc;\n  text-align: center;\n  max-width: 40px;\n}\n.custom-input[data-v-18fd751c]:focus {\n  outline: none;\n}\ninput[data-v-18fd751c]::-webkit-outer-spin-button,\ninput[data-v-18fd751c]::-webkit-inner-spin-button {\n  -webkit-appearance: none;\n  margin: 0;\n}\ninput[type=number][data-v-18fd751c] {\n  -moz-appearance: textfield;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.custom-input[data-v-18fd751c] {\n  background: transparent;\n  border: 0;\n  color: #a8b2bc;\n  text-align: center;\n  max-width: 40px;\n}\n.custom-input[data-v-18fd751c]:focus {\n  outline: none;\n}\n.custom-input.is-invalid[data-v-18fd751c] {\n  border: 1px solid #ec4561;\n}\ninput[data-v-18fd751c]::-webkit-outer-spin-button,\ninput[data-v-18fd751c]::-webkit-inner-spin-button {\n  -webkit-appearance: none;\n  margin: 0;\n}\ninput[type=number][data-v-18fd751c] {\n  -moz-appearance: textfield;\n}\n", ""]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
@@ -6962,7 +7002,7 @@ var render = function() {
   return _c("Layout", [
     _c(
       "div",
-      { staticClass: "d-flex justify-content-center pt-4" },
+      { staticClass: "d-flex pt-4" },
       [
         _c("b-img", {
           attrs: { src: "/images/logo.png", height: "127", alt: "logo" }
@@ -7054,6 +7094,16 @@ var render = function() {
               ]
             )
           ]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-secondary",
+            staticStyle: { width: "10%", position: "absolute", right: "24px" },
+            on: { click: _vm.back }
+          },
+          [_vm._v("\n      Volver\n    ")]
         )
       ],
       1
@@ -7151,6 +7201,7 @@ var render = function() {
                       attrs: { type: "number", step: "1", min: "0", max: "2" },
                       domProps: { value: round_heat.penal },
                       on: {
+                        change: _vm.penalHandler,
                         input: function($event) {
                           if ($event.target.composing) {
                             return
@@ -7204,10 +7255,7 @@ var render = function() {
             _vm._v(" "),
             _c(
               "button",
-              {
-                staticClass: "btn btn-orange mr-2",
-                on: { click: _vm.saveResults }
-              },
+              { staticClass: "btn btn-orange", on: { click: _vm.saveResults } },
               [_vm._v("\n            Guardar Datos\n          ")]
             )
           ])
@@ -7275,6 +7323,9 @@ var render = function() {
                                 }
                               ],
                               staticClass: "custom-input",
+                              class: {
+                                "is-invalid": heat_score_row.wave_1 > 10
+                              },
                               attrs: {
                                 type: "number",
                                 min: "0",
@@ -7317,6 +7368,9 @@ var render = function() {
                                 }
                               ],
                               staticClass: "custom-input",
+                              class: {
+                                "is-invalid": heat_score_row.wave_2 > 10
+                              },
                               attrs: {
                                 type: "number",
                                 min: "0",
@@ -7359,6 +7413,9 @@ var render = function() {
                                 }
                               ],
                               staticClass: "custom-input",
+                              class: {
+                                "is-invalid": heat_score_row.wave_3 > 10
+                              },
                               attrs: {
                                 type: "number",
                                 min: "0",
@@ -7401,6 +7458,9 @@ var render = function() {
                                 }
                               ],
                               staticClass: "custom-input",
+                              class: {
+                                "is-invalid": heat_score_row.wave_4 > 10
+                              },
                               attrs: {
                                 type: "number",
                                 min: "0",
@@ -7443,6 +7503,9 @@ var render = function() {
                                 }
                               ],
                               staticClass: "custom-input",
+                              class: {
+                                "is-invalid": heat_score_row.wave_5 > 10
+                              },
                               attrs: {
                                 type: "number",
                                 min: "0",
@@ -7485,6 +7548,9 @@ var render = function() {
                                 }
                               ],
                               staticClass: "custom-input",
+                              class: {
+                                "is-invalid": heat_score_row.wave_6 > 10
+                              },
                               attrs: {
                                 type: "number",
                                 min: "0",
@@ -7527,6 +7593,9 @@ var render = function() {
                                 }
                               ],
                               staticClass: "custom-input",
+                              class: {
+                                "is-invalid": heat_score_row.wave_7 > 10
+                              },
                               attrs: {
                                 type: "number",
                                 min: "0",
@@ -7569,6 +7638,9 @@ var render = function() {
                                 }
                               ],
                               staticClass: "custom-input",
+                              class: {
+                                "is-invalid": heat_score_row.wave_8 > 10
+                              },
                               attrs: {
                                 type: "number",
                                 min: "0",
@@ -7611,6 +7683,9 @@ var render = function() {
                                 }
                               ],
                               staticClass: "custom-input",
+                              class: {
+                                "is-invalid": heat_score_row.wave_9 > 10
+                              },
                               attrs: {
                                 type: "number",
                                 min: "0",
@@ -7653,6 +7728,9 @@ var render = function() {
                                 }
                               ],
                               staticClass: "custom-input",
+                              class: {
+                                "is-invalid": heat_score_row.wave_10 > 10
+                              },
                               attrs: {
                                 type: "number",
                                 min: "0",
@@ -7705,10 +7783,7 @@ var render = function() {
           _vm._v(" "),
           _c(
             "button",
-            {
-              staticClass: "btn btn-orange mr-2",
-              on: { click: _vm.saveResults }
-            },
+            { staticClass: "btn btn-orange", on: { click: _vm.saveResults } },
             [_vm._v("\n          Guardar Datos\n        ")]
           )
         ])
@@ -7979,7 +8054,7 @@ var render = function() {
                               to: { name: "CategoryRankingMenu" }
                             }
                           },
-                          [_c("span", [_vm._v("Gestión Ranking")])]
+                          [_c("span", [_vm._v("Ranking Anual")])]
                         )
                       ],
                       1

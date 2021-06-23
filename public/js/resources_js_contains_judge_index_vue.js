@@ -624,7 +624,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.custom-input {\n  background: transparent;\n  border: 0;\n  color: #a8b2bc;\n  text-align: center;\n  max-width: 40px;\n}\n.custom-input:focus {\n  outline: none;\n}\ninput::-webkit-outer-spin-button,\ninput::-webkit-inner-spin-button {\n  -webkit-appearance: none;\n  margin: 0;\n}\n.table th {\n  padding: 10px 0;\n}\n.table td {\n  padding: 10px 0;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.custom-input {\n  background: transparent;\n  border: 0;\n  color: #a8b2bc;\n  text-align: center;\n  max-width: 40px;\n}\n.custom-input:focus {\n  outline: none;\n}\n.custom-input.is-invalid {\n  border: 1px solid #ec4561;\n}\ninput::-webkit-outer-spin-button,\ninput::-webkit-inner-spin-button {\n  -webkit-appearance: none;\n  margin: 0;\n}\n.table th {\n  padding: 10px 0;\n}\n.table td {\n  padding: 10px 0;\n}\n", ""]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
@@ -1331,6 +1331,9 @@ var render = function() {
                                 }
                               ],
                               staticClass: "custom-input",
+                              class: {
+                                "is-invalid": judge_heat_score.wave_1 > 10
+                              },
                               attrs: {
                                 type: "number",
                                 min: "0",
@@ -1364,6 +1367,9 @@ var render = function() {
                                 }
                               ],
                               staticClass: "custom-input",
+                              class: {
+                                "is-invalid": judge_heat_score.wave_2 > 10
+                              },
                               attrs: {
                                 type: "number",
                                 min: "0",
@@ -1397,6 +1403,9 @@ var render = function() {
                                 }
                               ],
                               staticClass: "custom-input",
+                              class: {
+                                "is-invalid": judge_heat_score.wave_3 > 10
+                              },
                               attrs: {
                                 type: "number",
                                 min: "0",
@@ -1430,6 +1439,9 @@ var render = function() {
                                 }
                               ],
                               staticClass: "custom-input",
+                              class: {
+                                "is-invalid": judge_heat_score.wave_4 > 10
+                              },
                               attrs: {
                                 type: "number",
                                 min: "0",
@@ -1463,6 +1475,9 @@ var render = function() {
                                 }
                               ],
                               staticClass: "custom-input",
+                              class: {
+                                "is-invalid": judge_heat_score.wave_5 > 10
+                              },
                               attrs: {
                                 type: "number",
                                 min: "0",
@@ -1496,6 +1511,9 @@ var render = function() {
                                 }
                               ],
                               staticClass: "custom-input",
+                              class: {
+                                "is-invalid": judge_heat_score.wave_6 > 10
+                              },
                               attrs: {
                                 type: "number",
                                 min: "0",
@@ -1529,6 +1547,9 @@ var render = function() {
                                 }
                               ],
                               staticClass: "custom-input",
+                              class: {
+                                "is-invalid": judge_heat_score.wave_7 > 10
+                              },
                               attrs: {
                                 type: "number",
                                 min: "0",
@@ -1562,6 +1583,9 @@ var render = function() {
                                 }
                               ],
                               staticClass: "custom-input",
+                              class: {
+                                "is-invalid": judge_heat_score.wave_8 > 10
+                              },
                               attrs: {
                                 type: "number",
                                 min: "0",
@@ -1595,6 +1619,9 @@ var render = function() {
                                 }
                               ],
                               staticClass: "custom-input",
+                              class: {
+                                "is-invalid": judge_heat_score.wave_9 > 10
+                              },
                               attrs: {
                                 type: "number",
                                 min: "0",
@@ -1628,6 +1655,9 @@ var render = function() {
                                 }
                               ],
                               staticClass: "custom-input",
+                              class: {
+                                "is-invalid": judge_heat_score.wave_10 > 10
+                              },
                               attrs: {
                                 type: "number",
                                 min: "0",
@@ -1703,10 +1733,7 @@ var render = function() {
             _vm._v(" "),
             _c(
               "button",
-              {
-                staticClass: "btn btn-orange mr-2",
-                on: { click: _vm.saveResults }
-              },
+              { staticClass: "btn btn-orange", on: { click: _vm.saveResults } },
               [_vm._v("\n        Guardar\n      ")]
             )
           ])

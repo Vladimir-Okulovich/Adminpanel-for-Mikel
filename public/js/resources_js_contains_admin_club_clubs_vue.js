@@ -7427,7 +7427,7 @@ var render = function() {
                               to: { name: "CategoryRankingMenu" }
                             }
                           },
-                          [_c("span", [_vm._v("Gestión Ranking")])]
+                          [_c("span", [_vm._v("Ranking Anual")])]
                         )
                       ],
                       1

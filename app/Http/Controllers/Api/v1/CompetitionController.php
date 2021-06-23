@@ -8,6 +8,8 @@ use App\Models\Status;
 use App\Models\Lycra;
 use App\Models\Modality;
 use App\Models\Category;
+use App\Models\Com_cat_mod_participant;
+use App\Models\Round_heat;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Validator;
@@ -34,6 +36,12 @@ class CompetitionController extends Controller
         foreach ($competitions as $competition) {
             $competition->competition_type;
             $competition->status;
+            $competition->isOpening = true;
+            $com_cat_mod_participant_ids = Com_cat_mod_participant::select('id')->where('competition_id', $competition->id)->get();
+            $round_heats = Round_heat::whereIn('com_cat_mod_participant_id', $com_cat_mod_participant_ids)->get();
+            if (count($round_heats) > 0) {
+                $competition->isOpening = false;
+            }
         }
         return response()->json([
             'message' => 'success',

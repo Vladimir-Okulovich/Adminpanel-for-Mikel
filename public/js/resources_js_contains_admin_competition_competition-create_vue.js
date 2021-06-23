@@ -54,11 +54,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_page_header__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @/components/page-header */ "./resources/js/components/page-header.vue");
 /* harmony import */ var _app_config__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @/app.config */ "./resources/js/app.config.json");
 /* harmony import */ var vue2_datepicker__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! vue2-datepicker */ "./node_modules/vue2-datepicker/index.esm.js");
-/* harmony import */ var vue_multiselect__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! vue-multiselect */ "./node_modules/vue-multiselect/dist/vue-multiselect.min.js");
-/* harmony import */ var vue_multiselect__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(vue_multiselect__WEBPACK_IMPORTED_MODULE_11__);
-/* harmony import */ var vue_switches__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! vue-switches */ "./node_modules/vue-switches/src/switches.vue");
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.mjs");
-/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
+/* harmony import */ var vue2_datepicker_locale_es__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! vue2-datepicker/locale/es */ "./node_modules/vue2-datepicker/locale/es.js");
+/* harmony import */ var vue2_datepicker_locale_es__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(vue2_datepicker_locale_es__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var vue_multiselect__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! vue-multiselect */ "./node_modules/vue-multiselect/dist/vue-multiselect.min.js");
+/* harmony import */ var vue_multiselect__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(vue_multiselect__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony import */ var vue_switches__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! vue-switches */ "./node_modules/vue-switches/src/switches.vue");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.mjs");
+/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
+
 
 
 
@@ -84,8 +87,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   components: {
     DatePicker: vue2_datepicker__WEBPACK_IMPORTED_MODULE_10__.default,
-    Multiselect: (vue_multiselect__WEBPACK_IMPORTED_MODULE_11___default()),
-    Switches: vue_switches__WEBPACK_IMPORTED_MODULE_12__.default,
+    Multiselect: (vue_multiselect__WEBPACK_IMPORTED_MODULE_12___default()),
+    Switches: vue_switches__WEBPACK_IMPORTED_MODULE_13__.default,
     Layout: _subcomponent_layout__WEBPACK_IMPORTED_MODULE_7__.default,
     PageHeader: _components_page_header__WEBPACK_IMPORTED_MODULE_8__.default
   },
@@ -105,7 +108,8 @@ __webpack_require__.r(__webpack_exports__);
       lang: {
         formatLocale: {
           firstDayOfWeek: 1
-        }
+        },
+        es: 'es'
       },
       isError: false,
       Error: null,
@@ -134,37 +138,37 @@ __webpack_require__.r(__webpack_exports__);
   validations: {
     typeform: {
       title: {
-        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_13__.required
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_14__.required
       },
       competition_type: {
-        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_13__.required
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_14__.required
       },
       description: {
-        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_13__.required
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_14__.required
       },
       place: {
-        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_13__.required
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_14__.required
       },
       date: {
-        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_13__.required
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_14__.required
       },
       time: {
-        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_13__.required
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_14__.required
       },
       organizer: {
-        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_13__.required
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_14__.required
       },
       ranking_score: {
-        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_13__.required
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_14__.required
       },
       lycra: {
-        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_13__.required
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_14__.required
       },
       modality: {
-        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_13__.required
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_14__.required
       },
       category: {
-        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_13__.required
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_14__.required
       }
     }
   },
@@ -176,13 +180,13 @@ __webpack_require__.r(__webpack_exports__);
       this.typeform.category = this.categoryOptions;
     }
   },
-  computed: (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_6__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_14__.mapGetters)(['typeOptions', 'categoryOptions', 'lycraOptions'])),
+  computed: (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_6__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_15__.mapGetters)(['typeOptions', 'categoryOptions', 'lycraOptions'])),
   mounted: function mounted() {
     this.getTypeOptions();
     this.getLycraOptions();
     this.getCategoryOptions();
   },
-  methods: (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_6__.default)((0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_6__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_14__.mapActions)(['createCompetition', 'getTypeOptions', 'getLycraOptions', 'getCategoryOptions'])), {}, {
+  methods: (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_6__.default)((0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_6__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_15__.mapActions)(['createCompetition', 'getTypeOptions', 'getLycraOptions', 'getCategoryOptions'])), {}, {
     selectFile: function selectFile(event) {
       // `files` is always an array because the file input may be in multiple mode
       this.typeform.logo = event.target.files[0];
@@ -10652,7 +10656,7 @@ var render = function() {
                               to: { name: "CategoryRankingMenu" }
                             }
                           },
-                          [_c("span", [_vm._v("Gestión Ranking")])]
+                          [_c("span", [_vm._v("Ranking Anual")])]
                         )
                       ],
                       1
@@ -14643,6 +14647,64 @@ _extends(DatePicker, {
 });
 
 /* harmony default export */ __webpack_exports__["default"] = (DatePicker);
+
+
+/***/ }),
+
+/***/ "./node_modules/vue2-datepicker/locale/es.js":
+/*!***************************************************!*\
+  !*** ./node_modules/vue2-datepicker/locale/es.js ***!
+  \***************************************************/
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+
+(function (global, factory) {
+	 true ? module.exports = factory(__webpack_require__(/*! vue2-datepicker */ "./node_modules/vue2-datepicker/index.esm.js")) :
+	0;
+}(this, (function (DatePicker) { 'use strict';
+
+	DatePicker = DatePicker && DatePicker.hasOwnProperty('default') ? DatePicker['default'] : DatePicker;
+
+	function unwrapExports (x) {
+		return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
+	}
+
+	function createCommonjsModule(fn, module) {
+		return module = { exports: {} }, fn(module, module.exports), module.exports;
+	}
+
+	var es = createCommonjsModule(function (module, exports) {
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports["default"] = void 0;
+	var locale = {
+	  months: ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'],
+	  monthsShort: ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'],
+	  weekdays: ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'],
+	  weekdaysShort: ['dom', 'lun', 'mar', 'mié', 'jue', 'vie', 'sáb'],
+	  weekdaysMin: ['do', 'lu', 'ma', 'mi', 'ju', 'vi', 'sá'],
+	  firstDayOfWeek: 1,
+	  firstWeekContainsDate: 1
+	};
+	var _default = locale;
+	exports["default"] = _default;
+	module.exports = exports.default;
+	});
+
+	var es$1 = unwrapExports(es);
+
+	var lang = {
+	  formatLocale: es$1,
+	  yearFormat: 'YYYY',
+	  monthFormat: 'MMM',
+	  monthBeforeYear: true
+	};
+	DatePicker.locale('es', lang);
+
+	return lang;
+
+})));
 
 
 /***/ }),

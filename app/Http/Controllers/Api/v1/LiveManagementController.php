@@ -43,7 +43,34 @@ class LiveManagementController extends Controller
                                         ->where('category_id', $category->id)
                                         ->where('modality_id', $modality->id)->get();
                 if (count($temps) > 1) {
-                    array_push($category_modality_with_part, $category->name." ".$category->sex->name." ".$modality->name);
+                    $option = [
+                        "label" => '',
+                        "status" => '',
+                    ];
+                    $option["label"] = $category->name." ".$category->sex->name." ".$modality->name;
+                    if (count($temps) == 2) {
+                        $option["status"] = 'deactive';
+                        array_push($category_modality_with_part, $option);
+                    } else {
+                        $com_cat_mod_participant_ids = Com_cat_mod_participant::select('id')->where('competition_id', $competitionId)
+                                                            ->where('category_id', $category->id)
+                                                            ->where('modality_id', $modality->id)->get();
+                        $round_heats = Round_heat::whereIn('com_cat_mod_participant_id', $com_cat_mod_participant_ids)->get();
+                        $isActive = false;
+                        foreach ($round_heats as $round_heat) {
+                            if ($round_heat->status == 3) {
+                                $isActive = true;
+                                break;
+                            }
+                        }
+                        if ($isActive) {
+                            $option["status"] = 'active';
+                            array_push($category_modality_with_part, $option);
+                        } else {
+                            $option["status"] = '';
+                            array_push($category_modality_with_part, $option);
+                        }
+                    }
                 }
             }
         }
@@ -283,6 +310,59 @@ class LiveManagementController extends Controller
         $round_heats = Round_heat::whereIn('com_cat_mod_participant_id', $com_cat_mod_participant_ids)
                                 ->where('round', $request->round)
                                 ->where('heat', $request->heat)->get();
+        $isNew = true;
+        foreach ($round_heats as $round_heat) {
+            if ($round_heat->points != 0) {
+                $isNew = false;
+            }
+        }
+        if ($isNew) {
+            $points = [];
+            foreach ($round_heats as $round_heat) {
+                $average =  [
+                    'wave_1' => 0,
+                    'wave_2' => 0,
+                    'wave_3' => 0,
+                    'wave_4' => 0,
+                    'wave_5' => 0,
+                    'wave_6' => 0,
+                    'wave_7' => 0,
+                    'wave_8' => 0,
+                    'wave_9' => 0,
+                    'wave_10' => 0,
+                ];
+                $heat_scores = Heat_score::where('round_heat_id', $round_heat->id)->get();
+                for ($i = 1; $i < 11; $i++) {
+                    $sum = 0;
+                    $divider = 0;
+                    foreach ($heat_scores as $heat_score) {
+                        if ($heat_score['wave_'.$i] > 0) {
+                            $sum += $heat_score['wave_'.$i]/1;
+                            $divider++;
+                        }
+                    }
+                    $average['wave_'.$i] = $sum / (($divider == 0) ? 1 : $divider);
+                }
+                $ret = $this->sortAverage($average);
+                $first_score = floatval(number_format($ret['first_score'], 2, '.', ''));
+                $second_score = floatval(number_format($ret['second_score'], 2, '.', ''));
+                $round_heat->update([
+                    'first_score' => $first_score,
+                    'second_score' => $second_score,
+                    'points' => $first_score + $second_score,
+                ]);
+                $points["$round_heat->id"] = $round_heat->points;
+            }
+            arsort($points);
+            $index = 1;
+            foreach ($points as $key => $point) {
+                $round_heat = Round_heat::find($key);
+                $round_heat->update([
+                    'position' => $index,
+                ]);
+                $index++;
+            }
+        }
         $heat_scores = [];
         $judge_role = Role::where('name', 'Judge')->first();
         foreach ($round_heats as $round_heat) {
@@ -326,16 +406,6 @@ class LiveManagementController extends Controller
                 $temp->judge;
 
                 $average['round_heat_id'] = $temp->round_heat_id;
-                $average['wave_1'] = $average['wave_1'] + $temp->wave_1/3;
-                $average['wave_2'] = $average['wave_2'] + $temp->wave_2/3;
-                $average['wave_3'] = $average['wave_3'] + $temp->wave_3/3;
-                $average['wave_4'] = $average['wave_4'] + $temp->wave_4/3;
-                $average['wave_5'] = $average['wave_5'] + $temp->wave_5/3;
-                $average['wave_6'] = $average['wave_6'] + $temp->wave_6/3;
-                $average['wave_7'] = $average['wave_7'] + $temp->wave_7/3;
-                $average['wave_8'] = $average['wave_8'] + $temp->wave_8/3;
-                $average['wave_9'] = $average['wave_9'] + $temp->wave_9/3;
-                $average['wave_10'] = $average['wave_10'] + $temp->wave_10/3;
                 array_push($heat_scores_temp, $temp);
             }
             array_push($heat_scores_temp, $average);
@@ -372,7 +442,19 @@ class LiveManagementController extends Controller
                     'status' => 1,
                 ]);
             }
-            
+
+            $average =  [
+                'wave_1' => 0,
+                'wave_2' => 0,
+                'wave_3' => 0,
+                'wave_4' => 0,
+                'wave_5' => 0,
+                'wave_6' => 0,
+                'wave_7' => 0,
+                'wave_8' => 0,
+                'wave_9' => 0,
+                'wave_10' => 0,
+            ];
             foreach ($heat_scores as $heat_score) {
                 if ($heat_score['judge_id'] != "Average") {
                     $temp = Heat_score::find($heat_score['id']);
@@ -388,41 +470,19 @@ class LiveManagementController extends Controller
                         'wave_9' => $heat_score['wave_9'],
                         'wave_10' => $heat_score['wave_10'],
                     ]);
+                } else {
+                    for ($i = 1; $i <= 10; $i++) {
+                        $average['wave_'.$i] = $heat_score['wave_'.$i];
+                    }
+                    $ret = $this->sortAverage($average);
+                    $first_score = floatval(number_format($ret['first_score'], 2, '.', ''));
+                    $second_score = floatval(number_format($ret['second_score'], 2, '.', ''));
+                    $round_heat->update([
+                        'first_score' => $first_score,
+                        'second_score' => $second_score,
+                    ]);
                 }
             }
-
-            $average =  [
-                'wave_1' => 0,
-                'wave_2' => 0,
-                'wave_3' => 0,
-                'wave_4' => 0,
-                'wave_5' => 0,
-                'wave_6' => 0,
-                'wave_7' => 0,
-                'wave_8' => 0,
-                'wave_9' => 0,
-                'wave_10' => 0,
-            ];
-            $temps = Heat_score::where('round_heat_id', $round_heat->id)->orderBy('judge_id')->get();
-            foreach ($temps as $temp) {
-                $average['wave_1'] = $average['wave_1'] + $temp->wave_1/3;
-                $average['wave_2'] = $average['wave_2'] + $temp->wave_2/3;
-                $average['wave_3'] = $average['wave_3'] + $temp->wave_3/3;
-                $average['wave_4'] = $average['wave_4'] + $temp->wave_4/3;
-                $average['wave_5'] = $average['wave_5'] + $temp->wave_5/3;
-                $average['wave_6'] = $average['wave_6'] + $temp->wave_6/3;
-                $average['wave_7'] = $average['wave_7'] + $temp->wave_7/3;
-                $average['wave_8'] = $average['wave_8'] + $temp->wave_8/3;
-                $average['wave_9'] = $average['wave_9'] + $temp->wave_9/3;
-                $average['wave_10'] = $average['wave_10'] + $temp->wave_10/3;
-            }
-            $ret = $this->sortAverage($average);
-            $first_score = floatval(number_format($ret['first_score'], 2, '.', ''));
-            $second_score = floatval(number_format($ret['second_score'], 2, '.', ''));
-            $round_heat->update([
-                'first_score' => $first_score,
-                'second_score' => $second_score,
-            ]);
         }
         // assign position to every participant
         $points = [];
@@ -441,6 +501,14 @@ class LiveManagementController extends Controller
                     'penal' => $temp["penal"],
                     'draw' => $temp["draw"],
                     'points' => $first_score/2 + $second_score + $temp["draw"]/100,
+                ]);
+            } else if ($temp["penal"] == 2) {
+                $round_heat->update([
+                    'penal' => $temp["penal"],
+                    'draw' => $temp["draw"],
+                    'first_score' => 0,
+                    'second_score' => 0,
+                    'points' => 0,
                 ]);
             } else {
                 $round_heat->update([
@@ -494,6 +562,7 @@ class LiveManagementController extends Controller
                                                         ->where('participant_id', $old_round_heats[0]->com_cat_mod_participant->participant_id)
                                                         ->get();
             if (count($manage_ranking_points) == 0) {
+                $ranking_id = (Competition::find($current_competition)->competition_type_id == 1) ? 1 : 2;
                 foreach ($old_round_heats as $old_round_heat) {
                     $manage_ranking_point = new Manage_ranking_point;
                     $manage_ranking_point->competition_id = $current_competition;
@@ -501,7 +570,8 @@ class LiveManagementController extends Controller
                     $manage_ranking_point->modality_id = $current_modality;
                     $manage_ranking_point->participant_id = $old_round_heat->com_cat_mod_participant->participant_id;
                     $manage_ranking_point->ranking = $old_round_heat->position;
-                    $ranking_position_point = Ranking_position_point::where('position', $old_round_heat->position)->first();
+                    $ranking_position_point = Ranking_position_point::where('position', $old_round_heat->position)
+                                                                    ->where('ranking_id', $ranking_id)->first();
                     $manage_ranking_point->ranking_points = $ranking_position_point->points;
                     $manage_ranking_point->save();
                 }
@@ -524,6 +594,7 @@ class LiveManagementController extends Controller
             if ($ranking_score == 'Si') {
                 $old_points = [];
                 $penal_number = 0;
+                $ranking_id = (Competition::find($current_competition)->competition_type_id == 1) ? 1 : 2;
                 foreach ($old_round_heats as $old_round_heat) {
                     $manage_ranking_point = new Manage_ranking_point;
                     $manage_ranking_point->competition_id = $current_competition;
@@ -533,7 +604,8 @@ class LiveManagementController extends Controller
                     $manage_ranking_point->save();
 
                     if ($old_round_heat->penal ==2) {
-                        $ranking_position_point = Ranking_position_point::where('position', $round_heats_number-$penal_number)->first();
+                        $ranking_position_point = Ranking_position_point::where('position', $round_heats_number-$penal_number)
+                                                                        ->where('ranking_id', $ranking_id)->first();
                         $manage_ranking_point->update([
                             'ranking' => $round_heats_number-$penal_number,
                             'ranking_points' => $ranking_position_point->points,
@@ -547,7 +619,8 @@ class LiveManagementController extends Controller
                 $index = 1;
                 foreach ($old_points as $key => $old_point) {
                     $manage_ranking_point = Manage_ranking_point::find($key);
-                    $ranking_position_point = Ranking_position_point::where('position', $index + count($new_round_heats))->first();
+                    $ranking_position_point = Ranking_position_point::where('position', $index + count($new_round_heats))
+                                                                    ->where('ranking_id', $ranking_id)->first();
                     $manage_ranking_point->update([
                         'ranking' => $index + count($new_round_heats),
                         'ranking_points' => $ranking_position_point->points,

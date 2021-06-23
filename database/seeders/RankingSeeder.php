@@ -16,7 +16,10 @@ class RankingSeeder extends Seeder
     {
         //
         DB::table('rankings')->insert([[
-            'name' => 'Ranking',
+            'name' => 'Ranking Cto Euskadi',
+            'year' => '2021'
+        ], [
+            'name' => 'Ranking Other Compets',
             'year' => '2021'
         ]]);
     }

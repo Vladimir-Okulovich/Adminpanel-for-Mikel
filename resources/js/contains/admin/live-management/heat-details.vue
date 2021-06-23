@@ -24,7 +24,21 @@
       }
     },
     watch: {
-      
+      heat_scores: function() {
+        this.heat_scores.forEach(function(heat_score) {
+          for (var i = 1; i < 11; i++) {
+            let sum = 0;
+            let divider = 0;
+            for (var j = 0; j < 3; j++) {
+              if (heat_score[j]['wave_'+i] > 0) {
+                sum += heat_score[j]['wave_'+i]/1
+                divider++
+              }
+            }
+            heat_score[3]['wave_'+i] = sum / ((divider == 0) ? 1 : divider)
+          }
+        })
+      },
     },
     computed: {
       ...mapGetters([
@@ -52,6 +66,18 @@
         'storeFinalHeatResults',
       ]),
 
+      penalHandler() {
+        this.round_heats.forEach(function(round_heat) {
+          if (round_heat.penal > 2) {
+            round_heat.penal = 2;
+          }
+          if (round_heat.penal == 2) {
+            round_heat.first_score = 0
+            round_heat.second_score = 0
+            round_heat.points = 0
+          }
+        })
+      },
       drawHandler() {
         this.round_heats.forEach(function(round_heat) {
           if (round_heat.draw > 2) {
@@ -64,10 +90,15 @@
         // console.log(this.heat_scores)
         this.heat_scores.forEach(function(heat_score) {
           for (var i = 1; i < 11; i++) {
-            heat_score[3]['wave_'+i] = 0;
+            let sum = 0;
+            let divider = 0;
             for (var j = 0; j < 3; j++) {
-              heat_score[3]['wave_'+i] += heat_score[j]['wave_'+i]/3; 
+              if (heat_score[j]['wave_'+i] > 0) {
+                sum += heat_score[j]['wave_'+i]/1
+                divider++
+              }
             }
+            heat_score[3]['wave_'+i] = sum / ((divider == 0) ? 1 : divider)
           }
         })
       },
@@ -90,13 +121,16 @@
         .then(() => {
           this.$router.go(-1);
         });
-      }
+      },
+      back() {
+        this.$router.go(-1);
+      },
     }
 	};
 </script>
 <template>
   <Layout>
-    <div class="d-flex justify-content-center pt-4">
+    <div class="d-flex pt-4">
       <b-img
         :src="'/images/logo.png'"
         height="127"
@@ -112,6 +146,12 @@
         </p>
         <p class="mb-0" style="padding: 3px 20px;">Antolatzailea: {{ round_heats[0].com_cat_mod_participant.competition.organizer }}</p>
       </div>
+      <button @click="back"
+        class="btn btn-secondary"
+        style="width: 10%;position: absolute;right: 24px;"
+      >
+        Volver
+      </button>
     </div>
 
     <div class="text-center w-100 mt-4">
@@ -146,7 +186,7 @@
                 <td>{{ round_heat.position }}</td>
                 <td>{{ parseFloat(round_heat.first_score).toFixed(2) }}</td>
                 <td>{{ parseFloat(round_heat.second_score).toFixed(2) }}</td>
-                <td><input v-model="round_heat.penal" type="number" step="1" min="0" max="2" class="custom-input" /></td>
+                <td><input v-model="round_heat.penal" v-on:change="penalHandler" type="number" step="1" min="0" max="2" class="custom-input" /></td>
                 <td><input v-model="round_heat.draw" v-on:change="drawHandler" type="number" step="1" min="0" max="2" class="custom-input" /></td>
                 <td>{{ parseFloat(round_heat.points).toFixed(2) }}</td>
               </tr>
@@ -159,7 +199,7 @@
              Terminar Manga
             </button>
             <button @click="saveResults"
-              class="btn btn-orange mr-2"
+              class="btn btn-orange"
             >
               Guardar Datos
             </button>
@@ -186,25 +226,25 @@
                 <td rowspan="4" :style="{background: heat_score_row.round_heat.lycra.color}" v-if="index_2==0"></td>
                 <td v-if="heat_score_row.judge_id != 'Average'">{{ heat_score_row.judge.name }}</td>
                 <td v-else style="background: #0c101d;">{{ heat_score_row.judge_id }}</td>
-                <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_1" v-on:change="averageHandler" type="number" min="0" max="10" step="0.1" class="custom-input" /></td>
+                <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_1" v-on:change="averageHandler" type="number" min="0" max="10" step="0.1" class="custom-input" :class="{ 'is-invalid': heat_score_row.wave_1 > 10 }" /></td>
                 <td v-else style="background: #0c101d;">{{ parseFloat(heat_score_row.wave_1).toFixed(2) }}</td>
-                <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_2" v-on:change="averageHandler" type="number" min="0" max="10" step="0.1" class="custom-input" /></td>
+                <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_2" v-on:change="averageHandler" type="number" min="0" max="10" step="0.1" class="custom-input" :class="{ 'is-invalid': heat_score_row.wave_2 > 10 }" /></td>
                 <td v-else style="background: #0c101d;">{{ parseFloat(heat_score_row.wave_2).toFixed(2) }}</td>
-                <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_3" v-on:change="averageHandler" type="number" min="0" max="10" step="0.1" class="custom-input" /></td>
+                <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_3" v-on:change="averageHandler" type="number" min="0" max="10" step="0.1" class="custom-input" :class="{ 'is-invalid': heat_score_row.wave_3 > 10 }" /></td>
                 <td v-else style="background: #0c101d;">{{ parseFloat(heat_score_row.wave_3).toFixed(2) }}</td>
-                <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_4" v-on:change="averageHandler" type="number" min="0" max="10" step="0.1" class="custom-input" /></td>
+                <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_4" v-on:change="averageHandler" type="number" min="0" max="10" step="0.1" class="custom-input" :class="{ 'is-invalid': heat_score_row.wave_4 > 10 }" /></td>
                 <td v-else style="background: #0c101d;">{{ parseFloat(heat_score_row.wave_4).toFixed(2) }}</td>
-                <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_5" v-on:change="averageHandler" type="number" min="0" max="10" step="0.1" class="custom-input" /></td>
+                <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_5" v-on:change="averageHandler" type="number" min="0" max="10" step="0.1" class="custom-input" :class="{ 'is-invalid': heat_score_row.wave_5 > 10 }" /></td>
                 <td v-else style="background: #0c101d;">{{ parseFloat(heat_score_row.wave_5).toFixed(2) }}</td>
-                <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_6" v-on:change="averageHandler" type="number" min="0" max="10" step="0.1" class="custom-input" /></td>
+                <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_6" v-on:change="averageHandler" type="number" min="0" max="10" step="0.1" class="custom-input" :class="{ 'is-invalid': heat_score_row.wave_6 > 10 }" /></td>
                 <td v-else style="background: #0c101d;">{{ parseFloat(heat_score_row.wave_6).toFixed(2) }}</td>
-                <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_7" v-on:change="averageHandler" type="number" min="0" max="10" step="0.1" class="custom-input" /></td>
+                <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_7" v-on:change="averageHandler" type="number" min="0" max="10" step="0.1" class="custom-input" :class="{ 'is-invalid': heat_score_row.wave_7 > 10 }" /></td>
                 <td v-else style="background: #0c101d;">{{ parseFloat(heat_score_row.wave_7).toFixed(2) }}</td>
-                <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_8" v-on:change="averageHandler" type="number" min="0" max="10" step="0.1" class="custom-input" /></td>
+                <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_8" v-on:change="averageHandler" type="number" min="0" max="10" step="0.1" class="custom-input" :class="{ 'is-invalid': heat_score_row.wave_8 > 10 }" /></td>
                 <td v-else style="background: #0c101d;">{{ parseFloat(heat_score_row.wave_8).toFixed(2) }}</td>
-                <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_9" v-on:change="averageHandler" type="number" min="0" max="10" step="0.1" class="custom-input" /></td>
+                <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_9" v-on:change="averageHandler" type="number" min="0" max="10" step="0.1" class="custom-input" :class="{ 'is-invalid': heat_score_row.wave_9 > 10 }" /></td>
                 <td v-else style="background: #0c101d;">{{ parseFloat(heat_score_row.wave_9).toFixed(2) }}</td>
-                <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_10" v-on:change="averageHandler" type="number" min="0" max="10" step="0.1" class="custom-input" /></td>
+                <td v-if="heat_score_row.judge_id != 'Average'"><input v-model="heat_score_row.wave_10" v-on:change="averageHandler" type="number" min="0" max="10" step="0.1" class="custom-input" :class="{ 'is-invalid': heat_score_row.wave_10 > 10 }" /></td>
                 <td v-else style="background: #0c101d;">{{ parseFloat(heat_score_row.wave_10).toFixed(2) }}</td>
                 <td v-if="heat_score_row.judge_id != 'Average'">{{ heat_score_row.penal }}</td>
                 <td v-else style="background: #0c101d;"></td>
@@ -220,7 +260,7 @@
             Terminar Manga
           </button>
           <button @click="saveResults"
-            class="btn btn-orange mr-2"
+            class="btn btn-orange"
           >
             Guardar Datos
           </button>
@@ -240,6 +280,9 @@
   }
   .custom-input:focus {
     outline: none;
+  }
+  .custom-input.is-invalid {
+    border: 1px solid #ec4561;
   }
   input::-webkit-outer-spin-button,
   input::-webkit-inner-spin-button {

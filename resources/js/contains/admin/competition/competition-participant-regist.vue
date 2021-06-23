@@ -131,6 +131,8 @@
         })
       },
       getModAndCatOfParticipantIcon(id) {
+        this.isRequired.modality = true;
+        this.isRequired.category = true;
         this.setParticipantId(id);
         this.getModAndCatOfParticipant({
           competitionId: this.$route.params.competitionId,
@@ -364,7 +366,7 @@
     <b-modal
       id="register-modality-modal"
       centered
-      title="Elegir Modalidad"
+      title="Elegir Participante"
       title-class="font-18"
       hide-footer
     >
@@ -399,7 +401,7 @@
     <b-modal
       id="edit-modality-modal"
       centered
-      title="Update Modality"
+      title="Actualizar Participante"
       title-class="font-18"
       hide-footer
     >
