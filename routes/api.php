@@ -125,6 +125,8 @@ Route::group([ 'prefix' => 'v1', 'middleware' => 'api'], function(){
         Route::post('competition/participant/unregist', 'App\Http\Controllers\Api\v1\ManageRankingController@unregistParticipantToCompetition');
         // /* Get Modality of Participant */
         Route::post('competition/modality/participant', 'App\Http\Controllers\Api\v1\ManageRankingController@getModAndCatOfParticipant');
+        // /* Get Available Categories of Participant */
+        Route::post('competition/modality/participant/available-cat', 'App\Http\Controllers\Api\v1\ManageRankingController@getAvailableCategories');
         // /* Get Category of Participant */
         Route::get('competition/category/participant/{participantId}', 'App\Http\Controllers\Api\v1\ManageRankingController@getParticipantCategoryOptions');
 

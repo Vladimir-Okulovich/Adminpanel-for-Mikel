@@ -303,6 +303,27 @@ class ManageRankingController extends Controller
         ], 200);
     }
 
+    public function getAvailableCategories(Request $request) {
+        $participant = Participant::find($request->participantId);
+        $modality_ids = Modality::select('id')->whereIn('name', $request->modality)->get();
+        $available_category_options = [];
+        $categories = Category::where('sex_id', $participant->sex_id)->whereNotIn('name', ['Junior', 'Cadete'])->get();
+        foreach ($categories as $category) {
+            $com_cat_mod_participant_ids = Com_cat_mod_participant::select('id')->where('competition_id', $request->competitionId)
+                                        ->where('category_id', $category->id)
+                                        ->whereIn('modality_id', $modality_ids)->get();
+            $round_heats = Round_heat::whereIn('com_cat_mod_participant_id', $com_cat_mod_participant_ids)->get();
+            if (count($round_heats) == 0) {
+                array_push($available_category_options, $category->name);
+            }
+        }
+
+        return response()->json([
+            'message' => 'Success',
+            'available_category_options' => $available_category_options,
+        ], 200);
+    }
+
     public function updateParticipantToCompetition(Request $request) {
         $validator = Validator::make($request->all(), [
             'modality' => 'required',

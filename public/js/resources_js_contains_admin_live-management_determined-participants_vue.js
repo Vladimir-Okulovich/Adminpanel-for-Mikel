@@ -152,7 +152,7 @@ __webpack_require__.r(__webpack_exports__);
     this.totalRows = this.ParticipantsByCompetitionCategoryModality.length;
     this.getCategoryModalityWithPart(this.$route.params.competitionId);
   },
-  methods: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)((0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_7__.mapActions)(['getCategoryModalityWithPart', 'getParticipantsByCompetitionCategoryModality', 'unregistParticipantToCompetitionCategoryModality', 'createFirstCompetitionBoxes', 'getModAndCatOfParticipant', 'updateParticipantToCompetition'])), {}, {
+  methods: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)((0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_7__.mapActions)(['getCategoryModalityWithPart', 'getParticipantsByCompetitionCategoryModality', 'unregistParticipantToCompetitionCategoryModality', 'createFirstCompetitionBoxes', 'getModAndCatOfParticipant', 'getAvailableCategories', 'updateParticipantToCompetition'])), {}, {
     /**
      * Search the table data with search input
      */
@@ -189,6 +189,21 @@ __webpack_require__.r(__webpack_exports__);
         _this.availableCategoryOptions = res.data.available_category_options;
       });
     },
+    editModalityHandler: function editModalityHandler() {
+      var _this2 = this;
+
+      // console.log(this.edit_modalities)
+      if (this.edit_modalities.length > 0) {
+        this.getAvailableCategories({
+          competitionId: this.$route.params.competitionId,
+          participantId: this.participantId,
+          modality: this.edit_modalities
+        }).then(function (res) {
+          console.log(res);
+          _this2.availableCategoryOptions = res.data.available_category_options;
+        });
+      }
+    },
     editParticipantWithModAndCat: function editParticipantWithModAndCat() {
       if (this.edit_modalities.length == 0) {
         this.isRequired.modality = false;
@@ -219,19 +234,19 @@ __webpack_require__.r(__webpack_exports__);
       this.$bvModal.hide('unregister-modal');
     },
     createCompetitionBox: function createCompetitionBox() {
-      var _this2 = this;
+      var _this3 = this;
 
       this.createFirstCompetitionBoxes({
         competitionId: this.$route.params.competitionId,
         categoryId: this.categoryId,
         modalityId: this.modalityId
       }).then(function (res) {
-        _this2.$router.push({
+        _this3.$router.push({
           name: 'CompetitionHeats',
           params: {
-            competitionId: _this2.$route.params.competitionId,
-            categoryId: _this2.categoryId,
-            modalityId: _this2.modalityId
+            competitionId: _this3.$route.params.competitionId,
+            categoryId: _this3.categoryId,
+            modalityId: _this3.modalityId
           }
         });
       });
@@ -7438,6 +7453,7 @@ var render = function() {
               _vm._v(" "),
               _c("multiselect", {
                 attrs: { options: _vm.modalityOptions, multiple: true },
+                on: { input: _vm.editModalityHandler },
                 model: {
                   value: _vm.edit_modalities,
                   callback: function($$v) {
