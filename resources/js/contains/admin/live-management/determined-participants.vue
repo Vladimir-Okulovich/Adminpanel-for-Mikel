@@ -48,8 +48,20 @@
           { label: "DNI Ficha", key: "dni_ficha", sortable: false },
           { label: "Fecha Nac.", key: "birthday", sortable: false },
           { label: "Club", key: "club", sortable: true },
+          { label: "Acciones", key: "actions", sortable: false },
         ],
-        deletingId: 0,
+        modalityOptions: [
+          "Corto",
+          "Largo",
+        ],
+        participantCategoryOptions: [],
+        isRequired: {
+          modality: true,
+          category: true,
+        },
+        edit_modalities: [],
+        edit_categories: [],
+        participantId: 0,
       }
     },
     watch: {
@@ -91,6 +103,8 @@
         'getParticipantsByCompetitionCategoryModality',
         'unregistParticipantToCompetitionCategoryModality',
         'createFirstCompetitionBoxes',
+        'getModAndCatOfParticipant',
+        'updateParticipantToCompetition',
       ]),
       /**
        * Search the table data with search input
@@ -101,16 +115,9 @@
         this.currentPage = 1;
       },
       setParticipantId(id) {
-        this.deletingId = id;
+        this.participantId = id;
       },
-      realDelete() {
-        this.unregistParticipantToCompetitionCategoryModality({
-          competitionId: this.$route.params.competitionId,
-          participantId: this.deletingId,
-          categoryModality: this.categoryModality,
-        });
-        this.$bvModal.hide('delete-modal');
-      },
+      
       categoryModalityHandler() {
         // console.log(this.categoryModality)
         if (this.categoryModality != null) {
@@ -119,6 +126,47 @@
             categoryModality: this.categoryModality,
           });
         }
+      },
+      getModAndCatOfParticipantIcon(id) {
+        this.setParticipantId(id);
+        this.getModAndCatOfParticipant({
+          competitionId: this.$route.params.competitionId,
+          participantId: id,
+        })
+        .then((res) => {
+          // console.log(res)
+          this.edit_categories = res.data.category_participant;
+          this.edit_modalities = res.data.modality_participant;
+          this.participantCategoryOptions = res.data.participant_category_options;
+        })
+      },
+      editParticipantWithModAndCat() {
+        if (this.edit_modalities.length == 0) {
+          this.isRequired.modality = false;
+          return
+        }
+        this.isRequired.modality = true;
+        if (this.edit_categories.length == 0) {
+          this.isRequired.category = false;
+          return
+        }
+        this.isRequired.category = true;
+
+        this.updateParticipantToCompetition({
+          competitionId: this.$route.params.competitionId,
+          participantId: this.participantId,
+          modality: this.edit_modalities,
+          category: this.edit_categories,
+        });
+        this.$bvModal.hide('edit-modal');
+      },
+      unregisterParticipant() {
+        this.unregistParticipantToCompetitionCategoryModality({
+          competitionId: this.$route.params.competitionId,
+          participantId: this.participantId,
+          categoryModality: this.categoryModality,
+        });
+        this.$bvModal.hide('unregister-modal');
       },
       createCompetitionBox() {
         this.createFirstCompetitionBoxes({
@@ -224,7 +272,14 @@
                 <template #cell(club)="row">
                   {{ row.item.club.name }}
                 </template>
-
+                <template #cell(actions)="row">
+                  <b-button size="sm" @click="getModAndCatOfParticipantIcon(row.item.id)" v-b-modal.edit-modal>
+                    <i class="fas fa-user-edit"></i>
+                  </b-button>
+                  <b-button size="sm" @click="setParticipantId(row.item.id)" v-b-modal.unregister-modal>
+                    <i class="fas fa-user-minus"></i>
+                  </b-button>
+                </template>
               </b-table>
             </div>
             <div class="row">
@@ -266,7 +321,55 @@
         </div>
       </div>
     </div>
-   
+
+    <b-modal
+      id="edit-modal"
+      centered
+      title="Actualizar Participante"
+      title-class="font-18"
+      hide-footer
+    >
+      <div class="">
+        <label>Modalidad</label>
+        <multiselect 
+          v-model="edit_modalities"
+          :options="modalityOptions"
+          :multiple="true"
+        ></multiselect>
+        <div class="invalid-feedback" :class="{ 'd-inline-block': !isRequired.modality }">
+          <span>Este Campo es Obligatorio.</span>
+        </div>
+      </div>
+      <div class="mb-2">
+        <label>Categoría</label>
+        <multiselect 
+          v-model="edit_categories"
+          :options="participantCategoryOptions"
+          :multiple="true"
+        ></multiselect>
+        <div class="invalid-feedback" :class="{ 'd-inline-block': !isRequired.category }">
+          <span>Este Campo es Obligatorio.</span>
+        </div>
+      </div>
+      <footer class="modal-footer">
+        <button type="button" class="btn btn-secondary" @click="$bvModal.hide('edit-modal')">Cancelar</button>
+        <button type="button" class="btn btn-primary" @click="editParticipantWithModAndCat()">Guardar</button>
+      </footer>
+    </b-modal>
+
+    <b-modal
+      id="unregister-modal"
+      centered
+      title="Eliminar Participante"
+      title-class="font-18"
+      hide-footer
+    >
+      <p>¿Está seguro de eliminar este aprticipante de la competición?</p>
+      <footer class="modal-footer">
+        <button type="button" class="btn btn-secondary" @click="$bvModal.hide('unregister-modal')">Cancelar</button>
+        <button type="button" class="btn btn-primary" @click="unregisterParticipant()">Eliminar</button>
+      </footer>
+    </b-modal>  
   </Layout>
 </template>
 

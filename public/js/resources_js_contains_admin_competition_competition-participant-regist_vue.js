@@ -7546,7 +7546,7 @@ var render = function() {
           attrs: {
             id: "register-modality-modal",
             centered: "",
-            title: "Elegir Modalidad",
+            title: "Elegir Participante",
             "title-class": "font-18",
             "hide-footer": ""
           }
@@ -7651,7 +7651,7 @@ var render = function() {
           attrs: {
             id: "edit-modality-modal",
             centered: "",
-            title: "Update Modality",
+            title: "Actualizar Participante",
             "title-class": "font-18",
             "hide-footer": ""
           }
@@ -8066,7 +8066,7 @@ var render = function() {
                               to: { name: "CategoryRankingMenu" }
                             }
                           },
-                          [_c("span", [_vm._v("Gestión Ranking")])]
+                          [_c("span", [_vm._v("Ranking Anual")])]
                         )
                       ],
                       1

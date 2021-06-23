@@ -10,7 +10,7 @@ const actions = {
         return new Promise((resolve) =>{
             ApiService.get("api/v1/admin/competitions")
                 .then(({data}) => {
-                    // console.log(data);
+                    console.log(data);
                     context.commit(type.SET_ALL_COMPETITION, data)
                 })
                 .catch(({ response }) => {

@@ -107,16 +107,16 @@
               <tbody v-for="(judge_heat_score, index) in judge_heat_scores" :key="index">
                 <tr>
                   <td :style="{ background: judge_heat_score.round_heat.lycra.color, }"></td>
-                  <td><input v-model="judge_heat_score.wave_1" type="number" min="0" max="10" step="0.1" class="custom-input" /></td>
-                  <td><input v-model="judge_heat_score.wave_2" type="number" min="0" max="10" step="0.1" class="custom-input" /></td>
-                  <td><input v-model="judge_heat_score.wave_3" type="number" min="0" max="10" step="0.1" class="custom-input" /></td>
-                  <td><input v-model="judge_heat_score.wave_4" type="number" min="0" max="10" step="0.1" class="custom-input" /></td>
-                  <td><input v-model="judge_heat_score.wave_5" type="number" min="0" max="10" step="0.1" class="custom-input" /></td>
-                  <td><input v-model="judge_heat_score.wave_6" type="number" min="0" max="10" step="0.1" class="custom-input" /></td>
-                  <td><input v-model="judge_heat_score.wave_7" type="number" min="0" max="10" step="0.1" class="custom-input" /></td>
-                  <td><input v-model="judge_heat_score.wave_8" type="number" min="0" max="10" step="0.1" class="custom-input" /></td>
-                  <td><input v-model="judge_heat_score.wave_9" type="number" min="0" max="10" step="0.1" class="custom-input" /></td>
-                  <td><input v-model="judge_heat_score.wave_10" type="number" min="0" max="10" step="0.1" class="custom-input" /></td>
+                  <td><input v-model="judge_heat_score.wave_1" type="number" min="0" max="10" step="0.1" class="custom-input" :class="{ 'is-invalid': judge_heat_score.wave_1 > 10 }" /></td>
+                  <td><input v-model="judge_heat_score.wave_2" type="number" min="0" max="10" step="0.1" class="custom-input" :class="{ 'is-invalid': judge_heat_score.wave_2 > 10 }" /></td>
+                  <td><input v-model="judge_heat_score.wave_3" type="number" min="0" max="10" step="0.1" class="custom-input" :class="{ 'is-invalid': judge_heat_score.wave_3 > 10 }" /></td>
+                  <td><input v-model="judge_heat_score.wave_4" type="number" min="0" max="10" step="0.1" class="custom-input" :class="{ 'is-invalid': judge_heat_score.wave_4 > 10 }" /></td>
+                  <td><input v-model="judge_heat_score.wave_5" type="number" min="0" max="10" step="0.1" class="custom-input" :class="{ 'is-invalid': judge_heat_score.wave_5 > 10 }" /></td>
+                  <td><input v-model="judge_heat_score.wave_6" type="number" min="0" max="10" step="0.1" class="custom-input" :class="{ 'is-invalid': judge_heat_score.wave_6 > 10 }" /></td>
+                  <td><input v-model="judge_heat_score.wave_7" type="number" min="0" max="10" step="0.1" class="custom-input" :class="{ 'is-invalid': judge_heat_score.wave_7 > 10 }" /></td>
+                  <td><input v-model="judge_heat_score.wave_8" type="number" min="0" max="10" step="0.1" class="custom-input" :class="{ 'is-invalid': judge_heat_score.wave_8 > 10 }" /></td>
+                  <td><input v-model="judge_heat_score.wave_9" type="number" min="0" max="10" step="0.1" class="custom-input" :class="{ 'is-invalid': judge_heat_score.wave_9 > 10 }" /></td>
+                  <td><input v-model="judge_heat_score.wave_10" type="number" min="0" max="10" step="0.1" class="custom-input" :class="{ 'is-invalid': judge_heat_score.wave_10 > 10 }" /></td>
                   <td><input v-model="judge_heat_score.penal" type="number" step="1" min="0" max="2" class="custom-input" /></td>
                 </tr>
                 <tr style="height: 22px;">
@@ -133,7 +133,7 @@
           Terminar
         </button>
         <button @click="saveResults"
-          class="btn btn-orange mr-2"
+          class="btn btn-orange"
         >
           Guardar
         </button>
@@ -166,6 +166,9 @@
   }
   .custom-input:focus {
     outline: none;
+  }
+  .custom-input.is-invalid {
+    border: 1px solid #ec4561;
   }
   input::-webkit-outer-spin-button,
   input::-webkit-inner-spin-button {

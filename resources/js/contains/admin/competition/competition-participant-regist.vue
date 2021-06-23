@@ -364,7 +364,7 @@
     <b-modal
       id="register-modality-modal"
       centered
-      title="Elegir Modalidad"
+      title="Elegir Participante"
       title-class="font-18"
       hide-footer
     >
@@ -399,7 +399,7 @@
     <b-modal
       id="edit-modality-modal"
       centered
-      title="Update Modality"
+      title="Actualizar Participante"
       title-class="font-18"
       hide-footer
     >

@@ -61,7 +61,6 @@ class JudgeController extends Controller
                 ]);
         }
 
-        // $judge_heat_scores = [];
         return response()->json([
             'message' => 'success',
         ], 200);

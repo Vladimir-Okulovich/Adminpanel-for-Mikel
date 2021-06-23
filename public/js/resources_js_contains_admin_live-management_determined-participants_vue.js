@@ -111,8 +111,20 @@ __webpack_require__.r(__webpack_exports__);
         label: "Club",
         key: "club",
         sortable: true
+      }, {
+        label: "Acciones",
+        key: "actions",
+        sortable: false
       }],
-      deletingId: 0
+      modalityOptions: ["Corto", "Largo"],
+      participantCategoryOptions: [],
+      isRequired: {
+        modality: true,
+        category: true
+      },
+      edit_modalities: [],
+      edit_categories: [],
+      participantId: 0
     };
   },
   watch: {
@@ -140,7 +152,7 @@ __webpack_require__.r(__webpack_exports__);
     this.totalRows = this.ParticipantsByCompetitionCategoryModality.length;
     this.getCategoryModalityWithPart(this.$route.params.competitionId);
   },
-  methods: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)((0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_7__.mapActions)(['getCategoryModalityWithPart', 'getParticipantsByCompetitionCategoryModality', 'unregistParticipantToCompetitionCategoryModality', 'createFirstCompetitionBoxes'])), {}, {
+  methods: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)((0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_7__.mapActions)(['getCategoryModalityWithPart', 'getParticipantsByCompetitionCategoryModality', 'unregistParticipantToCompetitionCategoryModality', 'createFirstCompetitionBoxes', 'getModAndCatOfParticipant', 'updateParticipantToCompetition'])), {}, {
     /**
      * Search the table data with search input
      */
@@ -150,15 +162,7 @@ __webpack_require__.r(__webpack_exports__);
       this.currentPage = 1;
     },
     setParticipantId: function setParticipantId(id) {
-      this.deletingId = id;
-    },
-    realDelete: function realDelete() {
-      this.unregistParticipantToCompetitionCategoryModality({
-        competitionId: this.$route.params.competitionId,
-        participantId: this.deletingId,
-        categoryModality: this.categoryModality
-      });
-      this.$bvModal.hide('delete-modal');
+      this.participantId = id;
     },
     categoryModalityHandler: function categoryModalityHandler() {
       // console.log(this.categoryModality)
@@ -169,20 +173,64 @@ __webpack_require__.r(__webpack_exports__);
         });
       }
     },
-    createCompetitionBox: function createCompetitionBox() {
+    getModAndCatOfParticipantIcon: function getModAndCatOfParticipantIcon(id) {
       var _this = this;
+
+      this.setParticipantId(id);
+      this.getModAndCatOfParticipant({
+        competitionId: this.$route.params.competitionId,
+        participantId: id
+      }).then(function (res) {
+        // console.log(res)
+        _this.edit_categories = res.data.category_participant;
+        _this.edit_modalities = res.data.modality_participant;
+        _this.participantCategoryOptions = res.data.participant_category_options;
+      });
+    },
+    editParticipantWithModAndCat: function editParticipantWithModAndCat() {
+      if (this.edit_modalities.length == 0) {
+        this.isRequired.modality = false;
+        return;
+      }
+
+      this.isRequired.modality = true;
+
+      if (this.edit_categories.length == 0) {
+        this.isRequired.category = false;
+        return;
+      }
+
+      this.isRequired.category = true;
+      this.updateParticipantToCompetition({
+        competitionId: this.$route.params.competitionId,
+        participantId: this.participantId,
+        modality: this.edit_modalities,
+        category: this.edit_categories
+      });
+      this.$bvModal.hide('edit-modal');
+    },
+    unregisterParticipant: function unregisterParticipant() {
+      this.unregistParticipantToCompetitionCategoryModality({
+        competitionId: this.$route.params.competitionId,
+        participantId: this.participantId,
+        categoryModality: this.categoryModality
+      });
+      this.$bvModal.hide('unregister-modal');
+    },
+    createCompetitionBox: function createCompetitionBox() {
+      var _this2 = this;
 
       this.createFirstCompetitionBoxes({
         competitionId: this.$route.params.competitionId,
         categoryId: this.categoryId,
         modalityId: this.modalityId
       }).then(function (res) {
-        _this.$router.push({
+        _this2.$router.push({
           name: 'CompetitionHeats',
           params: {
-            competitionId: _this.$route.params.competitionId,
-            categoryId: _this.categoryId,
-            modalityId: _this.modalityId
+            competitionId: _this2.$route.params.competitionId,
+            categoryId: _this2.categoryId,
+            modalityId: _this2.modalityId
           }
         });
       });
@@ -7207,6 +7255,54 @@ var render = function() {
                             )
                           ]
                         }
+                      },
+                      {
+                        key: "cell(actions)",
+                        fn: function(row) {
+                          return [
+                            _c(
+                              "b-button",
+                              {
+                                directives: [
+                                  {
+                                    name: "b-modal",
+                                    rawName: "v-b-modal.edit-modal",
+                                    modifiers: { "edit-modal": true }
+                                  }
+                                ],
+                                attrs: { size: "sm" },
+                                on: {
+                                  click: function($event) {
+                                    return _vm.getModAndCatOfParticipantIcon(
+                                      row.item.id
+                                    )
+                                  }
+                                }
+                              },
+                              [_c("i", { staticClass: "fas fa-user-edit" })]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "b-button",
+                              {
+                                directives: [
+                                  {
+                                    name: "b-modal",
+                                    rawName: "v-b-modal.unregister-modal",
+                                    modifiers: { "unregister-modal": true }
+                                  }
+                                ],
+                                attrs: { size: "sm" },
+                                on: {
+                                  click: function($event) {
+                                    return _vm.setParticipantId(row.item.id)
+                                  }
+                                }
+                              },
+                              [_c("i", { staticClass: "fas fa-user-minus" })]
+                            )
+                          ]
+                        }
                       }
                     ])
                   })
@@ -7294,7 +7390,162 @@ var render = function() {
             )
           ])
         ])
-      ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "b-modal",
+        {
+          attrs: {
+            id: "edit-modal",
+            centered: "",
+            title: "Actualizar Participante",
+            "title-class": "font-18",
+            "hide-footer": ""
+          }
+        },
+        [
+          _c(
+            "div",
+            {},
+            [
+              _c("label", [_vm._v("Modalidad")]),
+              _vm._v(" "),
+              _c("multiselect", {
+                attrs: { options: _vm.modalityOptions, multiple: true },
+                model: {
+                  value: _vm.edit_modalities,
+                  callback: function($$v) {
+                    _vm.edit_modalities = $$v
+                  },
+                  expression: "edit_modalities"
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "invalid-feedback",
+                  class: { "d-inline-block": !_vm.isRequired.modality }
+                },
+                [_c("span", [_vm._v("Este Campo es Obligatorio.")])]
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "mb-2" },
+            [
+              _c("label", [_vm._v("Categoría")]),
+              _vm._v(" "),
+              _c("multiselect", {
+                attrs: {
+                  options: _vm.participantCategoryOptions,
+                  multiple: true
+                },
+                model: {
+                  value: _vm.edit_categories,
+                  callback: function($$v) {
+                    _vm.edit_categories = $$v
+                  },
+                  expression: "edit_categories"
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "invalid-feedback",
+                  class: { "d-inline-block": !_vm.isRequired.category }
+                },
+                [_c("span", [_vm._v("Este Campo es Obligatorio.")])]
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("footer", { staticClass: "modal-footer" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-secondary",
+                attrs: { type: "button" },
+                on: {
+                  click: function($event) {
+                    return _vm.$bvModal.hide("edit-modal")
+                  }
+                }
+              },
+              [_vm._v("Cancelar")]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-primary",
+                attrs: { type: "button" },
+                on: {
+                  click: function($event) {
+                    return _vm.editParticipantWithModAndCat()
+                  }
+                }
+              },
+              [_vm._v("Guardar")]
+            )
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "b-modal",
+        {
+          attrs: {
+            id: "unregister-modal",
+            centered: "",
+            title: "Eliminar Participante",
+            "title-class": "font-18",
+            "hide-footer": ""
+          }
+        },
+        [
+          _c("p", [
+            _vm._v(
+              "¿Está seguro de eliminar este aprticipante de la competición?"
+            )
+          ]),
+          _vm._v(" "),
+          _c("footer", { staticClass: "modal-footer" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-secondary",
+                attrs: { type: "button" },
+                on: {
+                  click: function($event) {
+                    return _vm.$bvModal.hide("unregister-modal")
+                  }
+                }
+              },
+              [_vm._v("Cancelar")]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-primary",
+                attrs: { type: "button" },
+                on: {
+                  click: function($event) {
+                    return _vm.unregisterParticipant()
+                  }
+                }
+              },
+              [_vm._v("Eliminar")]
+            )
+          ])
+        ]
+      )
     ],
     1
   )
@@ -7562,7 +7813,7 @@ var render = function() {
                               to: { name: "CategoryRankingMenu" }
                             }
                           },
-                          [_c("span", [_vm._v("Gestión Ranking")])]
+                          [_c("span", [_vm._v("Ranking Anual")])]
                         )
                       ],
                       1

@@ -7202,7 +7202,12 @@ var render = function() {
                                 _vm._v(" "),
                                 _c(
                                   "option",
-                                  { attrs: { value: "REGISTRO ABIERTO" } },
+                                  {
+                                    attrs: {
+                                      value: "REGISTRO ABIERTO",
+                                      disabled: !row.item.isOpening
+                                    }
+                                  },
                                   [_vm._v("REGISTRO ABIERTO")]
                                 ),
                                 _vm._v(" "),
@@ -7699,7 +7704,7 @@ var render = function() {
                               to: { name: "CategoryRankingMenu" }
                             }
                           },
-                          [_c("span", [_vm._v("Gestión Ranking")])]
+                          [_c("span", [_vm._v("Ranking Anual")])]
                         )
                       ],
                       1
