@@ -171,18 +171,22 @@
           participantId: this.participantId,
           modality: this.edit_modalities,
           category: this.edit_categories,
+        })
+        .then((res) => {
+          this.$bvModal.hide('edit-modal')
+          window.location.reload();
         });
-        this.$bvModal.hide('edit-modal');
-        this.isRequired.modality = true;
-        this.isRequired.category = true;
       },
       unregisterParticipant() {
         this.unregistParticipantToCompetitionCategoryModality({
           competitionId: this.$route.params.competitionId,
           participantId: this.participantId,
           categoryModality: this.categoryModality.label,
+        })
+        .then((res) => {
+          this.$bvModal.hide('unregister-modal')
+          window.location.reload();
         });
-        this.$bvModal.hide('unregister-modal');
       },
       createCompetitionBox() {
         this.createFirstCompetitionBoxes({

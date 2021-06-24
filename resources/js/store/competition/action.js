@@ -179,10 +179,11 @@ const actions = {
         ApiService.setHeader();
         return new Promise((resolve, reject) => {
             ApiService.post("api/v1/admin/competition/participant/update", participantInfo)
-                .then(({data}) => {
+                .then((res) => {
                     // console.log(data)
-                    context.commit(type.SET_REGISTERED_AND_NON_PARTICIPANTS, data);
+                    context.commit(type.SET_REGISTERED_AND_NON_PARTICIPANTS, res.data);
                     toastr.success('Participante Modificado Correctamente', '', {timeout: 5000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
+                    resolve(res)
                 })
                 .catch(({response, status}) => {
                     console.log(response);
