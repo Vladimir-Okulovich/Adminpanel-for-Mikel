@@ -259,9 +259,11 @@ __webpack_require__.r(__webpack_exports__);
           status = _ref.status;
 
       if (status == 'deactive') {
-        return "".concat(label.toUpperCase());
+        return "".concat(label, "(MENOS DE 3 PALISTAS)");
       } else if (status == 'active') {
-        return "".concat(label, "(Active)");
+        return "".concat(label, "(MANGA ACTIVO)");
+      } else if (status == 'finished') {
+        return "".concat(label, "(Cuadro terminado)");
       }
 
       return "".concat(label);
@@ -7293,7 +7295,7 @@ var render = function() {
                         fn: function(row) {
                           return [
                             _vm.ParticipantsByCompetitionCategoryModality
-                              .length == 2
+                              .length < 3
                               ? _c(
                                   "b-button",
                                   {

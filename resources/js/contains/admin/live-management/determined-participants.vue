@@ -199,9 +199,11 @@
       },
       labelWithStatus ({ label, status }) {
         if (status == 'deactive') {
-          return `${label.toUpperCase()}`
+          return `${label}(MENOS DE 3 PALISTAS)`
         } else if (status == 'active') {
-          return `${label}(Active)`
+          return `${label}(MANGA ACTIVO)`
+        } else if (status == 'finished') {
+          return `${label}(Cuadro terminado)`
         }
         return `${label}`
       },
@@ -303,7 +305,7 @@
                   {{ row.item.club.name }}
                 </template>
                 <template #cell(actions)="row">
-                  <b-button size="sm" v-if="ParticipantsByCompetitionCategoryModality.length==2" :disabled="categoryStatus != 0" @click="getModAndCatOfParticipantIcon(row.item.id)" v-b-modal.edit-modal>
+                  <b-button size="sm" v-if="ParticipantsByCompetitionCategoryModality.length < 3" :disabled="categoryStatus != 0" @click="getModAndCatOfParticipantIcon(row.item.id)" v-b-modal.edit-modal>
                     <i class="fas fa-user-edit"></i>
                   </b-button>
                   <b-button size="sm" :disabled="categoryStatus != 0" @click="setParticipantId(row.item.id)" v-b-modal.unregister-modal>

@@ -42,13 +42,13 @@ class LiveManagementController extends Controller
                 $temps = Com_cat_mod_participant::where('competition_id', $competitionId)
                                         ->where('category_id', $category->id)
                                         ->where('modality_id', $modality->id)->get();
-                if (count($temps) > 1) {
+                if (count($temps) > 0) {
                     $option = [
                         "label" => '',
                         "status" => '',
                     ];
                     $option["label"] = $category->name." ".$category->sex->name." ".$modality->name;
-                    if (count($temps) == 2) {
+                    if (count($temps) < 3) {
                         $option["status"] = 'deactive';
                         array_push($category_modality_with_part, $option);
                     } else {
@@ -63,8 +63,21 @@ class LiveManagementController extends Controller
                                 break;
                             }
                         }
+                        $finished = true;
+                        if (count($round_heats) == 0) {
+                            $finished = false;
+                        }
+                        foreach ($round_heats as $round_heat) {
+                            if ($round_heat->status != 1) {
+                                $finished = false;
+                                break;
+                            }
+                        }
                         if ($isActive) {
                             $option["status"] = 'active';
+                            array_push($category_modality_with_part, $option);
+                        } else if ($finished) {
+                            $option["status"] = 'finished';
                             array_push($category_modality_with_part, $option);
                         } else {
                             $option["status"] = '';
