@@ -205,6 +205,8 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     editParticipantWithModAndCat: function editParticipantWithModAndCat() {
+      var _this3 = this;
+
       if (this.edit_modalities.length == 0) {
         this.isRequired.modality = false;
         return;
@@ -220,33 +222,39 @@ __webpack_require__.r(__webpack_exports__);
         participantId: this.participantId,
         modality: this.edit_modalities,
         category: this.edit_categories
+      }).then(function (res) {
+        _this3.$bvModal.hide('edit-modal');
+
+        window.location.reload();
       });
-      this.$bvModal.hide('edit-modal');
-      this.isRequired.modality = true;
-      this.isRequired.category = true;
     },
     unregisterParticipant: function unregisterParticipant() {
+      var _this4 = this;
+
       this.unregistParticipantToCompetitionCategoryModality({
         competitionId: this.$route.params.competitionId,
         participantId: this.participantId,
         categoryModality: this.categoryModality.label
+      }).then(function (res) {
+        _this4.$bvModal.hide('unregister-modal');
+
+        window.location.reload();
       });
-      this.$bvModal.hide('unregister-modal');
     },
     createCompetitionBox: function createCompetitionBox() {
-      var _this3 = this;
+      var _this5 = this;
 
       this.createFirstCompetitionBoxes({
         competitionId: this.$route.params.competitionId,
         categoryId: this.categoryId,
         modalityId: this.modalityId
       }).then(function (res) {
-        _this3.$router.push({
+        _this5.$router.push({
           name: 'CompetitionHeats',
           params: {
-            competitionId: _this3.$route.params.competitionId,
-            categoryId: _this3.categoryId,
-            modalityId: _this3.modalityId
+            competitionId: _this5.$route.params.competitionId,
+            categoryId: _this5.categoryId,
+            modalityId: _this5.modalityId
           }
         });
       });
@@ -259,9 +267,11 @@ __webpack_require__.r(__webpack_exports__);
           status = _ref.status;
 
       if (status == 'deactive') {
-        return "".concat(label.toUpperCase());
+        return "".concat(label, " (MENOS DE 3 PALISTAS)");
       } else if (status == 'active') {
-        return "".concat(label, "(Active)");
+        return "".concat(label, " (MANGA ACTIVA)");
+      } else if (status == 'finished') {
+        return "".concat(label, " (Cuadro terminado)");
       }
 
       return "".concat(label);
@@ -7293,7 +7303,7 @@ var render = function() {
                         fn: function(row) {
                           return [
                             _vm.ParticipantsByCompetitionCategoryModality
-                              .length == 2
+                              .length < 3
                               ? _c(
                                   "b-button",
                                   {

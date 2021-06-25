@@ -171,18 +171,22 @@
           participantId: this.participantId,
           modality: this.edit_modalities,
           category: this.edit_categories,
+        })
+        .then((res) => {
+          this.$bvModal.hide('edit-modal')
+          window.location.reload();
         });
-        this.$bvModal.hide('edit-modal');
-        this.isRequired.modality = true;
-        this.isRequired.category = true;
       },
       unregisterParticipant() {
         this.unregistParticipantToCompetitionCategoryModality({
           competitionId: this.$route.params.competitionId,
           participantId: this.participantId,
           categoryModality: this.categoryModality.label,
+        })
+        .then((res) => {
+          this.$bvModal.hide('unregister-modal')
+          window.location.reload();
         });
-        this.$bvModal.hide('unregister-modal');
       },
       createCompetitionBox() {
         this.createFirstCompetitionBoxes({
@@ -199,9 +203,11 @@
       },
       labelWithStatus ({ label, status }) {
         if (status == 'deactive') {
-          return `${label.toUpperCase()}`
+          return `${label} (MENOS DE 3 PALISTAS)`
         } else if (status == 'active') {
-          return `${label}(Active)`
+          return `${label} (MANGA ACTIVA)`
+        } else if (status == 'finished') {
+          return `${label} (Cuadro terminado)`
         }
         return `${label}`
       },
@@ -303,7 +309,7 @@
                   {{ row.item.club.name }}
                 </template>
                 <template #cell(actions)="row">
-                  <b-button size="sm" v-if="ParticipantsByCompetitionCategoryModality.length==2" :disabled="categoryStatus != 0" @click="getModAndCatOfParticipantIcon(row.item.id)" v-b-modal.edit-modal>
+                  <b-button size="sm" v-if="ParticipantsByCompetitionCategoryModality.length < 3" :disabled="categoryStatus != 0" @click="getModAndCatOfParticipantIcon(row.item.id)" v-b-modal.edit-modal>
                     <i class="fas fa-user-edit"></i>
                   </b-button>
                   <b-button size="sm" :disabled="categoryStatus != 0" @click="setParticipantId(row.item.id)" v-b-modal.unregister-modal>

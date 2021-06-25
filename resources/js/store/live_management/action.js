@@ -33,10 +33,9 @@ const actions = {
         ApiService.setHeader();
         return new Promise((resolve) =>{
             ApiService.post("api/v1/admin/competition/category-modality/participant/unregist", data)
-                .then(({data}) => {
-                    // console.log(data.status);
-                    context.commit(type.SET_PARTICIPANTS_AFTER_UNREGIST, data)
+                .then((res) => {
                     toastr.success('Participante eliminado Correctamenteamente', '', {timeout: 5000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
+                    resolve(res)
                 })
                 .catch(({ response }) => {
                     // console.log(response);
