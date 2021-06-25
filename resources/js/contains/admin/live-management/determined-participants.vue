@@ -174,7 +174,11 @@
         })
         .then((res) => {
           this.$bvModal.hide('edit-modal')
-          window.location.reload();
+          // window.location.reload();
+          this.getParticipantsByCompetitionCategoryModality({
+            competitionId: this.$route.params.competitionId,
+            categoryModality: this.categoryModality.label,
+          });
         });
       },
       unregisterParticipant() {
@@ -185,7 +189,11 @@
         })
         .then((res) => {
           this.$bvModal.hide('unregister-modal')
-          window.location.reload();
+          // window.location.reload();
+          this.getParticipantsByCompetitionCategoryModality({
+            competitionId: this.$route.params.competitionId,
+            categoryModality: this.categoryModality.label,
+          });
         });
       },
       createCompetitionBox() {
