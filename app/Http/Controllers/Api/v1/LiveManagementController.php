@@ -289,8 +289,7 @@ class LiveManagementController extends Controller
         $com_cat_mod_participant_ids = Com_cat_mod_participant::select('id')->where('competition_id', $request->competitionId)
                                                             ->where('category_id', $request->categoryId)
                                                             ->where('modality_id', $request->modalityId)->get();
-        $active_round_heats = Round_heat::whereIn('com_cat_mod_participant_id', $com_cat_mod_participant_ids)
-                                    ->where('status', 3)->get();
+        $active_round_heats = Round_heat::where('status', 3)->get();
         $affected = Round_heat::whereIn('com_cat_mod_participant_id', $com_cat_mod_participant_ids)
                             ->where('round', $request->round)
                             ->where('heat', $request->heat)->get();

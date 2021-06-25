@@ -223,9 +223,13 @@ __webpack_require__.r(__webpack_exports__);
         modality: this.edit_modalities,
         category: this.edit_categories
       }).then(function (res) {
-        _this3.$bvModal.hide('edit-modal');
+        _this3.$bvModal.hide('edit-modal'); // window.location.reload();
 
-        window.location.reload();
+
+        _this3.getParticipantsByCompetitionCategoryModality({
+          competitionId: _this3.$route.params.competitionId,
+          categoryModality: _this3.categoryModality.label
+        });
       });
     },
     unregisterParticipant: function unregisterParticipant() {
@@ -236,9 +240,13 @@ __webpack_require__.r(__webpack_exports__);
         participantId: this.participantId,
         categoryModality: this.categoryModality.label
       }).then(function (res) {
-        _this4.$bvModal.hide('unregister-modal');
+        _this4.$bvModal.hide('unregister-modal'); // window.location.reload();
 
-        window.location.reload();
+
+        _this4.getParticipantsByCompetitionCategoryModality({
+          competitionId: _this4.$route.params.competitionId,
+          categoryModality: _this4.categoryModality.label
+        });
       });
     },
     createCompetitionBox: function createCompetitionBox() {
@@ -267,11 +275,11 @@ __webpack_require__.r(__webpack_exports__);
           status = _ref.status;
 
       if (status == 'deactive') {
-        return "".concat(label, "(MENOS DE 3 PALISTAS)");
+        return "".concat(label, " (MENOS DE 3 PALISTAS)");
       } else if (status == 'active') {
-        return "".concat(label, "(MANGA ACTIVO)");
+        return "".concat(label, " (MANGA ACTIVA)");
       } else if (status == 'finished') {
-        return "".concat(label, "(Cuadro terminado)");
+        return "".concat(label, " (Cuadro terminado)");
       }
 
       return "".concat(label);

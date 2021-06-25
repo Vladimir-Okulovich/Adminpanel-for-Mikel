@@ -119,7 +119,7 @@ import categoryCreateVue from '../category/category-create.vue';
           </div>
         </div>
 
-        <div>
+        <div id="">
           <h4 class="card-title mb-4">Ranking Categoría "{{ categoryModality }}"</h4>
           <div class="row mb-md-2">
             <div class="col-sm-12 col-md-6">

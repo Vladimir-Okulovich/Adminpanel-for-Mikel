@@ -8165,7 +8165,7 @@ var render = function() {
             )
           ]),
           _vm._v(" "),
-          _c("div", [
+          _c("div", { attrs: { id: "" } }, [
             _c("h4", { staticClass: "card-title mb-4" }, [
               _vm._v('Ranking Categoría "' + _vm._s(_vm.categoryModality) + '"')
             ]),

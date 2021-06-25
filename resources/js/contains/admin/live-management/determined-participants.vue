@@ -174,7 +174,11 @@
         })
         .then((res) => {
           this.$bvModal.hide('edit-modal')
-          window.location.reload();
+          // window.location.reload();
+          this.getParticipantsByCompetitionCategoryModality({
+            competitionId: this.$route.params.competitionId,
+            categoryModality: this.categoryModality.label,
+          });
         });
       },
       unregisterParticipant() {
@@ -185,7 +189,11 @@
         })
         .then((res) => {
           this.$bvModal.hide('unregister-modal')
-          window.location.reload();
+          // window.location.reload();
+          this.getParticipantsByCompetitionCategoryModality({
+            competitionId: this.$route.params.competitionId,
+            categoryModality: this.categoryModality.label,
+          });
         });
       },
       createCompetitionBox() {
@@ -203,11 +211,11 @@
       },
       labelWithStatus ({ label, status }) {
         if (status == 'deactive') {
-          return `${label}(MENOS DE 3 PALISTAS)`
+          return `${label} (MENOS DE 3 PALISTAS)`
         } else if (status == 'active') {
-          return `${label}(MANGA ACTIVO)`
+          return `${label} (MANGA ACTIVA)`
         } else if (status == 'finished') {
-          return `${label}(Cuadro terminado)`
+          return `${label} (Cuadro terminado)`
         }
         return `${label}`
       },
