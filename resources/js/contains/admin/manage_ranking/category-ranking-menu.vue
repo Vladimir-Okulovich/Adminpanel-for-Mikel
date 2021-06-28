@@ -3,9 +3,11 @@
 	import appConfig from "@/app.config";
   import PageHeader from "@/components/page-header";
   import Multiselect from "vue-multiselect";
+  import jsPDF from 'jspdf'
+  import html2canvas from "html2canvas"
+  import VueHtml2pdf from 'vue-html2pdf'
 
   import { mapActions, mapGetters } from 'vuex';
-import categoryCreateVue from '../category/category-create.vue';
 
 	export default {
 		page: {
@@ -15,7 +17,8 @@ import categoryCreateVue from '../category/category-create.vue';
     components: {
       Layout,
       PageHeader,
-      Multiselect
+      Multiselect,
+      VueHtml2pdf
     },
     data() {
       return {
@@ -97,6 +100,29 @@ import categoryCreateVue from '../category/category-create.vue';
         this.getCategoryRankingPoints({
           categoryModality: this.categoryModality,
         });
+      },
+      print() {
+        const fileName = String(new Date().valueOf());
+        var pdf = new jsPDF('p', 'mm', 'a4');
+        var element = document.getElementById('ranking_table');
+        html2canvas(element).then(async canvas => {
+          var image = canvas.toDataURL('image/png');
+          const imgProps= pdf.getImageProperties(image);
+          const pdfWidth = pdf.internal.pageSize.getWidth();
+          const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+          console.log(pdfHeight, pdfWidth)
+          await pdf.addImage(image, 'PNG', 0, 0, pdfWidth, pdfHeight);
+          return pdf;
+          
+          // pdf.save('ranking_table.pdf');
+          // window.open(pdf.output('bloburl', { filename: 'ranking_table' }), '_blank');
+        })
+        .then((pdf) => {
+          window.open(pdf.output('bloburl', { filename: 'ranking_table' }), '_blank');
+        });
+      },
+      generateReport () {
+        this.$refs.html2Pdf.generatePdf()
       }
     }
 	};
@@ -119,8 +145,18 @@ import categoryCreateVue from '../category/category-create.vue';
           </div>
         </div>
 
-        <div id="">
-          <h4 class="card-title mb-4">Ranking Categoría "{{ categoryModality }}"</h4>
+        <div>
+          <div class="d-flex justify-content-between align-items-center mb-4">
+            <h4 class="card-title mb-0">Ranking Categoría "{{ categoryModality }}"</h4>
+            <div>
+              <b-button size="sm" variant="primary" @click="print">
+                Imprimir Ranking
+              </b-button>
+              <b-button size="sm" variant="info" @click="generateReport">
+                Imprimir Clasificación
+              </b-button>
+            </div>
+          </div>
           <div class="row mb-md-2">
             <div class="col-sm-12 col-md-6">
               <div id="tickets-table_length" class="dataTables_length">
@@ -147,30 +183,48 @@ import categoryCreateVue from '../category/category-create.vue';
             <!-- End search -->
           </div>
           <!-- Table -->
-          <div class="table-responsive table-bordered table-dark ranking-table mb-0">
-            <b-table
-              :items="categoryRankingPoints"
-              responsive="sm"
-              :per-page="perPage"
-              :current-page="currentPage"
-              :sort-by.sync="sortBy"
-              :sort-desc.sync="sortDesc"
-              :filter="filter"
-              :filter-included-fields="filterOn"
-              @filtered="onFiltered"
-            >
-              <template #thead-top="data">
-                <b-tr>
-                  <b-th variant="success" :colspan="competitionNumber+6" style="color: black;text-align: center;font-size: 18px;">{{ categoryModality }}</b-th>
-                </b-tr>
-                <b-tr>
-                  <b-th  colspan="3" style="background: white;color: black;text-align: center;">RANKING 2021</b-th>
-				          <b-th variant="primary" :colspan="competitionNumber" style="color: black;text-align: center;">COMPETICIONES PUNTUABLES</b-th>
-                  <b-th variant="pink" colspan="3" style="color: black;text-align: center;">TRES MEJORES</b-th>
-                </b-tr>
-              </template>
-            </b-table>
-          </div>
+          <vue-html2pdf
+            :show-layout="true"
+            :float-layout="false"
+            :enable-download="false"
+            :preview-modal="true"
+            :paginate-elements-by-height="1400"
+            filename="competition_heats"
+            :pdf-quality="2"
+            :manual-pagination="false"
+            pdf-format="a4"
+            pdf-orientation="portrait"
+            pdf-content-width="100%"
+
+            ref="html2Pdf"
+          >
+          <section slot="pdf-content">
+            <div id="ranking_table" class="table-responsive table-bordered table-dark ranking-table mb-0">
+              <b-table
+                :items="categoryRankingPoints"
+                responsive="sm"
+                :per-page="perPage"
+                :current-page="currentPage"
+                :sort-by.sync="sortBy"
+                :sort-desc.sync="sortDesc"
+                :filter="filter"
+                :filter-included-fields="filterOn"
+                @filtered="onFiltered"
+              >
+                <template #thead-top="data">
+                  <b-tr>
+                    <b-th variant="success" :colspan="competitionNumber+6" style="color: black;text-align: center;font-size: 18px;">{{ categoryModality }}</b-th>
+                  </b-tr>
+                  <b-tr>
+                    <b-th  colspan="3" style="background: white;color: black;text-align: center;">RANKING 2021</b-th>
+                    <b-th variant="primary" :colspan="competitionNumber" style="color: black;text-align: center;">COMPETICIONES PUNTUABLES</b-th>
+                    <b-th variant="pink" colspan="3" style="color: black;text-align: center;">TRES MEJORES</b-th>
+                  </b-tr>
+                </template>
+              </b-table>
+            </div>
+          </section>
+          </vue-html2pdf>
           <div class="row">
             <div class="col">
               <div class="dataTables_paginate paging_simple_numbers float-right">
