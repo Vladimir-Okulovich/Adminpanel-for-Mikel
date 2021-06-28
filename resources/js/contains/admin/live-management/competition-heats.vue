@@ -100,9 +100,9 @@
 </script>
 <template>
   <Layout>
-    <div class="d-flex pt-4">
+    <div class="d-flex pt-4" v-if="all_round_heats != null">
       <b-img
-        :src="'/images/logo.png'"
+        :src="'/storage/'+all_round_heats[0][0][0].com_cat_mod_participant.competition.logo"
         height="127"
         alt="logo"
       ></b-img>
@@ -148,46 +148,48 @@
       ref="html2Pdf"
     >
       <section slot="pdf-content">
-        <div class="row" v-for="(round, round_index) in all_round_heats" :key="round_index">
-          <h4 class="my-4 col-12" v-if="round.length == 1">FINAL</h4>
-          <h4 class="my-4 col-12" v-else-if="round.length == 2">SEMI FINAL</h4>
-          <h4 class="my-4 col-12" v-else-if="round.length == 3">CUARTOS DE FINAL</h4>
-          <h4 class="my-4 col-12" v-else>RONDA {{ round_index+1 }}</h4>
-          <div class="col-lg-4 col-md-6 col-sm-6 mb-3" v-for="(heat, heat_index) in round" :key="heat_index">
-            <div class="table-responsive mb-0">
-              <table class="table table-bordered">
-                <thead>
-                  <tr style="color: black;background: #b8e6e2;cursor: pointer;" :class="{active: heat[0].status==3}">
-                    <th colspan="4" v-if="round.length == 1" @click="heatDetailsGo(round_index+1, heat_index+1)">
-                      Final
-                    </th>
-                    <th colspan="4" v-else-if="round.length == 2" @click="heatDetailsGo(round_index+1, heat_index+1)">
-                      Semi Finals Manga {{ heat_index+1 }}
-                    </th>
-                    <th colspan="4" v-else-if="round.length == 3" @click="heatDetailsGo(round_index+1, heat_index+1)">
-                    Cuartos de Final Manga {{ heat_index+1 }}
-                    </th>
-                    <th colspan="4" v-else @click="heatDetailsGo(round_index+1, heat_index+1)">
-                      Ronda {{ round_index+1 }} Manga {{ heat_index+1 }}
-                    </th>
-                  </tr>
-                  <tr class="thead-light">
-                    <th></th>
-                    <th>Participante</th>
-                    <th>Puntos</th>
-                    <th>Posición</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr :class="{classified: round_heat.position==1 || round_heat.position==2}" v-for="(round_heat, round_heat_index) in heat" :key="round_heat_index">
-                    <th scope="row" v-bind:style="{ background: round_heat.lycra.color }"></th>
-                    <td v-if="round_heat.ranking > 0">{{ round_heat.com_cat_mod_participant.participant.name+' '+round_heat.com_cat_mod_participant.participant.surname+' ('+round_heat.ranking+')' }}</td>
-                    <td v-else>{{ round_heat.com_cat_mod_participant.participant.name+' '+round_heat.com_cat_mod_participant.participant.surname }}</td>
-                    <td>{{ parseFloat(round_heat.points).toFixed(2) }}</td>
-                    <td>{{ round_heat.position }}</td>
-                  </tr>
-                </tbody>
-              </table>
+        <div id="competition_heats">
+          <div class="row" v-for="(round, round_index) in all_round_heats" :key="round_index">
+            <h4 class="my-4 col-12" v-if="round.length == 1">FINAL</h4>
+            <h4 class="my-4 col-12" v-else-if="round.length == 2">SEMI FINAL</h4>
+            <h4 class="my-4 col-12" v-else-if="round.length == 3">CUARTOS DE FINAL</h4>
+            <h4 class="my-4 col-12" v-else>RONDA {{ round_index+1 }}</h4>
+            <div class="col-lg-4 col-md-6 col-sm-6 mb-3" v-for="(heat, heat_index) in round" :key="heat_index">
+              <div class="table-responsive mb-0">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr style="color: black;background: #b8e6e2;cursor: pointer;" :class="{active: heat[0].status==3}">
+                      <th colspan="4" v-if="round.length == 1" @click="heatDetailsGo(round_index+1, heat_index+1)">
+                        Final
+                      </th>
+                      <th colspan="4" v-else-if="round.length == 2" @click="heatDetailsGo(round_index+1, heat_index+1)">
+                        Semi Finals Manga {{ heat_index+1 }}
+                      </th>
+                      <th colspan="4" v-else-if="round.length == 3" @click="heatDetailsGo(round_index+1, heat_index+1)">
+                      Cuartos de Final Manga {{ heat_index+1 }}
+                      </th>
+                      <th colspan="4" v-else @click="heatDetailsGo(round_index+1, heat_index+1)">
+                        Ronda {{ round_index+1 }} Manga {{ heat_index+1 }}
+                      </th>
+                    </tr>
+                    <tr class="thead-light">
+                      <th></th>
+                      <th>Participante</th>
+                      <th>Puntos</th>
+                      <th>Posición</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr :class="{classified: round_heat.position==1 || round_heat.position==2}" v-for="(round_heat, round_heat_index) in heat" :key="round_heat_index">
+                      <th scope="row" v-bind:style="{ background: round_heat.lycra.color }"></th>
+                      <td v-if="round_heat.ranking > 0">{{ round_heat.com_cat_mod_participant.participant.name+' '+round_heat.com_cat_mod_participant.participant.surname+' ('+round_heat.ranking+')' }}</td>
+                      <td v-else>{{ round_heat.com_cat_mod_participant.participant.name+' '+round_heat.com_cat_mod_participant.participant.surname }}</td>
+                      <td>{{ parseFloat(round_heat.points).toFixed(2) }}</td>
+                      <td>{{ round_heat.position }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>

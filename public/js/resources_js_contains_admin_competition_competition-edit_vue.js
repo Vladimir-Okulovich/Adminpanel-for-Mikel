@@ -195,7 +195,7 @@ __webpack_require__.r(__webpack_exports__);
       this.typeform.category = this.getCompetition.categoryNames;
 
       if (this.getCompetition.logo != null) {
-        this.url = this.getCompetition.logo;
+        this.url = '/storage/' + this.getCompetition.logo;
       }
     }
   },
@@ -231,22 +231,22 @@ __webpack_require__.r(__webpack_exports__);
         return;
       }
 
-      return this.updateCompetition({
-        id: this.getCompetition.id,
-        title: this.typeform.title,
-        competition_type: this.typeform.competition_type,
-        description: this.typeform.description,
-        place: this.typeform.place,
-        date: this.typeform.date,
-        time: this.typeform.time,
-        organizer: this.typeform.organizer,
-        ranking_score: this.typeform.ranking_score,
-        status: this.typeform.status,
-        lycra: this.typeform.lycra,
-        modality: this.typeform.modality,
-        category: this.typeform.category,
-        logo: this.typeform.logo
-      }).then(function (res) {
+      var formData = new FormData();
+      formData.append('id', this.getCompetition.id);
+      formData.append('title', this.typeform.title);
+      formData.append('competition_type', this.typeform.competition_type);
+      formData.append('description', this.typeform.description);
+      formData.append('place', this.typeform.place);
+      formData.append('date', this.typeform.date);
+      formData.append('time', this.typeform.time);
+      formData.append('organizer', this.typeform.organizer);
+      formData.append('ranking_score', this.typeform.ranking_score);
+      formData.append('status', this.typeform.status);
+      formData.append('lycra', this.typeform.lycra);
+      formData.append('modality', this.typeform.modality);
+      formData.append('category', this.typeform.category);
+      formData.append('logo', this.typeform.logo);
+      return this.updateCompetition(formData).then(function (res) {
         _this.$router.push({
           name: "Competitions"
         });

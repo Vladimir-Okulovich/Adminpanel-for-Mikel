@@ -107,7 +107,7 @@ Route::group([ 'prefix' => 'v1', 'middleware' => 'api'], function(){
         // /* Add a Competition */
         Route::post('competition/create', 'App\Http\Controllers\Api\v1\CompetitionController@create');
         // /* Update a Competition */
-        Route::put('competition/update', 'App\Http\Controllers\Api\v1\CompetitionController@update');
+        Route::post('competition/update', 'App\Http\Controllers\Api\v1\CompetitionController@update');
         /* Get Competition detail by id */
         Route::get('competition/{competitionId}', 'App\Http\Controllers\Api\v1\CompetitionController@getById');
         /* delete Competition by id */
