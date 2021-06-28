@@ -7005,7 +7005,13 @@ var render = function() {
       { staticClass: "d-flex pt-4" },
       [
         _c("b-img", {
-          attrs: { src: "/images/logo.png", height: "127", alt: "logo" }
+          attrs: {
+            src:
+              "/storage/" +
+              _vm.round_heats[0].com_cat_mod_participant.competition.logo,
+            height: "127",
+            alt: "logo"
+          }
         }),
         _vm._v(" "),
         _c(

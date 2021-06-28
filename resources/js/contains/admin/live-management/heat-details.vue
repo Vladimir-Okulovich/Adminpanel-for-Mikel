@@ -132,7 +132,7 @@
   <Layout>
     <div class="d-flex pt-4">
       <b-img
-        :src="'/images/logo.png'"
+        :src="'/storage/'+round_heats[0].com_cat_mod_participant.competition.logo"
         height="127"
         alt="logo"
       ></b-img>
