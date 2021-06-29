@@ -227,7 +227,7 @@ __webpack_require__.r(__webpack_exports__);
 
       this.$v.$touch();
 
-      if (this.$v.typeform.title.$error || this.$v.typeform.place.$error || this.$v.typeform.date.$error || this.$v.typeform.time.$error || this.$v.typeform.description.$error || this.$v.typeform.competition_type.$error || this.$v.typeform.status.$error || this.$v.typeform.lycra.$error || this.$v.typeform.modality.$error || this.$v.typeform.category.$error || this.$v.typeform.ranking_score.$error) {
+      if (this.$v.typeform.title.$error || this.$v.typeform.place.$error || this.$v.typeform.date.$error || this.$v.typeform.time.$error || this.$v.typeform.description.$error || this.$v.typeform.competition_type.$error || this.$v.typeform.organizer.$error || this.$v.typeform.status.$error || this.$v.typeform.lycra.$error || this.$v.typeform.modality.$error || this.$v.typeform.category.$error || this.$v.typeform.ranking_score.$error) {
         return;
       }
 
