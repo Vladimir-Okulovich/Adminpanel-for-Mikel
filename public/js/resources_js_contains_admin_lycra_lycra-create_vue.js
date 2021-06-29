@@ -131,7 +131,7 @@ __webpack_require__.r(__webpack_exports__);
         _this.typesubmit = false;
       })["catch"](function (error) {
         _this.typesubmit = false;
-        _this.Error = error ? error : "";
+        _this.Error = error ? error.data.message : "";
         _this.isError = true;
       });
     }
