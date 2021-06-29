@@ -120,7 +120,7 @@ export default {
           })
           .catch(error => {
             this.typesubmit = false;
-            this.Error = error ? error : "";
+            this.Error = error ? error.data.message : "";
             this.isError = true;
           })
       );
