@@ -17,7 +17,7 @@ const getters = {
     competition(state) {
         return state.competition;
     },
-    all_round_heats(state) {
+    allRoundHeats(state) {
         return state.all_round_heats;
     },
     round_heats(state) {

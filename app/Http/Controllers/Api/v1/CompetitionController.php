@@ -95,7 +95,6 @@ class CompetitionController extends Controller
      */
     public function create(Request $request)
     {
-        //
         $validator = Validator::make($request->all(), [
             'title' => 'required|string|between:1,100',
             'competition_type' => 'required|string',
@@ -115,16 +114,16 @@ class CompetitionController extends Controller
             return response()->json($validator->errors()->toJson(), 400);
         }
 
-        // if($request->file('logo')){
-        //     $result = $request->file('logo')->store('public');
-        // } else {
-        //     $result = null;
-        // }
+        if($request->file('logo')){
+            $result = $request->file('logo')->store('public');
+        } else {
+            $result = null;
+        }
 
         $competition_type = Competition_type::where('name', $request->competition_type)->first();
         $status = Status::where('name', $request->status)->first();
         $lycra_ids = [];
-        foreach ($request->lycra as $lycra_name) {
+        foreach (explode(',', $request->lycra) as $lycra_name) {
             $lycra = Lycra::where('name', $lycra_name)->first();
             array_push($lycra_ids, $lycra->id);
         }
@@ -140,10 +139,10 @@ class CompetitionController extends Controller
         $competition->lycras = $lycra_ids;
         $competition->competition_type()->associate($competition_type);
         $competition->status()->associate($status);
-        // $competition->logo = $result;
+        $competition->logo = explode("/",$result)[1];
         $competition->save();
 
-        $modalities = Modality::whereIn('name', $request->modality)->get();
+        $modalities = Modality::whereIn('name', explode(",",$request->modality))->get();
         $modalityIds = collect([]);
         foreach ($modalities as $modality) {
             $modalityIds->push($modality->id);
@@ -151,7 +150,7 @@ class CompetitionController extends Controller
         $competition->modalities()->attach($modalityIds);
 
         $categoryNames = collect([]);
-        foreach ($request->category as $str) {
+        foreach (explode(",",$request->category) as $str) {
             $str = explode(",",$str);
             $categoryNames->push($str[0]);
         }
@@ -176,7 +175,6 @@ class CompetitionController extends Controller
      */
     public function update(Request $request)
     {
-        //
         //
         $validator = Validator::make($request->all(), [
             'title' => 'required|string|between:1,100',
@@ -206,7 +204,7 @@ class CompetitionController extends Controller
         $competition_type = Competition_type::where('name', $request->competition_type)->first();
         $status = Status::where('name', $request->status)->first();
         $lycra_ids = [];
-        foreach ($request->lycra as $lycra_name) {
+        foreach (explode(",",$request->lycra) as $lycra_name) {
             $lycra = Lycra::where('name', $lycra_name)->first();
             array_push($lycra_ids, $lycra->id);
         }
@@ -222,10 +220,10 @@ class CompetitionController extends Controller
         $competition->lycras = $lycra_ids;
         $competition->competition_type_id = $competition_type->id;
         $competition->status_id = $status->id;
-        $competition->logo = $result;
+        $competition->logo = explode("/",$result)[1];
         $competition->save();
 
-        $modalities = Modality::whereIn('name', $request->modality)->get();
+        $modalities = Modality::whereIn('name', explode(",",$request->modality))->get();
         $modalityIds = collect([]);
         foreach ($modalities as $modality) {
             $modalityIds->push($modality->id);
@@ -233,7 +231,7 @@ class CompetitionController extends Controller
         $competition->modalities()->sync($modalityIds);
 
         $categoryNames = collect([]);
-        foreach ($request->category as $str) {
+        foreach (explode(",",$request->category) as $str) {
             $str = explode(",",$str);
             $categoryNames->push($str[0]);
         }

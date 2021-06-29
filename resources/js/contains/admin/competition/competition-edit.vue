@@ -125,7 +125,7 @@ export default {
       this.typeform.modality = this.getCompetition.modalityNames
       this.typeform.category = this.getCompetition.categoryNames
       if (this.getCompetition.logo != null) {
-        this.url = this.getCompetition.logo
+        this.url = '/storage/'+this.getCompetition.logo
       }
     },
   },
@@ -163,23 +163,24 @@ export default {
       if (this.$v.typeform.title.$error || this.$v.typeform.place.$error || this.$v.typeform.date.$error || this.$v.typeform.time.$error || this.$v.typeform.description.$error || this.$v.typeform.competition_type.$error || this.$v.typeform.status.$error || this.$v.typeform.lycra.$error || this.$v.typeform.modality.$error || this.$v.typeform.category.$error || this.$v.typeform.ranking_score.$error) {
         return ;
       }
+
+      const formData = new FormData();
+      formData.append('id', this.getCompetition.id);
+      formData.append('title', this.typeform.title);
+      formData.append('competition_type', this.typeform.competition_type);
+      formData.append('description', this.typeform.description);
+      formData.append('place', this.typeform.place);
+      formData.append('date', this.typeform.date);
+      formData.append('time', this.typeform.time);
+      formData.append('organizer', this.typeform.organizer);
+      formData.append('ranking_score', this.typeform.ranking_score);
+      formData.append('status', this.typeform.status);
+      formData.append('lycra', this.typeform.lycra);
+      formData.append('modality', this.typeform.modality);
+      formData.append('category', this.typeform.category);
+      formData.append('logo', this.typeform.logo);
       return (
-        this.updateCompetition({
-            id: this.getCompetition.id,
-            title: this.typeform.title,
-            competition_type: this.typeform.competition_type,
-            description: this.typeform.description,
-            place: this.typeform.place,
-            date: this.typeform.date,
-            time: this.typeform.time,
-            organizer: this.typeform.organizer,
-            ranking_score: this.typeform.ranking_score,
-            status: this.typeform.status,
-            lycra: this.typeform.lycra,
-            modality: this.typeform.modality,
-            category: this.typeform.category,
-            logo: this.typeform.logo,
-          })
+        this.updateCompetition(formData)
           .then((res) => {
             this.$router.push({name: "Competitions"});
             this.typesubmit = false;

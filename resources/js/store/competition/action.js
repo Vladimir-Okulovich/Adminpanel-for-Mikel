@@ -32,11 +32,17 @@ const actions = {
         }); 
     },
     createCompetition(context, competitionInfo) {
-        ApiService.setHeader();
+        const config = {
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest',
+                "Authorization":`Bearer ${JwtService.getToken()}`,
+                'content-type': 'multipart/form-data'
+            }
+        }
         return new Promise((resolve, reject) => {
-            ApiService.post("api/v1/admin/competition/create", competitionInfo)
-                .then((data) => {
-                    resolve(data)
+            axios.post('http://localhost:8000/api/v1/admin/competition/create', competitionInfo, config)
+                .then((res) => {
+                    resolve(res)
                     toastr.success('Creada Correctamente', '', {timeout: 5000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
                 })
                 .catch(({response, status}) => {
@@ -44,36 +50,23 @@ const actions = {
                     reject(response);
                 });
         });
-        // const config = {
-        //     headers: {
-        //         'X-Requested-With': 'XMLHttpRequest',
-        //         "Authorization":`Bearer ${JwtService.getToken()}`,
-        //         'content-type': 'multipart/form-data'
-        //     }
-        // }
-        // return new Promise((resolve, reject) => {
-        //     axios.post('http://localhost:8000/api/v1/admin/competition/create', competitionInfo, config)
-        //         .then((res) => {
-        //             resolve(res)
-        //             toastr.success('Creada Correctamente', '', {timeout: 5000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
-        //         })
-        //         .catch(({response, status}) => {
-        //             console.log(response);
-        //             reject(response);
-        //         });
-        // });
     },
     updateCompetition(context, competitionInfo) {
-        // console.log(competitionInfo)
-        ApiService.setHeader();
+        const config = {
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest',
+                "Authorization":`Bearer ${JwtService.getToken()}`,
+                'content-type': 'multipart/form-data'
+            }
+        }
         return new Promise((resolve, reject) => {
-            ApiService.put("api/v1/admin/competition/update", competitionInfo)
-                .then((data) => {
-                    resolve(data);
+            axios.post('http://localhost:8000/api/v1/admin/competition/update', competitionInfo, config)
+                .then((res) => {
+                    resolve(res)
                     toastr.success('Actualizada Correctamente', '', {timeout: 5000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
                 })
                 .catch(({response, status}) => {
-                    // console.log(response);
+                    console.log(response);
                     reject(response);
                 });
         });
