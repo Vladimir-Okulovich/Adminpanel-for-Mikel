@@ -102,27 +102,22 @@
         });
       },
       print() {
-        const fileName = String(new Date().valueOf());
         var pdf = new jsPDF('p', 'mm', 'a4');
         var element = document.getElementById('ranking_table');
-        html2canvas(element).then(async canvas => {
-          var image = canvas.toDataURL('image/png');
-          const imgProps= pdf.getImageProperties(image);
-          const pdfWidth = pdf.internal.pageSize.getWidth();
-          const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-          console.log(pdfHeight, pdfWidth)
-          await pdf.addImage(image, 'PNG', 0, 0, pdfWidth, pdfHeight);
-          return pdf;
-          
-          // pdf.save('ranking_table.pdf');
-          // window.open(pdf.output('bloburl', { filename: 'ranking_table' }), '_blank');
-        })
-        .then((pdf) => {
-          window.open(pdf.output('bloburl', { filename: 'ranking_table' }), '_blank');
+        //   const pdfWidth = pdf.internal.pageSize.getWidth();
+        pdf.html(element, {
+          html2canvas: {
+            scale: 0.15,
+          },
+          x: 8,
+          y: 8,
+          callback: function (pdf) {
+            window.open(pdf.output('bloburl'));
+          }
         });
       },
       generateReport () {
-        this.$refs.html2Pdf.generatePdf()
+        // this.$refs.html2Pdf.generatePdf()
       }
     }
 	};

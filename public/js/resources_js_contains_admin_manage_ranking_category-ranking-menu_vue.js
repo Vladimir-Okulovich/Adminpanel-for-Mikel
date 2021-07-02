@@ -41,25 +41,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var core_js_modules_es_symbol_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_symbol_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es.symbol.description.js */ "./node_modules/core-js/modules/es.symbol.description.js");
 /* harmony import */ var core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var regenerator_runtime_runtime_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! regenerator-runtime/runtime.js */ "./node_modules/regenerator-runtime/runtime.js");
-/* harmony import */ var regenerator_runtime_runtime_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(regenerator_runtime_runtime_js__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator */ "./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js");
-/* harmony import */ var E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
-/* harmony import */ var _subcomponent_layout__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../subcomponent/layout */ "./resources/js/contains/admin/subcomponent/layout.vue");
-/* harmony import */ var _app_config__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @/app.config */ "./resources/js/app.config.json");
-/* harmony import */ var _components_page_header__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @/components/page-header */ "./resources/js/components/page-header.vue");
-/* harmony import */ var vue_multiselect__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! vue-multiselect */ "./node_modules/vue-multiselect/dist/vue-multiselect.min.js");
-/* harmony import */ var vue_multiselect__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(vue_multiselect__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var jspdf__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! jspdf */ "./node_modules/jspdf/dist/jspdf.es.min.js");
-/* harmony import */ var html2canvas__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! html2canvas */ "./node_modules/html2canvas/dist/html2canvas.js");
-/* harmony import */ var html2canvas__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(html2canvas__WEBPACK_IMPORTED_MODULE_11__);
-/* harmony import */ var vue_html2pdf__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! vue-html2pdf */ "./node_modules/vue-html2pdf/dist/vue-html2pdf.esm.js");
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.mjs");
-
-
-
+/* harmony import */ var E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
+/* harmony import */ var _subcomponent_layout__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../subcomponent/layout */ "./resources/js/contains/admin/subcomponent/layout.vue");
+/* harmony import */ var _app_config__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/app.config */ "./resources/js/app.config.json");
+/* harmony import */ var _components_page_header__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/components/page-header */ "./resources/js/components/page-header.vue");
+/* harmony import */ var vue_multiselect__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vue-multiselect */ "./node_modules/vue-multiselect/dist/vue-multiselect.min.js");
+/* harmony import */ var vue_multiselect__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(vue_multiselect__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var jspdf__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! jspdf */ "./node_modules/jspdf/dist/jspdf.es.min.js");
+/* harmony import */ var html2canvas__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! html2canvas */ "./node_modules/html2canvas/dist/html2canvas.js");
+/* harmony import */ var html2canvas__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(html2canvas__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var vue_html2pdf__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! vue-html2pdf */ "./node_modules/vue-html2pdf/dist/vue-html2pdf.esm.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.mjs");
 
 
 
@@ -76,14 +68,14 @@ __webpack_require__.r(__webpack_exports__);
     title: "CLASIFICACIONES RANKING",
     meta: [{
       name: "description",
-      content: _app_config__WEBPACK_IMPORTED_MODULE_7__.description
+      content: _app_config__WEBPACK_IMPORTED_MODULE_4__.description
     }]
   },
   components: {
-    Layout: _subcomponent_layout__WEBPACK_IMPORTED_MODULE_6__.default,
-    PageHeader: _components_page_header__WEBPACK_IMPORTED_MODULE_8__.default,
-    Multiselect: (vue_multiselect__WEBPACK_IMPORTED_MODULE_9___default()),
-    VueHtml2pdf: vue_html2pdf__WEBPACK_IMPORTED_MODULE_12__.default
+    Layout: _subcomponent_layout__WEBPACK_IMPORTED_MODULE_3__.default,
+    PageHeader: _components_page_header__WEBPACK_IMPORTED_MODULE_5__.default,
+    Multiselect: (vue_multiselect__WEBPACK_IMPORTED_MODULE_6___default()),
+    VueHtml2pdf: vue_html2pdf__WEBPACK_IMPORTED_MODULE_9__.default
   },
   data: function data() {
     return {
@@ -127,7 +119,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     }
   },
-  computed: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_5__.default)((0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_5__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_13__.mapGetters)(['getAllCategoryModality', 'categoryRankingPoints', 'competitionNumber'])), {}, {
+  computed: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)((0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_10__.mapGetters)(['getAllCategoryModality', 'categoryRankingPoints', 'competitionNumber'])), {}, {
     /**
      * Total no. of records
      */
@@ -140,7 +132,7 @@ __webpack_require__.r(__webpack_exports__);
     this.totalRows = this.categoryRankingPoints.length;
     this.initRankingMenu();
   },
-  methods: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_5__.default)((0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_5__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_13__.mapActions)(['initRankingMenu', 'getCategoryRankingPoints'])), {}, {
+  methods: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)((0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_10__.mapActions)(['initRankingMenu', 'getCategoryRankingPoints'])), {}, {
     /**
      * Search the table data with search input
      */
@@ -155,46 +147,21 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     print: function print() {
-      var fileName = String(new Date().valueOf());
-      var pdf = new jspdf__WEBPACK_IMPORTED_MODULE_10__.default('p', 'mm', 'a4');
-      var element = document.getElementById('ranking_table');
-      html2canvas__WEBPACK_IMPORTED_MODULE_11___default()(element).then( /*#__PURE__*/function () {
-        var _ref = (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_4__.default)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_2___default().mark(function _callee(canvas) {
-          var image, imgProps, pdfWidth, pdfHeight;
-          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_2___default().wrap(function _callee$(_context) {
-            while (1) {
-              switch (_context.prev = _context.next) {
-                case 0:
-                  image = canvas.toDataURL('image/png');
-                  imgProps = pdf.getImageProperties(image);
-                  pdfWidth = pdf.internal.pageSize.getWidth();
-                  pdfHeight = imgProps.height * pdfWidth / imgProps.width;
-                  console.log(pdfHeight, pdfWidth);
-                  _context.next = 7;
-                  return pdf.addImage(image, 'PNG', 0, 0, pdfWidth, pdfHeight);
+      var pdf = new jspdf__WEBPACK_IMPORTED_MODULE_7__.default('p', 'mm', 'a4');
+      var element = document.getElementById('ranking_table'); //   const pdfWidth = pdf.internal.pageSize.getWidth();
 
-                case 7:
-                  return _context.abrupt("return", pdf);
-
-                case 8:
-                case "end":
-                  return _context.stop();
-              }
-            }
-          }, _callee);
-        }));
-
-        return function (_x) {
-          return _ref.apply(this, arguments);
-        };
-      }()).then(function (pdf) {
-        window.open(pdf.output('bloburl', {
-          filename: 'ranking_table'
-        }), '_blank');
+      pdf.html(element, {
+        html2canvas: {
+          scale: 0.15
+        },
+        x: 8,
+        y: 8,
+        callback: function callback(pdf) {
+          window.open(pdf.output('bloburl'));
+        }
       });
     },
-    generateReport: function generateReport() {
-      this.$refs.html2Pdf.generatePdf();
+    generateReport: function generateReport() {// this.$refs.html2Pdf.generatePdf()
     }
   })
 });

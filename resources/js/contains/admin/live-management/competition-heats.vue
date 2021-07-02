@@ -74,26 +74,20 @@
       print() {
         var pdf = new jsPDF('p', 'mm', 'a4');
         var element = document.getElementById('competition_heats');
-        // html2canvas(element).then(async canvas => {
-        //   var image = canvas.toDataURL('image/jpeg');
-        //   const imgProps= pdf.getImageProperties(image);
         //   const pdfWidth = pdf.internal.pageSize.getWidth();
-        //   const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-        //   await pdf.addImage(image, 'JPEG', 0, 0, pdfWidth, pdfHeight);
-        //   return pdf;
-        //   // pdf.save('competition_heats.pdf');
-        // })
-        // .then((pdf) => {
-        //   window.open(pdf.output('bloburl', { filename: 'competition_heats' }), '_blank');
-        // });
         pdf.html(element, {
+          html2canvas: {
+            scale: 0.15,
+          },
+          x: 8,
+          y: 8,
           callback: function (pdf) {
-              pdf.save('DOC.pdf');
+            window.open(pdf.output('bloburl'));
           }
-        })
+        });
       },
       generateReport () {
-        this.$refs.html2Pdf.generatePdf()
+        // this.$refs.html2Pdf.generatePdf()
       }
     }
 	};
@@ -217,5 +211,9 @@ thead tr.active {
 }
 tbody tr.classified {
   background: #0c101d;
+}
+
+#competition_heats h4 {
+  color: #b1adad;
 }
 </style>

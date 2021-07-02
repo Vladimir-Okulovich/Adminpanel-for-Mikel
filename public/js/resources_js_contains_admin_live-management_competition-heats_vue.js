@@ -135,27 +135,20 @@ __webpack_require__.r(__webpack_exports__);
     },
     print: function print() {
       var pdf = new jspdf__WEBPACK_IMPORTED_MODULE_6__.default('p', 'mm', 'a4');
-      var element = document.getElementById('competition_heats'); // html2canvas(element).then(async canvas => {
-      //   var image = canvas.toDataURL('image/jpeg');
-      //   const imgProps= pdf.getImageProperties(image);
-      //   const pdfWidth = pdf.internal.pageSize.getWidth();
-      //   const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-      //   await pdf.addImage(image, 'JPEG', 0, 0, pdfWidth, pdfHeight);
-      //   return pdf;
-      //   // pdf.save('competition_heats.pdf');
-      // })
-      // .then((pdf) => {
-      //   window.open(pdf.output('bloburl', { filename: 'competition_heats' }), '_blank');
-      // });
+      var element = document.getElementById('competition_heats'); //   const pdfWidth = pdf.internal.pageSize.getWidth();
 
       pdf.html(element, {
+        html2canvas: {
+          scale: 0.15
+        },
+        x: 8,
+        y: 8,
         callback: function callback(pdf) {
-          pdf.save('DOC.pdf');
+          window.open(pdf.output('bloburl'));
         }
       });
     },
-    generateReport: function generateReport() {
-      this.$refs.html2Pdf.generatePdf();
+    generateReport: function generateReport() {// this.$refs.html2Pdf.generatePdf()
     }
   })
 });
@@ -2378,7 +2371,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\nthead tr.active {\r\n  background: #f78080 !important;\n}\ntbody tr.classified {\r\n  background: #0c101d;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\nthead tr.active {\r\n  background: #f78080 !important;\n}\ntbody tr.classified {\r\n  background: #0c101d;\n}\n#competition_heats h4 {\r\n  color: #b1adad;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
