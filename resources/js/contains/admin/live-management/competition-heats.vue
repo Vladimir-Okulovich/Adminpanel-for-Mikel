@@ -210,10 +210,13 @@ thead tr.active {
   background: #f78080 !important;
 }
 tbody tr.classified {
-  background: #0c101d;
+  background: #0c101d !important;
 }
 
 #competition_heats h4 {
   color: #b1adad;
+}
+#competition_heats .table tbody tr{
+  background: #222736;
 }
 </style>

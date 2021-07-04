@@ -220,7 +220,7 @@
             </div>
           </section>
           </vue-html2pdf>
-          <div class="row">
+          <div class="row mt-2">
             <div class="col">
               <div class="dataTables_paginate paging_simple_numbers float-right">
                 <ul class="pagination pagination-rounded mb-0">
@@ -237,5 +237,7 @@
 </template>
 
 <style scoped>
-
+  #ranking_table div {
+    margin-bottom: 0px;
+  }
 </style>

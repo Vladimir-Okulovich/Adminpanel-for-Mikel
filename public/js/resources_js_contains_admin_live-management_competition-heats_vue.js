@@ -2371,7 +2371,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\nthead tr.active {\r\n  background: #f78080 !important;\n}\ntbody tr.classified {\r\n  background: #0c101d;\n}\n#competition_heats h4 {\r\n  color: #b1adad;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\nthead tr.active {\r\n  background: #f78080 !important;\n}\ntbody tr.classified {\r\n  background: #0c101d !important;\n}\n#competition_heats h4 {\r\n  color: #b1adad;\n}\n#competition_heats .table tbody tr{\r\n  background: #222736;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
