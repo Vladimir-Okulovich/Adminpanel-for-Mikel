@@ -16,6 +16,7 @@ use App\Models\Manage_ranking_point;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Validator;
+use PDF;
 
 class ManageRankingController extends Controller
 {
@@ -382,4 +383,11 @@ class ManageRankingController extends Controller
                         ->get();
         return $categories;
     }
+
+    // public function finalRankingPDF(Request $request) {
+    //     $data = $request->data;
+    //     $pdf = PDF::loadView('final-ranking', ['data' => $data]);
+    //     // return $pdf->stream();
+    //     return $pdf->download('demo.pdf');
+    // }
 }

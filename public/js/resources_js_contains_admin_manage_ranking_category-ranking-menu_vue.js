@@ -132,7 +132,7 @@ __webpack_require__.r(__webpack_exports__);
     this.totalRows = this.categoryRankingPoints.length;
     this.initRankingMenu();
   },
-  methods: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)((0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_10__.mapActions)(['initRankingMenu', 'getCategoryRankingPoints'])), {}, {
+  methods: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)((0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_10__.mapActions)(['initRankingMenu', 'getCategoryRankingPoints', 'finalRankingPDF'])), {}, {
     /**
      * Search the table data with search input
      */
@@ -146,7 +146,7 @@ __webpack_require__.r(__webpack_exports__);
         categoryModality: this.categoryModality
       });
     },
-    print: function print() {
+    printRankingTable: function printRankingTable() {
       var pdf = new jspdf__WEBPACK_IMPORTED_MODULE_7__.default('p', 'mm', 'a4');
       var element = document.getElementById('ranking_table'); //   const pdfWidth = pdf.internal.pageSize.getWidth();
 
@@ -161,7 +161,20 @@ __webpack_require__.r(__webpack_exports__);
         }
       });
     },
-    generateReport: function generateReport() {// this.$refs.html2Pdf.generatePdf()
+    printFinalTable: function printFinalTable() {
+      var pdf = new jspdf__WEBPACK_IMPORTED_MODULE_7__.default('p', 'mm', 'a4');
+      var element = document.getElementById('final_ranking_table'); //   const pdfWidth = pdf.internal.pageSize.getWidth();
+
+      pdf.html(element, {
+        html2canvas: {
+          scale: 0.14
+        },
+        x: 8,
+        y: 8,
+        callback: function callback(pdf) {
+          window.open(pdf.output('bloburl'));
+        }
+      });
     }
   })
 });
@@ -19387,7 +19400,7 @@ var render = function() {
                         "b-button",
                         {
                           attrs: { size: "sm", variant: "primary" },
-                          on: { click: _vm.print }
+                          on: { click: _vm.printRankingTable }
                         },
                         [
                           _vm._v(
@@ -19400,7 +19413,7 @@ var render = function() {
                         "b-button",
                         {
                           attrs: { size: "sm", variant: "info" },
-                          on: { click: _vm.generateReport }
+                          on: { click: _vm.printFinalTable }
                         },
                         [
                           _vm._v(
@@ -19481,12 +19494,127 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c(
+                "div",
+                {
+                  staticClass:
+                    "table-responsive table-bordered table-dark ranking-table mb-0",
+                  attrs: { id: "ranking_table" }
+                },
+                [
+                  _c("b-table", {
+                    attrs: {
+                      items: _vm.categoryRankingPoints,
+                      responsive: "sm",
+                      "per-page": _vm.perPage,
+                      "current-page": _vm.currentPage,
+                      "sort-by": _vm.sortBy,
+                      "sort-desc": _vm.sortDesc,
+                      filter: _vm.filter,
+                      "filter-included-fields": _vm.filterOn
+                    },
+                    on: {
+                      "update:sortBy": function($event) {
+                        _vm.sortBy = $event
+                      },
+                      "update:sort-by": function($event) {
+                        _vm.sortBy = $event
+                      },
+                      "update:sortDesc": function($event) {
+                        _vm.sortDesc = $event
+                      },
+                      "update:sort-desc": function($event) {
+                        _vm.sortDesc = $event
+                      },
+                      filtered: _vm.onFiltered
+                    },
+                    scopedSlots: _vm._u([
+                      {
+                        key: "thead-top",
+                        fn: function(data) {
+                          return [
+                            _c(
+                              "b-tr",
+                              [
+                                _c(
+                                  "b-th",
+                                  {
+                                    staticStyle: {
+                                      color: "black",
+                                      "text-align": "center",
+                                      "font-size": "18px"
+                                    },
+                                    attrs: {
+                                      variant: "success",
+                                      colspan: _vm.competitionNumber + 6
+                                    }
+                                  },
+                                  [_vm._v(_vm._s(_vm.categoryModality))]
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "b-tr",
+                              [
+                                _c(
+                                  "b-th",
+                                  {
+                                    staticStyle: {
+                                      background: "white",
+                                      color: "black",
+                                      "text-align": "center"
+                                    },
+                                    attrs: { colspan: "3" }
+                                  },
+                                  [_vm._v("RANKING 2021")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "b-th",
+                                  {
+                                    staticStyle: {
+                                      color: "black",
+                                      "text-align": "center"
+                                    },
+                                    attrs: {
+                                      variant: "primary",
+                                      colspan: _vm.competitionNumber
+                                    }
+                                  },
+                                  [_vm._v("COMPETICIONES PUNTUABLES")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "b-th",
+                                  {
+                                    staticStyle: {
+                                      color: "black",
+                                      "text-align": "center"
+                                    },
+                                    attrs: { variant: "pink", colspan: "3" }
+                                  },
+                                  [_vm._v("TRES MEJORES")]
+                                )
+                              ],
+                              1
+                            )
+                          ]
+                        }
+                      }
+                    ])
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
                 "vue-html2pdf",
                 {
                   ref: "html2Pdf",
                   attrs: {
-                    "show-layout": true,
-                    "float-layout": false,
+                    "show-layout": false,
+                    "float-layout": true,
                     "enable-download": false,
                     "preview-modal": true,
                     "paginate-elements-by-height": 1400,
@@ -19506,119 +19634,85 @@ var render = function() {
                       _c(
                         "div",
                         {
-                          staticClass:
-                            "table-responsive table-bordered table-dark ranking-table mb-0",
-                          attrs: { id: "ranking_table" }
+                          staticClass: "table-responsive table-bordered",
+                          attrs: { id: "final_ranking_table" }
                         },
                         [
-                          _c("b-table", {
-                            attrs: {
-                              items: _vm.categoryRankingPoints,
-                              responsive: "sm",
-                              "per-page": _vm.perPage,
-                              "current-page": _vm.currentPage,
-                              "sort-by": _vm.sortBy,
-                              "sort-desc": _vm.sortDesc,
-                              filter: _vm.filter,
-                              "filter-included-fields": _vm.filterOn
+                          _c(
+                            "table",
+                            {
+                              staticClass: "table table-responsive-sm mb-0",
+                              staticStyle: { color: "black" }
                             },
-                            on: {
-                              "update:sortBy": function($event) {
-                                _vm.sortBy = $event
-                              },
-                              "update:sort-by": function($event) {
-                                _vm.sortBy = $event
-                              },
-                              "update:sortDesc": function($event) {
-                                _vm.sortDesc = $event
-                              },
-                              "update:sort-desc": function($event) {
-                                _vm.sortDesc = $event
-                              },
-                              filtered: _vm.onFiltered
-                            },
-                            scopedSlots: _vm._u([
-                              {
-                                key: "thead-top",
-                                fn: function(data) {
-                                  return [
-                                    _c(
-                                      "b-tr",
-                                      [
-                                        _c(
-                                          "b-th",
-                                          {
-                                            staticStyle: {
-                                              color: "black",
-                                              "text-align": "center",
-                                              "font-size": "18px"
-                                            },
-                                            attrs: {
-                                              variant: "success",
-                                              colspan: _vm.competitionNumber + 6
-                                            }
-                                          },
-                                          [_vm._v(_vm._s(_vm.categoryModality))]
-                                        )
-                                      ],
-                                      1
-                                    ),
+                            [
+                              _c("thead", [
+                                _c("tr", [
+                                  _c(
+                                    "th",
+                                    {
+                                      staticClass: "text-center",
+                                      staticStyle: { background: "#b8e6e2" },
+                                      attrs: { colspan: "3" }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                      Open Masculino Largo\n                    "
+                                      )
+                                    ]
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("tr", [
+                                  _c(
+                                    "th",
+                                    {
+                                      staticClass: "text-center",
+                                      attrs: { colspan: "3" }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                      RANKING 2021\n                    "
+                                      )
+                                    ]
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "tr",
+                                  { staticStyle: { background: "#3dfc58" } },
+                                  [
+                                    _c("th", [_vm._v("Posicion")]),
                                     _vm._v(" "),
-                                    _c(
-                                      "b-tr",
-                                      [
-                                        _c(
-                                          "b-th",
-                                          {
-                                            staticStyle: {
-                                              background: "white",
-                                              color: "black",
-                                              "text-align": "center"
-                                            },
-                                            attrs: { colspan: "3" }
-                                          },
-                                          [_vm._v("RANKING 2021")]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "b-th",
-                                          {
-                                            staticStyle: {
-                                              color: "black",
-                                              "text-align": "center"
-                                            },
-                                            attrs: {
-                                              variant: "primary",
-                                              colspan: _vm.competitionNumber
-                                            }
-                                          },
-                                          [_vm._v("COMPETICIONES PUNTUABLES")]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "b-th",
-                                          {
-                                            staticStyle: {
-                                              color: "black",
-                                              "text-align": "center"
-                                            },
-                                            attrs: {
-                                              variant: "pink",
-                                              colspan: "3"
-                                            }
-                                          },
-                                          [_vm._v("TRES MEJORES")]
-                                        )
-                                      ],
-                                      1
-                                    )
+                                    _c("th", [_vm._v("Participante")]),
+                                    _vm._v(" "),
+                                    _c("th", [_vm._v("Suma 3 Mejores")])
                                   ]
-                                }
-                              }
-                            ])
-                          })
-                        ],
-                        1
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c(
+                                "tbody",
+                                _vm._l(_vm.categoryRankingPoints, function(
+                                  row,
+                                  index
+                                ) {
+                                  return _c("tr", { key: index }, [
+                                    _c("td", [_vm._v(_vm._s(row.posicion))]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _vm._v(_vm._s(row.participante))
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _vm._v(_vm._s(row.suma_3_mejores))
+                                    ])
+                                  ])
+                                }),
+                                0
+                              )
+                            ]
+                          )
+                        ]
                       )
                     ]
                   )

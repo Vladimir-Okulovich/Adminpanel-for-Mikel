@@ -284,6 +284,28 @@ class LiveManagementController extends Controller
         ], 200);
     }
 
+    public function getCompetitionFinalResults(Request $request)
+    {
+        $manage_ranking_points = Manage_ranking_point::where('competition_id', $request->competitionId)
+                                                    ->where('category_id', $request->categoryId)
+                                                    ->where('modality_id', $request->modalityId)
+                                                    ->orderBy('ranking')
+                                                    ->get();
+        if (count($manage_ranking_points) > 0) {
+            foreach ($manage_ranking_points as $manage_ranking_point) {
+                $manage_ranking_point->participant;
+            }
+            $manage_ranking_points[0]->competition;
+            $manage_ranking_points[0]->category->sex;
+            $manage_ranking_points[0]->modality;
+        }
+
+        return response()->json([
+            'message' => 'success',
+            'final_results' => $manage_ranking_points,
+        ], 200);
+    }
+
     public function setProgressStatus(Request $request)
     {
         $com_cat_mod_participant_ids = Com_cat_mod_participant::select('id')->where('competition_id', $request->competitionId)
