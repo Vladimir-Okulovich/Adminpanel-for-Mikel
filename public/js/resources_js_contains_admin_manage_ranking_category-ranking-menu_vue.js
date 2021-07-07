@@ -152,7 +152,7 @@ __webpack_require__.r(__webpack_exports__);
 
       pdf.html(element, {
         html2canvas: {
-          scale: 0.14
+          scale: 0.15
         },
         x: 8,
         y: 8,
@@ -167,7 +167,7 @@ __webpack_require__.r(__webpack_exports__);
 
       pdf.html(element, {
         html2canvas: {
-          scale: 0.14
+          scale: 0.15
         },
         x: 8,
         y: 8,
@@ -2397,7 +2397,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#ranking_table div {\n  margin-bottom: 0px;\n}\n#ranking_table .table {\n  color: black;\n  font-size: 20px;\n  text-align: center;\n}\n#final_ranking_table .table {\n  color: black;\n  font-size: 20px;\n  text-align: center;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#ranking_table {\n  width: 95%;\n}\n#ranking_table div {\n  margin-bottom: 0px;\n}\n#ranking_table .table {\n  color: black;\n  font-size: 22px;\n  text-align: center;\n}\n#final_ranking_table {\n  width: 95%;\n}\n#final_ranking_table .table {\n  color: black;\n  font-size: 22px;\n  text-align: center;\n}\n", ""]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
@@ -19675,7 +19675,7 @@ var render = function() {
                                           "b-th",
                                           {
                                             staticStyle: {
-                                              "font-size": "22px"
+                                              "font-size": "24px"
                                             },
                                             attrs: {
                                               variant: "success",
@@ -19694,7 +19694,7 @@ var render = function() {
                                         _c(
                                           "b-th",
                                           { attrs: { colspan: "3" } },
-                                          [_vm._v("RANKING 2021")]
+                                          [_vm._v("RANKING 2021")]
                                         ),
                                         _vm._v(" "),
                                         _c(
@@ -19704,13 +19704,13 @@ var render = function() {
                                               colspan: _vm.competitionNumber
                                             }
                                           },
-                                          [_vm._v("COMPETICIONES PUNTUABLES")]
+                                          [_vm._v("COMPETICIONES PUNTUABLES")]
                                         ),
                                         _vm._v(" "),
                                         _c(
                                           "b-th",
                                           { attrs: { colspan: "3" } },
-                                          [_vm._v("TRES MEJORES")]
+                                          [_vm._v("TRES MEJORES")]
                                         )
                                       ],
                                       1
@@ -19769,13 +19769,15 @@ var render = function() {
                                     {
                                       staticStyle: {
                                         background: "#b8e6e2",
-                                        "font-size": "22px"
+                                        "font-size": "24px"
                                       },
                                       attrs: { colspan: "3" }
                                     },
                                     [
                                       _vm._v(
-                                        "\n                      Open Masculino Largo\n                    "
+                                        "\n                      " +
+                                          _vm._s(_vm.categoryModality) +
+                                          "\n                    "
                                       )
                                     ]
                                   )
@@ -19784,7 +19786,7 @@ var render = function() {
                                 _c("tr", [
                                   _c("th", { attrs: { colspan: "3" } }, [
                                     _vm._v(
-                                      "\n                      RANKING 2021\n                    "
+                                      "\n                      RANKING 2021\n                    "
                                     )
                                   ])
                                 ]),
@@ -19794,7 +19796,7 @@ var render = function() {
                                   _vm._v(" "),
                                   _c("th", [_vm._v("Participante")]),
                                   _vm._v(" "),
-                                  _c("th", [_vm._v("Suma 3 Mejores")])
+                                  _c("th", [_vm._v("Suma 3 Mejores")])
                                 ])
                               ]),
                               _vm._v(" "),

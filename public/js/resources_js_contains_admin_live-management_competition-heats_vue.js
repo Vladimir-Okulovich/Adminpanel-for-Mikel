@@ -156,7 +156,7 @@ __webpack_require__.r(__webpack_exports__);
 
       pdf.html(element, {
         html2canvas: {
-          scale: 0.14
+          scale: 0.15
         },
         x: 8,
         y: 8,
@@ -171,7 +171,7 @@ __webpack_require__.r(__webpack_exports__);
 
       pdf.html(element, {
         html2canvas: {
-          scale: 0.135
+          scale: 0.15
         },
         x: 8,
         y: 8,
@@ -2401,7 +2401,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\nthead tr.active {\r\n  background: #f78080 !important;\n}\ntbody tr.classified {\r\n  background: #0c101d !important;\n}\n#competition_heats h3 {\r\n  color: black;\n}\n#competition_heats .table {\r\n  color: black;\r\n  font-size: 18px;\n}\n#competition_final_results .table {\r\n  text-align: center;\r\n  color: black;\r\n  font-size: 20px;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\nthead tr.active {\r\n  background: #f78080 !important;\n}\ntbody tr.classified {\r\n  background: #0c101d !important;\n}\n#competition_heats {\r\n  width: 95%;\n}\n#competition_heats h2 {\r\n  color: black;\n}\n#competition_heats .table {\r\n  color: black;\r\n  font-size: 20px;\n}\n#competition_final_results {\r\n  width: 95%;\n}\n#competition_final_results .table {\r\n  text-align: center;\r\n  color: black;\r\n  font-size: 22px;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
@@ -19753,7 +19753,7 @@ var render = function() {
                 { attrs: { id: "competition_heats" } },
                 [
                   _c("div", { staticClass: "text-center" }, [
-                    _c("h3", [
+                    _c("h2", [
                       _vm._v(
                         "\n            " +
                           _vm._s(
@@ -19781,26 +19781,26 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _vm._l(_vm.all_round_heats, function(round, round_index) {
-                    return _c(
-                      "div",
-                      { key: round_index, staticClass: "row" },
-                      [
+                    return _c("div", { key: round_index }, [
+                      _c("div", [
                         round.length == 1
-                          ? _c("h3", { staticClass: "my-4 col-12" }, [
-                              _vm._v("FINAL")
-                            ])
+                          ? _c("h2", { staticClass: "my-4" }, [_vm._v("FINAL")])
                           : round.length == 2
-                          ? _c("h3", { staticClass: "my-4 col-12" }, [
-                              _vm._v("SEMI FINAL")
+                          ? _c("h2", { staticClass: "my-4" }, [
+                              _vm._v("SEMI FINAL")
                             ])
                           : round.length == 3
-                          ? _c("h3", { staticClass: "my-4 col-12" }, [
-                              _vm._v("CUARTOS DE FINAL")
+                          ? _c("h2", { staticClass: "my-4" }, [
+                              _vm._v("CUARTOS DE FINAL")
                             ])
-                          : _c("h3", { staticClass: "my-4 col-12" }, [
-                              _vm._v("RONDA " + _vm._s(round_index + 1))
-                            ]),
-                        _vm._v(" "),
+                          : _c("h2", { staticClass: "my-4" }, [
+                              _vm._v("RONDA " + _vm._s(round_index + 1))
+                            ])
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "row" },
                         _vm._l(round, function(heat, heat_index) {
                           return _c(
                             "div",
@@ -19823,7 +19823,7 @@ var render = function() {
                                           {
                                             staticStyle: {
                                               background: "#b8e6e2",
-                                              "font-size": "20px"
+                                              "font-size": "22px"
                                             }
                                           },
                                           [
@@ -19833,7 +19833,7 @@ var render = function() {
                                                   { attrs: { colspan: "4" } },
                                                   [
                                                     _vm._v(
-                                                      "\n                      Final\n                    "
+                                                      "\n                        Final\n                      "
                                                     )
                                                   ]
                                                 )
@@ -19843,9 +19843,9 @@ var render = function() {
                                                   { attrs: { colspan: "4" } },
                                                   [
                                                     _vm._v(
-                                                      "\n                      Semi Finals Manga " +
+                                                      "\n                        Semi Finals Manga " +
                                                         _vm._s(heat_index + 1) +
-                                                        "\n                    "
+                                                        "\n                      "
                                                     )
                                                   ]
                                                 )
@@ -19855,9 +19855,9 @@ var render = function() {
                                                   { attrs: { colspan: "4" } },
                                                   [
                                                     _vm._v(
-                                                      "\n                    Cuartos de Final Manga " +
+                                                      "\n                      Cuartos de Final Manga " +
                                                         _vm._s(heat_index + 1) +
-                                                        "\n                    "
+                                                        "\n                      "
                                                     )
                                                   ]
                                                 )
@@ -19866,13 +19866,13 @@ var render = function() {
                                                   { attrs: { colspan: "4" } },
                                                   [
                                                     _vm._v(
-                                                      "\n                      Ronda " +
+                                                      "\n                        Ronda " +
                                                         _vm._s(
                                                           round_index + 1
                                                         ) +
-                                                        " Manga " +
+                                                        " Manga " +
                                                         _vm._s(heat_index + 1) +
-                                                        "\n                    "
+                                                        "\n                      "
                                                     )
                                                   ]
                                                 )
@@ -19970,10 +19970,10 @@ var render = function() {
                               )
                             ]
                           )
-                        })
-                      ],
-                      2
-                    )
+                        }),
+                        0
+                      )
+                    ])
                   })
                 ],
                 2
@@ -20025,7 +20025,7 @@ var render = function() {
                                 staticClass: "text-center",
                                 staticStyle: {
                                   background: "#b8e6e2",
-                                  "font-size": "22px"
+                                  "font-size": "24px"
                                 }
                               },
                               [
@@ -20064,7 +20064,13 @@ var render = function() {
                                 _c("td", [_vm._v(_vm._s(row.ranking))]),
                                 _vm._v(" "),
                                 _c("td", [
-                                  _vm._v(_vm._s(row.participant.name))
+                                  _vm._v(
+                                    _vm._s(
+                                      row.participant.name +
+                                        " " +
+                                        row.participant.surname
+                                    )
+                                  )
                                 ]),
                                 _vm._v(" "),
                                 _c("td", [_vm._v(_vm._s(row.ranking_points))])
