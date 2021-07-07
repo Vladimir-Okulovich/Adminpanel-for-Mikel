@@ -235,7 +235,7 @@
               <div class="table-responsive mb-0">
                 <table class="table table-bordered">
                   <thead>
-                    <tr style="font-size: 20px;">
+                    <tr style="background: #b8e6e2;font-size: 20px;">
                       <th colspan="4" v-if="round.length == 1">
                         Final
                       </th>
@@ -249,7 +249,7 @@
                         Ronda {{ round_index+1 }} Manga {{ heat_index+1 }}
                       </th>
                     </tr>
-                    <tr>
+                    <tr class="thead-light">
                       <th></th>
                       <th>Participante</th>
                       <th>Puntos</th>
