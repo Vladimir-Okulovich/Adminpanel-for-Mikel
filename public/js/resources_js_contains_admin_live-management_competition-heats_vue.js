@@ -19882,7 +19882,10 @@ var render = function() {
                                         _c(
                                           "tr",
                                           {
-                                            staticStyle: { "font-size": "20px" }
+                                            staticStyle: {
+                                              background: "#b8e6e2",
+                                              "font-size": "20px"
+                                            }
                                           },
                                           [
                                             round.length == 1
@@ -19937,15 +19940,19 @@ var render = function() {
                                           ]
                                         ),
                                         _vm._v(" "),
-                                        _c("tr", [
-                                          _c("th"),
-                                          _vm._v(" "),
-                                          _c("th", [_vm._v("Participante")]),
-                                          _vm._v(" "),
-                                          _c("th", [_vm._v("Puntos")]),
-                                          _vm._v(" "),
-                                          _c("th", [_vm._v("Posición")])
-                                        ])
+                                        _c(
+                                          "tr",
+                                          { staticClass: "thead-light" },
+                                          [
+                                            _c("th"),
+                                            _vm._v(" "),
+                                            _c("th", [_vm._v("Participante")]),
+                                            _vm._v(" "),
+                                            _c("th", [_vm._v("Puntos")]),
+                                            _vm._v(" "),
+                                            _c("th", [_vm._v("Posición")])
+                                          ]
+                                        )
                                       ]),
                                       _vm._v(" "),
                                       _c(
