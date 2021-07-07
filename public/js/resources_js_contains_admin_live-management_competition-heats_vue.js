@@ -152,11 +152,12 @@ __webpack_require__.r(__webpack_exports__);
     },
     printCompetitionHeats: function printCompetitionHeats() {
       var pdf = new jspdf__WEBPACK_IMPORTED_MODULE_6__.default('p', 'mm', 'a4');
-      var element = document.getElementById('competition_heats'); //   const pdfWidth = pdf.internal.pageSize.getWidth();
-
+      var element = document.getElementById('competition_heats');
+      var e_width = element.offsetWidth;
+      var pdfWidth = pdf.internal.pageSize.getWidth();
       pdf.html(element, {
         html2canvas: {
-          scale: 0.15
+          scale: (pdfWidth - 16) / e_width
         },
         x: 8,
         y: 8,
@@ -167,11 +168,12 @@ __webpack_require__.r(__webpack_exports__);
     },
     printCompetitionFinalResults: function printCompetitionFinalResults() {
       var pdf = new jspdf__WEBPACK_IMPORTED_MODULE_6__.default('p', 'mm', 'a4');
-      var element = document.getElementById('competition_final_results'); //   const pdfWidth = pdf.internal.pageSize.getWidth();
-
+      var element = document.getElementById('competition_final_results');
+      var e_width = element.offsetWidth;
+      var pdfWidth = pdf.internal.pageSize.getWidth();
       pdf.html(element, {
         html2canvas: {
-          scale: 0.15
+          scale: (pdfWidth - 16) / e_width
         },
         x: 8,
         y: 8,
@@ -2401,7 +2403,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\nthead tr.active {\r\n  background: #f78080 !important;\n}\ntbody tr.classified {\r\n  background: #0c101d !important;\n}\n#competition_heats {\r\n  width: 95%;\n}\n#competition_heats h2 {\r\n  color: black;\n}\n#competition_heats .table {\r\n  color: black;\r\n  font-size: 20px;\n}\n#competition_final_results {\r\n  width: 95%;\n}\n#competition_final_results .table {\r\n  text-align: center;\r\n  color: black;\r\n  font-size: 22px;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\nthead tr.active {\r\n  background: #f78080 !important;\n}\ntbody tr.classified {\r\n  background: #0c101d !important;\n}\n#competition_heats h2 {\r\n  color: black;\n}\n#competition_heats .table {\r\n  color: black;\r\n  font-size: 20px;\n}\n#competition_final_results .table {\r\n  text-align: center;\r\n  color: black;\r\n  font-size: 22px;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 

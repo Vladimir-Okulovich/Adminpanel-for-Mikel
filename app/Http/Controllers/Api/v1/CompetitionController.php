@@ -139,7 +139,9 @@ class CompetitionController extends Controller
         $competition->lycras = $lycra_ids;
         $competition->competition_type()->associate($competition_type);
         $competition->status()->associate($status);
-        $competition->logo = explode("/",$result)[1];
+        if ($result != null) {
+            $competition->logo = explode("/",$result)[1];
+        }
         $competition->save();
 
         $modalities = Modality::whereIn('name', explode(",",$request->modality))->get();
@@ -220,7 +222,9 @@ class CompetitionController extends Controller
         $competition->lycras = $lycra_ids;
         $competition->competition_type_id = $competition_type->id;
         $competition->status_id = $status->id;
-        $competition->logo = explode("/",$result)[1];
+        if ($result != null) {
+            $competition->logo = explode("/",$result)[1];
+        }
         $competition->save();
 
         $modalities = Modality::whereIn('name', explode(",",$request->modality))->get();
