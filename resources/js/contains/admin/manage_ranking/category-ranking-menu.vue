@@ -108,7 +108,7 @@
         //   const pdfWidth = pdf.internal.pageSize.getWidth();
         pdf.html(element, {
           html2canvas: {
-            scale: 0.14,
+            scale: 0.15,
           },
           x: 8,
           y: 8,
@@ -123,7 +123,7 @@
         //   const pdfWidth = pdf.internal.pageSize.getWidth();
         pdf.html(element, {
           html2canvas: {
-            scale: 0.14,
+            scale: 0.15,
           },
           x: 8,
           y: 8,
@@ -245,12 +245,12 @@
                 >
                   <template #thead-top="data">
                     <b-tr>
-                      <b-th variant="success" :colspan="competitionNumber+6" style="font-size: 22px;">{{ categoryModality }}</b-th>
+                      <b-th variant="success" :colspan="competitionNumber+6" style="font-size: 24px;">{{ categoryModality }}</b-th>
                     </b-tr>
                     <b-tr>
-                      <b-th colspan="3">RANKING 2021</b-th>
-                      <b-th :colspan="competitionNumber">COMPETICIONES PUNTUABLES</b-th>
-                      <b-th colspan="3">TRES MEJORES</b-th>
+                      <b-th colspan="3">RANKING&nbsp;2021</b-th>
+                      <b-th :colspan="competitionNumber">COMPETICIONES&nbsp;PUNTUABLES</b-th>
+                      <b-th colspan="3">TRES&nbsp;MEJORES</b-th>
                     </b-tr>
                   </template>
                 </b-table>
@@ -277,19 +277,19 @@
                 <table class="table table-responsive-sm mb-0">
                   <thead>
                     <tr>
-                      <th colspan="3" style="background: #b8e6e2;font-size: 22px;">
-                        Open Masculino Largo
+                      <th colspan="3" style="background: #b8e6e2;font-size: 24px;">
+                        {{ categoryModality }}
                       </th>
                     </tr>
                     <tr>
                       <th colspan="3">
-                        RANKING 2021
+                        RANKING&nbsp;2021
                       </th>
                     </tr>
                     <tr>
                       <th>Posicion</th>
                       <th>Participante</th>
-                      <th>Suma 3 Mejores</th>
+                      <th>Suma&nbsp;3&nbsp;Mejores</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -320,17 +320,24 @@
 </template>
 
 <style>
+  #ranking_table {
+    width: 95%;
+  }
   #ranking_table div {
     margin-bottom: 0px; 
   }
   #ranking_table .table {
     color: black;
-    font-size: 20px;
+    font-size: 22px;
     text-align: center;
+  }
+
+  #final_ranking_table {
+    width: 95%;
   }
   #final_ranking_table .table {
     color: black;
-    font-size: 20px;
+    font-size: 22px;
     text-align: center;
   }
 </style>
