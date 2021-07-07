@@ -94,7 +94,7 @@
         //   const pdfWidth = pdf.internal.pageSize.getWidth();
         pdf.html(element, {
           html2canvas: {
-            scale: 0.15,
+            scale: 0.14,
           },
           x: 8,
           y: 8,
@@ -218,6 +218,14 @@
     >
       <section slot="pdf-content">
         <div id="competition_heats">
+          <div class="text-center">
+            <h3>
+              {{ all_round_heats[0][0][0].com_cat_mod_participant.category.name }}
+              {{ all_round_heats[0][0][0].com_cat_mod_participant.category.sex.name }}
+              {{ all_round_heats[0][0][0].com_cat_mod_participant.modality.name }}
+              {{ all_round_heats[0][0][0].com_cat_mod_participant.competition.title }}
+            </h3>
+          </div>
           <div class="row" v-for="(round, round_index) in all_round_heats" :key="round_index">
             <h3 class="my-4 col-12" v-if="round.length == 1">FINAL</h3>
             <h3 class="my-4 col-12" v-else-if="round.length == 2">SEMI FINAL</h3>
