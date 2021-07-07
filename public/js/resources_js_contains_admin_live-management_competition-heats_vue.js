@@ -171,7 +171,7 @@ __webpack_require__.r(__webpack_exports__);
 
       pdf.html(element, {
         html2canvas: {
-          scale: 0.15
+          scale: 0.135
         },
         x: 8,
         y: 8,
@@ -2401,7 +2401,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\nthead tr.active {\r\n  background: #f78080 !important;\n}\ntbody tr.classified {\r\n  background: #0c101d !important;\n}\n#competition_heats h4 {\r\n  color: #b1adad;\n}\n#competition_heats .table tbody tr{\r\n  background: #222736;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\nthead tr.active {\r\n  background: #f78080 !important;\n}\ntbody tr.classified {\r\n  background: #0c101d !important;\n}\n#competition_heats h3 {\r\n  color: black;\n}\n#competition_heats .table {\r\n  color: black;\r\n  font-size: 18px;\n}\n#competition_final_results .table {\r\n  text-align: center;\r\n  color: black;\r\n  font-size: 20px;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
@@ -19511,7 +19511,6 @@ var render = function() {
       _vm._v(" "),
       _c(
         "div",
-        { attrs: { id: "competition_heats" } },
         _vm._l(_vm.all_round_heats, function(round, round_index) {
           return _c(
             "div",
@@ -19751,6 +19750,224 @@ var render = function() {
             [
               _c(
                 "div",
+                { attrs: { id: "competition_heats" } },
+                _vm._l(_vm.all_round_heats, function(round, round_index) {
+                  return _c(
+                    "div",
+                    { key: round_index, staticClass: "row" },
+                    [
+                      round.length == 1
+                        ? _c("h3", { staticClass: "my-4 col-12" }, [
+                            _vm._v("FINAL")
+                          ])
+                        : round.length == 2
+                        ? _c("h3", { staticClass: "my-4 col-12" }, [
+                            _vm._v("SEMI FINAL")
+                          ])
+                        : round.length == 3
+                        ? _c("h3", { staticClass: "my-4 col-12" }, [
+                            _vm._v("CUARTOS DE FINAL")
+                          ])
+                        : _c("h3", { staticClass: "my-4 col-12" }, [
+                            _vm._v("RONDA " + _vm._s(round_index + 1))
+                          ]),
+                      _vm._v(" "),
+                      _vm._l(round, function(heat, heat_index) {
+                        return _c(
+                          "div",
+                          {
+                            key: heat_index,
+                            staticClass: "col-lg-4 col-md-6 col-sm-6 mb-3"
+                          },
+                          [
+                            _c(
+                              "div",
+                              { staticClass: "table-responsive mb-0" },
+                              [
+                                _c(
+                                  "table",
+                                  { staticClass: "table table-bordered" },
+                                  [
+                                    _c("thead", [
+                                      _c(
+                                        "tr",
+                                        {
+                                          staticStyle: { "font-size": "20px" }
+                                        },
+                                        [
+                                          round.length == 1
+                                            ? _c(
+                                                "th",
+                                                { attrs: { colspan: "4" } },
+                                                [
+                                                  _vm._v(
+                                                    "\n                      Final\n                    "
+                                                  )
+                                                ]
+                                              )
+                                            : round.length == 2
+                                            ? _c(
+                                                "th",
+                                                { attrs: { colspan: "4" } },
+                                                [
+                                                  _vm._v(
+                                                    "\n                      Semi Finals Manga " +
+                                                      _vm._s(heat_index + 1) +
+                                                      "\n                    "
+                                                  )
+                                                ]
+                                              )
+                                            : round.length == 3
+                                            ? _c(
+                                                "th",
+                                                { attrs: { colspan: "4" } },
+                                                [
+                                                  _vm._v(
+                                                    "\n                    Cuartos de Final Manga " +
+                                                      _vm._s(heat_index + 1) +
+                                                      "\n                    "
+                                                  )
+                                                ]
+                                              )
+                                            : _c(
+                                                "th",
+                                                { attrs: { colspan: "4" } },
+                                                [
+                                                  _vm._v(
+                                                    "\n                      Ronda " +
+                                                      _vm._s(round_index + 1) +
+                                                      " Manga " +
+                                                      _vm._s(heat_index + 1) +
+                                                      "\n                    "
+                                                  )
+                                                ]
+                                              )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c("tr", [
+                                        _c("th"),
+                                        _vm._v(" "),
+                                        _c("th", [_vm._v("Participante")]),
+                                        _vm._v(" "),
+                                        _c("th", [_vm._v("Puntos")]),
+                                        _vm._v(" "),
+                                        _c("th", [_vm._v("Posición")])
+                                      ])
+                                    ]),
+                                    _vm._v(" "),
+                                    _c(
+                                      "tbody",
+                                      _vm._l(heat, function(
+                                        round_heat,
+                                        round_heat_index
+                                      ) {
+                                        return _c(
+                                          "tr",
+                                          { key: round_heat_index },
+                                          [
+                                            _c("th", {
+                                              style: {
+                                                background:
+                                                  round_heat.lycra.color
+                                              },
+                                              attrs: { scope: "row" }
+                                            }),
+                                            _vm._v(" "),
+                                            round_heat.ranking > 0
+                                              ? _c("td", [
+                                                  _vm._v(
+                                                    _vm._s(
+                                                      round_heat
+                                                        .com_cat_mod_participant
+                                                        .participant.name +
+                                                        " " +
+                                                        round_heat
+                                                          .com_cat_mod_participant
+                                                          .participant.surname +
+                                                        " (" +
+                                                        round_heat.ranking +
+                                                        ")"
+                                                    )
+                                                  )
+                                                ])
+                                              : _c("td", [
+                                                  _vm._v(
+                                                    _vm._s(
+                                                      round_heat
+                                                        .com_cat_mod_participant
+                                                        .participant.name +
+                                                        " " +
+                                                        round_heat
+                                                          .com_cat_mod_participant
+                                                          .participant.surname
+                                                    )
+                                                  )
+                                                ]),
+                                            _vm._v(" "),
+                                            _c("td", [
+                                              _vm._v(
+                                                _vm._s(
+                                                  parseFloat(
+                                                    round_heat.points
+                                                  ).toFixed(2)
+                                                )
+                                              )
+                                            ]),
+                                            _vm._v(" "),
+                                            _c("td", [
+                                              _vm._v(
+                                                _vm._s(round_heat.position)
+                                              )
+                                            ])
+                                          ]
+                                        )
+                                      }),
+                                      0
+                                    )
+                                  ]
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      })
+                    ],
+                    2
+                  )
+                }),
+                0
+              )
+            ]
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "vue-html2pdf",
+        {
+          ref: "html2Pdf",
+          attrs: {
+            "show-layout": false,
+            "float-layout": true,
+            "enable-download": false,
+            "preview-modal": true,
+            "paginate-elements-by-height": 1400,
+            filename: "competition_heats",
+            "pdf-quality": 2,
+            "manual-pagination": false,
+            "pdf-format": "a4",
+            "pdf-orientation": "portrait",
+            "pdf-content-width": "100%"
+          }
+        },
+        [
+          _c(
+            "section",
+            { attrs: { slot: "pdf-content" }, slot: "pdf-content" },
+            [
+              _c(
+                "div",
                 {
                   staticClass: "table-responsive table-bordered",
                   attrs: { id: "competition_final_results" }
@@ -19759,17 +19976,17 @@ var render = function() {
                   _vm.final_results.length > 0
                     ? _c(
                         "table",
-                        {
-                          staticClass: "table table-responsive-sm mb-0",
-                          staticStyle: { color: "black" }
-                        },
+                        { staticClass: "table table-responsive-sm mb-0" },
                         [
                           _c("thead", [
                             _c(
                               "tr",
                               {
                                 staticClass: "text-center",
-                                staticStyle: { background: "#b8e6e2" }
+                                staticStyle: {
+                                  background: "#b8e6e2",
+                                  "font-size": "22px"
+                                }
                               },
                               [
                                 _c("th", { attrs: { colspan: "3" } }, [
@@ -19791,17 +20008,13 @@ var render = function() {
                               ]
                             ),
                             _vm._v(" "),
-                            _c(
-                              "tr",
-                              { staticStyle: { background: "#3dfc58" } },
-                              [
-                                _c("th", [_vm._v("Posición")]),
-                                _vm._v(" "),
-                                _c("th", [_vm._v("Participante")]),
-                                _vm._v(" "),
-                                _c("th", [_vm._v("Puntos")])
-                              ]
-                            )
+                            _c("tr", [
+                              _c("th", [_vm._v("Posición")]),
+                              _vm._v(" "),
+                              _c("th", [_vm._v("Participante")]),
+                              _vm._v(" "),
+                              _c("th", [_vm._v("Pts. Ranking Obtenidos")])
+                            ])
                           ]),
                           _vm._v(" "),
                           _c(
@@ -19829,7 +20042,7 @@ var render = function() {
         ]
       ),
       _vm._v(" "),
-      _c("div", { staticClass: "text-right mt-2" }, [
+      _c("div", { staticClass: "text-right my-2" }, [
         _c(
           "button",
           {
