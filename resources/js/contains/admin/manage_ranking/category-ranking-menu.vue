@@ -321,7 +321,7 @@
 
 <style>
   #ranking_table {
-    width: 95%;
+    width: 100%;
   }
   #ranking_table div {
     margin-bottom: 0px; 
@@ -333,7 +333,7 @@
   }
 
   #final_ranking_table {
-    width: 95%;
+    width: 100%;
   }
   #final_ranking_table .table {
     color: black;

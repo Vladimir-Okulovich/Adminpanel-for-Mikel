@@ -343,7 +343,7 @@ tbody tr.classified {
 }
 
 #competition_heats {
-  width: 95%;
+  width: 100%;
 }
 #competition_heats h2 {
   color: black;
@@ -354,7 +354,7 @@ tbody tr.classified {
 }
 
 #competition_final_results {
-  width: 95%;
+  width: 100%;
 }
 #competition_final_results .table {
   text-align: center;
