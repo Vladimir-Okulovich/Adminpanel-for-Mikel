@@ -108,7 +108,7 @@
         //   const pdfWidth = pdf.internal.pageSize.getWidth();
         pdf.html(element, {
           html2canvas: {
-            scale: 0.15,
+            scale: 0.14,
           },
           x: 8,
           y: 8,
@@ -191,7 +191,7 @@
             <!-- End search -->
           </div>
           <!-- Table -->
-          <div id="ranking_table" class="table-responsive table-bordered table-dark ranking-table mb-0">
+          <div class="table-responsive table-bordered table-dark ranking-table mb-0">
             <b-table
               :items="categoryRankingPoints"
               responsive="sm"
@@ -231,20 +231,62 @@
             ref="html2Pdf"
           >
             <section slot="pdf-content">
+              <div id="ranking_table" class="table-responsive table-bordered mb-0">
+                <b-table
+                  :items="categoryRankingPoints"
+                  responsive="sm"
+                  :per-page="perPage"
+                  :current-page="currentPage"
+                  :sort-by.sync="sortBy"
+                  :sort-desc.sync="sortDesc"
+                  :filter="filter"
+                  :filter-included-fields="filterOn"
+                  @filtered="onFiltered"
+                >
+                  <template #thead-top="data">
+                    <b-tr>
+                      <b-th variant="success" :colspan="competitionNumber+6" style="font-size: 22px;">{{ categoryModality }}</b-th>
+                    </b-tr>
+                    <b-tr>
+                      <b-th colspan="3">RANKING 2021</b-th>
+                      <b-th :colspan="competitionNumber">COMPETICIONES PUNTUABLES</b-th>
+                      <b-th colspan="3">TRES MEJORES</b-th>
+                    </b-tr>
+                  </template>
+                </b-table>
+              </div>
+            </section>
+          </vue-html2pdf>
+          <vue-html2pdf
+            :show-layout="false"
+            :float-layout="true"
+            :enable-download="false"
+            :preview-modal="true"
+            :paginate-elements-by-height="1400"
+            filename="competition_heats"
+            :pdf-quality="2"
+            :manual-pagination="false"
+            pdf-format="a4"
+            pdf-orientation="portrait"
+            pdf-content-width="100%"
+
+            ref="html2Pdf"
+          >
+            <section slot="pdf-content">
               <div id="final_ranking_table" class="table-responsive table-bordered">
-                <table class="table table-responsive-sm mb-0" style="color: black;">
+                <table class="table table-responsive-sm mb-0">
                   <thead>
                     <tr>
-                      <th colspan="3" class="text-center" style="background: #b8e6e2;">
+                      <th colspan="3" style="background: #b8e6e2;font-size: 22px;">
                         Open Masculino Largo
                       </th>
                     </tr>
                     <tr>
-                      <th colspan="3" class="text-center">
+                      <th colspan="3">
                         RANKING 2021
                       </th>
                     </tr>
-                    <tr style="background: #3dfc58;">
+                    <tr>
                       <th>Posicion</th>
                       <th>Participante</th>
                       <th>Suma 3 Mejores</th>
@@ -277,8 +319,18 @@
   </Layout>
 </template>
 
-<style scoped>
+<style>
   #ranking_table div {
-    margin-bottom: 0px;
+    margin-bottom: 0px; 
+  }
+  #ranking_table .table {
+    color: black;
+    font-size: 20px;
+    text-align: center;
+  }
+  #final_ranking_table .table {
+    color: black;
+    font-size: 20px;
+    text-align: center;
   }
 </style>
