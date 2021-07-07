@@ -7058,121 +7058,6 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("Layout", [
-    _c(
-      "div",
-      { staticClass: "d-flex pt-4" },
-      [
-        _c("b-img", {
-          attrs: {
-            src:
-              "/storage/" +
-              _vm.round_heats[0].com_cat_mod_participant.competition.logo,
-            height: "127",
-            alt: "logo"
-          }
-        }),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "w-50", staticStyle: { border: "1px solid #64676f" } },
-          [
-            _c(
-              "h4",
-              {
-                staticClass: "mb-0 text-center",
-                staticStyle: {
-                  "border-bottom": "1px solid #64676f",
-                  padding: "5px 20px"
-                }
-              },
-              [
-                _vm._v(
-                  _vm._s(
-                    _vm.round_heats[0].com_cat_mod_participant.competition.title
-                  )
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "p",
-              {
-                staticClass: "mb-0",
-                staticStyle: {
-                  "border-bottom": "1px solid #64676f",
-                  padding: "3px 20px"
-                }
-              },
-              [
-                _vm._v(
-                  _vm._s(
-                    _vm.round_heats[0].com_cat_mod_participant.competition
-                      .description
-                  )
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "p",
-              {
-                staticClass: "mb-0",
-                staticStyle: {
-                  "border-bottom": "1px solid #64676f",
-                  padding: "3px 20px"
-                }
-              },
-              [
-                _vm._v(
-                  "\n        " +
-                    _vm._s(
-                      _vm.round_heats[0].com_cat_mod_participant.competition
-                        .place
-                    ) +
-                    "\n        " +
-                    _vm._s(
-                      _vm.round_heats[0].com_cat_mod_participant.competition
-                        .date
-                    ) +
-                    "\n        " +
-                    _vm._s(
-                      _vm.round_heats[0].com_cat_mod_participant.competition
-                        .time
-                    ) +
-                    "\n      "
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "p",
-              { staticClass: "mb-0", staticStyle: { padding: "3px 20px" } },
-              [
-                _vm._v(
-                  "Antolatzailea: " +
-                    _vm._s(
-                      _vm.round_heats[0].com_cat_mod_participant.competition
-                        .organizer
-                    )
-                )
-              ]
-            )
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-secondary",
-            staticStyle: { width: "10%", position: "absolute", right: "24px" },
-            on: { click: _vm.back }
-          },
-          [_vm._v("\n      Volver\n    ")]
-        )
-      ],
-      1
-    ),
-    _vm._v(" "),
     _c("div", { staticClass: "text-center w-100 mt-4" }, [
       _c("h4", { staticStyle: { background: "#32394e", padding: "10px 0" } }, [
         _vm._v(
@@ -7339,8 +7224,6 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("th", { attrs: { rowspan: "2" } }, [_vm._v("JUEZ")]),
-                  _vm._v(" "),
-                  _c("th", { attrs: { colspan: "10" } }, [_vm._v("OLAS")]),
                   _vm._v(" "),
                   _c("th", { attrs: { rowspan: "2" } }, [_vm._v("Pena")])
                 ]),

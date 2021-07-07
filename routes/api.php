@@ -141,6 +141,8 @@ Route::group([ 'prefix' => 'v1', 'middleware' => 'api'], function(){
         Route::post('live-management/competition-box/create', 'App\Http\Controllers\Api\v1\LiveManagementController@createFirstCompetitionBoxes');
         // /* Get Competition Heats */
         Route::post('live-management/competition-heats', 'App\Http\Controllers\Api\v1\LiveManagementController@initCompetitionHeats');
+        // /* Get Competition Final Results */
+        Route::post('live-management/competition-heats/final-results', 'App\Http\Controllers\Api\v1\LiveManagementController@getCompetitionFinalResults');
         // /* Set Heat Status */
         Route::post('live-management/competition-heat/progress-status', 'App\Http\Controllers\Api\v1\LiveManagementController@setProgressStatus');
         // /* Get Competition Heat Details */
@@ -174,6 +176,8 @@ Route::group([ 'prefix' => 'v1', 'middleware' => 'api'], function(){
         Route::get('manage_ranking/all_category_modality', 'App\Http\Controllers\Api\v1\ManageRankingController@getAllCategoryModality');
         /* Get all all_ranking_data details*/
         Route::post('manage_ranking/category_ranking_points', 'App\Http\Controllers\Api\v1\ManageRankingController@getCategoryRankingPoints');
+        /* Print final ranking as PDF*/
+        // Route::post('manage_ranking/final-ranking-pdf', 'App\Http\Controllers\Api\v1\ManageRankingController@finalRankingPDF');
     });
 
     Route::group([ 'prefix' => 'judge', 'middleware' => 'isjudge' ], function() {

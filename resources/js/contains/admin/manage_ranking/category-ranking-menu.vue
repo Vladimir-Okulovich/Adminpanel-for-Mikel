@@ -87,6 +87,7 @@
       ...mapActions([
         'initRankingMenu',
         'getCategoryRankingPoints',
+        'finalRankingPDF',
       ]),
       /**
        * Search the table data with search input
@@ -101,7 +102,7 @@
           categoryModality: this.categoryModality,
         });
       },
-      print() {
+      printRankingTable() {
         var pdf = new jsPDF('p', 'mm', 'a4');
         var element = document.getElementById('ranking_table');
         //   const pdfWidth = pdf.internal.pageSize.getWidth();
@@ -116,8 +117,20 @@
           }
         });
       },
-      generateReport () {
-        // this.$refs.html2Pdf.generatePdf()
+      printFinalTable() {
+        var pdf = new jsPDF('p', 'mm', 'a4');
+        var element = document.getElementById('final_ranking_table');
+        //   const pdfWidth = pdf.internal.pageSize.getWidth();
+        pdf.html(element, {
+          html2canvas: {
+            scale: 0.14,
+          },
+          x: 8,
+          y: 8,
+          callback: function (pdf) {
+            window.open(pdf.output('bloburl'));
+          }
+        });
       }
     }
 	};
@@ -144,10 +157,10 @@
           <div class="d-flex justify-content-between align-items-center mb-4">
             <h4 class="card-title mb-0">Ranking Categoría "{{ categoryModality }}"</h4>
             <div>
-              <b-button size="sm" variant="primary" @click="print">
+              <b-button size="sm" variant="primary" @click="printRankingTable">
                 Imprimir Ranking
               </b-button>
-              <b-button size="sm" variant="info" @click="generateReport">
+              <b-button size="sm" variant="info" @click="printFinalTable">
                 Imprimir Clasificación
               </b-button>
             </div>
@@ -178,9 +191,33 @@
             <!-- End search -->
           </div>
           <!-- Table -->
+          <div id="ranking_table" class="table-responsive table-bordered table-dark ranking-table mb-0">
+            <b-table
+              :items="categoryRankingPoints"
+              responsive="sm"
+              :per-page="perPage"
+              :current-page="currentPage"
+              :sort-by.sync="sortBy"
+              :sort-desc.sync="sortDesc"
+              :filter="filter"
+              :filter-included-fields="filterOn"
+              @filtered="onFiltered"
+            >
+              <template #thead-top="data">
+                <b-tr>
+                  <b-th variant="success" :colspan="competitionNumber+6" style="color: black;text-align: center;font-size: 18px;">{{ categoryModality }}</b-th>
+                </b-tr>
+                <b-tr>
+                  <b-th  colspan="3" style="background: white;color: black;text-align: center;">RANKING 2021</b-th>
+                  <b-th variant="primary" :colspan="competitionNumber" style="color: black;text-align: center;">COMPETICIONES PUNTUABLES</b-th>
+                  <b-th variant="pink" colspan="3" style="color: black;text-align: center;">TRES MEJORES</b-th>
+                </b-tr>
+              </template>
+            </b-table>
+          </div>
           <vue-html2pdf
-            :show-layout="true"
-            :float-layout="false"
+            :show-layout="false"
+            :float-layout="true"
             :enable-download="false"
             :preview-modal="true"
             :paginate-elements-by-height="1400"
@@ -193,32 +230,36 @@
 
             ref="html2Pdf"
           >
-          <section slot="pdf-content">
-            <div id="ranking_table" class="table-responsive table-bordered table-dark ranking-table mb-0">
-              <b-table
-                :items="categoryRankingPoints"
-                responsive="sm"
-                :per-page="perPage"
-                :current-page="currentPage"
-                :sort-by.sync="sortBy"
-                :sort-desc.sync="sortDesc"
-                :filter="filter"
-                :filter-included-fields="filterOn"
-                @filtered="onFiltered"
-              >
-                <template #thead-top="data">
-                  <b-tr>
-                    <b-th variant="success" :colspan="competitionNumber+6" style="color: black;text-align: center;font-size: 18px;">{{ categoryModality }}</b-th>
-                  </b-tr>
-                  <b-tr>
-                    <b-th  colspan="3" style="background: white;color: black;text-align: center;">RANKING 2021</b-th>
-                    <b-th variant="primary" :colspan="competitionNumber" style="color: black;text-align: center;">COMPETICIONES PUNTUABLES</b-th>
-                    <b-th variant="pink" colspan="3" style="color: black;text-align: center;">TRES MEJORES</b-th>
-                  </b-tr>
-                </template>
-              </b-table>
-            </div>
-          </section>
+            <section slot="pdf-content">
+              <div id="final_ranking_table" class="table-responsive table-bordered">
+                <table class="table table-responsive-sm mb-0" style="color: black;">
+                  <thead>
+                    <tr>
+                      <th colspan="3" class="text-center" style="background: #b8e6e2;">
+                        Open Masculino Largo
+                      </th>
+                    </tr>
+                    <tr>
+                      <th colspan="3" class="text-center">
+                        RANKING 2021
+                      </th>
+                    </tr>
+                    <tr style="background: #3dfc58;">
+                      <th>Posicion</th>
+                      <th>Participante</th>
+                      <th>Suma 3 Mejores</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr v-for="(row, index) in categoryRankingPoints" :key="index">
+                      <td>{{ row.posicion }}</td>
+                      <td>{{ row.participante }}</td>
+                      <td>{{ row.suma_3_mejores }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
           </vue-html2pdf>
           <div class="row mt-2">
             <div class="col">

@@ -130,29 +130,7 @@
 </script>
 <template>
   <Layout>
-    <div class="d-flex pt-4">
-      <b-img
-        :src="'/storage/'+round_heats[0].com_cat_mod_participant.competition.logo"
-        height="127"
-        alt="logo"
-      ></b-img>
-      <div class="w-50" style="border: 1px solid #64676f;">
-        <h4 class="mb-0 text-center" style="border-bottom: 1px solid #64676f;padding: 5px 20px;">{{ round_heats[0].com_cat_mod_participant.competition.title }}</h4>
-        <p class="mb-0" style="border-bottom: 1px solid #64676f;padding: 3px 20px;">{{ round_heats[0].com_cat_mod_participant.competition.description }}</p>
-        <p class="mb-0" style="border-bottom: 1px solid #64676f;padding: 3px 20px;">
-          {{ round_heats[0].com_cat_mod_participant.competition.place }}
-          {{ round_heats[0].com_cat_mod_participant.competition.date }}
-          {{ round_heats[0].com_cat_mod_participant.competition.time }}
-        </p>
-        <p class="mb-0" style="padding: 3px 20px;">Antolatzailea: {{ round_heats[0].com_cat_mod_participant.competition.organizer }}</p>
-      </div>
-      <button @click="back"
-        class="btn btn-secondary"
-        style="width: 10%;position: absolute;right: 24px;"
-      >
-        Volver
-      </button>
-    </div>
+   
 
     <div class="text-center w-100 mt-4">
       <h4 style="background: #32394e;padding: 10px 0;">
@@ -214,7 +192,6 @@
               <tr>
                 <th rowspan="2">PARTICIPANTE</th>
                 <th rowspan="2">JUEZ</th>
-                <th colspan="10">OLAS</th>
                 <th rowspan="2">Pena</th>
               </tr>
               <tr>

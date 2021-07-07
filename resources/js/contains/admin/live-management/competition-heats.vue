@@ -24,16 +24,32 @@
         categoryId: 0,
         modalityId: 0,
         all_round_heats: null,
+        isFinal: false,
+        final_results: [],
       }
     },
     watch: {
       allRoundHeats: function() {
         this.all_round_heats = this.allRoundHeats;
+        let length = this.all_round_heats.length;
+        if ((this.all_round_heats[length-1].length == 1) && (this.all_round_heats[length-1][0][0].status == 1)) {
+          this.getCompetitionFinalResults({
+            competitionId: this.$route.params.competitionId,
+            categoryId: this.$route.params.categoryId,
+            modalityId: this.$route.params.modalityId,
+          })
+          .then((res) => {
+            this.isFinal = true;
+            this.final_results = res.data.final_results;
+            console.log(this.final_results)
+          })
+        }
       },
     },
     computed: {
       ...mapGetters([
         'allRoundHeats',
+        'competitionFinalResults'
       ]),
     },
     mounted() {
@@ -49,7 +65,8 @@
     methods: {
       ...mapActions([
         'initCompetitionHeats',
-        'setProgressStatus'
+        'setProgressStatus',
+        'getCompetitionFinalResults',
       ]),
       heatDetailsGo(round, heat) {
         this.setProgressStatus({
@@ -71,7 +88,7 @@
       back() {
         this.$router.go(-1);
       },
-      print() {
+      printCompetitionHeats() {
         var pdf = new jsPDF('p', 'mm', 'a4');
         var element = document.getElementById('competition_heats');
         //   const pdfWidth = pdf.internal.pageSize.getWidth();
@@ -86,8 +103,20 @@
           }
         });
       },
-      generateReport () {
-        // this.$refs.html2Pdf.generatePdf()
+      printCompetitionFinalResults() {
+        var pdf = new jsPDF('p', 'mm', 'a4');
+        var element = document.getElementById('competition_final_results');
+        //   const pdfWidth = pdf.internal.pageSize.getWidth();
+        pdf.html(element, {
+          html2canvas: {
+            scale: 0.15,
+          },
+          x: 8,
+          y: 8,
+          callback: function (pdf) {
+            window.open(pdf.output('bloburl'));
+          }
+        });
       }
     }
 	};
@@ -126,9 +155,55 @@
       </h4>
     </div>
 
+    <div id="competition_heats">
+      <div class="row" v-for="(round, round_index) in all_round_heats" :key="round_index">
+        <h4 class="my-4 col-12" v-if="round.length == 1">FINAL</h4>
+        <h4 class="my-4 col-12" v-else-if="round.length == 2">SEMI FINAL</h4>
+        <h4 class="my-4 col-12" v-else-if="round.length == 3">CUARTOS DE FINAL</h4>
+        <h4 class="my-4 col-12" v-else>RONDA {{ round_index+1 }}</h4>
+        <div class="col-lg-4 col-md-6 col-sm-6 mb-3" v-for="(heat, heat_index) in round" :key="heat_index">
+          <div class="table-responsive mb-0">
+            <table class="table table-bordered">
+              <thead>
+                <tr style="color: black;background: #b8e6e2;cursor: pointer;" :class="{active: heat[0].status==3}">
+                  <th colspan="4" v-if="round.length == 1" @click="heatDetailsGo(round_index+1, heat_index+1)">
+                    Final
+                  </th>
+                  <th colspan="4" v-else-if="round.length == 2" @click="heatDetailsGo(round_index+1, heat_index+1)">
+                    Semi Finals Manga {{ heat_index+1 }}
+                  </th>
+                  <th colspan="4" v-else-if="round.length == 3" @click="heatDetailsGo(round_index+1, heat_index+1)">
+                  Cuartos de Final Manga {{ heat_index+1 }}
+                  </th>
+                  <th colspan="4" v-else @click="heatDetailsGo(round_index+1, heat_index+1)">
+                    Ronda {{ round_index+1 }} Manga {{ heat_index+1 }}
+                  </th>
+                </tr>
+                <tr class="thead-light">
+                  <th></th>
+                  <th>Participante</th>
+                  <th>Puntos</th>
+                  <th>Posición</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr :class="{classified: round_heat.position==1 || round_heat.position==2}" v-for="(round_heat, round_heat_index) in heat" :key="round_heat_index">
+                  <th scope="row" v-bind:style="{ background: round_heat.lycra.color }"></th>
+                  <td v-if="round_heat.ranking > 0">{{ round_heat.com_cat_mod_participant.participant.name+' '+round_heat.com_cat_mod_participant.participant.surname+' ('+round_heat.ranking+')' }}</td>
+                  <td v-else>{{ round_heat.com_cat_mod_participant.participant.name+' '+round_heat.com_cat_mod_participant.participant.surname }}</td>
+                  <td>{{ parseFloat(round_heat.points).toFixed(2) }}</td>
+                  <td>{{ round_heat.position }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <vue-html2pdf
-      :show-layout="true"
-      :float-layout="false"
+      :show-layout="false"
+      :float-layout="true"
       :enable-download="false"
       :preview-modal="true"
       :paginate-elements-by-height="1400"
@@ -142,61 +217,39 @@
       ref="html2Pdf"
     >
       <section slot="pdf-content">
-        <div id="competition_heats">
-          <div class="row" v-for="(round, round_index) in all_round_heats" :key="round_index">
-            <h4 class="my-4 col-12" v-if="round.length == 1">FINAL</h4>
-            <h4 class="my-4 col-12" v-else-if="round.length == 2">SEMI FINAL</h4>
-            <h4 class="my-4 col-12" v-else-if="round.length == 3">CUARTOS DE FINAL</h4>
-            <h4 class="my-4 col-12" v-else>RONDA {{ round_index+1 }}</h4>
-            <div class="col-lg-4 col-md-6 col-sm-6 mb-3" v-for="(heat, heat_index) in round" :key="heat_index">
-              <div class="table-responsive mb-0">
-                <table class="table table-bordered">
-                  <thead>
-                    <tr style="color: black;background: #b8e6e2;cursor: pointer;" :class="{active: heat[0].status==3}">
-                      <th colspan="4" v-if="round.length == 1" @click="heatDetailsGo(round_index+1, heat_index+1)">
-                        Final
-                      </th>
-                      <th colspan="4" v-else-if="round.length == 2" @click="heatDetailsGo(round_index+1, heat_index+1)">
-                        Semi Finals Manga {{ heat_index+1 }}
-                      </th>
-                      <th colspan="4" v-else-if="round.length == 3" @click="heatDetailsGo(round_index+1, heat_index+1)">
-                      Cuartos de Final Manga {{ heat_index+1 }}
-                      </th>
-                      <th colspan="4" v-else @click="heatDetailsGo(round_index+1, heat_index+1)">
-                        Ronda {{ round_index+1 }} Manga {{ heat_index+1 }}
-                      </th>
-                    </tr>
-                    <tr class="thead-light">
-                      <th></th>
-                      <th>Participante</th>
-                      <th>Puntos</th>
-                      <th>Posición</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr :class="{classified: round_heat.position==1 || round_heat.position==2}" v-for="(round_heat, round_heat_index) in heat" :key="round_heat_index">
-                      <th scope="row" v-bind:style="{ background: round_heat.lycra.color }"></th>
-                      <td v-if="round_heat.ranking > 0">{{ round_heat.com_cat_mod_participant.participant.name+' '+round_heat.com_cat_mod_participant.participant.surname+' ('+round_heat.ranking+')' }}</td>
-                      <td v-else>{{ round_heat.com_cat_mod_participant.participant.name+' '+round_heat.com_cat_mod_participant.participant.surname }}</td>
-                      <td>{{ parseFloat(round_heat.points).toFixed(2) }}</td>
-                      <td>{{ round_heat.position }}</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
+        <div id="competition_final_results" class="table-responsive table-bordered">
+          <table v-if="final_results.length > 0" class="table table-responsive-sm mb-0" style="color: black;">
+            <thead>
+              <tr class="text-center" style="background: #b8e6e2;">
+                <th colspan="3">
+                  {{final_results[0].category.name+' '+final_results[0].category.sex.name+' '+final_results[0].modality.name+' '+final_results[0].competition.title}}
+                </th>
+              </tr>
+              <tr style="background: #3dfc58;">
+                <th>Posición</th>
+                <th>Participante</th>
+                <th>Pts. Ranking Obtenidos</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="(row, index) in final_results" :key="index">
+                <td>{{ row.ranking }}</td>
+                <td>{{ row.participant.name }}</td>
+                <td>{{ row.ranking_points }}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </section>
     </vue-html2pdf>
 
-    <div class="text-right">
-      <button @click="print"
+    <div class="text-right mt-2">
+      <button @click="printCompetitionHeats"
         class="btn btn-sm btn-primary"
       >
         Imprimir Mangas
       </button>
-      <button @click="generateReport"
+      <button v-if="isFinal" @click="printCompetitionFinalResults"
         class="btn btn-sm btn-info"
       >
         Imprimir Clasificación

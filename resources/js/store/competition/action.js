@@ -7,27 +7,27 @@ import axios from "axios";
 const actions = {
     initCompetitions(context) {
         ApiService.setHeader();
-        return new Promise((resolve) =>{
+        return new Promise((resolve, reject) =>{
             ApiService.get("api/v1/admin/competitions")
                 .then(({data}) => {
                     console.log(data);
                     context.commit(type.SET_ALL_COMPETITION, data)
                 })
                 .catch(({ response }) => {
-                    
+                    reject(response)
                 });
         });
     },
     getCompetitionById(context, competitionId) {
         ApiService.setHeader();
-        return new Promise((resolve) =>{
+        return new Promise((resolve, reject) =>{
             ApiService.get("api/v1/admin/competition/" + competitionId)
                 .then(({data}) => {
                     // console.log(data);
                     context.commit(type.SET_COMPETITION, data)
                 })
                 .catch(({ response }) => {
-                    
+                    reject(response)
                 });
         }); 
     },
@@ -73,7 +73,7 @@ const actions = {
     },
     deleteCompetition(context, competitionId) {
         ApiService.setHeader();
-        return new Promise((resolve) =>{
+        return new Promise((resolve, reject) =>{
             ApiService.delete("api/v1/admin/competition/delete/" + competitionId)
                 .then(({data}) => {
                     // console.log(data);
@@ -81,19 +81,20 @@ const actions = {
                     toastr.success('Eliminada Correctamente', '', {timeout: 5000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
                 })
                 .catch(({ response }) => {
+                    reject(response)
                 });
         });
     },
     initParticipantsForCompetition(context, competitionId) {
         ApiService.setHeader();
-        return new Promise((resolve) =>{
+        return new Promise((resolve, reject) =>{
             ApiService.get("api/v1/admin/participants/register_and_non/" + competitionId)
                 .then(({data}) => {
                     // console.log(data);
                     context.commit(type.SET_REGISTERED_AND_NON_PARTICIPANTS, data)
                 })
                 .catch(({ response }) => {
-                    // context.commit(type.AUTH_LOGOUT);
+                    reject(response)
                 });
         });
     },

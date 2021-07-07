@@ -78,15 +78,32 @@ __webpack_require__.r(__webpack_exports__);
       competitionId: 0,
       categoryId: 0,
       modalityId: 0,
-      all_round_heats: null
+      all_round_heats: null,
+      isFinal: false,
+      final_results: []
     };
   },
   watch: {
     allRoundHeats: function allRoundHeats() {
+      var _this = this;
+
       this.all_round_heats = this.allRoundHeats;
+      var length = this.all_round_heats.length;
+
+      if (this.all_round_heats[length - 1].length == 1 && this.all_round_heats[length - 1][0][0].status == 1) {
+        this.getCompetitionFinalResults({
+          competitionId: this.$route.params.competitionId,
+          categoryId: this.$route.params.categoryId,
+          modalityId: this.$route.params.modalityId
+        }).then(function (res) {
+          _this.isFinal = true;
+          _this.final_results = res.data.final_results;
+          console.log(_this.final_results);
+        });
+      }
     }
   },
-  computed: (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_9__.mapGetters)(['allRoundHeats'])),
+  computed: (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_9__.mapGetters)(['allRoundHeats', 'competitionFinalResults'])),
   mounted: function mounted() {
     this.competitionId = this.$route.params.competitionId;
     this.categoryId = this.$route.params.categoryId;
@@ -97,9 +114,9 @@ __webpack_require__.r(__webpack_exports__);
       modalityId: this.modalityId
     });
   },
-  methods: (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__.default)((0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_9__.mapActions)(['initCompetitionHeats', 'setProgressStatus'])), {}, {
+  methods: (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__.default)((0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_9__.mapActions)(['initCompetitionHeats', 'setProgressStatus', 'getCompetitionFinalResults'])), {}, {
     heatDetailsGo: function heatDetailsGo(round, heat) {
-      var _this = this;
+      var _this2 = this;
 
       this.setProgressStatus({
         competitionId: this.competitionId,
@@ -110,18 +127,18 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (res) {
         // console.log(res.data)
         if (res.data.message == "success") {
-          _this.$router.push({
+          _this2.$router.push({
             name: 'CompetitionHeatDetails',
             params: {
-              competitionId: _this.competitionId,
-              categoryId: _this.categoryId,
-              modalityId: _this.modalityId,
+              competitionId: _this2.competitionId,
+              categoryId: _this2.categoryId,
+              modalityId: _this2.modalityId,
               round: round,
               heat: heat
             }
           });
         } else {
-          _this.$toastr.warning('No more boxes could be active until the active one goes to FINISH STATE', '', {
+          _this2.$toastr.warning('No more boxes could be active until the active one goes to FINISH STATE', '', {
             timeout: 5000,
             closeButton: true,
             closeMethod: 'fadeOut',
@@ -133,7 +150,7 @@ __webpack_require__.r(__webpack_exports__);
     back: function back() {
       this.$router.go(-1);
     },
-    print: function print() {
+    printCompetitionHeats: function printCompetitionHeats() {
       var pdf = new jspdf__WEBPACK_IMPORTED_MODULE_6__.default('p', 'mm', 'a4');
       var element = document.getElementById('competition_heats'); //   const pdfWidth = pdf.internal.pageSize.getWidth();
 
@@ -148,7 +165,20 @@ __webpack_require__.r(__webpack_exports__);
         }
       });
     },
-    generateReport: function generateReport() {// this.$refs.html2Pdf.generatePdf()
+    printCompetitionFinalResults: function printCompetitionFinalResults() {
+      var pdf = new jspdf__WEBPACK_IMPORTED_MODULE_6__.default('p', 'mm', 'a4');
+      var element = document.getElementById('competition_final_results'); //   const pdfWidth = pdf.internal.pageSize.getWidth();
+
+      pdf.html(element, {
+        html2canvas: {
+          scale: 0.15
+        },
+        x: 8,
+        y: 8,
+        callback: function callback(pdf) {
+          window.open(pdf.output('bloburl'));
+        }
+      });
     }
   })
 });
@@ -19541,12 +19571,229 @@ var render = function() {
         : _vm._e(),
       _vm._v(" "),
       _c(
+        "div",
+        { attrs: { id: "competition_heats" } },
+        _vm._l(_vm.all_round_heats, function(round, round_index) {
+          return _c(
+            "div",
+            { key: round_index, staticClass: "row" },
+            [
+              round.length == 1
+                ? _c("h4", { staticClass: "my-4 col-12" }, [_vm._v("FINAL")])
+                : round.length == 2
+                ? _c("h4", { staticClass: "my-4 col-12" }, [
+                    _vm._v("SEMI FINAL")
+                  ])
+                : round.length == 3
+                ? _c("h4", { staticClass: "my-4 col-12" }, [
+                    _vm._v("CUARTOS DE FINAL")
+                  ])
+                : _c("h4", { staticClass: "my-4 col-12" }, [
+                    _vm._v("RONDA " + _vm._s(round_index + 1))
+                  ]),
+              _vm._v(" "),
+              _vm._l(round, function(heat, heat_index) {
+                return _c(
+                  "div",
+                  {
+                    key: heat_index,
+                    staticClass: "col-lg-4 col-md-6 col-sm-6 mb-3"
+                  },
+                  [
+                    _c("div", { staticClass: "table-responsive mb-0" }, [
+                      _c("table", { staticClass: "table table-bordered" }, [
+                        _c("thead", [
+                          _c(
+                            "tr",
+                            {
+                              class: { active: heat[0].status == 3 },
+                              staticStyle: {
+                                color: "black",
+                                background: "#b8e6e2",
+                                cursor: "pointer"
+                              }
+                            },
+                            [
+                              round.length == 1
+                                ? _c(
+                                    "th",
+                                    {
+                                      attrs: { colspan: "4" },
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.heatDetailsGo(
+                                            round_index + 1,
+                                            heat_index + 1
+                                          )
+                                        }
+                                      }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                  Final\n                "
+                                      )
+                                    ]
+                                  )
+                                : round.length == 2
+                                ? _c(
+                                    "th",
+                                    {
+                                      attrs: { colspan: "4" },
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.heatDetailsGo(
+                                            round_index + 1,
+                                            heat_index + 1
+                                          )
+                                        }
+                                      }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                  Semi Finals Manga " +
+                                          _vm._s(heat_index + 1) +
+                                          "\n                "
+                                      )
+                                    ]
+                                  )
+                                : round.length == 3
+                                ? _c(
+                                    "th",
+                                    {
+                                      attrs: { colspan: "4" },
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.heatDetailsGo(
+                                            round_index + 1,
+                                            heat_index + 1
+                                          )
+                                        }
+                                      }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                Cuartos de Final Manga " +
+                                          _vm._s(heat_index + 1) +
+                                          "\n                "
+                                      )
+                                    ]
+                                  )
+                                : _c(
+                                    "th",
+                                    {
+                                      attrs: { colspan: "4" },
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.heatDetailsGo(
+                                            round_index + 1,
+                                            heat_index + 1
+                                          )
+                                        }
+                                      }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                  Ronda " +
+                                          _vm._s(round_index + 1) +
+                                          " Manga " +
+                                          _vm._s(heat_index + 1) +
+                                          "\n                "
+                                      )
+                                    ]
+                                  )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c("tr", { staticClass: "thead-light" }, [
+                            _c("th"),
+                            _vm._v(" "),
+                            _c("th", [_vm._v("Participante")]),
+                            _vm._v(" "),
+                            _c("th", [_vm._v("Puntos")]),
+                            _vm._v(" "),
+                            _c("th", [_vm._v("Posición")])
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "tbody",
+                          _vm._l(heat, function(round_heat, round_heat_index) {
+                            return _c(
+                              "tr",
+                              {
+                                key: round_heat_index,
+                                class: {
+                                  classified:
+                                    round_heat.position == 1 ||
+                                    round_heat.position == 2
+                                }
+                              },
+                              [
+                                _c("th", {
+                                  style: { background: round_heat.lycra.color },
+                                  attrs: { scope: "row" }
+                                }),
+                                _vm._v(" "),
+                                round_heat.ranking > 0
+                                  ? _c("td", [
+                                      _vm._v(
+                                        _vm._s(
+                                          round_heat.com_cat_mod_participant
+                                            .participant.name +
+                                            " " +
+                                            round_heat.com_cat_mod_participant
+                                              .participant.surname +
+                                            " (" +
+                                            round_heat.ranking +
+                                            ")"
+                                        )
+                                      )
+                                    ])
+                                  : _c("td", [
+                                      _vm._v(
+                                        _vm._s(
+                                          round_heat.com_cat_mod_participant
+                                            .participant.name +
+                                            " " +
+                                            round_heat.com_cat_mod_participant
+                                              .participant.surname
+                                        )
+                                      )
+                                    ]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _vm._v(
+                                    _vm._s(
+                                      parseFloat(round_heat.points).toFixed(2)
+                                    )
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v(_vm._s(round_heat.position))])
+                              ]
+                            )
+                          }),
+                          0
+                        )
+                      ])
+                    ])
+                  ]
+                )
+              })
+            ],
+            2
+          )
+        }),
+        0
+      ),
+      _vm._v(" "),
+      _c(
         "vue-html2pdf",
         {
           ref: "html2Pdf",
           attrs: {
-            "show-layout": true,
-            "float-layout": false,
+            "show-layout": false,
+            "float-layout": true,
             "enable-download": false,
             "preview-modal": true,
             "paginate-elements-by-height": 1400,
@@ -19565,268 +19812,104 @@ var render = function() {
             [
               _c(
                 "div",
-                { attrs: { id: "competition_heats" } },
-                _vm._l(_vm.all_round_heats, function(round, round_index) {
-                  return _c(
-                    "div",
-                    { key: round_index, staticClass: "row" },
-                    [
-                      round.length == 1
-                        ? _c("h4", { staticClass: "my-4 col-12" }, [
-                            _vm._v("FINAL")
-                          ])
-                        : round.length == 2
-                        ? _c("h4", { staticClass: "my-4 col-12" }, [
-                            _vm._v("SEMI FINAL")
-                          ])
-                        : round.length == 3
-                        ? _c("h4", { staticClass: "my-4 col-12" }, [
-                            _vm._v("CUARTOS DE FINAL")
-                          ])
-                        : _c("h4", { staticClass: "my-4 col-12" }, [
-                            _vm._v("RONDA " + _vm._s(round_index + 1))
-                          ]),
-                      _vm._v(" "),
-                      _vm._l(round, function(heat, heat_index) {
-                        return _c(
-                          "div",
-                          {
-                            key: heat_index,
-                            staticClass: "col-lg-4 col-md-6 col-sm-6 mb-3"
-                          },
-                          [
+                {
+                  staticClass: "table-responsive table-bordered",
+                  attrs: { id: "competition_final_results" }
+                },
+                [
+                  _vm.final_results.length > 0
+                    ? _c(
+                        "table",
+                        {
+                          staticClass: "table table-responsive-sm mb-0",
+                          staticStyle: { color: "black" }
+                        },
+                        [
+                          _c("thead", [
                             _c(
-                              "div",
-                              { staticClass: "table-responsive mb-0" },
+                              "tr",
+                              {
+                                staticClass: "text-center",
+                                staticStyle: { background: "#b8e6e2" }
+                              },
                               [
-                                _c(
-                                  "table",
-                                  { staticClass: "table table-bordered" },
-                                  [
-                                    _c("thead", [
-                                      _c(
-                                        "tr",
-                                        {
-                                          class: {
-                                            active: heat[0].status == 3
-                                          },
-                                          staticStyle: {
-                                            color: "black",
-                                            background: "#b8e6e2",
-                                            cursor: "pointer"
-                                          }
-                                        },
-                                        [
-                                          round.length == 1
-                                            ? _c(
-                                                "th",
-                                                {
-                                                  attrs: { colspan: "4" },
-                                                  on: {
-                                                    click: function($event) {
-                                                      return _vm.heatDetailsGo(
-                                                        round_index + 1,
-                                                        heat_index + 1
-                                                      )
-                                                    }
-                                                  }
-                                                },
-                                                [
-                                                  _vm._v(
-                                                    "\n                      Final\n                    "
-                                                  )
-                                                ]
-                                              )
-                                            : round.length == 2
-                                            ? _c(
-                                                "th",
-                                                {
-                                                  attrs: { colspan: "4" },
-                                                  on: {
-                                                    click: function($event) {
-                                                      return _vm.heatDetailsGo(
-                                                        round_index + 1,
-                                                        heat_index + 1
-                                                      )
-                                                    }
-                                                  }
-                                                },
-                                                [
-                                                  _vm._v(
-                                                    "\n                      Semi Finals Manga " +
-                                                      _vm._s(heat_index + 1) +
-                                                      "\n                    "
-                                                  )
-                                                ]
-                                              )
-                                            : round.length == 3
-                                            ? _c(
-                                                "th",
-                                                {
-                                                  attrs: { colspan: "4" },
-                                                  on: {
-                                                    click: function($event) {
-                                                      return _vm.heatDetailsGo(
-                                                        round_index + 1,
-                                                        heat_index + 1
-                                                      )
-                                                    }
-                                                  }
-                                                },
-                                                [
-                                                  _vm._v(
-                                                    "\n                    Cuartos de Final Manga " +
-                                                      _vm._s(heat_index + 1) +
-                                                      "\n                    "
-                                                  )
-                                                ]
-                                              )
-                                            : _c(
-                                                "th",
-                                                {
-                                                  attrs: { colspan: "4" },
-                                                  on: {
-                                                    click: function($event) {
-                                                      return _vm.heatDetailsGo(
-                                                        round_index + 1,
-                                                        heat_index + 1
-                                                      )
-                                                    }
-                                                  }
-                                                },
-                                                [
-                                                  _vm._v(
-                                                    "\n                      Ronda " +
-                                                      _vm._s(round_index + 1) +
-                                                      " Manga " +
-                                                      _vm._s(heat_index + 1) +
-                                                      "\n                    "
-                                                  )
-                                                ]
-                                              )
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c("tr", { staticClass: "thead-light" }, [
-                                        _c("th"),
-                                        _vm._v(" "),
-                                        _c("th", [_vm._v("Participante")]),
-                                        _vm._v(" "),
-                                        _c("th", [_vm._v("Puntos")]),
-                                        _vm._v(" "),
-                                        _c("th", [_vm._v("Posición")])
-                                      ])
-                                    ]),
-                                    _vm._v(" "),
-                                    _c(
-                                      "tbody",
-                                      _vm._l(heat, function(
-                                        round_heat,
-                                        round_heat_index
-                                      ) {
-                                        return _c(
-                                          "tr",
-                                          {
-                                            key: round_heat_index,
-                                            class: {
-                                              classified:
-                                                round_heat.position == 1 ||
-                                                round_heat.position == 2
-                                            }
-                                          },
-                                          [
-                                            _c("th", {
-                                              style: {
-                                                background:
-                                                  round_heat.lycra.color
-                                              },
-                                              attrs: { scope: "row" }
-                                            }),
-                                            _vm._v(" "),
-                                            round_heat.ranking > 0
-                                              ? _c("td", [
-                                                  _vm._v(
-                                                    _vm._s(
-                                                      round_heat
-                                                        .com_cat_mod_participant
-                                                        .participant.name +
-                                                        " " +
-                                                        round_heat
-                                                          .com_cat_mod_participant
-                                                          .participant.surname +
-                                                        " (" +
-                                                        round_heat.ranking +
-                                                        ")"
-                                                    )
-                                                  )
-                                                ])
-                                              : _c("td", [
-                                                  _vm._v(
-                                                    _vm._s(
-                                                      round_heat
-                                                        .com_cat_mod_participant
-                                                        .participant.name +
-                                                        " " +
-                                                        round_heat
-                                                          .com_cat_mod_participant
-                                                          .participant.surname
-                                                    )
-                                                  )
-                                                ]),
-                                            _vm._v(" "),
-                                            _c("td", [
-                                              _vm._v(
-                                                _vm._s(
-                                                  parseFloat(
-                                                    round_heat.points
-                                                  ).toFixed(2)
-                                                )
-                                              )
-                                            ]),
-                                            _vm._v(" "),
-                                            _c("td", [
-                                              _vm._v(
-                                                _vm._s(round_heat.position)
-                                              )
-                                            ])
-                                          ]
-                                        )
-                                      }),
-                                      0
-                                    )
-                                  ]
-                                )
+                                _c("th", { attrs: { colspan: "3" } }, [
+                                  _vm._v(
+                                    "\n                " +
+                                      _vm._s(
+                                        _vm.final_results[0].category.name +
+                                          " " +
+                                          _vm.final_results[0].category.sex
+                                            .name +
+                                          " " +
+                                          _vm.final_results[0].modality.name +
+                                          " " +
+                                          _vm.final_results[0].competition.title
+                                      ) +
+                                      "\n              "
+                                  )
+                                ])
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "tr",
+                              { staticStyle: { background: "#3dfc58" } },
+                              [
+                                _c("th", [_vm._v("Posición")]),
+                                _vm._v(" "),
+                                _c("th", [_vm._v("Participante")]),
+                                _vm._v(" "),
+                                _c("th", [_vm._v("Pts. Ranking Obtenidos")])
                               ]
                             )
-                          ]
-                        )
-                      })
-                    ],
-                    2
-                  )
-                }),
-                0
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "tbody",
+                            _vm._l(_vm.final_results, function(row, index) {
+                              return _c("tr", { key: index }, [
+                                _c("td", [_vm._v(_vm._s(row.ranking))]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _vm._v(_vm._s(row.participant.name))
+                                ]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v(_vm._s(row.ranking_points))])
+                              ])
+                            }),
+                            0
+                          )
+                        ]
+                      )
+                    : _vm._e()
+                ]
               )
             ]
           )
         ]
       ),
       _vm._v(" "),
-      _c("div", { staticClass: "text-right" }, [
-        _c(
-          "button",
-          { staticClass: "btn btn-sm btn-primary", on: { click: _vm.print } },
-          [_vm._v("\n      Imprimir Mangas\n    ")]
-        ),
-        _vm._v(" "),
+      _c("div", { staticClass: "text-right mt-2" }, [
         _c(
           "button",
           {
-            staticClass: "btn btn-sm btn-info",
-            on: { click: _vm.generateReport }
+            staticClass: "btn btn-sm btn-primary",
+            on: { click: _vm.printCompetitionHeats }
           },
-          [_vm._v("\n      Imprimir Clasificación\n    ")]
-        )
+          [_vm._v("\n      Imprimir Mangas\n    ")]
+        ),
+        _vm._v(" "),
+        _vm.isFinal
+          ? _c(
+              "button",
+              {
+                staticClass: "btn btn-sm btn-info",
+                on: { click: _vm.printCompetitionFinalResults }
+              },
+              [_vm._v("\n      Imprimir Clasificación\n    ")]
+            )
+          : _vm._e()
       ])
     ],
     1
