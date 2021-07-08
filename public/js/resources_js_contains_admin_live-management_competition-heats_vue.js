@@ -170,7 +170,10 @@ __webpack_require__.r(__webpack_exports__);
       var pdf = new jspdf__WEBPACK_IMPORTED_MODULE_6__.default('p', 'mm', 'a4');
       var element = document.getElementById('competition_final_results');
       var e_width = element.offsetWidth;
+      var e_height = element.offsetHeight;
       var pdfWidth = pdf.internal.pageSize.getWidth();
+      var pdfHeight = pdf.internal.pageSize.getHeight(); // console.log(e_height*(pdfWidth-16)/e_width)
+
       pdf.html(element, {
         html2canvas: {
           scale: (pdfWidth - 16) / e_width
