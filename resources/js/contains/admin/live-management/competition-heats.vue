@@ -3,7 +3,8 @@
 	import appConfig from "@/app.config";
   import PageHeader from "@/components/page-header";
   import jsPDF from 'jspdf'
-  import html2canvas from "html2canvas"
+  // import html2canvas from "html2canvas"
+  // import html2pdf from 'html2pdf.js'
   import VueHtml2pdf from 'vue-html2pdf'
 
   import { mapActions, mapGetters } from 'vuex';
@@ -40,7 +41,7 @@
           })
           .then((res) => {
             this.isFinal = true;
-            this.final_results = res.data.final_results;
+            this.final_results = this.chunkArray(res.data.final_results, 25)
             console.log(this.final_results)
           })
         }
@@ -68,6 +69,18 @@
         'setProgressStatus',
         'getCompetitionFinalResults',
       ]),
+      chunkArray(myArray, chunk_size){
+        var index = 0;
+        var arrayLength = myArray.length;
+        var tempArray = [];
+        var myChunk = [];
+        for (index = 0; index < arrayLength; index += chunk_size) {
+          myChunk = myArray.slice(index, index+chunk_size);
+          // Do something if you want with the group
+          tempArray.push(myChunk);
+        }
+        return tempArray;
+      },
       heatDetailsGo(round, heat) {
         this.setProgressStatus({
           competitionId: this.competitionId,
@@ -106,23 +119,27 @@
       },
       printCompetitionFinalResults() {
         var pdf = new jsPDF('p', 'mm', 'a4');
-        var element = document.getElementById('competition_final_results');
-        const e_width = element.offsetWidth;
-        const e_height = element.offsetHeight;
+        var element_0 = document.getElementById('competition_final_results_0');
+        const e_width = element_0.offsetWidth;
         const pdfWidth = pdf.internal.pageSize.getWidth();
         const pdfHeight = pdf.internal.pageSize.getHeight();
-        // console.log(e_height*(pdfWidth-16)/e_width)
-        pdf.html(element, {
-          html2canvas: {
-            scale: (pdfWidth-16)/e_width,
-          },
+        pdf.html(element_0, {
           x: 8,
           y: 8,
           callback: function (pdf) {
-            window.open(pdf.output('bloburl'));
-          }
+            // pdf.html(element_1, {
+              // x: 8,
+              // y: pdfHeight+8,
+              // callback: function (pdf) {
+                window.open(pdf.output('bloburl'));
+              // },
+            // });
+          },
+          html2canvas: {
+            scale: (pdfWidth-16)/e_width,
+          },
         });
-      }
+      },
     }
 	};
 </script>
@@ -288,22 +305,22 @@
       :enable-download="false"
       :preview-modal="true"
       :paginate-elements-by-height="1400"
-      filename="competition_heats"
+      filename="competition_final_results"
       :pdf-quality="2"
       :manual-pagination="false"
       pdf-format="a4"
       pdf-orientation="portrait"
       pdf-content-width="100%"
 
-      ref="html2Pdf"
+      ref="html2PdfFinal"
     >
       <section slot="pdf-content">
-        <div id="competition_final_results" class="table-responsive table-bordered">
-          <table v-if="final_results.length > 0" class="table table-responsive-sm mb-0">
+        <div v-for="(final_result, index_1) in final_results" :key="index_1" :id="'competition_final_results_'+index_1" class="competition_final_results table-responsive table-bordered">
+          <table class="table table-responsive-sm mb-0">
             <thead>
               <tr class="text-center" style="background: #b8e6e2;font-size: 24px;">
                 <th colspan="3">
-                  {{final_results[0].category.name+' '+final_results[0].category.sex.name+' '+final_results[0].modality.name+' '+final_results[0].competition.title}}
+                  {{final_results[0][0].category.name+' '+final_results[0][0].category.sex.name+' '+final_results[0][0].modality.name+' '+final_results[0][0].competition.title}}
                 </th>
               </tr>
               <tr>
@@ -313,7 +330,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="(row, index) in final_results" :key="index">
+              <tr v-for="(row, index_2) in final_result" :key="index_2">
                 <td>{{ row.ranking }}</td>
                 <td>{{ row.participant.name+' '+row.participant.surname }}</td>
                 <td>{{ row.ranking_points }}</td>
@@ -355,7 +372,7 @@ tbody tr.classified {
   font-size: 20px;
 }
 
-#competition_final_results .table {
+.competition_final_results .table {
   text-align: center;
   color: black;
   font-size: 22px;

@@ -6377,7 +6377,7 @@ html2canvas@^1.0.0-alpha.12, html2canvas@^1.0.0-rc.5:
   dependencies:
     css-line-break "1.1.1"
 
-html2pdf.js@^0.9.2:
+html2pdf.js@^0.9.2, html2pdf.js@^0.9.3:
   version "0.9.3"
   resolved "https://registry.yarnpkg.com/html2pdf.js/-/html2pdf.js-0.9.3.tgz#e7fc6143f748ce253670eaae403987342b66b15c"
   integrity sha512-M254g3Z+ZsjtQFDxJlU6E8Zgb8xOpCBQQM1lFPn4Lq+myAdWoYtMFnwlVo/eOI9R1cG75+YmMSDQofkugwOV/Q==

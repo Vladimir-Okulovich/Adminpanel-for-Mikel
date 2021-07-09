@@ -41,13 +41,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var core_js_modules_es_symbol_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_symbol_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es.symbol.description.js */ "./node_modules/core-js/modules/es.symbol.description.js");
 /* harmony import */ var core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
-/* harmony import */ var _subcomponent_layout__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../subcomponent/layout */ "./resources/js/contains/admin/subcomponent/layout.vue");
-/* harmony import */ var _app_config__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/app.config */ "./resources/js/app.config.json");
-/* harmony import */ var _components_page_header__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/components/page-header */ "./resources/js/components/page-header.vue");
-/* harmony import */ var jspdf__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! jspdf */ "./node_modules/jspdf/dist/jspdf.es.min.js");
-/* harmony import */ var html2canvas__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! html2canvas */ "./node_modules/html2canvas/dist/html2canvas.js");
-/* harmony import */ var html2canvas__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(html2canvas__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var core_js_modules_es_array_slice_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core-js/modules/es.array.slice.js */ "./node_modules/core-js/modules/es.array.slice.js");
+/* harmony import */ var core_js_modules_es_array_slice_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_slice_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
+/* harmony import */ var _subcomponent_layout__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../subcomponent/layout */ "./resources/js/contains/admin/subcomponent/layout.vue");
+/* harmony import */ var _app_config__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/app.config */ "./resources/js/app.config.json");
+/* harmony import */ var _components_page_header__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/components/page-header */ "./resources/js/components/page-header.vue");
+/* harmony import */ var jspdf__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! jspdf */ "./node_modules/jspdf/dist/jspdf.es.min.js");
 /* harmony import */ var vue_html2pdf__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vue-html2pdf */ "./node_modules/vue-html2pdf/dist/vue-html2pdf.esm.js");
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.mjs");
 
@@ -57,6 +57,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+ // import html2canvas from "html2canvas"
+// import html2pdf from 'html2pdf.js'
 
 
 
@@ -65,12 +67,12 @@ __webpack_require__.r(__webpack_exports__);
     title: "Competition Heats",
     meta: [{
       name: "description",
-      content: _app_config__WEBPACK_IMPORTED_MODULE_4__.description
+      content: _app_config__WEBPACK_IMPORTED_MODULE_5__.description
     }]
   },
   components: {
-    Layout: _subcomponent_layout__WEBPACK_IMPORTED_MODULE_3__.default,
-    PageHeader: _components_page_header__WEBPACK_IMPORTED_MODULE_5__.default,
+    Layout: _subcomponent_layout__WEBPACK_IMPORTED_MODULE_4__.default,
+    PageHeader: _components_page_header__WEBPACK_IMPORTED_MODULE_6__.default,
     VueHtml2pdf: vue_html2pdf__WEBPACK_IMPORTED_MODULE_8__.default
   },
   data: function data() {
@@ -97,13 +99,13 @@ __webpack_require__.r(__webpack_exports__);
           modalityId: this.$route.params.modalityId
         }).then(function (res) {
           _this.isFinal = true;
-          _this.final_results = res.data.final_results;
+          _this.final_results = _this.chunkArray(res.data.final_results, 25);
           console.log(_this.final_results);
         });
       }
     }
   },
-  computed: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_9__.mapGetters)(['allRoundHeats', 'competitionFinalResults'])),
+  computed: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_3__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_9__.mapGetters)(['allRoundHeats', 'competitionFinalResults'])),
   mounted: function mounted() {
     this.competitionId = this.$route.params.competitionId;
     this.categoryId = this.$route.params.categoryId;
@@ -114,7 +116,21 @@ __webpack_require__.r(__webpack_exports__);
       modalityId: this.modalityId
     });
   },
-  methods: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)((0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_9__.mapActions)(['initCompetitionHeats', 'setProgressStatus', 'getCompetitionFinalResults'])), {}, {
+  methods: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_3__.default)((0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_3__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_9__.mapActions)(['initCompetitionHeats', 'setProgressStatus', 'getCompetitionFinalResults'])), {}, {
+    chunkArray: function chunkArray(myArray, chunk_size) {
+      var index = 0;
+      var arrayLength = myArray.length;
+      var tempArray = [];
+      var myChunk = [];
+
+      for (index = 0; index < arrayLength; index += chunk_size) {
+        myChunk = myArray.slice(index, index + chunk_size); // Do something if you want with the group
+
+        tempArray.push(myChunk);
+      }
+
+      return tempArray;
+    },
     heatDetailsGo: function heatDetailsGo(round, heat) {
       var _this2 = this;
 
@@ -151,7 +167,7 @@ __webpack_require__.r(__webpack_exports__);
       this.$router.go(-1);
     },
     printCompetitionHeats: function printCompetitionHeats() {
-      var pdf = new jspdf__WEBPACK_IMPORTED_MODULE_6__.default('p', 'mm', 'a4');
+      var pdf = new jspdf__WEBPACK_IMPORTED_MODULE_7__.default('p', 'mm', 'a4');
       var element = document.getElementById('competition_heats');
       var e_width = element.offsetWidth;
       var pdfWidth = pdf.internal.pageSize.getWidth();
@@ -167,21 +183,24 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     printCompetitionFinalResults: function printCompetitionFinalResults() {
-      var pdf = new jspdf__WEBPACK_IMPORTED_MODULE_6__.default('p', 'mm', 'a4');
-      var element = document.getElementById('competition_final_results');
-      var e_width = element.offsetWidth;
-      var e_height = element.offsetHeight;
+      var pdf = new jspdf__WEBPACK_IMPORTED_MODULE_7__.default('p', 'mm', 'a4');
+      var element_0 = document.getElementById('competition_final_results_0');
+      var e_width = element_0.offsetWidth;
       var pdfWidth = pdf.internal.pageSize.getWidth();
-      var pdfHeight = pdf.internal.pageSize.getHeight(); // console.log(e_height*(pdfWidth-16)/e_width)
-
-      pdf.html(element, {
-        html2canvas: {
-          scale: (pdfWidth - 16) / e_width
-        },
+      var pdfHeight = pdf.internal.pageSize.getHeight();
+      pdf.html(element_0, {
         x: 8,
         y: 8,
         callback: function callback(pdf) {
-          window.open(pdf.output('bloburl'));
+          // pdf.html(element_1, {
+          // x: 8,
+          // y: pdfHeight+8,
+          // callback: function (pdf) {
+          window.open(pdf.output('bloburl')); // },
+          // });
+        },
+        html2canvas: {
+          scale: (pdfWidth - 16) / e_width
         }
       });
     }
@@ -1690,6 +1709,66 @@ $({ target: 'Array', proto: true, forced: !STRICT_METHOD || !USES_TO_LENGTH || C
 
 /***/ }),
 
+/***/ "./node_modules/core-js/modules/es.array.slice.js":
+/*!********************************************************!*\
+  !*** ./node_modules/core-js/modules/es.array.slice.js ***!
+  \********************************************************/
+/***/ (function(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+
+"use strict";
+
+var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
+var isArray = __webpack_require__(/*! ../internals/is-array */ "./node_modules/core-js/internals/is-array.js");
+var toAbsoluteIndex = __webpack_require__(/*! ../internals/to-absolute-index */ "./node_modules/core-js/internals/to-absolute-index.js");
+var toLength = __webpack_require__(/*! ../internals/to-length */ "./node_modules/core-js/internals/to-length.js");
+var toIndexedObject = __webpack_require__(/*! ../internals/to-indexed-object */ "./node_modules/core-js/internals/to-indexed-object.js");
+var createProperty = __webpack_require__(/*! ../internals/create-property */ "./node_modules/core-js/internals/create-property.js");
+var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
+var arrayMethodHasSpeciesSupport = __webpack_require__(/*! ../internals/array-method-has-species-support */ "./node_modules/core-js/internals/array-method-has-species-support.js");
+var arrayMethodUsesToLength = __webpack_require__(/*! ../internals/array-method-uses-to-length */ "./node_modules/core-js/internals/array-method-uses-to-length.js");
+
+var HAS_SPECIES_SUPPORT = arrayMethodHasSpeciesSupport('slice');
+var USES_TO_LENGTH = arrayMethodUsesToLength('slice', { ACCESSORS: true, 0: 0, 1: 2 });
+
+var SPECIES = wellKnownSymbol('species');
+var nativeSlice = [].slice;
+var max = Math.max;
+
+// `Array.prototype.slice` method
+// https://tc39.es/ecma262/#sec-array.prototype.slice
+// fallback for not array-like ES3 strings and DOM objects
+$({ target: 'Array', proto: true, forced: !HAS_SPECIES_SUPPORT || !USES_TO_LENGTH }, {
+  slice: function slice(start, end) {
+    var O = toIndexedObject(this);
+    var length = toLength(O.length);
+    var k = toAbsoluteIndex(start, length);
+    var fin = toAbsoluteIndex(end === undefined ? length : end, length);
+    // inline `ArraySpeciesCreate` for usage native `Array#slice` where it's possible
+    var Constructor, result, n;
+    if (isArray(O)) {
+      Constructor = O.constructor;
+      // cross-realm fallback
+      if (typeof Constructor == 'function' && (Constructor === Array || isArray(Constructor.prototype))) {
+        Constructor = undefined;
+      } else if (isObject(Constructor)) {
+        Constructor = Constructor[SPECIES];
+        if (Constructor === null) Constructor = undefined;
+      }
+      if (Constructor === Array || Constructor === undefined) {
+        return nativeSlice.call(O, k, fin);
+      }
+    }
+    result = new (Constructor === undefined ? Array : Constructor)(max(fin - k, 0));
+    for (n = 0; k < fin; k++, n++) if (k in O) createProperty(result, n, O[k]);
+    result.length = n;
+    return result;
+  }
+});
+
+
+/***/ }),
+
 /***/ "./node_modules/core-js/modules/es.object.assign.js":
 /*!**********************************************************!*\
   !*** ./node_modules/core-js/modules/es.object.assign.js ***!
@@ -2406,7 +2485,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\nthead tr.active {\r\n  background: #f78080 !important;\n}\ntbody tr.classified {\r\n  background: #0c101d !important;\n}\n#competition_heats h2 {\r\n  color: black;\n}\n#competition_heats .table {\r\n  color: black;\r\n  font-size: 20px;\n}\n#competition_final_results .table {\r\n  text-align: center;\r\n  color: black;\r\n  font-size: 22px;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\nthead tr.active {\r\n  background: #f78080 !important;\n}\ntbody tr.classified {\r\n  background: #0c101d !important;\n}\n#competition_heats h2 {\r\n  color: black;\n}\n#competition_heats .table {\r\n  color: black;\r\n  font-size: 20px;\n}\n.competition_final_results .table {\r\n  text-align: center;\r\n  color: black;\r\n  font-size: 22px;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
@@ -19991,14 +20070,14 @@ var render = function() {
       _c(
         "vue-html2pdf",
         {
-          ref: "html2Pdf",
+          ref: "html2PdfFinal",
           attrs: {
             "show-layout": false,
             "float-layout": true,
             "enable-download": false,
             "preview-modal": true,
             "paginate-elements-by-height": 1400,
-            filename: "competition_heats",
+            filename: "competition_final_results",
             "pdf-quality": 2,
             "manual-pagination": false,
             "pdf-format": "a4",
@@ -20010,85 +20089,86 @@ var render = function() {
           _c(
             "section",
             { attrs: { slot: "pdf-content" }, slot: "pdf-content" },
-            [
-              _c(
+            _vm._l(_vm.final_results, function(final_result, index_1) {
+              return _c(
                 "div",
                 {
-                  staticClass: "table-responsive table-bordered",
-                  attrs: { id: "competition_final_results" }
+                  key: index_1,
+                  staticClass:
+                    "competition_final_results table-responsive table-bordered",
+                  attrs: { id: "competition_final_results_" + index_1 }
                 },
                 [
-                  _vm.final_results.length > 0
-                    ? _c(
-                        "table",
-                        { staticClass: "table table-responsive-sm mb-0" },
-                        [
-                          _c("thead", [
-                            _c(
-                              "tr",
-                              {
-                                staticClass: "text-center",
-                                staticStyle: {
-                                  background: "#b8e6e2",
-                                  "font-size": "24px"
-                                }
-                              },
-                              [
-                                _c("th", { attrs: { colspan: "3" } }, [
-                                  _vm._v(
-                                    "\n                " +
-                                      _vm._s(
-                                        _vm.final_results[0].category.name +
-                                          " " +
-                                          _vm.final_results[0].category.sex
-                                            .name +
-                                          " " +
-                                          _vm.final_results[0].modality.name +
-                                          " " +
-                                          _vm.final_results[0].competition.title
-                                      ) +
-                                      "\n              "
-                                  )
-                                ])
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c("tr", [
-                              _c("th", [_vm._v("Posición")]),
-                              _vm._v(" "),
-                              _c("th", [_vm._v("Participante")]),
-                              _vm._v(" "),
-                              _c("th", [_vm._v("Pts. Ranking Obtenidos")])
+                  _c(
+                    "table",
+                    { staticClass: "table table-responsive-sm mb-0" },
+                    [
+                      _c("thead", [
+                        _c(
+                          "tr",
+                          {
+                            staticClass: "text-center",
+                            staticStyle: {
+                              background: "#b8e6e2",
+                              "font-size": "24px"
+                            }
+                          },
+                          [
+                            _c("th", { attrs: { colspan: "3" } }, [
+                              _vm._v(
+                                "\n                " +
+                                  _vm._s(
+                                    _vm.final_results[0][0].category.name +
+                                      " " +
+                                      _vm.final_results[0][0].category.sex
+                                        .name +
+                                      " " +
+                                      _vm.final_results[0][0].modality.name +
+                                      " " +
+                                      _vm.final_results[0][0].competition.title
+                                  ) +
+                                  "\n              "
+                              )
                             ])
-                          ]),
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("tr", [
+                          _c("th", [_vm._v("Posición")]),
                           _vm._v(" "),
-                          _c(
-                            "tbody",
-                            _vm._l(_vm.final_results, function(row, index) {
-                              return _c("tr", { key: index }, [
-                                _c("td", [_vm._v(_vm._s(row.ranking))]),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _vm._v(
-                                    _vm._s(
-                                      row.participant.name +
-                                        " " +
-                                        row.participant.surname
-                                    )
-                                  )
-                                ]),
-                                _vm._v(" "),
-                                _c("td", [_vm._v(_vm._s(row.ranking_points))])
-                              ])
-                            }),
-                            0
-                          )
-                        ]
+                          _c("th", [_vm._v("Participante")]),
+                          _vm._v(" "),
+                          _c("th", [_vm._v("Pts. Ranking Obtenidos")])
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "tbody",
+                        _vm._l(final_result, function(row, index_2) {
+                          return _c("tr", { key: index_2 }, [
+                            _c("td", [_vm._v(_vm._s(row.ranking))]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _vm._v(
+                                _vm._s(
+                                  row.participant.name +
+                                    " " +
+                                    row.participant.surname
+                                )
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v(_vm._s(row.ranking_points))])
+                          ])
+                        }),
+                        0
                       )
-                    : _vm._e()
+                    ]
+                  )
                 ]
               )
-            ]
+            }),
+            0
           )
         ]
       ),
