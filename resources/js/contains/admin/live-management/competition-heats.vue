@@ -108,7 +108,10 @@
         var pdf = new jsPDF('p', 'mm', 'a4');
         var element = document.getElementById('competition_final_results');
         const e_width = element.offsetWidth;
+        const e_height = element.offsetHeight;
         const pdfWidth = pdf.internal.pageSize.getWidth();
+        const pdfHeight = pdf.internal.pageSize.getHeight();
+        // console.log(e_height*(pdfWidth-16)/e_width)
         pdf.html(element, {
           html2canvas: {
             scale: (pdfWidth-16)/e_width,
