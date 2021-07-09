@@ -91,10 +91,11 @@
       printCompetitionHeats() {
         var pdf = new jsPDF('p', 'mm', 'a4');
         var element = document.getElementById('competition_heats');
-        //   const pdfWidth = pdf.internal.pageSize.getWidth();
+        const e_width = element.offsetWidth;
+        const pdfWidth = pdf.internal.pageSize.getWidth();
         pdf.html(element, {
           html2canvas: {
-            scale: 0.15,
+            scale: (pdfWidth-16)/e_width,
           },
           x: 8,
           y: 8,
@@ -106,10 +107,11 @@
       printCompetitionFinalResults() {
         var pdf = new jsPDF('p', 'mm', 'a4');
         var element = document.getElementById('competition_final_results');
-        //   const pdfWidth = pdf.internal.pageSize.getWidth();
+        const e_width = element.offsetWidth;
+        const pdfWidth = pdf.internal.pageSize.getWidth();
         pdf.html(element, {
           html2canvas: {
-            scale: 0.15,
+            scale: (pdfWidth-16)/e_width,
           },
           x: 8,
           y: 8,
@@ -341,20 +343,12 @@ thead tr.active {
 tbody tr.classified {
   background: #0c101d !important;
 }
-
-#competition_heats {
-  width: 100%;
-}
 #competition_heats h2 {
   color: black;
 }
 #competition_heats .table {
   color: black;
   font-size: 20px;
-}
-
-#competition_final_results {
-  width: 100%;
 }
 #competition_final_results .table {
   text-align: center;

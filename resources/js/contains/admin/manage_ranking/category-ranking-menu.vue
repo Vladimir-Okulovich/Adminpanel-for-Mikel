@@ -105,10 +105,11 @@
       printRankingTable() {
         var pdf = new jsPDF('p', 'mm', 'a4');
         var element = document.getElementById('ranking_table');
-        //   const pdfWidth = pdf.internal.pageSize.getWidth();
+        const e_width = element.offsetWidth;
+        const pdfWidth = pdf.internal.pageSize.getWidth();
         pdf.html(element, {
           html2canvas: {
-            scale: 0.15,
+            scale: (pdfWidth-16)/e_width,
           },
           x: 8,
           y: 8,
@@ -120,10 +121,11 @@
       printFinalTable() {
         var pdf = new jsPDF('p', 'mm', 'a4');
         var element = document.getElementById('final_ranking_table');
-        //   const pdfWidth = pdf.internal.pageSize.getWidth();
+        const e_width = element.offsetWidth;
+        const pdfWidth = pdf.internal.pageSize.getWidth();
         pdf.html(element, {
           html2canvas: {
-            scale: 0.15,
+            scale: (pdfWidth-16)/e_width,
           },
           x: 8,
           y: 8,
@@ -320,9 +322,15 @@
 </template>
 
 <style>
+<<<<<<< .mine
   #ranking_table {
     width: 100%;
   }
+=======
+
+
+
+>>>>>>> .theirs
   #ranking_table div {
     margin-bottom: 0px; 
   }
@@ -330,10 +338,6 @@
     color: black;
     font-size: 22px;
     text-align: center;
-  }
-
-  #final_ranking_table {
-    width: 100%;
   }
   #final_ranking_table .table {
     color: black;
