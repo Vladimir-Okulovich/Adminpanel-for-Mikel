@@ -48,10 +48,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_multiselect__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vue-multiselect */ "./node_modules/vue-multiselect/dist/vue-multiselect.min.js");
 /* harmony import */ var vue_multiselect__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(vue_multiselect__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var jspdf__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! jspdf */ "./node_modules/jspdf/dist/jspdf.es.min.js");
-/* harmony import */ var html2canvas__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! html2canvas */ "./node_modules/html2canvas/dist/html2canvas.js");
-/* harmony import */ var html2canvas__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(html2canvas__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var vue_html2pdf__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! vue-html2pdf */ "./node_modules/vue-html2pdf/dist/vue-html2pdf.esm.js");
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.mjs");
+/* harmony import */ var vue_html2pdf__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vue-html2pdf */ "./node_modules/vue-html2pdf/dist/vue-html2pdf.esm.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.mjs");
 
 
 
@@ -59,7 +57,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
+ // import html2canvas from "html2canvas"
 
 
 
@@ -75,7 +73,7 @@ __webpack_require__.r(__webpack_exports__);
     Layout: _subcomponent_layout__WEBPACK_IMPORTED_MODULE_3__.default,
     PageHeader: _components_page_header__WEBPACK_IMPORTED_MODULE_5__.default,
     Multiselect: (vue_multiselect__WEBPACK_IMPORTED_MODULE_6___default()),
-    VueHtml2pdf: vue_html2pdf__WEBPACK_IMPORTED_MODULE_9__.default
+    VueHtml2pdf: vue_html2pdf__WEBPACK_IMPORTED_MODULE_8__.default
   },
   data: function data() {
     return {
@@ -119,7 +117,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     }
   },
-  computed: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)((0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_10__.mapGetters)(['getAllCategoryModality', 'categoryRankingPoints', 'competitionNumber'])), {}, {
+  computed: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)((0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_9__.mapGetters)(['getAllCategoryModality', 'categoryModalityWithResults', 'categoryRankingPoints', 'competitionNumber'])), {}, {
     /**
      * Total no. of records
      */
@@ -132,7 +130,7 @@ __webpack_require__.r(__webpack_exports__);
     this.totalRows = this.categoryRankingPoints.length;
     this.initRankingMenu();
   },
-  methods: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)((0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_10__.mapActions)(['initRankingMenu', 'getCategoryRankingPoints', 'finalRankingPDF'])), {}, {
+  methods: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)((0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_9__.mapActions)(['initRankingMenu', 'getCategoryRankingPoints', 'finalRankingPDF'])), {}, {
     /**
      * Search the table data with search input
      */
@@ -2399,7 +2397,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n<<<<<<< .mine\r\n  #ranking_table {\r\n    width: 100%;\n}\n=======\r\n\r\n\r\n\r\n>>>>>>> .theirs\r\n  #ranking_table div {\r\n    margin-bottom: 0px;\n}\n#ranking_table .table {\r\n    color: black;\r\n    font-size: 22px;\r\n    text-align: center;\n}\n#final_ranking_table .table {\r\n    color: black;\r\n    font-size: 22px;\r\n    text-align: center;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#ranking_table div {\n  margin-bottom: 0px;\n}\n#ranking_table .table {\n  color: black;\n  font-size: 22px;\n  text-align: center;\n}\n#final_ranking_table .table {\n  color: black;\n  font-size: 22px;\n  text-align: center;\n}\n", ""]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
@@ -19363,7 +19361,7 @@ var render = function() {
                 _c("multiselect", {
                   attrs: {
                     "deselect-label": "",
-                    options: _vm.getAllCategoryModality
+                    options: _vm.categoryModalityWithResults
                   },
                   on: { input: _vm.categoryModalityHandler },
                   model: {

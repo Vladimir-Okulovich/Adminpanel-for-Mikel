@@ -99,8 +99,7 @@ __webpack_require__.r(__webpack_exports__);
           modalityId: this.$route.params.modalityId
         }).then(function (res) {
           _this.isFinal = true;
-          _this.final_results = _this.chunkArray(res.data.final_results, 25);
-          console.log(_this.final_results);
+          _this.final_results = _this.chunkArray(res.data.final_results, 25); // console.log(this.final_results)
         });
       }
     }
@@ -20243,7 +20242,9 @@ var render = function() {
           [_vm._v("\n      Imprimir Mangas\n    ")]
         ),
         _vm._v(" "),
-        _vm.isFinal
+        _vm.isFinal &&
+        _vm.all_round_heats[0][0][0].com_cat_mod_participant.competition
+          .ranking_score == "Si"
           ? _c(
               "button",
               {

@@ -4,7 +4,7 @@
   import PageHeader from "@/components/page-header";
   import Multiselect from "vue-multiselect";
   import jsPDF from 'jspdf'
-  import html2canvas from "html2canvas"
+  // import html2canvas from "html2canvas"
   import VueHtml2pdf from 'vue-html2pdf'
 
   import { mapActions, mapGetters } from 'vuex';
@@ -68,6 +68,7 @@
     computed: {
       ...mapGetters([
         'getAllCategoryModality',
+        'categoryModalityWithResults',
         'categoryRankingPoints',
         'competitionNumber',
       ]),
@@ -149,7 +150,7 @@
             <multiselect 
               v-model="categoryModality"
               deselect-label=""
-              :options="getAllCategoryModality"
+              :options="categoryModalityWithResults"
               @input="categoryModalityHandler"
             ></multiselect>
           </div>
@@ -322,15 +323,6 @@
 </template>
 
 <style>
-<<<<<<< .mine
-  #ranking_table {
-    width: 100%;
-  }
-=======
-
-
-
->>>>>>> .theirs
   #ranking_table div {
     margin-bottom: 0px; 
   }

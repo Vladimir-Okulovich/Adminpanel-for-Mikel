@@ -32,17 +32,24 @@ class ManageRankingController extends Controller
     public function getAllCategoryModality()
     {
         $all_category_modality = [];
+        $category_modality_with_results = [];
         $categories = Category::all();
         $modalities = Modality::all();
         foreach ($categories as $category) {
             $category->sex;
             foreach ($modalities as $modality) {
                 array_push($all_category_modality, $category->name." ".$category->sex->name." ".$modality->name);
+                $temps = Manage_ranking_point::where('category_id', $category->id)
+                                            ->where('modality_id', $modality->id)->get(); 
+                if (count($temps) > 0) {
+                    array_push($category_modality_with_results, $category->name." ".$category->sex->name." ".$modality->name);
+                }
             }
         }
         return response()->json([
             'message' => 'success',
-            'all_category_modality' => $all_category_modality
+            'all_category_modality' => $all_category_modality,
+            'category_modality_with_results' => $category_modality_with_results,
         ], 200);
     }
 
