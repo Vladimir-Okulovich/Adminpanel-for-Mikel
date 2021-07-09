@@ -42,7 +42,7 @@
           .then((res) => {
             this.isFinal = true;
             this.final_results = this.chunkArray(res.data.final_results, 25)
-            console.log(this.final_results)
+            // console.log(this.final_results)
           })
         }
       },
@@ -347,7 +347,7 @@
       >
         Imprimir Mangas
       </button>
-      <button v-if="isFinal" @click="printCompetitionFinalResults"
+      <button v-if="isFinal&&all_round_heats[0][0][0].com_cat_mod_participant.competition.ranking_score=='Si'" @click="printCompetitionFinalResults"
         class="btn btn-sm btn-info"
       >
         Imprimir Clasificación
