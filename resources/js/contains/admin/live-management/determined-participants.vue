@@ -409,7 +409,7 @@
       title-class="font-18"
       hide-footer
     >
-      <p>¿Está seguro de eliminar este aprticipante de la competición?</p>
+      <p>¿Está seguro de eliminar al participante de esta Categoria?</p>
       <footer class="modal-footer">
         <button type="button" class="btn btn-secondary" @click="$bvModal.hide('unregister-modal')">Cancelar</button>
         <button type="button" class="btn btn-primary" @click="unregisterParticipant()">Eliminar</button>

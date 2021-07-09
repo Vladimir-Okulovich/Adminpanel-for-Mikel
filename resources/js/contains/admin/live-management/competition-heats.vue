@@ -123,6 +123,7 @@
         const e_width = element_0.offsetWidth;
         const pdfWidth = pdf.internal.pageSize.getWidth();
         const pdfHeight = pdf.internal.pageSize.getHeight();
+        // console.log(e_height*(pdfWidth-16)/e_width)
         pdf.html(element_0, {
           x: 8,
           y: 8,
@@ -140,8 +141,8 @@
           },
         });
       },
-    }
-	};
+	  }
+  }
 </script>
 <template>
   <Layout>
@@ -311,7 +312,6 @@
       pdf-format="a4"
       pdf-orientation="portrait"
       pdf-content-width="100%"
-
       ref="html2PdfFinal"
     >
       <section slot="pdf-content">
@@ -363,7 +363,6 @@ thead tr.active {
 tbody tr.classified {
   background: #0c101d !important;
 }
-
 #competition_heats h2 {
   color: black;
 }

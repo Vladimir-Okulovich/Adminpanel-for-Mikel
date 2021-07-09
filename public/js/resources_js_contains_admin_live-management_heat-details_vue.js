@@ -7002,144 +7002,51 @@ var render = function() {
   return _c("Layout", [
     _c(
       "div",
-      { staticClass: "d-flex pt-4" },
+      {
+        staticClass: "text-center w-100 mt-4",
+        staticStyle: { position: "relative" }
+      },
       [
-        _c("b-img", {
-          attrs: {
-            src:
-              "/storage/" +
-              _vm.round_heats[0].com_cat_mod_participant.competition.logo,
-            height: "127",
-            alt: "logo"
-          }
-        }),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "w-50", staticStyle: { border: "1px solid #64676f" } },
-          [
-            _c(
-              "h4",
-              {
-                staticClass: "mb-0 text-center",
-                staticStyle: {
-                  "border-bottom": "1px solid #64676f",
-                  padding: "5px 20px"
-                }
-              },
-              [
-                _vm._v(
-                  _vm._s(
-                    _vm.round_heats[0].com_cat_mod_participant.competition.title
-                  )
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "p",
-              {
-                staticClass: "mb-0",
-                staticStyle: {
-                  "border-bottom": "1px solid #64676f",
-                  padding: "3px 20px"
-                }
-              },
-              [
-                _vm._v(
-                  _vm._s(
-                    _vm.round_heats[0].com_cat_mod_participant.competition
-                      .description
-                  )
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "p",
-              {
-                staticClass: "mb-0",
-                staticStyle: {
-                  "border-bottom": "1px solid #64676f",
-                  padding: "3px 20px"
-                }
-              },
-              [
-                _vm._v(
-                  "\n        " +
-                    _vm._s(
-                      _vm.round_heats[0].com_cat_mod_participant.competition
-                        .place
-                    ) +
-                    "\n        " +
-                    _vm._s(
-                      _vm.round_heats[0].com_cat_mod_participant.competition
-                        .date
-                    ) +
-                    "\n        " +
-                    _vm._s(
-                      _vm.round_heats[0].com_cat_mod_participant.competition
-                        .time
-                    ) +
-                    "\n      "
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "p",
-              { staticClass: "mb-0", staticStyle: { padding: "3px 20px" } },
-              [
-                _vm._v(
-                  "Antolatzailea: " +
-                    _vm._s(
-                      _vm.round_heats[0].com_cat_mod_participant.competition
-                        .organizer
-                    )
-                )
-              ]
+        _c("h4", { staticStyle: { padding: "10px 0" } }, [
+          _vm._v(
+            "\n      " +
+              _vm._s(_vm.round_heats[0].com_cat_mod_participant.category.name) +
+              "\n      " +
+              _vm._s(
+                _vm.round_heats[0].com_cat_mod_participant.category.sex.name
+              ) +
+              "\n      " +
+              _vm._s(_vm.round_heats[0].com_cat_mod_participant.modality.name) +
+              "\n      "
+          ),
+          _c("span", { staticStyle: { "font-size": "16px" } }, [
+            _vm._v(
+              "(Ronda " + _vm._s(_vm.round) + " Manga " + _vm._s(_vm.heat) + ")"
             )
-          ]
-        ),
+          ])
+        ]),
         _vm._v(" "),
         _c(
           "button",
           {
             staticClass: "btn btn-secondary",
-            staticStyle: { width: "10%", position: "absolute", right: "24px" },
+            staticStyle: {
+              width: "10%",
+              position: "absolute",
+              right: "20px",
+              bottom: "0"
+            },
             on: { click: _vm.back }
           },
           [_vm._v("\n      Volver\n    ")]
         )
-      ],
-      1
+      ]
     ),
-    _vm._v(" "),
-    _c("div", { staticClass: "text-center w-100 mt-4" }, [
-      _c("h4", { staticStyle: { background: "#32394e", padding: "10px 0" } }, [
-        _vm._v(
-          "\n      " +
-            _vm._s(_vm.round_heats[0].com_cat_mod_participant.category.name) +
-            "\n      " +
-            _vm._s(
-              _vm.round_heats[0].com_cat_mod_participant.category.sex.name
-            ) +
-            "\n      " +
-            _vm._s(_vm.round_heats[0].com_cat_mod_participant.modality.name) +
-            "\n      "
-        ),
-        _c("span", { staticStyle: { "font-size": "16px" } }, [
-          _vm._v(
-            "(Ronda " + _vm._s(_vm.round) + " Manga " + _vm._s(_vm.heat) + ")"
-          )
-        ])
-      ])
-    ]),
     _vm._v(" "),
     _c("div", { staticClass: "row mt-4" }, [
       _c("div", { staticClass: "col-lg-8 col-md-9 col-sm-12" }, [
         _c("div", { staticClass: "table-responsive mb-0" }, [
-          _c("table", { staticClass: "table table-bordered" }, [
+          _c("table", { staticClass: "reduced-table table table-bordered" }, [
             _c("thead", [
               _c("tr", { staticClass: "thead-light" }, [
                 _c("th", [_vm._v("Lycra")]),
@@ -7252,7 +7159,7 @@ var render = function() {
             )
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "d-flex justify-content-between my-4" }, [
+          _c("div", { staticClass: "d-flex justify-content-between my-3" }, [
             _c(
               "button",
               { staticClass: "btn btn-info", on: { click: _vm.closeResults } },
@@ -7268,11 +7175,14 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "col-12 mt-4" }, [
+      _c("div", { staticClass: "col-12 mt-1" }, [
         _c("div", { staticClass: "table-responsive mb-0" }, [
           _c(
             "table",
-            { staticClass: "table table-bordered table-sm text-center" },
+            {
+              staticClass:
+                "table reduced-table table-bordered table-sm text-center"
+            },
             [
               _c("thead", { staticClass: "thead-light" }, [
                 _c("tr", [

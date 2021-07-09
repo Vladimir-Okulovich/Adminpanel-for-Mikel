@@ -7571,7 +7571,7 @@ var render = function() {
         [
           _c("p", [
             _vm._v(
-              "¿Está seguro de eliminar este aprticipante de la competición?"
+              "¿Está seguro de eliminar al participante de esta Categoria?"
             )
           ]),
           _vm._v(" "),

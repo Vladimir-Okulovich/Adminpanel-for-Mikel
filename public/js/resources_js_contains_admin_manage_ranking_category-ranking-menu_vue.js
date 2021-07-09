@@ -2399,7 +2399,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#ranking_table div {\n  margin-bottom: 0px;\n}\n#ranking_table .table {\n  color: black;\n  font-size: 22px;\n  text-align: center;\n}\n#final_ranking_table .table {\n  color: black;\n  font-size: 22px;\n  text-align: center;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n<<<<<<< .mine\r\n  #ranking_table {\r\n    width: 100%;\n}\n=======\r\n\r\n\r\n\r\n>>>>>>> .theirs\r\n  #ranking_table div {\r\n    margin-bottom: 0px;\n}\n#ranking_table .table {\r\n    color: black;\r\n    font-size: 22px;\r\n    text-align: center;\n}\n#final_ranking_table .table {\r\n    color: black;\r\n    font-size: 22px;\r\n    text-align: center;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 

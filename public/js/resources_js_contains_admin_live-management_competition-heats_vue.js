@@ -187,7 +187,8 @@ __webpack_require__.r(__webpack_exports__);
       var element_0 = document.getElementById('competition_final_results_0');
       var e_width = element_0.offsetWidth;
       var pdfWidth = pdf.internal.pageSize.getWidth();
-      var pdfHeight = pdf.internal.pageSize.getHeight();
+      var pdfHeight = pdf.internal.pageSize.getHeight(); // console.log(e_height*(pdfWidth-16)/e_width)
+
       pdf.html(element_0, {
         x: 8,
         y: 8,

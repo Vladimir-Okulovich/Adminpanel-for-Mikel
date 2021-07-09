@@ -322,6 +322,15 @@
 </template>
 
 <style>
+<<<<<<< .mine
+  #ranking_table {
+    width: 100%;
+  }
+=======
+
+
+
+>>>>>>> .theirs
   #ranking_table div {
     margin-bottom: 0px; 
   }
@@ -330,7 +339,6 @@
     font-size: 22px;
     text-align: center;
   }
-
   #final_ranking_table .table {
     color: black;
     font-size: 22px;

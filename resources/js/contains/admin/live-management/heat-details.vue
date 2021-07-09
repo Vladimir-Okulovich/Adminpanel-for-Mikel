@@ -130,43 +130,25 @@
 </script>
 <template>
   <Layout>
-    <div class="d-flex pt-4">
-      <b-img
-        :src="'/storage/'+round_heats[0].com_cat_mod_participant.competition.logo"
-        height="127"
-        alt="logo"
-      ></b-img>
-      <div class="w-50" style="border: 1px solid #64676f;">
-        <h4 class="mb-0 text-center" style="border-bottom: 1px solid #64676f;padding: 5px 20px;">{{ round_heats[0].com_cat_mod_participant.competition.title }}</h4>
-        <p class="mb-0" style="border-bottom: 1px solid #64676f;padding: 3px 20px;">{{ round_heats[0].com_cat_mod_participant.competition.description }}</p>
-        <p class="mb-0" style="border-bottom: 1px solid #64676f;padding: 3px 20px;">
-          {{ round_heats[0].com_cat_mod_participant.competition.place }}
-          {{ round_heats[0].com_cat_mod_participant.competition.date }}
-          {{ round_heats[0].com_cat_mod_participant.competition.time }}
-        </p>
-        <p class="mb-0" style="padding: 3px 20px;">Antolatzailea: {{ round_heats[0].com_cat_mod_participant.competition.organizer }}</p>
-      </div>
-      <button @click="back"
-        class="btn btn-secondary"
-        style="width: 10%;position: absolute;right: 24px;"
-      >
-        Volver
-      </button>
-    </div>
-
-    <div class="text-center w-100 mt-4">
-      <h4 style="background: #32394e;padding: 10px 0;">
+    <div class="text-center w-100 mt-4" style="position: relative;">
+      <h4 style="padding: 10px 0;">
         {{ round_heats[0].com_cat_mod_participant.category.name }}
         {{ round_heats[0].com_cat_mod_participant.category.sex.name }}
         {{ round_heats[0].com_cat_mod_participant.modality.name }}
         <span style="font-size: 16px;">(Ronda {{ round }} Manga {{ heat }})</span>
       </h4>
+      <button @click="back"
+        class="btn btn-secondary"
+        style="width: 10%;position: absolute;right: 20px;bottom: 0;"
+      >
+        Volver
+      </button>
     </div>
 
     <div class="row mt-4">
       <div class="col-lg-8 col-md-9 col-sm-12">
         <div class="table-responsive mb-0">
-          <table class="table table-bordered">
+          <table class="reduced-table table table-bordered">
             <thead>
               <tr class="thead-light">
                 <th>Lycra</th>
@@ -192,7 +174,7 @@
               </tr>
             </tbody>
           </table>
-          <div class="d-flex justify-content-between my-4">
+          <div class="d-flex justify-content-between my-3">
             <button @click="closeResults"
               class="btn btn-info"
             >
@@ -207,9 +189,9 @@
         </div>
       </div>
 
-      <div class="col-12 mt-4">
+      <div class="col-12 mt-1">
         <div class="table-responsive mb-0">
-          <table class="table table-bordered table-sm text-center">
+          <table class="table reduced-table table-bordered table-sm text-center">
             <thead class="thead-light">
               <tr>
                 <th rowspan="2">PARTICIPANTE</th>
