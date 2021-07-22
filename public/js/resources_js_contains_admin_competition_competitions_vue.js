@@ -37,7 +37,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
+/* harmony import */ var C_xampp_htdocs_APPKAYAK_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
 /* harmony import */ var core_js_modules_es_symbol_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es.symbol.js */ "./node_modules/core-js/modules/es.symbol.js");
 /* harmony import */ var core_js_modules_es_symbol_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_symbol_js__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core-js/modules/es.symbol.description.js */ "./node_modules/core-js/modules/es.symbol.description.js");
@@ -123,7 +123,7 @@ __webpack_require__.r(__webpack_exports__);
       deletingId: 0
     };
   },
-  computed: (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__.default)((0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_6__.mapGetters)(['getCompetitions'])), {}, {
+  computed: (0,C_xampp_htdocs_APPKAYAK_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__.default)((0,C_xampp_htdocs_APPKAYAK_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_6__.mapGetters)(['getCompetitions'])), {}, {
     rows: function rows() {
       return this.getCompetitions.length;
     }
@@ -133,7 +133,7 @@ __webpack_require__.r(__webpack_exports__);
     this.totalRows = this.getCompetitions.length;
     this.initCompetitions();
   },
-  methods: (0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__.default)((0,C_xampp_htdocs_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_6__.mapActions)(['initCompetitions', 'deleteCompetition', 'changeStatus'])), {}, {
+  methods: (0,C_xampp_htdocs_APPKAYAK_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__.default)((0,C_xampp_htdocs_APPKAYAK_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_6__.mapActions)(['initCompetitions', 'deleteCompetition', 'changeStatus'])), {}, {
     /**
      * Search the table data with search input
      */
@@ -144,11 +144,15 @@ __webpack_require__.r(__webpack_exports__);
     },
     setId: function setId(id) {
       this.deletingId = id;
-    },
-    realDelete: function realDelete() {
-      this.deleteCompetition(this.deletingId);
-      this.$bvModal.hide('delete-modal');
-    } // rowClicked(item, index, event) {
+    }
+    /**
+     * quito la funcion de eliminar competiciones.
+     */
+    //realDelete() {
+    //  this.deleteCompetition(this.deletingId);
+    //  this.$bvModal.hide('delete-modal');
+    // },
+    // rowClicked(item, index, event) {
     //   // console.log(item.status.name)
     //   if (item.status.name == "REGISTRATION OPEN") {
     //     this.$router.push({name: "CompetitionParticipantCreate", params: { competitionId: item.id }});
@@ -7371,34 +7375,7 @@ var render = function() {
                                     attrs: { to: "#" }
                                   },
                                   [_c("i", { staticClass: "fas fa-user-plus" })]
-                                ),
-                            _vm._v(" "),
-                            _c(
-                              "b-button",
-                              {
-                                directives: [
-                                  {
-                                    name: "b-modal",
-                                    rawName: "v-b-modal.delete-modal",
-                                    modifiers: { "delete-modal": true }
-                                  },
-                                  {
-                                    name: "b-tooltip",
-                                    rawName: "v-b-tooltip.hover.top",
-                                    value: "Eliminar",
-                                    expression: "'Eliminar'",
-                                    modifiers: { hover: true, top: true }
-                                  }
-                                ],
-                                attrs: { size: "sm" },
-                                on: {
-                                  click: function($event) {
-                                    return _vm.setId(row.item.id)
-                                  }
-                                }
-                              },
-                              [_c("i", { staticClass: "fas fa-trash" })]
-                            )
+                                )
                           ]
                         }
                       }
@@ -7444,60 +7421,7 @@ var render = function() {
             ])
           ])
         ])
-      ]),
-      _vm._v(" "),
-      _c(
-        "b-modal",
-        {
-          attrs: {
-            id: "delete-modal",
-            centered: "",
-            title: "Eliminar Competición",
-            "title-class": "font-18",
-            "hide-footer": ""
-          }
-        },
-        [
-          _c("p", [_vm._v("¿Está seguro de eliminar esta competición?")]),
-          _vm._v(" "),
-          _c(
-            "footer",
-            {
-              staticClass: "modal-footer",
-              attrs: { id: "delete-modal___BV_modal_footer_" }
-            },
-            [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-secondary",
-                  attrs: { type: "button" },
-                  on: {
-                    click: function($event) {
-                      return _vm.$bvModal.hide("delete-modal")
-                    }
-                  }
-                },
-                [_vm._v("Cancelar")]
-              ),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-primary",
-                  attrs: { type: "button" },
-                  on: {
-                    click: function($event) {
-                      return _vm.realDelete()
-                    }
-                  }
-                },
-                [_vm._v("OK")]
-              )
-            ]
-          )
-        ]
-      )
+      ])
     ],
     1
   )
@@ -7710,7 +7634,7 @@ var render = function() {
                     [
                       _c("i", { staticClass: "ti-user" }),
                       _vm._v(" "),
-                      _c("span", [_vm._v("Federados")])
+                      _c("span", [_vm._v("Palistas")])
                     ]
                   )
                 ],

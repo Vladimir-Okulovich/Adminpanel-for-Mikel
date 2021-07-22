@@ -298,12 +298,29 @@ class LiveManagementController extends Controller
             $manage_ranking_points[0]->competition;
             $manage_ranking_points[0]->category->sex;
             $manage_ranking_points[0]->modality;
-        }
 
-        return response()->json([
-            'message' => 'success',
-            'final_results' => $manage_ranking_points,
-        ], 200);
+            return response()->json([
+                'message' => 'success',
+                'final_results' => $manage_ranking_points,
+            ], 200);
+        } else {
+            $com_cat_mod_participants = Com_cat_mod_participant::where('competition_id', $request->competitionId)
+                                                            ->where('category_id', $request->categoryId)
+                                                            ->where('modality_id', $request->modalityId)->get();
+            foreach ($com_cat_mod_participants as $index => $com_cat_mod_participant) {
+                $com_cat_mod_participant->competition;
+                $com_cat_mod_participant->category->sex;
+                $com_cat_mod_participant->modality;
+                $com_cat_mod_participant->participant;
+                $com_cat_mod_participant->ranking = $index + 1;
+                $com_cat_mod_participant->ranking_points = 0;
+            }
+
+            return response()->json([
+                'message' => 'success',
+                'final_results' => $com_cat_mod_participants,
+            ], 200);
+        }
     }
 
     public function setProgressStatus(Request $request)

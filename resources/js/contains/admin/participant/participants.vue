@@ -7,7 +7,7 @@
 
 	export default {
 		page: {
-        title: "FEDERADOS",
+        title: "PALISTAS",
         meta: [{ name: "description", content: appConfig.description }]
     },
     components: {
@@ -16,14 +16,14 @@
     },
     data() {
       return {
-        title: "FEDERADOS",
+        title: "PALISTAS",
         items: [
           {
             text: "Home",
             href: "/admin/competitions"
           },
           {
-            text: "Listado Federados",
+            text: "Listado Fichas Palistas",
             active: true
           },
         ],
@@ -93,7 +93,7 @@
         <router-link to="/admin/participant/create"
           class="btn btn-info btn-block d-inline-block"
         >
-          <i class="fas fa-plus mr-1"></i> Añadir Ficha
+          <i class="fas fa-plus mr-1"></i> Añadir Ficha Palista
         </router-link>
       </div>
     </PageHeader>
@@ -102,7 +102,7 @@
       <div class="col-12">
         <div class="card">
           <div class="card-body">
-            <h4 class="card-title">Listado Federados</h4>
+            <h4 class="card-title">Listado Palistas</h4>
             <p class="card-title-desc"></p>
             <div class="row mb-md-2">
               <div class="col-sm-12 col-md-6">
@@ -177,11 +177,11 @@
     <b-modal
       id="delete-modal"
       centered
-      title="Eliminar Ficha"
+      title="Eliminar Ficha Palista"
       title-class="font-18"
       hide-footer
     >
-      <p>¿Está segro de eliminar esta ficha?</p>
+      <p>¿Está segro de eliminar la ficha de este palista?</p>
       <footer id="delete-modal___BV_modal_footer_" class="modal-footer">
         <button type="button" class="btn btn-secondary" @click="$bvModal.hide('delete-modal')">Cancelar</button>
         <button type="button" class="btn btn-primary" @click="realDelete()">OK</button>

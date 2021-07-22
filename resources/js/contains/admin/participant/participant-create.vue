@@ -30,18 +30,18 @@ export default {
   components: { DatePicker, Multiselect, Layout, PageHeader },
   data() {
     return {
-      title: "CREAR FICHA",
+      title: "CREAR FICHA PALISTA",
       items: [
         {
           text: "Home",
           href: "/admin/competitions"
         },
         {
-          text: "Listado Federados",
+          text: "Listado Palistas",
           href: "/admin/participants"
         },
         {
-          text: "Crear Ficha",
+          text: "Crear Ficha Palista",
           active: true
         }
       ],

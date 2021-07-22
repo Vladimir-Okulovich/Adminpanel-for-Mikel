@@ -127,7 +127,7 @@
               <li>
                 <router-link tag="a" to="/admin/participants" class="side-nav-link">
                   <i class="ti-user"></i>
-                  <span>Federados</span>
+                  <span>Palistas</span>
                 </router-link>
               </li>
               <li>

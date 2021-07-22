@@ -24,24 +24,24 @@ import {
 
 export default {
   page: {
-    title: "MODIFICAR DATOS",
+    title: "MODIFICAR DATOS PALISTA",
     meta: [{ name: "description", content: appConfig.description }]
   },
   components: { DatePicker, Multiselect, Layout, PageHeader },
   data() {
     return {
-      title: "MODIFICAR DATOS",
+      title: "MODIFICAR DATOS PALISTA",
       items: [
         {
           text: "Home",
           href: "/admin/competitions"
         },
         {
-          text: "Listado Participantes",
+          text: "Listado Palistas",
           href: "/admin/participants"
         },
         {
-          text: "Modificar Datos Federado",
+          text: "Modificar Datos Palista",
           active: true
         }
       ],
@@ -158,7 +158,7 @@ export default {
                   :class="{ 'is-invalid': typesubmit && $v.typeform.name.$error }"
                 />
                 <div v-if="typesubmit && $v.typeform.name.$error" class="invalid-feedback">
-                  <span v-if="!$v.typeform.name.required"Este Campo es Obligatorio.</span>
+                  <span v-if="!$v.typeform.name.required">Este Campo es Obligatorio.</span>
                 </div>
               </div>
               <div class="form-group">
