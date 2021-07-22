@@ -13,7 +13,6 @@ const defaultState = {
   all_round_heats: [],
   round_heats: [],
   heat_scores: [],
-  all_home_round_heats: [],
   deleteStatus: null,
 };
 

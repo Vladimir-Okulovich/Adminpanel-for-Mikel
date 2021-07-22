@@ -2,11 +2,18 @@ import store from '../store'
 
 export default [
     {
-        path: '/competition/:competitionId/category/:categoryId/modality/:modalityId',
+        path: '/competition/:competitionId',
         meta: {
         },
         name: 'Home',
         component: () => import('../contains/dashboard/home'),
+    },
+    {
+        path: '/competition/:competitionId/category/:categoryId/modality/:modalityId/round/:round/heat/:heat',
+        meta: {
+        },
+        name: 'Details',
+        component: () => import('../contains/dashboard/details'),
     },
     {
         path: '/login',

@@ -1,22 +1,28 @@
 <script>
 	import Layout from "./subcomponent/layout";
 	import appConfig from "@/app.config";
+  import Multiselect from "vue-multiselect";
 
   import { mapActions, mapGetters } from 'vuex';
 
 	export default {
 		page: {
-        title: "Home",
+        title: "CASA",
         meta: [{ name: "description", content: appConfig.description }]
     },
     components: {
       Layout,
+      Multiselect,
     },
     data() {
       return {
         competitionId: 0,
         categoryId: 0,
         modalityId: 0,
+        competition: {},
+        categoryModalityWithResults: [],
+        categoryModality: "",
+        all_home_round_heats: [],
       }
     },
     watch: {
@@ -24,23 +30,38 @@
     },
     computed: {
       ...mapGetters([
-        'all_home_round_heats',
       ]),
     },
     mounted() {
       this.competitionId = this.$route.params.competitionId;
-      this.categoryId = this.$route.params.categoryId;
-      this.modalityId = this.$route.params.modalityId;
-      this.initHomeCompetitionHeats({
-        competitionId: this.competitionId,
-        categoryId: this.categoryId,
-        modalityId: this.modalityId,
+      this.initHome(this.competitionId)
+      .then((res) => {
+        // console.log(res)
+        this.categoryModalityWithResults = res.category_modality
+        this.competition = res.competition
       });
     },
     methods: {
       ...mapActions([
-        'initHomeCompetitionHeats',
+        'initHome',
+        'getCompetitionHeats',
       ]),
+
+      categoryModalityHandler() {
+        this.getCompetitionHeats({
+          competitionId: this.$route.params.competitionId,
+          categoryModality: this.categoryModality,
+        })
+        .then((res) => {
+          // console.log(res)
+          this.all_home_round_heats = res.all_round_heats
+          this.categoryId = this.all_home_round_heats[0][0][0].com_cat_mod_participant.category_id
+          this.modalityId = this.all_home_round_heats[0][0][0].com_cat_mod_participant.modality_id
+        })
+      },
+      heatDetailsGo(round, heat) {
+        this.$router.push({ name: 'Details', params: {competitionId: this.competitionId, categoryId: this.categoryId, modalityId: this.modalityId, round: round, heat: heat} })
+      },
       refresh() {
         window.location.reload();
       },
@@ -51,38 +72,46 @@
   <Layout>
     <div class="d-flex" style="position: relative;">
       <b-img
-        :src="'/storage/'+all_home_round_heats[0][0][0].com_cat_mod_participant.competition.logo"
+        :src="'/storage/'+competition.logo"
         height="127"
         alt="logo"
       ></b-img>
       <div class="w-50" style="border: 1px solid #64676f;">
-        <h4 class="mb-0 text-center" style="border-bottom: 1px solid #64676f;padding: 5px 20px;">{{ all_home_round_heats[0][0][0].com_cat_mod_participant.competition.title }}</h4>
-        <p class="mb-0" style="border-bottom: 1px solid #64676f;padding: 3px 20px;">{{ all_home_round_heats[0][0][0].com_cat_mod_participant.competition.description }}</p>
+        <h4 class="mb-0 text-center" style="border-bottom: 1px solid #64676f;padding: 5px 20px;">{{ competition.title }}</h4>
+        <p class="mb-0" style="border-bottom: 1px solid #64676f;padding: 3px 20px;">{{ competition.description }}</p>
         <p class="mb-0" style="border-bottom: 1px solid #64676f;padding: 3px 20px;">
           Lekua, data eta ordua:
-          {{ all_home_round_heats[0][0][0].com_cat_mod_participant.competition.place }}
-          {{ all_home_round_heats[0][0][0].com_cat_mod_participant.competition.date }}
-          {{ all_home_round_heats[0][0][0].com_cat_mod_participant.competition.time }}
+          {{ competition.place }}
+          {{ competition.date }}
+          {{ competition.time }}
         </p>
-        <p class="mb-0" style="padding: 3px 20px;">Antolatzailea: {{ all_home_round_heats[0][0][0].com_cat_mod_participant.competition.organizer }}</p>
+        <p class="mb-0" style="padding: 3px 20px;">Antolatzailea: {{ competition.organizer }}</p>
       </div>
       <button @click="refresh"
         class="btn btn-warning"
         style="width: 10%;position: absolute;right: 0;"
       >
-        Refresh
+        Actualizar
       </button>
     </div>
 
-    <div class="text-center w-100 my-4">
-      <h4 style="background: #32394e;padding: 10px 0;">
-        {{ all_home_round_heats[0][0][0].com_cat_mod_participant.category.name }}
-        {{ all_home_round_heats[0][0][0].com_cat_mod_participant.category.sex.name }}
-        {{ all_home_round_heats[0][0][0].com_cat_mod_participant.modality.name }}
-      </h4>
+    <div class="row mt-4">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title mb-4">Seleccionar Categoría</h4>
+            <multiselect 
+              v-model="categoryModality"
+              deselect-label=""
+              :options="categoryModalityWithResults"
+              @input="categoryModalityHandler"
+            ></multiselect>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="row mb-4" v-for="(round, round_index) in all_home_round_heats" :key="round_index">
+    <div class="row mb-4" v-if="all_home_round_heats.length > 0" v-for="(round, round_index) in all_home_round_heats" :key="round_index">
       <h4 class="mb-4 col-12" v-if="round.length == 1">FINAL</h4>
       <h4 class="mb-4 col-12" v-else-if="round.length == 2">SEMI FINALS</h4>
       <h4 class="mb-4 col-12" v-else-if="round.length == 3">QUARTER FINALS</h4>
@@ -91,17 +120,17 @@
         <div class="table-responsive mb-0">
           <table class="table table-bordered">
             <thead>
-              <tr>
-                <th colspan="4" v-if="round.length == 1" style="color: black;background: #b8e6e2;">
+              <tr style="color: black;background: #b8e6e2;cursor: pointer;">
+                <th colspan="4" v-if="round.length == 1" @click="heatDetailsGo(round_index+1, heat_index+1)">
                   Final Heat
                 </th>
-                <th colspan="4" v-else-if="round.length == 2" style="color: black;background: #b8e6e2;">
+                <th colspan="4" v-else-if="round.length == 2" @click="heatDetailsGo(round_index+1, heat_index+1)">
                   Semi Finals Heat {{ heat_index+1 }}
                 </th>
-                <th colspan="4" v-else-if="round.length == 3" style="color: black;background: #b8e6e2;">
+                <th colspan="4" v-else-if="round.length == 3" @click="heatDetailsGo(round_index+1, heat_index+1)">
                   Quarter Finals Heat {{ heat_index+1 }}
                 </th>
-                <th colspan="4" v-else style="color: black;background: #b8e6e2;">
+                <th colspan="4" v-else @click="heatDetailsGo(round_index+1, heat_index+1)">
                   Round {{ round_index+1 }} Heat {{ heat_index+1 }}
                 </th>
               </tr>

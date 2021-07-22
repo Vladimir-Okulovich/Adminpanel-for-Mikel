@@ -20,9 +20,5 @@ const mutations = {
     state.round_heats = data.round_heats;
     state.heat_scores = data.heat_scores;
   },
-
-  [type.GET_ALL_HOME_ROUND_HEATS] (state, data) {
-    state.all_home_round_heats = data.all_round_heats;
-  },
 };
 export default mutations;
