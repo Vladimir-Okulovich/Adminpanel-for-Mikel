@@ -57,6 +57,20 @@ const actions = {
                 });
         });
     },
+    deleteCompetitionBoxes(context, data) {
+        ApiService.setHeader();
+        return new Promise((resolve, reject) =>{
+            ApiService.post("api/v1/admin/live-management/competition-box/delete", data)
+                .then((data) => {
+                    toastr.success('Eliminada Correctamente', '', {timeout: 5000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
+                    resolve(data);
+                })
+                .catch(({ response }) => {
+                    // console.log(response);
+                    reject(response)
+                });
+        });
+    },
     initCompetitionHeats(context, data) {
         ApiService.setHeader();
         return new Promise((resolve, reject) =>{

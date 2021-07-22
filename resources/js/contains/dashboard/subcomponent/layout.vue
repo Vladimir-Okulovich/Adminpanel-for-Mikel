@@ -1,9 +1,6 @@
 <script>
 import router from "@/router";
 
-// import Topbar from "./topbar";
-// import Footer from "@/components/footer";
-
 export default {
   components: {
     // Topbar,
@@ -39,6 +36,7 @@ export default {
   }
   .page-content {
     padding: 0 24px 60px 24px !important;
+    margin-top: 40px !important;
   }
   .footer {
     left: 0;

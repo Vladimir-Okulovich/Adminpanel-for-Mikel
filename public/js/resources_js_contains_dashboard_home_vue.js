@@ -8,11 +8,11 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var C_xampp_htdocs_APPKAYAK_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
-/* harmony import */ var core_js_modules_es_symbol_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es.symbol.js */ "./node_modules/core-js/modules/es.symbol.js");
-/* harmony import */ var core_js_modules_es_symbol_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_symbol_js__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core-js/modules/es.symbol.description.js */ "./node_modules/core-js/modules/es.symbol.description.js");
-/* harmony import */ var core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var core_js_modules_es_symbol_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.symbol.js */ "./node_modules/core-js/modules/es.symbol.js");
+/* harmony import */ var core_js_modules_es_symbol_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_symbol_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es.symbol.description.js */ "./node_modules/core-js/modules/es.symbol.description.js");
+/* harmony import */ var core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
 /* harmony import */ var _subcomponent_layout__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./subcomponent/layout */ "./resources/js/contains/dashboard/subcomponent/layout.vue");
 /* harmony import */ var _app_config__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/app.config */ "./resources/js/app.config.json");
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.mjs");
@@ -41,7 +41,7 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   watch: {},
-  computed: (0,C_xampp_htdocs_APPKAYAK_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_5__.mapGetters)(['all_home_round_heats'])),
+  computed: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_5__.mapGetters)(['all_home_round_heats'])),
   mounted: function mounted() {
     this.competitionId = this.$route.params.competitionId;
     this.categoryId = this.$route.params.categoryId;
@@ -52,7 +52,7 @@ __webpack_require__.r(__webpack_exports__);
       modalityId: this.modalityId
     });
   },
-  methods: (0,C_xampp_htdocs_APPKAYAK_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__.default)((0,C_xampp_htdocs_APPKAYAK_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_5__.mapActions)(['initHomeCompetitionHeats'])), {}, {
+  methods: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)((0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_5__.mapActions)(['initHomeCompetitionHeats'])), {}, {
     refresh: function refresh() {
       window.location.reload();
     }
@@ -70,8 +70,6 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/router */ "./resources/js/router/index.js");
- // import Topbar from "./topbar";
-// import Footer from "@/components/footer";
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {// Topbar,
@@ -115,9 +113,8 @@ module.exports = function (NAME) {
   \**********************************************************************************/
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
-/* eslint-disable es/no-object-getownpropertynames -- safe */
 var toIndexedObject = __webpack_require__(/*! ../internals/to-indexed-object */ "./node_modules/core-js/internals/to-indexed-object.js");
-var $getOwnPropertyNames = __webpack_require__(/*! ../internals/object-get-own-property-names */ "./node_modules/core-js/internals/object-get-own-property-names.js").f;
+var nativeGetOwnPropertyNames = __webpack_require__(/*! ../internals/object-get-own-property-names */ "./node_modules/core-js/internals/object-get-own-property-names.js").f;
 
 var toString = {}.toString;
 
@@ -126,7 +123,7 @@ var windowNames = typeof window == 'object' && window && Object.getOwnPropertyNa
 
 var getWindowNames = function (it) {
   try {
-    return $getOwnPropertyNames(it);
+    return nativeGetOwnPropertyNames(it);
   } catch (error) {
     return windowNames.slice();
   }
@@ -136,7 +133,7 @@ var getWindowNames = function (it) {
 module.exports.f = function getOwnPropertyNames(it) {
   return windowNames && toString.call(it) == '[object Window]'
     ? getWindowNames(it)
-    : $getOwnPropertyNames(toIndexedObject(it));
+    : nativeGetOwnPropertyNames(toIndexedObject(it));
 };
 
 
@@ -506,7 +503,7 @@ if ($stringify) {
   });
 
   $({ target: 'JSON', stat: true, forced: FORCED_JSON_STRINGIFY }, {
-    // eslint-disable-next-line no-unused-vars -- required for `.length`
+    // eslint-disable-next-line no-unused-vars
     stringify: function stringify(it, replacer, space) {
       var args = [it];
       var index = 1;
@@ -552,7 +549,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.main-content[data-v-0e4b5362] {\n  margin-right: 70px;\n}\n.page-content[data-v-0e4b5362] {\n  padding: 0 24px 60px 24px !important;\n}\n.footer[data-v-0e4b5362] {\n  left: 0;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.main-content[data-v-0e4b5362] {\n  margin-right: 70px;\n}\n.page-content[data-v-0e4b5362] {\n  padding: 0 24px 60px 24px !important;\n  margin-top: 40px !important;\n}\n.footer[data-v-0e4b5362] {\n  left: 0;\n}\n", ""]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
@@ -757,7 +754,14 @@ var render = function() {
         { staticClass: "d-flex", staticStyle: { position: "relative" } },
         [
           _c("b-img", {
-            attrs: { src: "/images/logo.png", height: "127", alt: "logo" }
+            attrs: {
+              src:
+                "/storage/" +
+                _vm.all_home_round_heats[0][0][0].com_cat_mod_participant
+                  .competition.logo,
+              height: "127",
+              alt: "logo"
+            }
           }),
           _vm._v(" "),
           _c(
@@ -865,7 +869,7 @@ var render = function() {
         1
       ),
       _vm._v(" "),
-      _c("div", { staticClass: "text-center w-100 mt-4" }, [
+      _c("div", { staticClass: "text-center w-100 my-4" }, [
         _c(
           "h4",
           { staticStyle: { background: "#32394e", padding: "10px 0" } },
@@ -895,26 +899,29 @@ var render = function() {
       _vm._l(_vm.all_home_round_heats, function(round, round_index) {
         return _c(
           "div",
-          { key: round_index, staticClass: "row" },
+          { key: round_index, staticClass: "row mb-4" },
           [
             round.length == 1
-              ? _c("h4", { staticClass: "my-4 col-12" }, [_vm._v("FINAL")])
+              ? _c("h4", { staticClass: "mb-4 col-12" }, [_vm._v("FINAL")])
               : round.length == 2
-              ? _c("h4", { staticClass: "my-4 col-12" }, [
+              ? _c("h4", { staticClass: "mb-4 col-12" }, [
                   _vm._v("SEMI FINALS")
                 ])
               : round.length == 3
-              ? _c("h4", { staticClass: "my-4 col-12" }, [
+              ? _c("h4", { staticClass: "mb-4 col-12" }, [
                   _vm._v("QUARTER FINALS")
                 ])
-              : _c("h4", { staticClass: "my-4 col-12" }, [
+              : _c("h4", { staticClass: "mb-4 col-12" }, [
                   _vm._v("ROUND " + _vm._s(round_index + 1))
                 ]),
             _vm._v(" "),
             _vm._l(round, function(heat, heat_index) {
               return _c(
                 "div",
-                { key: heat_index, staticClass: "col-lg-4 col-md-6 col-sm-6" },
+                {
+                  key: heat_index,
+                  staticClass: "col-lg-4 col-md-6 col-sm-6 mb-3"
+                },
                 [
                   _c("div", { staticClass: "table-responsive mb-0" }, [
                     _c("table", { staticClass: "table table-bordered" }, [

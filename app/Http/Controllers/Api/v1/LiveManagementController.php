@@ -116,11 +116,18 @@ class LiveManagementController extends Controller
                                                             ->where('modality_id', $modality->id)->get();
         $round_heats = Round_heat::whereIn('com_cat_mod_participant_id', $com_cat_mod_participant_ids)->get();
         $status = 0;
+        $deleteStatus = true;
         if (count($round_heats) > 0) {
             $status = 2;
             foreach ($round_heats as $round_heat) {
                 if ($round_heat->status != 1) {
                     $status = 1;
+                }
+            }
+            foreach ($round_heats as $round_heat) {
+                if ($round_heat->status != 2) {
+                    $deleteStatus = false;
+                    break;
                 }
             }
         } 
@@ -132,6 +139,7 @@ class LiveManagementController extends Controller
             'modality_id' => $modality->id,
             'competition' => $competition,
             'status' => $status,
+            'deleteStatus' => $deleteStatus,
         ], 200);
     }
 
@@ -242,6 +250,18 @@ class LiveManagementController extends Controller
                 'points' => $points
             ], 200);
         }
+    }
+
+    public function deleteCompetitionBoxes(Request $request)
+    {
+        $com_cat_mod_participant_ids = Com_cat_mod_participant::select('id')->where('competition_id', $request->competitionId)
+                                                            ->where('category_id', $request->categoryId)
+                                                            ->where('modality_id', $request->modalityId)->get();
+        $round_heats = Round_heat::whereIn('com_cat_mod_participant_id', $com_cat_mod_participant_ids)->delete();
+
+        return response()->json([
+            'message' => 'success',
+        ], 200);
     }
 
     public function initCompetitionHeats(Request $request)

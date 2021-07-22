@@ -131,23 +131,25 @@ Route::group([ 'prefix' => 'v1', 'middleware' => 'api'], function(){
         Route::get('competition/category/participant/{participantId}', 'App\Http\Controllers\Api\v1\ManageRankingController@getParticipantCategoryOptions');
 
         // Live Competition Management
-        // /* Get category and modality with part*/
+        /* Get category and modality with part*/
         Route::get('competition/category-modality-participant/{competitionId}', 'App\Http\Controllers\Api\v1\LiveManagementController@getCategoryModalityWithPart');
-        // /* Get Participants by category and modality */
+        /* Get Participants by category and modality */
         Route::post('competition/category-modality/participants', 'App\Http\Controllers\Api\v1\LiveManagementController@getParticipantsByCompetitionCategoryModality');
-        // /* Unregist Participants by category and modality */
+        /* Unregist Participants by category and modality */
         Route::post('competition/category-modality/participant/unregist', 'App\Http\Controllers\Api\v1\LiveManagementController@unregistParticipantToCompetitionCategoryModality');
-        // /* Get Participants by category and modality */
+        /* Create competition boxes */
         Route::post('live-management/competition-box/create', 'App\Http\Controllers\Api\v1\LiveManagementController@createFirstCompetitionBoxes');
-        // /* Get Competition Heats */
+         /* Delete competition boxes */
+         Route::post('live-management/competition-box/delete', 'App\Http\Controllers\Api\v1\LiveManagementController@deleteCompetitionBoxes');
+        /* Get Competition Heats */
         Route::post('live-management/competition-heats', 'App\Http\Controllers\Api\v1\LiveManagementController@initCompetitionHeats');
-        // /* Get Competition Final Results */
+        /* Get Competition Final Results */
         Route::post('live-management/competition-heats/final-results', 'App\Http\Controllers\Api\v1\LiveManagementController@getCompetitionFinalResults');
-        // /* Set Heat Status */
+        /* Set Heat Status */
         Route::post('live-management/competition-heat/progress-status', 'App\Http\Controllers\Api\v1\LiveManagementController@setProgressStatus');
-        // /* Get Competition Heat Details */
+        /* Get Competition Heat Details */
         Route::post('live-management/competition-heat/heat-details', 'App\Http\Controllers\Api\v1\LiveManagementController@initHeatDetails');
-        // /* Store Competition Heat Details */
+        /* Store Competition Heat Details */
         Route::post('live-management/competition-heat/heat-details/store', 'App\Http\Controllers\Api\v1\LiveManagementController@storeFinalHeatResults');
 
         /* Get all participants details*/
