@@ -257,7 +257,7 @@ class LiveManagementController extends Controller
             if (count($round_heats) > 0) {
                 for ($j=1; ;$j++) {
                     $array_heats = [];
-                    $round_heats = Round_heat::whereIn('com_cat_mod_participant_id', $com_cat_mod_participant_ids)->where('round', $i)->where('heat', $j)->get();
+                    $round_heats = Round_heat::whereIn('com_cat_mod_participant_id', $com_cat_mod_participant_ids)->where('round', $i)->where('heat', $j)->orderBy('id')->get();
                     if (count($round_heats) > 0) {
                         foreach ($round_heats as $round_heat) {
                             $round_heat->com_cat_mod_participant->participant;
