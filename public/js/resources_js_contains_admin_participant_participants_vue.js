@@ -55,7 +55,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   page: {
-    title: "FEDERADOS",
+    title: "PALISTAS",
     meta: [{
       name: "description",
       content: _app_config__WEBPACK_IMPORTED_MODULE_4__.description
@@ -67,12 +67,12 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      title: "FEDERADOS",
+      title: "PALISTAS",
       items: [{
         text: "Home",
         href: "/admin/competitions"
       }, {
-        text: "Listado Federados",
+        text: "Listado Fichas Palistas",
         active: true
       }],
       totalRows: 1,
@@ -6979,7 +6979,7 @@ var render = function() {
               },
               [
                 _c("i", { staticClass: "fas fa-plus mr-1" }),
-                _vm._v(" Añadir Ficha\n      ")
+                _vm._v(" Añadir Ficha Palista\n      ")
               ]
             )
           ],
@@ -6992,7 +6992,7 @@ var render = function() {
           _c("div", { staticClass: "card" }, [
             _c("div", { staticClass: "card-body" }, [
               _c("h4", { staticClass: "card-title" }, [
-                _vm._v("Listado Federados")
+                _vm._v("Listado Palistas")
               ]),
               _vm._v(" "),
               _c("p", { staticClass: "card-title-desc" }),
@@ -7211,13 +7211,15 @@ var render = function() {
           attrs: {
             id: "delete-modal",
             centered: "",
-            title: "Eliminar Ficha",
+            title: "Eliminar Ficha Palista",
             "title-class": "font-18",
             "hide-footer": ""
           }
         },
         [
-          _c("p", [_vm._v("¿Está segro de eliminar esta ficha?")]),
+          _c("p", [
+            _vm._v("¿Está segro de eliminar la ficha de este palista?")
+          ]),
           _vm._v(" "),
           _c(
             "footer",
@@ -7469,7 +7471,7 @@ var render = function() {
                     [
                       _c("i", { staticClass: "ti-user" }),
                       _vm._v(" "),
-                      _c("span", [_vm._v("Federados")])
+                      _c("span", [_vm._v("Palistas")])
                     ]
                   )
                 ],

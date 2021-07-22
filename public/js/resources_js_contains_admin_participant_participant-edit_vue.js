@@ -68,7 +68,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   page: {
-    title: "MODIFICAR DATOS",
+    title: "MODIFICAR DATOS PALISTA",
     meta: [{
       name: "description",
       content: _app_config__WEBPACK_IMPORTED_MODULE_6__.description
@@ -82,15 +82,15 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      title: "MODIFICAR DATOS",
+      title: "MODIFICAR DATOS PALISTA",
       items: [{
         text: "Home",
         href: "/admin/competitions"
       }, {
-        text: "Listado Participantes",
+        text: "Listado Palistas",
         href: "/admin/participants"
       }, {
-        text: "Modificar Datos Federado",
+        text: "Modificar Datos Palista",
         active: true
       }],
       lang: {
@@ -7771,7 +7771,13 @@ var render = function() {
                       }),
                       _vm._v(" "),
                       _vm.typesubmit && _vm.$v.typeform.name.$error
-                        ? _c("div", { staticClass: "invalid-feedback" })
+                        ? _c("div", { staticClass: "invalid-feedback" }, [
+                            !_vm.$v.typeform.name.required
+                              ? _c("span", [
+                                  _vm._v("Este Campo es Obligatorio.")
+                                ])
+                              : _vm._e()
+                          ])
                         : _vm._e()
                     ]),
                     _vm._v(" "),
@@ -8249,7 +8255,7 @@ var render = function() {
                     [
                       _c("i", { staticClass: "ti-user" }),
                       _vm._v(" "),
-                      _c("span", [_vm._v("Federados")])
+                      _c("span", [_vm._v("Palistas")])
                     ]
                   )
                 ],

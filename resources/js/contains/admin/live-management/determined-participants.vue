@@ -219,6 +219,9 @@
         }
         return `${label}`
       },
+       refresh() {
+        window.location.reload();
+      }
     }
 	};
 </script>
@@ -341,6 +344,13 @@
       </div>
 
       <div class="col-12 mb-4">
+        <div class="float-left d-flex">
+          <button @click="refresh"
+            class="btn btn-warning ml-lg-4 ml-3"
+          >
+            Actualizar
+          </button>
+        </div>
         <div class="float-right d-flex">
           <button v-if="categoryStatus == 0" @click="createCompetitionBox"
             class="btn btn-info btn-block d-inline-block"

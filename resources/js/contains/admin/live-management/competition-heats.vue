@@ -41,8 +41,8 @@
           })
           .then((res) => {
             this.isFinal = true;
-            this.final_results = this.chunkArray(res.data.final_results, 25)
-            // console.log(this.final_results)
+            this.final_results = this.chunkArray(res.data.final_results, 80)
+            console.log(this.final_results)
           })
         }
       },
@@ -94,7 +94,7 @@
           if (res.data.message == "success") {
             this.$router.push({ name: 'CompetitionHeatDetails', params: {competitionId: this.competitionId, categoryId: this.categoryId, modalityId: this.modalityId, round: round, heat: heat} })
           } else {
-            this.$toastr.warning('No more boxes could be active until the active one goes to FINISH STATE', '', {timeout: 5000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
+            this.$toastr.warning('No se puede empezar otra manga hasta terminar la que ya está empezada. Revisa el listado de categorías para detectar la manga activa.', '', {timeout: 5000,closeButton: true,closeMethod: 'fadeOut',closeDuration: 300});
           }
         }) 
       },
@@ -341,13 +341,21 @@
       </section>
     </vue-html2pdf>
 
+    <div class="text-left my-2">
+     <button @click="back"
+        class="btn btn-secondary"
+        style="width: 10%;position: absolute;left: 95px;"
+      >
+        Volver
+      </button>
+    </div>
     <div class="text-right my-2">
       <button @click="printCompetitionHeats"
         class="btn btn-sm btn-primary"
       >
         Imprimir Mangas
       </button>
-      <button v-if="isFinal&&all_round_heats[0][0][0].com_cat_mod_participant.competition.ranking_score=='Si'" @click="printCompetitionFinalResults"
+      <button @click="printCompetitionFinalResults"
         class="btn btn-sm btn-info"
       >
         Imprimir Clasificación

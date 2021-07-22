@@ -82,15 +82,15 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      title: "CREAR FICHA",
+      title: "CREAR FICHA PALISTA",
       items: [{
         text: "Home",
         href: "/admin/competitions"
       }, {
-        text: "Listado Federados",
+        text: "Listado Palistas",
         href: "/admin/participants"
       }, {
-        text: "Crear Ficha",
+        text: "Crear Ficha Palista",
         active: true
       }],
       lang: {
@@ -8231,7 +8231,7 @@ var render = function() {
                     [
                       _c("i", { staticClass: "ti-user" }),
                       _vm._v(" "),
-                      _c("span", [_vm._v("Federados")])
+                      _c("span", [_vm._v("Palistas")])
                     ]
                   )
                 ],

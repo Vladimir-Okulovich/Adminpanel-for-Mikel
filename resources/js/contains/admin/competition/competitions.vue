@@ -79,10 +79,13 @@
       setId(id) {
         this.deletingId = id;
       },
-      realDelete() {
-        this.deleteCompetition(this.deletingId);
-        this.$bvModal.hide('delete-modal');
-      },
+      /**
+       * quito la funcion de eliminar competiciones.
+       */
+      //realDelete() {
+      //  this.deleteCompetition(this.deletingId);
+      //  this.$bvModal.hide('delete-modal');
+     // },
       // rowClicked(item, index, event) {
       //   // console.log(item.status.name)
       //   if (item.status.name == "REGISTRATION OPEN") {
@@ -183,9 +186,11 @@
                   <router-link to="#" class="btn btn-sm btn-secondary disabled" v-else>
                     <i class="fas fa-user-plus"></i>
                   </router-link>
-                  <b-button size="sm" @click="setId(row.item.id)" v-b-modal.delete-modal v-b-tooltip.hover.top="'Eliminar'">
+                 <!-- No mostramos el botón eliminar competición para que no se borren por error. 
+                 <b-button size="sm" @click="setId(row.item.id)" v-b-modal.delete-modal v-b-tooltip.hover.top="'Eliminar'">
                     <i class="fas fa-trash"></i>
                   </b-button>
+                -->
                 </template>
               </b-table>
             </div>
@@ -203,7 +208,7 @@
         </div>
       </div>
     </div>
-
+    <!-- SI no hay botón neliminar no hace falta la ventana qeu pregunta 
     <b-modal
       id="delete-modal"
       centered
@@ -217,6 +222,7 @@
         <button type="button" class="btn btn-primary" @click="realDelete()">OK</button>
       </footer>
     </b-modal>
+     -->
   </Layout>
 </template>
 <style scoped>

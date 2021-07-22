@@ -144,11 +144,15 @@ __webpack_require__.r(__webpack_exports__);
     },
     setId: function setId(id) {
       this.deletingId = id;
-    },
-    realDelete: function realDelete() {
-      this.deleteCompetition(this.deletingId);
-      this.$bvModal.hide('delete-modal');
-    } // rowClicked(item, index, event) {
+    }
+    /**
+     * quito la funcion de eliminar competiciones.
+     */
+    //realDelete() {
+    //  this.deleteCompetition(this.deletingId);
+    //  this.$bvModal.hide('delete-modal');
+    // },
+    // rowClicked(item, index, event) {
     //   // console.log(item.status.name)
     //   if (item.status.name == "REGISTRATION OPEN") {
     //     this.$router.push({name: "CompetitionParticipantCreate", params: { competitionId: item.id }});
@@ -7371,34 +7375,7 @@ var render = function() {
                                     attrs: { to: "#" }
                                   },
                                   [_c("i", { staticClass: "fas fa-user-plus" })]
-                                ),
-                            _vm._v(" "),
-                            _c(
-                              "b-button",
-                              {
-                                directives: [
-                                  {
-                                    name: "b-modal",
-                                    rawName: "v-b-modal.delete-modal",
-                                    modifiers: { "delete-modal": true }
-                                  },
-                                  {
-                                    name: "b-tooltip",
-                                    rawName: "v-b-tooltip.hover.top",
-                                    value: "Eliminar",
-                                    expression: "'Eliminar'",
-                                    modifiers: { hover: true, top: true }
-                                  }
-                                ],
-                                attrs: { size: "sm" },
-                                on: {
-                                  click: function($event) {
-                                    return _vm.setId(row.item.id)
-                                  }
-                                }
-                              },
-                              [_c("i", { staticClass: "fas fa-trash" })]
-                            )
+                                )
                           ]
                         }
                       }
@@ -7444,60 +7421,7 @@ var render = function() {
             ])
           ])
         ])
-      ]),
-      _vm._v(" "),
-      _c(
-        "b-modal",
-        {
-          attrs: {
-            id: "delete-modal",
-            centered: "",
-            title: "Eliminar Competición",
-            "title-class": "font-18",
-            "hide-footer": ""
-          }
-        },
-        [
-          _c("p", [_vm._v("¿Está seguro de eliminar esta competición?")]),
-          _vm._v(" "),
-          _c(
-            "footer",
-            {
-              staticClass: "modal-footer",
-              attrs: { id: "delete-modal___BV_modal_footer_" }
-            },
-            [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-secondary",
-                  attrs: { type: "button" },
-                  on: {
-                    click: function($event) {
-                      return _vm.$bvModal.hide("delete-modal")
-                    }
-                  }
-                },
-                [_vm._v("Cancelar")]
-              ),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-primary",
-                  attrs: { type: "button" },
-                  on: {
-                    click: function($event) {
-                      return _vm.realDelete()
-                    }
-                  }
-                },
-                [_vm._v("OK")]
-              )
-            ]
-          )
-        ]
-      )
+      ])
     ],
     1
   )
@@ -7710,7 +7634,7 @@ var render = function() {
                     [
                       _c("i", { staticClass: "ti-user" }),
                       _vm._v(" "),
-                      _c("span", [_vm._v("Federados")])
+                      _c("span", [_vm._v("Palistas")])
                     ]
                   )
                 ],

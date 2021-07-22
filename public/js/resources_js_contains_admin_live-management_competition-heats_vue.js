@@ -99,7 +99,8 @@ __webpack_require__.r(__webpack_exports__);
           modalityId: this.$route.params.modalityId
         }).then(function (res) {
           _this.isFinal = true;
-          _this.final_results = _this.chunkArray(res.data.final_results, 25); // console.log(this.final_results)
+          _this.final_results = _this.chunkArray(res.data.final_results, 80);
+          console.log(_this.final_results);
         });
       }
     }
@@ -153,7 +154,7 @@ __webpack_require__.r(__webpack_exports__);
             }
           });
         } else {
-          _this2.$toastr.warning('No more boxes could be active until the active one goes to FINISH STATE', '', {
+          _this2.$toastr.warning('No se puede empezar otra manga hasta terminar la que ya está empezada. Revisa el listado de categorías para detectar la manga activa.', '', {
             timeout: 5000,
             closeButton: true,
             closeMethod: 'fadeOut',
@@ -20232,6 +20233,18 @@ var render = function() {
         ]
       ),
       _vm._v(" "),
+      _c("div", { staticClass: "text-left my-2" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-secondary",
+            staticStyle: { width: "10%", position: "absolute", left: "95px" },
+            on: { click: _vm.back }
+          },
+          [_vm._v("\n      Volver\n    ")]
+        )
+      ]),
+      _vm._v(" "),
       _c("div", { staticClass: "text-right my-2" }, [
         _c(
           "button",
@@ -20242,18 +20255,14 @@ var render = function() {
           [_vm._v("\n      Imprimir Mangas\n    ")]
         ),
         _vm._v(" "),
-        _vm.isFinal &&
-        _vm.all_round_heats[0][0][0].com_cat_mod_participant.competition
-          .ranking_score == "Si"
-          ? _c(
-              "button",
-              {
-                staticClass: "btn btn-sm btn-info",
-                on: { click: _vm.printCompetitionFinalResults }
-              },
-              [_vm._v("\n      Imprimir Clasificación\n    ")]
-            )
-          : _vm._e()
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-sm btn-info",
+            on: { click: _vm.printCompetitionFinalResults }
+          },
+          [_vm._v("\n      Imprimir Clasificación\n    ")]
+        )
       ])
     ],
     1
@@ -20467,7 +20476,7 @@ var render = function() {
                     [
                       _c("i", { staticClass: "ti-user" }),
                       _vm._v(" "),
-                      _c("span", [_vm._v("Federados")])
+                      _c("span", [_vm._v("Palistas")])
                     ]
                   )
                 ],

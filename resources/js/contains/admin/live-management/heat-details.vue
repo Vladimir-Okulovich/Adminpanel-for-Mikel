@@ -125,6 +125,9 @@
       back() {
         this.$router.go(-1);
       },
+       refresh() {
+        window.location.reload();
+      }
     }
 	};
 </script>
@@ -180,6 +183,11 @@
             >
              Terminar Manga
             </button>
+            <button @click="refresh"
+            class="btn btn-warning"
+          >
+            Recibir Datos Juez
+          </button>
             <button @click="saveResults"
               class="btn btn-orange"
             >
@@ -240,6 +248,11 @@
             class="btn btn-info"
           >
             Terminar Manga
+          </button>
+          <button @click="refresh"
+            class="btn btn-warning"
+          >
+            Recibir Datos Juez
           </button>
           <button @click="saveResults"
             class="btn btn-orange"
