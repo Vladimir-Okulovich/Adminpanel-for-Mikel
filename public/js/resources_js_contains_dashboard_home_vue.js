@@ -911,14 +911,14 @@ var render = function() {
                   ? _c("h4", { staticClass: "mb-4 col-12" }, [_vm._v("FINAL")])
                   : round.length == 2
                   ? _c("h4", { staticClass: "mb-4 col-12" }, [
-                      _vm._v("SEMI FINALS")
+                      _vm._v("SEMI FINALES")
                     ])
                   : round.length == 3
                   ? _c("h4", { staticClass: "mb-4 col-12" }, [
-                      _vm._v("QUARTER FINALS")
+                      _vm._v("CUARTOS DE FINAL")
                     ])
                   : _c("h4", { staticClass: "mb-4 col-12" }, [
-                      _vm._v("ROUND " + _vm._s(round_index + 1))
+                      _vm._v("RONDA " + _vm._s(round_index + 1))
                     ]),
                 _vm._v(" "),
                 _vm._l(round, function(heat, heat_index) {
@@ -958,7 +958,7 @@ var render = function() {
                                       },
                                       [
                                         _vm._v(
-                                          "\n                Final Heat\n              "
+                                          "\n                Manga Final\n              "
                                         )
                                       ]
                                     )
@@ -978,7 +978,7 @@ var render = function() {
                                       },
                                       [
                                         _vm._v(
-                                          "\n                Semi Finals Heat " +
+                                          "\n                Semi Finals Manga " +
                                             _vm._s(heat_index + 1) +
                                             "\n              "
                                         )
@@ -1000,7 +1000,7 @@ var render = function() {
                                       },
                                       [
                                         _vm._v(
-                                          "\n                Quarter Finals Heat " +
+                                          "\n                Cuartos de Final Manga " +
                                             _vm._s(heat_index + 1) +
                                             "\n              "
                                         )
@@ -1021,9 +1021,9 @@ var render = function() {
                                       },
                                       [
                                         _vm._v(
-                                          "\n                Round " +
+                                          "\n                Ronda " +
                                             _vm._s(round_index + 1) +
-                                            " Heat " +
+                                            " Manga " +
                                             _vm._s(heat_index + 1) +
                                             "\n              "
                                         )
@@ -1035,11 +1035,11 @@ var render = function() {
                             _c("tr", { staticClass: "thead-light" }, [
                               _c("th"),
                               _vm._v(" "),
-                              _c("th", [_vm._v("Participant")]),
+                              _c("th", [_vm._v("Participante")]),
                               _vm._v(" "),
-                              _c("th", [_vm._v("Points")]),
+                              _c("th", [_vm._v("Puntos")]),
                               _vm._v(" "),
-                              _c("th", [_vm._v("Position")])
+                              _c("th", [_vm._v("Posicion")])
                             ])
                           ]),
                           _vm._v(" "),
