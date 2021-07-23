@@ -34,8 +34,12 @@ Route::group([ 'prefix' => 'v1', 'middleware' => 'api'], function(){
     // Get auth user
     Route::get('token/validate', 'App\Http\Controllers\Api\v1\AuthController@auth');
 
+    // /* Get Competition */
+    Route::get('home/{competitionId}', 'App\Http\Controllers\Api\v1\LiveManagementController@initHome');
     // /* Get Competition Heats */
-    Route::post('competition-heats', 'App\Http\Controllers\Api\v1\LiveManagementController@initCompetitionHeats');
+    Route::post('home/competition-heats', 'App\Http\Controllers\Api\v1\LiveManagementController@getCompetitionHeats');
+    /* Get Competition Heat Details */
+    Route::post('competition-heat/heat-details', 'App\Http\Controllers\Api\v1\LiveManagementController@initHeatDetails');
 
     //Admin actions
     Route::group([ 'prefix' => 'admin', 'middleware' => 'isadmin' ], function(){
@@ -147,8 +151,6 @@ Route::group([ 'prefix' => 'v1', 'middleware' => 'api'], function(){
         Route::post('live-management/competition-heats/final-results', 'App\Http\Controllers\Api\v1\LiveManagementController@getCompetitionFinalResults');
         /* Set Heat Status */
         Route::post('live-management/competition-heat/progress-status', 'App\Http\Controllers\Api\v1\LiveManagementController@setProgressStatus');
-        /* Get Competition Heat Details */
-        Route::post('live-management/competition-heat/heat-details', 'App\Http\Controllers\Api\v1\LiveManagementController@initHeatDetails');
         /* Store Competition Heat Details */
         Route::post('live-management/competition-heat/heat-details/store', 'App\Http\Controllers\Api\v1\LiveManagementController@storeFinalHeatResults');
 

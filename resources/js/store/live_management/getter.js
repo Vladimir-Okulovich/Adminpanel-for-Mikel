@@ -29,9 +29,6 @@ const getters = {
     deleteStatus(state) {
         return state.deleteStatus;
     },
-    all_home_round_heats(state) {
-        return state.all_home_round_heats;
-    },
   };
   
   export default getters;

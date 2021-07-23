@@ -159,9 +159,9 @@
         {{ round_heats[0].com_cat_mod_participant.modality.name }}
         <span style="font-size: 16px;">(Ronda {{ round }} Manga {{ heat }})</span>
       </h4>
-      <div style="position: absolute;right: 20px;bottom: 0;">
+      <div style="position: absolute;right: 0px;bottom: 0;">
         <button @click="printHeatDetails"
-          class="btn btn-info mr-2"
+          class="btn btn-primary mr-2"
         >
           Imprimir
         </button>
@@ -314,9 +314,9 @@
           </div>
 
           <div class="row mt-4">
-            <div class="col-lg-8 col-md-9 col-sm-12">
+            <div class="col-lg-9 col-md-10 col-sm-12">
               <div class="table-responsive mb-0">
-                <table class="table table-bordered" style="font-size: 19px;">
+                <table class="table table-bordered text-center" style="font-size: 19px;">
                   <thead>
                     <tr class="">
                       <th>Lycra</th>
@@ -347,7 +347,7 @@
 
             <div class="col-12 mt-4">
               <div class="table-responsive mb-0">
-                <table class="table table-bordered table-sm text-center" style="font-size: 20px;">
+                <table class="table table-bordered text-center" style="font-size: 20px;">
                   <thead class="">
                     <tr>
                       <th rowspan="2">PARTICIPANTE</th>

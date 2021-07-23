@@ -223,13 +223,16 @@ __webpack_require__.r(__webpack_exports__);
         modality: this.edit_modalities,
         category: this.edit_categories
       }).then(function (res) {
-        _this3.$bvModal.hide('edit-modal'); // window.location.reload();
+        _this3.$bvModal.hide('edit-modal');
 
-
-        _this3.getParticipantsByCompetitionCategoryModality({
-          competitionId: _this3.$route.params.competitionId,
-          categoryModality: _this3.categoryModality.label
-        });
+        if (res.data.participants_competition_category_modality.length == 0) {
+          _this3.refresh();
+        } else {
+          _this3.getParticipantsByCompetitionCategoryModality({
+            competitionId: _this3.$route.params.competitionId,
+            categoryModality: _this3.categoryModality.label
+          });
+        }
       });
     },
     unregisterParticipant: function unregisterParticipant() {
@@ -240,8 +243,7 @@ __webpack_require__.r(__webpack_exports__);
         participantId: this.participantId,
         categoryModality: this.categoryModality.label
       }).then(function (res) {
-        _this4.$bvModal.hide('unregister-modal'); // console.log(res)
-
+        _this4.$bvModal.hide('unregister-modal');
 
         if (res.data.participants_competition_category_modality.length == 0) {
           _this4.refresh();
@@ -7512,11 +7514,23 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "float-right d-flex" }, [
-            _vm.categoryStatus == 0
+            _vm.deleteStatus && _vm.categoryStatus == 1
               ? _c(
                   "button",
                   {
-                    staticClass: "btn btn-info btn-block d-inline-block",
+                    staticClass: "btn btn-info mr-lg-2 mr-1",
+                    on: { click: _vm.deleteCompetitionBox }
+                  },
+                  [_vm._v("\n          Eliminar Cuadro\n        ")]
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.categoryStatus == 0 &&
+            _vm.ParticipantsByCompetitionCategoryModality.length != 1
+              ? _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-info",
                     on: { click: _vm.createCompetitionBox }
                   },
                   [_vm._v("\n          Crear Cuadro Competición\n        ")]
@@ -7525,7 +7539,7 @@ var render = function() {
               ? _c(
                   "button",
                   {
-                    staticClass: "btn btn-success btn-block d-inline-block",
+                    staticClass: "btn btn-success",
                     on: { click: _vm.createCompetitionBox }
                   },
                   [
@@ -7534,19 +7548,21 @@ var render = function() {
                     )
                   ]
                 )
-              : _c(
+              : _vm.categoryStatus == 2
+              ? _c(
                   "button",
                   {
-                    staticClass: "btn btn-danger btn-block d-inline-block",
+                    staticClass: "btn btn-danger",
                     on: { click: _vm.createCompetitionBox }
                   },
                   [_vm._v("\n          Ver Cuadro finalizado\n        ")]
-                ),
+                )
+              : _vm._e(),
             _vm._v(" "),
             _c(
               "button",
               {
-                staticClass: "btn btn-secondary ml-lg-4 ml-3",
+                staticClass: "btn btn-secondary ml-lg-2 ml-1",
                 on: { click: _vm.back }
               },
               [_vm._v("\n          Volver\n        ")]

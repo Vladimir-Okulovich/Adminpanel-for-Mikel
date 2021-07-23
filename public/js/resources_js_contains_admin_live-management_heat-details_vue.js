@@ -19466,13 +19466,13 @@ var render = function() {
           _c(
             "div",
             {
-              staticStyle: { position: "absolute", right: "20px", bottom: "0" }
+              staticStyle: { position: "absolute", right: "0px", bottom: "0" }
             },
             [
               _c(
                 "button",
                 {
-                  staticClass: "btn btn-info mr-2",
+                  staticClass: "btn btn-primary mr-2",
                   on: { click: _vm.printHeatDetails }
                 },
                 [_vm._v("\n        Imprimir\n      ")]
@@ -20284,12 +20284,12 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "row mt-4" }, [
-                  _c("div", { staticClass: "col-lg-8 col-md-9 col-sm-12" }, [
+                  _c("div", { staticClass: "col-lg-9 col-md-10 col-sm-12" }, [
                     _c("div", { staticClass: "table-responsive mb-0" }, [
                       _c(
                         "table",
                         {
-                          staticClass: "table table-bordered",
+                          staticClass: "table table-bordered text-center",
                           staticStyle: { "font-size": "19px" }
                         },
                         [
@@ -20448,8 +20448,7 @@ var render = function() {
                       _c(
                         "table",
                         {
-                          staticClass:
-                            "table table-bordered table-sm text-center",
+                          staticClass: "table table-bordered text-center",
                           staticStyle: { "font-size": "20px" }
                         },
                         [

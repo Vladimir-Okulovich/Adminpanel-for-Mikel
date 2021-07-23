@@ -24,7 +24,7 @@ class LiveManagementController extends Controller
 {
     //
     public function __construct() {
-        $this->middleware('auth:api', ['except' => ['initCompetitionHeats']]);
+        $this->middleware('auth:api', ['except' => ['initHome', 'getCompetitionHeats', 'initHeatDetails']]);
     }
     /**
      * Response all data
@@ -261,6 +261,78 @@ class LiveManagementController extends Controller
 
         return response()->json([
             'message' => 'success',
+        ], 200);
+    }
+
+    public function initHome($competitionId)
+    {
+        $category_modality = [];
+        $competition = Competition::find($competitionId);
+        $categories = Category::all();
+        $modalities = Modality::all();
+        foreach ($categories as $category) {
+            $category->sex;
+            foreach ($modalities as $modality) {
+                $com_cat_mod_participant_ids = Com_cat_mod_participant::select('id')->where('competition_id', $competitionId)
+                                        ->where('category_id', $category->id)
+                                        ->where('modality_id', $modality->id)->get();
+                if (count($com_cat_mod_participant_ids) > 0) {
+                    $round_heats = Round_heat::whereIn('com_cat_mod_participant_id', $com_cat_mod_participant_ids)->get();
+                    if (count($round_heats) > 0) {
+                        array_push($category_modality, $category->name." ".$category->sex->name." ".$modality->name);
+                    }
+                }
+            }
+        }
+
+        return response()->json([
+            'message' => 'success',
+            'competition' => $competition,
+            'category_modality' => $category_modality,
+        ], 200);
+    }
+
+    public function getCompetitionHeats(Request $request)
+    {
+        $str = explode(" ", $request->categoryModality);
+        $sex = Sex::where('name', $str[1])->first();
+        $category = Category::where('name', $str[0])->where('sex_id', $sex->id)->first();
+        $modality = Modality::where('name', $str[2])->first();
+        $com_cat_mod_participant_ids = Com_cat_mod_participant::select('id')->where('competition_id', $request->competitionId)
+                                                            ->where('category_id', $category->id)
+                                                            ->where('modality_id', $modality->id)->get();
+
+        $all_round_heats = [];
+        for ($i=1; ;$i++) {
+            $array_rounds = [];
+            $round_heats = Round_heat::whereIn('com_cat_mod_participant_id', $com_cat_mod_participant_ids)->where('round', $i)->get();
+            if (count($round_heats) > 0) {
+                for ($j=1; ;$j++) {
+                    $array_heats = [];
+                    $round_heats = Round_heat::whereIn('com_cat_mod_participant_id', $com_cat_mod_participant_ids)->where('round', $i)->where('heat', $j)->get();
+                    if (count($round_heats) > 0) {
+                        foreach ($round_heats as $round_heat) {
+                            $round_heat->com_cat_mod_participant->participant;
+                            $round_heat->com_cat_mod_participant->competition;
+                            $round_heat->com_cat_mod_participant->category->sex;
+                            $round_heat->com_cat_mod_participant->modality;
+                            $round_heat->lycra;
+                            array_push($array_heats, $round_heat);
+                        }
+                    } else {
+                        break;
+                    }
+                    array_push($array_rounds, $array_heats);
+                }
+            } else {
+                break;
+            }
+            array_push($all_round_heats, $array_rounds);
+        }
+
+        return response()->json([
+            'message' => 'success',
+            'all_round_heats' => $all_round_heats,
         ], 200);
     }
 
