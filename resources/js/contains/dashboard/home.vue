@@ -51,7 +51,7 @@
   <Layout>
     <div class="d-flex" style="position: relative;">
       <b-img
-        :src="'/images/logo.png'"
+        :src="'/storage/'+all_home_round_heats[0][0][0].com_cat_mod_participant.competition.logo"
         height="127"
         alt="logo"
       ></b-img>
@@ -74,7 +74,7 @@
       </button>
     </div>
 
-    <div class="text-center w-100 mt-4">
+    <div class="text-center w-100 my-4">
       <h4 style="background: #32394e;padding: 10px 0;">
         {{ all_home_round_heats[0][0][0].com_cat_mod_participant.category.name }}
         {{ all_home_round_heats[0][0][0].com_cat_mod_participant.category.sex.name }}
@@ -82,12 +82,12 @@
       </h4>
     </div>
 
-    <div class="row" v-for="(round, round_index) in all_home_round_heats" :key="round_index">
-      <h4 class="my-4 col-12" v-if="round.length == 1">FINAL</h4>
-      <h4 class="my-4 col-12" v-else-if="round.length == 2">SEMI FINALS</h4>
-      <h4 class="my-4 col-12" v-else-if="round.length == 3">QUARTER FINALS</h4>
-      <h4 class="my-4 col-12" v-else>ROUND {{ round_index+1 }}</h4>
-      <div class="col-lg-4 col-md-6 col-sm-6" v-for="(heat, heat_index) in round" :key="heat_index">
+    <div class="row mb-4" v-for="(round, round_index) in all_home_round_heats" :key="round_index">
+      <h4 class="mb-4 col-12" v-if="round.length == 1">FINAL</h4>
+      <h4 class="mb-4 col-12" v-else-if="round.length == 2">SEMI FINALS</h4>
+      <h4 class="mb-4 col-12" v-else-if="round.length == 3">QUARTER FINALS</h4>
+      <h4 class="mb-4 col-12" v-else>ROUND {{ round_index+1 }}</h4>
+      <div class="col-lg-4 col-md-6 col-sm-6 mb-3" v-for="(heat, heat_index) in round" :key="heat_index">
         <div class="table-responsive mb-0">
           <table class="table table-bordered">
             <thead>

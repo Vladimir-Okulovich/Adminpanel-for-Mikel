@@ -3,8 +3,6 @@
 	import appConfig from "@/app.config";
   import PageHeader from "@/components/page-header";
   import jsPDF from 'jspdf'
-  // import html2canvas from "html2canvas"
-  // import html2pdf from 'html2pdf.js'
   import VueHtml2pdf from 'vue-html2pdf'
 
   import { mapActions, mapGetters } from 'vuex';
@@ -41,7 +39,7 @@
           })
           .then((res) => {
             this.isFinal = true;
-            this.final_results = this.chunkArray(res.data.final_results, 80)
+            this.final_results = res.data.final_results
             console.log(this.final_results)
           })
         }
@@ -119,22 +117,14 @@
       },
       printCompetitionFinalResults() {
         var pdf = new jsPDF('p', 'mm', 'a4');
-        var element_0 = document.getElementById('competition_final_results_0');
-        const e_width = element_0.offsetWidth;
+        var element = document.getElementById('competition_final_results');
+        const e_width = element.offsetWidth;
         const pdfWidth = pdf.internal.pageSize.getWidth();
-        const pdfHeight = pdf.internal.pageSize.getHeight();
-        // console.log(e_height*(pdfWidth-16)/e_width)
-        pdf.html(element_0, {
+        pdf.html(element, {
           x: 8,
           y: 8,
           callback: function (pdf) {
-            // pdf.html(element_1, {
-              // x: 8,
-              // y: pdfHeight+8,
-              // callback: function (pdf) {
-                window.open(pdf.output('bloburl'));
-              // },
-            // });
+            window.open(pdf.output('bloburl'));
           },
           html2canvas: {
             scale: (pdfWidth-16)/e_width,
@@ -315,12 +305,12 @@
       ref="html2PdfFinal"
     >
       <section slot="pdf-content">
-        <div v-for="(final_result, index_1) in final_results" :key="index_1" :id="'competition_final_results_'+index_1" class="competition_final_results table-responsive table-bordered">
+        <div v-if="final_results.length > 0" id="competition_final_results" class="competition_final_results table-responsive table-bordered">
           <table class="table table-responsive-sm mb-0">
             <thead>
               <tr class="text-center" style="background: #b8e6e2;font-size: 24px;">
                 <th colspan="3">
-                  {{final_results[0][0].category.name+' '+final_results[0][0].category.sex.name+' '+final_results[0][0].modality.name+' '+final_results[0][0].competition.title}}
+                  {{final_results[0].category.name+' '+final_results[0].category.sex.name+' '+final_results[0].modality.name+' '+final_results[0].competition.title}}
                 </th>
               </tr>
               <tr>
@@ -330,7 +320,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="(row, index_2) in final_result" :key="index_2">
+              <tr v-for="(row, index) in final_results" :key="index">
                 <td>{{ row.ranking }}</td>
                 <td>{{ row.participant.name+' '+row.participant.surname }}</td>
                 <td>{{ row.ranking_points }}</td>
@@ -341,25 +331,26 @@
       </section>
     </vue-html2pdf>
 
-    <div class="text-left my-2">
-     <button @click="back"
+    <div class="d-flex justify-content-between align-items-center my-2">
+      <button @click="back"
         class="btn btn-secondary"
-        style="width: 10%;position: absolute;left: 95px;"
+        style="width: 10%;"
       >
         Volver
       </button>
-    </div>
-    <div class="text-right my-2">
-      <button @click="printCompetitionHeats"
-        class="btn btn-sm btn-primary"
-      >
-        Imprimir Mangas
-      </button>
-      <button @click="printCompetitionFinalResults"
-        class="btn btn-sm btn-info"
-      >
-        Imprimir Clasificación
-      </button>
+      <div>
+        <button @click="printCompetitionHeats"
+          class="btn btn-sm btn-primary"
+        >
+          Imprimir Mangas
+        </button>
+        <button @click="printCompetitionFinalResults"
+          class="btn btn-sm btn-info"
+          v-if="isFinal"
+        >
+          Imprimir Clasificación
+        </button>
+      </div>
     </div>
   </Layout>
 </template>

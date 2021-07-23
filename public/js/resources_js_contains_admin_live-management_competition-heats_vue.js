@@ -57,8 +57,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
- // import html2canvas from "html2canvas"
-// import html2pdf from 'html2pdf.js'
 
 
 
@@ -99,7 +97,7 @@ __webpack_require__.r(__webpack_exports__);
           modalityId: this.$route.params.modalityId
         }).then(function (res) {
           _this.isFinal = true;
-          _this.final_results = _this.chunkArray(res.data.final_results, 80);
+          _this.final_results = res.data.final_results;
           console.log(_this.final_results);
         });
       }
@@ -184,21 +182,14 @@ __webpack_require__.r(__webpack_exports__);
     },
     printCompetitionFinalResults: function printCompetitionFinalResults() {
       var pdf = new jspdf__WEBPACK_IMPORTED_MODULE_7__.default('p', 'mm', 'a4');
-      var element_0 = document.getElementById('competition_final_results_0');
-      var e_width = element_0.offsetWidth;
+      var element = document.getElementById('competition_final_results');
+      var e_width = element.offsetWidth;
       var pdfWidth = pdf.internal.pageSize.getWidth();
-      var pdfHeight = pdf.internal.pageSize.getHeight(); // console.log(e_height*(pdfWidth-16)/e_width)
-
-      pdf.html(element_0, {
+      pdf.html(element, {
         x: 8,
         y: 8,
         callback: function callback(pdf) {
-          // pdf.html(element_1, {
-          // x: 8,
-          // y: pdfHeight+8,
-          // callback: function (pdf) {
-          window.open(pdf.output('bloburl')); // },
-          // });
+          window.open(pdf.output('bloburl'));
         },
         html2canvas: {
           scale: (pdfWidth - 16) / e_width
@@ -20149,121 +20140,129 @@ var render = function() {
           _c(
             "section",
             { attrs: { slot: "pdf-content" }, slot: "pdf-content" },
-            _vm._l(_vm.final_results, function(final_result, index_1) {
-              return _c(
-                "div",
-                {
-                  key: index_1,
-                  staticClass:
-                    "competition_final_results table-responsive table-bordered",
-                  attrs: { id: "competition_final_results_" + index_1 }
-                },
-                [
-                  _c(
-                    "table",
-                    { staticClass: "table table-responsive-sm mb-0" },
+            [
+              _vm.final_results.length > 0
+                ? _c(
+                    "div",
+                    {
+                      staticClass:
+                        "competition_final_results table-responsive table-bordered",
+                      attrs: { id: "competition_final_results" }
+                    },
                     [
-                      _c("thead", [
-                        _c(
-                          "tr",
-                          {
-                            staticClass: "text-center",
-                            staticStyle: {
-                              background: "#b8e6e2",
-                              "font-size": "24px"
-                            }
-                          },
-                          [
-                            _c("th", { attrs: { colspan: "3" } }, [
-                              _vm._v(
-                                "\n                " +
-                                  _vm._s(
-                                    _vm.final_results[0][0].category.name +
-                                      " " +
-                                      _vm.final_results[0][0].category.sex
-                                        .name +
-                                      " " +
-                                      _vm.final_results[0][0].modality.name +
-                                      " " +
-                                      _vm.final_results[0][0].competition.title
-                                  ) +
-                                  "\n              "
-                              )
-                            ])
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c("tr", [
-                          _c("th", [_vm._v("Posición")]),
-                          _vm._v(" "),
-                          _c("th", [_vm._v("Participante")]),
-                          _vm._v(" "),
-                          _c("th", [_vm._v("Pts. Ranking Obtenidos")])
-                        ])
-                      ]),
-                      _vm._v(" "),
                       _c(
-                        "tbody",
-                        _vm._l(final_result, function(row, index_2) {
-                          return _c("tr", { key: index_2 }, [
-                            _c("td", [_vm._v(_vm._s(row.ranking))]),
+                        "table",
+                        { staticClass: "table table-responsive-sm mb-0" },
+                        [
+                          _c("thead", [
+                            _c(
+                              "tr",
+                              {
+                                staticClass: "text-center",
+                                staticStyle: {
+                                  background: "#b8e6e2",
+                                  "font-size": "24px"
+                                }
+                              },
+                              [
+                                _c("th", { attrs: { colspan: "3" } }, [
+                                  _vm._v(
+                                    "\n                " +
+                                      _vm._s(
+                                        _vm.final_results[0].category.name +
+                                          " " +
+                                          _vm.final_results[0].category.sex
+                                            .name +
+                                          " " +
+                                          _vm.final_results[0].modality.name +
+                                          " " +
+                                          _vm.final_results[0].competition.title
+                                      ) +
+                                      "\n              "
+                                  )
+                                ])
+                              ]
+                            ),
                             _vm._v(" "),
-                            _c("td", [
-                              _vm._v(
-                                _vm._s(
-                                  row.participant.name +
-                                    " " +
-                                    row.participant.surname
-                                )
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("td", [_vm._v(_vm._s(row.ranking_points))])
-                          ])
-                        }),
-                        0
+                            _c("tr", [
+                              _c("th", [_vm._v("Posición")]),
+                              _vm._v(" "),
+                              _c("th", [_vm._v("Participante")]),
+                              _vm._v(" "),
+                              _c("th", [_vm._v("Pts. Ranking Obtenidos")])
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "tbody",
+                            _vm._l(_vm.final_results, function(row, index) {
+                              return _c("tr", { key: index }, [
+                                _c("td", [_vm._v(_vm._s(row.ranking))]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _vm._v(
+                                    _vm._s(
+                                      row.participant.name +
+                                        " " +
+                                        row.participant.surname
+                                    )
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v(_vm._s(row.ranking_points))])
+                              ])
+                            }),
+                            0
+                          )
+                        ]
                       )
                     ]
                   )
-                ]
-              )
-            }),
-            0
+                : _vm._e()
+            ]
           )
         ]
       ),
       _vm._v(" "),
-      _c("div", { staticClass: "text-left my-2" }, [
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-secondary",
-            staticStyle: { width: "10%", position: "absolute", left: "95px" },
-            on: { click: _vm.back }
-          },
-          [_vm._v("\n      Volver\n    ")]
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "text-right my-2" }, [
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-sm btn-primary",
-            on: { click: _vm.printCompetitionHeats }
-          },
-          [_vm._v("\n      Imprimir Mangas\n    ")]
-        ),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-sm btn-info",
-            on: { click: _vm.printCompetitionFinalResults }
-          },
-          [_vm._v("\n      Imprimir Clasificación\n    ")]
-        )
-      ])
+      _c(
+        "div",
+        {
+          staticClass: "d-flex justify-content-between align-items-center my-2"
+        },
+        [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-secondary",
+              staticStyle: { width: "10%" },
+              on: { click: _vm.back }
+            },
+            [_vm._v("\n      Volver\n    ")]
+          ),
+          _vm._v(" "),
+          _c("div", [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-sm btn-primary",
+                on: { click: _vm.printCompetitionHeats }
+              },
+              [_vm._v("\n        Imprimir Mangas\n      ")]
+            ),
+            _vm._v(" "),
+            _vm.isFinal
+              ? _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-sm btn-info",
+                    on: { click: _vm.printCompetitionFinalResults }
+                  },
+                  [_vm._v("\n        Imprimir Clasificación\n      ")]
+                )
+              : _vm._e()
+          ])
+        ]
+      )
     ],
     1
   )

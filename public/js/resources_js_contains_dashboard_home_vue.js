@@ -70,8 +70,6 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/router */ "./resources/js/router/index.js");
- // import Topbar from "./topbar";
-// import Footer from "@/components/footer";
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {// Topbar,
@@ -552,7 +550,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.main-content[data-v-0e4b5362] {\n  margin-right: 70px;\n}\n.page-content[data-v-0e4b5362] {\n  padding: 0 24px 60px 24px !important;\n}\n.footer[data-v-0e4b5362] {\n  left: 0;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.main-content[data-v-0e4b5362] {\n  margin-right: 70px;\n}\n.page-content[data-v-0e4b5362] {\n  padding: 0 24px 60px 24px !important;\n  margin-top: 40px !important;\n}\n.footer[data-v-0e4b5362] {\n  left: 0;\n}\n", ""]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
@@ -757,7 +755,14 @@ var render = function() {
         { staticClass: "d-flex", staticStyle: { position: "relative" } },
         [
           _c("b-img", {
-            attrs: { src: "/images/logo.png", height: "127", alt: "logo" }
+            attrs: {
+              src:
+                "/storage/" +
+                _vm.all_home_round_heats[0][0][0].com_cat_mod_participant
+                  .competition.logo,
+              height: "127",
+              alt: "logo"
+            }
           }),
           _vm._v(" "),
           _c(
@@ -865,7 +870,7 @@ var render = function() {
         1
       ),
       _vm._v(" "),
-      _c("div", { staticClass: "text-center w-100 mt-4" }, [
+      _c("div", { staticClass: "text-center w-100 my-4" }, [
         _c(
           "h4",
           { staticStyle: { background: "#32394e", padding: "10px 0" } },
@@ -895,26 +900,29 @@ var render = function() {
       _vm._l(_vm.all_home_round_heats, function(round, round_index) {
         return _c(
           "div",
-          { key: round_index, staticClass: "row" },
+          { key: round_index, staticClass: "row mb-4" },
           [
             round.length == 1
-              ? _c("h4", { staticClass: "my-4 col-12" }, [_vm._v("FINAL")])
+              ? _c("h4", { staticClass: "mb-4 col-12" }, [_vm._v("FINAL")])
               : round.length == 2
-              ? _c("h4", { staticClass: "my-4 col-12" }, [
+              ? _c("h4", { staticClass: "mb-4 col-12" }, [
                   _vm._v("SEMI FINALS")
                 ])
               : round.length == 3
-              ? _c("h4", { staticClass: "my-4 col-12" }, [
+              ? _c("h4", { staticClass: "mb-4 col-12" }, [
                   _vm._v("QUARTER FINALS")
                 ])
-              : _c("h4", { staticClass: "my-4 col-12" }, [
+              : _c("h4", { staticClass: "mb-4 col-12" }, [
                   _vm._v("ROUND " + _vm._s(round_index + 1))
                 ]),
             _vm._v(" "),
             _vm._l(round, function(heat, heat_index) {
               return _c(
                 "div",
-                { key: heat_index, staticClass: "col-lg-4 col-md-6 col-sm-6" },
+                {
+                  key: heat_index,
+                  staticClass: "col-lg-4 col-md-6 col-sm-6 mb-3"
+                },
                 [
                   _c("div", { staticClass: "table-responsive mb-0" }, [
                     _c("table", { staticClass: "table table-bordered" }, [

@@ -4,7 +4,6 @@
   import PageHeader from "@/components/page-header";
   import Multiselect from "vue-multiselect";
   import jsPDF from 'jspdf'
-  // import html2canvas from "html2canvas"
   import VueHtml2pdf from 'vue-html2pdf'
 
   import { mapActions, mapGetters } from 'vuex';

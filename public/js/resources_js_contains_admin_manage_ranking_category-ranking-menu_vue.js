@@ -57,7 +57,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
- // import html2canvas from "html2canvas"
 
 
 

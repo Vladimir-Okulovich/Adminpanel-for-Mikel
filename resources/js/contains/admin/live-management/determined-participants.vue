@@ -83,7 +83,8 @@
         'categoryId',
         'modalityId',
         'competition',
-        'categoryStatus'
+        'categoryStatus',
+        'deleteStatus',
       ]),
       /**
        * Total no. of records
@@ -106,6 +107,7 @@
         'getModAndCatOfParticipant',
         'getAvailableCategories',
         'updateParticipantToCompetition',
+        'deleteCompetitionBoxes',
       ]),
       /**
        * Search the table data with search input
@@ -189,11 +191,15 @@
         })
         .then((res) => {
           this.$bvModal.hide('unregister-modal')
-          // window.location.reload();
-          this.getParticipantsByCompetitionCategoryModality({
-            competitionId: this.$route.params.competitionId,
-            categoryModality: this.categoryModality.label,
-          });
+          // console.log(res)
+          if (res.data.participants_competition_category_modality.length == 0) {
+            this.refresh();
+          } else {
+            this.getParticipantsByCompetitionCategoryModality({
+              competitionId: this.$route.params.competitionId,
+              categoryModality: this.categoryModality.label,
+            });
+          }
         });
       },
       createCompetitionBox() {
@@ -204,6 +210,16 @@
         })
         .then((res) => {
           this.$router.push({ name: 'CompetitionHeats', params: { competitionId: this.$route.params.competitionId, categoryId: this.categoryId, modalityId: this.modalityId } })
+        })
+      },
+      deleteCompetitionBox() {
+        this.deleteCompetitionBoxes({
+          competitionId: this.$route.params.competitionId,
+          categoryId: this.categoryId,
+          modalityId: this.modalityId,
+        })
+        .then((res) => {
+          this.refresh();
         })
       },
       back() {
@@ -219,9 +235,9 @@
         }
         return `${label}`
       },
-       refresh() {
+      refresh() {
         window.location.reload();
-      }
+      },
     }
 	};
 </script>
@@ -229,23 +245,28 @@
   <Layout>
     <PageHeader :title="title" :items="items">
       <div class="float-right d-flex">
-        <button v-if="categoryStatus == 0" @click="createCompetitionBox"
-          class="btn btn-info btn-block d-inline-block"
+        <button v-if="deleteStatus && categoryStatus == 1" @click="deleteCompetitionBox"
+          class="btn btn-info mr-lg-2 mr-1"
+        >
+          Eliminar Cuadro
+        </button>
+        <button v-if="categoryStatus == 0 && ParticipantsByCompetitionCategoryModality.length != 1" @click="createCompetitionBox"
+          class="btn btn-info"
         >
           Crear Cuadro Competición
         </button>
         <button v-else-if="categoryStatus == 1" @click="createCompetitionBox"
-          class="btn btn-success btn-block d-inline-block"
+          class="btn btn-success"
         >
           Acceder al cuadro de competición
         </button>
-        <button v-else @click="createCompetitionBox"
-          class="btn btn-danger btn-block d-inline-block"
+        <button v-else-if="categoryStatus == 2" @click="createCompetitionBox"
+          class="btn btn-danger"
         >
           Ver Cuadro finalizado
         </button>
         <button @click="back"
-          class="btn btn-secondary ml-lg-4 ml-3"
+          class="btn btn-secondary ml-lg-2 ml-1"
         >
           Volver
         </button>
