@@ -2,7 +2,7 @@ import store from '../store'
 
 export default [
     {
-        path: '/competition/:competitionId',
+        path: '/',
         meta: {
         },
         name: 'Home',

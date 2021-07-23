@@ -264,32 +264,41 @@ class LiveManagementController extends Controller
         ], 200);
     }
 
-    public function initHome($competitionId)
+    public function initHome(Request $request)
     {
         $category_modality = [];
-        $competition = Competition::find($competitionId);
+        $competitions = Competition::where('status_id', 3)->get();
         $categories = Category::all();
         $modalities = Modality::all();
-        foreach ($categories as $category) {
-            $category->sex;
-            foreach ($modalities as $modality) {
-                $com_cat_mod_participant_ids = Com_cat_mod_participant::select('id')->where('competition_id', $competitionId)
-                                        ->where('category_id', $category->id)
-                                        ->where('modality_id', $modality->id)->get();
-                if (count($com_cat_mod_participant_ids) > 0) {
-                    $round_heats = Round_heat::whereIn('com_cat_mod_participant_id', $com_cat_mod_participant_ids)->get();
-                    if (count($round_heats) > 0) {
-                        array_push($category_modality, $category->name." ".$category->sex->name." ".$modality->name);
+        if (count($competitions) > 0) {
+            $competition = $competitions[0];
+            foreach ($categories as $category) {
+                $category->sex;
+                foreach ($modalities as $modality) {
+                    $com_cat_mod_participant_ids = Com_cat_mod_participant::select('id')->where('competition_id', $competition->id)
+                                            ->where('category_id', $category->id)
+                                            ->where('modality_id', $modality->id)->get();
+                    if (count($com_cat_mod_participant_ids) > 0) {
+                        $round_heats = Round_heat::whereIn('com_cat_mod_participant_id', $com_cat_mod_participant_ids)->get();
+                        if (count($round_heats) > 0) {
+                            array_push($category_modality, $category->name." ".$category->sex->name." ".$modality->name);
+                        }
                     }
                 }
             }
+
+            return response()->json([
+                'message' => 'success',
+                'competition' => $competition,
+                'category_modality' => $category_modality,
+            ], 200);
         }
 
         return response()->json([
             'message' => 'success',
-            'competition' => $competition,
-            'category_modality' => $category_modality,
-        ], 200);
+            'competition' => null,
+            'category_modality' => [],
+        ], 200);        
     }
 
     public function getCompetitionHeats(Request $request)

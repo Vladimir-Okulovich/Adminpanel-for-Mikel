@@ -142,10 +142,10 @@ const actions = {
         });
     },
 
-    initHome(context, competitionId) {
+    initHome(context) {
         ApiService.setHeader();
         return new Promise((resolve, reject) =>{
-            ApiService.get("api/v1/home/"+competitionId)
+            ApiService.get("api/v1/home")
                 .then(({data}) => {
                     resolve(data);
                 })

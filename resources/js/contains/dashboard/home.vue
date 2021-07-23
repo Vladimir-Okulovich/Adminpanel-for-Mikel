@@ -33,12 +33,12 @@
       ]),
     },
     mounted() {
-      this.competitionId = this.$route.params.competitionId;
-      this.initHome(this.competitionId)
+      this.initHome()
       .then((res) => {
         // console.log(res)
         this.categoryModalityWithResults = res.category_modality
         this.competition = res.competition
+        this.competitionId = res.competition.id
       });
     },
     methods: {
@@ -49,7 +49,7 @@
 
       categoryModalityHandler() {
         this.getCompetitionHeats({
-          competitionId: this.$route.params.competitionId,
+          competitionId: this.competitionId,
           categoryModality: this.categoryModality,
         })
         .then((res) => {

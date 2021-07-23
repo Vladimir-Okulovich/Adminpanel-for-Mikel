@@ -35,7 +35,7 @@ Route::group([ 'prefix' => 'v1', 'middleware' => 'api'], function(){
     Route::get('token/validate', 'App\Http\Controllers\Api\v1\AuthController@auth');
 
     // /* Get Competition */
-    Route::get('home/{competitionId}', 'App\Http\Controllers\Api\v1\LiveManagementController@initHome');
+    Route::get('home', 'App\Http\Controllers\Api\v1\LiveManagementController@initHome');
     // /* Get Competition Heats */
     Route::post('home/competition-heats', 'App\Http\Controllers\Api\v1\LiveManagementController@getCompetitionHeats');
     /* Get Competition Heat Details */
