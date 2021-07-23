@@ -7,7 +7,7 @@
 
 	export default {
 		page: {
-        title: "CASA",
+        title: "Competición en Curso",
         meta: [{ name: "description", content: appConfig.description }]
     },
     components: {
