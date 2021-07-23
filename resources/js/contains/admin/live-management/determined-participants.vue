@@ -176,14 +176,16 @@
         })
         .then((res) => {
           this.$bvModal.hide('edit-modal')
-          if (res.data.participants_competition_category_modality.length == 0) {
-            this.refresh();
-          } else {
-            this.getParticipantsByCompetitionCategoryModality({
-              competitionId: this.$route.params.competitionId,
-              categoryModality: this.categoryModality.label,
-            });
-          }
+          this.getParticipantsByCompetitionCategoryModality({
+            competitionId: this.$route.params.competitionId,
+            categoryModality: this.categoryModality.label,
+          })
+          .then((res) => {
+            // console.log(res)
+            if (res.participants_competition_category_modality.length == 0) {
+              this.refresh();
+            }
+          });
         });
       },
       unregisterParticipant() {
