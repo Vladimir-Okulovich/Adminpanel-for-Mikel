@@ -225,14 +225,15 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (res) {
         _this3.$bvModal.hide('edit-modal');
 
-        if (res.data.participants_competition_category_modality.length == 0) {
-          _this3.refresh();
-        } else {
-          _this3.getParticipantsByCompetitionCategoryModality({
-            competitionId: _this3.$route.params.competitionId,
-            categoryModality: _this3.categoryModality.label
-          });
-        }
+        _this3.getParticipantsByCompetitionCategoryModality({
+          competitionId: _this3.$route.params.competitionId,
+          categoryModality: _this3.categoryModality.label
+        }).then(function (res) {
+          // console.log(res)
+          if (res.participants_competition_category_modality.length == 0) {
+            _this3.refresh();
+          }
+        });
       });
     },
     unregisterParticipant: function unregisterParticipant() {

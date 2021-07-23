@@ -23,6 +23,7 @@ const actions = {
                 .then(({data}) => {
                     // console.log(data);
                     context.commit(type.SET_PARTICIPANTS_COMPETITION_CATEGORY_MODALITY, data)
+                    resolve(data)
                 })
                 .catch(({ response }) => {
                     // console.log(response);
