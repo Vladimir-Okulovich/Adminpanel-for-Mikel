@@ -39,7 +39,7 @@ Route::group([ 'prefix' => 'v1', 'middleware' => 'api'], function(){
     // /* Get Competition Heats */
     Route::post('home/competition-heats', 'App\Http\Controllers\Api\v1\LiveManagementController@getCompetitionHeats');
     /* Get Competition Heat Details */
-    Route::post('competition-heat/heat-details', 'App\Http\Controllers\Api\v1\LiveManagementController@initHeatDetails');
+    Route::post('competition-heat/heat-details', 'App\Http\Controllers\Api\v1\LiveManagementController@initHomeHeatDetails');
 
     //Admin actions
     Route::group([ 'prefix' => 'admin', 'middleware' => 'isadmin' ], function(){
@@ -147,6 +147,8 @@ Route::group([ 'prefix' => 'v1', 'middleware' => 'api'], function(){
          Route::post('live-management/competition-box/delete', 'App\Http\Controllers\Api\v1\LiveManagementController@deleteCompetitionBoxes');
         /* Get Competition Heats */
         Route::post('live-management/competition-heats', 'App\Http\Controllers\Api\v1\LiveManagementController@initCompetitionHeats');
+        /* Get Competition Heat Details */
+        Route::post('live-management/competition-heat/heat-details', 'App\Http\Controllers\Api\v1\LiveManagementController@initHeatDetails');
         /* Get Competition Final Results */
         Route::post('live-management/competition-heats/final-results', 'App\Http\Controllers\Api\v1\LiveManagementController@getCompetitionFinalResults');
         /* Set Heat Status */

@@ -116,9 +116,9 @@ const actions = {
     initHeatDetails(context, data) {
         ApiService.setHeader();
         return new Promise((resolve, reject) =>{
-            ApiService.post("api/v1/competition-heat/heat-details", data)
+            ApiService.post("api/v1/admin/live-management/competition-heat/heat-details", data)
                 .then(({data}) => {
-                    console.log(data);
+                    // console.log(data);
                     context.commit(type.GET_ROUND_HEAT_DETAILS, data)
                 })
                 .catch(({ response }) => {
@@ -148,6 +148,21 @@ const actions = {
             ApiService.get("api/v1/home")
                 .then(({data}) => {
                     resolve(data);
+                })
+                .catch(({ response }) => {
+                    // console.log(response);
+                    reject(response)
+                });
+        });
+    },
+
+    initHomeHeatDetails(context, data) {
+        ApiService.setHeader();
+        return new Promise((resolve, reject) =>{
+            ApiService.post("api/v1/competition-heat/heat-details", data)
+                .then(({data}) => {
+                    // console.log(data);
+                    context.commit(type.GET_ROUND_HEAT_DETAILS, data)
                 })
                 .catch(({ response }) => {
                     // console.log(response);

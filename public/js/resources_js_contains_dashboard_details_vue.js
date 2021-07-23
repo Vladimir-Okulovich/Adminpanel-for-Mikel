@@ -82,7 +82,7 @@ __webpack_require__.r(__webpack_exports__);
     this.modalityId = this.$route.params.modalityId;
     this.round = this.$route.params.round;
     this.heat = this.$route.params.heat;
-    this.initHeatDetails({
+    this.initHomeHeatDetails({
       competitionId: this.competitionId,
       categoryId: this.categoryId,
       modalityId: this.modalityId,
@@ -90,7 +90,7 @@ __webpack_require__.r(__webpack_exports__);
       heat: this.heat
     });
   },
-  methods: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)((0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_6__.mapActions)(['initHeatDetails'])), {}, {
+  methods: (0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)((0,E_Mikel_Adminpanel_for_Mikel_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__.default)({}, (0,vuex__WEBPACK_IMPORTED_MODULE_6__.mapActions)(['initHomeHeatDetails'])), {}, {
     back: function back() {
       this.$router.go(-1);
     },

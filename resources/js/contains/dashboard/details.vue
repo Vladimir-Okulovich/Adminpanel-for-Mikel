@@ -38,7 +38,7 @@
       this.modalityId = this.$route.params.modalityId;
       this.round = this.$route.params.round;
       this.heat = this.$route.params.heat;
-      this.initHeatDetails({
+      this.initHomeHeatDetails({
         competitionId: this.competitionId,
         categoryId: this.categoryId,
         modalityId: this.modalityId,
@@ -48,7 +48,7 @@
     },
     methods: {
       ...mapActions([
-        'initHeatDetails',
+        'initHomeHeatDetails',
       ]),
 
       back() {
