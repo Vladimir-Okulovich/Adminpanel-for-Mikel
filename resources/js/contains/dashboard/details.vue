@@ -7,7 +7,7 @@
 
 	export default {
 		page: {
-        title: "DETALLES",
+        title: "Resultados Competición",
         meta: [{ name: "description", content: appConfig.description }]
     },
     components: {
